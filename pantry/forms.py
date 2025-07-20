@@ -1,6 +1,6 @@
 from django import forms
 
-class ProductSearchForm():
-    product_name = forms.CharField(max_length=60)
-    bardcode = forms.CharField(max_length=16)
+class ProductSearchForm(forms.Form):
+    product_name = forms.CharField(max_length=60, required=False)
+    bardcode = forms.CharField(max_length=16, required=False)
 
