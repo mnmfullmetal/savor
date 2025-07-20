@@ -1,3 +1,5 @@
+{% load widget_tweaks %}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,34 +10,37 @@
     <title>{% block title %} Savor {% endblock %}</title>
 </head>
 <body>
-   <nav class="navbar navbar-expand-lg bg-body-tertiary">
+  <nav class="navbar navbar-expand-lg bg-body-tertiary">
   <div class="container-fluid">
     <a class="navbar-brand" href="#">Savor</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
-    <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav">
+    <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         {% if user.is_authenticated %}
         <li class="nav-item">
-          <a class="nav-link" href="#">Pantry</a>
+          <a class="nav-link active" href="#">Pantry</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">My Recipes</a>
+          <a class="nav-link " href="#">Recipes</a>
         </li>
         {% else %}
-        <li class="nav-item">
-          <a class="nav-link disabled" aria-disabled="true">Log on</a>
+          <li class="nav-item">
+          <a class="nav-link active" href="#">Log On</a>
         </li>
-         <li class="nav-item">
-          <a class="nav-link disabled" aria-disabled="true">Register</a>
+        <li class="nav-item">
+          <a class="nav-link " href="#">Sign Up</a>
         </li>
         {% endif %}
       </ul>
+      <form class="d-flex" role="search">
+         {% render_field product_search_form.product_name type="text" class="form-control me-2" placeholder="Search by Name" aria-label="Search Product by Name" %}
+        <button class="btn btn-outline-success" type="submit">Search</button>
+      </form>
     </div>
   </div>
 </nav>
-
 <div>
   {% block body %}
   {% endblock %}
