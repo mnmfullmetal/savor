@@ -5,13 +5,9 @@ from pantry.forms import ProductSearchForm
 # Create your views here.
 
 def index(request):
+    form = ProductSearchForm(request.GET)
     return render(request, 'pantry/index.html', {
         "user" : request.user,
-        "product_search_form": ProductSearchForm()
+        "product_search_form": form
     })
 
-## pantry app manages pantries 
-
-## users app mamages accounts and authentication 
-
-## recipes app manages the created recipes 
