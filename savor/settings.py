@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'recipes',
     'pantry',
     'widget_tweaks',
+    'django_ratelimit',
 ]
 
 MIDDLEWARE = [
@@ -73,6 +74,7 @@ TEMPLATES = [
 WSGI_APPLICATION = 'savor.wsgi.application'
 
 
+
 # Database
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
 
@@ -82,6 +84,7 @@ DATABASES = {
         'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
+
 
 
 # Password validation
@@ -120,6 +123,10 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 
+STATICFILES_DIRS = [
+    BASE_DIR / 'static', 
+]
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
 
@@ -134,4 +141,14 @@ OPENFOODFACTS_API = {
      'PASSWORD': "off",
      'USER_AGENT': "Savor/1.0 (mnm.fullmetal@gmail.com)",
      'USE_STAGING_AUTH': True
+}
+
+CACHES = {
+    'default': {
+        'BACKEND': 'django_redis.cache.RedisCache',
+        'LOCATION': 'redis://127.0.0.1:6379/1', 
+        'OPTIONS': {
+            'CLIENT_CLASS': 'django_redis.client.DefaultClient',
+            }
+        }
 }

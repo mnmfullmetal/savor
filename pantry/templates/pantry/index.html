@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% load static %}
 {% load widget_tweaks %}
 
 {% block title %}
@@ -8,9 +9,9 @@ Savor
 {% block body %}
 
 
-<form id="search-form" action="post">
-
-{% render_field product_search_form.product_name  id="product_name_input" "class="form-control" type="text" placeholder="Product Name" aria-label="product name" %}
+<form id="search-form">
+    {% csrf_token %}
+{% render_field product_search_form.product_name  id="product_name_input" class="form-control" type="text" placeholder="Product Name" aria-label="product name" %}
 {% render_field product_search_form.barcode id="barcode_input" class="form-control" type="text" placeholder="Barcode" aria-label="barcode" %}
 <input type="submit" value="Search" class="btn btn-primary">
 

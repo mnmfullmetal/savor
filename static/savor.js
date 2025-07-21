@@ -8,13 +8,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
 })
 
-function searchProduct(event){
+
+function searchProduct(event) {
     event.preventDefault();
-    
+
     const barcode = document.querySelector("#barcode_input").value.trim();
     const productName = document.querySelector("#product_name_input").value.trim();
     const productDetailsDiv = document.querySelector('#product_details');
-    productDetailsDiv.innerHTML = '<p>Searching...</p>'; 
+    productDetailsDiv.innerHTML = '<p>Searching...</p>';
     const csrftoken = document.querySelector('[name=csrfmiddlewaretoken]').value;
 
     if (!barcode && !productName) {
@@ -28,49 +29,40 @@ function searchProduct(event){
         product_name: productName
     };
 
-    fetch("/product/search/", { 
-        method: "POST", 
+    fetch("/product/search/", {
+        method: "POST",
         headers: {
             "Content-Type": "application/json",
             "X-CSRFToken": csrftoken
         },
         body: JSON.stringify(requestData)
     })
-    .then(response => {
-        if (!response.ok) {
-            console.error(`HTTP error from Django backend! status: ${response.status}`);
-            return response.json().catch(() => ({ error: 'Error parsing Django error response.' }));
-        }
-        return response.json();
-    })
+    .then(response => response.json())
     .then(data => {
         console.log("Response from Django API:", data);
 
-        if (data.error) {
-            alert(`Error: ${data.error}`);
-            productDetailsDiv.innerHTML = `<p>Error: ${data.error}</p>`;
+        if (data.error || data.errors) {
+            const errorMessage = data.error || JSON.parse(data.errors);
+            console.error("Error from backend:", errorMessage);
+            productDetailsDiv.innerHTML = `<p>Error: ${data.error || 'Invalid input.'}</p>`;
         } else if (data.products && data.products.length > 0) {
             productDetailsDiv.innerHTML = '';
-
             data.products.forEach(product => {
                 const productDiv = document.createElement('div');
-                productDiv.innerHTML = 
-                   `<h3>${product.product_name || 'No Name'}</h3>
-                    <p>Brands: ${product.brands || 'N/A'}</p>
-                    <p>Code: ${product.code || 'N/A'}</p>`;
+                productDiv.innerHTML =
+                    `<h3>${product.product_name || 'No Name'}</h3>
+                     <p>Brands: ${product.brands || 'N/A'}</p>
+                     <p>Code: ${product.code || 'N/A'}</p>
+                     ${product.image_url ? `<img src="${product.image_url}" alt="${product.product_name || 'Product Image'}" style="max-width: 100px; height: auto;">` : ''}
+                     <hr>`;
                 productDetailsDiv.appendChild(productDiv);
             });
         } else {
-            alert("No products found.");
             productDetailsDiv.innerHTML = '<p>No products found.</p>';
         }
     })
     .catch(error => {
-        console.error("Fetch error to Django API:", error);
-        alert("An unexpected error occurred. Please try again.");
-        productDetailsDiv.innerHTML = '<p>An error occurred during the search.</p>';
+        console.error("Fetch network error:", error);
+        productDetailsDiv.innerHTML = '<p>A network error occurred. Please check your connection.</p>';
     });
-
-
-
 }
