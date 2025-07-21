@@ -93,26 +93,27 @@ def search_product(request):
                 return JsonResponse({'error': 'No valid search criteria provided.'}, status=400)
 
             return JsonResponse({'products': off_products_data})
-
-        except Ratelimited as e:
-            return rate_limit_error_response(request, e)
-        except requests.exceptions.HTTPError as e:
-            print(f"HTTP Error fetching from OFF API: {e}")
-            if e.response.status_code == 404:
-                return JsonResponse({'error': 'Product not found on Open Food Facts.', 'details': 'The external API returned a 404 Not Found.'}, status=404)
-            return JsonResponse({'error': 'Error fetching products from external API.', 'details': str(e)}, status=503)
-        except requests.exceptions.ConnectionError as e:
-            print(f"Connection Error to OFF API: {e}")
-            return JsonResponse({'error': 'Could not connect to the external API. Please check your internet connection.', 'details': str(e)}, status=503)
-        except requests.exceptions.Timeout as e:
-            print(f"Timeout Error from OFF API: {e}")
-            return JsonResponse({'error': 'The external API took too long to respond. Please try again.', 'details': str(e)}, status=503)
-        except requests.exceptions.RequestException as e:
-            print(f"Generic Request Error from OFF API: {e}")
-            return JsonResponse({'error': 'An unexpected error occurred while communicating with the external API.', 'details': str(e)}, status=503)
-        except Exception as e:
-            print(f"An unexpected error occurred in search_product: {e}")
-            return JsonResponse({'error': 'An unexpected server error occurred.'}, status=500)
+        
+        except (Ratelimited, requests.exceptions.RequestException, Exception) as e:
+            if isinstance(e, Ratelimited):
+                return rate_limit_error_response(request, e)
+            elif isinstance(e, requests.exceptions.HTTPError):
+                print(f"HTTP Error fetching from OFF API: {e}")
+                if e.response.status_code == 404:
+                    return JsonResponse({'error': 'Product not found on Open Food Facts.', 'details': 'The external API returned a 404 Not Found.'}, status=404)
+                return JsonResponse({'error': 'Error fetching products from external API.', 'details': str(e)}, status=503)
+            elif isinstance(e, requests.exceptions.ConnectionError):
+                print(f"Connection Error to OFF API: {e}")
+                return JsonResponse({'error': 'Could not connect to the external API. Please check your internet connection.', 'details': str(e)}, status=503)
+            elif isinstance(e, requests.exceptions.Timeout):
+                print(f"Timeout Error from OFF API: {e}")
+                return JsonResponse({'error': 'The external API took too long to respond. Please try again.', 'details': str(e)}, status=503)
+            elif isinstance(e, requests.exceptions.RequestException):
+                print(f"Generic Request Error from OFF API: {e}")
+                return JsonResponse({'error': 'An unexpected error occurred while communicating with the external API.', 'details': str(e)}, status=503)
+            else: 
+                print(f"An unexpected error occurred in search_product: {e}")
+                return JsonResponse({'error': 'An unexpected server error occurred.'}, status=500)
 
     else:
         print(f"Form validation failed: {form.errors}")
