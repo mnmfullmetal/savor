@@ -29,11 +29,11 @@
           <a class="nav-link " href="#">Recipes</a>
         </li>
          <li class="nav-item">
-          <a class="nav-link active" href="#">Log Out</a>
+          <a class="nav-link" href="{% url 'logout' %}">Log Out</a>
         </li>
         {% else %}
           <li class="nav-item">
-          <a class="nav-link active" href="#">Log On</a>
+          <a class="nav-link"  href="{% url 'login' %}">Log On</a>
         </li>
         <li class="nav-item">
           <a class="nav-link " href="{% url 'users:register' %}">Register</a>
