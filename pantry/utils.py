@@ -55,7 +55,7 @@ def check_db_for_product(barcode = None, name = None):
                  'code': local_product.code,
                  'product_name': local_product.product_name,
                  'brands': local_product.brands,
-                 'image_small_url': local_product.image_url,
+                 'image_url': local_product.image_url,
                 })
             return found_products_json
         
@@ -71,7 +71,7 @@ def check_db_for_product(barcode = None, name = None):
                     'code': product.code,
                     'product_name': product.product_name,
                     'brands': product.brands,
-                    'image_small_url': product.image_url,
+                    'image_url': product.image_url,
                 })
             return  found_products_json
         
