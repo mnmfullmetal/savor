@@ -67,7 +67,7 @@ def search_product(request):
                             'code': saved_product.code,
                             'product_name': saved_product.product_name,
                             'brands': saved_product.brands,
-                            'image_small_url': saved_product.image_url,
+                            'image_url': saved_product.image_url,
                         })
                 else:
                     print(f"No product found on OFF for barcode: {barcode}. Response: {response_data}")
@@ -83,7 +83,7 @@ def search_product(request):
                                 'code': saved_product.code,
                                 'product_name': saved_product.product_name,
                                 'brands': saved_product.brands,
-                                'image_small_url': saved_product.image_url,
+                                'image_url': saved_product.image_url,
                             })
                 else:
                     print(f"No products found on OFF for name: {product_name}. Response: {response_data}")
