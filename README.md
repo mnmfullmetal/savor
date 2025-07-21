@@ -2,11 +2,11 @@
 
 Savor is a modern web application designed to revolutionize your kitchen experience by offering intelligent pantry management and personalized recipe suggestions. Say goodbye to food waste and the "what's for dinner?" dilemma!
 
----  <- This is a horizontal rule
+--- 
 
 ## Table of Contents
 
-* [Overview](#overview)  <- Note the asterisk and space for a bullet point
+* [Overview](#overview)  
 * [Features](#features)
 * [Technologies Used](#technologies-used)
 * [Setup and Installation](#setup-and-installation)
