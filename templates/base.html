@@ -21,7 +21,9 @@
     <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         {% if user.is_authenticated %}
+        <li class="nav-item">
         <span>Hello, {{ user.username }}!</span>
+        </li>
         <li class="nav-item">
           <a class="nav-link active" href="#">Pantry</a>
         </li>
@@ -29,7 +31,10 @@
           <a class="nav-link " href="#">Recipes</a>
         </li>
          <li class="nav-item">
-          <a class="nav-link" href="{% url 'logout' %}">Log Out</a>
+          <form action="{% url 'logout' %}" method="post">
+            {% csrf_token %}
+            <button type="submit" class="btn btn-link nav-link">Log Out</button>
+        </form>
         </li>
         {% else %}
           <li class="nav-item">
