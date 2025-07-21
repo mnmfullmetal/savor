@@ -8,13 +8,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
 })
 
-function searchProduct(event, ){
+function searchProduct(event){
     event.preventDefault();
+    
     const barcode = document.querySelector("#barcode_input").value.trim();
     const productName = document.querySelector("#product_name_input").value.trim();
     const productDetailsDiv = document.querySelector('#product_details');
     productDetailsDiv.innerHTML = '<p>Searching...</p>'; 
-
     const csrftoken = document.querySelector('[name=csrfmiddlewaretoken]').value;
 
     if (!barcode && !productName) {

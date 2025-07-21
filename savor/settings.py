@@ -126,3 +126,12 @@ STATIC_URL = 'static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 AUTH_USER_MODEL = 'users.User'
+
+
+OPENFOODFACTS_API = {
+     'BASE_URL': "https://world.openfoodfacts.net", 
+     'USERNAME': "off",
+     'PASSWORD': "off",
+     'USER_AGENT': "Savor/1.0 (mnm.fullmetal@gmail.com)",
+     'USE_STAGING_AUTH': True
+}
