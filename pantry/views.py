@@ -35,6 +35,7 @@ def rate_limit_error_response(request, exception):
 
 @require_POST
 def search_product(request):
+    is_authenticated = request.user.is_authenticated
     try:
         data = json.loads(request.body)
     except json.JSONDecodeError:
@@ -50,7 +51,7 @@ def search_product(request):
 
         if db_products:
             print("Returning product(s) from local DB.")
-            return JsonResponse({'products': db_products})
+            return JsonResponse({'products': db_products, "is_authenticated" : is_authenticated})
         else:
             print("Product(s) not found in local DB. Attempting to call Open Food Facts API.")
 
@@ -71,7 +72,7 @@ def search_product(request):
                         })
                 else:
                     print(f"No product found on OFF for barcode: {barcode}. Response: {response_data}")
-                    return JsonResponse({'products': []})
+                    return JsonResponse({'products': [], "uis_authenticatedser" : is_authenticated})
 
             elif product_name:
                 response_data = search_products_by_name(request, product_name)
@@ -87,12 +88,12 @@ def search_product(request):
                             })
                 else:
                     print(f"No products found on OFF for name: {product_name}. Response: {response_data}")
-                    return JsonResponse({'products': []})
+                    return JsonResponse({'products': [], "is_authenticated" : is_authenticated})
 
             else:
                 return JsonResponse({'error': 'No valid search criteria provided.'}, status=400)
 
-            return JsonResponse({'products': off_products_data})
+            return JsonResponse({'products': off_products_data, "is_authenticated" : is_authenticated})
         
         except (Ratelimited, requests.exceptions.RequestException, Exception) as e:
             if isinstance(e, Ratelimited):
