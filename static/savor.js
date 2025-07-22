@@ -43,11 +43,13 @@ function searchProduct( barcode ='None', productName = 'None', csrftoken) {
     .then(response => response.json())
     .then(data => {
         console.log("Response from Django API:", data);
+        const isAuthenticated = data.is_authenticated;
 
         if (data.error || data.errors) {
             const errorMessage = data.error || JSON.parse(data.errors);
             console.error("Error from backend:", errorMessage);
             productDetailsDiv.innerHTML = `<p>Error: ${data.error || 'Invalid input.'}</p>`;
+
         } else if (data.products && data.products.length > 0) {
             productDetailsDiv.innerHTML = '';
             data.products.forEach(product => {
@@ -57,9 +59,11 @@ function searchProduct( barcode ='None', productName = 'None', csrftoken) {
                      <p>Brands: ${product.brands || 'N/A'}</p>
                      <p>Code: ${product.code || 'N/A'}</p>
                      ${product.image_url ? `<img src="${product.image_url}" alt="${product.product_name || 'Product Image'}" style="max-width: 100px; height: auto;">` : ''}
-                     <hr>`;
+                     <hr>
+                     <button id="favourite_button" class="btn btn-primary>Like</button>`;
                 productDetailsDiv.appendChild(productDiv);
             });
+
         } else {
             productDetailsDiv.innerHTML = '<p>No products found.</p>';
         }
