@@ -2,27 +2,30 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const productSearchForm = document.querySelector('#search-form')
 
-    if (productSearchForm){
-        productSearchForm.onsubmit = searchProduct;
-    }
+    productSearchForm.addEventListener("submit", (event) => {
+        event.preventDefault();
+        const barcode = productSearchForm.elements.barcode.value.trim();
+        const productName = productSearchForm.elements.product_name.value.trim();
+        const csrftoken = productSearchForm.elements.csrfmiddlewaretoken.value;
+
+        searchProduct(barcode, productName, csrftoken);
+
+    })
 
 })
 
 
-function searchProduct(event) {
-    event.preventDefault();
+function searchProduct( barcode ='None', productName = 'None', csrftoken) {
 
-    const barcode = document.querySelector("#barcode_input").value.trim();
-    const productName = document.querySelector("#product_name_input").value.trim();
-    const productDetailsDiv = document.querySelector('#product_details');
+    const productDetailsDiv = document.querySelector('#product_details')
     productDetailsDiv.innerHTML = '<p>Searching...</p>';
-    const csrftoken = document.querySelector('[name=csrfmiddlewaretoken]').value;
+ 
 
     if (!barcode && !productName) {
         alert("Please enter a barcode or product name to search.");
         productDetailsDiv.innerHTML = '';
         return;
-    }
+    };
 
     const requestData = {
         barcode: barcode,
