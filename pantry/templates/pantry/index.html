@@ -9,17 +9,6 @@ Savor
 {% block body %}
 
 
-<form id="search-form">
-    {% csrf_token %}
-{% render_field product_search_form.product_name  id="product_name_input" class="form-control" type="text" placeholder="Product Name" aria-label="product name" %}
-{% render_field product_search_form.barcode id="barcode_input" class="form-control" type="text" placeholder="Barcode" aria-label="barcode" %}
-<input type="submit" value="Search" class="btn btn-primary">
-
-</form>
-
-<div id="product_details">
-
-</div>
 
 
 {% endblock %}
