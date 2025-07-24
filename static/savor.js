@@ -1,3 +1,5 @@
+const { jsx } = require("react/jsx-runtime");
+
 document.addEventListener('DOMContentLoaded', () => {
 
     const productSearchForm = document.querySelector('#search-form')
@@ -60,8 +62,22 @@ function searchProduct( barcode ='None', productName = 'None', csrftoken) {
                      <p>Code: ${product.code || 'N/A'}</p>
                      ${product.image_url ? `<img src="${product.image_url}" alt="${product.product_name || 'Product Image'}" style="max-width: 100px; height: auto;">` : ''}
                      <hr>
-                     <button id="favourite_button" class="btn btn-primary>Like</button>`;
+                     <span> <button id="favourite_button" class="btn btn-primary">Like</button> </span> <span> <button id="add_button"  class="btn btn-primary"> Add </button> </span>`;
                 productDetailsDiv.appendChild(productDiv);
+                addButton = document.querySelector("#add_button")
+                addButton.addEventListener("click",() => {
+                    
+                    fetch(`/pantry/add_product`, {
+                        method: "POST", // put? not get because not geeting information 
+                        body: JSON.stringify(requestData)
+
+                    })
+                    .then(response => json.response)
+                    .then({
+
+                    })
+                    // backend will handle user validation and saving to DB
+                })
             });
 
         } else {
