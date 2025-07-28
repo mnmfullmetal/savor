@@ -1,4 +1,3 @@
-const { jsx } = require("react/jsx-runtime");
 
 document.addEventListener('DOMContentLoaded', () => {
 
@@ -19,6 +18,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 function searchProduct( barcode ='None', productName = 'None', csrftoken) {
 
+    
     const productDetailsDiv = document.querySelector('#product_details')
     productDetailsDiv.innerHTML = '<p>Searching...</p>';
  

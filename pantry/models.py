@@ -14,7 +14,6 @@ class Pantry(models.Model):
 
 
 
-
 class PantryItem(models.Model):
     pantry = models.ForeignKey(Pantry, on_delete=models.CASCADE, related_name='items')
     product = models.ForeignKey('Product', on_delete=models.CASCADE, related_name='pantry_entries')

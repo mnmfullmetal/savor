@@ -119,3 +119,6 @@ def search_product(request):
     else:
         print(f"Form validation failed: {form.errors}")
         return JsonResponse({'errors': form.errors}, status=400)
+
+def add_product():
+    pass

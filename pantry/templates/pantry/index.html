@@ -8,7 +8,12 @@ Savor
 
 {% block body %}
 
+{% if user.is_authenticated %}
+
 <h1>Hello, {{user}}!</h1>
+
+{% endif %}
+
 
 
 {% endblock %}
