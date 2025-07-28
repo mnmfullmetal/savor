@@ -122,3 +122,10 @@ def search_product(request):
 
 def add_product():
     pass
+
+
+def pantry_view(request):
+    return render(request, "pantry/pantry.html", {
+        "user" : request.user
+    })
+    pass
