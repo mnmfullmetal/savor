@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Product 
+from .models import Product, Pantry, PantryItem
 
 # Register your models here.
 
@@ -17,7 +17,7 @@ class PantryAdmin(admin.ModelAdmin):
 
 @admin.register(PantryItem)
 class PantryItemAdmin(admin.ModelAdmin):
-    list_display = ('product', 'product_quantity', 'unit', 'pantry_owner')
+    list_display = ('product', 'quantity', 'unit', 'pantry_owner')
     list_filter = ('product', 'pantry__user__username')
     search_fields = ('product__product_name', 'product__code', 'pantry__user__username')
 

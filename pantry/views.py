@@ -6,7 +6,7 @@ from django.contrib.auth.decorators import login_required
 from django_ratelimit.exceptions import Ratelimited
 from django.shortcuts import render
 from pantry.forms import ProductSearchForm 
-from pantry.models import Pantry
+from pantry.models import Pantry, Product, PantryItem
 from .utils import (
     check_db_for_product,
     fetch_product_by_barcode,
@@ -143,22 +143,36 @@ def add_product(request):
 
     pantry = Pantry.objects.get(user=request.user)
     product = Product.objects.get(id=data['product_id'])
-    pantry_item = PantryItem.objects.filter(pantry=pantry, product=product)
 
-    if pantry_item.exists():
-        pantry_item.quantity += data['product_quantity']
-        pantry_item.save()
-        return JsonResponse({'message': 'Product quantity updated successfully!'})
+    quantity = data['product_quantity']
+    unit = data['product_unit']
+    
+    pantry_item, created = PantryItem.objects.get_or_create(
+        pantry=pantry,
+        product=product,
+        defaults={
+            'quantity': quantity,
+            'unit': unit
+            }
+        )
 
-    pantry_item = PantryItem.objects.create(pantry=pantry, product=product, product_quantity=data['product_quantity'], unit=data['product_unit'])
-    pantry_item.save()
-    return JsonResponse({'message': 'Product added successfully!'})
+    if not created:
+            pantry_item.quantity += quantity 
+            pantry_item.unit = unit 
+            pantry_item.save() 
+            message = f"{product.product_name} quantity updated to {pantry_item.quantity} {pantry_item.unit}."
+    else:
+         message = f"{product.product_name} added to your pantry with {pantry_item.quantity} {pantry_item.unit}."
+        
+
+
+    return JsonResponse({'message': message })
 
 
 @login_required
 def pantry_view(request):
     pantry = Pantry.objects.get(user=request.user)
-    pantryitems = PantryItem.objects.all(pantry=pantry)
+    pantryitems = PantryItem.objects.filter(pantry=pantry)
     return render(request, "pantry/pantry.html", {
         "user" : request.user,
         "pantryitems": pantryitems,
