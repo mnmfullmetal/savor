@@ -42,24 +42,29 @@ function searchProduct(barcode = "None", productName = "None", csrftoken) {
       if (data.error || data.errors) {
         const errorMessage = data.error || JSON.parse(data.errors);
         console.error("Error from backend:", errorMessage);
-        productDetailsDiv.innerHTML = `<p>Error: ${data.error || "Invalid input."
-          }</p>`;
+        productDetailsDiv.innerHTML = `<p>Error: ${
+          data.error || "Invalid input."
+        }</p>`;
       } else if (data.products && data.products.length > 0) {
         productDetailsDiv.innerHTML = "";
         data.products.forEach((product) => {
           const productDiv = document.createElement("div");
-          productDiv.innerHTML =
-            `<h3>${product.product_name || "No Name"}</h3>
+          productDiv.innerHTML = `<h3>${product.product_name || "No Name"}</h3>
                      <p>Brands: ${product.brands || "N/A"}</p>
                      <p>Code: ${product.code || "N/A"}</p>
-                     ${product.image_url
-              ? `<img src="${product.image_url}" alt="${product.product_name || "Product Image"
-              }" style="max-width: 100px; height: auto;">`
-              : ""
-            }
+                     ${
+                       product.image_url
+                         ? `<img src="${product.image_url}" alt="${
+                             product.product_name || "Product Image"
+                           }" style="max-width: 100px; height: auto;">`
+                         : ""
+                     }
                      <hr>
-                    <div> <input type="number" min="0.01" step="0.01" placeholder="Qty"> <button  class="btn btn-primary add-to-pantry-button" data-product-id=${product.id
-            } data-product-unit="${product.product_quantity_unit}"> Add </button> </div>   
+                    <div> <input type="number" min="0.01" step="0.01" placeholder="Qty"> <button  class="btn btn-primary add-to-pantry-button" data-product-id=${
+                      product.id
+                    } data-product-unit="${
+            product.product_quantity_unit
+          }"> Add </button> </div>   
                     <div><button id="favourite_button" class="btn btn-primary">Favourite</button></div>`;
           productDetailsDiv.appendChild(productDiv);
 
@@ -71,7 +76,7 @@ function searchProduct(barcode = "None", productName = "None", csrftoken) {
             const productUnitToAdd = clickedButton.data.productUnit;
             const addProductRequestData = {
               product_id: productIdToAdd,
-              product_unit: productUnitToAdd 
+              product_unit: productUnitToAdd,
             };
 
             fetch(`pantry/add_product`, {
@@ -80,17 +85,15 @@ function searchProduct(barcode = "None", productName = "None", csrftoken) {
                 "Content-Type": "application/json",
                 "X-CSRFToken": csrftoken,
               },
-              body: JSON.stringify(addProductRequestData)
+              body: JSON.stringify(addProductRequestData),
             })
               .then((response) => response.json)
-              .catch(error => {
+              .catch((error) => {
                 console.error("Fetch network error:", error);
-                document.alert(`error: ${error}`)
+                document.alert(`error: ${error}`);
               });
-
           });
         });
-
       } else {
         productDetailsDiv.innerHTML = "<p>No products found.</p>";
       }
