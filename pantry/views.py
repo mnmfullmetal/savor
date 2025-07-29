@@ -13,7 +13,7 @@ from .utils import (
 )
 
 
-# Create your views here.
+# Create your views here.,k
 
 def index(request):
     form = ProductSearchForm(request.GET)
@@ -33,9 +33,11 @@ def rate_limit_error_response(request, exception):
         status=429
     )
 
+
+
+
 @require_POST
 def search_product(request):
-    is_authenticated = request.user.is_authenticated
     try:
         data = json.loads(request.body)
     except json.JSONDecodeError:
@@ -51,7 +53,7 @@ def search_product(request):
 
         if db_products:
             print("Returning product(s) from local DB.")
-            return JsonResponse({'products': db_products, "is_authenticated" : is_authenticated})
+            return JsonResponse({'products': db_products})
         else:
             print("Product(s) not found in local DB. Attempting to call Open Food Facts API.")
 
@@ -69,10 +71,14 @@ def search_product(request):
                             'product_name': saved_product.product_name,
                             'brands': saved_product.brands,
                             'image_url': saved_product.image_url,
+                            'product_quantity_unit': saved_product.product_quantity_unit,
+                            'product_quantity': saved_product.product_quantity,
+                            'id': saved_product.id
+
                         })
                 else:
                     print(f"No product found on OFF for barcode: {barcode}. Response: {response_data}")
-                    return JsonResponse({'products': [], "uis_authenticatedser" : is_authenticated})
+                    return JsonResponse({'products': []})
 
             elif product_name:
                 response_data = search_products_by_name(request, product_name)
@@ -85,15 +91,19 @@ def search_product(request):
                                 'product_name': saved_product.product_name,
                                 'brands': saved_product.brands,
                                 'image_url': saved_product.image_url,
+                                'product_quantity_unit': saved_product.product_quantity_unit,
+                                'product_quantity': saved_product.product_quantity,
+                                'id': saved_product.id,
+
                             })
                 else:
                     print(f"No products found on OFF for name: {product_name}. Response: {response_data}")
-                    return JsonResponse({'products': [], "is_authenticated" : is_authenticated})
+                    return JsonResponse({'products': []})
 
             else:
                 return JsonResponse({'error': 'No valid search criteria provided.'}, status=400)
 
-            return JsonResponse({'products': off_products_data, "is_authenticated" : is_authenticated})
+            return JsonResponse({'products': off_products_data})
         
         except (Ratelimited, requests.exceptions.RequestException, Exception) as e:
             if isinstance(e, Ratelimited):
@@ -120,8 +130,26 @@ def search_product(request):
         print(f"Form validation failed: {form.errors}")
         return JsonResponse({'errors': form.errors}, status=400)
 
-def add_product():
-    pass
+
+
+def add_product(request):
+    try:
+        data = json.loads(request.body)
+    except json.JSONDecodeError:
+        return JsonResponse({'error': 'Invalid JSON in request body.'}, status=400)
+
+    pantry = Pantry.objects.get(user=request.user)
+    product = Product.objects.get(id=data['product_id'])
+    pantry_item = PantryItem.objects.filter(pantry=pantry, product=product)
+
+    if pantry_item.exists():
+        pantry_item.quantity += data['product_quantity']
+        pantry_item.save()
+        return JsonResponse({'message': 'Product quantity updated successfully!'})
+
+    pantry_item = PantryItem.objects.create(pantry=pantry, product=product, product_quantity=data['product_quantity'], unit=data['product_unit'])
+    pantry_item.save()
+    return JsonResponse({'message': 'Product added successfully!'})
 
 
 def pantry_view(request):
