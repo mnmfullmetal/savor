@@ -6,6 +6,7 @@ from django.contrib.auth.decorators import login_required
 from django_ratelimit.exceptions import Ratelimited
 from django.shortcuts import render
 from pantry.forms import ProductSearchForm 
+from pantry.models import Pantry
 from .utils import (
     check_db_for_product,
     fetch_product_by_barcode,
@@ -156,8 +157,10 @@ def add_product(request):
 
 @login_required
 def pantry_view(request):
-    
+    pantry = Pantry.objects.get(user=request.user)
+    pantryitems = PantryItem.objects.all(pantry=pantry)
     return render(request, "pantry/pantry.html", {
         "user" : request.user,
+        "pantryitems": pantryitems,
     })
     pass
