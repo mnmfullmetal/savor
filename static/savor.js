@@ -57,7 +57,7 @@ function searchProduct(barcode = "None", productName = "None", csrftoken) {
                      <hr>
                     <div> 
                     <input class="product-quantity-input" type="number" min="0.01" step="0.01" value="${product.product_quantity || 1}" placeholder="Qty"> 
-                    <span class="product-display-unit">${product.product_quantity_unit || 'item'}</span> <button  class="btn btn-primary add-to-pantry-button" data-product-id=${product.id}> Add </button> 
+                    <span class="product-display-unit">${product.product_quantity_unit || 'item'}</span> <button  class="btn btn-primary add-to-pantry-button" data-product-id=${product.id} data-product-unit="${product.product_quantity_unit || 'item'}"> Add </button> 
                     </div>   
                     <div>
                     <button id="favourite_button" class="btn btn-primary">Favourite</button>

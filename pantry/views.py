@@ -2,6 +2,7 @@ import json
 import requests 
 from django.http import JsonResponse
 from django.views.decorators.http import require_POST
+from django.contrib.auth.decorators import login_required
 from django_ratelimit.exceptions import Ratelimited
 from django.shortcuts import render
 from pantry.forms import ProductSearchForm 
@@ -131,7 +132,8 @@ def search_product(request):
         return JsonResponse({'errors': form.errors}, status=400)
 
 
-
+@require_POST
+@login_required
 def add_product(request):
     try:
         data = json.loads(request.body)
@@ -152,8 +154,10 @@ def add_product(request):
     return JsonResponse({'message': 'Product added successfully!'})
 
 
+@login_required
 def pantry_view(request):
+    
     return render(request, "pantry/pantry.html", {
-        "user" : request.user
+        "user" : request.user,
     })
     pass
