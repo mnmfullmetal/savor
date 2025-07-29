@@ -29,7 +29,7 @@ class PantryItem(models.Model):
 
 
     def __str__(self):
-        return f"{self.quantity} {self.unit} of {self.product.product_name} in {self.pantry.name} ({self.pantry.user.username})"
+        return f"{self.quantity} {self.unit} of {self.product.product_name} in pantry of ({self.pantry.user.username})"
 
 
 
