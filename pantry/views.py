@@ -64,8 +64,15 @@ def search_product(request):
         try:
             if barcode:
                 response_data = fetch_product_by_barcode(request, barcode)
+                print("\n--- Raw OFF API Response (Barcode Search) ---")
+                print(json.dumps(response_data, indent=2))
+                print("-------------------------------------------\n")
+
                 if response_data.get('status') == 1 and response_data.get('product'):
                     off_product = response_data['product']
+                    print("\n--- OFF Product Dict for Saving (Barcode) ---")
+                    print(json.dumps(off_product, indent=2))
+                    print("-------------------------------------------\n")
                     saved_product = save_product_to_db(off_product) 
                     if saved_product:
                         off_products_data.append({
