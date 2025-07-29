@@ -11,6 +11,8 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 });
 
+
+
 function searchProduct(barcode = "None", productName = "None", csrftoken) {
   const productDetailsDiv = document.querySelector("#product_details");
   productDetailsDiv.innerHTML = "<p>Searching...</p>";
@@ -37,8 +39,6 @@ function searchProduct(barcode = "None", productName = "None", csrftoken) {
     .then((response) => response.json())
     .then((data) => {
       console.log("Response from Django API:", data);
-      const isAuthenticated = data.is_authenticated;
-
       if (data.error || data.errors) {
         const errorMessage = data.error || JSON.parse(data.errors);
         console.error("Error from backend:", errorMessage);
@@ -49,37 +49,42 @@ function searchProduct(barcode = "None", productName = "None", csrftoken) {
         productDetailsDiv.innerHTML = "";
         data.products.forEach((product) => {
           const productDiv = document.createElement("div");
-          productDiv.innerHTML = `<h3>${product.product_name || "No Name"}</h3>
+          productDiv.innerHTML = 
+                    `<h3>${product.product_name || "No Name"}</h3>
                      <p>Brands: ${product.brands || "N/A"}</p>
                      <p>Code: ${product.code || "N/A"}</p>
-                     ${
-                       product.image_url
-                         ? `<img src="${product.image_url}" alt="${
-                             product.product_name || "Product Image"
-                           }" style="max-width: 100px; height: auto;">`
-                         : ""
-                     }
+                     ${product.image_url ? `<img src="${product.image_url}" alt="${product.product_name || "Product Image"}" style="max-width: 100px; height: auto;">`: ""}
                      <hr>
-                    <div> <input type="number" min="0.01" step="0.01" placeholder="Qty"> <button  class="btn btn-primary add-to-pantry-button" data-product-id=${
-                      product.id
-                    } data-product-unit="${
-            product.product_quantity_unit
-          }"> Add </button> </div>   
-                    <div><button id="favourite_button" class="btn btn-primary">Favourite</button></div>`;
+                    <div> 
+                    <input class="product-quantity-input" type="number" min="0.01" step="0.01" value="${product.product_quantity || 1}" placeholder="Qty"> 
+                    <span class="product-display-unit">${product.product_quantity_unit || 'item'}</span> <button  class="btn btn-primary add-to-pantry-button" data-product-id=${product.id}> Add </button> 
+                    </div>   
+                    <div>
+                    <button id="favourite_button" class="btn btn-primary">Favourite</button>
+                    </div>`;
+
           productDetailsDiv.appendChild(productDiv);
 
           const addButton = productDiv.querySelector(".add-to-pantry-button");
 
+
           addButton.addEventListener("click", (event) => {
             const clickedButton = event.target;
-            const productIdToAdd = clickedButton.data.productId;
-            const productUnitToAdd = clickedButton.data.productUnit;
+            const productIdToAdd = clickedButton.dataset.productId;
+            const productUnitToAdd = clickedButton.dataset.productUnit;
+            const quantityInput = productDiv.querySelector(".product-quantity-input");
+            const quantity = parseFloat(quantityInput.value); 
+            if (isNaN(quantity) || quantity <= 0) {
+              alert("Please enter a valid quantity (number greater than 0).");
+              return;
+            }
             const addProductRequestData = {
               product_id: productIdToAdd,
               product_unit: productUnitToAdd,
+              product_quantity: quantity,
             };
 
-            fetch(`pantry/add_product`, {
+            fetch(`/pantry/add_product`, {
               method: "POST",
               headers: {
                 "Content-Type": "application/json",
@@ -87,10 +92,10 @@ function searchProduct(barcode = "None", productName = "None", csrftoken) {
               },
               body: JSON.stringify(addProductRequestData),
             })
-              .then((response) => response.json)
+              .then((response) => response.json())
               .catch((error) => {
                 console.error("Fetch network error:", error);
-                document.alert(`error: ${error}`);
+                alert(`error: ${error}`);
               });
           });
         });

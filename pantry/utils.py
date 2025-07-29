@@ -56,6 +56,8 @@ def check_db_for_product(barcode = None, name = None):
                  'product_name': local_product.product_name,
                  'brands': local_product.brands,
                  'image_url': local_product.image_url,
+                 'product_quantity_unit': local_product.product_quantity_unit,
+                 'product_quantity': str(local_product.product_quantity) if local_product.product_quantity is not None else None, 
                 })
             return found_products_json
         
@@ -72,6 +74,8 @@ def check_db_for_product(barcode = None, name = None):
                     'product_name': product.product_name,
                     'brands': product.brands,
                     'image_url': product.image_url,
+                    'product_quantity_unit': product.product_quantity_unit,
+                    'product_quantity': str(product.product_quantity) if product.product_quantity is not None else None, 
                 })
             return  found_products_json
         
@@ -87,6 +91,9 @@ def save_product_to_db(product_data):
         print("No valid product data or code to save to DB.")
         return None
 
+    off_quantity = product_data.get('quantity')
+    off_unit = product_data.get('product_quantity_unit')
+
     try:
         product, created = Product.objects.update_or_create(
             code=product_data.get('code'),
@@ -95,6 +102,8 @@ def save_product_to_db(product_data):
                 'brands': product_data.get('brands'),
                 'image_url': product_data.get('image_small_url'),
                 'last_updated': timezone.now(),
+                'product_quantity': off_quantity,
+                'product_quantity_unit': off_unit,
             }
         )
         print(f"Product {'created' if created else 'updated'} in local DB: {product.product_name}")

@@ -13,7 +13,6 @@ class Pantry(models.Model):
     products = models.ManyToManyField('Product', through='PantryItem', related_name='contained_in_pantries')
 
 
-
 class PantryItem(models.Model):
     pantry = models.ForeignKey(Pantry, on_delete=models.CASCADE, related_name='items')
     product = models.ForeignKey('Product', on_delete=models.CASCADE, related_name='pantry_entries')
@@ -31,9 +30,6 @@ class PantryItem(models.Model):
 
     def __str__(self):
         return f"{self.quantity} {self.unit} of {self.product.product_name} in {self.pantry.name} ({self.pantry.user.username})"
-
-
-
 
 
 
@@ -67,7 +63,7 @@ class Product(models.Model):
 
 
     protein_100g = models.DecimalField(max_digits=10, decimal_places=2, blank=True, null=True)
-    fat_100g = models.DecimalField(max_digits=10, decimal_places=2, blank=True, null=True)
+    fat_100g = models.DecimalField(max_digits=10, decimal_places=2, blank=True,  null=True)
     saturated_fat_100g = models.DecimalField(max_digits=10, decimal_places=2, blank=True, null=True)
     carbohydrates_100g = models.DecimalField(max_digits=10, decimal_places=2, blank=True, null=True)
     sugars_100g = models.DecimalField(max_digits=10, decimal_places=2, blank=True, null=True)
