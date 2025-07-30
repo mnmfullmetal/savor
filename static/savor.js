@@ -56,7 +56,6 @@ function searchProduct(barcode = "None", productName = "None", csrftoken) {
 
   <p class="text-muted mb-1"><strong>Brands:</strong> ${product.brands || "N/A"}</p>
   <p class="text-muted mb-3"><strong>Code:</strong> ${product.code || "N/A"}</p>
-  <hr class="my-3">
 
   <div class="d-flex align-items-center mb-3">
     <input class="product-quantity-input form-control w-auto"
@@ -65,10 +64,7 @@ function searchProduct(barcode = "None", productName = "None", csrftoken) {
     <span class="product-display-quantity ms-2">${product.product_quantity} </span>
     <span class="product-display-unit ms-1 me-2 text-muted">${product.product_quantity_unit || 'item'}</span>
 
-    <button class="btn btn-primary add-to-pantry-button"
-            data-product-id="${product.id}"
-            data-product-unit="${product.product_quantity_unit || 'item'}"
-            data-product-quantity="${product.product_quantity}"> Add </button>
+    <button class="btn btn-primary add-to-pantry-button" data-product-id="${product.id}"> Add </button>
   </div>
 
   <div class="mb-3">
@@ -118,3 +114,4 @@ function searchProduct(barcode = "None", productName = "None", csrftoken) {
         "<p>A network error occurred. Please check your connection.</p>";
     });
 }
+
