@@ -95,7 +95,7 @@ def save_product_to_db(product_data):
         print("No valid product data or code to save to DB.")
         return None
 
-    off_quantity = product_data.get('quantity')
+    off_quantity = product_data.get('product_quantity')
     off_unit = product_data.get('product_quantity_unit')
 
     try:
