@@ -1,12 +1,21 @@
-{% extends "base.html" %}
-{% load static %}
-{% load widget_tweaks %}
-
-{% block title %}
-{{user}} Pantry
-{% endblock %}
-
+{% extends "base.html" %} {% load static %} {% load widget_tweaks %} 
+{% block title %} Pantry - {{user}} {% endblock %} 
 
 {% block body %}
-<h1>welcome to your pantry!</h1>
+<h1>Welcome to your pantry!</h1>
+
+{% for item in pantryitems %}
+<div class="pantry-item">
+  <h3>{{item.product.product_name}}</h3>
+  <div>{{item.product.product_name}} {{item.quantity}} {{item.unit}}</div>
+  <p>Brands: {{item.product.brands}}</p>
+  <img
+    src="{{item.product.image_url}}"
+    alt="{{item.product.product_name}}"
+    style="max-width: 100px; height: auto"
+  />
+  <hr />
+</div>
+
+{% endfor %} 
 {% endblock %}

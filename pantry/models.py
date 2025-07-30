@@ -16,8 +16,6 @@ class Pantry(models.Model):
 class PantryItem(models.Model):
     pantry = models.ForeignKey(Pantry, on_delete=models.CASCADE, related_name='items')
     product = models.ForeignKey('Product', on_delete=models.CASCADE, related_name='pantry_entries')
-
-
     quantity = models.DecimalField(max_digits=10, decimal_places=2)
     unit = models.CharField(max_length=50)
     expiration_date = models.DateField(blank=True, null=True)
