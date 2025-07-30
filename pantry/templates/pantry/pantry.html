@@ -22,7 +22,13 @@
       </div>
   </div>
 </div>
+{% endfor %}
 
-
-{% endfor %} 
 {% endblock %}
+
+
+{% block extra_js %}
+    {# This correctly loads pantry.js from pantry/static/pantry/pantry.js #}
+    <script src="{% static 'pantry/pantry.js' %}"></script>
+{% endblock extra_js %}
+

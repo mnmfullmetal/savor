@@ -134,6 +134,16 @@ def search_product(request):
     else:
         print(f"Form validation failed: {form.errors}")
         return JsonResponse({'errors': form.errors}, status=400)
+    
+
+@login_required
+def pantry_view(request):
+    pantry = Pantry.objects.get(user=request.user)
+    pantryitems = PantryItem.objects.filter(pantry=pantry)
+    return render(request, "pantry/pantry.html", {
+        "user" : request.user,
+        "pantryitems": pantryitems,
+    })
 
 
 @require_POST
@@ -169,12 +179,6 @@ def add_product(request):
     return JsonResponse({'message': message })
 
 
-@login_required
-def pantry_view(request):
-    pantry = Pantry.objects.get(user=request.user)
-    pantryitems = PantryItem.objects.filter(pantry=pantry)
-    return render(request, "pantry/pantry.html", {
-        "user" : request.user,
-        "pantryitems": pantryitems,
-    })
+
+def remove_pantryitem(request):
     pass
