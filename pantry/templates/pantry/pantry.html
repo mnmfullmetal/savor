@@ -5,17 +5,20 @@
 <h1>Welcome to your pantry!</h1>
 
 {% for item in pantryitems %}
-<div class="pantry-item">
-  <h3>{{item.product.product_name}}</h3>
-  <div>{{item.product.product_name}} {{item.product.product_quantity}} {{item.product.product_quantity_unit}} </div>
-  <p>QTY: {{item.quantity}}</p>
-  <img
-    src="{{item.product.image_url}}"
-    alt="{{item.product.product_name}}"
-    style="max-width: 100px; height: auto"
-  />
-  <hr />
+<div class="pantry-item card mb-3">
+  <div class="card-body">
+    <h3 class="mb-2">{{item.product.product_name}}</h3>
+    <img
+      src="{{item.product.image_url}}"
+      alt="{{item.product.product_name}}"
+      class="img-fluid rounded mb-3"
+      style="max-width: 100px; height: auto"
+    /> 
+    <p class="card-text mb-1">{{item.product.product_name}} {{item.product.product_quantity}} {{item.product.product_quantity_unit}} </p>
+    <p class="card-text mb-0">QTY: {{item.quantity}}</p>
+  </div>
 </div>
+
 
 {% endfor %} 
 {% endblock %}

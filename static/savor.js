@@ -49,19 +49,31 @@ function searchProduct(barcode = "None", productName = "None", csrftoken) {
         productDetailsDiv.innerHTML = "";
         data.products.forEach((product) => {
           const productDiv = document.createElement("div");
+          productDiv.classList.add("card", "mb-3")
           productDiv.innerHTML = 
-                    `<h3>${product.product_name || "No Name"}</h3>
-                     <p>Brands: ${product.brands || "N/A"}</p>
-                     <p>Code: ${product.code || "N/A"}</p>
-                     ${product.image_url ? `<img src="${product.image_url}" alt="${product.product_name || "Product Image"}" style="max-width: 100px; height: auto;">`: ""}
-                     <hr>
-                    <div> 
-                    <input class="product-quantity-input" type="number" min="0.01" step="0.01" value="1"> 
-                   <span class="product-display-quantity">${product.product_quantity} </span> 
-                   <span class="product-display-unit">${product.product_quantity_unit || 'item'}</span>
-                    <button  class="btn btn-primary add-to-pantry-button" data-product-id="${product.id}"> Add </button> 
-                    </div>   
-                    <div> <button id="favourite_button" class="btn btn-primary">Favourite</button> </div>`;
+                     `<h3 class="mb-2">${product.product_name || "No Name"}</h3>
+  ${product.image_url ? `<img src="${product.image_url}" alt="${product.product_name || "Product Image"}" class="img-fluid rounded mb-3" style="max-width: 100px; height: auto;">`: ""}
+
+  <p class="text-muted mb-1"><strong>Brands:</strong> ${product.brands || "N/A"}</p>
+  <p class="text-muted mb-3"><strong>Code:</strong> ${product.code || "N/A"}</p>
+  <hr class="my-3">
+
+  <div class="d-flex align-items-center mb-3">
+    <input class="product-quantity-input form-control w-auto"
+           type="number" min="0.01" step="0.01" value="1">
+
+    <span class="product-display-quantity ms-2">${product.product_quantity} </span>
+    <span class="product-display-unit ms-1 me-2 text-muted">${product.product_quantity_unit || 'item'}</span>
+
+    <button class="btn btn-primary add-to-pantry-button"
+            data-product-id="${product.id}"
+            data-product-unit="${product.product_quantity_unit || 'item'}"
+            data-product-quantity="${product.product_quantity}"> Add </button>
+  </div>
+
+  <div class="mb-3">
+    <button id="favourite_button" class="btn btn-outline-secondary">Favourite</button>
+  </div>`;
 
           productDetailsDiv.appendChild(productDiv);
 
