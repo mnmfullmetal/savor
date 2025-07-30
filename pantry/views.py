@@ -1,5 +1,6 @@
 import json
 import requests 
+from decimal import Decimal 
 from django.http import JsonResponse
 from django.views.decorators.http import require_POST
 from django.contrib.auth.decorators import login_required
@@ -146,8 +147,10 @@ def add_product(request):
     pantry = Pantry.objects.get(user=request.user)
     product = Product.objects.get(id=data['product_id'])
 
-    quantity = data['product_quantity']
+    quantity_input = data['product_quantity']
     unit = data['product_unit']
+
+    quantity = Decimal(str(quantity_input))
     
     pantry_item, created = PantryItem.objects.get_or_create(
         pantry=pantry,
