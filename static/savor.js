@@ -56,12 +56,12 @@ function searchProduct(barcode = "None", productName = "None", csrftoken) {
                      ${product.image_url ? `<img src="${product.image_url}" alt="${product.product_name || "Product Image"}" style="max-width: 100px; height: auto;">`: ""}
                      <hr>
                     <div> 
-                    <input class="product-quantity-input" type="number" min="0.01" step="0.01" value="${product.product_quantity || 1}" placeholder="Qty"> 
-                    <span class="product-display-unit">${product.product_quantity_unit || 'item'}</span> <button  class="btn btn-primary add-to-pantry-button" data-product-id=${product.id} data-product-unit="${product.product_quantity_unit || 'item'}"> Add </button> 
+                    <input class="product-quantity-input" type="number" min="0.01" step="0.01" value="1"> 
+                   <span class="product-display-quantity">${product.product_quantity} </span> 
+                   <span class="product-display-unit">${product.product_quantity_unit || 'item'}</span>
+                    <button  class="btn btn-primary add-to-pantry-button" data-product-id="${product.id}"> Add </button> 
                     </div>   
-                    <div>
-                    <button id="favourite_button" class="btn btn-primary">Favourite</button>
-                    </div>`;
+                    <div> <button id="favourite_button" class="btn btn-primary">Favourite</button> </div>`;
 
           productDetailsDiv.appendChild(productDiv);
 
@@ -71,17 +71,14 @@ function searchProduct(barcode = "None", productName = "None", csrftoken) {
           addButton.addEventListener("click", (event) => {
             const clickedButton = event.target;
             const productIdToAdd = clickedButton.dataset.productId;
-            const productUnitToAdd = clickedButton.dataset.productUnit;
-            const quantityInput = productDiv.querySelector(".product-quantity-input");
-            const quantity = parseFloat(quantityInput.value); 
-            if (isNaN(quantity) || quantity <= 0) {
+            const quantityInput = productDiv.querySelector(".product-quantity-input").value;
+            if (isNaN(quantityInput) || quantityInput <= 0) {
               alert("Please enter a valid quantity (number greater than 0).");
               return;
             }
             const addProductRequestData = {
               product_id: productIdToAdd,
-              product_unit: productUnitToAdd,
-              product_quantity: quantity,
+              quantityToAdd: quantityInput
             };
 
             fetch(`/pantry/add_product`, {

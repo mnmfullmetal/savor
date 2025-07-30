@@ -147,30 +147,25 @@ def add_product(request):
     pantry = Pantry.objects.get(user=request.user)
     product = Product.objects.get(id=data['product_id'])
 
-    quantity_input = data['product_quantity']
-    unit = data['product_unit']
+    quantity_to_add = data['quantityToAdd']
 
-    quantity = Decimal(str(quantity_input))
+    quantity = Decimal(str(quantity_to_add))
     
     pantry_item, created = PantryItem.objects.get_or_create(
         pantry=pantry,
         product=product,
         defaults={
             'quantity': quantity,
-            'unit': unit
             }
         )
 
     if not created:
             pantry_item.quantity += quantity 
-            pantry_item.unit = unit 
             pantry_item.save() 
-            message = f"{product.product_name} quantity updated to {pantry_item.quantity} {pantry_item.unit}."
+            message = f"{product.product_name} quantity updated to {pantry_item.quantity}."
     else:
-         message = f"{product.product_name} added to your pantry with {pantry_item.quantity} {pantry_item.unit}."
+         message = f"{product.product_name} added to your pantry with {pantry_item.quantity} ."
         
-
-
     return JsonResponse({'message': message })
 
 

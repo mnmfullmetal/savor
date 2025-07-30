@@ -7,8 +7,8 @@
 {% for item in pantryitems %}
 <div class="pantry-item">
   <h3>{{item.product.product_name}}</h3>
-  <div>{{item.product.product_name}} {{item.quantity}} {{item.unit}}</div>
-  <p>Brands: {{item.product.brands}}</p>
+  <div>{{item.product.product_name}} {{item.product.product_quantity}} {{item.product.product_quantity_unit}} </div>
+  <p>QTY: {{item.quantity}}</p>
   <img
     src="{{item.product.image_url}}"
     alt="{{item.product.product_name}}"

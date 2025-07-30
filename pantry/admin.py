@@ -17,7 +17,7 @@ class PantryAdmin(admin.ModelAdmin):
 
 @admin.register(PantryItem)
 class PantryItemAdmin(admin.ModelAdmin):
-    list_display = ('product', 'quantity', 'unit', 'pantry_owner')
+    list_display = ('product', 'quantity', 'pantry_owner')
     list_filter = ('product', 'pantry__user__username')
     search_fields = ('product__product_name', 'product__code', 'pantry__user__username')
 

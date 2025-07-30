@@ -17,7 +17,6 @@ class PantryItem(models.Model):
     pantry = models.ForeignKey(Pantry, on_delete=models.CASCADE, related_name='items')
     product = models.ForeignKey('Product', on_delete=models.CASCADE, related_name='pantry_entries')
     quantity = models.DecimalField(max_digits=10, decimal_places=2)
-    unit = models.CharField(max_length=50)
     expiration_date = models.DateField(blank=True, null=True)
     added_date = models.DateTimeField(auto_now_add=True)
 
@@ -27,7 +26,7 @@ class PantryItem(models.Model):
 
 
     def __str__(self):
-        return f"{self.quantity} {self.unit} of {self.product.product_name} in pantry of ({self.pantry.user.username})"
+        return f"{self.quantity} x {self.product.product_quantity} {self.product.product_quantity_unit}  of {self.product.product_name} in pantry of ({self.pantry.user.username})"
 
 
 
