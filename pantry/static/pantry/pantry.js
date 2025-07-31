@@ -10,11 +10,12 @@ document.addEventListener("DOMContentLoaded", () => {
         const quantityToRemove = clickedButton
           .closest(".pantry-item")
           .querySelector(".remove-quantity-input").value;
-
+        const itemCardDiv = clickedButton.closest(".pantry-item");
         const removeRequestData = {
           itemId: itemId,
           quantityToRemove: quantityToRemove,
-          csrfToken: csrfToken, 
+          csrfToken: csrfToken,
+          itemCardDiv: itemCardDiv,
         };
 
         removePantryItem(removeRequestData);
@@ -25,6 +26,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
 function removePantryItem(removeRequestData) {
   const csrftoken = removeRequestData.csrfToken;
+  const itemCardDiv = removeRequestData.itemCardDiv;
+
   fetch(`/pantry/remove_pantryitem`, {
     method: "POST",
     headers: {
@@ -32,5 +35,9 @@ function removePantryItem(removeRequestData) {
       "X-CSRFToken": csrftoken,
     },
     body: JSON.stringify(removeRequestData),
-  }).then((response) => response.json());
+  })
+    .then((response) => response.json())
+    .then((data) => {
+      itemCardDiv.remove();
+    });
 }
