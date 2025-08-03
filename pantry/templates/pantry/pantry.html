@@ -15,7 +15,7 @@
       style="max-width: 100px; height: auto"
     /> 
            <p class="card-text mb-1">{{item.product.product_name}} {{item.product.product_quantity}} {{item.product.product_quantity_unit}} </p>
-    <p class="card-text mb-0">QTY: {{item.quantity}}</p>
+    <p class="card-text mb-0">QTY: <span class="pantry-quantity-count">{{item.quantity}}</span></p>
       <div class="d-flex align-items-center mb-3">
     <input class="remove-quantity-input form-control w-auto" type="number" min="0.01" step="0.01" value="1" > <span><button class="btn btn-danger remove-button" data-item-id="{{item.id}}" data-csrf-token="{{ csrf_token }}">Remove</button></span>
         

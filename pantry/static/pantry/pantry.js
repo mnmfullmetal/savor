@@ -38,6 +38,18 @@ function removePantryItem(removeRequestData) {
   })
     .then((response) => response.json())
     .then((data) => {
-      itemCardDiv.remove();
+      alert(data.message);
+      const newQuantity =  data['quantity_left']
+      const pantryQtyCount = itemCardDiv.querySelector('.pantry-quantity-count')
+      pantryQtyCount.innerHTML = newQuantity
+
+      if (newQuantity <= 0) {
+        itemCardDiv.remove();
+      }
+
+    })
+    .catch((error) => {
+      console.error("Fetch network error:", error);
+      alert(`error: ${error}`);
     });
 }

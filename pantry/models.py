@@ -86,4 +86,3 @@ class Product(models.Model):
         return f"{self.product_name}"
 
 
- 

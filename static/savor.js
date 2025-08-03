@@ -11,8 +11,6 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 });
 
-
-
 function searchProduct(barcode = "None", productName = "None", csrftoken) {
   const productDetailsDiv = document.querySelector("#product_details");
   productDetailsDiv.innerHTML = "<p>Searching...</p>";
@@ -49,22 +47,37 @@ function searchProduct(barcode = "None", productName = "None", csrftoken) {
         productDetailsDiv.innerHTML = "";
         data.products.forEach((product) => {
           const productDiv = document.createElement("div");
-          productDiv.classList.add("card", "mb-3")
-          productDiv.innerHTML = 
-                     `<h3 class="mb-2">${product.product_name || "No Name"}</h3>
-  ${product.image_url ? `<img src="${product.image_url}" alt="${product.product_name || "Product Image"}" class="img-fluid rounded mb-3" style="max-width: 100px; height: auto;">`: ""}
+          productDiv.classList.add("card", "mb-3");
+          productDiv.innerHTML = `<h3 class="mb-2">${
+            product.product_name || "No Name"
+          }</h3>
+  ${
+    product.image_url
+      ? `<img src="${product.image_url}" alt="${
+          product.product_name || "Product Image"
+        }" class="img-fluid rounded mb-3" style="max-width: 100px; height: auto;">`
+      : ""
+  }
 
-  <p class="text-muted mb-1"><strong>Brands:</strong> ${product.brands || "N/A"}</p>
+  <p class="text-muted mb-1"><strong>Brands:</strong> ${
+    product.brands || "N/A"
+  }</p>
   <p class="text-muted mb-3"><strong>Code:</strong> ${product.code || "N/A"}</p>
 
   <div class="d-flex align-items-center mb-3">
     <input class="product-quantity-input form-control w-auto"
            type="number" min="0.01" step="0.01" value="1">
 
-    <span class="product-display-quantity ms-2">${product.product_quantity} </span>
-    <span class="product-display-unit ms-1 me-2 text-muted">${product.product_quantity_unit || 'item'}</span>
+    <span class="product-display-quantity ms-2">${
+      product.product_quantity
+    } </span>
+    <span class="product-display-unit ms-1 me-2 text-muted">${
+      product.product_quantity_unit || "item"
+    }</span>
 
-    <button class="btn btn-primary add-to-pantry-button" data-product-id="${product.id}"> Add </button>
+    <button class="btn btn-primary add-to-pantry-button" data-product-name="${product.product_name}" data-product-id="${
+      product.id
+    }"> Add </button>
   </div>
 
   <div class="mb-3">
@@ -75,18 +88,19 @@ function searchProduct(barcode = "None", productName = "None", csrftoken) {
 
           const addButton = productDiv.querySelector(".add-to-pantry-button");
 
-
           addButton.addEventListener("click", (event) => {
             const clickedButton = event.target;
             const productIdToAdd = clickedButton.dataset.productId;
-            const quantityInput = productDiv.querySelector(".product-quantity-input").value;
+            const quantityInput = productDiv.querySelector(
+              ".product-quantity-input"
+            ).value;
             if (isNaN(quantityInput) || quantityInput <= 0) {
               alert("Please enter a valid quantity (number greater than 0).");
               return;
             }
             const addProductRequestData = {
               product_id: productIdToAdd,
-              quantityToAdd: quantityInput
+              quantityToAdd: quantityInput,
             };
 
             fetch(`/pantry/add_product`, {
@@ -98,10 +112,15 @@ function searchProduct(barcode = "None", productName = "None", csrftoken) {
               body: JSON.stringify(addProductRequestData),
             })
               .then((response) => response.json())
+              .then((data) => {
+                alert(`${quantityInput} of item successfully added to pantry`)
+              })
               .catch((error) => {
                 console.error("Fetch network error:", error);
                 alert(`error: ${error}`);
               });
+
+
           });
         });
       } else {
@@ -114,4 +133,3 @@ function searchProduct(barcode = "None", productName = "None", csrftoken) {
         "<p>A network error occurred. Please check your connection.</p>";
     });
 }
-
