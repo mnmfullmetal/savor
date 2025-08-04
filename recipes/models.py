@@ -21,3 +21,21 @@ class Recipe(models.Model):
     title = models.CharField(max_length=255, blank=True, null=True)
     instructions = models.TextField()
     ingredients = models.ManyToManyField('pantry.PantryItem', through='RecipeIngredient', related_name='used_in_recipes')
+
+
+class SuggestedRecipe(models.Model):
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='suggested_recipes')
+    prompt_text = models.TextField() 
+    recipe_text = models.TextField()
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    STATUS_CHOICES = [
+        ('new', 'New'),
+        ('seen', 'Seen'),
+        ('saved', 'Saved'),
+        ('deleted', 'Deleted')
+    ]
+    status = models.CharField(max_length=10, choices=STATUS_CHOICES, default='new')
+
+    def __str__(self):
+        return f"Suggestion for {self.user.username} ({self.status})"
