@@ -25,7 +25,7 @@
           <a class="nav-link" href="{% url 'pantry:pantry_view' %}"> Your Pantry</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link " href="#">Recipes</a>
+          <a class="nav-link " href="{% url 'recipes:recipes' %}">Recipes</a>
         </li>
          <li class="nav-item">
           <form action="{% url 'logout' %}" method="post">

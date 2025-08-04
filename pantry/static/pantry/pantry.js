@@ -24,6 +24,8 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 });
 
+
+
 function removePantryItem(removeRequestData) {
   const csrftoken = removeRequestData.csrfToken;
   const itemCardDiv = removeRequestData.itemCardDiv;
@@ -36,14 +38,7 @@ function removePantryItem(removeRequestData) {
     },
     body: JSON.stringify(removeRequestData),
   })
-    .then((response) => {
-      if (response.status === 401) {
-        window.location.href = "/accounts/login";
-        throw new Error("Redirecting to login page...");
-      }
-
-      return response.json();
-    })
+    .then((response) => response.json())
     .then((data) => {
       const newQuantity = data["quantity_left"];
       const pantryQtyCount = itemCardDiv.querySelector(

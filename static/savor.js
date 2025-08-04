@@ -17,29 +17,27 @@ document.addEventListener("DOMContentLoaded", () => {
     } else {
       searchProduct(barcode, productName, csrftoken);
     }
-
   });
 
-  
-    const savedBarcode = sessionStorage.getItem("searchBarcode");
-    const savedProductName = sessionStorage.getItem("searchProductName");
-    const savedCsrfToken = sessionStorage.getItem("searchCsrfToken");
+  const savedBarcode = sessionStorage.getItem("searchBarcode");
+  const savedProductName = sessionStorage.getItem("searchProductName");
+  const savedCsrfToken = sessionStorage.getItem("searchCsrfToken");
 
-    if (savedBarcode || savedProductName) {
-      sessionStorage.removeItem("searchBarcode");
-      sessionStorage.removeItem("searchProductName");
-      sessionStorage.removeItem("searchCsrfToken");
+  if (savedBarcode || savedProductName) {
+    sessionStorage.removeItem("searchBarcode");
+    sessionStorage.removeItem("searchProductName");
+    sessionStorage.removeItem("searchCsrfToken");
 
-      const barcodeInput =
-        document.querySelector("#search-form").elements.barcode;
-      const productNameInput =
-        document.querySelector("#search-form").elements.product_name;
+    const barcodeInput =
+      document.querySelector("#search-form").elements.barcode;
+    const productNameInput =
+      document.querySelector("#search-form").elements.product_name;
 
-      if (barcodeInput) barcodeInput.value = savedBarcode;
-      if (productNameInput) productNameInput.value = savedProductName;
+    if (barcodeInput) barcodeInput.value = savedBarcode;
+    if (productNameInput) productNameInput.value = savedProductName;
 
-      searchProduct(savedBarcode, savedProductName, savedCsrfToken);
-    }
+    searchProduct(savedBarcode, savedProductName, savedCsrfToken);
+  }
 });
 
 function searchProduct(barcode = "None", productName = "None", csrftoken) {
