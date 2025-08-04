@@ -36,17 +36,24 @@ function removePantryItem(removeRequestData) {
     },
     body: JSON.stringify(removeRequestData),
   })
-    .then((response) => response.json())
+    .then((response) => {
+      if (response.status === 401) {
+        window.location.href = "/accounts/login";
+        throw new Error("Redirecting to login page...");
+      }
+
+      return response.json();
+    })
     .then((data) => {
-      alert(data.message);
-      const newQuantity =  data['quantity_left']
-      const pantryQtyCount = itemCardDiv.querySelector('.pantry-quantity-count')
-      pantryQtyCount.innerHTML = newQuantity
+      const newQuantity = data["quantity_left"];
+      const pantryQtyCount = itemCardDiv.querySelector(
+        ".pantry-quantity-count"
+      );
+      pantryQtyCount.innerHTML = newQuantity;
 
       if (newQuantity <= 0) {
         itemCardDiv.remove();
       }
-
     })
     .catch((error) => {
       console.error("Fetch network error:", error);

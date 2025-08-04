@@ -7,6 +7,8 @@ document.addEventListener("DOMContentLoaded", () => {
     const productName = productSearchForm.elements.product_name.value.trim();
     const csrftoken = productSearchForm.elements.csrfmiddlewaretoken.value;
 
+    
+
     searchProduct(barcode, productName, csrftoken);
   });
 });
@@ -75,9 +77,9 @@ function searchProduct(barcode = "None", productName = "None", csrftoken) {
       product.product_quantity_unit || "item"
     }</span>
 
-    <button class="btn btn-primary add-to-pantry-button" data-product-name="${product.product_name}" data-product-id="${
-      product.id
-    }"> Add </button>
+    <button class="btn btn-primary add-to-pantry-button" data-product-name="${
+      product.product_name
+    }" data-product-id="${product.id}"> Add </button>
   </div>
 
   <div class="mb-3">
@@ -111,16 +113,17 @@ function searchProduct(barcode = "None", productName = "None", csrftoken) {
               },
               body: JSON.stringify(addProductRequestData),
             })
-              .then((response) => response.json())
-              .then((data) => {
-                alert(`${quantityInput} of item successfully added to pantry`)
+              .then((response) => {
+                if (response.status === 401) {
+                  window.location.href = "/accounts/login";
+                  throw new Error("Redirecting to login page...");
+                }
+
+                return response.json();
               })
               .catch((error) => {
                 console.error("Fetch network error:", error);
-                alert(`error: ${error}`);
               });
-
-
           });
         });
       } else {

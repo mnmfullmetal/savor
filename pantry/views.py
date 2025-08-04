@@ -5,7 +5,7 @@ from django.http import JsonResponse
 from django.views.decorators.http import require_POST
 from django.contrib.auth.decorators import login_required
 from django_ratelimit.exceptions import Ratelimited
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from pantry.forms import ProductSearchForm 
 from pantry.models import Pantry, Product, PantryItem
 from .utils import (
@@ -16,7 +16,7 @@ from .utils import (
 )
 
 
-# Create your views here.,k
+# Create your views here.
 
 def index(request):
     form = ProductSearchForm(request.GET)
@@ -41,6 +41,7 @@ def rate_limit_error_response(request, exception):
 
 @require_POST
 def search_product(request):
+
     try:
         data = json.loads(request.body)
     except json.JSONDecodeError:
@@ -147,8 +148,11 @@ def pantry_view(request):
 
 
 @require_POST
-@login_required
 def add_product(request):
+
+    if not request.user.is_authenticated:
+        return JsonResponse({'error': 'Authentication required.'}, status=401)
+     
     try:
         data = json.loads(request.body)
     except json.JSONDecodeError:
@@ -180,6 +184,9 @@ def add_product(request):
 
 
 
+
+@require_POST
+@login_required
 def remove_pantryitem(request):
     try:
         data = json.loads(request.body)
