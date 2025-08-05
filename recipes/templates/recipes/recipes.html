@@ -1,7 +1,10 @@
-{% extends "base.html" %} {% load static %} {% load widget_tweaks %} 
-{% block title %} Recipes {% endblock %} 
-
-{% block body %}
+{% extends "base.html" %} {% load static %} {% load widget_tweaks %}
+ {% block title %} Recipes {% endblock %} 
+ 
+ {% block body %}
 <h1>Your recipes</h1>
 
-{% endblock %}
+{% for recipe in sugested_recipes %} 
+{{recipe.title}}
+ {% endfor %}
+ {% endblock %}

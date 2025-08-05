@@ -4,8 +4,6 @@ from pantry.models import PantryItem
 
 client = genai.Client()
 
-# In your recipes/utils.py
-
 RECIPES_ARRAY_SCHEMA = {
     "type": "array",
     "items": {

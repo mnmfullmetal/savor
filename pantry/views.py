@@ -55,7 +55,7 @@ def search_product(request):
 
         db_products = check_db_for_product(barcode=barcode, name=product_name)
 
-        if db_products:
+        if barcode and db_products:
             print("Returning product(s) from local DB.")
             return JsonResponse({'products': db_products})
         else:
@@ -67,7 +67,6 @@ def search_product(request):
             if barcode:
                 response_data = fetch_product_by_barcode(request, barcode)
               
-
                 if response_data.get('status') == 1 and response_data.get('product'):
                     off_product = response_data['product']
                     saved_product = save_product_to_db(off_product) 
@@ -100,7 +99,6 @@ def search_product(request):
                                 'product_quantity_unit': saved_product.product_quantity_unit,
                                 'product_quantity': saved_product.product_quantity,
                                 'id': saved_product.id,
-
                             })
                 else:
                     print(f"No products found on OFF for name: {product_name}. Response: {response_data}")

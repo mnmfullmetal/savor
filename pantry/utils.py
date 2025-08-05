@@ -81,6 +81,7 @@ def check_db_for_product(barcode = None, name = None):
                     'id':product.id
 
                 })
+
             return  found_products_json
         
         else:
