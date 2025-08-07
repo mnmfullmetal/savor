@@ -1,6 +1,6 @@
 import json
 from google import genai
-from pantry.models import PantryItem
+from pantry.models import PantryItem, Pantry
 
 client = genai.Client()
 
@@ -40,10 +40,11 @@ RECIPES_ARRAY_SCHEMA = {
 }
 
 def generate_recipe_suggestions(user, num_recipes=3):
-    pantry_items = PantryItem.objects.filter(user=user).values_list('product__product_name', flat=True)
+    pantry = Pantry.objects.get(user=user)
+    pantry_items = PantryItem.objects.filter(pantry=pantry).values_list('product__product_name', flat=True)
     pantry_item_names = ', '.join(pantry_items)
     
-    prompt = f"Create {num_recipes} unique, detailed, and healthy recipes using only these ingredients: {pantry_item_names}. Focus on making them delicious and easy to follow."
+    prompt = f"Create {num_recipes} unique, detailed, and healthy recipes using only (but not necessarily all) these ingredients: {pantry_item_names}. Focus on making them healthy, delicious and easy to follow."
     responses = []
 
     try:

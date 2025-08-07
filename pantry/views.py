@@ -41,11 +41,7 @@ def rate_limit_error_response(request, exception):
 
 @require_POST
 def search_product(request):
-    """
-    Handles product searches.
-    - Barcode search: Checks local DB first, then calls the API for an exact match.
-    - Name search: Combines results from the local DB and the API.
-    """
+
     try:
         data = json.loads(request.body)
     except json.JSONDecodeError:
