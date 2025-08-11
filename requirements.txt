@@ -1,6 +1,8 @@
 django==5.2.4
-django-widget-tweaks==1.5.0
-django-ratelimit==4.1.0
-requests==2.32.4
-redis-5.2.1
+celery==5.5.3
 django-environ==0.12.0
+django-ratelimit==4.1.0
+django-redis==6.0.0
+django-widget-tweaks==1.5.0
+google-generativeai==1.28.0
+redis==5.2.1

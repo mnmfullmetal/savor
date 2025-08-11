@@ -58,11 +58,11 @@ def generate_recipe_suggestions(user, num_recipes=3):
         )
 
         responses = json.loads(response.text)
-        return responses
+        return responses, prompt
     
     except Exception as e:
         print(f"Error generating recipes: {e}")
-        return []
+        return [], prompt
 
 
 
