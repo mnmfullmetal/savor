@@ -1,15 +1,20 @@
-from google import genai
 from django.shortcuts import render
-from .models import SuggestedRecipe 
-from pantry.models import PantryItem 
-from recipes.utils import generate_recipe_suggestions
+from django.core.cache import cache
+
 
 # Create your views here.
 
 def recipes_view(request):
+    suggested_recipes = None
     if request.user.is_authenticated:
-        suggested_recipes =  generate_recipe_suggestions(user=request.user)
+        user = request.user
+
+        pantry_items_list = list(user.pantryitem_set.values_list('product__product_name', flat=True))
+        pantry_item_names = ', '.join(sorted(pantry_items_list))
+        cache_key = f"recipes:{user.id}:{pantry_item_names}"
+
+        suggested_recipes = cache.get(cache_key)
+
     return render(request, 'recipes/recipes.html', {
         "suggested_recipes": suggested_recipes
-
     })

@@ -64,8 +64,6 @@ def generate_recipe_suggestions(user, num_recipes=3):
         print(f"Error generating recipes: {e}")
         return []
 
-   
-
 
 
     
