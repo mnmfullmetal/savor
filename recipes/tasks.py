@@ -12,7 +12,7 @@ def generate_recipes_task(user_id, pantry_item_names):
     cache_key = f"recipes:{user.id}:{pantry_item_names}"
 
     print(f"Starting recipe generation for user {user.username}...")
-    all_pantry_item_objects = PantryItem.objects.filter(user=user, product__product_name__in=pantry_item_names.split(', '))
+    all_pantry_item_objects = PantryItem.objects.filter(pantry__user=user, product__product_name__in=pantry_item_names.split(', '))
 
     recipes_data, prompt = generate_recipe_suggestions(user)
 

@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from django.core.cache import cache
+from pantry.models import Pantry
 
 
 # Create your views here.
@@ -9,7 +10,12 @@ def recipes_view(request):
     if request.user.is_authenticated:
         user = request.user
 
-        pantry_items_list = list(user.pantryitem_set.values_list('product__product_name', flat=True))
+        try:
+            pantry = Pantry.objects.get(user=user)
+        except Pantry.DoesNotExist:
+            pantry = None
+
+        pantry_items_list = list(pantry.pantry_items.values_list('product__product_name', flat=True))
         pantry_item_names = ', '.join(sorted(pantry_items_list))
         cache_key = f"recipes:{user.id}:{pantry_item_names}"
 
