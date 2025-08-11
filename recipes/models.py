@@ -26,8 +26,10 @@ class Recipe(models.Model):
 class SuggestedRecipe(models.Model):
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='suggested_recipes')
     prompt_text = models.TextField() 
-    recipe_text = models.TextField()
+    recipe_data = models.JSONField(default=dict)
     created_at = models.DateTimeField(auto_now_add=True)
+    used_ingredients = models.ManyToManyField('pantry.PantryItem', related_name='suggested_recipes_used_in')
+
 
     STATUS_CHOICES = [
         ('new', 'New'),
