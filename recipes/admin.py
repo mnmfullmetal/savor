@@ -3,20 +3,28 @@ from django.contrib import admin
 # Register your models here.
 
 from django.contrib import admin
-from .models import SuggestedRecipe, RecipeIngredient
+from .models import SuggestedRecipe, RecipeIngredient, Recipe 
 
 @admin.register(SuggestedRecipe)
 class SuggestedRecipeAdmin(admin.ModelAdmin):
-    list_display = ('title', 'recipe_owner', 'source', 'generation_date')
-    search_fields = ('title', 'user__username', 'ingredients_list')
-    list_filter = ('source',)
+    list_display = ('id', 'display_user', 'created_at', 'status')
+    search_fields = ( 'user__username', 'recipe_data')
+    list_filter = ('status', 'created_at')
 
     @admin.display(description='User')
-    def recipe_owner(self, obj):
+    def display_user(self, obj):
         return obj.user.username
 
 @admin.register(RecipeIngredient)
 class RecipeIngredientAdmin(admin.ModelAdmin):
-    list_display = ('ingredient_name', 'pantry_item_match', 'suggested_recipe', 'quantity', 'unit')
-    search_fields = ('ingredient_name', 'suggested_recipe__title')
-    list_filter = ('pantry_item_match',)
+    list_display = ('id', 'recipe', 'pantry_item', 'quantity', 'unit')
+    search_fields = ('recipe__title', 'pantry_item__product__product_name')
+
+@admin.register(Recipe)
+class RecipeAdmin(admin.ModelAdmin):
+    list_display = ('id', 'title', 'display_user')
+    search_fields = ('title', 'instructions', 'user__username')
+    
+    @admin.display(description='User')
+    def display_user(self, obj):
+        return obj.user.username
