@@ -9,7 +9,7 @@ from savor.celery import app
 @receiver(post_save, sender=PantryItem)
 @receiver(post_delete, sender=PantryItem)
 def update_recipes_on_pantry_change(sender, instance, **kwargs):
-    user = instance.user
+    user = instance.pantry.user
     
     task_key = f"recipe_task_id:{user.id}"
     
@@ -17,7 +17,13 @@ def update_recipes_on_pantry_change(sender, instance, **kwargs):
     if existing_task_id:
         app.control.revoke(existing_task_id, terminate=True)
 
-    pantry_items_list = list(user.pantry_items.values_list('product__product_name', flat=True))
+
+    try:
+        pantry = Pantry.objects.get(user=user)
+    except Pantry.DoesNotExist:
+        return
+
+    pantry_items_list = list(pantry.pantry_items.values_list('product__product_name', flat=True))
     pantry_item_names = ', '.join(sorted(pantry_items_list))
 
     new_task = generate_recipes_task.apply_async(
