@@ -9,7 +9,6 @@ User = get_user_model()
 @shared_task
 def generate_recipes_task(user_id, pantry_item_names):
     user = User.objects.get(id=user_id)
-    cache_key = f"recipes:{user.id}:{pantry_item_names}"
 
     print(f"Starting recipe generation for user {user.username}...")
     all_pantry_item_objects = PantryItem.objects.filter(pantry__user=user, product__product_name__in=pantry_item_names.split(', '))
@@ -35,4 +34,3 @@ def generate_recipes_task(user_id, pantry_item_names):
 
     print("Recipes generated and saved to the database successfully.")
     
-    cache.set(cache_key, recipes_data, timeout=86400)

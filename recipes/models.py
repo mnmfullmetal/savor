@@ -33,8 +33,10 @@ class SuggestedRecipe(models.Model):
 
     STATUS_CHOICES = [
         ('new', 'New'),
-        ('seen', 'Seen'),
+        ('recent', 'Recent'),
+        ('seen', 'Seen'), 
         ('saved', 'Saved'),
+        ('archived', 'Archived'),
         ('deleted', 'Deleted')
     ]
     status = models.CharField(max_length=10, choices=STATUS_CHOICES, default='new')

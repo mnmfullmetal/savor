@@ -1,26 +1,30 @@
 from django.shortcuts import render
-from django.core.cache import cache
-from pantry.models import Pantry
+from .models import SuggestedRecipe, Recipe
+from django.contrib.auth.decorators import login_required
 
 
 # Create your views here.
 
+@login_required
 def recipes_view(request):
-    suggested_recipes = None
-    if request.user.is_authenticated:
-        user = request.user
 
-        try:
-            pantry = Pantry.objects.get(user=user)
-        except Pantry.DoesNotExist:
-            pantry = None
+    latest_suggestions = []
+    recently_suggested = []
+    saved_recipes = []
 
-        pantry_items_list = list(pantry.pantry_items.values_list('product__product_name', flat=True))
-        pantry_item_names = ', '.join(sorted(pantry_items_list))
-        cache_key = f"recipes:{user.id}:{pantry_item_names}"
+    user = request.user
 
-        suggested_recipes = cache.get(cache_key)
+    latest_suggestions_query = SuggestedRecipe.objects.filter(user=user, status="new").order_by('-created_at')
+    latest_suggestions = list(latest_suggestions_query)
+    latest_suggestions_query.update(status="recent")
+
+    recently_suggested = SuggestedRecipe.objects.filter(user=user, status="recent").order_by('-created_at')
+
+    saved_recipes = Recipe.objects.filter(user=user).order_by('-title')
 
     return render(request, 'recipes/recipes.html', {
-        "suggested_recipes": suggested_recipes
+        "latest_suggestions": latest_suggestions,
+        "recently_suggested": recently_suggested,
+        "saved_recipes": saved_recipes
+
     })

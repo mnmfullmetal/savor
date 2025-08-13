@@ -2,26 +2,74 @@
  {% block title %} Recipes {% endblock %} 
  
  {% block body %}
-<h1>Your recipes</h1>
+<h1>Recipes</h1>
 
-{% for recipe in suggested_recipes %}
+
+<h2>New Suggestions</h2>
+{% for recipe in latest_suggestions %}
 <div class="recipe-card">
-    <h4>{{ recipe.title }}</h4>
+    <h4>{{ recipe.recipe_data.title }}</h4>
 
     <h5>Ingredients</h5>
     <ul>
-        {% for ingredient in recipe.ingredients %}
+        {% for ingredient in recipe.recipe_data.ingredients %}
         <li>{{ ingredient.quantity }} {{ ingredient.unit }} of {{ ingredient.name }}</li>
         {% endfor %}
     </ul>
 
     <h5>Instructions</h5>
     <ol>
-        {% for instruction in recipe.instructions %}
+        {% for instruction in recipe.recipe_data.instructions %}
         <li>{{ instruction }}</li>
         {% endfor %}
     </ol>
 </div>
 {% endfor %}
+
+<h2>Recently Suggested</h2>
+{% for recipe in recently_suggested %}
+<div class="recipe-card">
+    <h4>{{ recipe.recipe_data.title }}</h4>
+
+    <h5>Ingredients</h5>
+    <ul>
+        {% for ingredient in recipe.recipe_data.ingredients %}
+        <li>{{ ingredient.quantity }} {{ ingredient.unit }} of {{ ingredient.name }}</li>
+        {% endfor %}
+    </ul>
+
+    <h5>Instructions</h5>
+    <ol>
+        {% for instruction in recipe.recipe_data.instructions %}
+        <li>{{ instruction }}</li>
+        {% endfor %}
+    </ol>
+</div>
+{% endfor %}
+
+<h2>Saved Recipes</h2>
+{% for recipe in saved_recipes %}
+<div class="recipe-card">
+    <h4>{{ recipe.recipe_data.title }}</h4>
+
+    <h5>Ingredients</h5>
+    <ul>
+        {% for ingredient in recipe.recipe_data.ingredients %}
+        <li>{{ ingredient.quantity }} {{ ingredient.unit }} of {{ ingredient.name }}</li>
+        {% endfor %}
+    </ul>
+
+    <h5>Instructions</h5>
+    <ol>
+        {% for instruction in recipe.recipe_data.instructions %}
+        <li>{{ instruction }}</li>
+        {% endfor %}
+    </ol>
+</div>
+{% endfor %}
+
+
+
+
 
  {% endblock %}

@@ -2,8 +2,6 @@ import json
 from google import genai
 from pantry.models import PantryItem, Pantry
 
-client = genai.Client()
-
 RECIPES_ARRAY_SCHEMA = {
     "type": "array",
     "items": {
@@ -38,6 +36,8 @@ RECIPES_ARRAY_SCHEMA = {
         "required": ["title", "ingredients", "instructions"]
     }
 }
+
+client = genai.Client()
 
 def generate_recipe_suggestions(user, num_recipes=3):
     pantry = Pantry.objects.get(user=user)
