@@ -4,6 +4,7 @@ from django.core.cache import cache
 from .utils import generate_recipe_suggestions 
 from .models import SuggestedRecipe
 from pantry.models import PantryItem
+
 User = get_user_model()
 
 @shared_task

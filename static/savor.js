@@ -41,12 +41,12 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 function searchProduct(barcode = "None", productName = "None", csrftoken) {
-  const productDetailsDiv = document.querySelector("#product_details");
-  productDetailsDiv.innerHTML = "<p>Searching...</p>";
+  const searchedProductsDiv = document.querySelector("#searched-product-section");
+  searchedProductsDiv.innerHTML = "<p>Searching...</p>";
 
   if (!barcode && !productName) {
     alert("Please enter a barcode or product name to search.");
-    productDetailsDiv.innerHTML = "";
+    searchedProductsDiv.innerHTML = "";
     return;
   }
 
@@ -69,15 +69,15 @@ function searchProduct(barcode = "None", productName = "None", csrftoken) {
       if (data.error || data.errors) {
         const errorMessage = data.error || JSON.parse(data.errors);
         console.error("Error from backend:", errorMessage);
-        productDetailsDiv.innerHTML = `<p>Error: ${
+        searchedProductsDiv.innerHTML = `<p>Error: ${
           data.error || "Invalid input."
         }</p>`;
       } else if (data.products && data.products.length > 0) {
-        productDetailsDiv.innerHTML = "";
+        searchedProductsDiv.innerHTML = "";
         data.products.forEach((product) => {
-          const productDiv = document.createElement("div");
-          productDiv.classList.add("card", "mb-3");
-          productDiv.innerHTML = `<h3 class="mb-2">${
+          const productDetailsDiv = document.createElement("div");
+          productDetailsDiv.classList.add("card", "mb-3");
+          productDetailsDiv.innerHTML = `<h3 class="mb-2">${
             product.product_name || "No Name"
           }</h3>
   ${
@@ -113,14 +113,14 @@ function searchProduct(barcode = "None", productName = "None", csrftoken) {
     <button id="favourite_button" class="btn btn-outline-secondary">Favourite</button>
   </div>`;
 
-          productDetailsDiv.appendChild(productDiv);
+          searchedProductsDiv.appendChild(productDetailsDiv);
 
-          const addButton = productDiv.querySelector(".add-to-pantry-button");
+          const addButton = productDetailsDiv.querySelector(".add-to-pantry-button");
 
           addButton.addEventListener("click", (event) => {
             const clickedButton = event.target;
             const productIdToAdd = clickedButton.dataset.productId;
-            const quantityInput = productDiv.querySelector(
+            const quantityInput = productDetailsDiv.querySelector(
               ".product-quantity-input"
             ).value;
             if (isNaN(quantityInput) || quantityInput <= 0) {
@@ -145,8 +145,13 @@ function searchProduct(barcode = "None", productName = "None", csrftoken) {
                   window.location.href = "/accounts/login";
                   throw new Error("Redirecting to login page...");
                 }
-
                 return response.json();
+              })
+              .then(data => {
+               const message = document.createElement('div')
+               message.className = 'message'
+               message.innerHTML = `${data.message}`
+               productDetailsDiv.append(message)
               })
               .catch((error) => {
                 console.error("Fetch network error:", error);
@@ -154,12 +159,12 @@ function searchProduct(barcode = "None", productName = "None", csrftoken) {
           });
         });
       } else {
-        productDetailsDiv.innerHTML = "<p>No products found.</p>";
+        searchedProductsDiv.innerHTML = "<p>No products found.</p>";
       }
     })
     .catch((error) => {
       console.error("Fetch network error:", error);
-      productDetailsDiv.innerHTML =
+      searchedProductsDiv.innerHTML =
         "<p>A network error occurred. Please check your connection.</p>";
     });
 }

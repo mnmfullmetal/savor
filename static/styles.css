@@ -1,0 +1,6 @@
+.message{
+    position: absolute;
+    opacity: 1;
+    transition: ease-out;
+}
+

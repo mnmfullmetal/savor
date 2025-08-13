@@ -164,9 +164,9 @@ def add_product(request):
     if not created:
             pantry_item.quantity += quantity 
             pantry_item.save() 
-            message = f"{product.product_name} quantity updated to {pantry_item.quantity}."
+            message = f"{product.product_name} quantity updated."
     else:
-         message = f"{product.product_name} added to your pantry with {pantry_item.quantity} ."
+         message = f"{product.product_name} added to your pantry."
         
     return JsonResponse({'message': message })
 
