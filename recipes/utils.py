@@ -56,7 +56,7 @@ def generate_recipe_suggestions(user, num_recipes=3):
                 "response_schema": RECIPES_ARRAY_SCHEMA,
             },
         )
-
+    
         responses = json.loads(response.text)
         return responses, prompt
     

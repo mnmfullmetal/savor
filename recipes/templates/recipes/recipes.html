@@ -2,10 +2,8 @@
  {% block title %} Recipes {% endblock %} 
  
  {% block body %}
-<h1>Recipes</h1>
-
-
 <h2>New Suggestions</h2>
+{% if latest_suggestions %}
 {% for recipe in latest_suggestions %}
 <div class="recipe-card">
     <h4>{{ recipe.recipe_data.title }}</h4>
@@ -25,8 +23,12 @@
     </ol>
 </div>
 {% endfor %}
+{% else %}
+<div>No new suggestions</div>
+{% endif %}
 
 <h2>Recently Suggested</h2>
+{% if recently_suggested %}
 {% for recipe in recently_suggested %}
 <div class="recipe-card">
     <h4>{{ recipe.recipe_data.title }}</h4>
@@ -46,27 +48,34 @@
     </ol>
 </div>
 {% endfor %}
+{% else %}
+<div>No recently suggested</div>
+{% endif %}
 
 <h2>Saved Recipes</h2>
+{% if saved_recipes %}
 {% for recipe in saved_recipes %}
 <div class="recipe-card">
-    <h4>{{ recipe.recipe_data.title }}</h4>
+    <h4>{{ recipe.title }}</h4>
 
     <h5>Ingredients</h5>
     <ul>
-        {% for ingredient in recipe.recipe_data.ingredients %}
+        {% for ingredient in recipe.ingredients %}
         <li>{{ ingredient.quantity }} {{ ingredient.unit }} of {{ ingredient.name }}</li>
         {% endfor %}
     </ul>
 
     <h5>Instructions</h5>
     <ol>
-        {% for instruction in recipe.recipe_data.instructions %}
+        {% for instruction in recipe.instructions %}
         <li>{{ instruction }}</li>
         {% endfor %}
     </ol>
 </div>
 {% endfor %}
+{% else %}
+<div>No saved recipes</div>
+{% endif %}
 
 
 

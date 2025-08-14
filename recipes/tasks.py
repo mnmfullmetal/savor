@@ -25,6 +25,10 @@ def generate_recipes_task(user_id, pantry_item_names):
             product__product_name__in=used_ingredient_names
         )
         
+        previous_new_suggestions = SuggestedRecipe.objects.filter(user=user, status="new")
+        print(f"Found {previous_new_suggestions.count()} recipes with 'new' status.")
+        previous_new_suggestions.update(status="recent")
+        
         suggested_recipe = SuggestedRecipe.objects.create(
             user=user,
             prompt_text=prompt,

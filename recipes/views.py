@@ -14,11 +14,9 @@ def recipes_view(request):
 
     user = request.user
 
-    latest_suggestions_query = SuggestedRecipe.objects.filter(user=user, status="new").order_by('-created_at')
-    latest_suggestions = list(latest_suggestions_query)
-    latest_suggestions_query.update(status="recent")
+    latest_suggestions = SuggestedRecipe.objects.filter(user=user, status="new").order_by('-created_at')
 
-    recently_suggested = SuggestedRecipe.objects.filter(user=user, status="recent").order_by('-created_at')
+    recently_suggested = SuggestedRecipe.objects.filter(user=user,status__in=["new", "recent"]).order_by('-created_at')
 
     saved_recipes = Recipe.objects.filter(user=user).order_by('-title')
 
