@@ -1,84 +1,83 @@
 {% extends "base.html" %} {% load static %} {% load widget_tweaks %}
- {% block title %} Recipes {% endblock %} 
- 
- {% block body %}
+
+{% block title %} Recipes {% endblock %} 
+
+{% block body %}
 <h2>New Suggestions</h2>
+{% if not recipe_gen_in_progress %}
 {% if latest_suggestions %}
 {% for recipe in latest_suggestions %}
 <div class="recipe-card">
-    <h4>{{ recipe.recipe_data.title }}</h4>
-
-    <h5>Ingredients</h5>
-    <ul>
-        {% for ingredient in recipe.recipe_data.ingredients %}
-        <li>{{ ingredient.quantity }} {{ ingredient.unit }} of {{ ingredient.name }}</li>
-        {% endfor %}
-    </ul>
-
-    <h5>Instructions</h5>
-    <ol>
-        {% for instruction in recipe.recipe_data.instructions %}
-        <li>{{ instruction }}</li>
-        {% endfor %}
-    </ol>
+<h4>{{ recipe.recipe_data.title }}</h4>
+ <h5>Ingredients</h5>
+ <ul>
+ {% for ingredient in recipe.recipe_data.ingredients %}
+ <li>{{ ingredient.quantity }} {{ ingredient.unit }} of {{ ingredient.name }}</li>
+ {% endfor %}
+ </ul>
+ <h5>Instructions</h5>
+ <ol>
+ {% for instruction in recipe.recipe_data.instructions %}
+ <li>{{ instruction }}</li>
+ {% endfor %}
+ </ol>
 </div>
 {% endfor %}
 {% else %}
 <div>No new suggestions</div>
 {% endif %}
+{% else %}
+<div> Recipes still being generated</div>
+{% endif %}
+
+<hr>
 
 <h2>Recently Suggested</h2>
 {% if recently_suggested %}
 {% for recipe in recently_suggested %}
 <div class="recipe-card">
-    <h4>{{ recipe.recipe_data.title }}</h4>
-
-    <h5>Ingredients</h5>
-    <ul>
-        {% for ingredient in recipe.recipe_data.ingredients %}
-        <li>{{ ingredient.quantity }} {{ ingredient.unit }} of {{ ingredient.name }}</li>
-        {% endfor %}
-    </ul>
-
-    <h5>Instructions</h5>
-    <ol>
-        {% for instruction in recipe.recipe_data.instructions %}
-        <li>{{ instruction }}</li>
-        {% endfor %}
-    </ol>
+ <h4>{{ recipe.recipe_data.title }}</h4>
+ <h5>Ingredients</h5>
+ <ul>
+ {% for ingredient in recipe.recipe_data.ingredients %}
+ <li>{{ ingredient.quantity }} {{ ingredient.unit }} of {{ ingredient.name }}</li>
+ {% endfor %}
+ </ul>
+ <h5>Instructions</h5>
+ <ol>
+ {% for instruction in recipe.recipe_data.instructions %}
+ <li>{{ instruction }}</li>
+ {% endfor %}
+ </ol>
 </div>
 {% endfor %}
 {% else %}
 <div>No recently suggested</div>
 {% endif %}
 
+<hr>
+
 <h2>Saved Recipes</h2>
 {% if saved_recipes %}
 {% for recipe in saved_recipes %}
 <div class="recipe-card">
-    <h4>{{ recipe.title }}</h4>
-
-    <h5>Ingredients</h5>
-    <ul>
-        {% for ingredient in recipe.ingredients %}
-        <li>{{ ingredient.quantity }} {{ ingredient.unit }} of {{ ingredient.name }}</li>
-        {% endfor %}
-    </ul>
-
-    <h5>Instructions</h5>
-    <ol>
-        {% for instruction in recipe.instructions %}
-        <li>{{ instruction }}</li>
-        {% endfor %}
-    </ol>
+<h4>{{ recipe.title }}</h4>
+<h5>Ingredients</h5>
+<ul>
+ {% for ingredient in recipe.ingredients %}
+<li>{{ ingredient.quantity }} {{ ingredient.unit }} of {{ ingredient.name }}</li>
+{% endfor %}
+ </ul>
+ <h5>Instructions</h5>
+ <ol>
+{% for instruction in recipe.instructions %}
+ <li>{{ instruction }}</li>
+ {% endfor %}
+ </ol>
 </div>
 {% endfor %}
 {% else %}
 <div>No saved recipes</div>
 {% endif %}
 
-
-
-
-
- {% endblock %}
+{% endblock %}

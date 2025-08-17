@@ -16,6 +16,10 @@ def generate_recipes_task(user_id, pantry_item_names):
 
     recipes_data, prompt = generate_recipe_suggestions(user)
 
+    previous_new_suggestions = SuggestedRecipe.objects.filter(user=user, status="new")
+    print(f"Found {previous_new_suggestions.count()} recipes with 'new' status.")
+    previous_new_suggestions.update(status="recent")
+
     for recipe_data in recipes_data:
         used_ingredient_names = [
             item['name'] for item in recipe_data.get('ingredients', [])
@@ -25,10 +29,6 @@ def generate_recipes_task(user_id, pantry_item_names):
             product__product_name__in=used_ingredient_names
         )
         
-        previous_new_suggestions = SuggestedRecipe.objects.filter(user=user, status="new")
-        print(f"Found {previous_new_suggestions.count()} recipes with 'new' status.")
-        previous_new_suggestions.update(status="recent")
-        
         suggested_recipe = SuggestedRecipe.objects.create(
             user=user,
             prompt_text=prompt,
@@ -36,6 +36,10 @@ def generate_recipes_task(user_id, pantry_item_names):
         )
         
         suggested_recipe.used_ingredients.set(used_pantry_items)
+
+        print(f"recipe created")
+
+      
 
     print("Recipes generated and saved to the database successfully.")
     

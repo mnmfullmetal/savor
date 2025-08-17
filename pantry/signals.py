@@ -7,6 +7,9 @@ from recipes.tasks import generate_recipes_task
 
 def schedule_recipe_generation_task(user):
     task_key = f"recipe_task_id:{user.id}"
+    cache_key = f"recipe_gen_in_progress:{user.id}"
+
+    cache.set(cache_key, True, timeout=60)
     
     if not cache.get(task_key):
         try:
@@ -20,6 +23,8 @@ def schedule_recipe_generation_task(user):
             args=[user.id, pantry_item_names],
             countdown=5 
         )
+
+        ## cache for debouncing 
         cache.set(task_key, new_task.id, timeout=10)
 
 
