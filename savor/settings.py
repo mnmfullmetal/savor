@@ -13,6 +13,7 @@ https://docs.djangoproject.com/en/5.2/ref/settings/
 from pathlib import Path
 import environ
 import os
+from datetime import timedelta
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -174,3 +175,10 @@ CELERY_RESULT_BACKEND = 'redis://127.0.0.1:6379/0'
 CELERY_BEAT_SCHEDULER = 'redbeat.RedBeatScheduler'
 
 REDBEAT_REDIS_URL = 'redis://127.0.0.1:6379/2'
+
+CELERY_BEAT_SCHEDULE = {
+    'update-old-recent-recipes': {
+        'task': 'recipes.tasks.update_recent_recipes_status',
+        'schedule': timedelta(hours=1), 
+    },
+}

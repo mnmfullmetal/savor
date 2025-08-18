@@ -1,9 +1,9 @@
 from celery import shared_task
 from django.contrib.auth import get_user_model
-from django.core.cache import cache
 from .utils import generate_recipe_suggestions 
 from .models import SuggestedRecipe
 from pantry.models import PantryItem
+from datetime import datetime, timedelta
 
 User = get_user_model()
 
@@ -40,3 +40,20 @@ def generate_recipes_task(user_id, pantry_item_names):
 
     print("Recipes generated and saved to the database successfully.")
     
+
+
+@shared_task
+def update_recent_recipes_status():
+   
+    time_limit = datetime.now() - timedelta(hours=12)
+    
+    recipes_to_update = SuggestedRecipe.objects.filter(
+        status='recent',
+        created_at__lte=time_limit
+    )
+    
+    count = recipes_to_update.update(status='deleted')
+    
+    print(f"Celery task: Updated {count} recipes from 'recent' to 'deleted'.")
+    
+    return f"Task completed: {count} recipes updated."
