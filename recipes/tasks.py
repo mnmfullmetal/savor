@@ -36,9 +36,6 @@ def generate_recipes_task(user_id, pantry_item_names):
         )
         
         suggested_recipe.used_ingredients.set(used_pantry_items)
-
-        print(f"recipe created")
-
       
 
     print("Recipes generated and saved to the database successfully.")

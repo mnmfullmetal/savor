@@ -19,7 +19,7 @@ class RecipeIngredient(models.Model):
 class Recipe(models.Model):
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='recipes')
     title = models.CharField(max_length=255, blank=True, null=True)
-    instructions = models.TextField()
+    instructions = models.JSONField()
     ingredients = models.ManyToManyField('pantry.PantryItem', through='RecipeIngredient', related_name='used_in_recipes')
 
 

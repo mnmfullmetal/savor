@@ -21,6 +21,7 @@
  <li>{{ instruction }}</li>
  {% endfor %}
  </ol>
+   <button class="btn btn-primary save-recipe-btn" data-recipe-id="{{recipe.id}}" data-csrf-token="{{csrf_token}}">Save Recipe</button>
 </div>
 {% endfor %}
 {% else %}
@@ -49,6 +50,7 @@
  <li>{{ instruction }}</li>
  {% endfor %}
  </ol>
+ <button class="btn btn-primary save-recipe-btn" data-recipe-id="{{recipe.id}}" data-csrf-token="{{csrf_token}}">Save Recipe</button>
 </div>
 {% endfor %}
 {% else %}
@@ -64,20 +66,25 @@
 <h4>{{ recipe.title }}</h4>
 <h5>Ingredients</h5>
 <ul>
- {% for ingredient in recipe.ingredients %}
-<li>{{ ingredient.quantity }} {{ ingredient.unit }} of {{ ingredient.name }}</li>
+{% for ingredient_instance in recipe.recipeingredient_set.all %}
+<li>{{ ingredient_instance.quantity }} {{ ingredient_instance.unit }} of {{ ingredient_instance.pantry_item.product.product_name }}</li>
 {% endfor %}
- </ul>
- <h5>Instructions</h5>
- <ol>
+</ul>
+<h5>Instructions</h5>
+<ol>
 {% for instruction in recipe.instructions %}
- <li>{{ instruction }}</li>
- {% endfor %}
- </ol>
+<li>{{ instruction }}</li>
+{% endfor %}
+</ol>
 </div>
 {% endfor %}
 {% else %}
 <div>No saved recipes</div>
 {% endif %}
+
+
+{% block extra_js %}
+    <script src="{% static 'recipes/recipes.js' %}"></script>
+{% endblock extra_js %}
 
 {% endblock %}

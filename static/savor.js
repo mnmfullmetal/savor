@@ -40,6 +40,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 });
 
+
 function searchProduct(barcode = "None", productName = "None", csrftoken) {
   const searchedProductsDiv = document.querySelector("#searched-product-section");
   searchedProductsDiv.innerHTML = "<p>Searching...</p>";

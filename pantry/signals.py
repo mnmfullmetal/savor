@@ -9,6 +9,7 @@ def schedule_recipe_generation_task(user):
     task_key = f"recipe_task_id:{user.id}"
     cache_key = f"recipe_gen_in_progress:{user.id}"
 
+    #cache for recipe generation flag
     cache.set(cache_key, True, timeout=60)
     
     if not cache.get(task_key):

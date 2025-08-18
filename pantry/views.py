@@ -147,9 +147,9 @@ def add_product(request):
         return JsonResponse({'error': 'Invalid JSON in request body.'}, status=400)
 
     pantry = Pantry.objects.get(user=request.user)
-    product = Product.objects.get(id=data['product_id'])
+    product = Product.objects.get(id=data.get('product_id'))
 
-    quantity_to_add = data['quantityToAdd']
+    quantity_to_add = data.get('quantityToAdd')
 
     quantity = Decimal(str(quantity_to_add))
     
@@ -181,8 +181,8 @@ def remove_pantryitem(request):
     except json.JSONDecodeError:
         return JsonResponse({'error': 'Invalid JSON in request body.'}, status=400)
     
-    quantity_to_remove = data['quantityToRemove']
-    item = PantryItem.objects.get(id = data['itemId'])
+    quantity_to_remove = data.get('quantityToRemove')
+    item = PantryItem.objects.get(id = data.get('itemId'))
 
     item.quantity -= Decimal(quantity_to_remove)
     item.save()
