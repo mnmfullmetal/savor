@@ -1,87 +1,127 @@
-{% extends "base.html" %} {% load static %} {% load widget_tweaks %}
+{% extends "base.html" %} 
+{% load static %} 
+{% load widget_tweaks %}
 
 {% block title %} Recipes {% endblock %} 
 
 {% block body %}
-<h2>New Suggestions</h2>
-{% if not recipe_gen_in_progress %}
-{% if latest_suggestions %}
-{% for recipe in latest_suggestions %}
-<div class="recipe-card">
-<h4>{{ recipe.recipe_data.title }}</h4>
- <h5>Ingredients</h5>
- <ul>
- {% for ingredient in recipe.recipe_data.ingredients %}
- <li>{{ ingredient.quantity }} {{ ingredient.unit }} of {{ ingredient.name }}</li>
- {% endfor %}
- </ul>
- <h5>Instructions</h5>
- <ol>
- {% for instruction in recipe.recipe_data.instructions %}
- <li>{{ instruction }}</li>
- {% endfor %}
- </ol>
-   <button class="btn btn-primary save-recipe-btn" data-recipe-id="{{recipe.id}}" data-csrf-token="{{csrf_token}}">Save Recipe</button>
+
+<div class="container mt-4">
+    <h2 class="mb-3">New Suggestions</h2>
+    {% if not recipe_gen_in_progress %}
+        {% if latest_suggestions %}
+            <div class="accordion" id="latestSuggestionsAccordion">
+                {% for recipe in latest_suggestions %}
+                    <div class="card recipe-card mb-3">
+                        <div class="accordion-item">
+                            <h4 class="accordion-header" id="headingLatest{{ forloop.counter }}">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseLatest{{ forloop.counter }}" aria-expanded="false" aria-controls="collapseLatest{{ forloop.counter }}">
+                                    {{ recipe.recipe_data.title }}
+                                </button>
+                            </h4>
+                            <div id="collapseLatest{{ forloop.counter }}" class="accordion-collapse collapse" aria-labelledby="headingLatest{{ forloop.counter }}" data-bs-parent="#latestSuggestionsAccordion">
+                                <div class="accordion-body">
+                                    <h5>Ingredients</h5>
+                                    <ul>
+                                        {% for ingredient in recipe.recipe_data.ingredients %}
+                                            <li>{{ ingredient.quantity }} {{ ingredient.unit }} of {{ ingredient.name }}</li>
+                                        {% endfor %}
+                                    </ul>
+                                    <h5>Instructions</h5>
+                                    <ol>
+                                        {% for instruction in recipe.recipe_data.instructions %}
+                                            <li>{{ instruction }}</li>
+                                        {% endfor %}
+                                    </ol>
+                                    <button class="btn btn-primary save-recipe-btn mt-3" data-recipe-id="{{recipe.id}}" data-csrf-token="{{csrf_token}}">Save Recipe</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        {% else %}
+            <div class="alert alert-info" role="alert">No new suggestions</div>
+        {% endif %}
+    {% else %}
+        <div class="alert alert-info" role="alert">Recipes still being generated</div>
+    {% endif %}
+
+    <hr class="my-5">
+
+    <h2 class="mb-3">Recently Suggested</h2>
+    {% if recently_suggested %}
+        <div class="accordion" id="recentlySuggestedAccordion">
+            {% for recipe in recently_suggested %}
+                <div class="card recipe-card mb-3">
+                    <div class="accordion-item">
+                        <h4 class="accordion-header" id="headingRecent{{ forloop.counter }}">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseRecent{{ forloop.counter }}" aria-expanded="false" aria-controls="collapseRecent{{ forloop.counter }}">
+                                {{ recipe.recipe_data.title }}
+                            </button>
+                        </h4>
+                        <div id="collapseRecent{{ forloop.counter }}" class="accordion-collapse collapse" aria-labelledby="headingRecent{{ forloop.counter }}" data-bs-parent="#recentlySuggestedAccordion">
+                            <div class="accordion-body">
+                                <h5>Ingredients</h5>
+                                <ul>
+                                    {% for ingredient in recipe.recipe_data.ingredients %}
+                                        <li>{{ ingredient.quantity }} {{ ingredient.unit }} of {{ ingredient.name }}</li>
+                                    {% endfor %}
+                                </ul>
+                                <h5>Instructions</h5>
+                                <ol>
+                                    {% for instruction in recipe.recipe_data.instructions %}
+                                        <li>{{ instruction }}</li>
+                                    {% endfor %}
+                                </ol>
+                                <button class="btn btn-primary save-recipe-btn mt-3" data-recipe-id="{{recipe.id}}" data-csrf-token="{{csrf_token}}">Save Recipe</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    {% else %}
+        <div class="alert alert-info" role="alert">No recently suggested</div>
+    {% endif %}
+
+    <hr class="my-5">
+
+    <h2 class="mb-3">Saved Recipes</h2>
+    {% if saved_recipes %}
+        <div class="accordion" id="savedRecipesAccordion">
+            {% for recipe in saved_recipes %}
+                <div class="card recipe-card mb-3">
+                    <div class="accordion-item">
+                        <h4 class="accordion-header" id="headingSaved{{ forloop.counter }}">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSaved{{ forloop.counter }}" aria-expanded="false" aria-controls="collapseSaved{{ forloop.counter }}">
+                                {{ recipe.title }}
+                            </button>
+                        </h4>
+                        <div id="collapseSaved{{ forloop.counter }}" class="accordion-collapse collapse" aria-labelledby="headingSaved{{ forloop.counter }}" data-bs-parent="#savedRecipesAccordion">
+                            <div class="accordion-body">
+                                <h5>Ingredients</h5>
+                                <ul>
+                                    {% for ingredient_instance in recipe.recipeingredient_set.all %}
+                                        <li>{{ ingredient_instance.quantity }} {{ ingredient_instance.unit }} of {{ ingredient_instance.pantry_item.product.product_name }}</li>
+                                    {% endfor %}
+                                </ul>
+                                <h5>Instructions</h5>
+                                <ol>
+                                    {% for instruction in recipe.instructions %}
+                                        <li>{{ instruction }}</li>
+                                    {% endfor %}
+                                </ol>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    {% else %}
+        <div class="alert alert-info" role="alert">No saved recipes</div>
+    {% endif %}
 </div>
-{% endfor %}
-{% else %}
-<div>No new suggestions</div>
-{% endif %}
-{% else %}
-<div> Recipes still being generated</div>
-{% endif %}
-
-<hr>
-
-<h2>Recently Suggested</h2>
-{% if recently_suggested %}
-{% for recipe in recently_suggested %}
-<div class="recipe-card">
- <h4>{{ recipe.recipe_data.title }}</h4>
- <h5>Ingredients</h5>
- <ul>
- {% for ingredient in recipe.recipe_data.ingredients %}
- <li>{{ ingredient.quantity }} {{ ingredient.unit }} of {{ ingredient.name }}</li>
- {% endfor %}
- </ul>
- <h5>Instructions</h5>
- <ol>
- {% for instruction in recipe.recipe_data.instructions %}
- <li>{{ instruction }}</li>
- {% endfor %}
- </ol>
- <button class="btn btn-primary save-recipe-btn" data-recipe-id="{{recipe.id}}" data-csrf-token="{{csrf_token}}">Save Recipe</button>
-</div>
-{% endfor %}
-{% else %}
-<div>No recently suggested</div>
-{% endif %}
-
-<hr>
-
-<h2>Saved Recipes</h2>
-{% if saved_recipes %}
-{% for recipe in saved_recipes %}
-<div class="recipe-card">
-<h4>{{ recipe.title }}</h4>
-<h5>Ingredients</h5>
-<ul>
-{% for ingredient_instance in recipe.recipeingredient_set.all %}
-<li>{{ ingredient_instance.quantity }} {{ ingredient_instance.unit }} of {{ ingredient_instance.pantry_item.product.product_name }}</li>
-{% endfor %}
-</ul>
-<h5>Instructions</h5>
-<ol>
-{% for instruction in recipe.instructions %}
-<li>{{ instruction }}</li>
-{% endfor %}
-</ol>
-</div>
-{% endfor %}
-{% else %}
-<div>No saved recipes</div>
-{% endif %}
-
 
 {% block extra_js %}
     <script src="{% static 'recipes/recipes.js' %}"></script>
