@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from .models import SuggestedRecipe, Recipe, RecipeIngredient
 from django.contrib.auth.decorators import login_required
+from django.views.decorators.http import require_POST
 from django.core.cache import cache
 import json
 from django.http import JsonResponse
@@ -40,18 +41,16 @@ def recipes_view(request):
     })
 
 
-def save_recipe(request):
+@require_POST
+@login_required
+def save_recipe(request, id):
     user = request.user
 
-    if not user.is_authenticated or request.method != 'POST':
-        return JsonResponse({'error': 'Invalid request or not authenticated.'}, status=400)
-
     try:
-        data = json.loads(request.body)
-        suggested_recipe_id = data.get('recipeId')
+        suggested_recipe_id = id
         
         if not suggested_recipe_id:
-            return JsonResponse({'error': 'Missing recipeId in request body.'}, status=400)
+            return JsonResponse({'error': 'Missing recipe Id in request body.'}, status=400)
 
         suggested_recipe = SuggestedRecipe.objects.get(user=user, id=suggested_recipe_id)
         recipe_data = suggested_recipe.recipe_data
@@ -97,5 +96,15 @@ def save_recipe(request):
 
 
 
+@login_required
+@require_POST
+def mark_as_seen(request, id):
+    user = request.user
 
+    recipe = SuggestedRecipe.objects.get(user=user, id=id)
+
+    recipe.is_seen = True
+    recipe.save()
+
+    return JsonResponse({'message': "recipe seen" })
 

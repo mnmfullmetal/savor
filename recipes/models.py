@@ -29,14 +29,13 @@ class SuggestedRecipe(models.Model):
     recipe_data = models.JSONField(default=dict)
     created_at = models.DateTimeField(auto_now_add=True)
     used_ingredients = models.ManyToManyField('pantry.PantryItem', related_name='suggested_recipes_used_in')
+    is_seen = models.BooleanField(default=False) 
 
 
     STATUS_CHOICES = [
         ('new', 'New'),
         ('recent', 'Recent'),
-        ('seen', 'Seen'), 
         ('saved', 'Saved'),
-        ('archived', 'Archived'),
         ('deleted', 'Deleted')
     ]
     status = models.CharField(max_length=10, choices=STATUS_CHOICES, default='new')

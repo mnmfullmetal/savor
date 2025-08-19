@@ -12,31 +12,66 @@ document.addEventListener("DOMContentLoaded", () => {
       });
     }
   }
+
+  const accordions = document.querySelectorAll(".accordion");
+
+  if (accordions.length > 0) {
+    accordions.forEach((accordion) => {
+      accordion.addEventListener("shown.bs.collapse", function (event) {
+        const collapseElement = event.target;
+        const button =
+          collapseElement.previousElementSibling.querySelector(
+            ".accordion-button"
+          );
+
+        if (button.classList.contains("unseen-recipe")) {
+          const recipeId = button.dataset.recipeId;
+          const csrfToken = document.querySelector(
+            "[name=csrfmiddlewaretoken]"
+          ).value;
+
+          fetch(`/recipes/mark_as_seen/${recipeId}/`, {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+              "X-CSRFToken": csrfToken,
+            },
+          })
+            .then((response) => response.json())
+            .then((data) => {
+              console.log("Success:", data);
+              button.classList.remove("unseen-recipe");
+            })
+            .catch((error) => {
+              console.error("Error:", error);
+            });
+        }
+      });
+    });
+  }
 });
 
 function save_recipe(recipeId, csrfToken) {
-  fetch(`/recipes/save_recipe/`, {
+  fetch(`/recipes/save_recipe/${recipeId}`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
       "X-CSRFToken": csrfToken,
     },
-    body: JSON.stringify({ recipeId: recipeId }),
   })
-     .then(response => {
+    .then((response) => {
       if (!response.ok) {
-        return response.json().then(errorData => {
-          throw new Error(errorData.error); 
+        return response.json().then((errorData) => {
+          throw new Error(errorData.error);
         });
       }
       return response.json();
     })
-    .then(data => {
+    .then((data) => {
       alert(data.message);
     })
-    .catch(error => {
-
-        console.error("Error:", error);
-      alert(error.message); 
+    .catch((error) => {
+      console.error("Error:", error);
+      alert(error.message);
     });
 }

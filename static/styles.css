@@ -4,3 +4,13 @@
     transition: ease-out;
 }
 
+.accordion-button {
+    font-weight: normal; 
+    background-color: #fff;
+}
+
+/* This is the style for unseen buttons */
+.unseen-recipe {
+    font-weight: bold;
+    background-color: #92d82a; 
+}
