@@ -83,8 +83,23 @@ def save_recipe(request, id):
 
         suggested_recipe.status = 'saved'
         suggested_recipe.save()
+
+        new_recipe_data = {
+            'id': recipe.id,
+            'title': recipe.title,
+            'ingredients': [
+                {
+                    'quantity': ingredient.quantity,
+                    'unit': ingredient.unit,
+                    'name': ingredient.pantry_item.product.product_name
+                }
+                for ingredient in recipe.recipeingredient_set.all()
+            ],
+            'instructions': recipe.instructions,
+        }
         
-        return JsonResponse({'success': True, 'message': 'Recipe saved successfully.'}, status=200)
+        return JsonResponse({'success': True, 'message': 'Recipe saved successfully.', 'new_recipe': new_recipe_data}, status=200)
+        
 
     except SuggestedRecipe.DoesNotExist:
         return JsonResponse({'error': 'Suggested recipe not found.'}, status=404)
