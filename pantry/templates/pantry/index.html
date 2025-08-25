@@ -47,7 +47,7 @@ Savor
 
                         <div class="d-flex align-items-center mb-3">
                             <input class="product-quantity-input form-control me-2" type="number" min="0.01" step="0.01" value="1">
-                            <span class="text-secondary me-1">{{ product.product_quantity|default:"?" }}</span>
+                            <span class="text-secondary me-1">{{ product.product_quantity|default:"" }}</span>
                             <span class="text-muted small">{{ product.product_quantity_unit|default:"item" }}</span>
                         </div>
 

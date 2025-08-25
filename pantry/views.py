@@ -58,7 +58,10 @@ def search_product(request):
         if barcode:
             results = check_db_for_product(barcode=barcode)
             if results:
-                print(f"Returning barcode {barcode} from local DB.")
+                favourite_products = set(request.user.favourited_products.all())
+                for result in results:
+                        product_obj = Product.objects.get(id=result['id'])
+                        result['is_favourited'] = product_obj in favourite_products
                 return JsonResponse({'products': results})
             
             print(f"Calling OFF API for barcode {barcode}.")
@@ -68,6 +71,7 @@ def search_product(request):
             if response_data.get('status') == 1 and response_data.get('product'):
                 saved_product = save_product_to_db(response_data['product'])
                 if saved_product:
+                    is_favourited = saved_product in request.user.favourited_products.all()
                     api_products.append({
                         'id': saved_product.id,
                         'code': saved_product.code,
@@ -76,6 +80,7 @@ def search_product(request):
                         'image_url': saved_product.image_url,
                         'product_quantity': saved_product.product_quantity,
                         'product_quantity_unit': saved_product.product_quantity_unit,
+                        'is_favourited': is_favourited
                     })
             return JsonResponse({'products': api_products})
 
@@ -83,6 +88,11 @@ def search_product(request):
             
             combined_results = check_db_for_product(name=product_name)
             seen_codes = {p['code'] for p in combined_results if p.get('code')}
+
+            favourite_products = set(request.user.favourited_products.all())
+            for result in combined_results:
+                product_obj = Product.objects.get(id=result['id'])
+                result['is_favourited'] = product_obj in favourite_products
 
             try:
                 print(f"Calling OFF API for product name '{product_name}'.")
@@ -99,6 +109,7 @@ def search_product(request):
                                 'image_url': saved_product.image_url,
                                 'product_quantity': saved_product.product_quantity,
                                 'product_quantity_unit': saved_product.product_quantity_unit,
+                                'is_favourited': is_favourited
                             })
                             seen_codes.add(saved_product.code)
             except (requests.exceptions.RequestException, Ratelimited) as e:
