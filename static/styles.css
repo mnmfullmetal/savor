@@ -23,3 +23,37 @@
 .pantry-item{
     margin: 1rem;
 }
+
+.horizontal-scroll-container {
+        overflow-x: auto; 
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none; 
+        -ms-overflow-style: none;  
+    }
+
+    .horizontal-scroll-container::-webkit-scrollbar {
+        display: none;
+    }
+
+    .product-cards-wrapper {
+        display: flex; 
+        flex-wrap: nowrap; 
+        gap: 1.5rem; 
+        padding-bottom: 1rem; 
+        padding-right: 1rem; 
+    }
+
+    .product-cards-wrapper > .product-card-wrapper {
+        flex-shrink: 0; 
+        min-width: 280px; 
+        max-width: 350px; 
+        width: 100%;
+    }
+
+    .product-cards-wrapper .card {
+        height: 100%;
+    }
+
+    .product-quantity-input {
+        max-width: 80px;
+    }
