@@ -10,7 +10,7 @@ document.addEventListener("DOMContentLoaded", () => {
         const recipeId = clickedButton.dataset.recipeId;
         const csrfToken = clickedButton.dataset.csrfToken;
 
-        deleteRecipe(recipeId, csrfToken)
+        deleteRecipe(recipeId, csrfToken, clickedButton)
       })
     }
   }
@@ -64,7 +64,7 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 
-function deleteRecipe(recipeId, csrfToken){
+function deleteRecipe(recipeId, csrfToken, clickedButton){
   fetch(`/recipes/delete_recipe/${recipeId}`, {
     method: "POST",
     headers: {
@@ -74,7 +74,8 @@ function deleteRecipe(recipeId, csrfToken){
   })
   .then(response => response.json())
   .then(data => {
-    alert(data.message)
+   const recipeToDelete = clickedButton.closest('.accordion-item')
+   recipeToDelete.remove();
   })
   .catch(error =>  {
 
