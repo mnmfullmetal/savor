@@ -101,6 +101,7 @@ def search_product(request):
                     for off_prod in response_data['products']:
                         saved_product = save_product_to_db(off_prod)
                         if saved_product and saved_product.code and saved_product.code not in seen_codes:
+                            is_favourited = saved_product in favourite_products
                             combined_results.append({
                                 'id': saved_product.id,
                                 'code': saved_product.code,

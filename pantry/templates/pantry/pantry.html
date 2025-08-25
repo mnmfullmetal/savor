@@ -24,8 +24,8 @@
                         <div class="card-body d-flex flex-column justify-content-between">
                             <h3 class="card-title h5 mb-2 text-dark">{{ item.product.product_name|default:"No Name" }}</h3>
                             
-                            <p class="card-text text-muted mb-1 small">
-                                <strong>Quantity:</strong> {{ item.quantity }} 
+                            <p class="card-text text-muted mb-1 small ">
+                                <strong>Quantity:</strong> <span class="pantry-quantity-count">{{ item.quantity }} </span>
                             </p>
                             <p class="card-text text-muted mb-1 small">
                                 <strong>Product Size:</strong> {{ item.product.product_quantity|default:"" }} {{ item.product.product_quantity_unit|default:"item" }}

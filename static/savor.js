@@ -191,11 +191,8 @@ function searchProduct(barcode = "None", productName = "None", csrftoken) {
                 cardBody.appendChild(messageElement);
               }
               messageElement.className = "alert alert-warning mt-2 py-1";
-              messageElement.textContent =
-                "Please enter a valid quantity (> 0).";
-              setTimeout(() => {
-                messageElement.remove();
-              }, 3000);
+              messageElement.textContent = "Please enter a valid quantity (> 0).";
+              setTimeout(() => { messageElement.remove() }, 3000);
               return;
             }
             const addProductRequestData = {
