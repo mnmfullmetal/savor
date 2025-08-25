@@ -14,9 +14,22 @@ Savor
         
     <h1 class="mb-4 text-center text-md-start">Hello, {{ user.username }}!</h1>
 
+     <section class="mt-5 p-3 bg-white rounded shadow-sm">
+        <h2 class="h4 mb-4 text-success d-flex align-items-center">
+            Product Search Results <span class="ms-2">🔎</span>
+        </h2>
+        
+        <div id="searched-product-section" class="row g-4">
+            <p class="col-12 text-center text-muted">Enter a search query to find products.</p>
+        </div>
+    </section>
+
+      <hr class="my-5 border-light-subtle">
+
+
     <section class="mb-5 p-3 bg-light rounded shadow-sm">
         <h2 class="h4 mb-4 text-primary d-flex align-items-center">
-            Your Favourites <span class="ms-2">✨</span>
+             Favourites <span class="ms-2">✨</span>
         </h2>
         <div class="horizontal-scroll-container">
     <div class="product-cards-wrapper">
@@ -59,19 +72,7 @@ Savor
         {% endfor %}
     </div>
 </div>
-    </section>
-
-    <hr class="my-5 border-light-subtle">
-
-    <section class="mt-5 p-3 bg-white rounded shadow-sm">
-        <h2 class="h4 mb-4 text-success d-flex align-items-center">
-            Product Search Results <span class="ms-2">🔎</span>
-        </h2>
-        
-        <div id="searched-product-section" class="row g-4">
-            <p class="col-12 text-center text-muted">Enter a search query to find products.</p>
-        </div>
-    </section>
+    </section>   
 </div>
 
 
