@@ -12,6 +12,9 @@ Savor
 
 <h1>Hello, {{user}}!</h1>
 
+{% for product in user.favourited_products.all %}
+{{product.product_name}}
+{% endfor %}
 
 {% endif %}
 

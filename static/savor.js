@@ -41,8 +41,12 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 
+
+
 function searchProduct(barcode = "None", productName = "None", csrftoken) {
-  const searchedProductsDiv = document.querySelector("#searched-product-section");
+  const searchedProductsDiv = document.querySelector(
+    "#searched-product-section"
+  );
   searchedProductsDiv.innerHTML = "<p>Searching...</p>";
 
   if (!barcode && !productName) {
@@ -111,12 +115,34 @@ function searchProduct(barcode = "None", productName = "None", csrftoken) {
   </div>
 
   <div class="mb-3">
-    <button id="favourite_button" class="btn btn-outline-secondary">Favourite</button>
+    <button class="btn btn-outline-secondary favourite-btn"   data-product-id="${
+      product.id
+    }">Favourite</button>
   </div>`;
 
           searchedProductsDiv.appendChild(productDetailsDiv);
 
-          const addButton = productDetailsDiv.querySelector(".add-to-pantry-button");
+          const favouriteButton = productDetailsDiv.querySelector(".favourite-btn");
+
+          favouriteButton.addEventListener("click", (event) => {
+            const clickedButton = event.target;
+            const productIdToFav = clickedButton.dataset.productId;
+
+            fetch(`/favourite_product/${productIdToFav}`, {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json",
+                "X-CSRFToken": csrftoken,
+              },
+            })
+              .then((response) => response.json())
+              .then((data) => data)
+              .catch((error) => error);
+          });
+
+          const addButton = productDetailsDiv.querySelector(
+            ".add-to-pantry-button"
+          );
 
           addButton.addEventListener("click", (event) => {
             const clickedButton = event.target;
@@ -148,11 +174,11 @@ function searchProduct(barcode = "None", productName = "None", csrftoken) {
                 }
                 return response.json();
               })
-              .then(data => {
-               const message = document.createElement('div')
-               message.className = 'message'
-               message.innerHTML = `${data.message}`
-               productDetailsDiv.append(message)
+              .then((data) => {
+                const message = document.createElement("div");
+                message.className = "message";
+                message.innerHTML = `${data.message}`;
+                productDetailsDiv.append(message);
               })
               .catch((error) => {
                 console.error("Fetch network error:", error);

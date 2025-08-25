@@ -9,8 +9,17 @@
     background-color: #fff;
 }
 
-/* This is the style for unseen buttons */
 .unseen-recipe {
     font-weight: bold;
     background-color: #92d82a; 
+}
+
+.pantry-items-page{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.pantry-item{
+    margin: 1rem;
 }

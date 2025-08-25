@@ -196,4 +196,20 @@ def remove_pantryitem(request):
    
        
     
-   
+def toggle_favourite_product(request, id):
+
+    user = request.user
+    product = Product.objects.get(id=id)
+
+    if product in user.favourited_products.all():
+        user.favourited_products.remove(product)
+        is_favourited = False
+        message = f"'{product.product_name}' unfavourited."
+    else:
+        user.favourited_products.add(product)
+        is_favourited = True
+        message = f"'{product.product_name}' favourited."
+
+
+
+    return JsonResponse({'message': message, 'is_favourited': is_favourited})

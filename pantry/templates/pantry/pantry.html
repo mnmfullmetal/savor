@@ -4,7 +4,8 @@
 {% block body %}
 <h1>Welcome to your pantry!</h1>
 
-{% for item in pantryitems %}
+<div class="pantry-items-page">
+  {% for item in pantryitems %}
 <div class="pantry-item card mb-3">
   <div class="card-body">
     <h3 class="mb-2">{{item.product.product_name}}</h3>
@@ -23,6 +24,8 @@
   </div>
 </div>
 {% endfor %}
+</div>
+
 
 {% block extra_js %}
     <script src="{% static 'pantry/pantry.js' %}"></script>
