@@ -1,6 +1,17 @@
 document.addEventListener("DOMContentLoaded", () => {
   const productSearchForm = document.querySelector("#search-form");
-  const csrftoken = productSearchForm.elements.csrfmiddlewaretoken.value;
+  const  csrfToken = productSearchForm.elements.csrfmiddlewaretoken.value;
+
+    document.getElementById('scan-button').addEventListener('click', () => {
+        document.getElementById('scanner-container').style.display = 'block';
+        document.getElementById('searched-product-section').innerHTML = ''; 
+        startScanner(csrfToken);
+    });
+
+    document.getElementById('stop-scanner-btn').addEventListener('click', () => {
+        Quagga.stop();
+        document.getElementById('scanner-container').style.display = 'none';
+    });
 
   productSearchForm.addEventListener("submit", (event) => {
     event.preventDefault();
@@ -47,7 +58,7 @@ document.addEventListener("DOMContentLoaded", () => {
     button.addEventListener("click", (event) => {
       const clickedButton = event.target;
       const productIdToFav = clickedButton.dataset.productId;
-      favouriteProduct(productIdToFav, csrftoken, clickedButton);
+      favouriteProduct(productIdToFav,  csrfToken, clickedButton);
     });
   });
 
@@ -59,7 +70,7 @@ document.addEventListener("DOMContentLoaded", () => {
       const quantityInput = productCard.querySelector(
         ".product-quantity-input"
       ).value;
-      addProduct(productIdToAdd, quantityInput, csrftoken, productCard);
+      addProduct(productIdToAdd, quantityInput,  csrfToken, productCard);
     });
   });
 });
@@ -379,3 +390,36 @@ function updateFavouriteSection(product, is_favourited, csrfToken) {
     cardToRemove.remove();
   }
 }
+
+
+function startScanner(csrfToken) {
+        Quagga.init({
+            inputStream : {
+                name : "Live",
+                type : "LiveStream",
+                target: document.querySelector('#interactive'),
+                constraints: {
+                    facingMode: "environment" 
+                }
+            },
+            decoder: {
+                readers: ["ean_reader", "upc_reader", "upc_e_reader", "ean_8_reader", "code_39_reader"]
+            }
+        }, function(err) {
+            if (err) {
+                console.error(err);
+                return;
+            }
+            console.log("Initialization finished. Ready to start");
+            Quagga.start();
+        });
+
+        Quagga.onDetected(function(result) {
+            const barcode = result.codeResult.code;
+            console.log("Barcode detected:", barcode);
+            Quagga.stop();
+            document.getElementById('scanner-container').style.display = 'none';
+            
+            searchProduct(barcode, "", csrfToken);
+        });
+    }

@@ -9,6 +9,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js" integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q" crossorigin="anonymous"></script>
     <script src="{% static 'savor.js' %}"></script>
+    <script src="https://unpkg.com/@ericblade/quagga2@v0.0.10/dist/quagga.min.js"></script>
     <link rel="stylesheet" href="{% static 'styles.css' %}">
     <title>{% block title %} Savor {% endblock %}</title>
 </head>
@@ -48,12 +49,14 @@
            <input type="text" id="product_name_input" name="product_name" class="form-control me-2" placeholder="Search by Name" aria-label="Search Product by Name">
            <input type="text" id="barcode_input" name="barcode" class="form-control me-2" placeholder="Search by Barcode" aria-label="Search Product by Barcode">
            <button class="btn btn-outline-success" type="submit">Search</button>
+           <button class="btn btn-primary" type="button" id="scan-button">Scan Barcode</button>
         </form>
     </div>      
   </div>
 </nav>
 <div>
   {% block body %}
+  
   {% endblock %}
 </div>
 
