@@ -6,17 +6,17 @@ document.addEventListener("DOMContentLoaded", () => {
     event.preventDefault();
     const barcode = productSearchForm.elements.barcode.value.trim();
     const productName = productSearchForm.elements.product_name.value.trim();
-    const  csrfToken = productSearchForm.elements.csrfmiddlewaretoken.value;
+    const csrfToken = productSearchForm.elements.csrfmiddlewaretoken.value;
 
     const currentPath = window.location.pathname;
 
     if (currentPath !== "index" && currentPath !== "/") {
       sessionStorage.setItem("searchBarcode", barcode);
       sessionStorage.setItem("searchProductName", productName);
-      sessionStorage.setItem("searchCsrfToken",  csrfToken);
+      sessionStorage.setItem("searchCsrfToken", csrfToken);
       window.location.href = "/";
     } else {
-      searchProduct(barcode, productName,  csrfToken);
+      searchProduct(barcode, productName, csrfToken);
     }
   });
 
@@ -40,31 +40,31 @@ document.addEventListener("DOMContentLoaded", () => {
     searchProduct(savedBarcode, savedProductName, savedCsrfToken);
   }
 
+  const initialFavoriteButtons = document.querySelectorAll(".favourite-btn");
+  const initialAddButtons = document.querySelectorAll(".add-to-pantry-button");
 
-
-   const initialFavoriteButtons = document.querySelectorAll(".favourite-btn");
-    const initialAddButtons = document.querySelectorAll(".add-to-pantry-button");
-
-    initialFavoriteButtons.forEach((button) => {
-        button.addEventListener("click", (event) => {
-            const clickedButton = event.target;
-            const productIdToFav = clickedButton.dataset.productId;
-            favouriteProduct(productIdToFav, csrftoken, clickedButton);
-        });
+  initialFavoriteButtons.forEach((button) => {
+    button.addEventListener("click", (event) => {
+      const clickedButton = event.target;
+      const productIdToFav = clickedButton.dataset.productId;
+      favouriteProduct(productIdToFav, csrftoken, clickedButton);
     });
+  });
 
-    initialAddButtons.forEach((button) => {
-        const productCard = button.closest(".card");
-        button.addEventListener("click", (event) => {
-            const clickedButton = event.target;
-            const productIdToAdd = clickedButton.dataset.productId;
-            const quantityInput = productCard.querySelector(".product-quantity-input").value;
-            addProduct(productIdToAdd, quantityInput, csrftoken, productCard);
-        });
+  initialAddButtons.forEach((button) => {
+    const productCard = button.closest(".card");
+    button.addEventListener("click", (event) => {
+      const clickedButton = event.target;
+      const productIdToAdd = clickedButton.dataset.productId;
+      const quantityInput = productCard.querySelector(
+        ".product-quantity-input"
+      ).value;
+      addProduct(productIdToAdd, quantityInput, csrftoken, productCard);
     });
+  });
 });
 
-function searchProduct(barcode = "None", productName = "None",  csrfToken) {
+function searchProduct(barcode = "None", productName = "None", csrfToken) {
   const searchedProductsDiv = document.querySelector(
     "#searched-product-section"
   );
@@ -86,7 +86,7 @@ function searchProduct(barcode = "None", productName = "None",  csrfToken) {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
-      "X-CSRFToken":  csrfToken,
+      "X-CSRFToken": csrfToken,
     },
     body: JSON.stringify(requestData),
   })
@@ -172,7 +172,7 @@ function searchProduct(barcode = "None", productName = "None",  csrfToken) {
           favouriteButton.addEventListener("click", (event) => {
             const clickedButton = event.target;
             const productIdToFav = clickedButton.dataset.productId;
-            favouriteProduct(productIdToFav,  csrfToken, clickedButton);
+            favouriteProduct(productIdToFav, csrfToken, clickedButton);
           });
 
           const addButton = productCard.querySelector(".add-to-pantry-button");
@@ -182,7 +182,7 @@ function searchProduct(barcode = "None", productName = "None",  csrfToken) {
             const quantityInput = productCard.querySelector(
               ".product-quantity-input"
             ).value;
-            addProduct(productIdToAdd, quantityInput,  csrfToken, productCard);
+            addProduct(productIdToAdd, quantityInput, csrfToken, productCard);
           });
         });
       } else {
@@ -199,7 +199,7 @@ function searchProduct(barcode = "None", productName = "None",  csrfToken) {
     });
 }
 
-function addProduct(productIdToAdd, quantityInput,  csrfToken, productCard) {
+function addProduct(productIdToAdd, quantityInput, csrfToken, productCard) {
   if (isNaN(quantityInput) || parseFloat(quantityInput) <= 0) {
     const cardBody = productCard.querySelector(".card-body");
     let messageElement = cardBody.querySelector(".alert");
@@ -224,7 +224,7 @@ function addProduct(productIdToAdd, quantityInput,  csrfToken, productCard) {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
-      "X-CSRFToken":  csrfToken,
+      "X-CSRFToken": csrfToken,
     },
     body: JSON.stringify(addProductRequestData),
   })
@@ -266,12 +266,12 @@ function addProduct(productIdToAdd, quantityInput,  csrfToken, productCard) {
     });
 }
 
-function favouriteProduct(productIdToFav,  csrfToken, clickedButton) {
+function favouriteProduct(productIdToFav, csrfToken, clickedButton) {
   fetch(`/favourite_product/${productIdToFav}`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
-      "X-CSRFToken":  csrfToken,
+      "X-CSRFToken": csrfToken,
     },
   })
     .then((response) => response.json())
@@ -282,52 +282,60 @@ function favouriteProduct(productIdToFav,  csrfToken, clickedButton) {
       clickedButton.classList.toggle("btn-outline-secondary");
       clickedButton.classList.toggle("btn-outline-danger");
 
-      if (data.is_favourited){
-      updateFavouriteSection(data.product, true, csrfToken)
+      if (data.is_favourited) {
+        updateFavouriteSection(data.product, true, csrfToken);
+      } else {
+        updateFavouriteSection(data.product, false, csrfToken);
       }
-      else{
-        updateFavouriteSection(data.product, false, csrfToken)
-      }
-
     })
     .catch((error) => console.error("Error toggling favourite:", error));
 }
 
-
-
-function updateFavouriteSection(product, is_favourited, csrfToken){
-  const favouriteSection = document.querySelector(".product-cards-wrapper")
+function updateFavouriteSection(product, is_favourited, csrfToken) {
+  const favouriteSection = document.querySelector(".product-cards-wrapper");
 
   const emptyMessage = favouriteSection.querySelector("p.text-muted");
 
-  if (is_favourited){
-
-    if(emptyMessage){
+  if (is_favourited) {
+    if (emptyMessage) {
       emptyMessage.remove();
     }
 
-    const newFavouriteCard = document.createElement('div');
-newFavouriteCard.className = "product-card-wrapper";
+    const newFavouriteCard = document.createElement("div");
+    newFavouriteCard.className = "product-card-wrapper";
 
-const productCard = document.createElement("div");
-productCard.classList.add("card", "h-100", "shadow-sm");
+    const productCard = document.createElement("div");
+    productCard.classList.add("card", "h-100", "shadow-sm");
 
-   productCard.innerHTML = `
+    productCard.innerHTML = `
     <div class="card h-100 border-0 shadow-sm">
-      ${product.image_url ? 
-        `<img src="${product.image_url}" alt="${product.product_name || "Product Image"}" class="card-img-top img-fluid rounded-top" style="max-height: 150px; object-fit: cover;">` 
-        : ''
+      ${
+        product.image_url
+          ? `<img src="${product.image_url}" alt="${
+              product.product_name || "Product Image"
+            }" class="card-img-top img-fluid rounded-top" style="max-height: 150px; object-fit: cover;">`
+          : ""
       }
       <div class="card-body d-flex flex-column justify-content-between">
-        <h3 class="card-title h5 mb-2 text-dark">${product.product_name || "No Name"}</h3>
+        <h3 class="card-title h5 mb-2 text-dark">${
+          product.product_name || "No Name"
+        }</h3>
         
-        <p class="card-text text-muted mb-1 small"><strong>Brands:</strong> ${product.brands || "N/A"}</p>
-        <p class="card-text text-muted mb-3 small"><strong>Code:</strong> ${product.code || "N/A"}</p>
+        <p class="card-text text-muted mb-1 small"><strong>Brands:</strong> ${
+          product.brands || "N/A"
+        }</p>
+        <p class="card-text text-muted mb-3 small"><strong>Code:</strong> ${
+          product.code || "N/A"
+        }</p>
 
         <div class="d-flex align-items-center mb-3">
           <input class="product-quantity-input form-control me-2" type="number" min="0.01" step="0.01" value="1">
-          <span class="text-secondary me-1">${product.product_quantity || ""}</span>
-          <span class="text-muted small">${product.product_quantity_unit || "item"}</span>
+          <span class="text-secondary me-1">${
+            product.product_quantity || ""
+          }</span>
+          <span class="text-muted small">${
+            product.product_quantity_unit || "item"
+          }</span>
         </div>
 
         <div class="mt-auto d-flex flex-column">
@@ -344,32 +352,30 @@ productCard.classList.add("card", "h-100", "shadow-sm");
       </div>
     </div>`;
 
-   newFavouriteCard.appendChild(productCard);
+    newFavouriteCard.appendChild(productCard);
 
-favouriteSection.append(newFavouriteCard);
+    favouriteSection.append(newFavouriteCard);
 
-   const favouriteButton = newFavouriteCard.querySelector(".favourite-btn")
+    const favouriteButton = newFavouriteCard.querySelector(".favourite-btn");
     favouriteButton.addEventListener("click", (event) => {
-        const clickedButton = event.target;
-            const productIdToFav = clickedButton.dataset.productId;
-            favouriteProduct(productIdToFav,  csrfToken, clickedButton);
-
+      const clickedButton = event.target;
+      const productIdToFav = clickedButton.dataset.productId;
+      favouriteProduct(productIdToFav, csrfToken, clickedButton);
     });
 
-     const addButton = newFavouriteCard.querySelector(".add-to-pantry-button");
-          addButton.addEventListener("click", (event) => {
-            const clickedButton = event.target;
-            const productIdToAdd = clickedButton.dataset.productId;
-            const quantityInput = newFavouriteCard.querySelector(
-              ".product-quantity-input"
-            ).value;
-            addProduct(productIdToAdd, quantityInput,  csrfToken, newFavouriteCard);
-          });
-  }
-  else{
-  const cardToRemove =  favouriteSection.querySelector(`[data-product-id="${product.id}"]`).closest('.product-card-wrapper')
+    const addButton = newFavouriteCard.querySelector(".add-to-pantry-button");
+    addButton.addEventListener("click", (event) => {
+      const clickedButton = event.target;
+      const productIdToAdd = clickedButton.dataset.productId;
+      const quantityInput = newFavouriteCard.querySelector(
+        ".product-quantity-input"
+      ).value;
+      addProduct(productIdToAdd, quantityInput, csrfToken, newFavouriteCard);
+    });
+  } else {
+    const cardToRemove = favouriteSection
+      .querySelector(`[data-product-id="${product.id}"]`)
+      .closest(".product-card-wrapper");
     cardToRemove.remove();
   }
-  
-  
 }

@@ -112,6 +112,7 @@
                                         <li>{{ instruction }}</li>
                                     {% endfor %}
                                 </ol>
+                                <button class="btn btn-danger delete-btn" data-recipe-id={{recipe.id}} data-csrf-token="{{csrf_token}}" >Delete Recipe</button>
                             </div>
                         </div>
                     </div>

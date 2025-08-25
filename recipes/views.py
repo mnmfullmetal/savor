@@ -108,3 +108,12 @@ def mark_as_seen(request, id):
 
     return JsonResponse({'message': "recipe seen" })
 
+
+def delete_recipe(request, id):
+    user = request.user 
+
+    recipe_to_delete = Recipe.objects.get(user=user, id=id)
+    recipe_to_delete.delete()
+
+    return JsonResponse({'message': "Recipe deleted"})
+

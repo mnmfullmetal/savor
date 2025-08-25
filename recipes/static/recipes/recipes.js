@@ -1,19 +1,31 @@
 document.addEventListener("DOMContentLoaded", () => {
-  const buttons = document.querySelectorAll(".save-recipe-btn");
+  const saveButtons = document.querySelectorAll(".save-recipe-btn");
+  const accordions = document.querySelectorAll(".accordion");
+  const deleteButtons = document.querySelectorAll('.delete-btn');
 
-  if (buttons.length > 0) {
-    for (const button of buttons) {
+  if(deleteButtons.length > 0){
+    for (const button of deleteButtons){
       button.addEventListener("click", (event) => {
         const clickedButton = event.target;
         const recipeId = clickedButton.dataset.recipeId;
         const csrfToken = clickedButton.dataset.csrfToken;
 
-        save_recipe(recipeId, csrfToken);
-      });
+        deleteRecipe(recipeId, csrfToken)
+      })
     }
   }
 
-  const accordions = document.querySelectorAll(".accordion");
+  if (saveButtons.length > 0) {
+    for (const button of saveButtons) {
+      button.addEventListener("click", (event) => {
+        const clickedButton = event.target;
+        const recipeId = clickedButton.dataset.recipeId;
+        const csrfToken = clickedButton.dataset.csrfToken;
+
+        saveRecipe(recipeId, csrfToken);
+      });
+    }
+  }
 
   if (accordions.length > 0) {
     accordions.forEach((accordion) => {
@@ -51,7 +63,25 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 });
 
-function save_recipe(recipeId, csrfToken) {
+
+function deleteRecipe(recipeId, csrfToken){
+  fetch(`/recipes/delete_recipe/${recipeId}`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      "X-CSRFToken": csrfToken,
+    }
+  })
+  .then(response => response.json())
+  .then(data => {
+    alert(data.message)
+  })
+  .catch(error =>  {
+
+  })
+}
+
+function saveRecipe(recipeId, csrfToken) {
   fetch(`/recipes/save_recipe/${recipeId}`, {
     method: "POST",
     headers: {
