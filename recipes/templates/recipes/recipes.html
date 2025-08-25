@@ -1,14 +1,15 @@
 {% extends "base.html" %} 
 {% load static %}
  {% load widget_tweaks %}
- 
+
   {% block title %} Recipes {% endblock %} 
   
   {% block body %}
 
 <div class="container mt-4">
   <h2 class="mb-3">New Suggestions</h2>
-  {% if not recipe_gen_in_progress %} {% if latest_suggestions %}
+  {% if not recipe_gen_in_progress %}
+   {% if latest_suggestions %}
   <div class="accordion" id="latestSuggestionsAccordion">
     {% for recipe in latest_suggestions %}
     <div class="card recipe-card mb-3">
@@ -37,8 +38,7 @@
             <ul>
               {% for ingredient in recipe.recipe_data.ingredients %}
               <li>
-                {{ ingredient.quantity }} {{ ingredient.unit }} of {{
-                ingredient.name }}
+                {{ ingredient.quantity }} {{ ingredient.unit }} of {{ ingredient.name }}
               </li>
               {% endfor %}
             </ul>
@@ -99,8 +99,7 @@
             <ul>
               {% for ingredient in recipe.recipe_data.ingredients %}
               <li>
-                {{ ingredient.quantity }} {{ ingredient.unit }} of {{
-                ingredient.name }}
+                {{ ingredient.quantity }} {{ ingredient.unit }} of {{ ingredient.name }}
               </li>
               {% endfor %}
             </ul>
