@@ -48,8 +48,8 @@ function searchProduct(barcode = "None", productName = "None", csrftoken) {
 
   if (!barcode && !productName) {
     searchedProductsDiv.innerHTML = `<div class="alert alert-warning text-center mt-3" role="alert">
-                                            Please enter a barcode or product name to search.
-                                        </div>`;
+ Please enter a barcode or product name to search.
+ </div>`;
     return;
   }
 
@@ -73,11 +73,8 @@ function searchProduct(barcode = "None", productName = "None", csrftoken) {
         const errorMessage = data.error || JSON.parse(data.errors);
         console.error("Error from backend:", errorMessage);
         searchedProductsDiv.innerHTML = `<div class="alert alert-danger text-center mt-3" role="alert">
-                                                    Error: ${
-                                                      data.error ||
-                                                      "Invalid input."
-                                                    }
-                                                </div>`;
+ Error: ${data.error || "Invalid input."}
+ </div>`;
       } else if (data.products && data.products.length > 0) {
         searchedProductsDiv.innerHTML = "";
         data.products.forEach((product) => {
@@ -145,105 +142,23 @@ function searchProduct(barcode = "None", productName = "None", csrftoken) {
                     </div>`;
 
           productColumnDiv.appendChild(productCard);
-
           searchedProductsDiv.appendChild(productColumnDiv);
 
           const favouriteButton = productCard.querySelector(".favourite-btn");
-
           favouriteButton.addEventListener("click", (event) => {
             const clickedButton = event.target;
             const productIdToFav = clickedButton.dataset.productId;
-
-            fetch(`/favourite_product/${productIdToFav}`, {
-              method: "POST",
-              headers: {
-                "Content-Type": "application/json",
-                "X-CSRFToken": csrftoken,
-              },
-            })
-              .then((response) => response.json())
-              .then((data) => {
-                clickedButton.textContent = data.is_favourited
-                  ? "Remove Favourite"
-                  : "Favourite";
-                clickedButton.classList.toggle("btn-outline-secondary");
-                clickedButton.classList.toggle("btn-outline-danger");
-              })
-              .catch((error) =>
-                console.error("Error toggling favourite:", error)
-              );
+            favouriteProduct(productIdToFav, csrftoken, clickedButton);
           });
 
           const addButton = productCard.querySelector(".add-to-pantry-button");
-
           addButton.addEventListener("click", (event) => {
             const clickedButton = event.target;
             const productIdToAdd = clickedButton.dataset.productId;
             const quantityInput = productCard.querySelector(
               ".product-quantity-input"
             ).value;
-
-            if (isNaN(quantityInput) || parseFloat(quantityInput) <= 0) {
-              const cardBody = productCard.querySelector(".card-body");
-              let messageElement = cardBody.querySelector(".alert");
-              if (!messageElement) {
-                messageElement = document.createElement("div");
-                cardBody.appendChild(messageElement);
-              }
-              messageElement.className = "alert alert-warning mt-2 py-1";
-              messageElement.textContent = "Please enter a valid quantity (> 0).";
-              setTimeout(() => { messageElement.remove() }, 3000);
-              return;
-            }
-            const addProductRequestData = {
-              product_id: productIdToAdd,
-              quantityToAdd: quantityInput,
-            };
-
-            fetch(`/pantry/add_product`, {
-              method: "POST",
-              headers: {
-                "Content-Type": "application/json",
-                "X-CSRFToken": csrftoken,
-              },
-              body: JSON.stringify(addProductRequestData),
-            })
-              .then((response) => {
-                if (response.status === 401) {
-                  window.location.href = "/accounts/login";
-                  throw new Error("Redirecting to login page...");
-                }
-                return response.json();
-              })
-              .then((data) => {
-                const cardBody = productCard.querySelector(".card-body");
-                let messageElement = cardBody.querySelector(".alert");
-                if (!messageElement) {
-                  messageElement = document.createElement("div");
-                  cardBody.appendChild(messageElement);
-                }
-                messageElement.className = `alert mt-2 py-1 ${
-                  data.success ? "alert-success" : "alert-danger"
-                }`;
-                messageElement.innerHTML = `${data.message}`;
-                setTimeout(() => {
-                  messageElement.remove();
-                }, 3000);
-              })
-              .catch((error) => {
-                console.error("Fetch network error:", error);
-                const cardBody = productCard.querySelector(".card-body");
-                let messageElement = cardBody.querySelector(".alert");
-                if (!messageElement) {
-                  messageElement = document.createElement("div");
-                  cardBody.appendChild(messageElement);
-                }
-                messageElement.className = "alert alert-danger mt-2 py-1";
-                messageElement.innerHTML = "A network error occurred.";
-                setTimeout(() => {
-                  messageElement.remove();
-                }, 3000);
-              });
+            addProduct(productIdToAdd, quantityInput, csrftoken, productCard);
           });
         });
       } else {
@@ -258,4 +173,90 @@ function searchProduct(barcode = "None", productName = "None", csrftoken) {
                                                 A network error occurred. Please check your connection.
                                             </div>`;
     });
+}
+
+function addProduct(productIdToAdd, quantityInput, csrftoken, productCard) {
+  if (isNaN(quantityInput) || parseFloat(quantityInput) <= 0) {
+    const cardBody = productCard.querySelector(".card-body");
+    let messageElement = cardBody.querySelector(".alert");
+    if (!messageElement) {
+      messageElement = document.createElement("div");
+      cardBody.appendChild(messageElement);
+    }
+    messageElement.className = "alert alert-success mt-2 py-1";
+    messageElement.textContent = "Please enter a valid quantity (> 0).";
+    setTimeout(() => {
+      messageElement.remove();
+    }, 3000);
+    return;
+  }
+
+  const addProductRequestData = {
+    product_id: productIdToAdd,
+    quantityToAdd: quantityInput,
+  };
+
+  fetch(`/pantry/add_product`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      "X-CSRFToken": csrftoken,
+    },
+    body: JSON.stringify(addProductRequestData),
+  })
+    .then((response) => {
+      if (response.status === 401) {
+        window.location.href = "/accounts/login";
+        throw new Error("Redirecting to login page...");
+      }
+      return response.json();
+    })
+    .then((data) => {
+      const cardBody = productCard.querySelector(".card-body");
+      let messageElement = cardBody.querySelector(".alert");
+      if (!messageElement) {
+        messageElement = document.createElement("div");
+        cardBody.appendChild(messageElement);
+      }
+      messageElement.className = `alert mt-2 py-1 ${
+        data.success ? "alert-success" : "alert-danger"
+      }`;
+      messageElement.innerHTML = `${data.message}`;
+      setTimeout(() => {
+        messageElement.remove();
+      }, 3000);
+    })
+    .catch((error) => {
+      console.error("Fetch network error:", error);
+      const cardBody = productCard.querySelector(".card-body");
+      let messageElement = cardBody.querySelector(".alert");
+      if (!messageElement) {
+        messageElement = document.createElement("div");
+        cardBody.appendChild(messageElement);
+      }
+      messageElement.className = "alert alert-danger mt-2 py-1";
+      messageElement.innerHTML = "A network error occurred.";
+      setTimeout(() => {
+        messageElement.remove();
+      }, 3000);
+    });
+}
+
+function favouriteProduct(productIdToFav, csrftoken, clickedButton) {
+  fetch(`/favourite_product/${productIdToFav}`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      "X-CSRFToken": csrftoken,
+    },
+  })
+    .then((response) => response.json())
+    .then((data) => {
+      clickedButton.textContent = data.is_favourited
+        ? "Remove Favourite"
+        : "Favourite";
+      clickedButton.classList.toggle("btn-outline-secondary");
+      clickedButton.classList.toggle("btn-outline-danger");
+    })
+    .catch((error) => console.error("Error toggling favourite:", error));
 }

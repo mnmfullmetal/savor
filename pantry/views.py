@@ -164,23 +164,23 @@ def add_product(request):
     quantity_to_add = data.get('quantityToAdd')
 
     quantity = Decimal(str(quantity_to_add))
-    
-    pantry_item, created = PantryItem.objects.get_or_create(
-        pantry=pantry,
-        product=product,
-        defaults={
-            'quantity': quantity,
-            }
-        )
 
-    if not created:
+
+    try:
+        pantry_item, created = PantryItem.objects.get_or_create( pantry=pantry, product=product, defaults={'quantity': quantity})
+        
+        if not created:
             pantry_item.quantity += quantity 
             pantry_item.save() 
             message = f"{product.product_name} quantity updated."
-    else:
-         message = f"{product.product_name} added to your pantry."
+        else:
+            message = f"{product.product_name} added to your pantry."
+            
+        return JsonResponse({'message': message, 'success': True})
         
-    return JsonResponse({'message': message })
+    except Exception as e:
+        print(f"Error adding to pantry: {e}")
+        return JsonResponse({'message': 'An unexpected error occurred.', 'success': False}, status=500)
 
 
 
@@ -206,10 +206,8 @@ def remove_pantryitem(request):
 
     
    
-       
-    
-def toggle_favourite_product(request, id):
 
+def toggle_favourite_product(request, id):
     user = request.user
     product = Product.objects.get(id=id)
 
@@ -222,6 +220,16 @@ def toggle_favourite_product(request, id):
         is_favourited = True
         message = f"'{product.product_name}' favourited."
 
-
-
-    return JsonResponse({'message': message, 'is_favourited': is_favourited})
+    return JsonResponse({
+        'message': message,
+        'is_favourited': is_favourited,
+        'product': {
+            'id': product.id,
+            'product_name': product.product_name,
+            'code': product.code,
+            'brands': product.brands,
+            'image_url': product.image_url,
+            'product_quantity': product.product_quantity,
+            'product_quantity_unit': product.product_quantity_unit,
+        }
+    })
