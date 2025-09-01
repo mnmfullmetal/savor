@@ -1,22 +1,33 @@
 document.addEventListener("DOMContentLoaded", () => {
 
-    const sidebarToggle = document.getElementById('sidebarToggle');
-        
-        sidebarToggle.addEventListener('click', () => {
-            const body = document.body;
-            const toggleIcon = sidebarToggle.querySelector('i');
-            
-            body.classList.toggle('sidebar-minimized');
-            
-            if (body.classList.contains('sidebar-minimized')) {
-                toggleIcon.classList.remove('bi-arrow-left-short');
-                toggleIcon.classList.add('bi-arrow-right-short');
-            } else {
-                toggleIcon.classList.remove('bi-arrow-right-short');
-                toggleIcon.classList.add('bi-arrow-left-short');
-            }
+const sidebarToggle = document.getElementById('sidebarToggle');
+sidebarToggle.addEventListener('click', () => {
+const body = document.body;
+const toggleIcon = sidebarToggle.querySelector('i');
 
-          });
+    body.classList.toggle('sidebar-minimized');
+    
+    if (body.classList.contains('sidebar-minimized')) {
+        toggleIcon.classList.remove('bi-box-arrow-in-left');
+        toggleIcon.classList.add('bi-box-arrow-right');
+    } else {
+        toggleIcon.classList.remove('bi-box-arrow-right');
+        toggleIcon.classList.add('bi-box-arrow-in-left');
+    }
+});
+
+const accountDropdown = document.getElementById('account-dropdown-item')
+if (accountDropdown){
+
+  accountDropdown.addEventListener('show.bs.dropdown', function() {
+    if (document.body.classList.contains('sidebar-minimized')) {
+        document.body.classList.remove('sidebar-minimized');
+        document.getElementById('sidebarToggle').querySelector('i').classList.add('bi-arrow-left-short');
+        document.getElementById('sidebarToggle').querySelector('i').classList.remove('bi-arrow-right-short');
+    }
+});
+
+};
 
   const productSearchForm = document.querySelector("#search-form");
   const  csrfToken = productSearchForm.elements.csrfmiddlewaretoken.value;
@@ -421,6 +432,8 @@ function startScanner(csrfToken) {
                 type : "LiveStream",
                 target: document.querySelector('#interactive'),
                 constraints: {
+                   width: { min: 640 },
+                   height: { min: 480 },
                     facingMode: "environment" 
                 }
             },

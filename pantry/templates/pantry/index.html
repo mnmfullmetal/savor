@@ -10,17 +10,11 @@ Savor
 
 {% if user.is_authenticated %}
 
- <div id="scanner-container" style="display: none;">
-            <div id="interactive" class="viewport"></div>
-            <button id="stop-scanner-btn" class="btn btn-danger mt-2">Stop Scanning</button>
-        </div>
-         <div id="searched-product-section" class="row justify-content-center"></div>
+
 
 
 <div class="container my-5">
         
-    <h1 class="mb-4 text-center ">Hello, {{ user.username }}!</h1>
-
      <section class="mt-5 p-3 bg-white rounded shadow-sm">
         <h2 class="h4 mb-4 text-success d-flex align-items-center">
             Product Search Results <span class="ms-2">🔎</span>
