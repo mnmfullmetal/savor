@@ -8,7 +8,6 @@ Savor
 
 {% block body %}
 
-{% if user.is_authenticated %}
 
 
 
@@ -28,6 +27,7 @@ Savor
       <hr class="my-5 border-light-subtle">
 
 
+{% if user.is_authenticated %}
     <section class="mb-5 p-3 bg-light rounded shadow-sm">
         <h2 class="h4 mb-4 text-primary d-flex align-items-center">
              Favourites <span class="ms-2">✨</span>

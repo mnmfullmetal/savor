@@ -42,6 +42,7 @@ def rate_limit_error_response(request, exception):
 @require_POST
 def search_product(request):
 
+    
     try:
         data = json.loads(request.body)
     except json.JSONDecodeError:
@@ -53,12 +54,15 @@ def search_product(request):
 
     barcode = form.cleaned_data.get('barcode')
     product_name = form.cleaned_data.get('product_name')
+    
+    favourite_products = set()
+    if request.user.is_authenticated:
+        favourite_products = set(request.user.favourited_products.all())
 
     try:
         if barcode:
             results = check_db_for_product(barcode=barcode)
             if results:
-                favourite_products = set(request.user.favourited_products.all())
                 for result in results:
                         product_obj = Product.objects.get(id=result['id'])
                         result['is_favourited'] = product_obj in favourite_products
@@ -71,7 +75,7 @@ def search_product(request):
             if response_data.get('status') == 1 and response_data.get('product'):
                 saved_product = save_product_to_db(response_data['product'])
                 if saved_product:
-                    is_favourited = saved_product in request.user.favourited_products.all()
+                    is_favourited = saved_product in favourite_products
                     api_products.append({
                         'id': saved_product.id,
                         'code': saved_product.code,
@@ -89,7 +93,6 @@ def search_product(request):
             combined_results = check_db_for_product(name=product_name)
             seen_codes = {p['code'] for p in combined_results if p.get('code')}
 
-            favourite_products = set(request.user.favourited_products.all())
             for result in combined_results:
                 product_obj = Product.objects.get(id=result['id'])
                 result['is_favourited'] = product_obj in favourite_products
