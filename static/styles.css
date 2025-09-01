@@ -6,12 +6,12 @@
 
 .accordion-button {
     font-weight: normal; 
-    background-color: #fff;
+    background-color: var(--neutral-cream);
 }
 
 .unseen-recipe {
     font-weight: bold;
-    background-color: #92d82a; 
+    color:var(--secondary-orange) 
 }
 
 .pantry-items-page{
@@ -64,6 +64,23 @@
             --sidebar-minimized-width: 70px;
             --transition-speed: 0.4s;
             --top-search-bar-height: 70px; 
+            --primary-green: #729f75;
+            --secondary-green: #67eb72;
+            --secondary-orange: #F4A261;
+            --tertiary-burgundy: #A25E5C;
+            --neutral-cream: #f3f1e7;
+            --dark-text: #2c2c2c;
+            --light-text: #fdfdfd;
+             --bs-primary: var(--primary-green);
+    --bs-secondary: var(--secondary-orange);
+    --bs-success: var(--primary-green);
+    --bs-danger: var(--tertiary-burgundy);
+    --bs-light: var(--dark-text);
+    --bs-body-bg: var(--neutral-cream);
+    --bs-body-color: var(--dark-text);
+    --bs-link-color: var(--secondary-orange);
+    --bs-link-hover-color: var(--tertiary-burgundy);
+
         }
 
         body {
@@ -71,6 +88,7 @@
             transition: margin-left var(--transition-speed) ease-in-out;
             margin-left: var(--sidebar-width);
             padding-top: var(--top-search-bar-height);
+            background-color: var(--neutral-cream);
         }
 
         body.sidebar-minimized {
@@ -84,8 +102,8 @@
             top: 0;
             left: 0;
             z-index: 1050;
-            background-color: #f8f9fa;
-            border-right: 1px solid #e9ecef;
+            background-color: var(--primary-green);
+    border-right: 1.5px solid var(--primary-green);
             transition: width var(--transition-speed) ease-in-out;
             overflow-y: auto;
             display: flex;
@@ -103,8 +121,8 @@
             right: 0;
             height: var(--top-search-bar-height);
             z-index: 1000;
-            background-color: #fff;
-            border-bottom: 1px solid #e9ecef;
+             background-color: var(--primary-green);
+    border-bottom: 1.5px solid var(--dark-text);
             padding: 0 1.5rem;
             display: flex;
             align-items: center;
@@ -120,6 +138,8 @@
 
         .main-content {
             padding: 1.5rem;
+             background-color: var(--neutral-cream);
+    color: var(--light-text);
         }
 
         .sidebar .navbar-brand {
@@ -198,7 +218,7 @@
 }
 
 .sidebar .dropdown-item {
-  color: #212529; 
+  color: var(--dark-text); 
   padding: 0.5rem 1rem;
   transition: background-color var(--transition-speed) ease-in-out;
 }
@@ -210,14 +230,14 @@
 
 .sidebar .dropdown-item:hover,
 .sidebar .dropdown-item:focus {
-  background-color: #e9ecef; 
+  background-color: var(--secondary-green) 
 }
 
 .sidebar-divider{
     margin-bottom: auto;
     margin-top: 2rem;
     border-width: 1px;
-    border-color: #212529;
+      border-color: var(--dark-text);
     opacity: 0.5;
     width: 75%;
     margin-left: 1rem;
@@ -245,4 +265,64 @@ body.sidebar-minimized .sidebar-divider{
 .btn-text{
     font-size: 1.2rem;
 
+}
+
+footer{
+    display: flex;
+    justify-content: center;
+    padding: 1rem;
+}
+
+section{
+    background-color: #e4dfd1;
+}
+
+
+.search-form .btn-outline-success {
+    --bs-btn-color: var(--secondary-green);
+    --bs-btn-border-color: var(--secondary-green);
+    --bs-btn-hover-color: var(--light-text);
+    --bs-btn-hover-bg: var(--secondary-green);
+    --bs-btn-hover-border-color: var(--secondary-green);
+    --bs-btn-active-bg: var(--secondary-green);
+    --bs-btn-active-border-color: var(--secondary-green);
+}
+
+.search-form .form-control{
+  border-color: var(--dark-text) ;
+}
+
+.btn-outline-danger{
+    --bs-btn-color: var(--tertiary-burgundy);
+    --bs-btn-border-color: var(--tertiary-burgundy);
+    --bs-btn-hover-color: var(--light-text);
+    --bs-btn-hover-bg: var(--tertiary-burgundy);
+    --bs-btn-hover-border-color: var(--tertiary-burgundy);
+    --bs-btn-active-bg: var(--tertiary-burgundy);
+    --bs-btn-active-border-color: var(--tertiary-burgundy);
+}
+
+
+.search-form .btn-outline-primary {
+    --bs-btn-color: var(--secondary-orange);
+    --bs-btn-border-color: var(--secondary-orange);
+    --bs-btn-hover-color: var(--light-text);
+    --bs-btn-hover-bg: var(--secondary-orange);
+    --bs-btn-hover-border-color: var(--secondary-orange);
+    --bs-btn-active-bg: var(--secondary-orange);
+    --bs-btn-active-border-color: var(--secondary-orange);
+}
+
+.btn-outline-primary{
+    --bs-btn-color: var(--primary-green);
+    --bs-btn-border-color: var(--primary-green);
+    --bs-btn-hover-color: var(--light-text);
+    --bs-btn-hover-bg: var(--primary-green);
+    --bs-btn-hover-border-color: var(--primary-green);
+    --bs-btn-active-bg: var(--primary-green);
+    --bs-btn-active-border-color: var(--primary-green);
+}
+
+.recipe-section{
+    color:var(--tertiary-burgundy);
 }

@@ -14,7 +14,7 @@ Savor
 
 <div class="container my-5">
         
-     <section class="mt-5 p-3 bg-white rounded shadow-sm">
+     <section class="mt-5 p-3 rounded shadow-lg">
         <h2 class="h4 mb-4 text-success d-flex align-items-center">
             Product Search Results <span class="ms-2">🔎</span>
         </h2>
@@ -28,7 +28,7 @@ Savor
 
 
 {% if user.is_authenticated %}
-    <section class="mb-5 p-3 bg-light rounded shadow-sm">
+    <section class="mb-5 p-3  rounded shadow-lg">
         <h2 class="h4 mb-4 text-primary d-flex align-items-center">
              Favourites <span class="ms-2">✨</span>
         </h2>
@@ -53,7 +53,7 @@ Savor
                         </div>
 
                         <div class="mt-auto d-flex flex-column">
-                            <button class="btn btn-primary btn-sm mb-2 add-to-pantry-button" 
+                            <button class="btn btn-outline-primary btn-sm mb-2 add-to-pantry-button" 
                                     data-product-name="{{ product.product_name }}" 
                                     data-product-id="{{ product.id }}">
                                 Add to Pantry

@@ -144,7 +144,7 @@ function createSavedRecipeHtml(recipe, csrfToken) {
                             `<li>${instruction}</li>`
                         ).join('')}
                     </ol>
-                    <button class="btn btn-danger delete-btn" data-recipe-id="${recipe.id}" data-csrf-token="${csrfToken}">Delete Recipe</button>
+                    <button class="btn btn-outline-danger delete-btn" data-recipe-id="${recipe.id}" data-csrf-token="${csrfToken}">Delete Recipe</button>
                 </div>
             </div>
         </div>

@@ -7,7 +7,9 @@
   {% block body %}
 
 <div class="container mt-4">
-  <h2 class="mb-3">New Suggestions</h2>
+  <section class="mt-5 p-3 rounded shadow-lg recipe-section">
+
+    <h2  class="h4 mb-4 d-flex align-items-center">New Suggestions</h2>
   {% if not recipe_gen_in_progress %}
    {% if latest_suggestions %}
   <div class="accordion" id="latestSuggestionsAccordion">
@@ -66,10 +68,10 @@
   {% endif %} {% else %}
   <div class="alert alert-info" role="alert">Recipes still being generated</div>
   {% endif %}
-
-  <hr class="my-5" />
-
-  <h2 class="mb-3">Recently Suggested</h2>
+  </section>
+  
+  <section class="mt-5 p-3 rounded shadow-lg recipe-section">
+    <h2 class="h4 mb-4 d-flex align-items-center">Recently Suggested</h2>
   {% if recently_suggested %}
   <div class="accordion" id="recentlySuggestedAccordion">
     {% for recipe in recently_suggested %}
@@ -125,10 +127,11 @@
   {% else %}
   <div class="alert alert-info" role="alert">No recently suggested</div>
   {% endif %}
+  </section>
+  
 
-  <hr class="my-5" />
-
-  <h2 class="mb-3">Saved Recipes</h2>
+  <section class="mt-5 p-3 rounded shadow-lg recipe-section">
+    <h2 class="h4 mb-4 d-flex align-items-center">Saved Recipes</h2>
   <div class="accordion" id="saved-recipes-accordion">
     {% if saved_recipes %} {% for recipe in saved_recipes %}
     <div class="card recipe-card mb-3">
@@ -188,6 +191,9 @@
   {% endif %}
 </div>
 
+  </section>
+
+  
 {% block extra_js %}
 <script src="{% static 'recipes/recipes.js' %}"></script>
 {% endblock extra_js %} {% endblock %}
