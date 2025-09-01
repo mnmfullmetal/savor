@@ -1,4 +1,23 @@
 document.addEventListener("DOMContentLoaded", () => {
+
+    const sidebarToggle = document.getElementById('sidebarToggle');
+        
+        sidebarToggle.addEventListener('click', () => {
+            const body = document.body;
+            const toggleIcon = sidebarToggle.querySelector('i');
+            
+            body.classList.toggle('sidebar-minimized');
+            
+            if (body.classList.contains('sidebar-minimized')) {
+                toggleIcon.classList.remove('bi-arrow-left-short');
+                toggleIcon.classList.add('bi-arrow-right-short');
+            } else {
+                toggleIcon.classList.remove('bi-arrow-right-short');
+                toggleIcon.classList.add('bi-arrow-left-short');
+            }
+
+          });
+
   const productSearchForm = document.querySelector("#search-form");
   const  csrfToken = productSearchForm.elements.csrfmiddlewaretoken.value;
 
@@ -73,6 +92,9 @@ document.addEventListener("DOMContentLoaded", () => {
       addProduct(productIdToAdd, quantityInput,  csrfToken, productCard);
     });
   });
+
+
+   
 });
 
 function searchProduct(barcode = "None", productName = "None", csrfToken) {
