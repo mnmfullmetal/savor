@@ -22,8 +22,8 @@ if (accountDropdown){
   accountDropdown.addEventListener('show.bs.dropdown', function() {
     if (document.body.classList.contains('sidebar-minimized')) {
         document.body.classList.remove('sidebar-minimized');
-        document.getElementById('sidebarToggle').querySelector('i').classList.add('bi-arrow-left-short');
-        document.getElementById('sidebarToggle').querySelector('i').classList.remove('bi-arrow-right-short');
+        document.getElementById('sidebarToggle').querySelector('i').classList.add('bi-box-arrow-in-left');
+        document.getElementById('sidebarToggle').querySelector('i').classList.remove('bi-box-arrow-right');
     }
 });
 

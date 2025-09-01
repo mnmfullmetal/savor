@@ -22,10 +22,10 @@
         <input type="text" id="product_name_input" name="product_name" class="form-control" placeholder="Search by Name" aria-label="Search Product by Name">
         <input type="text" id="barcode_input" name="barcode" class="form-control" placeholder="Search by Barcode" aria-label="Search Product by Barcode">
         <button class="btn btn-outline-success" type="submit">
-            <i class="bi bi-search"></i>
+          <span class="btn-text">Search</span>  <i class="bi bi-search"></i>
         </button>
-        <button class="btn btn-primary" type="button" id="scan-button">
-            <i class="bi bi-upc-scan"></i> Scan
+        <button class="btn btn-outline-primary" type="button" id="scan-button">
+            <span class="btn-text">Scan</span> <i class="bi bi-upc-scan"></i> 
         </button>
     </form>
 </nav>
@@ -39,8 +39,21 @@
     </div>
 
     <div class="offcanvas-body">
+    
+
         <ul class="navbar-nav mb-2 mb-lg-0">
             {% if user.is_authenticated %}
+            <li class="nav-item">
+             <a class="nav-link" href="#">
+                    <span>Welcome, {{user.username}}</span>
+                </a>
+            </li>
+            <li class="nav-item">
+             <a class="nav-link" href="{% url 'pantry:index' %}">
+                     <i class="bi bi-house-door"></i>
+                    <span>Home</span>
+                </a>
+            </li>
             <li class="nav-item">
                 <a class="nav-link" href="{% url 'pantry:pantry_view' %}">
                     <i class="bi bi-fork-knife"></i>
@@ -64,27 +77,14 @@
                 <span>Account</span>
             </a>
             <ul class="dropdown-menu">
-                {% if user.is_authenticated %}
                 <li>
                     <form action="{% url 'logout' %}" method="post" class="dropdown-item p-0">
                         {% csrf_token %}
                         <button type="submit" class="btn btn-link nav-link p-0 text-dark d-block text-start w-100">
-                            <i class="bi bi-box-arrow-right"></i> Log Out
+                            <i class="bi bi-arrow-right-circle"></i> <span>Log Out</span> 
                         </button>
                     </form>
                 </li>
-                {% else %}
-                <li>
-                    <a class="dropdown-item" href="{% url 'login' %}">
-                        <i class="bi bi-box-arrow-in-right"></i> Log On
-                    </a>
-                </li>
-                <li>
-                    <a class="dropdown-item" href="{% url 'users:register' %}">
-                        <i class="bi bi-person-plus-fill"></i> Register
-                    </a>
-                </li>
-                {% endif %}
             </ul>
         </li>
     </ul>
@@ -93,7 +93,7 @@
             {% else %}
             <li class="nav-item">
                 <a class="nav-link" href="{% url 'login' %}">
-                    <i class="bi bi-box-arrow-in-right"></i>
+                    <i class="bi bi-box-arrow-right-circle"></i>
                     <span>Log On</span>
                 </a>
             </li>
