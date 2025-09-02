@@ -11,11 +11,14 @@ document.addEventListener("DOMContentLoaded", () => {
           .closest(".pantry-item")
           .querySelector(".remove-quantity-input").value;
         const itemCardDiv = clickedButton.closest(".pantry-item");
+        const itemCardCol = clickedButton.closest(".col-12");
+
         const removeRequestData = {
           itemId: itemId,
           quantityToRemove: quantityToRemove,
           csrfToken: csrfToken,
           itemCardDiv: itemCardDiv,
+          itemCardCol: itemCardCol,
         };
 
         removePantryItem(removeRequestData);
@@ -29,6 +32,7 @@ document.addEventListener("DOMContentLoaded", () => {
 function removePantryItem(removeRequestData) {
   const csrftoken = removeRequestData.csrfToken;
   const itemCardDiv = removeRequestData.itemCardDiv;
+  const itemCardCol =removeRequestData.itemCardCol;
 
   fetch(`/pantry/remove_pantryitem`, {
     method: "POST",
@@ -47,7 +51,7 @@ function removePantryItem(removeRequestData) {
       pantryQtyCount.innerHTML = newQuantity;
 
       if (newQuantity <= 0) {
-        itemCardDiv.remove();
+        itemCardCol.remove();
       }
     })
     .catch((error) => {

@@ -1,5 +1,4 @@
 document.addEventListener("DOMContentLoaded", () => {
-  
   const savedState = localStorage.getItem("sidebarState");
   const body = document.body;
   const toggleIcon = document
@@ -100,7 +99,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   const initialFavoriteButtons = document.querySelectorAll(".favourite-btn");
-  const initialAddButtons = document.querySelectorAll(".add-to-pantry-button");
+  const initialAddButtons = document.querySelectorAll(".add-btn");
 
   initialFavoriteButtons.forEach((button) => {
     button.addEventListener("click", (event) => {
@@ -127,7 +126,7 @@ function searchProduct(barcode = "None", productName = "None", csrfToken) {
   const searchedProductsDiv = document.querySelector(
     "#searched-product-section"
   );
-  searchedProductsDiv.innerHTML = "<p>Searching...</p>";
+  searchedProductsDiv.innerHTML = "<p class='text-muted'>Searching...</p>";
 
   if (!barcode && !productName) {
     searchedProductsDiv.innerHTML = `<div class="alert alert-warning text-center mt-3" role="alert">
@@ -170,60 +169,61 @@ function searchProduct(barcode = "None", productName = "None", csrfToken) {
             "mb-4"
           );
 
-          const productCard = document.createElement("div");
-          productCard.classList.add("card", "h-100", "shadow-sm");
-          productCard.innerHTML = `<h3 class="card-title mb-2 h5">${
-            product.product_name || "No Name"
-          }</h3>
+        const productCard = document.createElement("div");
+        productCard.classList.add("card", "h-100", "border-0", "shadow-sm");
+
+        productCard.innerHTML = `
+            <div class="card h-100 border-0 shadow-sm">
+              ${
+                product.image_url
+                  ? `<img src="${product.image_url}" alt="${
+                      product.product_name || "Product Image"
+                    }" class="card-img-top img-fluid rounded-top" style="max-height: 150px; object-fit: cover;">`
+                : ""
+              }
+              <div class="card-body d-flex flex-column justify-content-between">
+                <h3 class="card-title h5 mb-2 text-dark">${
+                  product.product_name || "No Name"
+                }</h3>
+                
+                <p class="card-text text-muted mb-1 small"><strong>Brands:</strong> ${
+                  product.brands || "N/A"
+                }</p>
+                <p class="card-text text-muted mb-3 small"><strong>Code:</strong> ${
+                  product.code || "N/A"
+                }</p>
+
+                <div class="d-flex align-items-center mb-3">
+                  <input class="product-quantity-input form-control me-2" type="number" min="0.01" step="0.01" value="1">
+                  <span class="text-secondary me-1">${
+                    product.product_quantity || ""
+                  }</span>
+                  <span class="text-muted small">${
+                    product.product_quantity_unit || "item"
+                  }</span>
+                </div>
+
+                <div class="mt-auto d-flex flex-column">
+                  <button class="btn btn-outline-primary btn-sm mb-2 add-btn" 
+                          data-product-name="${product.product_name || "No Name"}" 
+                          data-product-id="${product.id}">
+                    Add to Pantry
+                  </button>
+                  <button class="btn btn-sm favourite-btn ${
+                    product.is_favourited
+                      ? "btn-outline-danger"
+                      : "btn-outline-primary"
+                  }" data-product-id="${product.id}">
                     ${
-                      product.image_url
-                        ? `<img src="${product.image_url}" alt="${
-                            product.product_name || "Product Image"
-                          }" class="card-img-top img-fluid rounded-top mb-3" style="max-height: 150px; object-fit: cover;">`
-                        : ""
+                      product.is_favourited
+                        ? "Remove Favourite"
+                        : "Favourite"
                     }
-
-                    <div class="card-body d-flex flex-column justify-content-between">
-                        <p class="card-text text-muted mb-1 small"><strong>Brands:</strong> ${
-                          product.brands || "N/A"
-                        }</p>
-                        <p class="card-text text-muted mb-3 small"><strong>Code:</strong> ${
-                          product.code || "N/A"
-                        }</p>
-
-                        <div class="d-flex align-items-center mb-3">
-                            <input class="product-quantity-input form-control me-2"
-                                type="number" min="0.01" step="0.01" value="1" style="max-width: 80px;"> 
-
-                            <span class="text-secondary me-1">${
-                              product.product_quantity || "?"
-                            } </span>
-                            <span class="text-muted small">${
-                              product.product_quantity_unit || "item"
-                            }</span>
-
-                            <button class="btn btn-primary btn-sm add-to-pantry-button" data-product-name="${
-                              product.product_name
-                            }" data-product-id="${
-            product.id
-          }"> Add to Pantry </button> 
-                        </div>
-
-                       <div class="mt-auto d-flex flex-column">
-                        <button class="btn btn-sm favourite-btn ${
-                          product.is_favourited
-                            ? "btn-outline-danger"
-                            : "btn-outline-secondary"
-                        }" data-product-id="${product.id}">
-                         ${
-                           product.is_favourited
-                             ? "Remove Favourite"
-                             : "Favourite"
-                         }
-                          </button>
-                          </div>
-                    </div>`;
-
+                  </button>
+              </div>
+              </div>
+            </div>`;
+            
           productColumnDiv.appendChild(productCard);
           searchedProductsDiv.appendChild(productColumnDiv);
 
@@ -234,7 +234,7 @@ function searchProduct(barcode = "None", productName = "None", csrfToken) {
             favouriteProduct(productIdToFav, csrfToken, clickedButton);
           });
 
-          const addButton = productCard.querySelector(".add-to-pantry-button");
+          const addButton = productCard.querySelector(".add-btn");
           addButton.addEventListener("click", (event) => {
             const clickedButton = event.target;
             const productIdToAdd = clickedButton.dataset.productId;
@@ -335,16 +335,18 @@ function favouriteProduct(productIdToFav, csrfToken, clickedButton) {
   })
     .then((response) => response.json())
     .then((data) => {
-      clickedButton.textContent = data.is_favourited
+      clickedButton.textContent = data.is_favourited 
         ? "Remove Favourite"
         : "Favourite";
-      clickedButton.classList.toggle("btn-outline-secondary");
-      clickedButton.classList.toggle("btn-outline-danger");
 
       if (data.is_favourited) {
         updateFavouriteSection(data.product, true, csrfToken);
+        clickedButton.classList.remove("btn-outline-primary");
+        clickedButton.classList.add("btn-outline-danger");
       } else {
         updateFavouriteSection(data.product, false, csrfToken);
+        clickedButton.classList.remove("btn-outline-danger");
+        clickedButton.classList.add("btn-outline-primary");
       }
     })
     .catch((error) => console.error("Error toggling favourite:", error));
@@ -398,7 +400,7 @@ function updateFavouriteSection(product, is_favourited, csrfToken) {
         </div>
 
         <div class="mt-auto d-flex flex-column">
-          <button class="btn btn-primary btn-sm mb-2 add-to-pantry-button" 
+          <button class="btn btn-outline-primary btn-sm mb-2 add-btn" 
                   data-product-name="${product.product_name || "No Name"}" 
                   data-product-id="${product.id}">
             Add to Pantry
@@ -422,7 +424,7 @@ function updateFavouriteSection(product, is_favourited, csrfToken) {
       favouriteProduct(productIdToFav, csrfToken, clickedButton);
     });
 
-    const addButton = newFavouriteCard.querySelector(".add-to-pantry-button");
+    const addButton = newFavouriteCard.querySelector(".add-btn");
     addButton.addEventListener("click", (event) => {
       const clickedButton = event.target;
       const productIdToAdd = clickedButton.dataset.productId;
