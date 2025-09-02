@@ -8,11 +8,18 @@ from datetime import datetime, timedelta
 User = get_user_model()
 
 @shared_task
-def generate_recipes_task(user_id, pantry_item_names):
+def generate_recipes_task(user_id):
     user = User.objects.get(id=user_id)
 
     print(f"Starting recipe generation for user {user.username}...")
-    all_pantry_item_objects = PantryItem.objects.filter(pantry__user=user, product__product_name__in=pantry_item_names.split(', '))
+    pantry_items = PantryItem.objects.filter(pantry__user=user)
+
+    if not pantry_items.exists(): 
+        print(f"Stopping recipe generation, no pantry items")
+        previous_new_suggestions = SuggestedRecipe.objects.filter(user=user, status="new")
+        previous_new_suggestions.update(status="deleted")
+        return
+
 
     recipes_data, prompt = generate_recipe_suggestions(user)
 
@@ -25,7 +32,7 @@ def generate_recipes_task(user_id, pantry_item_names):
             item['name'] for item in recipe_data.get('ingredients', [])
         ]
         
-        used_pantry_items = all_pantry_item_objects.filter(
+        used_pantry_items = pantry_items.filter(
             product__product_name__in=used_ingredient_names
         )
         

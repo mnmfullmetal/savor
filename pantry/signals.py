@@ -13,15 +13,9 @@ def schedule_recipe_generation_task(user):
     cache.set(cache_key, True, timeout=60)
     
     if not cache.get(task_key):
-        try:
-            pantry = Pantry.objects.get(user=user)
-            pantry_items_list = list(pantry.pantry_items.values_list('product__product_name', flat=True))
-            pantry_item_names = ', '.join(sorted(pantry_items_list))
-        except Pantry.DoesNotExist:
-            pantry_item_names = ''
 
         new_task = generate_recipes_task.apply_async(
-            args=[user.id, pantry_item_names],
+            args=[user.id],
             countdown=5 
         )
 

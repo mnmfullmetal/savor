@@ -44,7 +44,7 @@ def generate_recipe_suggestions(user, num_recipes=3):
     pantry_items = PantryItem.objects.filter(pantry=pantry).values_list('product__product_name', flat=True)
     pantry_item_names = ', '.join(pantry_items)
     
-    prompt = f"Create {num_recipes} unique, detailed, and healthy recipes using only (but not necessarily all) these ingredients: {pantry_item_names}. Focus on making them healthy, delicious and easy to follow."
+    prompt = f"Create {num_recipes} unique, healthy, and easy-to-follow recipes. For each recipe, use a selection of ingredients **only** from this list: {pantry_item_names}. Do not use any ingredients not on this list."
     responses = []
 
     try:
