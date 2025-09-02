@@ -16,7 +16,12 @@
 </head>
 <body>
 <nav class="top-search-bar">
- 
+   {% if user.is_authenticated %}
+    <div class="nav-greeting">
+        <span >Welcome, {{user.username}}</span>
+    </div>
+    {% endif %}
+
     <form class="search-form" role="search" id="search-form">
         {% csrf_token %}
         <input type="text" id="product_name_input" name="product_name" class="form-control" placeholder="Search by Name" aria-label="Search Product by Name">
@@ -42,28 +47,25 @@
         <ul class="navbar-nav mb-2 mb-lg-0">
             {% if user.is_authenticated %}
             <li class="nav-item">
-                    <span >Welcome, {{user.username}}</span>
-            </li>
-            <li class="nav-item">
-             <a class="nav-link" href="{% url 'pantry:index' %}">
-                     <i class="bi bi-house-door"></i>
-                    <span>Home</span>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="{% url 'pantry:pantry_view' %}">
-                    <i class="bi bi-fork-knife"></i>
-                    <span>Pantry</span>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="{% url 'recipes:recipes' %}">
-                    <i class="bi bi-journal-text"></i>
-                    <span>Recipes</span>
-                </a>
-            </li>
+    <a class="nav-link {% if request.path == '/' %}active{% endif %}" href="{% url 'pantry:index' %}">
+        <i class="bi bi-house-door"></i>
+        <span>Home</span>
+    </a>
+</li>
 
+<li class="nav-item">
+    <a class="nav-link {% if request.path == '/pantry/' %}active{% endif %}" href="{% url 'pantry:pantry_view' %}">
+        <i class="bi bi-fork-knife"></i>
+        <span>Pantry</span>
+    </a>
+</li>
 
+<li class="nav-item">
+    <a class="nav-link {% if request.path == '/recipes/' %}active{% endif %}" href="{% url 'recipes:recipes' %}">
+        <i class="bi bi-journal-text"></i>
+        <span>Recipes</span>
+    </a>
+</li>
 
         <hr class="sidebar-divider">
 

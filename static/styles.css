@@ -60,9 +60,9 @@
 
 
    :root {
-            --sidebar-width: 250px;
-            --sidebar-minimized-width: 70px;
-            --transition-speed: 0.3s;
+            --sidebar-width: 12vw;
+            --sidebar-minimized-width: 4vw;
+            --transition-speed: 0.4s;
             --top-search-bar-height: 70px; 
             --primary-green: #729f75;
             --secondary-green: #67eb72;
@@ -121,13 +121,12 @@
             right: 0;
             height: var(--top-search-bar-height);
             z-index: 1000;
-             background-color: var(--primary-green);
-    border-bottom: 1.5px solid var(--tertiary-green);
-    
-
+             background-color: var(--tertiary-green);
+              border-bottom: 1.5px solid var(--tertiary-green);
             padding: 0 1.5rem;
             display: flex;
             align-items: center;
+            left: 0;
             transition: left var(--transition-speed) ease-in-out, width var(--transition-speed) ease-in-out;
             left: var(--sidebar-width);
             width: calc(100% - var(--sidebar-width));
@@ -204,7 +203,8 @@
         .top-search-bar .search-form {
             flex-grow: 1;
             display: flex;
-            margin-left: 1rem;
+            align-items: center;
+            justify-content: end;
             gap: 1.2rem;
         }
         .top-search-bar .form-control {
@@ -257,7 +257,7 @@
 
 }
 
-
+.sidebar .nav-link.active,
 .sidebar .nav-link:hover,
 .sidebar .nav-link:focus {
     background-color: var(--tertiary-green);
@@ -271,8 +271,8 @@
     margin: 2rem 0 2rem 1rem;
     border-width: 1.5px;
       border-color: var(--tertiary-green);
-    opacity:1;
-    width: 75%;
+    opacity:0.75;
+    width: 100%;
 }
 
 body.sidebar-minimized .sidebar-divider{
@@ -361,10 +361,14 @@ section{
 
 .offcanvas-body{
     padding-top: 3rem;
-    border-right: 1.5px solid var(--tertiary-green);
 
 }
 
 .sidebar-toggle-div{
 padding: 0.6rem 1.5rem 0.6rem 1rem;
+}
+
+.nav-greeting{
+    color: var(--light-text);
+    font-size: 1.2rem;
 }
