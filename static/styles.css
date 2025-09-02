@@ -61,7 +61,7 @@
 
    :root {
             --sidebar-width: 12vw;
-            --sidebar-minimized-width: 4vw;
+            --sidebar-minimized-width: 5vw;
             --transition-speed: 0.4s;
             --top-search-bar-height: 70px; 
             --primary-green: #729f75;
@@ -94,6 +94,8 @@
 
         body.sidebar-minimized {
             margin-left: var(--sidebar-minimized-width);
+            overflow-x: hidden;
+
         }
 
         .sidebar {
@@ -105,7 +107,6 @@
             z-index: 1050;
             background-color: var(--primary-green);
             transition: width var(--transition-speed) ease-in-out;
-            overflow-y: auto;
             display: flex;
             flex-direction: column;
         }
@@ -371,4 +372,5 @@ padding: 0.6rem 1.5rem 0.6rem 1rem;
 .nav-greeting{
     color: var(--light-text);
     font-size: 1.2rem;
+    
 }

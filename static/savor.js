@@ -1,47 +1,65 @@
 document.addEventListener("DOMContentLoaded", () => {
+  
+  const savedState = localStorage.getItem("sidebarState");
+  const body = document.body;
+  const toggleIcon = document
+    .getElementById("sidebarToggle")
+    .querySelector("i");
 
-const sidebarToggle = document.getElementById('sidebarToggle');
-sidebarToggle.addEventListener('click', () => {
-const body = document.body;
-const toggleIcon = sidebarToggle.querySelector('i');
+  if (savedState === "minimized") {
+    body.classList.add("sidebar-minimized");
+    toggleIcon.classList.remove("bi-box-arrow-in-left");
+    toggleIcon.classList.add("bi-box-arrow-right");
+  }
 
-    body.classList.toggle('sidebar-minimized');
-    
-    if (body.classList.contains('sidebar-minimized')) {
-        toggleIcon.classList.remove('bi-box-arrow-in-left');
-        toggleIcon.classList.add('bi-box-arrow-right');
+  const sidebarToggle = document.getElementById("sidebarToggle");
+  sidebarToggle.addEventListener("click", () => {
+    const body = document.body;
+    const toggleIcon = sidebarToggle.querySelector("i");
+
+    body.classList.toggle("sidebar-minimized");
+
+    if (body.classList.contains("sidebar-minimized")) {
+      localStorage.setItem("sidebarState", "minimized");
+      toggleIcon.classList.remove("bi-box-arrow-in-left");
+      toggleIcon.classList.add("bi-box-arrow-right");
     } else {
-        toggleIcon.classList.remove('bi-box-arrow-right');
-        toggleIcon.classList.add('bi-box-arrow-in-left');
+      localStorage.setItem("sidebarState", "expanded");
+      toggleIcon.classList.remove("bi-box-arrow-right");
+      toggleIcon.classList.add("bi-box-arrow-in-left");
     }
-});
+  });
 
-const accountDropdown = document.getElementById('account-dropdown-item')
-if (accountDropdown){
-
-  accountDropdown.addEventListener('show.bs.dropdown', function() {
-    if (document.body.classList.contains('sidebar-minimized')) {
-        document.body.classList.remove('sidebar-minimized');
-        document.getElementById('sidebarToggle').querySelector('i').classList.add('bi-box-arrow-in-left');
-        document.getElementById('sidebarToggle').querySelector('i').classList.remove('bi-box-arrow-right');
-    }
-});
-
-};
+  const accountDropdown = document.getElementById("account-dropdown-item");
+  if (accountDropdown) {
+    accountDropdown.addEventListener("show.bs.dropdown", function () {
+      if (document.body.classList.contains("sidebar-minimized")) {
+        document.body.classList.remove("sidebar-minimized");
+        document
+          .getElementById("sidebarToggle")
+          .querySelector("i")
+          .classList.add("bi-box-arrow-in-left");
+        document
+          .getElementById("sidebarToggle")
+          .querySelector("i")
+          .classList.remove("bi-box-arrow-right");
+      }
+    });
+  }
 
   const productSearchForm = document.querySelector("#search-form");
-  const  csrfToken = productSearchForm.elements.csrfmiddlewaretoken.value;
+  const csrfToken = productSearchForm.elements.csrfmiddlewaretoken.value;
 
-    document.getElementById('scan-button').addEventListener('click', () => {
-        document.getElementById('scanner-container').style.display = 'block';
-        document.getElementById('searched-product-section').innerHTML = ''; 
-        startScanner(csrfToken);
-    });
+  document.getElementById("scan-button").addEventListener("click", () => {
+    document.getElementById("scanner-container").style.display = "block";
+    document.getElementById("searched-product-section").innerHTML = "";
+    startScanner(csrfToken);
+  });
 
-    document.getElementById('stop-scanner-btn').addEventListener('click', () => {
-        Quagga.stop();
-        document.getElementById('scanner-container').style.display = 'none';
-    });
+  document.getElementById("stop-scanner-btn").addEventListener("click", () => {
+    Quagga.stop();
+    document.getElementById("scanner-container").style.display = "none";
+  });
 
   productSearchForm.addEventListener("submit", (event) => {
     event.preventDefault();
@@ -88,7 +106,7 @@ if (accountDropdown){
     button.addEventListener("click", (event) => {
       const clickedButton = event.target;
       const productIdToFav = clickedButton.dataset.productId;
-      favouriteProduct(productIdToFav,  csrfToken, clickedButton);
+      favouriteProduct(productIdToFav, csrfToken, clickedButton);
     });
   });
 
@@ -100,12 +118,9 @@ if (accountDropdown){
       const quantityInput = productCard.querySelector(
         ".product-quantity-input"
       ).value;
-      addProduct(productIdToAdd, quantityInput,  csrfToken, productCard);
+      addProduct(productIdToAdd, quantityInput, csrfToken, productCard);
     });
   });
-
-
-   
 });
 
 function searchProduct(barcode = "None", productName = "None", csrfToken) {
@@ -424,37 +439,45 @@ function updateFavouriteSection(product, is_favourited, csrfToken) {
   }
 }
 
-
 function startScanner(csrfToken) {
-        Quagga.init({
-            inputStream : {
-                name : "Live",
-                type : "LiveStream",
-                target: document.querySelector('#interactive'),
-                constraints: {
-                   width: { min: 640 },
-                   height: { min: 480 },
-                    facingMode: "environment" 
-                }
-            },
-            decoder: {
-                readers: ["ean_reader", "upc_reader", "upc_e_reader", "ean_8_reader", "code_39_reader"]
-            }
-        }, function(err) {
-            if (err) {
-                console.error(err);
-                return;
-            }
-            console.log("Initialization finished. Ready to start");
-            Quagga.start();
-        });
-
-        Quagga.onDetected(function(result) {
-            const barcode = result.codeResult.code;
-            console.log("Barcode detected:", barcode);
-            Quagga.stop();
-            document.getElementById('scanner-container').style.display = 'none';
-            
-            searchProduct(barcode, "", csrfToken);
-        });
+  Quagga.init(
+    {
+      inputStream: {
+        name: "Live",
+        type: "LiveStream",
+        target: document.querySelector("#interactive"),
+        constraints: {
+          width: { min: 640 },
+          height: { min: 480 },
+          facingMode: "environment",
+        },
+      },
+      decoder: {
+        readers: [
+          "ean_reader",
+          "upc_reader",
+          "upc_e_reader",
+          "ean_8_reader",
+          "code_39_reader",
+        ],
+      },
+    },
+    function (err) {
+      if (err) {
+        console.error(err);
+        return;
+      }
+      console.log("Initialization finished. Ready to start");
+      Quagga.start();
     }
+  );
+
+  Quagga.onDetected(function (result) {
+    const barcode = result.codeResult.code;
+    console.log("Barcode detected:", barcode);
+    Quagga.stop();
+    document.getElementById("scanner-container").style.display = "none";
+
+    searchProduct(barcode, "", csrfToken);
+  });
+}
