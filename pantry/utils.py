@@ -10,7 +10,7 @@ OFF_USER_AGENT = settings.OPENFOODFACTS_API['USER_AGENT']
 USE_STAGING_AUTH = settings.OPENFOODFACTS_API['USE_STAGING_AUTH']
 OFF_USERNAME = settings.OPENFOODFACTS_API['USERNAME']
 OFF_PASSWORD = settings.OPENFOODFACTS_API['PASSWORD']
-
+OFF_SEARCH_API_V3_URL = settings.OPENFOODFACTS_API['SEARCH_API_V3_URL']
 
 
 def get_headers():
@@ -21,26 +21,34 @@ def get_headers():
     return headers
 
 
+
 @ratelimit(key='ip', rate='100/m', block=True, group='off_barcode_api_call')
 def fetch_product_by_barcode(request, barcode):
 
     api_url = f"{OFF_API_BASE_URL}/api/v2/product/{barcode}.json"
     headers = get_headers()
-
+    
     response = requests.get(api_url, headers=headers)
     response.raise_for_status() 
     return response.json()
 
 
+
 @ratelimit(key='ip', rate='10/m', block=True, group='off_name_api_call')
 def search_products_by_name(request, product_name):
 
-    api_url = f"{OFF_API_BASE_URL}/cgi/search.pl?search_terms={product_name}&search_simple=1&json=1"
+    api_url = OFF_SEARCH_API_V3_URL
     headers = get_headers()
 
-    response = requests.get(api_url, headers=headers)
+    params = {
+        'query': product_name,
+        'fields': 'product_name,brands,code,image_small_url,product_quantity,product_quantity_unit',
+    }
+
+    response = requests.get(api_url, headers=headers, params=params)
     response.raise_for_status()
     return response.json()
+
 
 
 def check_db_for_product(barcode = None, name = None):
@@ -59,13 +67,10 @@ def check_db_for_product(barcode = None, name = None):
                  'product_quantity_unit': local_product.product_quantity_unit,
                  'product_quantity': local_product.product_quantity,
                  'id':local_product.id
- 
                 })
             return found_products_json
-        
         except Product.DoesNotExist:
             print(f"Product not found in local DB for barcode: {barcode}. Fetching from OFF API.")
-
     elif name: 
         local_products = Product.objects.filter(product_name__icontains=name)
         if local_products.exists():
@@ -79,14 +84,10 @@ def check_db_for_product(barcode = None, name = None):
                     'product_quantity_unit': product.product_quantity_unit,
                     'product_quantity': product.product_quantity,
                     'id':product.id
-
                 })
-
             return  found_products_json
-        
         else:
             print(f"Products not found in local DB for name: {name}. Fetching from OFF API.")
-    
     return found_products_json
 
 
