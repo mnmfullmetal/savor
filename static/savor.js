@@ -1,10 +1,8 @@
 document.addEventListener("DOMContentLoaded", () => {
+
   const savedState = localStorage.getItem("sidebarState");
   const body = document.body;
-  const toggleIcon = document
-    .getElementById("sidebarToggle")
-    .querySelector("i");
-
+  const toggleIcon = document.getElementById("sidebarToggle").querySelector("i");
   if (savedState === "minimized") {
     body.classList.add("sidebar-minimized");
     toggleIcon.classList.remove("bi-box-arrow-in-left");
@@ -15,7 +13,6 @@ document.addEventListener("DOMContentLoaded", () => {
   sidebarToggle.addEventListener("click", () => {
     const body = document.body;
     const toggleIcon = sidebarToggle.querySelector("i");
-
     body.classList.toggle("sidebar-minimized");
 
     if (body.classList.contains("sidebar-minimized")) {
@@ -34,20 +31,11 @@ document.addEventListener("DOMContentLoaded", () => {
     accountDropdown.addEventListener("show.bs.dropdown", function () {
       if (document.body.classList.contains("sidebar-minimized")) {
         document.body.classList.remove("sidebar-minimized");
-        document
-          .getElementById("sidebarToggle")
-          .querySelector("i")
-          .classList.add("bi-box-arrow-in-left");
-        document
-          .getElementById("sidebarToggle")
-          .querySelector("i")
-          .classList.remove("bi-box-arrow-right");
+        document.getElementById("sidebarToggle").querySelector("i").classList.add("bi-box-arrow-in-left");
+        document.getElementById("sidebarToggle").querySelector("i").classList.remove("bi-box-arrow-right");
       }
     });
   }
-
-  const productSearchForm = document.querySelector("#search-form");
-  const csrfToken = productSearchForm.elements.csrfmiddlewaretoken.value;
 
   document.getElementById("scan-button").addEventListener("click", () => {
     document.getElementById("scanner-container").style.display = "block";
@@ -60,12 +48,35 @@ document.addEventListener("DOMContentLoaded", () => {
     document.getElementById("scanner-container").style.display = "none";
   });
 
+  const productSearchForm = document.querySelector("#search-form");
+  const csrfToken = productSearchForm.elements.csrfmiddlewaretoken.value;
+  const productNameInput = document.getElementById("product_name_input");
+  const autocompleteSuggestionsDiv = document.getElementById("autocomplete-suggestions");
+  productNameInput.addEventListener("input",debounce(async (event) => {
+    const query = event.target.value.trim();
+
+    if (query.length === 0) {
+      autocompleteSuggestionsDiv.innerHTML = "";
+      return;
+    }
+
+    fetch(`/suggestions/?query=${encodeURIComponent(query)}`)
+    .then((response) => response.json())
+    .then((data) => {
+      const suggestionsArray = data.suggestions;
+      displaySuggestions(suggestionsArray);
+    })
+    .catch((error) => {
+      console.error("Error fetching suggestions:", error);
+      autocompleteSuggestionsDiv.innerHTML =
+            '<div class="list-group-item text-danger">Failed to load suggestions.</div>';
+    });
+  }, 300));
+
   productSearchForm.addEventListener("submit", (event) => {
     event.preventDefault();
     const barcode = productSearchForm.elements.barcode.value.trim();
     const productName = productSearchForm.elements.product_name.value.trim();
-    const csrfToken = productSearchForm.elements.csrfmiddlewaretoken.value;
-
     const currentPath = window.location.pathname;
 
     if (currentPath !== "index" && currentPath !== "/") {
@@ -87,10 +98,8 @@ document.addEventListener("DOMContentLoaded", () => {
     sessionStorage.removeItem("searchProductName");
     sessionStorage.removeItem("searchCsrfToken");
 
-    const barcodeInput =
-      document.querySelector("#search-form").elements.barcode;
-    const productNameInput =
-      document.querySelector("#search-form").elements.product_name;
+    const barcodeInput = document.querySelector("#search-form").elements.barcode;
+    const productNameInput = document.querySelector("#search-form").elements.product_name;
 
     if (barcodeInput) barcodeInput.value = savedBarcode;
     if (productNameInput) productNameInput.value = savedProductName;
@@ -129,9 +138,10 @@ function searchProduct(barcode = "None", productName = "None", csrfToken) {
   searchedProductsDiv.innerHTML = "<p class='text-muted'>Searching...</p>";
 
   if (!barcode && !productName) {
-    searchedProductsDiv.innerHTML = `<div class="alert alert-warning text-center mt-3" role="alert">
- Please enter a barcode or product name to search.
- </div>`;
+    searchedProductsDiv.innerHTML = `
+    <div class="alert alert-warning text-center mt-3" role="alert">
+    Please enter a barcode or product name to search.
+    </div>`;
     return;
   }
 
@@ -148,16 +158,17 @@ function searchProduct(barcode = "None", productName = "None", csrfToken) {
     },
     body: JSON.stringify(requestData),
   })
-    .then((response) => response.json())
-    .then((data) => {
-      console.log("Response from Django API:", data);
-      if (data.error || data.errors) {
-        const errorMessage = data.error || JSON.parse(data.errors);
-        console.error("Error from backend:", errorMessage);
-        searchedProductsDiv.innerHTML = `<div class="alert alert-danger text-center mt-3" role="alert">
- Error: ${data.error || "Invalid input."}
- </div>`;
-      } else if (data.products && data.products.length > 0) {
+  .then((response) => response.json())
+  .then((data) => {
+    console.log("Response from Django API:", data);
+    if (data.error || data.errors) {
+      const errorMessage = data.error || JSON.parse(data.errors);
+      console.error("Error from backend:", errorMessage);
+      searchedProductsDiv.innerHTML = `
+      <div class="alert alert-danger text-center mt-3" role="alert">
+       Error: ${data.error || "Invalid input."}
+       </div>`;
+    } else if (data.products && data.products.length > 0) {
         searchedProductsDiv.innerHTML = "";
         data.products.forEach((product) => {
           const productColumnDiv = document.createElement("div");
@@ -169,17 +180,17 @@ function searchProduct(barcode = "None", productName = "None", csrfToken) {
             "mb-4"
           );
 
-        const productCard = document.createElement("div");
-        productCard.classList.add("card", "h-100", "border-0", "shadow-sm");
+          const productCard = document.createElement("div");
+          productCard.classList.add("card", "h-100", "border-0", "shadow-sm");
 
-        productCard.innerHTML = `
+          productCard.innerHTML = `
             <div class="card h-100 border-0 shadow-sm">
               ${
                 product.image_url
                   ? `<img src="${product.image_url}" alt="${
                       product.product_name || "Product Image"
                     }" class="card-img-top img-fluid rounded-top" style="max-height: 150px; object-fit: cover;">`
-                : ""
+                  : ""
               }
               <div class="card-body d-flex flex-column justify-content-between">
                 <h3 class="card-title h5 mb-2 text-dark">${
@@ -205,7 +216,9 @@ function searchProduct(barcode = "None", productName = "None", csrfToken) {
 
                 <div class="mt-auto d-flex flex-column">
                   <button class="btn btn-outline-primary btn-sm mb-2 add-btn" 
-                          data-product-name="${product.product_name || "No Name"}" 
+                          data-product-name="${
+                            product.product_name || "No Name"
+                          }" 
                           data-product-id="${product.id}">
                     Add to Pantry
                   </button>
@@ -214,16 +227,12 @@ function searchProduct(barcode = "None", productName = "None", csrfToken) {
                       ? "btn-outline-danger"
                       : "btn-outline-primary"
                   }" data-product-id="${product.id}">
-                    ${
-                      product.is_favourited
-                        ? "Remove Favourite"
-                        : "Favourite"
-                    }
+                    ${product.is_favourited ? "Remove Favourite" : "Favourite"}
                   </button>
               </div>
               </div>
             </div>`;
-            
+
           productColumnDiv.appendChild(productCard);
           searchedProductsDiv.appendChild(productColumnDiv);
 
@@ -245,16 +254,18 @@ function searchProduct(barcode = "None", productName = "None", csrfToken) {
           });
         });
       } else {
-        searchedProductsDiv.innerHTML = `<div class="alert alert-info text-center mt-3" role="alert">
-                                                    No products found. Try a different search term.
-                                                </div>`;
+        searchedProductsDiv.innerHTML = `
+        <div class="alert alert-info text-center mt-3" role="alert">
+         No products found. Try a different search term.
+        </div>`;
       }
     })
     .catch((error) => {
       console.error("Fetch network error:", error);
-      searchedProductsDiv.innerHTML = `<div class="alert alert-danger text-center mt-3" role="alert">
-                                                A network error occurred. Please check your connection.
-                                            </div>`;
+      searchedProductsDiv.innerHTML = `
+      <div class="alert alert-danger text-center mt-3" role="alert">
+      A network error occurred. Please check your connection.
+      </div>`;
     });
 }
 
@@ -335,7 +346,7 @@ function favouriteProduct(productIdToFav, csrfToken, clickedButton) {
   })
     .then((response) => response.json())
     .then((data) => {
-      clickedButton.textContent = data.is_favourited 
+      clickedButton.textContent = data.is_favourited
         ? "Remove Favourite"
         : "Favourite";
 
@@ -434,15 +445,15 @@ function updateFavouriteSection(product, is_favourited, csrfToken) {
       addProduct(productIdToAdd, quantityInput, csrfToken, newFavouriteCard);
     });
   } else {
-   const cardToRemove = favouriteSection
-          .querySelector(`[data-product-id="${product.id}"]`)
-          .closest(".product-card-wrapper");
+    const cardToRemove = favouriteSection
+      .querySelector(`[data-product-id="${product.id}"]`)
+      .closest(".product-card-wrapper");
 
-        cardToRemove.classList.add('fade-out');
+    cardToRemove.classList.add("fade-out");
 
-        setTimeout(() => {
-            cardToRemove.remove();
-        }, 400); 
+    setTimeout(() => {
+      cardToRemove.remove();
+    }, 400);
   }
 }
 
@@ -487,4 +498,38 @@ function startScanner(csrfToken) {
 
     searchProduct(barcode, "", csrfToken);
   });
+}
+
+function displaySuggestions(suggestions) {
+  const autocompleteSuggestionsDiv = document.getElementById("autocomplete-suggestions");
+  const productNameInput = document.getElementById("product_name_input");
+
+  autocompleteSuggestionsDiv.innerHTML = "";
+
+  if (!suggestions || suggestions.length === 0) {
+    return;
+  }
+
+  suggestions.forEach((suggestion) => {
+    const suggestionItem = document.createElement("a");
+    suggestionItem.classList.add("list-group-item", "list-group-item-action");
+    suggestionItem.href = "#";
+    suggestionItem.textContent = suggestion;
+
+    suggestionItem.addEventListener("click", () => {
+      productNameInput.value = suggestion;
+      autocompleteSuggestionsDiv.innerHTML = "";
+    });
+
+    autocompleteSuggestionsDiv.appendChild(suggestionItem);
+  });
+}
+
+function debounce(func, delay) {
+  let timeout;
+  return function (...args) {
+    const context = this;
+    clearTimeout(timeout);
+    timeout = setTimeout(() => func.apply(context, args), delay);
+  };
 }

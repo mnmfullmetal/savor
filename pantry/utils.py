@@ -50,11 +50,31 @@ def search_products_by_name(request, product_name):
     return response.json()
 
 
+@ratelimit(key='ip', rate='30/m', block=True, group='off_suggestions_api_call')
+def get_product_suggestions(request, query):
+    
+    api_url = "https://world.openfoodfacts.net/api/v3/taxonomy_suggestions"
+    
+    params = {
+        'tagtype': 'ingredients',
+        'string': query,
+        'limit': 5,
+    }
+
+    try:
+        response = requests.get(api_url, params=params)
+        response.raise_for_status()
+        data = response.json()
+        return data.get('suggestions', [])
+    except requests.exceptions.RequestException as e:
+        print(f"Error fetching suggestions: {e}")
+        return []
+
+
 
 def check_db_for_product(barcode = None, name = None):
 
     found_products_json = []
-
     if barcode: 
         try:
             local_product = Product.objects.get(code=barcode)

@@ -13,6 +13,7 @@ from .utils import (
     fetch_product_by_barcode,
     search_products_by_name,
     save_product_to_db,
+    get_product_suggestions,
 )
 
 
@@ -38,10 +39,8 @@ def rate_limit_error_response(request, exception):
 
 
 
-
 @require_POST
 def search_product(request):
-
     
     try:
         data = json.loads(request.body)
@@ -236,3 +235,18 @@ def toggle_favourite_product(request, id):
             'product_quantity_unit': product.product_quantity_unit,
         }
     })
+
+def product_suggestions(request):
+    try:
+        query = request.GET.get('query', '').strip()
+
+        if not query:
+            return JsonResponse({'suggestions': []}) 
+
+        suggestions_data = get_product_suggestions(request, query)
+
+        return JsonResponse({'suggestions': suggestions_data})
+
+    except Exception as e:
+        print(f"Error fetching suggestions: {e}")
+        return JsonResponse({'error': 'Failed to get suggestions.'}, status=500)

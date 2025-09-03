@@ -100,7 +100,6 @@ def save_recipe(request, id):
         
         return JsonResponse({'success': True, 'message': 'Recipe saved successfully.', 'new_recipe': new_recipe_data}, status=200)
         
-
     except SuggestedRecipe.DoesNotExist:
         return JsonResponse({'error': 'Suggested recipe not found.'}, status=404)
     except json.JSONDecodeError:
