@@ -38,7 +38,6 @@ def search_products_by_name(request, product_name):
 
     api_url = f"{OFF_API_BASE_URL}/cgi/search.pl"
     headers = get_headers()
-
    
     params = {
         'search_terms': product_name,

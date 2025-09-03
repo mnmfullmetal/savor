@@ -52,7 +52,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const csrfToken = productSearchForm.elements.csrfmiddlewaretoken.value;
   const productNameInput = document.getElementById("product_name_input");
   const autocompleteSuggestionsDiv = document.getElementById("autocomplete-suggestions");
-  const debounceSpeed =500; 
+  const debounceSpeed = 200; 
   productNameInput.addEventListener("input",debounce(async (event) => {
     const query = event.target.value.trim();
 
@@ -81,12 +81,15 @@ document.addEventListener("DOMContentLoaded", () => {
     const currentPath = window.location.pathname;
 
     if (currentPath !== "index" && currentPath !== "/") {
+     
       sessionStorage.setItem("searchBarcode", barcode);
       sessionStorage.setItem("searchProductName", productName);
       sessionStorage.setItem("searchCsrfToken", csrfToken);
       window.location.href = "/";
     } else {
       searchProduct(barcode, productName, csrfToken);
+      productNameInput.value = '';
+
     }
   });
 
@@ -106,6 +109,8 @@ document.addEventListener("DOMContentLoaded", () => {
     if (productNameInput) productNameInput.value = savedProductName;
 
     searchProduct(savedBarcode, savedProductName, savedCsrfToken);
+    productNameInput.value = '';
+
   }
 
   const initialFavoriteButtons = document.querySelectorAll(".favourite-btn");
@@ -521,6 +526,10 @@ function displaySuggestions(suggestions) {
       productNameInput.value = suggestion;
       autocompleteSuggestionsDiv.innerHTML = "";
     });
+
+    document.addEventListener("click", () => { 
+      autocompleteSuggestionsDiv.innerHTML = "";
+    })
 
     autocompleteSuggestionsDiv.appendChild(suggestionItem);
   });
