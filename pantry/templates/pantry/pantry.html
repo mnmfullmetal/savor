@@ -12,7 +12,7 @@
        
         <div class="pantry-items-page row g-4">
             {% for item in pantryitems %}
-                <div class="col-12 col-sm-6 col-md-4 col-lg-4 mb-4">
+                <div class="col-12 col-sm-6 col-md-4 col-lg-4 mb-4 pantry-item-col">
                     <div class="pantry-item card h-100 shadow-sm border-0">
                         {% if item.product.image_url %}
                             <img src="{{ item.product.image_url }}"

@@ -434,10 +434,15 @@ function updateFavouriteSection(product, is_favourited, csrfToken) {
       addProduct(productIdToAdd, quantityInput, csrfToken, newFavouriteCard);
     });
   } else {
-    const cardToRemove = favouriteSection
-      .querySelector(`[data-product-id="${product.id}"]`)
-      .closest(".product-card-wrapper");
-    cardToRemove.remove();
+   const cardToRemove = favouriteSection
+          .querySelector(`[data-product-id="${product.id}"]`)
+          .closest(".product-card-wrapper");
+
+        cardToRemove.classList.add('fade-out');
+
+        setTimeout(() => {
+            cardToRemove.remove();
+        }, 400); 
   }
 }
 

@@ -51,7 +51,12 @@ function removePantryItem(removeRequestData) {
       pantryQtyCount.innerHTML = newQuantity;
 
       if (newQuantity <= 0) {
-        itemCardCol.remove();
+
+        itemCardCol.classList.add('fade-out');
+                
+         setTimeout(() => {
+              itemCardCol.remove();
+          }, 400); 
       }
     })
     .catch((error) => {
