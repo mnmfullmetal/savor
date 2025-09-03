@@ -24,8 +24,10 @@
 
     <form class="search-form" role="search" id="search-form">
         {% csrf_token %}
+        <div class="autocomplete-wrapper position-relative">
         <input type="text" id="product_name_input" name="product_name" class="form-control" placeholder="Search by Name" aria-label="Search Product by Name">
         <div id="autocomplete-suggestions" class="list-group position-absolute w-100" style="z-index: 1000;"></div>
+        </div>
         <input type="text" id="barcode_input" name="barcode" class="form-control" placeholder="Search by Barcode" aria-label="Search Product by Barcode">
         <button class="btn btn-outline-success" type="submit">
           <span class="btn-text">Search</span>  <i class="bi bi-search"></i>
@@ -34,6 +36,8 @@
             <span class="btn-text">Scan</span> <i class="bi bi-upc-scan"></i> 
         </button>
     </form>
+        
+
 </nav>
 
 <aside id="sidebar" class="sidebar">
