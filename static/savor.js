@@ -52,6 +52,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const csrfToken = productSearchForm.elements.csrfmiddlewaretoken.value;
   const productNameInput = document.getElementById("product_name_input");
   const autocompleteSuggestionsDiv = document.getElementById("autocomplete-suggestions");
+  const debounceSpeed =500; 
   productNameInput.addEventListener("input",debounce(async (event) => {
     const query = event.target.value.trim();
 
@@ -71,7 +72,7 @@ document.addEventListener("DOMContentLoaded", () => {
       autocompleteSuggestionsDiv.innerHTML =
             '<div class="list-group-item text-danger">Failed to load suggestions.</div>';
     });
-  }, 300));
+  }, debounceSpeed));
 
   productSearchForm.addEventListener("submit", (event) => {
     event.preventDefault();

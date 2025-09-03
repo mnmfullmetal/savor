@@ -151,7 +151,6 @@ LOGIN_URL = 'login'
 
 OPENFOODFACTS_API = {
      'BASE_URL': "https://world.openfoodfacts.net", 
-     'SEARCH_API_V3_URL': "https://world.openfoodfacts.net/api/v3/search",
      'USERNAME': "off",
      'PASSWORD': "off",
      'USER_AGENT': "Savor/1.0 (mnm.fullmetal@gmail.com)",

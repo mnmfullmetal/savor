@@ -10,7 +10,6 @@ OFF_USER_AGENT = settings.OPENFOODFACTS_API['USER_AGENT']
 USE_STAGING_AUTH = settings.OPENFOODFACTS_API['USE_STAGING_AUTH']
 OFF_USERNAME = settings.OPENFOODFACTS_API['USERNAME']
 OFF_PASSWORD = settings.OPENFOODFACTS_API['PASSWORD']
-OFF_SEARCH_API_V3_URL = settings.OPENFOODFACTS_API['SEARCH_API_V3_URL']
 
 
 def get_headers():
@@ -37,12 +36,15 @@ def fetch_product_by_barcode(request, barcode):
 @ratelimit(key='ip', rate='10/m', block=True, group='off_name_api_call')
 def search_products_by_name(request, product_name):
 
-    api_url = OFF_SEARCH_API_V3_URL
+    api_url = f"{OFF_API_BASE_URL}/cgi/search.pl"
     headers = get_headers()
 
+   
     params = {
-        'query': product_name,
-        'fields': 'product_name,brands,code,image_small_url,product_quantity,product_quantity_unit',
+        'search_terms': product_name,
+        'search_simple': 1,
+        'action': 'process',
+        'json': 1
     }
 
     response = requests.get(api_url, headers=headers, params=params)
