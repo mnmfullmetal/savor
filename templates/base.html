@@ -83,7 +83,7 @@
                 <li>
                     <form action="{% url 'logout' %}" method="post" class="dropdown-item p-0">
                         {% csrf_token %}
-                        <button type="submit" class="btn btn-link nav-link  d-block text-start w-100">
+                        <button type="submit" class="btn nav-link">
                             <i class="bi bi-arrow-right-circle"></i> <span>Log Out</span> 
                         </button>
                     </form>
@@ -96,7 +96,7 @@
             {% else %}
             <li class="nav-item">
                 <a class="nav-link" href="{% url 'login' %}">
-                    <i class="bi bi-box-arrow-right-circle"></i>
+                    <i class="bi bi-arrow-right-circle"></i>
                     <span>Log On</span>
                 </a>
             </li>

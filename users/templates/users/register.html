@@ -1,10 +1,11 @@
 {% extends 'base.html' %}
 {% load widget_tweaks %}
+{% load static %}
 
 {% block title %}Register{% endblock %}
 
 {% block body %}
-<h2>Register</h2>
+<h2 class="text-dark">Register</h2>
 <form method="post">
     {% csrf_token %}
 
@@ -16,25 +17,25 @@
         </div>
     {% endif %}
 
-    <div class="mb-3">
+    <div class="mb-3 text-dark">
         {{ form.username.label_tag }}
         {% render_field form.username class="form-control" %}
-            <div class="form-text">{{ form.username.help_text }}</div>
+            <div class="form-text ">{{ form.username.help_text }}</div>
         {% for error in form.username.errors %}
             <div class="invalid-feedback d-block">{{ error }}</div>
         {% endfor %}
     </div>
 
-    <div class="mb-3">
+    <div class="mb-3 text-dark">
         {{ form.email.label_tag }}
         {% render_field form.email class="form-control" %}
-            <div class="form-text">{{ form.email.help_text }}</div>
+            <div class="form-text ">{{ form.email.help_text }}</div>
         {% for error in form.email.errors %}
             <div class="invalid-feedback d-block">{{ error }}</div>
         {% endfor %}
     </div>
 
-    <div class="mb-3">
+    <div class="mb-3 text-dark">
         {{ form.password1.label_tag }}
         {% render_field form.password1 class="form-control" %}
             <div class="form-text">{{ form.password1.help_text }}</div>
@@ -43,16 +44,16 @@
         {% endfor %}
     </div>
 
-    <div class="mb-3">
+    <div class="mb-3 text-dark">
         {{ form.password2.label_tag }}
         {% render_field form.password2 class="form-control" %}
-            <div class="form-text">{{ form.password2.help_text }}</div>
+            <div class="form-text ">{{ form.password2.help_text }}</div>
         {% for error in form.password2.errors %}
             <div class="invalid-feedback d-block">{{ error }}</div>
         {% endfor %}
     </div>
 
-    <button type="submit" class="btn btn-primary">Register</button>
+    <button type="submit" class="btn btn-outline-primary">Register</button>
 </form>
-<p>Already have an account? <a href="{% url 'login' %}">Log in here</a>.</p>
+<p class="text-dark">Already have an account? <a href="{% url 'login' %}">Log in here</a>.</p>
 {% endblock %}
