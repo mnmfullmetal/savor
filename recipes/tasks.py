@@ -2,7 +2,7 @@ from celery import shared_task
 from django.contrib.auth import get_user_model
 from .utils import generate_recipe_suggestions 
 from .models import SuggestedRecipe
-from pantry.models import PantryItem
+from pantry.models import PantryItem, Product
 from datetime import datetime, timedelta
 
 User = get_user_model()
@@ -35,16 +35,18 @@ def generate_recipes_task(user_id):
         used_pantry_items = pantry_items.filter(
             product__product_name__in=used_ingredient_names
         )
-        
+
+        used_product_codes = used_pantry_items.values_list('product__code', flat=True)
+        used_products = Product.objects.filter(code__in=used_product_codes)
+
         suggested_recipe = SuggestedRecipe.objects.create(
             user=user,
             prompt_text=prompt,
             recipe_data=recipe_data,
         )
         
-        suggested_recipe.used_ingredients.set(used_pantry_items)
+        suggested_recipe.used_ingredients.set(used_products)
       
-
     print("Recipes generated and saved to the database successfully.")
     
 

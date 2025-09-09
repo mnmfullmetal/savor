@@ -132,65 +132,77 @@
 
   <section class="mt-5 p-3 rounded shadow-lg recipe-section">
     <h2 class="h4 mb-4 d-flex align-items-center">Saved Recipes</h2>
-  <div class="accordion" id="saved-recipes-accordion">
-    {% if saved_recipes %} {% for recipe in saved_recipes %}
-    <div class="card recipe-card mb-3">
-      <div class="accordion-item">
-        <h4 class="accordion-header" id="headingSaved{{ forloop.counter }}">
-          <button
-            class="accordion-button collapsed"
-            type="button"
-            data-bs-toggle="collapse"
-            data-bs-target="#collapseSaved{{ forloop.counter }}"
-            aria-expanded="false"
-            aria-controls="collapseSaved{{ forloop.counter }}"
-          >
-            {{ recipe.title }}
-          </button>
-        </h4>
-        <div
-          id="collapseSaved{{ forloop.counter }}"
-          class="accordion-collapse collapse"
-          aria-labelledby="headingSaved{{ forloop.counter }}"
-          data-bs-parent="#saved-recipes-accordion"
-        >
-          <div class="accordion-body">
-            <h5>Ingredients</h5>
-            <ul>
-              {% for ingredient_instance in recipe.recipeingredient_set.all %}
-              <li>
-                {{ ingredient_instance.quantity }} {{ ingredient_instance.unit
-                }} of {{ ingredient_instance.pantry_item.product.product_name }}
-              </li>
-              {% endfor %}
-            </ul>
-            <h5>Instructions</h5>
-            <ol>
-              {% for instruction in recipe.instructions %}
-              <li>{{ instruction }}</li>
-              {% endfor %}
-            </ol>
-            <button
-              class="btn btn-danger delete-btn"
-              data-recipe-id="{{recipe.id}}"
-              data-csrf-token="{{csrf_token}}"
+    <div class="accordion" id="saved-recipes-accordion">
+      {% if saved_recipes_data %} 
+        {% for recipe_data in saved_recipes_data %}
+        <div class="card recipe-card mb-3">
+          <div class="accordion-item">
+            <h4 class="accordion-header" id="headingSaved{{ forloop.counter }}">
+              <button
+                class="accordion-button collapsed"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#collapseSaved{{ forloop.counter }}"
+                aria-expanded="false"
+                aria-controls="collapseSaved{{ forloop.counter }}"
+              >
+                {{ recipe_data.recipe.title }}
+                {% if not recipe_data.has_all_ingredients %}
+                <span class="badge bg-danger ms-2">Missing Items</span>
+                {% endif %}
+              </button>
+            </h4>
+            <div
+              id="collapseSaved{{ forloop.counter }}"
+              class="accordion-collapse collapse"
+              aria-labelledby="headingSaved{{ forloop.counter }}"
+              data-bs-parent="#saved-recipes-accordion"
             >
-              Delete Recipe
-            </button>
+              <div class="accordion-body">
+                <h5>Ingredients</h5>
+                <ul>
+                  {% for ingredient_instance in recipe_data.recipe.savedrecipeingredient_set.all %}
+                  <li>
+                    {{ ingredient_instance.quantity }} {{ ingredient_instance.unit }} of {{ ingredient_instance.product.product_name }}
+                    
+                    {% for missing_data in recipe_data.missing_ingredients %}
+                      {% if ingredient_instance.product.id == missing_data.ingredient.product.id %}
+                        {% if missing_data.status == 'completely_missing' %}
+                        <span class="badge bg-danger ms-2">Completely Missing</span>
+                        {% elif missing_data.status == 'alternative_available' %}
+                        <span class="badge bg-warning ms-2">Alternative Available</span>
+                        {% endif %}
+                      {% endif %}
+                    {% endfor %}
+                  </li>
+                  {% endfor %}
+                </ul>
+                <h5>Instructions</h5>
+                <ol>
+                  {% for instruction in recipe_data.recipe.instructions %}
+                  <li>{{ instruction }}</li>
+                  {% endfor %}
+                </ol>
+                <button
+                  class="btn btn-danger delete-btn"
+                  data-recipe-id="{{recipe_data.recipe.id}}"
+                  data-csrf-token="{{csrf_token}}"
+                >
+                  Delete Recipe
+                </button>
+              </div>
+            </div>
           </div>
         </div>
-      </div>
+        {% endfor %} 
+      {% endif %}
     </div>
-    {% endfor %} {% endif %}
-  </div>
 
-  {% if not saved_recipes %}
-  <div id="no-saved-recipes-alert" class="alert alert-info" role="alert">
-    No saved recipes
-  </div>
-  {% endif %}
-</div>
-
+    {% if not saved_recipes_data %}
+    <div id="no-saved-recipes-alert" class="alert alert-info" role="alert">
+      No saved recipes
+    </div>
+    {% endif %}
   </section>
 
   

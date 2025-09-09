@@ -1,11 +1,11 @@
 from django.shortcuts import render
-from .models import SuggestedRecipe, Recipe, RecipeIngredient
+from .models import SuggestedRecipe, SavedRecipe, SavedRecipeIngredient
 from django.contrib.auth.decorators import login_required
 from django.views.decorators.http import require_POST
 from django.core.cache import cache
 import json
 from django.http import JsonResponse
-from pantry.models import PantryItem
+from pantry.models import PantryItem, Product
 
 
 # Create your views here.
@@ -26,18 +26,50 @@ def recipes_view(request):
         cache.delete(cache_key)
 
     latest_suggestions = SuggestedRecipe.objects.filter(user=user, status="new").order_by('-created_at')
+    recently_suggested = SuggestedRecipe.objects.filter(user=user, status__in=["new", "recent"]).order_by('-created_at')
+    saved_recipes = SavedRecipe.objects.filter(user=user).prefetch_related('savedrecipeingredient_set__product').order_by('-title')
 
-    recently_suggested = SuggestedRecipe.objects.filter(user=user,status__in=["new", "recent"]).order_by('-created_at')
+    user_pantry_product_ids = set(PantryItem.objects.filter(pantry__user=user).values_list('product_id', flat=True))
+    user_pantry_product_names_lower = {
+        name.lower()
+        for name in PantryItem.objects.filter(pantry__user=user).values_list('product__product_name', flat=True)
+    }
 
-    saved_recipes = Recipe.objects.filter(user=user).order_by('-title')
+    saved_recipes_data = []
 
+    for recipe in saved_recipes:
+        has_all_ingredients = True
+        missing_ingredients = []
+
+        for ingredient in recipe.savedrecipeingredient_set.all():
+            required_product = ingredient.product
+            
+            if required_product.id not in user_pantry_product_ids:
+                has_all_ingredients = False
+                required_name = required_product.product_name.lower()
+
+                if required_name in user_pantry_product_names_lower:
+                    missing_ingredients.append({
+                        'ingredient': ingredient,
+                        'status': 'alternative_available'
+                    })
+                else:
+                    missing_ingredients.append({
+                        'ingredient': ingredient,
+                        'status': 'completely_missing'
+                    })
+        
+        saved_recipes_data.append({
+            'recipe': recipe,
+            'missing_ingredients': missing_ingredients,
+            'has_all_ingredients': has_all_ingredients
+        })
 
     return render(request, 'recipes/recipes.html', {
         "latest_suggestions": latest_suggestions,
         "recently_suggested": recently_suggested,
-        "saved_recipes": saved_recipes,
+        "saved_recipes_data": saved_recipes_data,
         "recipe_gen_in_progress": recipe_gen_in_progress
-
     })
 
 
@@ -52,35 +84,37 @@ def save_recipe(request, id):
         if not suggested_recipe_id:
             return JsonResponse({'error': 'Missing recipe Id in request body.'}, status=400)
 
-        suggested_recipe = SuggestedRecipe.objects.get(user=user, id=suggested_recipe_id)
+        suggested_recipe = SuggestedRecipe.objects.prefetch_related('used_ingredients').get(user=user, id=suggested_recipe_id)
         recipe_data = suggested_recipe.recipe_data
         
         title = recipe_data.get("title")
         instructions = recipe_data.get("instructions")
         
-        recipe = Recipe.objects.create(
+        recipe = SavedRecipe.objects.create(
             user=user,
             title=title,
             instructions=instructions,
         )
 
-        for ingredient_data in recipe_data.get('ingredients', []):
-            ingredient_name = ingredient_data.get('name')
-            quantity = ingredient_data.get('quantity')
-            unit = ingredient_data.get('unit')
-
-            try:
-                pantry_item = PantryItem.objects.get(pantry__user=user, product__product_name=ingredient_name)
+        ingredient_data_dict = {item.get('name'): item for item in recipe_data.get('ingredients', [])}
+        
+        for product in suggested_recipe.used_ingredients.all():
+            
+            ingredient_info = ingredient_data_dict.get(product.product_name)
+            
+            if ingredient_info:
+                quantity = ingredient_info.get('quantity')
+                unit = ingredient_info.get('unit')
                 
-                RecipeIngredient.objects.create(
+                SavedRecipeIngredient.objects.create(
                     recipe=recipe,
-                    pantry_item=pantry_item,
+                    product=product, 
                     quantity=quantity,
-                    unit=unit
+                    unit=unit      
                 )
-            except PantryItem.DoesNotExist:
-                print(f"Warning: PantryItem for {ingredient_name} not found. Skipping.")
-
+            else:
+                print(f"Warning: Ingredient data for {product.product_name} not found in recipe data. Skipping.")
+                
         suggested_recipe.status = 'saved'
         suggested_recipe.save()
 
@@ -89,11 +123,12 @@ def save_recipe(request, id):
             'title': recipe.title,
             'ingredients': [
                 {
-                    'quantity': ingredient.quantity,
-                    'unit': ingredient.unit,
-                    'name': ingredient.pantry_item.product.product_name
+                    'quantity': saved_ingredient.quantity,
+                    'unit': saved_ingredient.unit,
+                    'name': saved_ingredient.product.product_name,
+                    'code': saved_ingredient.product.code
                 }
-                for ingredient in recipe.recipeingredient_set.all()
+                for saved_ingredient in recipe.savedrecipeingredient_set.all()
             ],
             'instructions': recipe.instructions,
         }
@@ -102,8 +137,6 @@ def save_recipe(request, id):
         
     except SuggestedRecipe.DoesNotExist:
         return JsonResponse({'error': 'Suggested recipe not found.'}, status=404)
-    except json.JSONDecodeError:
-        return JsonResponse({'error': 'Invalid JSON in request body.'}, status=400)
     except Exception as e:
         return JsonResponse({'error': str(e)}, status=500)
 
@@ -126,7 +159,7 @@ def mark_as_seen(request, id):
 def delete_recipe(request, id):
     user = request.user 
 
-    recipe_to_delete = Recipe.objects.get(user=user, id=id)
+    recipe_to_delete = SavedRecipe.objects.get(user=user, id=id)
     recipe_to_delete.delete()
 
     return JsonResponse({'message': "Recipe deleted"})
