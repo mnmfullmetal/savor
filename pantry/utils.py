@@ -4,6 +4,8 @@ from django.conf import settings
 from django_ratelimit.decorators import ratelimit
 from django.utils import timezone 
 from pantry.models import Product
+from django.core.cache import cache
+
 
 OFF_API_BASE_URL = settings.OPENFOODFACTS_API['BASE_URL']
 OFF_USER_AGENT = settings.OPENFOODFACTS_API['USER_AGENT']
@@ -54,7 +56,7 @@ def search_products_by_name(request, product_name):
 @ratelimit(key='ip', rate='30/m', block=True, group='off_suggestions_api_call')
 def get_product_suggestions(request, query):
     
-    api_url = "https://world.openfoodfacts.net/api/v3/taxonomy_suggestions"
+    api_url = f"{OFF_API_BASE_URL}/api/v3/taxonomy_suggestions"
     
     params = {
         'tagtype': 'ingredients',
@@ -138,3 +140,29 @@ def save_product_to_db(product_data):
     except Exception as e:
         print(f"Error saving product to DB: {e}")
         return None
+    
+def fetch_facet_json_data():
+    CATEGORIES_URL = f'{OFF_API_BASE_URL}/facets/categories.json'
+    BRANDS_URL = f'{OFF_API_BASE_URL}/facets/brands.json'
+
+    headers = get_headers()
+
+    categories_data = {}
+    brands_data = {}
+
+    try:
+        categories_response = requests.get(CATEGORIES_URL, headers=headers)
+        categories_data = categories_response.json()
+    except Exception as e:
+        print(f"Failed to get categories from api endpoint: {e}")
+
+    try:
+        brands_response = requests.get(BRANDS_URL, headers=headers)
+        brands_data = brands_response.json()
+    except Exception as e:
+        print(f"Failed to get brands from api endpoint: {e}")
+    
+    return categories_data, brands_data
+
+def get_cached_json(data_type):
+    return cache.get(f"off_{data_type}_cache")

@@ -48,7 +48,7 @@ def recipes_view(request):
                 has_all_ingredients = False
                 required_name = required_product.product_name.lower()
 
-                if required_name in user_pantry_product_names_lower:
+                if any(required_name in pantry_name for pantry_name in user_pantry_product_names_lower):
                     missing_ingredients.append({
                         'ingredient': ingredient,
                         'status': 'alternative_available'

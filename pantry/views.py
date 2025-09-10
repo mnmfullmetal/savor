@@ -14,6 +14,7 @@ from .utils import (
     search_products_by_name,
     save_product_to_db,
     get_product_suggestions,
+    get_cached_json,
 )
 
 
@@ -137,6 +138,36 @@ def search_product(request):
         print(f"An unexpected error occurred in search_product: {e}")
         return JsonResponse({'error': 'An unexpected server error occurred.'}, status=500)
 
+
+def advanced_product_search(request):
+    pass
+
+
+
+def populate_adv_search_criteria(request):
+    categories_data = get_cached_json("categories")
+    brands_data = get_cached_json("brands")
+
+    categories = []
+    for tag in categories_data.get('tags', []):
+       category_name = tag.get("name")
+       categories.append(category_name)
+      
+    brands = []
+    for tag in brands_data.get('tags', []):
+       brand_name = tag.get('name')
+       brands.append(brand_name)
+
+    response_data = {
+        "categories": categories,
+        "brands": brands
+    }
+    print("Sending the following JSON to the client:")
+    print(json.dumps(response_data, indent=2))
+
+    return JsonResponse(response_data)
+
+    
     
 
 @login_required

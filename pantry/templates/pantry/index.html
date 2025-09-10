@@ -9,7 +9,51 @@ Savor
 {% block body %}
 
 
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+      <form id="adv-search-form" class="adv-search-form">
+                        <div class="mb-3">
+                            <label for="productNameInput" class="form-label">Product Name</label>
+                            <input type="text" id="productNameInput" name="product_name" class="form-control" placeholder="e.g., chocolate, cookies" aria-label="Search Product by Name">
+                        </div>
+                        <div class="mb-3">
+                            <label for="countrySelect" class="form-label">Country of Origin</label>
+                            <select id="countrySelect" class="form-select" name="countries_tags">
+                                <option value="" selected>Select a country...</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label for="categorySelect" class="form-label">Category</label>
+                            <select id="categorySelect" class="form-select" name="categories_tags">
+                                <option value="" selected>Select a category...</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label for="brandSelect" class="form-label">Brand</label>
+                            <select id="brandSelect" class="form-select" name="brands_tags">
+                                <option value="" selected>Select a brand...</option>
+                            </select>
+                        </div>
+                        <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                            <button class="btn btn-outline-secondary" type="reset" id="clearFiltersBtn">
+                                <i class="bi bi-x-circle"></i> Clear Filters
+                            </button>
+                            <button class="btn btn-primary" type="submit">
+                                <i class="bi bi-search"></i> Search
+                            </button>
+                        </div>
+                    </form>
+      </div>
 
+    </div>
+  </div>
+</div>
 
 
 <div class="container my-5">
@@ -22,6 +66,8 @@ Savor
         <div id="searched-product-section" class="row g-4">
             <p class="col-12 text-center text-muted">Enter a search query to find products.</p>
         </div>
+
+        <span class="text-dark">Can't find what you're looking for? Try <a href="#" data-bs-toggle="modal" data-bs-target="#exampleModal">Advanced Search</a>.</span>
     </section>
 
       <hr class="my-5 border-light-subtle">
@@ -75,9 +121,12 @@ Savor
 </div>
     </section>   
 </div>
-
-
 {% endif %}
+
+{% block extra_js %}
+    <script src="{% static 'pantry/pantry.js' %}"></script>
+{% endblock extra_js %}
+
 
 
 

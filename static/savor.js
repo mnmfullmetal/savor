@@ -1,3 +1,4 @@
+
 document.addEventListener("DOMContentLoaded", () => {
 
   const savedState = localStorage.getItem("sidebarState");
@@ -136,6 +137,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 });
+
 
 function searchProduct(barcode = "None", productName = "None", csrfToken) {
   const searchedProductsDiv = document.querySelector(
