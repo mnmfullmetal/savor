@@ -17,7 +17,7 @@ Savor
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-      <form id="adv-search-form" class="adv-search-form">
+      <form id="advSearchForm" class="adv-search-form">
                         <div class="mb-3">
                             <label for="productNameInput" class="form-label">Product Name</label>
                             <input type="text" id="productNameInput" name="product_name" class="form-control" placeholder="e.g., chocolate, cookies" aria-label="Search Product by Name">
@@ -26,9 +26,6 @@ Savor
                             <label for="countrySelect" class="form-label">Country of Origin</label>
                             <select id="countrySelect" class="form-select" name="countries_tags">
                                 <option value="" selected>Select a country...</option>
-                                {% for code, name in countries.items %}
-                                <option value="{{code}}">{{name}}</option>
-                                {% endfor %}
                                 
                             </select>
                         </div>

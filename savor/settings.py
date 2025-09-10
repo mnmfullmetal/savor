@@ -181,4 +181,9 @@ CELERY_BEAT_SCHEDULE = {
         'task': 'recipes.tasks.update_recent_recipes_status',
         'schedule': timedelta(hours=1), 
     },
+
+    'update-facet-data-for-dropdown': {
+        'task': 'pantry.tasks.update_facet_json_data',
+        'schedule': timedelta(hours=1),
+    },
 }

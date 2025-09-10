@@ -15,7 +15,6 @@ from .utils import (
     save_product_to_db,
     get_product_suggestions,
     get_cached_json,
-    COUNTRIES
 )
 
 
@@ -26,7 +25,6 @@ def index(request):
     return render(request, 'pantry/index.html', {
         "user": request.user,
         "product_search_form": form,
-        "countries": COUNTRIES
     })
 
 
@@ -149,7 +147,8 @@ def advanced_product_search(request):
 def populate_adv_search_criteria(request):
     categories_data = get_cached_json("categories")
     brands_data = get_cached_json("brands")
-
+    countries_data = get_cached_json("countries")
+    
     categories = []
     for tag in categories_data.get('tags', []):
        category_name = tag.get("name")
@@ -160,12 +159,16 @@ def populate_adv_search_criteria(request):
        brand_name = tag.get('name')
        brands.append(brand_name)
 
+    countries = []
+    for tag in countries_data.get('tags', []):
+        country_name = tag.get('name')
+        countries.append(country_name)
+
     response_data = {
         "categories": categories,
-        "brands": brands
+        "brands": brands,
+        "countries": countries
     }
-    print("Sending the following JSON to the client:")
-    print(json.dumps(response_data, indent=2))
 
     return JsonResponse(response_data)
 

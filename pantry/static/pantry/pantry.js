@@ -2,8 +2,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const categorySelect = document.getElementById('categorySelect');
   const brandSelect = document.getElementById('brandSelect');
-
-  fetchAndPopulateDropdowns(categorySelect, brandSelect);
+  const countrySelect = document.getElementById('countrySelect');
+  fetchAndPopulateDropdowns(categorySelect, brandSelect, countrySelect );
 
   const buttons = document.querySelectorAll(".remove-button");
   if (buttons.length > 0) {
@@ -28,13 +28,19 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
+
+
 });
 
+function advProductSearch(){
 
-function fetchAndPopulateDropdowns(categorySelect, brandSelect ){
-  
+}
+
+
+function fetchAndPopulateDropdowns(categorySelect, brandSelect, countrySelect) {
   brandSelect.innerHTML = brandSelect.options[0].outerHTML;
   categorySelect.innerHTML = categorySelect.options[0].outerHTML;
+  countrySelect.innerHTML = countrySelect.options[0].outerHTML;
 
   fetch(`/adv_search/populate_criteria`)
   .then(response => {
@@ -44,25 +50,34 @@ function fetchAndPopulateDropdowns(categorySelect, brandSelect ){
       return response.json();
     })
   .then(data => {
-    const category_names = data.categories;
-    const brand_names = data.brands;
+    const categoryNames = data.categories;
+    const brandNames = data.brands;
+    const countryNames = data.countries;
 
-    category_names.sort();
-    brand_names.sort();
+    categoryNames.sort();
+    brandNames.sort();
+    countryNames.sort();
 
-    category_names.forEach(name => {
+    categoryNames.forEach(name => {
       const categoryOption = document.createElement("option");
       categoryOption.value = name;
       categoryOption.textContent = name;
       categorySelect.appendChild(categoryOption)
     });
 
-    brand_names.forEach(name => {
+    brandNames.forEach(name => {
       const brandOption = document.createElement("option");
       brandOption.value = name;
       brandOption.textContent = name;      
       brandSelect.appendChild(brandOption)
     });
+
+    countryNames.forEach(name => {
+      const countryOption = document.createElement('option')
+      countryOption.value = name;
+      countryOption.textContent = name;
+      countrySelect.appendChild(countryOption)
+    })
   })
 }
 
