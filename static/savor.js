@@ -136,13 +136,34 @@ document.addEventListener("DOMContentLoaded", () => {
       addProduct(productIdToAdd, quantityInput, csrfToken, productCard);
     });
   });
+
+
+  const advSearchForm = document.getElementById("advSearchForm")
+  if (advSearchForm){
+
+    advSearchForm.addEventListener("submit", (event) => {
+    event.preventDefault();
+    const search_term = advSearchForm.elements.product_name.value.trim()
+    const country = advSearchForm.elements.countries_tags.value.trim()
+    const category = advSearchForm.elements.categories_tags.value.trim()
+    const brand = advSearchForm.elements.brands_tags.value.trim()
+    const csrfToken = advSearchForm.elements.csrfmiddlewaretoken.value;
+
+    const searchRequestData = {
+      search_term: search_term,
+      country:country,
+      category:category,
+      brand:brand,
+    }
+    
+    advProductSearch(searchRequestData, csrfToken)
+    })
+  }
 });
 
 
 function searchProduct(barcode = "None", productName = "None", csrfToken) {
-  const searchedProductsDiv = document.querySelector(
-    "#searched-product-section"
-  );
+  const searchedProductsDiv = document.querySelector("#searched-product-section");
   searchedProductsDiv.innerHTML = "<p class='text-muted'>Searching...</p>";
 
   if (!barcode && !productName) {
@@ -276,6 +297,130 @@ function searchProduct(barcode = "None", productName = "None", csrfToken) {
       </div>`;
     });
 }
+
+function advProductSearch(searchRequestData, csrfToken){
+  const searchedProductsDiv = document.querySelector("#searched-product-section");
+  searchedProductsDiv.innerHTML = "<p class='text-muted'>Searching...</p>";
+  fetch("/product/adv_search", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      "X-CSRFToken": csrfToken,
+    },
+    body: JSON.stringify(searchRequestData),
+  })
+  .then((response) => response.json())
+  .then((data) => {
+    console.log("Response from Django API:", data);
+    if (data.error || data.errors) {
+      const errorMessage = data.error || JSON.parse(data.errors);
+      console.error("Error from backend:", errorMessage);
+      searchedProductsDiv.innerHTML = `
+      <div class="alert alert-danger text-center mt-3" role="alert">
+       Error: ${data.error || "Invalid input."}
+       </div>`;
+    } else if (data.products && data.products.length > 0) {
+        searchedProductsDiv.innerHTML = "";
+        data.products.forEach((product) => {
+          const productColumnDiv = document.createElement("div");
+          productColumnDiv.classList.add(
+            "col-12",
+            "col-sm-6",
+            "col-md-4",
+            "col-lg-4",
+            "mb-4"
+          );
+
+          const productCard = document.createElement("div");
+          productCard.classList.add("card", "h-100", "border-0", "shadow-sm");
+
+          productCard.innerHTML = `
+            <div class="card h-100 border-0 shadow-sm">
+              ${
+                product.image_url
+                  ? `<img src="${product.image_url}" alt="${
+                      product.product_name || "Product Image"
+                    }" class="card-img-top img-fluid rounded-top" style="max-height: 150px; object-fit: cover;">`
+                  : ""
+              }
+              <div class="card-body d-flex flex-column justify-content-between">
+                <h3 class="card-title h5 mb-2 text-dark">${
+                  product.product_name || "No Name"
+                }</h3>
+                
+                <p class="card-text text-muted mb-1 small"><strong>Brands:</strong> ${
+                  product.brands || "N/A"
+                }</p>
+                <p class="card-text text-muted mb-3 small"><strong>Code:</strong> ${
+                  product.code || "N/A"
+                }</p>
+
+                <div class="d-flex align-items-center mb-3">
+                  <input class="product-quantity-input form-control me-2" type="number" min="0.01" step="0.01" value="1">
+                  <span class="text-secondary me-1">${
+                    product.product_quantity || ""
+                  }</span>
+                  <span class="text-muted small">${
+                    product.product_quantity_unit || "item"
+                  }</span>
+                </div>
+
+                <div class="mt-auto d-flex flex-column">
+                  <button class="btn btn-outline-primary btn-sm mb-2 add-btn" 
+                          data-product-name="${
+                            product.product_name || "No Name"
+                          }" 
+                          data-product-id="${product.id}">
+                    Add to Pantry
+                  </button>
+                  <button class="btn btn-sm favourite-btn ${
+                    product.is_favourited
+                      ? "btn-outline-danger"
+                      : "btn-outline-primary"
+                  }" data-product-id="${product.id}">
+                    ${product.is_favourited ? "Remove Favourite" : "Favourite"}
+                  </button>
+              </div>
+              </div>
+            </div>`;
+
+          productColumnDiv.appendChild(productCard);
+          searchedProductsDiv.appendChild(productColumnDiv);
+
+          const favouriteButton = productCard.querySelector(".favourite-btn");
+          favouriteButton.addEventListener("click", (event) => {
+            const clickedButton = event.target;
+            const productIdToFav = clickedButton.dataset.productId;
+            favouriteProduct(productIdToFav, csrfToken, clickedButton);
+          });
+
+          const addButton = productCard.querySelector(".add-btn");
+          addButton.addEventListener("click", (event) => {
+            const clickedButton = event.target;
+            const productIdToAdd = clickedButton.dataset.productId;
+            const quantityInput = productCard.querySelector(
+              ".product-quantity-input"
+            ).value;
+            addProduct(productIdToAdd, quantityInput, csrfToken, productCard);
+          });
+        });
+      } else {
+        searchedProductsDiv.innerHTML = `
+        <div class="alert alert-info text-center mt-3" role="alert">
+         No products found. Try a different search term.
+        </div>`;
+      }
+    })
+    .catch((error) => {
+      console.error("Fetch network error:", error);
+      searchedProductsDiv.innerHTML = `
+      <div class="alert alert-danger text-center mt-3" role="alert">
+      A network error occurred. Please check your connection.
+      </div>`;
+    });
+
+}
+
 
 function addProduct(productIdToAdd, quantityInput, csrfToken, productCard) {
   if (isNaN(quantityInput) || parseFloat(quantityInput) <= 0) {

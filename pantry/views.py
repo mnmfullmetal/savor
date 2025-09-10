@@ -15,6 +15,7 @@ from .utils import (
     save_product_to_db,
     get_product_suggestions,
     get_cached_json,
+    adv_search_product,
 )
 
 
@@ -41,8 +42,7 @@ def rate_limit_error_response(request, exception):
 
 
 @require_POST
-def search_product(request):
-    
+def search_product(request):  
     try:
         data = json.loads(request.body)
     except json.JSONDecodeError:
@@ -90,8 +90,8 @@ def search_product(request):
 
         elif product_name:
             
-            combined_results = check_db_for_product(name=product_name)
-            seen_codes = {p['code'] for p in combined_results if p.get('code')}
+            combined_results = check_db_for_product(search_term=product_name)
+            seen_codes = {product['code'] for product in combined_results if product.get('code')}
 
             for result in combined_results:
                 product_obj = Product.objects.get(id=result['id'])
@@ -140,7 +140,47 @@ def search_product(request):
 
 
 def advanced_product_search(request):
-    pass
+
+    search_params = {
+        'search_term': request.GET.get('search_term'),
+        'country': request.GET.get('country'),
+        'brand': request.GET.get('brand'),
+        'category': request.GET.get('category'),
+    }
+
+    favourite_products = set()
+    if request.user.is_authenticated:
+        favourite_products = set(request.user.favourited_products.all())
+    
+    all_found_products = []
+
+    local_results = check_db_for_product( **search_params) 
+    for result in local_results:
+             product_obj = Product.objects.get(id=result['id'])
+             result['is_favourited'] = product_obj in favourite_products
+    all_found_products.extend(local_results)
+    
+    local_codes = {product['code'] for product in local_results if product.get('code')}
+
+    api_results = adv_search_product( request, search_params)
+    for result in api_results:
+            saved_product = save_product_to_db(result)
+            if saved_product and saved_product.code and saved_product.code not in local_codes:
+                is_favourited = saved_product in favourite_products
+                all_found_products.append({
+                   'id': saved_product.id,
+                    'code': saved_product.code,
+                    'product_name': saved_product.product_name,
+                    'brands': saved_product.brands,
+                    'image_url': saved_product.image_url,
+                    'product_quantity': saved_product.product_quantity,
+                    'product_quantity_unit': saved_product.product_quantity_unit,
+                    'is_favourited': is_favourited
+                })
+                local_codes.add(saved_product.code)    
+
+    return JsonResponse({'products': all_found_products})
+
 
 
 
@@ -148,7 +188,7 @@ def populate_adv_search_criteria(request):
     categories_data = get_cached_json("categories")
     brands_data = get_cached_json("brands")
     countries_data = get_cached_json("countries")
-    
+
     categories = []
     for tag in categories_data.get('tags', []):
        category_name = tag.get("name")
@@ -169,8 +209,9 @@ def populate_adv_search_criteria(request):
         "brands": brands,
         "countries": countries
     }
-
     return JsonResponse(response_data)
+
+
 
     
     

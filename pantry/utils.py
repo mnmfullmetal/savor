@@ -22,6 +22,31 @@ def get_headers():
     return headers
 
 
+@ratelimit(key='ip', rate='10/m', block=True, group='off_advsearch_api_call')
+def adv_search_product(request, search_params):
+    api_url = f"{OFF_API_BASE_URL}/cgi/search.pl"
+    headers = get_headers()
+
+    search_params.update({
+        'action': 'process',
+        'json': 1
+    })
+
+    try:
+        response = requests.get(api_url, params=search_params, headers=headers)
+        response.raise_for_status() 
+        
+        data = response.json()
+        
+        return data.get('products', [])
+    
+    except requests.exceptions.RequestException as e:
+        print(f"API request failed: {e}")
+        return []
+
+
+
+
 
 @ratelimit(key='ip', rate='100/m', block=True, group='off_barcode_api_call')
 def fetch_product_by_barcode(request, barcode):
@@ -75,42 +100,43 @@ def get_product_suggestions(request, query):
 
 
 
-def check_db_for_product(barcode = None, name = None):
-
+def check_db_for_product(barcode = None, search_term = None, country=None, category= None, brand = None):
     found_products_json = []
-    if barcode: 
+    query_params = {}
+
+    if barcode:
+        query_params['code'] = barcode
+    if search_term:
+        query_params['product_name__icontains'] = search_term
+    if country:
+        query_params['countries_en__icontains'] = country
+    if category:
+        query_params['categories_en__icontains'] = category
+    if brand:
+        query_params['brands__icontains'] = brand
+
+    if query_params:
         try:
-            local_product = Product.objects.get(code=barcode)
-            print(f"Product found in local DB: {local_product.product_name}")
-            found_products_json.append({
-                 'code': local_product.code,
-                 'product_name': local_product.product_name,
-                 'brands': local_product.brands,
-                 'image_url': local_product.image_url,
-                 'product_quantity_unit': local_product.product_quantity_unit,
-                 'product_quantity': local_product.product_quantity,
-                 'id':local_product.id
-                })
-            return found_products_json
-        except Product.DoesNotExist:
-            print(f"Product not found in local DB for barcode: {barcode}. Fetching from OFF API.")
-    elif name: 
-        local_products = Product.objects.filter(product_name__icontains=name)
-        if local_products.exists():
-            print(f"Products found in local DB for name: {name}")
-            for product in local_products:
-                found_products_json.append({
-                    'code': product.code,
-                    'product_name': product.product_name,
-                    'brands': product.brands,
-                    'image_url': product.image_url,
-                    'product_quantity_unit': product.product_quantity_unit,
-                    'product_quantity': product.product_quantity,
-                    'id':product.id
-                })
-            return  found_products_json
-        else:
-            print(f"Products not found in local DB for name: {name}. Fetching from OFF API.")
+            products_from_db = Product.objects.filter(**query_params)
+            
+            if products_from_db.exists():
+                print(f"Products found in local DB for criteria: {query_params}")
+                for product in products_from_db:
+                    found_products_json.append({
+                        'code': product.code,
+                        'product_name': product.product_name,
+                        'brands': product.brands,
+                        'image_url': product.image_url,
+                        'product_quantity_unit': product.product_quantity_unit,
+                        'product_quantity': product.product_quantity,
+                        'id': product.id
+                    })
+                return found_products_json
+            else:
+                print("No products found in local DB matching the criteria.")
+        except Exception as e:
+            print(f"An error occurred while querying the database: {e}")
+            
     return found_products_json
 
 

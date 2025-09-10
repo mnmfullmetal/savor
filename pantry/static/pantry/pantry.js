@@ -1,3 +1,4 @@
+
 document.addEventListener("DOMContentLoaded", () => {
 
   const categorySelect = document.getElementById('categorySelect');
@@ -27,14 +28,10 @@ document.addEventListener("DOMContentLoaded", () => {
       });
     }
   }
-
-
-
+  
+  
 });
 
-function advProductSearch(){
-
-}
 
 
 function fetchAndPopulateDropdowns(categorySelect, brandSelect, countrySelect) {

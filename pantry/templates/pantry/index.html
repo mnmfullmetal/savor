@@ -18,6 +18,8 @@ Savor
       </div>
       <div class="modal-body">
       <form id="advSearchForm" class="adv-search-form">
+        {% csrf_token %}
+
                         <div class="mb-3">
                             <label for="productNameInput" class="form-label">Product Name</label>
                             <input type="text" id="productNameInput" name="product_name" class="form-control" placeholder="e.g., chocolate, cookies" aria-label="Search Product by Name">
@@ -49,9 +51,9 @@ Savor
                                 <i class="bi bi-search"></i> Search
                             </button>
                         </div>
-                    </form>
-      </div>
-
+                        
+        </form>
+       </div>
     </div>
   </div>
 </div>
