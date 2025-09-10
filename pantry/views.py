@@ -15,6 +15,7 @@ from .utils import (
     save_product_to_db,
     get_product_suggestions,
     get_cached_json,
+    COUNTRIES
 )
 
 
@@ -24,7 +25,8 @@ def index(request):
     form = ProductSearchForm(request.GET)
     return render(request, 'pantry/index.html', {
         "user": request.user,
-        "product_search_form": form
+        "product_search_form": form,
+        "countries": COUNTRIES
     })
 
 

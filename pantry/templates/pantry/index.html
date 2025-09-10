@@ -26,6 +26,10 @@ Savor
                             <label for="countrySelect" class="form-label">Country of Origin</label>
                             <select id="countrySelect" class="form-select" name="countries_tags">
                                 <option value="" selected>Select a country...</option>
+                                {% for code, name in countries.items %}
+                                <option value="{{code}}">{{name}}</option>
+                                {% endfor %}
+                                
                             </select>
                         </div>
                         <div class="mb-3">
