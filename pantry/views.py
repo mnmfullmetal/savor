@@ -16,6 +16,7 @@ from .utils import (
     get_product_suggestions,
     get_cached_json,
     adv_search_product,
+    build_api_search_params
 )
 
 
@@ -141,12 +142,16 @@ def search_product(request):
 
 def advanced_product_search(request):
 
-    search_params = {
-        'search_term': request.GET.get('search_term'),
-        'country': request.GET.get('country'),
-        'brand': request.GET.get('brand'),
-        'category': request.GET.get('category'),
-    }
+    try:
+        data = json.loads(request.body)
+        search_params = {
+            'search_term': data.get('search_term'),
+            'country': data.get('country'),
+            'brand': data.get('brand'),
+            'category': data.get('category'),
+        }
+    except (json.JSONDecodeError, KeyError):
+        return JsonResponse({'error': 'Invalid request data'}, status=400)
 
     favourite_products = set()
     if request.user.is_authenticated:
@@ -156,13 +161,15 @@ def advanced_product_search(request):
 
     local_results = check_db_for_product( **search_params) 
     for result in local_results:
-             product_obj = Product.objects.get(id=result['id'])
-             result['is_favourited'] = product_obj in favourite_products
+        product_obj = Product.objects.get(id=result['id'])
+        result['is_favourited'] = product_obj in favourite_products
     all_found_products.extend(local_results)
     
     local_codes = {product['code'] for product in local_results if product.get('code')}
 
-    api_results = adv_search_product( request, search_params)
+    api_search_params = build_api_search_params(search_params)
+
+    api_results = adv_search_product( request, api_search_params)
     for result in api_results:
             saved_product = save_product_to_db(result)
             if saved_product and saved_product.code and saved_product.code not in local_codes:

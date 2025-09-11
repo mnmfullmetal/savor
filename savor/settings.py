@@ -184,6 +184,6 @@ CELERY_BEAT_SCHEDULE = {
 
     'update-facet-data-for-dropdown': {
         'task': 'pantry.tasks.update_facet_json_data',
-        'schedule': timedelta(hours=1),
+        'schedule': timedelta(minutes=10),
     },
 }

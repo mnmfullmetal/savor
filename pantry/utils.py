@@ -27,13 +27,15 @@ def adv_search_product(request, search_params):
     api_url = f"{OFF_API_BASE_URL}/cgi/search.pl"
     headers = get_headers()
 
-    search_params.update({
+    final_params = {
         'action': 'process',
         'json': 1
-    })
+    }
+
+    final_params.update(search_params)
 
     try:
-        response = requests.get(api_url, params=search_params, headers=headers)
+        response = requests.get(api_url, params=final_params, headers=headers)
         response.raise_for_status() 
         
         data = response.json()
@@ -109,11 +111,11 @@ def check_db_for_product(barcode = None, search_term = None, country=None, categ
     if search_term:
         query_params['product_name__icontains'] = search_term
     if country:
-        query_params['countries_en__icontains'] = country
+        query_params['countries_en__iexact'] = country
     if category:
-        query_params['categories_en__icontains'] = category
+        query_params['categories_en__iexact'] = category
     if brand:
-        query_params['brands__icontains'] = brand
+        query_params['brands__iexact'] = brand
 
     if query_params:
         try:
@@ -136,8 +138,10 @@ def check_db_for_product(barcode = None, search_term = None, country=None, categ
                 print("No products found in local DB matching the criteria.")
         except Exception as e:
             print(f"An error occurred while querying the database: {e}")
-            
+    
     return found_products_json
+    
+            
 
 
 def save_product_to_db(product_data):
@@ -202,3 +206,25 @@ def get_cached_json(data_type):
     return cache.get(f"off_{data_type}_cache")
 
 
+def build_api_search_params(params):
+ 
+    api_params = {}
+    tag_index = 0
+
+    if params.get('search_term'):
+        api_params['search_terms'] = params['search_term']
+
+    tag_map = {
+        'country': 'countries',
+        'brand': 'brands',
+        'category': 'categories'
+    }
+
+    for key, tag_type in tag_map.items():
+        if params.get(key):
+            api_params[f'tagtype_{tag_index}'] = tag_type
+            api_params[f'tag_contains_{tag_index}'] = 'exactly'
+            api_params[f'tag_{tag_index}'] = params[key]
+            tag_index += 1
+            
+    return api_params

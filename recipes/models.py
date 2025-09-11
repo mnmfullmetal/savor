@@ -13,7 +13,7 @@ class SavedRecipeIngredient(models.Model):
         unique_together = ('recipe', 'product')
 
     def __str__(self):
-        return f"{self.quantity} {self.unit} of {self.product.product.product_name} for {self.recipe.title}"
+        return f"{self.quantity} {self.unit} of {self.product.product_name} for {self.recipe.title}"
     
     
 class SavedRecipe(models.Model):
