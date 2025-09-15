@@ -9,7 +9,7 @@
 <div class="container mt-4">
   <section class="mt-5 p-3 rounded shadow-lg recipe-section">
 
-    <h2  class="h4 mb-4 d-flex align-items-center">New Suggestions</h2>
+    <h2  class="h4 mb-4 d-flex align-items-center">New Recipe Suggestions</h2>
   {% if not recipe_gen_in_progress %}
    {% if latest_suggestions %}
   <div class="accordion" id="latestSuggestionsAccordion">
@@ -71,7 +71,7 @@
   </section>
   
   <section class="mt-5 p-3 rounded shadow-lg recipe-section">
-    <h2 class="h4 mb-4 d-flex align-items-center">Recently Suggested</h2>
+    <h2 class="h4 mb-4 d-flex align-items-center">Recently Suggested Recipes</h2>
   {% if recently_suggested %}
   <div class="accordion" id="recentlySuggestedAccordion">
     {% for recipe in recently_suggested %}

@@ -29,18 +29,17 @@ def adv_search_product(request, search_params):
 
     final_params = {
         'action': 'process',
-        'json': 1
+        'json': 1,
+        'page_size': 20
+
     }
 
     final_params.update(search_params)
 
     try:
         response = requests.get(api_url, params=final_params, headers=headers)
-        response.raise_for_status() 
-        
-        data = response.json()
-        
-        return data.get('products', [])
+        response.raise_for_status()         
+        return response.json()
     
     except requests.exceptions.RequestException as e:
         print(f"API request failed: {e}")
@@ -63,7 +62,7 @@ def fetch_product_by_barcode(request, barcode):
 
 
 @ratelimit(key='ip', rate='10/m', block=True, group='off_name_api_call')
-def search_products_by_name(request, product_name):
+def search_products_by_name(request, product_name, page=1):
 
     api_url = f"{OFF_API_BASE_URL}/cgi/search.pl"
     headers = get_headers()
@@ -72,7 +71,9 @@ def search_products_by_name(request, product_name):
         'search_terms': product_name,
         'search_simple': 1,
         'action': 'process',
-        'json': 1
+        'json': 1,
+        'page_size': 20,
+        'page': page
     }
 
     response = requests.get(api_url, headers=headers, params=params)

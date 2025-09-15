@@ -55,6 +55,7 @@ def search_product(request):
 
     barcode = form.cleaned_data.get('barcode')
     product_name = form.cleaned_data.get('product_name')
+    page = data.get('page', 1)
     
     favourite_products = set()
     if request.user.is_authenticated:
@@ -91,36 +92,48 @@ def search_product(request):
 
         elif product_name:
             
-            combined_results = check_db_for_product(search_term=product_name)
-            seen_codes = {product['code'] for product in combined_results if product.get('code')}
-
-            for result in combined_results:
-                product_obj = Product.objects.get(id=result['id'])
-                result['is_favourited'] = product_obj in favourite_products
-
             try:
-                print(f"Calling OFF API for product name '{product_name}'.")
-                response_data = search_products_by_name(request, product_name)
-                if response_data.get('products'):
-                    for off_prod in response_data['products']:
-                        saved_product = save_product_to_db(off_prod)
-                        if saved_product and saved_product.code and saved_product.code not in seen_codes:
-                            is_favourited = saved_product in favourite_products
-                            combined_results.append({
-                                'id': saved_product.id,
-                                'code': saved_product.code,
-                                'product_name': saved_product.product_name,
-                                'brands': saved_product.brands,
-                                'image_url': saved_product.image_url,
-                                'product_quantity': saved_product.product_quantity,
-                                'product_quantity_unit': saved_product.product_quantity_unit,
-                                'is_favourited': is_favourited
-                            })
-                            seen_codes.add(saved_product.code)
+                print(f"Calling OFF API for product name '{product_name}' page {page}.")
+                response_data = search_products_by_name(request, product_name, page=page)
+                api_products = response_data.get('products', [])
+                final_products = []
+                
+                for off_prod in api_products:
+                    saved_product = save_product_to_db(off_prod)
+                    if saved_product:
+                        is_favourited = saved_product in favourite_products
+                        final_products.append({
+                            'id': saved_product.id,
+                            'code': saved_product.code,
+                            'product_name': saved_product.product_name,
+                            'brands': saved_product.brands,
+                            'image_url': saved_product.image_url,
+                            'product_quantity': saved_product.product_quantity,
+                            'product_quantity_unit': saved_product.product_quantity_unit,
+                            'is_favourited': is_favourited
+                        })
+
+                return JsonResponse({
+                    'products': final_products,
+                    'count': response_data.get("count", 0),
+                    'page_size': response_data.get("page_size", 20),
+                    'page_count': response_data.get("page", 1) 
+                })
+
             except (requests.exceptions.RequestException, Ratelimited) as e:
                 print(f"API call failed during name search: {e}. Returning local results only.")
-            
-            return JsonResponse({'products': combined_results})
+                local_results = check_db_for_product(search_term=product_name)
+                
+                for result in local_results:
+                    product_obj = Product.objects.get(id=result['id'])
+                    result['is_favourited'] = product_obj in favourite_products
+                
+                return JsonResponse({
+                    'products': local_results,
+                    'count': len(local_results),
+                    'page_size': len(local_results), 
+                    'page_count': 1 
+                })
 
         else:
             return JsonResponse({'error': 'No valid search criteria provided.'}, status=400)
@@ -169,8 +182,9 @@ def advanced_product_search(request):
 
     api_search_params = build_api_search_params(search_params)
 
-    api_results = adv_search_product( request, api_search_params)
-    for result in api_results:
+    response_data = adv_search_product( request, api_search_params)
+    api_product_results = response_data.get('products', [])
+    for result in api_product_results:
             saved_product = save_product_to_db(result)
             if saved_product and saved_product.code and saved_product.code not in local_codes:
                 is_favourited = saved_product in favourite_products
@@ -186,7 +200,12 @@ def advanced_product_search(request):
                 })
                 local_codes.add(saved_product.code)    
 
-    return JsonResponse({'products': all_found_products})
+    return JsonResponse({
+        'products': all_found_products,
+        'page_count': response_data.get('page_count', 0),
+        'count': response_data.get("count", 0),
+        'page_size': response_data.get("page_size", 0)
+        })
 
 
 

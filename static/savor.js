@@ -162,7 +162,7 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 
-function searchProduct(barcode = "None", productName = "None", csrfToken) {
+function searchProduct(barcode = "None", productName = "None", csrfToken, page = 1) {
   const searchedProductsDiv = document.querySelector("#searched-product-section");
   searchedProductsDiv.innerHTML = "<p class='text-muted'>Searching...</p>";
 
@@ -177,6 +177,7 @@ function searchProduct(barcode = "None", productName = "None", csrfToken) {
   const requestData = {
     barcode: barcode,
     product_name: productName,
+    page: page
   };
 
   fetch("/product/search/", {
@@ -281,20 +282,57 @@ function searchProduct(barcode = "None", productName = "None", csrfToken) {
             ).value;
             addProduct(productIdToAdd, quantityInput, csrfToken, productCard);
           });
+
         });
-      } else {
-        searchedProductsDiv.innerHTML = `
-        <div class="alert alert-info text-center mt-3" role="alert">
-         No products found. Try a different search term.
-        </div>`;
-      }
+            const totalCount = data.count;
+            const pageSize = data.page_size;
+            const currentPage = data.page_count;
+            const totalPages = Math.ceil(totalCount / pageSize);
+
+            if (totalPages > 1) {
+                const paginationDiv = document.createElement('nav');
+                paginationDiv.setAttribute('aria-label', 'Page navigation');
+                paginationDiv.innerHTML = `
+                    <ul class="pagination justify-content-center">
+                        <li class="page-item ${currentPage === 1 ? 'disabled' : ''}">
+                            <a class="page-link" href="#" data-page="${currentPage - 1}">Previous</a>
+                        </li>
+                        ${[...Array(totalPages).keys()].map(i => `
+                            <li class="page-item ${i + 1 === currentPage ? 'active' : ''}">
+                                <a class="page-link" href="#" data-page="${i + 1}">${i + 1}</a>
+                            </li>
+                        `).join('')}
+                        <li class="page-item ${currentPage === totalPages ? 'disabled' : ''}">
+                            <a class="page-link" href="#" data-page="${currentPage + 1}">Next</a>
+                        </li>
+                    </ul>
+                `;
+                searchedProductsDiv.appendChild(paginationDiv);
+
+                paginationDiv.querySelectorAll('.page-link').forEach(link => {
+                    link.addEventListener('click', (event) => {
+                        event.preventDefault(); 
+                        const newPage = parseInt(event.target.dataset.page);
+                        if (newPage !== currentPage) {
+                            searchProduct(barcode, productName, csrfToken, newPage); 
+                        }
+                    });
+                });
+            }
+
+        } else {
+            searchedProductsDiv.innerHTML = `
+            <div class="alert alert-info text-center mt-3" role="alert">
+                No products found. Try a different search term.
+            </div>`;
+        }
     })
     .catch((error) => {
-      console.error("Fetch network error:", error);
-      searchedProductsDiv.innerHTML = `
-      <div class="alert alert-danger text-center mt-3" role="alert">
-      A network error occurred. Please check your connection.
-      </div>`;
+        console.error("Fetch network error:", error);
+        searchedProductsDiv.innerHTML = `
+        <div class="alert alert-danger text-center mt-3" role="alert">
+            A network error occurred. Please check your connection.
+        </div>`;
     });
 }
 
