@@ -23,14 +23,15 @@ def get_headers():
 
 
 @ratelimit(key='ip', rate='10/m', block=True, group='off_advsearch_api_call')
-def adv_search_product(request, search_params):
+def adv_search_product(request, search_params, page=1):
     api_url = f"{OFF_API_BASE_URL}/cgi/search.pl"
     headers = get_headers()
 
     final_params = {
         'action': 'process',
         'json': 1,
-        'page_size': 20
+        'page_size': 21,
+        'page': page
 
     }
 
@@ -72,7 +73,7 @@ def search_products_by_name(request, product_name, page=1):
         'search_simple': 1,
         'action': 'process',
         'json': 1,
-        'page_size': 20,
+        'page_size': 21,
         'page': page
     }
 

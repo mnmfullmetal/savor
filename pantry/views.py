@@ -30,6 +30,7 @@ def index(request):
     })
 
 
+
 def rate_limit_error_response(request, exception):
     return JsonResponse(
         {
@@ -96,13 +97,13 @@ def search_product(request):
                 print(f"Calling OFF API for product name '{product_name}' page {page}.")
                 response_data = search_products_by_name(request, product_name, page=page)
                 api_products = response_data.get('products', [])
-                final_products = []
+                products_found = []
                 
                 for off_prod in api_products:
                     saved_product = save_product_to_db(off_prod)
                     if saved_product:
                         is_favourited = saved_product in favourite_products
-                        final_products.append({
+                        products_found.append({
                             'id': saved_product.id,
                             'code': saved_product.code,
                             'product_name': saved_product.product_name,
@@ -114,9 +115,9 @@ def search_product(request):
                         })
 
                 return JsonResponse({
-                    'products': final_products,
+                    'products': products_found,
                     'count': response_data.get("count", 0),
-                    'page_size': response_data.get("page_size", 20),
+                    'page_size': response_data.get("page_size", 21),
                     'page_count': response_data.get("page", 1) 
                 })
 
@@ -153,6 +154,7 @@ def search_product(request):
         return JsonResponse({'error': 'An unexpected server error occurred.'}, status=500)
 
 
+@require_POST
 def advanced_product_search(request):
 
     try:
@@ -163,32 +165,28 @@ def advanced_product_search(request):
             'brand': data.get('brand'),
             'category': data.get('category'),
         }
+
+        page = data.get('page', 1) 
+
     except (json.JSONDecodeError, KeyError):
         return JsonResponse({'error': 'Invalid request data'}, status=400)
-
+    
     favourite_products = set()
     if request.user.is_authenticated:
         favourite_products = set(request.user.favourited_products.all())
     
-    all_found_products = []
+    try:
+        api_search_params = build_api_search_params(search_params)
+        response_data = adv_search_product( request, api_search_params, page=page)
 
-    local_results = check_db_for_product( **search_params) 
-    for result in local_results:
-        product_obj = Product.objects.get(id=result['id'])
-        result['is_favourited'] = product_obj in favourite_products
-    all_found_products.extend(local_results)
-    
-    local_codes = {product['code'] for product in local_results if product.get('code')}
+        api_products = response_data.get('products', [])
+        products_found = []
 
-    api_search_params = build_api_search_params(search_params)
-
-    response_data = adv_search_product( request, api_search_params)
-    api_product_results = response_data.get('products', [])
-    for result in api_product_results:
-            saved_product = save_product_to_db(result)
-            if saved_product and saved_product.code and saved_product.code not in local_codes:
+        for product in api_products:
+            saved_product = save_product_to_db(product)
+            if saved_product:
                 is_favourited = saved_product in favourite_products
-                all_found_products.append({
+                products_found.append({
                    'id': saved_product.id,
                     'code': saved_product.code,
                     'product_name': saved_product.product_name,
@@ -198,15 +196,35 @@ def advanced_product_search(request):
                     'product_quantity_unit': saved_product.product_quantity_unit,
                     'is_favourited': is_favourited
                 })
-                local_codes.add(saved_product.code)    
+        return JsonResponse({
+            'products': products_found,
+            'page_count': response_data.get('page', 0),
+            'count': response_data.get("count", 0),
+            'page_size': response_data.get("page_size", 0)
+        })
+    
+    except (requests.exceptions.RequestException, Ratelimited) as e:
+        print(f"API call failed: {e}. Attempting local search as a fallback.")
+        
+        local_results = check_db_for_product(**search_params)
+        
+        for result in local_results:
+            try:
+                product_obj = Product.objects.get(id=result['id'])
+                result['is_favourited'] = product_obj in favourite_products
+            except Product.DoesNotExist:
+                result['is_favourited'] = False
 
-    return JsonResponse({
-        'products': all_found_products,
-        'page_count': response_data.get('page_count', 0),
-        'count': response_data.get("count", 0),
-        'page_size': response_data.get("page_size", 0)
+        return JsonResponse({
+            'products': local_results,
+            'count': len(local_results), 
+            'page_size': len(local_results), 
+            'page_count': 1
         })
 
+    except Exception as e:
+        print(f"An unexpected error occurred: {e}")
+        return JsonResponse({'error': 'An unexpected server error occurred.'}, status=500)
 
 
 
@@ -237,8 +255,6 @@ def populate_adv_search_criteria(request):
     }
     return JsonResponse(response_data)
 
-
-
     
     
 
@@ -250,6 +266,7 @@ def pantry_view(request):
         "user" : request.user,
         "pantryitems": pantryitems,
     })
+
 
 
 @require_POST

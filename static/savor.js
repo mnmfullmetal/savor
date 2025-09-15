@@ -336,9 +336,14 @@ function searchProduct(barcode = "None", productName = "None", csrfToken, page =
     });
 }
 
+
+
+
 function advProductSearch(searchRequestData, csrfToken){
   const searchedProductsDiv = document.querySelector("#searched-product-section");
   searchedProductsDiv.innerHTML = "<p class='text-muted'>Searching...</p>";
+  const currentPage = searchRequestData.page || 1;
+  
   fetch("/product/adv_search", {
     method: "POST",
     headers: {
@@ -442,21 +447,64 @@ function advProductSearch(searchRequestData, csrfToken){
             addProduct(productIdToAdd, quantityInput, csrfToken, productCard);
           });
         });
-      } else {
-        searchedProductsDiv.innerHTML = `
-        <div class="alert alert-info text-center mt-3" role="alert">
-         No products found. Try a different search term.
-        </div>`;
-      }
+
+      const totalCount = data.count;
+            const pageSize = data.page_size;
+            const totalPages = Math.ceil(totalCount / pageSize);
+
+            if (totalPages > 1) {
+                const paginationDiv = document.createElement('nav');
+                paginationDiv.setAttribute('aria-label', 'Page navigation');
+                let paginationHtml = `<ul class="pagination justify-content-center">`;
+                
+                paginationHtml += `
+                    <li class="page-item ${currentPage === 1 ? 'disabled' : ''}">
+                        <a class="page-link" href="#" data-page="${currentPage - 1}">Previous</a>
+                    </li>
+                `;
+
+                for (let i = 1; i <= totalPages; i++) {
+                    paginationHtml += `
+                        <li class="page-item ${i === currentPage ? 'active' : ''}">
+                            <a class="page-link" href="#" data-page="${i}">${i}</a>
+                        </li>
+                    `;
+                }
+
+                paginationHtml += `
+                    <li class="page-item ${currentPage === totalPages ? 'disabled' : ''}">
+                        <a class="page-link" href="#" data-page="${currentPage + 1}">Next</a>
+                    </li>
+                `;
+                paginationHtml += `</ul>`;
+                paginationDiv.innerHTML = paginationHtml;
+                searchedProductsDiv.appendChild(paginationDiv);
+
+                paginationDiv.querySelectorAll('.page-link').forEach(link => {
+                    link.addEventListener('click', (event) => {
+                        event.preventDefault();
+                        const newPage = parseInt(event.target.dataset.page);
+                        if (newPage !== currentPage) {
+                            searchRequestData.page = newPage;
+                            advProductSearch(searchRequestData, csrfToken); 
+                        }
+                    });
+                });
+            }
+        } else {
+            searchedProductsDiv.innerHTML = `
+                <div class="alert alert-info text-center mt-3" role="alert">
+                    No products found. Try a different search term.
+                </div>`;
+        }
     })
     .catch((error) => {
-      console.error("Fetch network error:", error);
-      searchedProductsDiv.innerHTML = `
-      <div class="alert alert-danger text-center mt-3" role="alert">
-      A network error occurred. Please check your connection.
-      </div>`;
+        console.error("Fetch network error:", error);
+        searchedProductsDiv.innerHTML = `
+            <div class="alert alert-danger text-center mt-3" role="alert">
+                A network error occurred. Please check your connection.
+            </div>`;
     });
-
 }
 
 
