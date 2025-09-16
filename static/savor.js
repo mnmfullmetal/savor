@@ -198,142 +198,17 @@ function searchProduct(barcode = "None", productName = "None", csrfToken, page =
       <div class="alert alert-danger text-center mt-3" role="alert">
        Error: ${data.error || "Invalid input."}
        </div>`;
-    } else if (data.products && data.products.length > 0) {
-        searchedProductsDiv.innerHTML = "";
-        data.products.forEach((product) => {
-          const productColumnDiv = document.createElement("div");
-          productColumnDiv.classList.add(
-            "col-12",
-            "col-sm-6",
-            "col-md-4",
-            "col-lg-4",
-            "mb-4"
-          );
-
-          const productCard = document.createElement("div");
-          productCard.classList.add("card", "h-100", "border-0", "shadow-sm");
-
-          productCard.innerHTML = `
-            <div class="card h-100 border-0 shadow-sm">
-              ${
-                product.image_url
-                  ? `<img src="${product.image_url}" alt="${
-                      product.product_name || "Product Image"
-                    }" class="card-img-top img-fluid rounded-top" style="max-height: 150px; object-fit: cover;">`
-                  : ""
-              }
-              <div class="card-body d-flex flex-column justify-content-between">
-                <h3 class="card-title h5 mb-2 text-dark">${
-                  product.product_name || "No Name"
-                }</h3>
-                
-                <p class="card-text text-muted mb-1 small"><strong>Brands:</strong> ${
-                  product.brands || "N/A"
-                }</p>
-                <p class="card-text text-muted mb-3 small"><strong>Code:</strong> ${
-                  product.code || "N/A"
-                }</p>
-
-                <div class="d-flex align-items-center mb-3">
-                  <input class="product-quantity-input form-control me-2" type="number" min="0.01" step="0.01" value="1">
-                  <span class="text-secondary me-1">${
-                    product.product_quantity || ""
-                  }</span>
-                  <span class="text-muted small">${
-                    product.product_quantity_unit || "item"
-                  }</span>
-                </div>
-
-                <div class="mt-auto d-flex flex-column">
-                  <button class="btn btn-outline-primary btn-sm mb-2 add-btn" 
-                          data-product-name="${
-                            product.product_name || "No Name"
-                          }" 
-                          data-product-id="${product.id}">
-                    Add to Pantry
-                  </button>
-                  <button class="btn btn-sm favourite-btn ${
-                    product.is_favourited
-                      ? "btn-outline-danger"
-                      : "btn-outline-primary"
-                  }" data-product-id="${product.id}">
-                    ${product.is_favourited ? "Remove Favourite" : "Favourite"}
-                  </button>
-              </div>
-              </div>
-            </div>`;
-
-          productColumnDiv.appendChild(productCard);
-          searchedProductsDiv.appendChild(productColumnDiv);
-
-          const favouriteButton = productCard.querySelector(".favourite-btn");
-          favouriteButton.addEventListener("click", (event) => {
-            const clickedButton = event.target;
-            const productIdToFav = clickedButton.dataset.productId;
-            favouriteProduct(productIdToFav, csrfToken, clickedButton);
-          });
-
-          const addButton = productCard.querySelector(".add-btn");
-          addButton.addEventListener("click", (event) => {
-            const clickedButton = event.target;
-            const productIdToAdd = clickedButton.dataset.productId;
-            const quantityInput = productCard.querySelector(
-              ".product-quantity-input"
-            ).value;
-            addProduct(productIdToAdd, quantityInput, csrfToken, productCard);
-          });
-
-        });
-            const totalCount = data.count;
-            const pageSize = data.page_size;
-            const currentPage = data.page_count;
-            const totalPages = Math.ceil(totalCount / pageSize);
-
-            if (totalPages > 1) {
-                const paginationDiv = document.createElement('nav');
-                paginationDiv.setAttribute('aria-label', 'Page navigation');
-                paginationDiv.innerHTML = `
-                    <ul class="pagination justify-content-center">
-                        <li class="page-item ${currentPage === 1 ? 'disabled' : ''}">
-                            <a class="page-link" href="#" data-page="${currentPage - 1}">Previous</a>
-                        </li>
-                        ${[...Array(totalPages).keys()].map(i => `
-                            <li class="page-item ${i + 1 === currentPage ? 'active' : ''}">
-                                <a class="page-link" href="#" data-page="${i + 1}">${i + 1}</a>
-                            </li>
-                        `).join('')}
-                        <li class="page-item ${currentPage === totalPages ? 'disabled' : ''}">
-                            <a class="page-link" href="#" data-page="${currentPage + 1}">Next</a>
-                        </li>
-                    </ul>
-                `;
-                searchedProductsDiv.appendChild(paginationDiv);
-
-                paginationDiv.querySelectorAll('.page-link').forEach(link => {
-                    link.addEventListener('click', (event) => {
-                        event.preventDefault(); 
-                        const newPage = parseInt(event.target.dataset.page);
-                        if (newPage !== currentPage) {
-                            searchProduct(barcode, productName, csrfToken, newPage); 
-                        }
-                    });
-                });
-            }
-
-        } else {
-            searchedProductsDiv.innerHTML = `
-            <div class="alert alert-info text-center mt-3" role="alert">
-                No products found. Try a different search term.
-            </div>`;
-        }
-    })
-    .catch((error) => {
+    } else  {
+       displayProducts(searchedProductsDiv, data, csrfToken, {barcode, productName}, (params, token) => searchProduct(params.barcode, params.productName, token, params.page));
+    } 
+  })
+  .catch((error) => {
         console.error("Fetch network error:", error);
         searchedProductsDiv.innerHTML = `
         <div class="alert alert-danger text-center mt-3" role="alert">
             A network error occurred. Please check your connection.
         </div>`;
-    });
+  });
 }
 
 
@@ -342,7 +217,6 @@ function searchProduct(barcode = "None", productName = "None", csrfToken, page =
 function advProductSearch(searchRequestData, csrfToken){
   const searchedProductsDiv = document.querySelector("#searched-product-section");
   searchedProductsDiv.innerHTML = "<p class='text-muted'>Searching...</p>";
-  const currentPage = searchRequestData.page || 1;
   
   fetch("/product/adv_search", {
     method: "POST",
@@ -362,149 +236,156 @@ function advProductSearch(searchRequestData, csrfToken){
       <div class="alert alert-danger text-center mt-3" role="alert">
        Error: ${data.error || "Invalid input."}
        </div>`;
-    } else if (data.products && data.products.length > 0) {
-        searchedProductsDiv.innerHTML = "";
-        data.products.forEach((product) => {
-          const productColumnDiv = document.createElement("div");
-          productColumnDiv.classList.add(
-            "col-12",
-            "col-sm-6",
-            "col-md-4",
-            "col-lg-4",
-            "mb-4"
-          );
-
-          const productCard = document.createElement("div");
-          productCard.classList.add("card", "h-100", "border-0", "shadow-sm");
-
-          productCard.innerHTML = `
-            <div class="card h-100 border-0 shadow-sm">
-              ${
-                product.image_url
-                  ? `<img src="${product.image_url}" alt="${
-                      product.product_name || "Product Image"
-                    }" class="card-img-top img-fluid rounded-top" style="max-height: 150px; object-fit: cover;">`
-                  : ""
-              }
-              <div class="card-body d-flex flex-column justify-content-between">
-                <h3 class="card-title h5 mb-2 text-dark">${
-                  product.product_name || "No Name"
-                }</h3>
-                
-                <p class="card-text text-muted mb-1 small"><strong>Brands:</strong> ${
-                  product.brands || "N/A"
-                }</p>
-                <p class="card-text text-muted mb-3 small"><strong>Code:</strong> ${
-                  product.code || "N/A"
-                }</p>
-
-                <div class="d-flex align-items-center mb-3">
-                  <input class="product-quantity-input form-control me-2" type="number" min="0.01" step="0.01" value="1">
-                  <span class="text-secondary me-1">${
-                    product.product_quantity || ""
-                  }</span>
-                  <span class="text-muted small">${
-                    product.product_quantity_unit || "item"
-                  }</span>
-                </div>
-
-                <div class="mt-auto d-flex flex-column">
-                  <button class="btn btn-outline-primary btn-sm mb-2 add-btn" 
-                          data-product-name="${
-                            product.product_name || "No Name"
-                          }" 
-                          data-product-id="${product.id}">
-                    Add to Pantry
-                  </button>
-                  <button class="btn btn-sm favourite-btn ${
-                    product.is_favourited
-                      ? "btn-outline-danger"
-                      : "btn-outline-primary"
-                  }" data-product-id="${product.id}">
-                    ${product.is_favourited ? "Remove Favourite" : "Favourite"}
-                  </button>
-              </div>
-              </div>
-            </div>`;
-
-          productColumnDiv.appendChild(productCard);
-          searchedProductsDiv.appendChild(productColumnDiv);
-
-          const favouriteButton = productCard.querySelector(".favourite-btn");
-          favouriteButton.addEventListener("click", (event) => {
-            const clickedButton = event.target;
-            const productIdToFav = clickedButton.dataset.productId;
-            favouriteProduct(productIdToFav, csrfToken, clickedButton);
-          });
-
-          const addButton = productCard.querySelector(".add-btn");
-          addButton.addEventListener("click", (event) => {
-            const clickedButton = event.target;
-            const productIdToAdd = clickedButton.dataset.productId;
-            const quantityInput = productCard.querySelector(
-              ".product-quantity-input"
-            ).value;
-            addProduct(productIdToAdd, quantityInput, csrfToken, productCard);
-          });
-        });
-
-      const totalCount = data.count;
-            const pageSize = data.page_size;
-            const totalPages = Math.ceil(totalCount / pageSize);
-
-            if (totalPages > 1) {
-                const paginationDiv = document.createElement('nav');
-                paginationDiv.setAttribute('aria-label', 'Page navigation');
-                let paginationHtml = `<ul class="pagination justify-content-center">`;
-                
-                paginationHtml += `
-                    <li class="page-item ${currentPage === 1 ? 'disabled' : ''}">
-                        <a class="page-link" href="#" data-page="${currentPage - 1}">Previous</a>
-                    </li>
-                `;
-
-                for (let i = 1; i <= totalPages; i++) {
-                    paginationHtml += `
-                        <li class="page-item ${i === currentPage ? 'active' : ''}">
-                            <a class="page-link" href="#" data-page="${i}">${i}</a>
-                        </li>
-                    `;
-                }
-
-                paginationHtml += `
-                    <li class="page-item ${currentPage === totalPages ? 'disabled' : ''}">
-                        <a class="page-link" href="#" data-page="${currentPage + 1}">Next</a>
-                    </li>
-                `;
-                paginationHtml += `</ul>`;
-                paginationDiv.innerHTML = paginationHtml;
-                searchedProductsDiv.appendChild(paginationDiv);
-
-                paginationDiv.querySelectorAll('.page-link').forEach(link => {
-                    link.addEventListener('click', (event) => {
-                        event.preventDefault();
-                        const newPage = parseInt(event.target.dataset.page);
-                        if (newPage !== currentPage) {
-                            searchRequestData.page = newPage;
-                            advProductSearch(searchRequestData, csrfToken); 
-                        }
-                    });
-                });
-            }
-        } else {
-            searchedProductsDiv.innerHTML = `
-                <div class="alert alert-info text-center mt-3" role="alert">
-                    No products found. Try a different search term.
-                </div>`;
-        }
-    })
-    .catch((error) => {
+    } else {
+       displayProducts(searchedProductsDiv, data, csrfToken, searchRequestData, advProductSearch);
+    }
+   })      
+  .catch((error) => {
         console.error("Fetch network error:", error);
         searchedProductsDiv.innerHTML = `
             <div class="alert alert-danger text-center mt-3" role="alert">
                 A network error occurred. Please check your connection.
             </div>`;
     });
+}
+
+
+function displayProducts(container, data, csrfToken, searchParams, searchFunction) {
+  if (data.products && data.products.length > 0) {
+    container.innerHTML = "";
+    data.products.forEach((product) => {
+      const productColumnDiv = document.createElement("div");
+      productColumnDiv.classList.add(
+        "col-12",
+        "col-sm-6",
+        "col-md-4",
+        "col-lg-4",
+        "mb-4"
+      );
+
+      const productCard = document.createElement("div");
+      productCard.classList.add("card", "h-100", "border-0", "shadow-sm");
+
+      productCard.innerHTML = `
+        <div class="card h-100 border-0 shadow-sm">
+          ${
+            product.image_url
+              ? `<img src="${product.image_url}" alt="${
+                  product.product_name || "Product Image"
+                }" class="card-img-top img-fluid rounded-top" style="max-height: 150px; object-fit: cover;">`
+              : ""
+          }
+          <div class="card-body d-flex flex-column justify-content-between">
+            <h3 class="card-title h5 mb-2 text-dark">${
+              product.product_name || "No Name"
+            }</h3>
+            
+            <p class="card-text text-muted mb-1 small"><strong>Brands:</strong> ${
+              product.brands || "N/A"
+            }</p>
+            <p class="card-text text-muted mb-3 small"><strong>Code:</strong> ${
+              product.code || "N/A"
+            }</p>
+
+            <div class="d-flex align-items-center mb-3">
+              <input class="product-quantity-input form-control me-2" type="number" min="0.01" step="0.01" value="1">
+              <span class="text-secondary me-1">${
+                product.product_quantity || ""
+              }</span>
+              <span class="text-muted small">${
+                product.product_quantity_unit || "item"
+              }</span>
+            </div>
+
+            <div class="mt-auto d-flex flex-column">
+              <button class="btn btn-outline-primary btn-sm mb-2 add-btn" 
+                      data-product-name="${
+                        product.product_name || "No Name"
+                      }" 
+                      data-product-id="${product.id}">
+                Add to Pantry
+              </button>
+              <button class="btn btn-sm favourite-btn ${
+                product.is_favourited
+                  ? "btn-outline-danger"
+                  : "btn-outline-primary"
+              }" data-product-id="${product.id}">
+                ${product.is_favourited ? "Remove Favourite" : "Favourite"}
+              </button>
+            </div>
+          </div>
+        </div>`;
+
+      productColumnDiv.appendChild(productCard);
+      container.appendChild(productColumnDiv);
+
+      const favouriteButton = productCard.querySelector(".favourite-btn");
+      favouriteButton.addEventListener("click", (event) => {
+        const clickedButton = event.target;
+        const productIdToFav = clickedButton.dataset.productId;
+        favouriteProduct(productIdToFav, csrfToken, clickedButton);
+      });
+
+      const addButton = productCard.querySelector(".add-btn");
+      addButton.addEventListener("click", (event) => {
+        const clickedButton = event.target;
+        const productIdToAdd = clickedButton.dataset.productId;
+        const quantityInput = productCard.querySelector(
+          ".product-quantity-input"
+        ).value;
+        addProduct(productIdToAdd, quantityInput, csrfToken, productCard);
+      });
+    });
+
+    const totalCount = data.count;
+    const pageSize = data.page_size;
+    const currentPage = data.page_count;
+    const totalPages = Math.ceil(totalCount / pageSize);
+
+    if (totalPages > 1) {
+      const paginationDiv = document.createElement("nav");
+      paginationDiv.setAttribute("aria-label", "Page navigation");
+      
+      let paginationHtml = `<ul class="pagination justify-content-center">`;
+      
+      paginationHtml += `
+        <li class="page-item ${currentPage === 1 ? 'disabled' : ''}">
+          <a class="page-link" href="#" data-page="${currentPage - 1}">Previous</a>
+        </li>`;
+
+      for (let i = 1; i <= totalPages; i++) {
+        paginationHtml += `
+          <li class="page-item ${i === currentPage ? 'active' : ''}">
+            <a class="page-link" href="#" data-page="${i}">${i}</a>
+          </li>`;
+      }
+
+      paginationHtml += `
+        <li class="page-item ${currentPage === totalPages ? 'disabled' : ''}">
+          <a class="page-link" href="#" data-page="${currentPage + 1}">Next</a>
+        </li>`;
+      paginationHtml += `</ul>`;
+      
+      paginationDiv.innerHTML = paginationHtml;
+      container.appendChild(paginationDiv);
+
+      paginationDiv.querySelectorAll('.page-link').forEach(link => {
+        link.addEventListener('click', (event) => {
+          event.preventDefault();
+          const newPage = parseInt(event.target.dataset.page);
+          if (newPage !== currentPage) {
+            const newSearchParams = { ...searchParams, page: newPage };
+            searchFunction(newSearchParams, csrfToken);
+          }
+        });
+      });
+    }
+  } else {
+    container.innerHTML = `
+      <div class="alert alert-info text-center mt-3" role="alert">
+        No products found. Try a different search term.
+      </div>`;
+  }
 }
 
 
