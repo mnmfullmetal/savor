@@ -156,7 +156,61 @@ document.addEventListener("DOMContentLoaded", () => {
     advProductSearch(searchRequestData, csrfToken)
     })
   }
+
+  const categorySelect = document.getElementById('categorySelect');
+  const brandSelect = document.getElementById('brandSelect');
+  const countrySelect = document.getElementById('countrySelect');
+  if (categorySelect && brandSelect && countrySelect){
+  fetchAndPopulateDropdowns(categorySelect, brandSelect, countrySelect );
+  }
+
 });
+
+
+
+function fetchAndPopulateDropdowns(categorySelect, brandSelect, countrySelect) {
+  brandSelect.innerHTML = brandSelect.options[0].outerHTML;
+  categorySelect.innerHTML = categorySelect.options[0].outerHTML;
+  countrySelect.innerHTML = countrySelect.options[0].outerHTML;
+
+  fetch(`/adv_search/populate_criteria`)
+  .then(response => {
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+      return response.json();
+    })
+  .then(data => {
+    const categoryNames = data.categories;
+    const brandNames = data.brands;
+    const countryNames = data.countries;
+
+    categoryNames.sort();
+    brandNames.sort();
+    countryNames.sort();
+
+    categoryNames.forEach(name => {
+      const categoryOption = document.createElement("option");
+      categoryOption.value = name;
+      categoryOption.textContent = name;
+      categorySelect.appendChild(categoryOption)
+    });
+
+    brandNames.forEach(name => {
+      const brandOption = document.createElement("option");
+      brandOption.value = name;
+      brandOption.textContent = name;      
+      brandSelect.appendChild(brandOption)
+    });
+
+    countryNames.forEach(name => {
+      const countryOption = document.createElement('option')
+      countryOption.value = name;
+      countryOption.textContent = name;
+      countrySelect.appendChild(countryOption)
+    })
+  })
+}
 
 
 function searchProduct(barcode = "None", productName = "None", csrfToken, page = 1) {
