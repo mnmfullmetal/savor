@@ -262,16 +262,16 @@ function displayProducts(container, data, csrfToken, searchParams, searchFunctio
 
       const productCard = document.createElement("div");
       productCard.classList.add("card", "h-100", "border-0", "shadow-sm");
+      const placeholderImageUrl = "/static/media/placeholder-img.jpeg";
+      const imageUrl = product.image_url || placeholderImageUrl;
 
       productCard.innerHTML = `
         <div class="card h-100 border-0 shadow-sm">
-          ${
-            product.image_url
-              ? `<img src="${product.image_url}" alt="${
-                  product.product_name || "Product Image"
-                }" class="card-img-top img-fluid rounded-top" style="max-height: 150px; object-fit: cover;">`
-              : ""
-          }
+          <img src="${imageUrl}" 
+             alt="${product.product_name || "Product Image"}" 
+             class="card-img-top img-fluid rounded-top" 
+             style="max-height: 150px; object-fit: cover;"
+             onerror="this.onerror=null;this.src='${placeholderImageUrl}';">
           <div class="card-body d-flex flex-column justify-content-between">
             <h3 class="card-title h5 mb-2 text-dark">${
               product.product_name || "No Name"

@@ -2,10 +2,11 @@ import json
 import requests 
 from decimal import Decimal 
 from django.http import JsonResponse
+from django.templatetags.static import static
 from django.views.decorators.http import require_POST
 from django.contrib.auth.decorators import login_required
 from django_ratelimit.exceptions import Ratelimited
-from django.shortcuts import render, redirect
+from django.shortcuts import render
 from pantry.forms import ProductSearchForm 
 from pantry.models import Pantry, Product, PantryItem
 from .utils import (
@@ -27,6 +28,7 @@ def index(request):
     return render(request, 'pantry/index.html', {
         "user": request.user,
         "product_search_form": form,
+        'placeholder_image_url': static('media/placeholder-img.jpeg')
     })
 
 
