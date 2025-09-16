@@ -111,12 +111,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
     searchProduct(savedBarcode, savedProductName, savedCsrfToken);
     productNameInput.value = '';
-
   }
 
   const initialFavoriteButtons = document.querySelectorAll(".favourite-btn");
   const initialAddButtons = document.querySelectorAll(".add-btn");
-
   initialFavoriteButtons.forEach((button) => {
     button.addEventListener("click", (event) => {
       const clickedButton = event.target;
@@ -136,7 +134,6 @@ document.addEventListener("DOMContentLoaded", () => {
       addProduct(productIdToAdd, quantityInput, csrfToken, productCard);
     });
   });
-
 
   const advSearchForm = document.getElementById("advSearchForm")
   if (advSearchForm){
@@ -337,55 +334,78 @@ function displayProducts(container, data, csrfToken, searchParams, searchFunctio
       });
     });
 
-    const totalCount = data.count;
-    const pageSize = data.page_size;
-    const currentPage = data.page_count;
-    const totalPages = Math.ceil(totalCount / pageSize);
+   const totalCount = data.count;
+  const pageSize = data.page_size;
+  const currentPage = data.page_count;
+  const totalPages = Math.ceil(totalCount / pageSize);
 
-    if (totalPages > 1) {
-      const paginationDiv = document.createElement("nav");
-      paginationDiv.setAttribute("aria-label", "Page navigation");
-      
-      let paginationHtml = `<ul class="pagination justify-content-center">`;
-      
-      paginationHtml += `
-        <li class="page-item ${currentPage === 1 ? 'disabled' : ''}">
-          <a class="page-link" href="#" data-page="${currentPage - 1}">Previous</a>
-        </li>`;
+  if (totalPages > 1) { 
+   const paginationDiv = document.createElement("nav");
+   paginationDiv.setAttribute("aria-label", "Page navigation");
+   
+   let paginationHtml = `<ul class="pagination justify-content-center">`;
+   
+   paginationHtml += `
+    <li class="page-item ${currentPage === 1 ? 'disabled' : ''}">
+     <a class="page-link" href="#" data-page="${currentPage - 1}">Previous</a>
+    </li>`;
 
-      for (let i = 1; i <= totalPages; i++) {
-        paginationHtml += `
-          <li class="page-item ${i === currentPage ? 'active' : ''}">
-            <a class="page-link" href="#" data-page="${i}">${i}</a>
-          </li>`;
-      }
+    const maxLinks = 5;
+    let startPage = Math.max(1, currentPage - Math.floor(maxLinks / 2));
+    let endPage = Math.min(totalPages, startPage + maxLinks - 1);
 
-      paginationHtml += `
-        <li class="page-item ${currentPage === totalPages ? 'disabled' : ''}">
-          <a class="page-link" href="#" data-page="${currentPage + 1}">Next</a>
-        </li>`;
-      paginationHtml += `</ul>`;
-      
-      paginationDiv.innerHTML = paginationHtml;
-      container.appendChild(paginationDiv);
-
-      paginationDiv.querySelectorAll('.page-link').forEach(link => {
-        link.addEventListener('click', (event) => {
-          event.preventDefault();
-          const newPage = parseInt(event.target.dataset.page);
-          if (newPage !== currentPage) {
-            const newSearchParams = { ...searchParams, page: newPage };
-            searchFunction(newSearchParams, csrfToken);
-          }
-        });
-      });
+    if (endPage - startPage + 1 < maxLinks) {
+        startPage = Math.max(1, endPage - maxLinks + 1);
     }
-  } else {
-    container.innerHTML = `
-      <div class="alert alert-info text-center mt-3" role="alert">
-        No products found. Try a different search term.
-      </div>`;
+    
+    if (startPage > 1) {
+        paginationHtml += `<li class="page-item"><a class="page-link" href="#" data-page="1">1</a></li>`;
+        if (startPage > 2) {
+            paginationHtml += `<li class="page-item disabled"><span class="page-link">...</span></li>`;
+        }
+    }
+
+    for (let i = startPage; i <= endPage; i++) {
+        paginationHtml += `
+            <li class="page-item ${i === currentPage ? 'active' : ''}">
+                <a class="page-link" href="#" data-page="${i}">${i}</a>
+            </li>
+        `;
+    }
+
+    if (endPage < totalPages) {
+        if (endPage < totalPages - 1) {
+            paginationHtml += `<li class="page-item disabled"><span class="page-link">...</span></li>`;
+        }
+        paginationHtml += `<li class="page-item"><a class="page-link" href="#" data-page="${totalPages}">${totalPages}</a></li>`;
+    }
+
+   paginationHtml += `
+    <li class="page-item ${currentPage === totalPages ? 'disabled' : ''}">
+     <a class="page-link" href="#" data-page="${currentPage + 1}">Next</a>
+    </li>`;
+   paginationHtml += `</ul>`;
+   
+   paginationDiv.innerHTML = paginationHtml;
+   container.appendChild(paginationDiv);
+
+   paginationDiv.querySelectorAll('.page-link').forEach(link => {
+    link.addEventListener('click', (event) => {
+     event.preventDefault();
+     const newPage = parseInt(event.target.dataset.page);
+     if (newPage !== currentPage) {
+      const newSearchParams = { ...searchParams, page: newPage };
+      searchFunction(newSearchParams, csrfToken);
+     }
+    });
+   });
   }
+ } else {
+  container.innerHTML = `
+   <div class="alert alert-info text-center mt-3" role="alert">
+    No products found. Try a different search term.
+   </div>`;
+ }
 }
 
 
