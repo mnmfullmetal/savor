@@ -38,11 +38,13 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  document.getElementById("scan-button").addEventListener("click", () => {
+    document.getElementById("scan-button").addEventListener("click", () => {
     document.getElementById("scanner-container").style.display = "block";
-    document.getElementById("searched-product-section").innerHTML = "";
-    startScanner(csrfToken);
+      startScanner(csrfToken);
+   
   });
+
+  
 
   document.getElementById("stop-scanner-btn").addEventListener("click", () => {
     Quagga.stop();
@@ -557,9 +559,10 @@ function favouriteProduct(productIdToFav, csrfToken, clickedButton) {
     .catch((error) => console.error("Error toggling favourite:", error));
 }
 
-function updateFavouriteSection(product, is_favourited, csrfToken) {
-  const favouriteSection = document.querySelector(".product-cards-wrapper");
 
+function updateFavouriteSection(product, is_favourited, csrfToken) {
+
+  const favouriteSection = document.querySelector(".product-cards-wrapper");
   const emptyMessage = favouriteSection.querySelector("p.text-muted");
 
   if (is_favourited) {
@@ -651,6 +654,7 @@ function updateFavouriteSection(product, is_favourited, csrfToken) {
   }
 }
 
+
 function startScanner(csrfToken) {
   Quagga.init(
     {
@@ -685,12 +689,22 @@ function startScanner(csrfToken) {
   );
 
   Quagga.onDetected(function (result) {
+    const currentPath = window.location.pathname;
     const barcode = result.codeResult.code;
     console.log("Barcode detected:", barcode);
     Quagga.stop();
     document.getElementById("scanner-container").style.display = "none";
 
-    searchProduct(barcode, "", csrfToken);
+    if (currentPath !== "index" && currentPath !== "/") {
+     
+      sessionStorage.setItem("searchBarcode", barcode);
+      sessionStorage.setItem("searchCsrfToken", csrfToken);
+      window.location.href = "/";
+    }
+    else{
+    searchProduct(barcode, "", csrfToken, page=1);
+    }
+
   });
 }
 
