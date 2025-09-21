@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from .forms import UserCreationForm
+from .forms import UserCreationForm, PasswordResetForm
 from django.contrib.auth import login
 from pantry.models import Pantry
 
@@ -17,3 +17,7 @@ def register(request):
         form = UserCreationForm()
     return render(request, 'users/register.html', {'form': form})
     
+
+def profile_view(request):
+    return render(request, 'users/profile.html')
+

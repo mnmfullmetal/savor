@@ -136,7 +136,7 @@
         .main-content {
             padding: 1.5rem;
              background-color: var(--neutral-cream);
-             color: var(--light-text);
+             color: var(--dark-text);
             min-height: 100vh;
 
         }
@@ -191,7 +191,8 @@
         }
 
          .sidebar .nav-item .dropdown-item{
-              border: 1.5px var(--tertiary-green);
+            margin-top: 1rem;
+            border: 1.5px var(--tertiary-green);
             border-right: 0px ;
             border-bottom-left-radius: 15px;
             border-top-left-radius: 15px;
