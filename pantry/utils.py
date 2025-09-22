@@ -173,10 +173,11 @@ def save_product_to_db(product_data):
         print(f"Error saving product to DB: {e}")
         return None
     
+@ratelimit(key='ip', rate='2/m', block=True, group='off_facet_api_call')
 def fetch_facet_json_data():
-    CATEGORIES_URL = f'{OFF_API_PROD_URL}/facets/categories.json'
-    BRANDS_URL = f'{OFF_API_PROD_URL}/facets/brands.json'
-    COUNTRIES_URL = f'{OFF_API_PROD_URL}/facets/countries.json'
+    CATEGORIES_URL = f'{OFF_API_BASE_URL}/facets/categories.json'
+    BRANDS_URL = f'{OFF_API_BASE_URL}/facets/brands.json'
+    COUNTRIES_URL = f'{OFF_API_BASE_URL}/facets/countries.json'
 
     headers = get_headers()
 
@@ -190,7 +191,6 @@ def fetch_facet_json_data():
         categories_data = categories_response.json()
     except Exception as e:
         print(f"Failed to get categories from api endpoint: {e}")
-        print(f"data: {categories_data}" )
 
     try:
         brands_response = requests.get(BRANDS_URL, headers=headers)
@@ -199,7 +199,6 @@ def fetch_facet_json_data():
         brands_data = brands_response.json()
     except Exception as e:
         print(f"Failed to get brands from api endpoint: {e}")
-        print(f"data: {brands_data}" )
 
 
     try:
@@ -208,10 +207,9 @@ def fetch_facet_json_data():
         countries_data = countries_response.json()
     except Exception as e:
         print(f"Failed to get brands from api endpoint: {e}")
-        print(f"data: {countries_data}" )
 
-    
     return categories_data, brands_data, countries_data
+
 
 def get_cached_json(data_type):
     return cache.get(f"off_{data_type}_cache")
