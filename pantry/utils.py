@@ -189,18 +189,23 @@ def fetch_facet_json_data():
         categories_data = categories_response.json()
     except Exception as e:
         print(f"Failed to get categories from api endpoint: {e}")
+        print(f"data: {categories_data}" )
 
     try:
         brands_response = requests.get(BRANDS_URL, headers=headers)
         brands_data = brands_response.json()
     except Exception as e:
         print(f"Failed to get brands from api endpoint: {e}")
+        print(f"data: {brands_data}" )
+
 
     try:
         countries_response = requests.get(COUNTRIES_URL, headers=headers)
         countries_data = countries_response.json()
     except Exception as e:
         print(f"Failed to get brands from api endpoint: {e}")
+        print(f"data: {countries_data}" )
+
     
     return categories_data, brands_data, countries_data
 

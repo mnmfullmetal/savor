@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+{% load static %}
+{% load widget_tweaks %}
+
+{% block title %}
+Account Settings
+{% endblock %}
+
+
+
+{% block body %}
+
+
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Delete Account </h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <p><strong>Warning!</strong> You are about to delete your account permanently.</p>
+        <p>Doing this will permanently remove all account data including your pantry, saved recipes, and favourites. Are you sure you want to continue? </p>
+        <span> I'm sure, <a href="{% url 'users:delete_account' %}" class="btn btn-outline-danger">Delete Account</a>. </span> 
+       </div>
+    </div>
+  </div>
+</div>
+
+<div class="container d-flex justify-content-center">
+
+ 
+
+    <div class="col-md-6 my-5">
+
+         <div class="card p-4 rounded shadow-lg my-2">
+        <h1 class="text-center">Account Details</h1>
+        <hr>
+        </div>
+
+        
+        <div class="card p-4 rounded shadow-lg my-4">
+        <h1 class="text-center">Account Management</h1>
+        <hr>
+        <div class="text-center">
+            <a href="{% url 'password_change' %}" class="btn btn-outline-primary mt-4 w-50">Change Password</a>
+            <a href="#" data-bs-toggle="modal" data-bs-target="#exampleModal" class="btn btn-outline-danger mt-4 w-50"> Delete Account</a>
+        </div>
+        </div>
+         
+    </div>      
+     
+    
+</div>
+
+
+{% endblock %}
+
+
