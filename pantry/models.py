@@ -8,6 +8,8 @@ from django.conf import settings
 class Pantry(models.Model):
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='pantries')
     products = models.ManyToManyField('Product', through='PantryItem', related_name='contained_in_pantries')
+    nutri_score = models.DecimalField(max_digits=5, decimal_places=2, blank=True, null=True)
+    eco_score = models.DecimalField(max_digits=5, decimal_places=2, blank=True, null=True)
 
 
 class PantryItem(models.Model):
@@ -16,7 +18,6 @@ class PantryItem(models.Model):
     quantity = models.DecimalField(max_digits=10, decimal_places=2)
     expiration_date = models.DateField(blank=True, null=True)
     added_date = models.DateTimeField(auto_now_add=True)
-
 
     class Meta:
         unique_together = ('pantry', 'product')
@@ -38,14 +39,11 @@ class Product(models.Model):
     product_quantity_unit = models.CharField(max_length=50, blank=True, null=True)
     product_quantity = models.DecimalField(max_digits=10, decimal_places=2, blank=True, null=True)
 
-
     ingredients = models.TextField(blank=True, null=True)
-    allergens = models.TextField(blank=True, null=True)
-
+    allergens = models.ManyToManyField('users.Allergen', blank=True, related_name="allergens_in_product")
 
     energy_kj = models.DecimalField(max_digits=10, decimal_places=2, blank=True, null=True)
     energy_kcal = models.DecimalField(max_digits=10, decimal_places=2, blank=True, null=True)
-
 
     protein_serving = models.DecimalField(max_digits=10, decimal_places=2, blank=True, null=True)
     fat_serving = models.DecimalField(max_digits=10, decimal_places=2, blank=True, null=True)
@@ -63,9 +61,6 @@ class Product(models.Model):
     sugars_100g = models.DecimalField(max_digits=10, decimal_places=2, blank=True, null=True)
     fiber_100g = models.DecimalField(max_digits=10, decimal_places=2, blank=True, null=True)
     sodium_100g = models.DecimalField(max_digits=10, decimal_places=2, blank=True, null=True)
-
-
-
 
     nutrition_score = models.DecimalField(max_digits=5, decimal_places=2, blank=True, null=True)
     nutrition_grade = models.CharField(max_length=1, blank=True, null=True)

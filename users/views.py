@@ -24,7 +24,10 @@ def register(request):
     
 @login_required
 def account_settings(request):
-    return render(request, 'users/account_settings.html')
+
+    return render(request, 'users/account_settings.html', {
+         'user': request.user,
+    })
 
 @login_required
 def delete_user(request):

@@ -83,6 +83,8 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'savor.wsgi.application'
 
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
 
 
 # Database
@@ -184,6 +186,6 @@ CELERY_BEAT_SCHEDULE = {
 
     'update-facet-data-for-dropdown': {
         'task': 'pantry.tasks.update_facet_json_data',
-        'schedule': timedelta(minutes=10),
+        'schedule': timedelta(days=5),
     },
 }

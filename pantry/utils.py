@@ -6,7 +6,7 @@ from django.utils import timezone
 from pantry.models import Product
 from django.core.cache import cache
 
-
+OFF_API_PROD_URL = 'https://world.openfoodfacts.org/'
 OFF_API_BASE_URL = settings.OPENFOODFACTS_API['BASE_URL']
 OFF_USER_AGENT = settings.OPENFOODFACTS_API['USER_AGENT']
 USE_STAGING_AUTH = settings.OPENFOODFACTS_API['USE_STAGING_AUTH']
@@ -174,9 +174,9 @@ def save_product_to_db(product_data):
         return None
     
 def fetch_facet_json_data():
-    CATEGORIES_URL = f'{OFF_API_BASE_URL}/facets/categories.json'
-    BRANDS_URL = f'{OFF_API_BASE_URL}/facets/brands.json'
-    COUNTRIES_URL = f'{OFF_API_BASE_URL}/facets/countries.json'
+    CATEGORIES_URL = f'{OFF_API_PROD_URL}/facets/categories.json'
+    BRANDS_URL = f'{OFF_API_PROD_URL}/facets/brands.json'
+    COUNTRIES_URL = f'{OFF_API_PROD_URL}/facets/countries.json'
 
     headers = get_headers()
 
@@ -186,6 +186,7 @@ def fetch_facet_json_data():
 
     try:
         categories_response = requests.get(CATEGORIES_URL, headers=headers)
+        print(f" response: {categories_response.text} ")
         categories_data = categories_response.json()
     except Exception as e:
         print(f"Failed to get categories from api endpoint: {e}")
@@ -193,6 +194,8 @@ def fetch_facet_json_data():
 
     try:
         brands_response = requests.get(BRANDS_URL, headers=headers)
+        print(f" response: {brands_response.text} ")
+
         brands_data = brands_response.json()
     except Exception as e:
         print(f"Failed to get brands from api endpoint: {e}")
@@ -201,6 +204,7 @@ def fetch_facet_json_data():
 
     try:
         countries_response = requests.get(COUNTRIES_URL, headers=headers)
+        print(f" response: {countries_response.text} ")
         countries_data = countries_response.json()
     except Exception as e:
         print(f"Failed to get brands from api endpoint: {e}")
