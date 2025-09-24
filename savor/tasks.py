@@ -18,6 +18,7 @@ def fetch_and_process_facet_data(facet_name):
 
     refresh_time =  timedelta(days=7).total_seconds()
     facet_data = fetch_single_facet_json_data(facet_name=facet_name)
+    print(f'world {facet_name} data receieved {facet_data}')
 
     cache.set(f"off_{facet_name}_cache_world", facet_data, timeout=refresh_time)
     
@@ -60,5 +61,7 @@ def update_localised_facet_data():
 def fetch_and_cache_localised_facet_data(language, facet):
     refresh_time =  timedelta(days=7).total_seconds()
     facet_data = fetch_single_localised_facet_json_data(language=language, facet=facet)
+    print(f'localised {facet} data receieved {facet_data}')
+
 
     cache.set(f"off_{facet}_cache_{language}", facet_data, timeout=refresh_time)

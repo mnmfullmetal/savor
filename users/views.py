@@ -60,12 +60,16 @@ def account_settings(request):
         localised_allergens_data = get_cached_json(language=language_code, data_type='allergens')
         localised_requirements_data = get_cached_json(language=language_code, data_type='labels')
         localised_languages_data = get_cached_json(language=language_code, data_type="languages")
+    
+    allergens = Allergen.objects.all()
+    if localised_allergens_data:
+        localized_api_tags = [tag['id'] for tag in localised_allergens_data.get('tags', [])]
+        allergens = Allergen.objects.filter(api_tag__in=localized_api_tags)
 
-    localised_allergens = [(tag['id'], tag['name']) for tag in (localised_allergens_data or {}).get('tags', [])]
-    allergens = localised_allergens or default_allergens
-
-    localised_requirements = [(tag['id'], tag['name']) for tag in (localised_requirements_data or {}).get('tags', [])]
-    requirements = localised_requirements or default_requirements
+    requirements = DietaryRequirement.objects.all()
+    if localised_requirements_data:
+        localized_api_tags = [tag['id'] for tag in localised_requirements_data.get('tags', [])]
+        requirements = DietaryRequirement.objects.filter(api_tag__in=localized_api_tags)
     
     localised_languages = [(tag['id'], tag['name']) for tag in (localised_languages_data or {}).get('tags', [])]
     languages = localised_languages or default_languages

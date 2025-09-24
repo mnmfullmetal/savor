@@ -11,9 +11,6 @@ LANGUAGE_CODE_MAP = {
     'German': 'de',
     'Italian': 'it',
     'Portuguese': 'pt',
-    'Dutch': '?',
-    'Afrikaans': '?',
-    'Arabic': '?',
 }
 
 OFF_API_BASE_URL = settings.OPENFOODFACTS_API['BASE_URL']
@@ -48,6 +45,7 @@ def fetch_single_facet_json_data( facet_name):
 
     try:
         response = requests.get(api_url, headers=headers)
+        print(f'response from world {facet_name} endpoint: {response}')
         response.raise_for_status()
         response_data = response.json()
         return response_data
@@ -65,6 +63,7 @@ def fetch_single_localised_facet_json_data(language, facet):
     
     try:
         response = requests.get(api_url, headers=headers)
+        print(f'response from localised {facet} endpoint: {response}')
         response.raise_for_status()
         response_data = response.json()
         return response_data

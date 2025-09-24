@@ -55,52 +55,52 @@
             <h2 class="text-center">User settings</h2>
             <hr />
             <form method="post">
-                {% csrf_token %}
+      {% csrf_token %}
 
-                <div class="mb-3">
-                    <label for="{{ form.lanaguage_preference.id_for_label }}" class="form-label">Language Preference</label>
-                    {% render_field form.language_preference class="form-select" %}
-                </div>
+      <div class="mb-3">
+        <label for="{{ form.language_preference.id_for_label }}" class="form-label">Language Preference</label>
+        {{ form.language_preference }}
+      </div>
 
-                <div class="mb-3">
-                    <label class="form-label">Dietary Requirements</label>
-                    {% for checkbox in form.dietary_requirements %}
-                        <div class="form-check">
-                            {{ checkbox.tag }}
-                            <label class="form-check-label" for="{{ checkbox.id_for_label }}">
-                                {{ checkbox.choice_label }}
-                            </label>
-                        </div>
-                    {% endfor %}
-                </div>
+      <div class="mb-3">
+    <label class="form-label">Dietary Requirements</label>
+    {% for checkbox in form.dietary_requirements %}
+        <div class="form-check">
+            {{ checkbox.tag }}
+            <label class="form-check-label" for="{{ checkbox.id_for_label }}">
+                {{ checkbox.choice_label }}
+            </label>
+        </div>
+    {% endfor %}
+</div>
 
-                <div class="mb-3">
-                    <label class="form-label">Allergens</label>
-                    {% for checkbox in form.allergens %}
-                        <div class="form-check">
-                            {{ checkbox.tag }}
-                            <label class="form-check-label" for="{{ checkbox.id_for_label }}">
-                                {{ checkbox.choice_label }}
-                            </label>
-                        </div>
-                    {% endfor %}
-                </div>
+<div class="mb-3">
+    <label class="form-label">Allergens</label>
+    {% for checkbox in form.allergens %}
+        <div class="form-check">
+            {{ checkbox.tag }}
+            <label class="form-check-label" for="{{ checkbox.id_for_label }}">
+                {{ checkbox.choice_label }}
+            </label>
+        </div>
+    {% endfor %}
+</div>
 
-                <div class="form-check form-switch mb-3">
-                    {{ form.show_nutri_score }}
-                    <label class="form-check-label" for="{{ form.show_nutri_score.id_for_label }}">{{ form.show_nutri_score.label }}</label>
-                </div>
-                <div class="form-check form-switch mb-3">
-                    {{ form.show_eco_score }}
-                    <label class="form-check-label" for="{{ form.show_eco_score.id_for_label }}">{{ form.show_eco_score.label }}</label>
-                </div>
-                <div class="form-check form-switch mb-3">
-                    {{ form.get_only_localized_results }}
-                    <label class="form-check-label" for="{{ form.get_only_localized_results.id_for_label }}">{{ form.get_only_localized_results.label }}</label>
-                </div>
-                
-                <button type="submit" class="btn btn-primary w-100">Save Settings</button>
-            </form>
+      <div class="form-check form-switch mb-3">
+        {{ form.show_nutri_score }}
+        <label class="form-check-label" for="{{ form.show_nutri_score.id_for_label }}">{{ form.show_nutri_score.label }}</label>
+      </div>
+      <div class="form-check form-switch mb-3">
+        {{ form.show_eco_score }}
+        <label class="form-check-label" for="{{ form.show_eco_score.id_for_label }}">{{ form.show_eco_score.label }}</label>
+      </div>
+      <div class="form-check form-switch mb-3">
+        {{ form.get_only_localized_results }}
+        <label class="form-check-label" for="{{ form.get_only_localized_results.id_for_label }}">{{ form.get_only_localized_results.label }}</label>
+      </div>
+      
+      <button type="submit" class="btn btn-primary w-100">Save Settings</button>
+    </form>
           </div>
 </div>
 </div>
