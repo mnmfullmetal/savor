@@ -17,7 +17,7 @@ class UserSettings(models.Model):
     show_nutri_score = models.BooleanField(default=True)
     show_eco_score = models.BooleanField(default=True)
 
-    country = models.CharField(max_length=10, blank=True, null=True)
+    language_preference = models.CharField(max_length=10, blank=True, null=True)
     get_only_localized_results = models.BooleanField(default=False)
 
     def __str__(self):

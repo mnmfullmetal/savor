@@ -1,25 +1,15 @@
 import requests
-import base64
 from django.conf import settings
 from django_ratelimit.decorators import ratelimit
 from django.utils import timezone 
 from pantry.models import Product
-from django.core.cache import cache
+from savor.utils import get_headers, rate_limit_error_response
 
-OFF_API_PROD_URL = 'https://world.openfoodfacts.org/'
 OFF_API_BASE_URL = settings.OPENFOODFACTS_API['BASE_URL']
 OFF_USER_AGENT = settings.OPENFOODFACTS_API['USER_AGENT']
 USE_STAGING_AUTH = settings.OPENFOODFACTS_API['USE_STAGING_AUTH']
 OFF_USERNAME = settings.OPENFOODFACTS_API['USERNAME']
 OFF_PASSWORD = settings.OPENFOODFACTS_API['PASSWORD']
-
-
-def get_headers():
-    headers = {"User-Agent": OFF_USER_AGENT}
-    if USE_STAGING_AUTH:
-        auth_string = f"{OFF_USERNAME}:{OFF_PASSWORD}".encode()
-        headers["Authorization"] = f"Basic {base64.b64encode(auth_string).decode()}"
-    return headers
 
 
 @ratelimit(key='ip', rate='10/m', block=True, group='off_advsearch_api_call')
@@ -45,7 +35,6 @@ def adv_search_product(request, search_params, page=1):
     except requests.exceptions.RequestException as e:
         print(f"API request failed: {e}")
         return []
-
 
 
 
@@ -173,46 +162,6 @@ def save_product_to_db(product_data):
         print(f"Error saving product to DB: {e}")
         return None
     
-@ratelimit(key='ip', rate='2/m', block=True, group='off_facet_api_call')
-def fetch_facet_json_data():
-    CATEGORIES_URL = f'{OFF_API_BASE_URL}/facets/categories.json'
-    BRANDS_URL = f'{OFF_API_BASE_URL}/facets/brands.json'
-    COUNTRIES_URL = f'{OFF_API_BASE_URL}/facets/countries.json'
-
-    headers = get_headers()
-
-    categories_data = {}
-    brands_data = {}
-    countries_data = {}
-
-    try:
-        categories_response = requests.get(CATEGORIES_URL, headers=headers)
-        print(f" response: {categories_response.text} ")
-        categories_data = categories_response.json()
-    except Exception as e:
-        print(f"Failed to get categories from api endpoint: {e}")
-
-    try:
-        brands_response = requests.get(BRANDS_URL, headers=headers)
-        print(f" response: {brands_response.text} ")
-
-        brands_data = brands_response.json()
-    except Exception as e:
-        print(f"Failed to get brands from api endpoint: {e}")
-
-
-    try:
-        countries_response = requests.get(COUNTRIES_URL, headers=headers)
-        print(f" response: {countries_response.text} ")
-        countries_data = countries_response.json()
-    except Exception as e:
-        print(f"Failed to get brands from api endpoint: {e}")
-
-    return categories_data, brands_data, countries_data
-
-
-def get_cached_json(data_type):
-    return cache.get(f"off_{data_type}_cache")
 
 
 def build_api_search_params(params):

@@ -49,6 +49,7 @@ INSTALLED_APPS = [
     'users',
     'recipes',
     'pantry',
+    'savor',
     'widget_tweaks',
     'django_ratelimit',
 ]
@@ -169,6 +170,7 @@ CACHES = {
         }
 }
 
+RATELIMIT_ERROR_HANDLER = 'savor.utils.rate_limit_error_response'
 
 
 CELERY_BROKER_URL = 'redis://127.0.0.1:6379/0'
@@ -184,8 +186,9 @@ CELERY_BEAT_SCHEDULE = {
         'schedule': timedelta(hours=1), 
     },
 
-    'update-facet-data-for-dropdown': {
-        'task': 'pantry.tasks.update_facet_json_data',
+    'update-facet-data': {
+        'task': 'savor.tasks.update_facet_json_data',
         'schedule': timedelta(days=5),
     },
+
 }

@@ -7,7 +7,7 @@ from datetime import datetime, timedelta
 
 User = get_user_model()
 
-@shared_task
+@shared_task(rate_limit='10/m')
 def generate_recipes_task(user_id):
     user = User.objects.get(id=user_id)
 

@@ -9,13 +9,14 @@ from django_ratelimit.exceptions import Ratelimited
 from django.shortcuts import render
 from pantry.forms import ProductSearchForm 
 from pantry.models import Pantry, Product, PantryItem
+from users.models import UserSettings
+from savor.utils import get_cached_json, rate_limit_error_response
 from .utils import (
     check_db_for_product,
     fetch_product_by_barcode,
     search_products_by_name,
     save_product_to_db,
     get_product_suggestions,
-    get_cached_json,
     adv_search_product,
     build_api_search_params
 )
@@ -24,24 +25,10 @@ from .utils import (
 # Create your views here.
 
 def index(request):
-    form = ProductSearchForm(request.GET)
     return render(request, 'pantry/index.html', {
         "user": request.user,
-        "product_search_form": form,
         'placeholder_image_url': static('media/placeholder-img.jpeg')
     })
-
-
-
-def rate_limit_error_response(request, exception):
-    return JsonResponse(
-        {
-            'error': 'Too Many Requests',
-            'message': 'You have exceeded the search rate limit. Please wait a moment and try again.',
-            'details': f'Rate limit: {exception.rate}, remaining: {exception.limit - exception.count}'
-        },
-        status=429
-    )
 
 
 
@@ -231,9 +218,13 @@ def advanced_product_search(request):
 
 
 def populate_adv_search_criteria(request):
-    categories_data = get_cached_json("categories")
-    brands_data = get_cached_json("brands")
-    countries_data = get_cached_json("countries")
+    user_settings = UserSettings.objects.get(user=request.user)
+    language_code = user_settings.language_preference
+    if not language_code:
+        language_code = 'world'
+    categories_data = get_cached_json(language=language_code, data_type="categories")
+    brands_data = get_cached_json(language=language_code, data_type="brands")
+    countries_data = get_cached_json(language=language_code, data_type="countries")
 
     categories = []
     for tag in categories_data.get('tags', []):

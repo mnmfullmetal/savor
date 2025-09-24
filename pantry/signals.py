@@ -2,7 +2,7 @@ from django.db.models.signals import post_save, post_delete
 from django.contrib.auth.signals import user_logged_in
 from django.dispatch import receiver
 from django.core.cache import cache
-from .models import Pantry, PantryItem
+from .models import PantryItem
 from recipes.tasks import generate_recipes_task
 
 def schedule_recipe_generation_task(user):
