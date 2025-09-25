@@ -10,6 +10,7 @@ from django.shortcuts import render
 from pantry.forms import ProductSearchForm 
 from pantry.models import Pantry, Product, PantryItem
 from users.models import UserSettings
+from savor.utils import LANGUAGE_CODE_MAP
 from savor.utils import get_cached_json, rate_limit_error_response
 from .utils import (
     check_db_for_product,
@@ -219,12 +220,20 @@ def advanced_product_search(request):
 
 def populate_adv_search_criteria(request):
     user_settings = UserSettings.objects.get(user=request.user)
-    language_code = user_settings.language_preference
-    if not language_code:
+    user_lang_name = user_settings.language_preference
+    language_code = LANGUAGE_CODE_MAP.get(user_lang_name, 'world')
+    print(f"language code after check: {language_code}")
+    print(f"language code before check {language_code}")
+
+    if language_code == None:
         language_code = 'world'
+        print(f"language code after check {language_code}")
     categories_data = get_cached_json(language=language_code, data_type="categories")
+    print(f"DEBUG: categories data -> {categories_data}")
     brands_data = get_cached_json(language=language_code, data_type="brands")
+    print(f"DEBUG: brands data -> {brands_data}")
     countries_data = get_cached_json(language=language_code, data_type="countries")
+    print(f"DEBUG: countries data -> {countries_data}")
 
     categories = []
     for tag in categories_data.get('tags', []):

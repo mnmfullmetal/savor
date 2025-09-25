@@ -46,7 +46,7 @@ def account_settings(request):
         cache.set('off_labels_cache_world', default_requirements, timeout=cache_timeout)
 
     default_languages_data = get_cached_json(language='world', data_type='languages') or {}
-    default_languages = [(tag['id'], tag['name']) for tag in default_languages_data.get('tags', [])]
+    default_languages = [(tag['name'], tag['name']) for tag in default_languages_data.get('tags', [])]
 
     language_code = user_settings.language_preference
     print(f' language code found! {language_code}')
@@ -55,7 +55,7 @@ def account_settings(request):
     localised_requirements_data = None
     localised_languages_data = None
     
-    if language_code != 'world':
+    if language_code != None:
         print(f'changed language code found! {language_code}')
         localised_allergens_data = get_cached_json(language=language_code, data_type='allergens')
         localised_requirements_data = get_cached_json(language=language_code, data_type='labels')
@@ -63,15 +63,15 @@ def account_settings(request):
     
     allergens = Allergen.objects.all()
     if localised_allergens_data:
-        localized_api_tags = [tag['id'] for tag in localised_allergens_data.get('tags', [])]
-        allergens = Allergen.objects.filter(api_tag__in=localized_api_tags)
+        localised_api_tags = [tag['id'] for tag in localised_allergens_data.get('tags', [])]
+        allergens = Allergen.objects.filter(api_tag__in=localised_api_tags)
 
     requirements = DietaryRequirement.objects.all()
     if localised_requirements_data:
-        localized_api_tags = [tag['id'] for tag in localised_requirements_data.get('tags', [])]
-        requirements = DietaryRequirement.objects.filter(api_tag__in=localized_api_tags)
+        localised_api_tags = [tag['id'] for tag in localised_requirements_data.get('tags', [])]
+        requirements = DietaryRequirement.objects.filter(api_tag__in=localised_api_tags)
     
-    localised_languages = [(tag['id'], tag['name']) for tag in (localised_languages_data or {}).get('tags', [])]
+    localised_languages = [(tag['name'], tag['name']) for tag in (localised_languages_data or {}).get('tags', [])]
     languages = localised_languages or default_languages
 
     form_kwargs = {

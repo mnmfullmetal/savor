@@ -48,6 +48,7 @@ def fetch_and_process_facet_data(facet_name):
             except IntegrityError:
                 pass
 
+
 @shared_task
 def update_localised_facet_data():
     supported_languages = get_supported_language_codes()

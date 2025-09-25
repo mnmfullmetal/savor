@@ -78,4 +78,4 @@ def get_cached_json(language, data_type):
 
 
 def get_supported_language_codes():
-    return list(LANGUAGE_CODE_MAP.keys())
+    return list(LANGUAGE_CODE_MAP.values())
