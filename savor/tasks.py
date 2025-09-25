@@ -20,12 +20,17 @@ def fetch_and_process_facet_data(facet_name):
     facet_data = fetch_single_facet_json_data(facet_name=facet_name)
     print(f'world {facet_name} data receieved {facet_data}')
 
+    if facet_name == 'languages':
+        filtered_tags = [tag for tag in facet_data.get('tags', []) if tag.get('known') == 1]
+        facet_data['tags'] = filtered_tags
+
     cache.set(f"off_{facet_name}_cache_world", facet_data, timeout=refresh_time)
     
     relevant_dietary_tags = [
         'en:halal', 'en:kosher', 'en:no-lactose', 'en:vegan', 
         'en:vegetarian', 'en:no-gluten'
     ]
+
 
     if facet_name == 'allergens':
         for tag in facet_data.get('tags', []):
@@ -62,7 +67,11 @@ def update_localised_facet_data():
 def fetch_and_cache_localised_facet_data(language, facet):
     refresh_time =  timedelta(days=7).total_seconds()
     facet_data = fetch_single_localised_facet_json_data(language=language, facet=facet)
-    print(f'localised {facet} data receieved {facet_data}')
 
+    if facet == 'languages':
+        filtered_tags = [tag for tag in facet_data.get('tags', []) if tag.get('known') == 1]
+        facet_data['tags'] = filtered_tags
+
+    print(f'localised {facet} data receieved {facet_data}')
 
     cache.set(f"off_{facet}_cache_{language}", facet_data, timeout=refresh_time)
