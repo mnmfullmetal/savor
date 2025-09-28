@@ -13,12 +13,11 @@ def update_facet_data():
     
     update_localised_facet_data.delay()
 
-@shared_task(rate_limit='2/m')
+@shared_task(rate_limit='1/m')
 def fetch_and_process_facet_data(facet_name):
 
     refresh_time =  timedelta(days=7).total_seconds()
     facet_data = fetch_single_facet_json_data(facet_name=facet_name)
-    print(f'world {facet_name} data receieved {facet_data}')
 
     if facet_name == 'languages':
         filtered_tags = [tag for tag in facet_data.get('tags', []) if tag.get('known') == 1]
@@ -36,7 +35,8 @@ def fetch_and_process_facet_data(facet_name):
         for tag in facet_data.get('tags', []):
             api_tag = tag.get('id')
             name = tag.get('name')
-            if api_tag and api_tag.startswith('en:'):
+            known = tag.get('known')
+            if api_tag and api_tag.startswith('en:') and known == 1:
                 try:
                     Allergen.objects.get_or_create(api_tag=api_tag, defaults={'allergen_name': name})
                 except IntegrityError:
@@ -63,7 +63,7 @@ def update_localised_facet_data():
             fetch_and_cache_localised_facet_data.delay(language, facet)
 
 
-@shared_task(rate_limit='2/m')
+@shared_task(rate_limit='1/m')
 def fetch_and_cache_localised_facet_data(language, facet):
     refresh_time =  timedelta(days=7).total_seconds()
     facet_data = fetch_single_localised_facet_json_data(language=language, facet=facet)
@@ -72,6 +72,9 @@ def fetch_and_cache_localised_facet_data(language, facet):
         filtered_tags = [tag for tag in facet_data.get('tags', []) if tag.get('known') == 1]
         facet_data['tags'] = filtered_tags
 
-    print(f'localised {facet} data receieved {facet_data}')
 
     cache.set(f"off_{facet}_cache_{language}", facet_data, timeout=refresh_time)
+
+
+    
+
