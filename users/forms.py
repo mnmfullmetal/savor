@@ -9,6 +9,7 @@ class UserCreationForm(UserCreationForm):
      class Meta(UserCreationForm.Meta):
         model = User
         fields = UserCreationForm.Meta.fields + ('email',)
+        
 
 class UserSettingsForm(forms.ModelForm):
     language_preference = forms.ChoiceField(required=False)
@@ -25,6 +26,8 @@ class UserSettingsForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         allergens_choices = kwargs.pop('allergens_choices', Allergen.objects.all())
         requirements_choices = kwargs.pop('requirements_choices', DietaryRequirement.objects.all())
+        allergens_labels = kwargs.pop('allergens_labels', None) 
+        requirements_labels = kwargs.pop('requirements_labels', None) 
         languages_choices = kwargs.pop('languages_choices', [])
         
         super().__init__(*args, **kwargs)
@@ -32,5 +35,11 @@ class UserSettingsForm(forms.ModelForm):
         self.fields['allergens'].queryset = allergens_choices
         self.fields['dietary_requirements'].queryset = requirements_choices
         
+        if allergens_labels is not None:
+             self.fields['allergens'].choices = allergens_labels 
+
+        if requirements_labels is not None:
+             self.fields['dietary_requirements'].choices = requirements_labels
+
         if languages_choices:
-            self.fields['language_preference'].choices = languages_choices
+             self.fields['language_preference'].choices = languages_choices

@@ -5,12 +5,12 @@ from django.core.cache import cache
 from django.http import JsonResponse
 
 LANGUAGE_CODE_MAP = {
-    'English': 'en',
-    'French': 'fr',
-    'Spanish': 'es',
-    'German': 'de',
-    'Italian': 'it',
-    'Portuguese': 'pt',
+    'en:english': 'en',
+    'en:french': 'fr',
+    'en:spanish': 'es',
+    'en:german': 'de',
+    'en:italian': 'it',
+    'en:portuguese': 'pt',
 }
 
 OFF_API_BASE_URL = settings.OPENFOODFACTS_API['BASE_URL']

@@ -8,7 +8,7 @@ from .models import UserSettings, Allergen, DietaryRequirement
 from django.http import JsonResponse, HttpResponseRedirect
 from django.urls import reverse
 from django.contrib.auth.decorators import login_required
-from savor.utils import get_cached_json
+from savor.utils import get_cached_json, LANGUAGE_CODE_MAP
 from django.contrib.auth import get_user_model
 
 User = get_user_model()
@@ -33,52 +33,59 @@ def register(request):
 def account_settings(request):
     user = request.user
     user_settings = UserSettings.objects.get(user=user)
-    cache_timeout = timedelta(days=7).total_seconds()
-
-    default_allergens = get_cached_json(language='world', data_type='allergens')
-    if not default_allergens:
-        default_allergens = list(Allergen.objects.values_list('api_tag', 'allergen_name'))
-        cache.set('off_allergens_cache_world', default_allergens, timeout=cache_timeout)
-
-    default_requirements = get_cached_json(language='world', data_type='labels')
-    if not default_requirements:
-        default_requirements =  list(DietaryRequirement.objects.values_list('api_tag', 'requirement_name'))
-        cache.set('off_labels_cache_world', default_requirements, timeout=cache_timeout)
+    
+    default_allergens = Allergen.objects.all()
+    default_requirements = DietaryRequirement.objects.all() 
+    
+    db_allergen_tags = set(default_allergens.values_list('api_tag', flat=True))
+    db_requirement_tags = set(default_requirements.values_list('api_tag', flat=True))
 
     default_languages_data = get_cached_json(language='world', data_type='languages') or {}
-    default_languages = [(tag['name'], tag['name']) for tag in default_languages_data.get('tags', [])]
+    default_languages_choices = [(tag['id'], tag['name']) for tag in default_languages_data.get('tags', [])]
 
-    language_code = user_settings.language_preference
-    print(f' language code found! {language_code}')
+    user_lang_name = user_settings.language_preference
+    language_code = LANGUAGE_CODE_MAP.get(user_lang_name, 'world')
 
-    localised_allergens_data = None
-    localised_requirements_data = None
-    localised_languages_data = None
+    allergens_queryset = default_allergens
+    requirements_queryset = default_requirements
+
+    allergens_labels = list(default_allergens.values_list('api_tag', 'allergen_name')) 
+    requirements_labels = list(default_requirements.values_list('api_tag', 'requirement_name'))
+    languages_choices = default_languages_choices
     
-    if language_code != None:
-        print(f'changed language code found! {language_code}')
+    if language_code and language_code != 'en':
+        
         localised_allergens_data = get_cached_json(language=language_code, data_type='allergens')
-        localised_requirements_data = get_cached_json(language=language_code, data_type='labels')
-        localised_languages_data = get_cached_json(language=language_code, data_type="languages")
-    
-    allergens = Allergen.objects.all()
-    if localised_allergens_data:
-        localised_api_tags = [tag['id'] for tag in localised_allergens_data.get('tags', [])]
-        allergens = Allergen.objects.filter(api_tag__in=localised_api_tags)
-
-    requirements = DietaryRequirement.objects.all()
-    if localised_requirements_data:
-        localised_api_tags = [tag['id'] for tag in localised_requirements_data.get('tags', [])]
-        requirements = DietaryRequirement.objects.filter(api_tag__in=localised_api_tags)
-    
-    localised_languages = [(tag['name'], tag['name']) for tag in (localised_languages_data or {}).get('tags', [])]
-    languages = localised_languages or default_languages
-
+        if localised_allergens_data and localised_allergens_data.get('tags'):
+             allergens_labels = [
+                 (tag['id'], tag['name']) 
+                 for tag in localised_allergens_data.get('tags') 
+                 if tag['id'] in db_allergen_tags 
+             ]
+             
+        localised_requirements_data = get_cached_json(language=language_code, data_type='labels') 
+        if localised_requirements_data and localised_requirements_data.get('tags'):
+             requirements_labels = [
+                 (tag['id'], tag['name']) 
+                 for tag in localised_requirements_data.get('tags') 
+                 if tag['id'] in db_requirement_tags
+             ]
+             
+        localised_languages_data = get_cached_json(language=language_code, data_type='languages')
+        if localised_languages_data and localised_languages_data.get('tags'):
+             languages_choices = [
+                 (tag['id'], tag['name']) 
+                 for tag in localised_languages_data['tags'] 
+                 if tag.get('name')
+             ]
+        
     form_kwargs = {
         'instance': user_settings,
-        'allergens_choices': allergens,
-        'requirements_choices': requirements,
-        'languages_choices': languages
+        'allergens_choices': allergens_queryset,        
+        'requirements_choices': requirements_queryset,  
+        'allergens_labels': allergens_labels,            
+        'requirements_labels': requirements_labels,      
+        'languages_choices': languages_choices
     }
 
     if request.method == "POST":
@@ -92,9 +99,9 @@ def account_settings(request):
 
     return render(request, 'users/account_settings.html', {
         'form': form,
-        'allergens': allergens ,
-        'dietary_requirements': requirements,
-        'languages': languages
+        'allergens': allergens_queryset ,
+        'dietary_requirements': requirements_queryset,
+        'languages': languages_choices
     })
 
 
