@@ -41,7 +41,10 @@ def account_settings(request):
     db_requirement_tags = set(default_requirements.values_list('api_tag', flat=True))
 
     default_languages_data = get_cached_json(language='world', data_type='languages') or {}
-    default_languages_choices = [(tag['id'], tag['name']) for tag in default_languages_data.get('tags', [])]
+    default_languages_choices = sorted(
+        [(tag['id'], tag['name']) for tag in default_languages_data.get('tags', [])], 
+        key=lambda x: x[1]
+    )
 
     user_lang_name = user_settings.language_preference
     language_code = LANGUAGE_CODE_MAP.get(user_lang_name, 'world')
@@ -57,27 +60,30 @@ def account_settings(request):
         
         localised_allergens_data = get_cached_json(language=language_code, data_type='allergens')
         if localised_allergens_data and localised_allergens_data.get('tags'):
-             allergens_labels = [
-                 (tag['id'], tag['name']) 
-                 for tag in localised_allergens_data.get('tags') 
-                 if tag['id'] in db_allergen_tags 
-             ]
+             allergens_labels = sorted(
+                 [(tag['id'], tag['name']) 
+                  for tag in localised_allergens_data.get('tags') 
+                  if tag['id'] in db_allergen_tags],
+                 key=lambda x: x[1]
+             )
              
         localised_requirements_data = get_cached_json(language=language_code, data_type='labels') 
         if localised_requirements_data and localised_requirements_data.get('tags'):
-             requirements_labels = [
-                 (tag['id'], tag['name']) 
-                 for tag in localised_requirements_data.get('tags') 
-                 if tag['id'] in db_requirement_tags
-             ]
+             requirements_labels = sorted(
+                 [(tag['id'], tag['name']) 
+                  for tag in localised_requirements_data.get('tags') 
+                  if tag['id'] in db_requirement_tags],
+                 key=lambda x: x[1] 
+             )
              
         localised_languages_data = get_cached_json(language=language_code, data_type='languages')
         if localised_languages_data and localised_languages_data.get('tags'):
-             languages_choices = [
-                 (tag['id'], tag['name']) 
-                 for tag in localised_languages_data['tags'] 
-                 if tag.get('name')
-             ]
+             languages_choices = sorted(
+                 [(tag['id'], tag['name']) 
+                  for tag in localised_languages_data['tags'] 
+                  if tag.get('name')],
+                 key=lambda x: x[1] 
+             )
         
     form_kwargs = {
         'instance': user_settings,

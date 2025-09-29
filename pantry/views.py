@@ -146,7 +146,7 @@ def search_product(request):
 
 @require_POST
 def advanced_product_search(request):
-
+    user = request.user
     try:
         data = json.loads(request.body)
         search_params = {
@@ -162,24 +162,36 @@ def advanced_product_search(request):
         return JsonResponse({'error': 'Invalid request data'}, status=400)
     
     favourite_products = set()
-    if request.user.is_authenticated:
-        favourite_products = set(request.user.favourited_products.all())
-    
+    language_code = 'en'
+    if user.is_authenticated:
+        favourite_products = set(user.favourited_products.all())
+        user_settings = UserSettings.objects.get(user=user)
+        user_lang_name = user_settings.language_preference
+        language_code = LANGUAGE_CODE_MAP.get(user_lang_name, 'en')
+
     try:
         api_search_params = build_api_search_params(search_params)
         response_data = adv_search_product( request, api_search_params, page=page)
 
         api_products = response_data.get('products', [])
-        products_found = []
+        products_found = []        
 
         for product in api_products:
             saved_product = save_product_to_db(product)
             if saved_product:
                 is_favourited = saved_product in favourite_products
+
+                localised_key = f'product_name_{language_code}'
+                if user_settings.get_only_localised_results:
+                    product_name = product.get(localised_key, saved_product.product_name)
+                    print(f'localised name: {product_name}')
+                else:
+                    product_name = saved_product.product_name
+                
                 products_found.append({
                    'id': saved_product.id,
                     'code': saved_product.code,
-                    'product_name': saved_product.product_name,
+                    'product_name': product_name,
                     'brands': saved_product.brands,
                     'image_url': saved_product.image_url,
                     'product_quantity': saved_product.product_quantity,
@@ -222,9 +234,6 @@ def populate_adv_search_criteria(request):
     user_settings = UserSettings.objects.get(user=request.user)
     user_lang_name = user_settings.language_preference
     language_code = LANGUAGE_CODE_MAP.get(user_lang_name, 'world')
-
-    if language_code == None:
-        language_code = 'world'
     categories_data = get_cached_json(language=language_code, data_type="categories")
     brands_data = get_cached_json(language=language_code, data_type="brands")
     countries_data = get_cached_json(language=language_code, data_type="countries")

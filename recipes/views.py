@@ -3,9 +3,8 @@ from .models import SuggestedRecipe, SavedRecipe, SavedRecipeIngredient
 from django.contrib.auth.decorators import login_required
 from django.views.decorators.http import require_POST
 from django.core.cache import cache
-import json
 from django.http import JsonResponse
-from pantry.models import PantryItem, Product
+from pantry.models import PantryItem
 
 
 # Create your views here.

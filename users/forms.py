@@ -16,7 +16,7 @@ class UserSettingsForm(forms.ModelForm):
 
     class Meta:
         model = UserSettings
-        fields = ['allergens', 'dietary_requirements', 'language_preference', 'show_nutri_score', 'show_eco_score', 'get_only_localized_results']
+        fields = ['allergens', 'dietary_requirements', 'language_preference', 'show_nutri_score', 'show_eco_score', 'get_only_localised_results']
         
         widgets = {
             'allergens': forms.CheckboxSelectMultiple(),

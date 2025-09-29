@@ -3,7 +3,8 @@ from django.conf import settings
 from django_ratelimit.decorators import ratelimit
 from django.utils import timezone 
 from pantry.models import Product
-from savor.utils import get_headers, rate_limit_error_response
+from savor.utils import get_headers, rate_limit_error_response, LANGUAGE_CODE_MAP
+from users.models import UserSettings
 
 OFF_API_BASE_URL = settings.OPENFOODFACTS_API['BASE_URL']
 OFF_USER_AGENT = settings.OPENFOODFACTS_API['USER_AGENT']
@@ -14,7 +15,18 @@ OFF_PASSWORD = settings.OPENFOODFACTS_API['PASSWORD']
 
 @ratelimit(key='ip', rate='10/m', block=True, group='off_advsearch_api_call')
 def adv_search_product(request, search_params, page=1):
+
     api_url = f"{OFF_API_BASE_URL}/cgi/search.pl"
+
+    user = request.user
+    if user.is_authenticated:
+        user_settings = UserSettings.objects.get(user=user)
+        if user_settings.get_only_localised_results:
+         user_lang_name = user_settings.language_preference
+         language_code = LANGUAGE_CODE_MAP.get(user_lang_name, 'world')
+         api_url = f"https://{language_code}.openfoodfacts.net/cgi/search.pl"
+        
+   
     headers = get_headers()
 
     final_params = {
@@ -22,7 +34,6 @@ def adv_search_product(request, search_params, page=1):
         'json': 1,
         'page_size': 21,
         'page': page
-
     }
 
     final_params.update(search_params)
@@ -54,9 +65,18 @@ def fetch_product_by_barcode(request, barcode):
 @ratelimit(key='ip', rate='10/m', block=True, group='off_name_api_call')
 def search_products_by_name(request, product_name, page=1):
 
-    api_url = f"{OFF_API_BASE_URL}/cgi/search.pl"
+    user = request.user
+
+    if user.is_authenticated:
+        user_settings = UserSettings.objects.get(user=user)
+        if user_settings.get_only_localised_results:
+         user_lang_name = user_settings.language_preference
+         language_code = LANGUAGE_CODE_MAP.get(user_lang_name, 'world')
+         api_url = f"https://{language_code}.openfoodfacts.net/cgi/search.pl"
+    else:
+        api_url = f"{OFF_API_BASE_URL}/cgi/search.pl"
+
     headers = get_headers()
-   
     params = {
         'search_terms': product_name,
         'search_simple': 1,
@@ -73,8 +93,13 @@ def search_products_by_name(request, product_name, page=1):
 
 @ratelimit(key='ip', rate='30/m', block=True, group='off_suggestions_api_call')
 def get_product_suggestions(request, query):
-    
-    api_url = f"{OFF_API_BASE_URL}/api/v3/taxonomy_suggestions"
+    user_settings = UserSettings.objects.get(user=request.user)
+    if user_settings.get_only_localised_results:
+         user_lang_name = user_settings.language_preference
+         language_code = LANGUAGE_CODE_MAP.get(user_lang_name, 'world')
+         api_url = f"https://{language_code}.openfoodfacts.net/api/v3/taxonomy_suggestions"
+    else:
+        api_url = f"{OFF_API_BASE_URL}/api/v3/taxonomy_suggestions"
     
     params = {
         'tagtype': 'ingredients',
