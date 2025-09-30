@@ -4,7 +4,7 @@ from django_ratelimit.decorators import ratelimit
 from django.utils import timezone 
 from pantry.models import Product
 from savor.utils import get_headers, rate_limit_error_response, LANGUAGE_CODE_MAP
-from users.models import UserSettings
+from users.models import UserSettings, Allergen
 
 OFF_API_BASE_URL = settings.OPENFOODFACTS_API['BASE_URL']
 OFF_USER_AGENT = settings.OPENFOODFACTS_API['USER_AGENT']
@@ -169,6 +169,9 @@ def save_product_to_db(product_data):
     off_quantity = product_data.get('product_quantity')
     off_unit = product_data.get('product_quantity_unit')
 
+    api_allergen_tags = product_data.get('allergens_tags', []) 
+    api_labels_tags = product_data.get('labels_tags', [])
+
     try:
         product, created = Product.objects.update_or_create(
             code=product_data.get('code'),
@@ -179,8 +182,14 @@ def save_product_to_db(product_data):
                 'last_updated': timezone.now(),
                 'product_quantity': off_quantity,
                 'product_quantity_unit': off_unit,
+                'labels_tags': api_labels_tags, 
+                'allergens_tags': api_allergen_tags, 
             }
         )
+
+        product_allergens = Allergen.objects.filter(api_tag__in=api_allergen_tags)
+
+        product.allergens.set(product_allergens)
         print(f"Product {'created' if created else 'updated'} in local DB: {product.product_name}")
         return product
     except Exception as e:

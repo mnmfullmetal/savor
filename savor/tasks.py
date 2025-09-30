@@ -30,7 +30,6 @@ def fetch_and_process_facet_data(facet_name):
         'en:vegetarian', 'en:no-gluten'
     ]
 
-
     if facet_name == 'allergens':
         for tag in facet_data.get('tags', []):
             api_tag = tag.get('id')
