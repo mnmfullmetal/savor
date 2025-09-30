@@ -41,6 +41,7 @@ class Product(models.Model):
 
     ingredients = models.TextField(blank=True, null=True)
     allergens = models.ManyToManyField('users.Allergen', blank=True, related_name="allergens_in_product")
+    labels_tags = models.JSONField(default=list, blank=True)
 
     energy_kj = models.DecimalField(max_digits=10, decimal_places=2, blank=True, null=True)
     energy_kcal = models.DecimalField(max_digits=10, decimal_places=2, blank=True, null=True)

@@ -25,8 +25,8 @@ def adv_search_product(request, search_params, page=1):
          user_lang_name = user_settings.language_preference
          language_code = LANGUAGE_CODE_MAP.get(user_lang_name, 'world')
          api_url = f"https://{language_code}.openfoodfacts.net/cgi/search.pl"
+         
         
-   
     headers = get_headers()
 
     final_params = {

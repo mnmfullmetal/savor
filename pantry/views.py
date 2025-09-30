@@ -4,6 +4,7 @@ from decimal import Decimal
 from django.http import JsonResponse
 from django.templatetags.static import static
 from django.views.decorators.http import require_POST
+from django.db.models import QuerySet
 from django.contrib.auth.decorators import login_required
 from django_ratelimit.exceptions import Ratelimited
 from django.shortcuts import render
@@ -34,7 +35,27 @@ def index(request):
 
 
 @require_POST
-def search_product(request):  
+def search_product(request): 
+
+    favourite_products = set()
+    dietary_requirements = QuerySet()
+    allergens = QuerySet()
+    language_code = 'en'
+    user_required_tags = set()
+    user_settings = None
+    user = request.user
+    authenticated = False
+
+    if user.is_authenticated:
+        authenticated = True
+        favourite_products = set(user.favourited_products.all())
+        user_settings = UserSettings.objects.get(user=user)
+        user_lang_name = user_settings.language_preference
+        language_code = LANGUAGE_CODE_MAP.get(user_lang_name, 'en')
+        allergens = user_settings.allergens.all()
+        dietary_requirements = user_settings.dietary_requirements.all()
+        user_required_tags = set(dietary_requirements.values_list('api_tag', flat=True))
+       
     try:
         data = json.loads(request.body)
     except json.JSONDecodeError:
@@ -48,41 +69,106 @@ def search_product(request):
     product_name = form.cleaned_data.get('product_name')
     page = data.get('page', 1)
     
-    favourite_products = set()
-    if request.user.is_authenticated:
-        favourite_products = set(request.user.favourited_products.all())
-
+    ## searches the db for matching product object via barcode 
     try:
         if barcode:
-            results = check_db_for_product(barcode=barcode)
-            if results:
-                for result in results:
+            db_results = check_db_for_product(barcode=barcode)
+            results = []
+            if db_results:
+                for result in db_results:
+                        
                         product_obj = Product.objects.get(id=result['id'])
+                        
+                        missing_dietary_tags = [] 
+                        product_label_tags = set() 
+                        result['has_dietary_mismatch'] = False
+
+                        if product_obj.allergens.filter(pk__in=allergens).exists():
+                            result['has_allergen_conflict'] = True
+
+                        if user_required_tags:
+                            product_label_tags = set(product_obj.labels_tags or [])
+                
+                        missing_tags_set = user_required_tags.difference(product_label_tags)
+
+                        if missing_tags_set:
+                            result['has_dietary_mismatch'] = True
+                            missing_dietary_tags = list(missing_tags_set)
+
+                        result['missing_dietary_tags'] = missing_dietary_tags
                         result['is_favourited'] = product_obj in favourite_products
+
+                        localised_key = f'product_name_{language_code}'
+                        if authenticated and user_settings.get_only_localised_results:
+                            localised_product_name = product_obj.get(localised_key, product_obj.product_name)
+                            if localised_product_name and localised_product_name != '':
+                                result['product_name'] = localised_product_name
+                                print(f'localised name: {product_name}')
+                        else:
+                            result['product_name'] = product_obj.product_name 
+                            print(f"Local DB default name: {result['product_name']}")
+                            
+                        results.append(result)
+
                 return JsonResponse({'products': results})
             
+            ## if no db object found via barcode, fetches api results and saves the results to the db
             print(f"Calling OFF API for barcode {barcode}.")
             response_data = fetch_product_by_barcode(request, barcode)
             
             api_products = []
             if response_data.get('status') == 1 and response_data.get('product'):
+
                 saved_product = save_product_to_db(response_data['product'])
+
                 if saved_product:
+                    has_allergen_conflict = False
+                    has_dietary_mismatch = False
+                    missing_dietary_tags = []
+                    product_label_tags = set() 
+                    product_name = saved_product.product_name 
                     is_favourited = saved_product in favourite_products
+
+                    if saved_product.allergens.filter(pk__in=allergens).exists():
+                        has_allergen_conflict = True
+                    
+                    if user_required_tags:
+                        product_label_tags = set(saved_product.labels_tags or [])
+                
+                    missing_tags_set = user_required_tags.difference(product_label_tags)
+
+                    if missing_tags_set:
+                        has_dietary_mismatch = True
+                        missing_dietary_tags = list(missing_tags_set)
+
+                    localised_key = f'product_name_{language_code}'
+                    if authenticated and user_settings.get_only_localised_results:
+                            localised_product_name = saved_product.get(localised_key, saved_product.product_name)
+                            if localised_product_name and localised_product_name != '':
+                                product_name = localised_product_name
+                                print(f'localised name: {product_name}')
+                    else:
+                        product_name = saved_product.product_name
+                        print(f'local db name: {product_name}')
+                    
                     api_products.append({
                         'id': saved_product.id,
                         'code': saved_product.code,
-                        'product_name': saved_product.product_name,
+                        'product_name': product_name,
                         'brands': saved_product.brands,
                         'image_url': saved_product.image_url,
                         'product_quantity': saved_product.product_quantity,
                         'product_quantity_unit': saved_product.product_quantity_unit,
-                        'is_favourited': is_favourited
+                        'is_favourited': is_favourited,
+                        'has_allergen_conflict': has_allergen_conflict,
+                        'has_dietary_mismatch': has_dietary_mismatch,
+                        'missing_dietary_tags': missing_dietary_tags,
                     })
-            return JsonResponse({'products': api_products})
 
+            return JsonResponse({'products': api_products})
+        
+        # if no barcode supplied, fetches api results via product name and saves results to the db
         elif product_name:
-            
             try:
                 print(f"Calling OFF API for product name '{product_name}' page {page}.")
                 response_data = search_products_by_name(request, product_name, page=page)
@@ -91,17 +177,47 @@ def search_product(request):
                 
                 for off_prod in api_products:
                     saved_product = save_product_to_db(off_prod)
+
                     if saved_product:
                         is_favourited = saved_product in favourite_products
+
+                        missing_dietary_tags = [] 
+                        product_label_tags = set() 
+                        has_dietary_mismatch = False
+                        has_allergen_conflict = False
+
+                        if saved_product.allergens.filter(pk__in=allergens).exists():
+                            has_allergen_conflict = True
+
+                        if user_required_tags:
+                            product_label_tags = set(saved_product.labels_tags or [])
+                
+                        missing_tags_set = user_required_tags.difference(product_label_tags)
+
+                        if missing_tags_set:
+                            has_dietary_mismatch = True
+                            missing_dietary_tags = list(missing_tags_set)
+
+                        localised_key = f'product_name_{language_code}'
+                        if authenticated and user_settings.get_only_localised_results:
+                            product_name = off_prod.get(localised_key, saved_product.product_name)
+                            print(f'localised name: {product_name}')
+                        else:
+                            product_name = saved_product.product_name
+                            print(f'local db name: {product_name}')
+
                         products_found.append({
                             'id': saved_product.id,
                             'code': saved_product.code,
-                            'product_name': saved_product.product_name,
+                            'product_name': product_name,
                             'brands': saved_product.brands,
                             'image_url': saved_product.image_url,
                             'product_quantity': saved_product.product_quantity,
                             'product_quantity_unit': saved_product.product_quantity_unit,
-                            'is_favourited': is_favourited
+                            'is_favourited': is_favourited,
+                            'has_dietary_mismatch': has_dietary_mismatch,
+                            'has_allergen_conflict': has_allergen_conflict,
+                            'missing_dietary_tags': missing_dietary_tags,
                         })
 
                 return JsonResponse({
@@ -110,22 +226,54 @@ def search_product(request):
                     'page_size': response_data.get("page_size", 21),
                     'page_count': response_data.get("page", 1) 
                 })
-
+            
+            ## if api call fails to fetch results via product name, falls back to local db 
             except (requests.exceptions.RequestException, Ratelimited) as e:
-                print(f"API call failed during name search: {e}. Returning local results only.")
-                local_results = check_db_for_product(search_term=product_name)
-                
-                for result in local_results:
+                print(f"API call failed during name search: {e}. Returning local db_results only.")
+                db_results = check_db_for_product(search_term=product_name)
+                results = []
+                for result in db_results:
                     product_obj = Product.objects.get(id=result['id'])
+                    missing_dietary_tags = [] 
+                    product_label_tags = set() 
+                    
+                    result['has_dietary_mismatch'] = False
+
+                    if product_obj.allergens.filter(pk__in=allergens).exists():
+                            result['has_allergen_conflict'] = True
+
+                    if user_required_tags:
+                            product_label_tags = set(product_obj.labels_tags or [])
+                
+                    missing_tags_set = user_required_tags.difference(product_label_tags)
+
+                    if missing_tags_set:
+                            result['has_dietary_mismatch'] = True
+                            missing_dietary_tags = list(missing_tags_set)
+
+                    result['missing_dietary_tags'] = missing_dietary_tags
                     result['is_favourited'] = product_obj in favourite_products
+                    
+                    localised_key = f'product_name_{language_code}'
+                    if authenticated and user_settings.get_only_localised_results:
+                            localised_product_name = product_obj.get(localised_key, product_obj.product_name)
+                            if localised_product_name and localised_product_name != '':
+                                result['product_name'] = localised_product_name
+                                print(f'localised name: {product_name}')
+                    else:
+                            result['product_name'] = product_obj.product_name 
+                            print(f"Local DB default name: {result['product_name']}")
+                            
+                    results.append(result)
                 
                 return JsonResponse({
-                    'products': local_results,
-                    'count': len(local_results),
-                    'page_size': len(local_results), 
+                    'products': results,
+                    'count': len(results),
+                    'page_size': len(results), 
                     'page_count': 1 
                 })
-
+            
+            ## no search criteria/ invalid criteria supplied in search parameters, return error response
         else:
             return JsonResponse({'error': 'No valid search criteria provided.'}, status=400)
 

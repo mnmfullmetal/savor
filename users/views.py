@@ -97,7 +97,11 @@ def account_settings(request):
     if request.method == "POST":
         form = UserSettingsForm(request.POST, **form_kwargs)
         if form.is_valid():
-            form.save()
+            settings_instance = form.save(commit=False)
+            settings_instance.save()
+            
+            # 2. Save the ManyToMany relationships (allergens, dietary_requirements)
+            form.save_m2m()
             return redirect('users:account_settings')
         
     else: 

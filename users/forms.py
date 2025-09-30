@@ -1,5 +1,6 @@
 from django.contrib.auth.forms import UserCreationForm
 from .models import UserSettings, Allergen, DietaryRequirement
+from django.forms import ModelMultipleChoiceField 
 from django import forms
 from django.contrib.auth import get_user_model
 
@@ -14,14 +15,24 @@ class UserCreationForm(UserCreationForm):
 class UserSettingsForm(forms.ModelForm):
     language_preference = forms.ChoiceField(required=False)
 
+    allergens = ModelMultipleChoiceField(
+        queryset=Allergen.objects.all(),
+        widget=forms.CheckboxSelectMultiple,
+        required=False,
+        to_field_name='api_tag' 
+    )
+
+    dietary_requirements = ModelMultipleChoiceField(
+        queryset=DietaryRequirement.objects.all(),
+        widget=forms.CheckboxSelectMultiple,
+        required=False,
+        to_field_name='api_tag' 
+    )
+
     class Meta:
         model = UserSettings
         fields = ['allergens', 'dietary_requirements', 'language_preference', 'show_nutri_score', 'show_eco_score', 'get_only_localised_results']
         
-        widgets = {
-            'allergens': forms.CheckboxSelectMultiple(),
-            'dietary_requirements': forms.CheckboxSelectMultiple(),
-        }
 
     def __init__(self, *args, **kwargs):
         allergens_choices = kwargs.pop('allergens_choices', Allergen.objects.all())

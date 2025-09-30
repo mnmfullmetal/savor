@@ -44,8 +44,6 @@ document.addEventListener("DOMContentLoaded", () => {
    
   });
 
-  
-
   document.getElementById("stop-scanner-btn").addEventListener("click", () => {
     Quagga.stop();
     document.getElementById("scanner-container").style.display = "none";
@@ -316,13 +314,34 @@ function displayProducts(container, data, csrfToken, searchParams, searchFunctio
         "mb-4"
       );
 
+      const hasAllergenConflict = product.has_allergen_conflict;
+      const hasDietaryMismatch = product.has_dietary_mismatch;
+      const missingTags = product.missing_dietary_tags || [];
+      let safetyAlertsHtml = '';
+      let cardClasses = "card h-100 border-0 shadow-sm";
+
+      if (hasAllergenConflict) {
+        cardClasses = "card h-100 shadow-lg border-danger border-3"; 
+        safetyAlertsHtml += `
+        <div class="alert alert-danger p-1 mb-2 small" role="alert">
+        <strong><i class="fas fa-exclamation-triangle"></i> CONFLICT:</strong> Contains user-specified allergen.
+        </div>`;
+      }
+            
+      if (hasDietaryMismatch) {
+        const missingTagsList = missingTags.map(tag => `<code>${tag.replace(/_/g, ' ').toUpperCase()}</code>`).join(', ');
+        safetyAlertsHtml += `
+        <div class="alert alert-warning p-1 mb-2 small" role="alert">
+        <strong><i class="fas fa-utensils"></i> MISMATCH:</strong> Missing dietary tags: ${missingTagsList}.
+        </div>`;
+      }
+
       const productCard = document.createElement("div");
-      productCard.classList.add("card", "h-100", "border-0", "shadow-sm");
+      productCard.classList.add(...cardClasses.split(' '));
       const placeholderImageUrl = "/static/media/placeholder-img.jpeg";
       const imageUrl = product.image_url || placeholderImageUrl;
 
       productCard.innerHTML = `
-        <div class="card h-100 border-0 shadow-sm">
           <img src="${imageUrl}" 
              alt="${product.product_name || "Product Image"}" 
              class="card-img-top img-fluid rounded-top" 
@@ -339,7 +358,7 @@ function displayProducts(container, data, csrfToken, searchParams, searchFunctio
             <p class="card-text text-muted mb-3 small"><strong>Code:</strong> ${
               product.code || "N/A"
             }</p>
-
+             ${safetyAlertsHtml} 
             <div class="d-flex align-items-center mb-3">
               <input class="product-quantity-input form-control me-2" type="number" min="0.01" step="0.01" value="1">
               <span class="text-secondary me-1">${
@@ -366,8 +385,7 @@ function displayProducts(container, data, csrfToken, searchParams, searchFunctio
                 ${product.is_favourited ? "Remove Favourite" : "Favourite"}
               </button>
             </div>
-          </div>
-        </div>`;
+          </div>`;
 
       productColumnDiv.appendChild(productCard);
       container.appendChild(productColumnDiv);
