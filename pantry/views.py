@@ -20,7 +20,8 @@ from .utils import (
     save_product_to_db,
     get_product_suggestions,
     adv_search_product,
-    build_api_search_params
+    build_api_search_params,
+    get_localised_names,
 )
 
 
@@ -38,9 +39,10 @@ def index(request):
 def search_product(request): 
 
     favourite_products = set()
-    dietary_requirements = QuerySet()
-    allergens = QuerySet()
+    user_dietary_requirements = QuerySet()
+    user_allergens = QuerySet()
     language_code = 'en'
+    user_allergens_tags = set()
     user_required_tags = set()
     user_settings = None
     user = request.user
@@ -52,9 +54,10 @@ def search_product(request):
         user_settings = UserSettings.objects.get(user=user)
         user_lang_name = user_settings.language_preference
         language_code = LANGUAGE_CODE_MAP.get(user_lang_name, 'en')
-        allergens = user_settings.allergens.all()
-        dietary_requirements = user_settings.dietary_requirements.all()
-        user_required_tags = set(dietary_requirements.values_list('api_tag', flat=True))
+        user_allergens = user_settings.allergens.all()
+        user_dietary_requirements = user_settings.dietary_requirements.all()
+        user_allergens_tags = set(user_allergens.values_list('api_tag', flat=True))
+        user_required_tags = set(user_dietary_requirements.values_list('api_tag', flat=True))
        
     try:
         data = json.loads(request.body)
@@ -80,26 +83,31 @@ def search_product(request):
                         product_obj = Product.objects.get(id=result['id'])
                         
                         missing_dietary_tags = [] 
+                        conflicting_allergens = []
                         product_label_tags = set() 
                         result['has_dietary_mismatch'] = False
+                        result['has_allergen_conflict'] = False
 
-                        if product_obj.allergens.filter(pk__in=allergens).exists():
+                        if product_obj.allergens.filter(pk__in=user_allergens).exists():
                             result['has_allergen_conflict'] = True
-
+                            product_allergen_tags = set(product_obj.allergens.values_list('api_tag', flat=True)) 
+                            conflicting_allergens_set = user_allergens_tags.intersection(product_allergen_tags)
+                            conflicting_allergens = get_localised_names(language_code=language_code, cached_data_type='allergens', product_tags=conflicting_allergens_set)                               
+                            result['conflicting_allergens'] = conflicting_allergens
+                        
                         if user_required_tags:
                             product_label_tags = set(product_obj.labels_tags or [])
                 
-                        missing_tags_set = user_required_tags.difference(product_label_tags)
-
-                        if missing_tags_set:
+                        missing_dietary_tags_set = user_required_tags.difference(product_label_tags)
+                        if missing_dietary_tags_set:
                             result['has_dietary_mismatch'] = True
-                            missing_dietary_tags = list(missing_tags_set)
+                            missing_dietary_tags = get_localised_names(language_code=language_code, cached_data_type='labels', product_tags=missing_dietary_tags_set )
+                            result['missing_dietary_tags'] = missing_dietary_tags
 
-                        result['missing_dietary_tags'] = missing_dietary_tags
                         result['is_favourited'] = product_obj in favourite_products
 
                         localised_key = f'product_name_{language_code}'
-                        if authenticated and user_settings.get_only_localised_results:
+                        if user_settings.get_only_localised_results:
                             localised_product_name = product_obj.get(localised_key, product_obj.product_name)
                             if localised_product_name and localised_product_name != '':
                                 result['product_name'] = localised_product_name
@@ -124,22 +132,27 @@ def search_product(request):
                 if saved_product:
                     has_allergen_conflict = False
                     has_dietary_mismatch = False
+                    conflicting_allergens = []
                     missing_dietary_tags = []
                     product_label_tags = set() 
                     product_name = saved_product.product_name 
                     is_favourited = saved_product in favourite_products
 
-                    if saved_product.allergens.filter(pk__in=allergens).exists():
+                    if saved_product.allergens.filter(pk__in=user_allergens).exists():
                         has_allergen_conflict = True
+                        product_allergen_tags = set(saved_product.allergens.values_list('api_tag', flat=True))
+                        conflicting_allergens_set = user_allergens_tags.intersection(product_allergen_tags)
+                        conflicting_allergens = get_localised_names(language_code=language_code, cached_data_type='allergens', product_tags=conflicting_allergens_set)
+                        
                     
                     if user_required_tags:
                         product_label_tags = set(saved_product.labels_tags or [])
                 
-                    missing_tags_set = user_required_tags.difference(product_label_tags)
+                    missing_dietary_tags_set = user_required_tags.difference(product_label_tags)
 
-                    if missing_tags_set:
+                    if missing_dietary_tags_set:
                         has_dietary_mismatch = True
-                        missing_dietary_tags = list(missing_tags_set)
+                        missing_dietary_tags = get_localised_names(language_code=language_code,cached_data_type='labels', product_tags = missing_dietary_tags_set)
 
                     localised_key = f'product_name_{language_code}'
                     if authenticated and user_settings.get_only_localised_results:
@@ -163,6 +176,7 @@ def search_product(request):
                         'has_allergen_conflict': has_allergen_conflict,
                         'has_dietary_mismatch': has_dietary_mismatch,
                         'missing_dietary_tags': missing_dietary_tags,
+                        'conflicting_allergens': conflicting_allergens,
                     })
 
             return JsonResponse({'products': api_products})
@@ -181,24 +195,28 @@ def search_product(request):
                     if saved_product:
                         is_favourited = saved_product in favourite_products
 
+                        conflicting_allergens = []
                         missing_dietary_tags = [] 
                         product_label_tags = set() 
                         has_dietary_mismatch = False
                         has_allergen_conflict = False
 
-                        if saved_product.allergens.filter(pk__in=allergens).exists():
+                        if saved_product.allergens.filter(pk__in=user_allergens).exists():
                             has_allergen_conflict = True
+                            product_allergen_tags = set(saved_product.allergens.values_list('api_tag', flat=True))
+                            conflicting_allergens_set = user_allergens_tags.intersection(product_allergen_tags)
+                            conflicting_allergens = get_localised_names(language_code=language_code, cached_data_type='allergens', product_tags=conflicting_allergens_set )
 
                         if user_required_tags:
                             product_label_tags = set(saved_product.labels_tags or [])
                 
-                        missing_tags_set = user_required_tags.difference(product_label_tags)
+                        missing_dietary_tags_set = user_required_tags.difference(product_label_tags)
 
-                        if missing_tags_set:
+                        if missing_dietary_tags_set:
                             has_dietary_mismatch = True
-                            missing_dietary_tags = list(missing_tags_set)
+                            missing_dietary_tags = get_localised_names(language_code=language_code, cached_data_type='labels', product_tags=missing_dietary_tags_set )
 
-                        localised_key = f'product_name_{language_code}'
+                            localised_key = f'product_name_{language_code}'
                         if authenticated and user_settings.get_only_localised_results:
                             product_name = off_prod.get(localised_key, saved_product.product_name)
                             print(f'localised name: {product_name}')
@@ -218,6 +236,7 @@ def search_product(request):
                             'has_dietary_mismatch': has_dietary_mismatch,
                             'has_allergen_conflict': has_allergen_conflict,
                             'missing_dietary_tags': missing_dietary_tags,
+                            'conflicting_allergens': conflicting_allergens,
                         })
 
                 return JsonResponse({
@@ -235,23 +254,27 @@ def search_product(request):
                 for result in db_results:
                     product_obj = Product.objects.get(id=result['id'])
                     missing_dietary_tags = [] 
+                    conflicting_allergens = []
                     product_label_tags = set() 
-                    
+                    result['has_allergen_conflict'] = False
                     result['has_dietary_mismatch'] = False
 
-                    if product_obj.allergens.filter(pk__in=allergens).exists():
+                    if product_obj.allergens.filter(pk__in=user_allergens).exists():
                             result['has_allergen_conflict'] = True
+                            product_allergen_tags = set(product_obj.allergens.values_list('api_tag', flat=True)) 
+                            conflicting_allergens_set = user_allergens_tags.intersection(product_allergen_tags)
+                            conflicting_allergens = get_localised_names(language_code=language_code, cached_data_type='allergens', product_tags=conflicting_allergens_set)                               
+                            result['conflicting_allergens'] = conflicting_allergens
 
                     if user_required_tags:
                             product_label_tags = set(product_obj.labels_tags or [])
                 
-                    missing_tags_set = user_required_tags.difference(product_label_tags)
+                    missing_dietary_tags_set = user_required_tags.difference(product_label_tags)
+                    if missing_dietary_tags_set:
+                        result['has_dietary_mismatch'] = True
+                        missing_dietary_tags = get_localised_names(language_code=language_code, cached_data_type='labels', product_tags=missing_dietary_tags_set )
+                        result['missing_dietary_tags'] = missing_dietary_tags
 
-                    if missing_tags_set:
-                            result['has_dietary_mismatch'] = True
-                            missing_dietary_tags = list(missing_tags_set)
-
-                    result['missing_dietary_tags'] = missing_dietary_tags
                     result['is_favourited'] = product_obj in favourite_products
                     
                     localised_key = f'product_name_{language_code}'
@@ -414,10 +437,16 @@ def populate_adv_search_criteria(request):
 @login_required
 def pantry_view(request):
     pantry = Pantry.objects.get(user=request.user)
+    pantry.calculate_aggregate_scores()
     pantryitems = PantryItem.objects.filter(pantry=pantry)
+    user_settings = UserSettings.objects.get(user=request.user)
+    show_nutriscore = user_settings.show_nutri_score
+    show_ecoscore = user_settings.show_eco_score
     return render(request, "pantry/pantry.html", {
         "user" : request.user,
         "pantryitems": pantryitems,
+        "pantry_nutri_grade": pantry.aggregate_nutri_grade if show_nutriscore else None,
+        "pantry_eco_grade": pantry.aggregate_eco_grade if show_ecoscore else None,
     })
 
 

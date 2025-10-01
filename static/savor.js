@@ -317,14 +317,16 @@ function displayProducts(container, data, csrfToken, searchParams, searchFunctio
       const hasAllergenConflict = product.has_allergen_conflict;
       const hasDietaryMismatch = product.has_dietary_mismatch;
       const missingTags = product.missing_dietary_tags || [];
+      const conflictingTags = product.conflicting_allergens || []; 
       let safetyAlertsHtml = '';
       let cardClasses = "card h-100 border-0 shadow-sm";
 
       if (hasAllergenConflict) {
+        const conflictingTagsList = conflictingTags.map(tag => `<code>${tag.replace(/_/g, ' ').toUpperCase()}</code>`).join(', ');
         cardClasses = "card h-100 shadow-lg border-danger border-3"; 
         safetyAlertsHtml += `
         <div class="alert alert-danger p-1 mb-2 small" role="alert">
-        <strong><i class="fas fa-exclamation-triangle"></i> CONFLICT:</strong> Contains user-specified allergen.
+        <strong><i class="bi bi-exclamation-circle"></i> WARNING:</strong> Contains user-specified allergens: ${conflictingTagsList}
         </div>`;
       }
             
@@ -332,7 +334,7 @@ function displayProducts(container, data, csrfToken, searchParams, searchFunctio
         const missingTagsList = missingTags.map(tag => `<code>${tag.replace(/_/g, ' ').toUpperCase()}</code>`).join(', ');
         safetyAlertsHtml += `
         <div class="alert alert-warning p-1 mb-2 small" role="alert">
-        <strong><i class="fas fa-utensils"></i> MISMATCH:</strong> Missing dietary tags: ${missingTagsList}.
+        <strong><i class="bi bi-question-circle"></i> MISMATCH:</strong> Missing dietary tags: ${missingTagsList}.
         </div>`;
       }
 

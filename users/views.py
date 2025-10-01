@@ -99,8 +99,6 @@ def account_settings(request):
         if form.is_valid():
             settings_instance = form.save(commit=False)
             settings_instance.save()
-            
-            # 2. Save the ManyToMany relationships (allergens, dietary_requirements)
             form.save_m2m()
             return redirect('users:account_settings')
         

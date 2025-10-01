@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser
 from django.conf import settings
+from django.db.models import Sum, F, ExpressionWrapper, DecimalField 
 
 
 # Create your models here.
@@ -10,6 +11,89 @@ class Pantry(models.Model):
     products = models.ManyToManyField('Product', through='PantryItem', related_name='contained_in_pantries')
     nutri_score = models.DecimalField(max_digits=5, decimal_places=2, blank=True, null=True)
     eco_score = models.DecimalField(max_digits=5, decimal_places=2, blank=True, null=True)
+
+    def calculate_aggregate_scores(self):
+        nutri_score_data = self.pantry_items.filter(
+            product__nutrition_score__isnull=False
+        ).aggregate(
+            total_weighted_score=Sum(
+                ExpressionWrapper(
+                    F('product__nutrition_score') * F('quantity'),
+                    output_field=DecimalField()
+                )
+            ),
+            total_quantity=Sum('quantity')
+        )
+        
+        nutri_weighted_score = nutri_score_data.get('total_weighted_score')
+        nutri_total_quantity = nutri_score_data.get('total_quantity')
+        new_nutri_score = None
+        
+        if nutri_weighted_score is not None and nutri_total_quantity and nutri_total_quantity > 0:
+            new_nutri_score = nutri_weighted_score / nutri_total_quantity
+            
+        self.nutri_score = new_nutri_score
+
+        eco_score_data = self.pantry_items.filter(
+            product__ecoscore_score__isnull=False
+        ).aggregate(
+            total_weighted_score=Sum(
+                ExpressionWrapper(
+                    F('product__ecoscore_score') * F('quantity'),
+                    output_field=DecimalField()
+                )
+            ),
+            total_quantity=Sum('quantity')
+        )
+
+        eco_weighted_score = eco_score_data.get('total_weighted_score')
+        eco_total_quantity = eco_score_data.get('total_quantity')
+        new_eco_score = None
+        
+        if eco_weighted_score is not None and eco_total_quantity and eco_total_quantity > 0:
+            new_eco_score = eco_weighted_score / eco_total_quantity
+            
+        self.eco_score = new_eco_score
+        
+        self.save()
+        
+    @property
+    def aggregate_nutri_grade(self):
+        score = self.nutri_score
+        
+        if score is None:
+            return None
+        
+        if score <= -1:
+            return 'A'
+        elif score <= 2:
+            return 'B'
+        elif score <= 10:
+            return 'C'
+        elif score <= 18:
+            return 'D'
+        else:
+            return 'E'
+
+    @property
+    def aggregate_eco_grade(self):
+        score = self.eco_score
+        
+        if score is None:
+            return None
+        
+        if score >= 80:
+            return 'A'
+        elif score >= 60:
+            return 'B'
+        elif score >= 40:
+            return 'C'
+        elif score >= 20:
+            return 'D'
+        else:
+            return 'E'
+        
+    
 
 
 class PantryItem(models.Model):

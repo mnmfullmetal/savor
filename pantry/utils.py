@@ -1,9 +1,10 @@
 import requests
+from django.core.cache import cache
 from django.conf import settings
 from django_ratelimit.decorators import ratelimit
 from django.utils import timezone 
 from pantry.models import Product
-from savor.utils import get_headers, rate_limit_error_response, LANGUAGE_CODE_MAP
+from savor.utils import get_headers, rate_limit_error_response, LANGUAGE_CODE_MAP, get_cached_json
 from users.models import UserSettings, Allergen
 
 OFF_API_BASE_URL = settings.OPENFOODFACTS_API['BASE_URL']
@@ -172,6 +173,13 @@ def save_product_to_db(product_data):
     api_allergen_tags = product_data.get('allergens_tags', []) 
     api_labels_tags = product_data.get('labels_tags', [])
 
+    nutri_score = product_data.get('nutriscore_score')
+    nutri_grade = product_data.get('nutriscore_grade')
+    
+    ecoscore_score = product_data.get('ecoscore_score')
+    ecoscore_grade = product_data.get('ecoscore_grade')
+
+
     try:
         product, created = Product.objects.update_or_create(
             code=product_data.get('code'),
@@ -183,7 +191,11 @@ def save_product_to_db(product_data):
                 'product_quantity': off_quantity,
                 'product_quantity_unit': off_unit,
                 'labels_tags': api_labels_tags, 
-                'allergens_tags': api_allergen_tags, 
+                'allergens_tags': api_allergen_tags,
+                'nutrition_score': nutri_score,
+                'nutrition_grade': nutri_grade,
+                'ecoscore_score': ecoscore_score,
+                'ecoscore_grade': ecoscore_grade,
             }
         )
 
@@ -196,7 +208,6 @@ def save_product_to_db(product_data):
         print(f"Error saving product to DB: {e}")
         return None
     
-
 
 def build_api_search_params(params):
  
@@ -220,3 +231,27 @@ def build_api_search_params(params):
             tag_index += 1
             
     return api_params
+
+
+def get_localised_names( product_tags, cached_data_type, language_code ):
+
+    if not product_tags:
+        return []
+    
+    full_cached_data = get_cached_json(language=language_code, data_type=cached_data_type)
+    
+    raw_tag_list = full_cached_data.get('tags', [])
+    
+    localised_name_map = {}
+    for item in raw_tag_list:
+        if 'id' in item and 'name' in item:
+            localised_name_map[item['id']] = item['name'] 
+    
+    localised_names = []
+    
+    for tag in product_tags:
+        localised_name = localised_name_map.get(tag, tag) 
+        
+        localised_names.append(localised_name)
+    
+    return localised_names
