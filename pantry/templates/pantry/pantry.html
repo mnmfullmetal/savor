@@ -44,8 +44,8 @@
             {% for item in pantryitems %}
                 <div class="col-12 col-sm-6 col-md-4 col-lg-4 mb-4 pantry-item-col">
                     <div class="pantry-item card h-100 shadow-sm border-0">
-                        {% if product.image_url %}
-                        <img src="{{ product.image_url }}" alt="{{ product.product_name|default:"Product Image" }}" class="card-img-top img-fluid rounded-top" style="max-height: 150px; object-fit: cover;" onerror="this.onerror=null; this.src='{{ placeholder_image_url }}';" >
+                        {% if item.product.image_url %}
+                        <img src="{{ item.product.image_url }}" alt="{{ item.product.product_name|default:"Product Image" }}" class="card-img-top img-fluid rounded-top" style="max-height: 150px; object-fit: cover;" onerror="this.onerror=null; this.src='{{ placeholder_image_url }}';" >
                         {% else %}
                          <img src="{% static 'media/placeholder-img.jpeg' %}" alt="{{ product.product_name|default:"Product Image" }}" class="card-img-top img-fluid rounded-top" style="max-height: 150px; object-fit: cover;">
                     {% endif %}
