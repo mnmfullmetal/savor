@@ -18,7 +18,7 @@ class UserSettings(models.Model):
     show_eco_score = models.BooleanField(default=True)
 
     language_preference = models.CharField(max_length=10, blank=True, null=True)
-    get_only_localised_results = models.BooleanField(default=False)
+    prioritise_local_results = models.BooleanField(default=False)
 
     def __str__(self):
         return f'{self.user.username} Settings'

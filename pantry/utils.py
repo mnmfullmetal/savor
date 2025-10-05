@@ -70,7 +70,7 @@ def search_products_by_name(request, product_name, page=1):
 
     if user.is_authenticated:
         user_settings = UserSettings.objects.get(user=user)
-        if user_settings.get_only_localised_results:
+        if user_settings.prioritise_local_results:
          user_lang_name = user_settings.language_preference
          language_code = LANGUAGE_CODE_MAP.get(user_lang_name, 'world')
          api_url = f"https://{language_code}.openfoodfacts.net/cgi/search.pl"
@@ -95,7 +95,7 @@ def search_products_by_name(request, product_name, page=1):
 @ratelimit(key='ip', rate='30/m', block=True, group='off_suggestions_api_call')
 def get_product_suggestions(request, query):
     user_settings = UserSettings.objects.get(user=request.user)
-    if user_settings.get_only_localised_results:
+    if user_settings.prioritise_local_results:
          user_lang_name = user_settings.language_preference
          language_code = LANGUAGE_CODE_MAP.get(user_lang_name, 'world')
          api_url = f"https://{language_code}.openfoodfacts.net/api/v3/taxonomy_suggestions"

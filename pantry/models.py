@@ -92,9 +92,7 @@ class Pantry(models.Model):
             return 'D'
         else:
             return 'E'
-        
     
-
 
 class PantryItem(models.Model):
     pantry = models.ForeignKey(Pantry, on_delete=models.CASCADE, related_name='pantry_items')
@@ -122,7 +120,6 @@ class Product(models.Model):
     serving_per_container = models.DecimalField(max_digits=10, decimal_places=2, blank=True, null=True)
     product_quantity_unit = models.CharField(max_length=50, blank=True, null=True)
     product_quantity = models.DecimalField(max_digits=10, decimal_places=2, blank=True, null=True)
-
     ingredients = models.TextField(blank=True, null=True)
     allergens = models.ManyToManyField('users.Allergen', blank=True, related_name="allergens_in_product")
     allergens_tags = models.JSONField(default=list, blank=True)

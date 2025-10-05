@@ -334,7 +334,7 @@ function displayProducts(container, data, csrfToken, searchParams, searchFunctio
         const missingTagsList = missingTags.map(tag => `<code>${tag.replace(/_/g, ' ').toUpperCase()}</code>`).join(', ');
         safetyAlertsHtml += `
         <div class="alert alert-warning p-1 mb-2 small" role="alert">
-        <strong><i class="bi bi-question-circle"></i> MISMATCH:</strong> Missing dietary tags: ${missingTagsList}.
+        <strong>POSSIBLE MISMATCH <i class="bi bi-question-circle"></i>:</strong> Missing dietary requirements: ${missingTagsList}.
         </div>`;
       }
 

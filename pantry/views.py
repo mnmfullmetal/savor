@@ -105,16 +105,7 @@ def search_product(request):
                             result['missing_dietary_tags'] = missing_dietary_tags
 
                         result['is_favourited'] = product_obj in favourite_products
-
-                        localised_key = f'product_name_{language_code}'
-                        if user_settings.get_only_localised_results:
-                            localised_product_name = product_obj.get(localised_key, product_obj.product_name)
-                            if localised_product_name and localised_product_name != '':
-                                result['product_name'] = localised_product_name
-                                print(f'localised name: {product_name}')
-                        else:
-                            result['product_name'] = product_obj.product_name 
-                            print(f"Local DB default name: {result['product_name']}")
+                        result['product_name'] = product_obj.product_name 
                             
                         results.append(result)
 
@@ -154,15 +145,8 @@ def search_product(request):
                         has_dietary_mismatch = True
                         missing_dietary_tags = get_localised_names(language_code=language_code,cached_data_type='labels', product_tags = missing_dietary_tags_set)
 
-                    localised_key = f'product_name_{language_code}'
-                    if authenticated and user_settings.get_only_localised_results:
-                            localised_product_name = saved_product.get(localised_key, saved_product.product_name)
-                            if localised_product_name and localised_product_name != '':
-                                product_name = localised_product_name
-                                print(f'localised name: {product_name}')
-                    else:
-                        product_name = saved_product.product_name
-                        print(f'local db name: {product_name}')
+                    product_name = saved_product.product_name
+                    print(f'local db name: {product_name}')
                     
                     api_products.append({
                         'id': saved_product.id,
@@ -217,7 +201,7 @@ def search_product(request):
                             missing_dietary_tags = get_localised_names(language_code=language_code, cached_data_type='labels', product_tags=missing_dietary_tags_set )
 
                             localised_key = f'product_name_{language_code}'
-                        if authenticated and user_settings.get_only_localised_results:
+                        if authenticated and user_settings.prioritise_local_results:
                             product_name = off_prod.get(localised_key, saved_product.product_name)
                             print(f'localised name: {product_name}')
                         else:
@@ -276,16 +260,8 @@ def search_product(request):
                         result['missing_dietary_tags'] = missing_dietary_tags
 
                     result['is_favourited'] = product_obj in favourite_products
-                    
-                    localised_key = f'product_name_{language_code}'
-                    if authenticated and user_settings.get_only_localised_results:
-                            localised_product_name = product_obj.get(localised_key, product_obj.product_name)
-                            if localised_product_name and localised_product_name != '':
-                                result['product_name'] = localised_product_name
-                                print(f'localised name: {product_name}')
-                    else:
-                            result['product_name'] = product_obj.product_name 
-                            print(f"Local DB default name: {result['product_name']}")
+                    result['product_name'] = product_obj.product_name 
+                    print(f"Local DB default name: {result['product_name']}")
                             
                     results.append(result)
                 
@@ -353,7 +329,7 @@ def advanced_product_search(request):
                 is_favourited = saved_product in favourite_products
 
                 localised_key = f'product_name_{language_code}'
-                if user_settings.get_only_localised_results:
+                if user_settings.prioritise_local_results:
                     product_name = product.get(localised_key, saved_product.product_name)
                     print(f'localised name: {product_name}')
                 else:
