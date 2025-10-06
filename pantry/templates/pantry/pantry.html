@@ -36,9 +36,17 @@
     </section>
 
     <section class="mt-5 p-3 rounded shadow-lg">
-        <h2 class="h4 mb-4 text-info d-flex align-items-center">
-            Your Pantry Items <span class="ms-2">🛒</span>
-        </h2>
+        <div style="display: flex; flex-direction: row;">
+            <h2 class="h4 mb-4 text-info d-flex align-items-center">
+              Your Pantry Items <span class="ms-2">🛒</span>
+            </h2>
+            <form id="pantrySearchForm" style="margin-left: auto ;" action="POST">
+                {% csrf_token %}
+                <input id='pantrySearchInput' type="text" placeholder="Search Pantry">
+                <button type="submit"><i class="bi bi-search"></i></button>
+            </form>
+        </div>
+       
        
         <div class="pantry-items-page row g-4">
             {% for item in pantryitems %}
@@ -48,7 +56,7 @@
                         <img src="{{ item.product.image_url }}" alt="{{ item.product.product_name|default:"Product Image" }}" class="card-img-top img-fluid rounded-top" style="max-height: 150px; object-fit: cover;" onerror="this.onerror=null; this.src='{{ placeholder_image_url }}';" >
                         {% else %}
                          <img src="{% static 'media/placeholder-img.jpeg' %}" alt="{{ product.product_name|default:"Product Image" }}" class="card-img-top img-fluid rounded-top" style="max-height: 150px; object-fit: cover;">
-                    {% endif %}
+                        {% endif %}
                         <div class="card-body d-flex flex-column justify-content-between">
                             <h3 class="card-title h5 mb-2 text-dark">{{ item.product.product_name|default:"No Name" }}</h3>
                            
@@ -66,7 +74,7 @@
 
                             <div class="mt-auto d-flex align-items-center justify-content-left">
                                 <input class="remove-quantity-input form-control me-2"
-                                    type="number" min="0.01" step="0.01" value="1" style="max-width: 80px;">
+                                    type="number" min="1.00" step="1.00" value="1" style="max-width: 80px;">
                                 <button class="btn btn-outline-danger btn-sm remove-button"
                                         data-item-id="{{ item.id }}"
                                         data-csrf-token="{{ csrf_token }}">

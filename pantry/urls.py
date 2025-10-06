@@ -12,6 +12,7 @@ urlpatterns = [
     path("favourite_product/<int:id>", views.toggle_favourite_product, name="toggle_favourite_product"),
     path("suggestions/", views.product_suggestions, name="product_suggestions"),
     path("adv_search/populate_criteria", views.populate_adv_search_criteria, name="populate_adv_search_criteria"),
-    path("product/adv_search", views.advanced_product_search, name="advanced_product_search")
+    path("product/adv_search", views.advanced_product_search, name="advanced_product_search"),
+    path("search_pantry/", views.pantry_search, name='search_pantry'),
 ]
 

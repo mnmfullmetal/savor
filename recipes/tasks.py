@@ -13,6 +13,12 @@ def generate_recipes_task(user_id):
 
     print(f"Starting recipe generation for user {user.username}...")
     pantry_items = PantryItem.objects.filter(pantry__user=user)
+    item_list = pantry_items.values_list()
+    print(f'item list: {item_list}')
+
+    if len(item_list) <= 3:
+        print('not enough pantry items to make a recipe')
+        return
 
     if not pantry_items.exists(): 
         print(f"Stopping recipe generation, no pantry items")

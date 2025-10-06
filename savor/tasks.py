@@ -45,12 +45,11 @@ def fetch_and_process_facet_data(facet_name):
         for tag in facet_data.get('tags', []):
             api_tag = tag.get('id')
             name = tag.get('name')
-        
-        if api_tag in relevant_dietary_tags:
-            try:
-                DietaryRequirement.objects.get_or_create(api_tag=api_tag, defaults={'requirement_name': name})
-            except IntegrityError:
-                pass
+            if api_tag in relevant_dietary_tags:
+                try:
+                    DietaryRequirement.objects.get_or_create(api_tag=api_tag, defaults={'requirement_name': name})
+                except IntegrityError:
+                    pass
 
 
 @shared_task

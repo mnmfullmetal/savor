@@ -34,6 +34,66 @@ def index(request):
     })
 
 
+@require_POST
+def pantry_search(request):
+    user = request.user
+    user_pantry =  Pantry.objects.get(user=user)
+    user_settings = UserSettings.objects.get(user=user)
+    user_allergens = user_settings.allergens.all()
+    user_dietary_requirements = user_settings.dietary_requirements.all()
+    user_allergens_tags = set(user_allergens.values_list('api_tag', flat=True))
+    user_required_tags = set(user_dietary_requirements.values_list('api_tag', flat=True))
+    user_lang_name = user_settings.language_preference
+    language_code = LANGUAGE_CODE_MAP.get(user_lang_name, 'en')
+    
+    try:
+        data = json.loads(request.body)
+    except json.JSONDecodeError:
+        return JsonResponse({'error': 'Invalid JSON in request body.'}, status=400)
+    
+    query = data.get('query').strip()
+    found_items = PantryItem.objects.filter( pantry=user_pantry, product__product_name__icontains=query)
+
+    found_items_list = []
+    has_allergen_conflict = False
+    has_dietary_mismatch = False
+    conflicting_allergens = []
+    missing_dietary_tags = []
+    for item in found_items:
+
+        product_obj = item.product
+
+        if product_obj.allergens.filter(pk__in=user_allergens).exists():
+            has_allergen_conflict = True
+            product_allergen_tags = set(product_obj.allergens.values_list('api_tag', flat=True)) 
+            conflicting_allergens_set = user_allergens_tags.intersection(product_allergen_tags)
+            conflicting_allergens = get_localised_names(language_code=language_code, cached_data_type='allergens', product_tags=conflicting_allergens_set)
+
+        product_label_tags = set(product_obj.labels_tags or [])
+
+        missing_dietary_tags_set = user_required_tags.difference(product_label_tags)
+
+        if missing_dietary_tags_set:
+            has_dietary_mismatch = True
+            missing_dietary_tags = get_localised_names(language_code=language_code,cached_data_type='labels', product_tags = missing_dietary_tags_set)
+
+
+        found_items_list.append({
+            'id': item.id,
+            'quantity': str(item.quantity),
+            "product_quantity": item.product.product_quantity,
+            "product_quantity_unit": item.product.product_quantity_unit,
+            'product_name': item.product.product_name,
+            'image_url': item.product.image_url,
+            'has_allergen_conflict': has_allergen_conflict,
+            "conflicting_allergens": conflicting_allergens,
+            'has_dietary_mismatch': has_dietary_mismatch,
+            "missing_dietary_tags": missing_dietary_tags
+        })
+
+    return JsonResponse({'found_items': found_items_list})
+
+
 
 @require_POST
 def search_product(request): 

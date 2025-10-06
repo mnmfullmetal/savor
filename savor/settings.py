@@ -187,7 +187,7 @@ CELERY_BEAT_SCHEDULE = {
     },
 
     'update-facet-data': {
-        'task': 'savor.tasks.update_facet_json_data',
+        'task': 'savor.tasks.update_facet_data',
         'schedule': timedelta(days=5),
     },
 

@@ -53,7 +53,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const csrfToken = productSearchForm.elements.csrfmiddlewaretoken.value;
   const productNameInput = document.getElementById("product_name_input");
   const autocompleteSuggestionsDiv = document.getElementById("autocomplete-suggestions");
-  const debounceSpeed = 200; 
+  const debounceSpeed = 100; 
   productNameInput.addEventListener("input",debounce(async (event) => {
     const query = event.target.value.trim();
 
@@ -250,7 +250,7 @@ function searchProduct(barcode = "None", productName = "None", csrfToken, page =
        Error: ${data.error || "Invalid input."}
        </div>`;
     } else  {
-       displayProducts(searchedProductsDiv, data, csrfToken, {barcode, productName}, (params, token) => searchProduct(params.barcode, params.productName, token, params.page));
+       displaySearchResults(searchedProductsDiv, data, csrfToken, {barcode, productName}, (params, token) => searchProduct(params.barcode, params.productName, token, params.page));
     } 
   })
   .catch((error) => {
@@ -288,7 +288,7 @@ function advProductSearch(searchRequestData, csrfToken){
        Error: ${data.error || "Invalid input."}
        </div>`;
     } else {
-       displayProducts(searchedProductsDiv, data, csrfToken, searchRequestData, advProductSearch);
+       displaySearchResults(searchedProductsDiv, data, csrfToken, searchRequestData, advProductSearch);
     }
    })      
   .catch((error) => {
@@ -301,19 +301,12 @@ function advProductSearch(searchRequestData, csrfToken){
 }
 
 
-function displayProducts(container, data, csrfToken, searchParams, searchFunction) {
+function displaySearchResults(container, data, csrfToken, searchParams, searchFunction) {
   if (data.products && data.products.length > 0) {
     container.innerHTML = "";
     data.products.forEach((product) => {
       const productColumnDiv = document.createElement("div");
-      productColumnDiv.classList.add(
-        "col-12",
-        "col-sm-6",
-        "col-md-4",
-        "col-lg-4",
-        "mb-4"
-      );
-
+      productColumnDiv.classList.add("col-12", "col-sm-6", "col-md-4", "col-lg-4", "mb-4");
       const hasAllergenConflict = product.has_allergen_conflict;
       const hasDietaryMismatch = product.has_dietary_mismatch;
       const missingTags = product.missing_dietary_tags || [];
@@ -362,7 +355,7 @@ function displayProducts(container, data, csrfToken, searchParams, searchFunctio
             }</p>
              ${safetyAlertsHtml} 
             <div class="d-flex align-items-center mb-3">
-              <input class="product-quantity-input form-control me-2" type="number" min="0.01" step="0.01" value="1">
+              <input class="product-quantity-input form-control me-2" type="number" min="1.00" step="1.00" value="1">
               <span class="text-secondary me-1">${
                 product.product_quantity || ""
               }</span>

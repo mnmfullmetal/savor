@@ -8,16 +8,13 @@ from recipes.tasks import generate_recipes_task
 def schedule_recipe_generation_task(user):
     task_key = f"recipe_task_id:{user.id}"
     cache_key = f"recipe_gen_in_progress:{user.id}"
-
+    
     #cache for recipe generation flag
     cache.set(cache_key, True, timeout=60)
     
     if not cache.get(task_key):
 
-        new_task = generate_recipes_task.apply_async(
-            args=[user.id],
-            countdown=5 
-        )
+        new_task = generate_recipes_task.delay(user.id)
 
         ## cache for debouncing 
         cache.set(task_key, new_task.id, timeout=10)
@@ -28,6 +25,7 @@ def schedule_recipe_generation_task(user):
 @receiver(post_delete, sender=PantryItem)
 def update_recipes_on_pantry_change(sender, instance, **kwargs):
     user = instance.pantry.user
+
     
     if hasattr(user, 'session'):
         user.session['recipes_generated_for_session'] = False

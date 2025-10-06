@@ -67,6 +67,7 @@ def fetch_product_by_barcode(request, barcode):
 def search_products_by_name(request, product_name, page=1):
 
     user = request.user
+    api_url = f"{OFF_API_BASE_URL}/cgi/search.pl"
 
     if user.is_authenticated:
         user_settings = UserSettings.objects.get(user=user)
@@ -74,8 +75,7 @@ def search_products_by_name(request, product_name, page=1):
          user_lang_name = user_settings.language_preference
          language_code = LANGUAGE_CODE_MAP.get(user_lang_name, 'world')
          api_url = f"https://{language_code}.openfoodfacts.net/cgi/search.pl"
-    else:
-        api_url = f"{OFF_API_BASE_URL}/cgi/search.pl"
+   
 
     headers = get_headers()
     params = {
