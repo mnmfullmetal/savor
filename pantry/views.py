@@ -28,9 +28,55 @@ from .utils import (
 # Create your views here.
 
 def index(request):
+    user = request.user
+    placeholder_image_url = static('media/placeholder-img.jpeg')
+
+    if user.is_authenticated:
+        
+        user_settings = UserSettings.objects.get(user=user) 
+        user_allergens = user_settings.allergens.all()
+        user_dietary_requirements = user_settings.dietary_requirements.all()
+        user_allergens_tags = set(user_allergens.values_list('api_tag', flat=True))
+        user_required_tags = set(user_dietary_requirements.values_list('api_tag', flat=True))
+        user_lang_name = user_settings.language_preference
+        language_code = LANGUAGE_CODE_MAP.get(user_lang_name, 'en') 
+                    
+        processed_favourites = []
+        
+        for product in user.favourited_products.all():
+            
+            has_allergen_conflict = False
+            conflicting_allergens = []
+            has_dietary_mismatch = False
+            missing_dietary_tags = []
+
+            if user_settings:
+                if product.allergens.filter(pk__in=user_allergens).exists():
+                    has_allergen_conflict = True
+                    product_allergen_tags = set(product.allergens.values_list('api_tag', flat=True)) 
+                    conflicting_allergens_set = user_allergens_tags.intersection(product_allergen_tags)
+                    conflicting_allergens = get_localised_names(language_code=language_code, cached_data_type='allergens', product_tags=conflicting_allergens_set) 
+
+                product_label_tags = set(product.labels_tags or [])
+                missing_dietary_tags_set = user_required_tags.difference(product_label_tags)
+
+                if missing_dietary_tags_set:
+                    has_dietary_mismatch = True
+                    missing_dietary_tags = get_localised_names(language_code=language_code, cached_data_type='labels', product_tags=missing_dietary_tags_set)
+
+            product.has_allergen_conflict = has_allergen_conflict
+            product.conflicting_allergens = conflicting_allergens
+            product.has_dietary_mismatch = has_dietary_mismatch
+            product.missing_dietary_tags = missing_dietary_tags
+            
+            processed_favourites.append(product)
+
+        user.favourited_products.all = lambda: processed_favourites 
+
     return render(request, 'pantry/index.html', {
-        "user": request.user,
-        'placeholder_image_url': static('media/placeholder-img.jpeg')
+        "user": user,
+        'placeholder_image_url': placeholder_image_url,
+        'favourite_products_list': processed_favourites,
     })
 
 
@@ -260,7 +306,7 @@ def search_product(request):
                             has_dietary_mismatch = True
                             missing_dietary_tags = get_localised_names(language_code=language_code, cached_data_type='labels', product_tags=missing_dietary_tags_set )
 
-                            localised_key = f'product_name_{language_code}'
+                        localised_key = f'product_name_{language_code}'
                         if authenticated and user_settings.prioritise_local_results:
                             product_name = off_prod.get(localised_key, saved_product.product_name)
                             print(f'localised name: {product_name}')
@@ -475,9 +521,48 @@ def pantry_view(request):
     pantry = Pantry.objects.get(user=request.user)
     pantry.calculate_aggregate_scores()
     pantryitems = PantryItem.objects.filter(pantry=pantry)
+
     user_settings = UserSettings.objects.get(user=request.user)
     show_nutriscore = user_settings.show_nutri_score
     show_ecoscore = user_settings.show_eco_score
+    user_allergens = user_settings.allergens.all()
+    user_dietary_requirements = user_settings.dietary_requirements.all()
+    user_allergens_tags = set(user_allergens.values_list('api_tag', flat=True))
+    user_required_tags = set(user_dietary_requirements.values_list('api_tag', flat=True))
+    user_lang_name = user_settings.language_preference
+    language_code = LANGUAGE_CODE_MAP.get(user_lang_name, 'en')
+    
+    initial_pantry_items = PantryItem.objects.filter(pantry=pantry).select_related('product')
+    
+    pantryitems = []
+    for item in initial_pantry_items:
+        product_obj = item.product 
+        
+        has_allergen_conflict = False
+        conflicting_allergens = []
+        has_dietary_mismatch = False
+        missing_dietary_tags = []
+
+        if product_obj.allergens.filter(pk__in=user_allergens).exists():
+            has_allergen_conflict = True
+            product_allergen_tags = set(product_obj.allergens.values_list('api_tag', flat=True)) 
+            conflicting_allergens_set = user_allergens_tags.intersection(product_allergen_tags)
+            conflicting_allergens = get_localised_names(language_code=language_code, cached_data_type='allergens', product_tags=conflicting_allergens_set)
+
+        product_label_tags = set(product_obj.labels_tags or [])
+        missing_dietary_tags_set = user_required_tags.difference(product_label_tags)
+
+        if missing_dietary_tags_set:
+            has_dietary_mismatch = True
+            missing_dietary_tags = get_localised_names(language_code=language_code, cached_data_type='labels', product_tags = missing_dietary_tags_set)
+        
+        item.has_allergen_conflict = has_allergen_conflict
+        item.conflicting_allergens = conflicting_allergens
+        item.has_dietary_mismatch = has_dietary_mismatch
+        item.missing_dietary_tags = missing_dietary_tags
+        
+        pantryitems.append(item)
+
     return render(request, "pantry/pantry.html", {
         "user" : request.user,
         "pantryitems": pantryitems,
@@ -550,6 +635,31 @@ def remove_pantryitem(request):
 def toggle_favourite_product(request, id):
     user = request.user
     product = Product.objects.get(id=id)
+    user_settings = UserSettings.objects.get(user=user)
+    user_allergens = user_settings.allergens.all()
+    user_dietary_requirements = user_settings.dietary_requirements.all()
+    user_allergens_tags = set(user_allergens.values_list('api_tag', flat=True))
+    user_required_tags = set(user_dietary_requirements.values_list('api_tag', flat=True))
+    user_lang_name = user_settings.language_preference
+    language_code = LANGUAGE_CODE_MAP.get(user_lang_name, 'en') 
+
+    has_allergen_conflict = False
+    conflicting_allergens = []
+    has_dietary_mismatch = False
+    missing_dietary_tags = []
+
+    if product.allergens.filter(pk__in=user_allergens).exists():
+        has_allergen_conflict = True
+        product_allergen_tags = set(product.allergens.values_list('api_tag', flat=True)) 
+        conflicting_allergens_set = user_allergens_tags.intersection(product_allergen_tags)
+        conflicting_allergens = get_localised_names(language_code=language_code, cached_data_type='allergens', product_tags=conflicting_allergens_set) # Assuming get_localised_names exists
+
+    product_label_tags = set(product.labels_tags or [])
+    missing_dietary_tags_set = user_required_tags.difference(product_label_tags)
+
+    if missing_dietary_tags_set:
+        has_dietary_mismatch = True
+        missing_dietary_tags = get_localised_names(language_code=language_code, cached_data_type='labels', product_tags = missing_dietary_tags_set)
 
     if product in user.favourited_products.all():
         user.favourited_products.remove(product)
@@ -571,6 +681,10 @@ def toggle_favourite_product(request, id):
             'image_url': product.image_url,
             'product_quantity': product.product_quantity,
             'product_quantity_unit': product.product_quantity_unit,
+            'has_dietary_mismatch': has_dietary_mismatch,
+            'missing_dietary_tags': missing_dietary_tags,
+            'conflicting_allergens': conflicting_allergens,
+            'has_allergen_conflict': has_allergen_conflict,
         }
     })
 

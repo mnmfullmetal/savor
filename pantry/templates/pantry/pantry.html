@@ -50,28 +50,55 @@
         <div class="pantry-items-page row g-4">
             {% for item in pantryitems %}
                 <div class="col-12 col-sm-6 col-md-4 col-lg-4 mb-4 pantry-item-col">
-                    <div class="pantry-item card h-100 shadow-sm border-0">
-                        {% if item.product.image_url %}
-                        <img src="{{ item.product.image_url }}" alt="{{ item.product.product_name|default:"Product Image" }}" class="card-img-top img-fluid rounded-top" style="max-height: 150px; object-fit: cover;" onerror="this.onerror=null; this.src='{{ placeholder_image_url }}';" >
-                        {% else %}
+                    {% if item.has_allergen_conflict %}
+                         <div class="pantry-item card h-100 shadow-lg border-danger border-3">
+                    {% else %}
+                         <div class="pantry-item card h-100 shadow-sm border-0">
+                    {% endif %}
+                    {% if item.product.image_url %}
+                         <img src="{{ item.product.image_url }}" alt="{{ item.product.product_name|default:"Product Image" }}" class="card-img-top img-fluid rounded-top" style="max-height: 150px; object-fit: cover;" onerror="this.onerror=null; this.src='{{ placeholder_image_url }}';" >
+                    {% else %}
                          <img src="{% static 'media/placeholder-img.jpeg' %}" alt="{{ product.product_name|default:"Product Image" }}" class="card-img-top img-fluid rounded-top" style="max-height: 150px; object-fit: cover;">
-                        {% endif %}
-                        <div class="card-body d-flex flex-column justify-content-between">
+                    {% endif %}
+                         <div class="card-body d-flex flex-column justify-content-between">
                             <h3 class="card-title h5 mb-2 text-dark">{{ item.product.product_name|default:"No Name" }}</h3>
+                    <div>
+                         {% if item.has_allergen_conflict %}
+                        <div class="alert alert-danger p-1 mb-2 small" role="alert">
+                            <strong><i class="bi bi-exclamation-circle"></i>  WARNING : </strong> Contains user-specified allergens: 
+                            {% for tag in item.conflicting_allergens %}
+                             <code>{{ tag|upper }}</code>{% if not forloop.last %}, {% endif %}
+                            {% endfor %}
+                        </div>
+                    {% endif %}
+
+                {% if item.has_dietary_mismatch %}
+                    <div class="alert alert-warning p-1 mb-2 small" role="alert">
+                        <strong><i class="bi bi-question-circle"></i>  POSSIBLE MISMATCH : </strong> Missing dietary requirements: 
+                        {% for tag in item.missing_dietary_tags %}
+                            <code>{{ tag|upper }}</code>{% if not forloop.last %}, {% endif %}
+                        {% endfor %}.
+                    </div>
+                {% endif %}
+                    </div>
+                   
                            
-                            <p class="card-text text-muted mb-1 small ">
-                                <strong>Quantity:</strong> <span class="pantry-quantity-count">{{ item.quantity }} </span>
-                            </p>
-                            <p class="card-text text-muted mb-1 small">
-                                <strong>Product Size:</strong> {{ item.product.product_quantity|default:"" }} {{ item.product.product_quantity_unit|default:"item" }}
-                            </p>
+                <div>
+                    <p class="card-text text-muted mb-1 small ">
+                        <strong>Quantity:</strong> <span class="pantry-quantity-count">{{ item.quantity }} </span>
+                    </p>
+                    <p class="card-text text-muted mb-1 small">
+                        <strong>Product Size:</strong> {{ item.product.product_quantity|default:"" }} {{ item.product.product_quantity_unit|default:"item" }}
+                    </p>
+                </div>
+                            
                             {% if item.expiration_date %}
                                 <p class="card-text text-danger mb-3 small">
                                     <strong>Expires:</strong> {{ item.expiration_date|date:"M d, Y" }}
                                 </p>
                             {% endif %}
 
-                            <div class="mt-auto d-flex align-items-center justify-content-left">
+                            <div class="mt-3 d-flex align-items-center justify-content-left">
                                 <input class="remove-quantity-input form-control me-2"
                                     type="number" min="1.00" step="1.00" value="1" style="max-width: 80px;">
                                 <button class="btn btn-outline-danger btn-sm remove-button" data-item-id="{{ item.id }}" data-csrf-token="{{ csrf_token }}">Remove</button>

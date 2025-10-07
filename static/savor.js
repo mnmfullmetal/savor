@@ -389,7 +389,7 @@ function displaySearchResults(container, data, csrfToken, searchParams, searchFu
         cardClasses = "card h-100 shadow-lg border-danger border-3"; 
         safetyAlertsHtml += `
         <div class="alert alert-danger p-1 mb-2 small" role="alert">
-        <strong><i class="bi bi-exclamation-circle"></i> WARNING:</strong> Contains user-specified allergens: ${conflictingTagsList}
+        <strong> <i class="bi bi-exclamation-circle"></i>  WARNING : </strong> Contains user-specified allergens: ${conflictingTagsList}
         </div>`;
       }
             
@@ -397,7 +397,7 @@ function displaySearchResults(container, data, csrfToken, searchParams, searchFu
         const missingTagsList = missingTags.map(tag => `<code>${tag.replace(/_/g, ' ').toUpperCase()}</code>`).join(', ');
         safetyAlertsHtml += `
         <div class="alert alert-warning p-1 mb-2 small" role="alert">
-        <strong>POSSIBLE MISMATCH <i class="bi bi-question-circle"></i>:</strong> Missing dietary requirements: ${missingTagsList}.
+        <strong> <i class="bi bi-question-circle"></i>  POSSIBLE MISMATCH : </strong> Missing dietary requirements: ${missingTagsList}.
         </div>`;
       }
 
@@ -416,14 +416,17 @@ function displaySearchResults(container, data, csrfToken, searchParams, searchFu
             <h3 class="card-title h5 mb-2 text-dark">${
               product.product_name || "No Name"
             }</h3>
-            
+            <div>
             <p class="card-text text-muted mb-1 small"><strong>Brands:</strong> ${
               product.brands || "N/A"
             }</p>
             <p class="card-text text-muted mb-3 small"><strong>Code:</strong> ${
               product.code || "N/A"
             }</p>
+            </div>
+            <div>
              ${safetyAlertsHtml} 
+             </div>
             <div class="d-flex align-items-center mb-3">
               <input class="product-quantity-input form-control me-2" type="number" min="1.00" step="1.00" value="1">
               <span class="text-secondary me-1">${
@@ -434,7 +437,7 @@ function displaySearchResults(container, data, csrfToken, searchParams, searchFu
               }</span>
             </div>
 
-            <div class="mt-auto d-flex flex-column">
+            <div class="mt-1 d-flex flex-column">
               <button class="btn btn-outline-primary btn-sm mb-2 add-btn" 
                       data-product-name="${
                         product.product_name || "No Name"
@@ -652,6 +655,30 @@ function updateFavouriteSection(product, is_favourited, csrfToken) {
     if (emptyMessage) {
       emptyMessage.remove();
     }
+    
+    const hasAllergenConflict = product.has_allergen_conflict;
+    const hasDietaryMismatch = product.has_dietary_mismatch;
+    const conflictingTags = product.conflicting_allergens || [];
+    const missingTags = product.missing_dietary_tags || [];
+    let safetyAlertsHtml = '';
+    let cardClasses = "card h-100 border-0 shadow-sm"; 
+
+    if (hasAllergenConflict) {
+        const conflictingTagsList = conflictingTags.map(tag => `<code>${tag.replace(/_/g, ' ').toUpperCase()}</code>`).join(', ');
+        cardClasses = "card h-100 shadow-lg border-danger border-3"; 
+        safetyAlertsHtml += `
+            <div class="alert alert-danger p-1 mb-2 small" role="alert">
+            <strong><i class="bi bi-exclamation-circle"></i>  WARNING : </strong> Contains user-specified allergens: ${conflictingTagsList}
+            </div>`;
+    }
+            
+    if (hasDietaryMismatch) {
+        const missingTagsList = missingTags.map(tag => `<code>${tag.replace(/_/g, ' ').toUpperCase()}</code>`).join(', ');
+        safetyAlertsHtml += `
+          <div class="alert alert-warning p-1 mb-2 small" role="alert">
+          <strong><i class="bi bi-question-circle"></i>  POSSIBLE MISMATCH : </strong> Missing dietary requirements: ${missingTagsList}.
+          </div>`;
+    }
 
     const newFavouriteCard = document.createElement("div");
     newFavouriteCard.className = "product-card-wrapper";
@@ -672,16 +699,22 @@ function updateFavouriteSection(product, is_favourited, csrfToken) {
         <h3 class="card-title h5 mb-2 text-dark">${
           product.product_name || "No Name"
         }</h3>
-        
+
+        <div>
+         ${safetyAlertsHtml}
+        </div>
+
+        <div>
         <p class="card-text text-muted mb-1 small"><strong>Brands:</strong> ${
           product.brands || "N/A"
         }</p>
         <p class="card-text text-muted mb-3 small"><strong>Code:</strong> ${
           product.code || "N/A"
         }</p>
+        </div>
 
         <div class="d-flex align-items-center mb-3">
-          <input class="product-quantity-input form-control me-2" type="number" min="0.01" step="0.01" value="1">
+          <input class="product-quantity-input form-control me-2" type="number" min="1.00" step="1.00" value="1">
           <span class="text-secondary me-1">${
             product.product_quantity || ""
           }</span>
