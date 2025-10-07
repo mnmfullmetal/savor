@@ -8,15 +8,19 @@ const config = {
 
 function onScanSuccess(decodedText, decodedResult) {
   console.log(`Code matched = ${decodedText}`, decodedResult);
+  const productSearchForm = document.querySelector("#search-form");
+  const csrfToken = productSearchForm.elements.csrfmiddlewaretoken.value;
+  productSearchForm.elements.barcode.value = decodedText;
+
+    
+  handleProductSearch(productSearchForm, csrfToken); 
 
   stopScanningAndHide(); 
 
-  document.getElementById('scanned_data_input').value = decodedText;
-  document.getElementById('scan_form').submit();
 }
 
 function onScanFailure(error) {
-    console.warn(`Scan error: ${error}`);
+    //console.warn(`Scan error: ${error}`);
 }
 
 function stopScanningAndHide() {
@@ -77,29 +81,30 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
+  // activate scanner button
   document.getElementById("scan-button").addEventListener("click", () => {
         
-        if (!html5QrCode) {
-            html5QrCode = new Html5Qrcode(readerId);
+    if (!html5QrCode) {
+       html5QrCode = new Html5Qrcode(readerId);
             
-            document.getElementById("scanner-container").style.display = "block";
+       document.getElementById("scanner-container").style.display = "flex";
 
-            html5QrCode.start(
-                { facingMode: "environment" },
-                config,
-                onScanSuccess,
-                onScanFailure
-            )
-            .catch((err) => {
-                console.error("Camera failed to start:", err);
-                alert("Camera start failed.");
-                document.getElementById("scanner-container").style.display = "none";
-                html5QrCode = null;
-            });
-        }
-    });
+       html5QrCode.start(
+        { facingMode: "environment" },
+        config,
+        onScanSuccess,
+        onScanFailure
+        )
+        .catch((err) => {
+          console.error("Camera failed to start:", err);
+          alert("Camera start failed.");
+          document.getElementById("scanner-container").style.display = "none";
+          html5QrCode = null;
+        });
+    }
+});
 
-    document.getElementById("stop-scanner-btn").addEventListener("click", () => {
+  document.getElementById("stop-scanner-btn").addEventListener("click", () => {
         stopScanningAndHide();
     });
 
@@ -108,6 +113,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const productNameInput = document.getElementById("product_name_input");
   const autocompleteSuggestionsDiv = document.getElementById("autocomplete-suggestions");
   const debounceSpeed = 300; 
+
   productNameInput.addEventListener("input",debounce(async (event) => {
     const query = event.target.value.trim();
 
@@ -129,28 +135,14 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }, debounceSpeed));
 
+
   productSearchForm.addEventListener("submit", (event) => {
     event.preventDefault();
-    const barcode = productSearchForm.elements.barcode.value.trim();
-    const productName = productSearchForm.elements.product_name.value.trim();
-    const currentPath = window.location.pathname;
-
-    if (currentPath !== "index" && currentPath !== "/") {
-     
-      sessionStorage.setItem("searchBarcode", barcode);
-      sessionStorage.setItem("searchProductName", productName);
-      sessionStorage.setItem("searchCsrfToken", csrfToken);
-      window.location.href = "/";
-    } else {
-      searchProduct(barcode, productName, csrfToken);
-      productNameInput.value = '';
-
-    }
+    handleProductSearch(productSearchForm, csrfToken);
   });
 
   const savedBarcode = sessionStorage.getItem("searchBarcode");
   const savedProductName = sessionStorage.getItem("searchProductName");
-  const savedCsrfToken = sessionStorage.getItem("searchCsrfToken");
 
   if (savedBarcode || savedProductName) {
     sessionStorage.removeItem("searchBarcode");
@@ -163,7 +155,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if (barcodeInput) barcodeInput.value = savedBarcode;
     if (productNameInput) productNameInput.value = savedProductName;
 
-    searchProduct(savedBarcode, savedProductName, savedCsrfToken);
+    searchProduct(savedBarcode, savedProductName, csrfToken, page=1);
     productNameInput.value = '';
   }
 
@@ -264,6 +256,32 @@ function fetchAndPopulateDropdowns(categorySelect, brandSelect, countrySelect) {
       countrySelect.appendChild(countryOption)
     })
   })
+}
+
+
+function handleProductSearch(form, csrfToken) {
+    const barcode = form.elements.barcode.value.trim();
+    const productName = form.elements.product_name.value.trim();
+    const currentPath = window.location.pathname;
+
+    if (!barcode && !productName) {
+        return; 
+    }
+
+    if (currentPath !== "/" && currentPath !== "/index/") { 
+
+        sessionStorage.setItem("searchBarcode", barcode);
+        sessionStorage.setItem("searchProductName", productName);
+        sessionStorage.setItem("searchCsrfToken", csrfToken);
+        
+        window.location.href = "/";
+        form.elements.barcode.value = ''; 
+        form.elements.product_name.value = '';
+    } else {
+        searchProduct(barcode, productName, csrfToken, page = 1);
+        form.elements.barcode.value = ''; 
+        form.elements.product_name.value = '';
+    }
 }
 
 
@@ -759,18 +777,3 @@ function debounce(func, delay) {
 }
 
 
-function onScanSuccess(decodedText, decodedResult){
-
-   console.log(`Code matched = ${decodedText}`, decodedResult);
-
-}
-
-function onScanFailure(error) {
- 
-  console.warn(`Code scan error = ${error}`);
-}
-
-let html5QrcodeScanner = new Html5QrcodeScanner(
-  "reader",
-  { fps: 10, qrbox: {width: 250, height: 250} }, false);
-html5QrcodeScanner.render(onScanSuccess, onScanFailure)
