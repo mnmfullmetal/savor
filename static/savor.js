@@ -1,3 +1,42 @@
+let html5QrCode = null;
+
+const readerId = "reader";
+const config = { 
+    fps: 10, 
+    qrbox: { width: 250, height: 250 }
+};
+
+function onScanSuccess(decodedText, decodedResult) {
+  console.log(`Code matched = ${decodedText}`, decodedResult);
+
+  stopScanningAndHide(); 
+
+  document.getElementById('scanned_data_input').value = decodedText;
+  document.getElementById('scan_form').submit();
+}
+
+function onScanFailure(error) {
+    console.warn(`Scan error: ${error}`);
+}
+
+function stopScanningAndHide() {
+    if (html5QrCode && html5QrCode.isScanning) {
+        html5QrCode.stop()
+            .then(() => {
+                console.log("QR Code scanning stopped.");
+                document.getElementById("scanner-container").style.display = "none";
+                document.getElementById(readerId).innerHTML = ""; 
+                html5QrCode = null; 
+            })
+            .catch((err) => {
+                console.error("Failed to stop scanning:", err);
+                document.getElementById("scanner-container").style.display = "none";
+            });
+    } else {
+        document.getElementById("scanner-container").style.display = "none";
+    }
+}
+
 
 document.addEventListener("DOMContentLoaded", () => {
 
@@ -38,22 +77,37 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-    document.getElementById("scan-button").addEventListener("click", () => {
-    document.getElementById("scanner-container").style.display = "block";
-      startScanner(csrfToken);
-   
-  });
+  document.getElementById("scan-button").addEventListener("click", () => {
+        
+        if (!html5QrCode) {
+            html5QrCode = new Html5Qrcode(readerId);
+            
+            document.getElementById("scanner-container").style.display = "block";
 
-  document.getElementById("stop-scanner-btn").addEventListener("click", () => {
-    Quagga.stop();
-    document.getElementById("scanner-container").style.display = "none";
-  });
+            html5QrCode.start(
+                { facingMode: "environment" },
+                config,
+                onScanSuccess,
+                onScanFailure
+            )
+            .catch((err) => {
+                console.error("Camera failed to start:", err);
+                alert("Camera start failed.");
+                document.getElementById("scanner-container").style.display = "none";
+                html5QrCode = null;
+            });
+        }
+    });
+
+    document.getElementById("stop-scanner-btn").addEventListener("click", () => {
+        stopScanningAndHide();
+    });
 
   const productSearchForm = document.querySelector("#search-form");
   const csrfToken = productSearchForm.elements.csrfmiddlewaretoken.value;
   const productNameInput = document.getElementById("product_name_input");
   const autocompleteSuggestionsDiv = document.getElementById("autocomplete-suggestions");
-  const debounceSpeed = 100; 
+  const debounceSpeed = 300; 
   productNameInput.addEventListener("input",debounce(async (event) => {
     const query = event.target.value.trim();
 
@@ -261,8 +315,6 @@ function searchProduct(barcode = "None", productName = "None", csrfToken, page =
         </div>`;
   });
 }
-
-
 
 
 function advProductSearch(searchRequestData, csrfToken){
@@ -668,59 +720,6 @@ function updateFavouriteSection(product, is_favourited, csrfToken) {
 }
 
 
-function startScanner(csrfToken) {
-  Quagga.init(
-    {
-      inputStream: {
-        name: "Live",
-        type: "LiveStream",
-        target: document.querySelector("#interactive"),
-        constraints: {
-          width: { min: 640 },
-          height: { min: 480 },
-          facingMode: "environment",
-        },
-      },
-      decoder: {
-        readers: [
-          "ean_reader",
-          "upc_reader",
-          "upc_e_reader",
-          "ean_8_reader",
-          "code_39_reader",
-        ],
-      },
-    },
-    function (err) {
-      if (err) {
-        console.error(err);
-        return;
-      }
-      console.log("Initialization finished. Ready to start");
-      Quagga.start();
-    }
-  );
-
-  Quagga.onDetected(function (result) {
-    const currentPath = window.location.pathname;
-    const barcode = result.codeResult.code;
-    console.log("Barcode detected:", barcode);
-    Quagga.stop();
-    document.getElementById("scanner-container").style.display = "none";
-
-    if (currentPath !== "index" && currentPath !== "/") {
-     
-      sessionStorage.setItem("searchBarcode", barcode);
-      sessionStorage.setItem("searchCsrfToken", csrfToken);
-      window.location.href = "/";
-    }
-    else{
-    searchProduct(barcode, "", csrfToken, page=1);
-    }
-
-  });
-}
-
 function displaySuggestions(suggestions) {
   const autocompleteSuggestionsDiv = document.getElementById("autocomplete-suggestions");
   const productNameInput = document.getElementById("product_name_input");
@@ -758,3 +757,20 @@ function debounce(func, delay) {
     timeout = setTimeout(() => func.apply(context, args), delay);
   };
 }
+
+
+function onScanSuccess(decodedText, decodedResult){
+
+   console.log(`Code matched = ${decodedText}`, decodedResult);
+
+}
+
+function onScanFailure(error) {
+ 
+  console.warn(`Code scan error = ${error}`);
+}
+
+let html5QrcodeScanner = new Html5QrcodeScanner(
+  "reader",
+  { fps: 10, qrbox: {width: 250, height: 250} }, false);
+html5QrcodeScanner.render(onScanSuccess, onScanFailure)
