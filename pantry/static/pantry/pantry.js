@@ -1,5 +1,6 @@
 
 document.addEventListener("DOMContentLoaded", () => {
+
   const buttons = document.querySelectorAll(".remove-button");
   if (buttons.length > 0) {
     for (const button of buttons) {
@@ -23,22 +24,24 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }  
 
-  const pantry_search_form = document.getElementById('pantrySearchForm')
-  if (pantry_search_form){
-    pantry_search_form.addEventListener("submit", (event) => {
-      event.preventDefault();
-      const pantrySearchInput = pantry_search_form.querySelector('#pantrySearchInput').value;
-      const csrfToken = pantry_search_form.elements.csrfmiddlewaretoken.value;
 
-      searchPantry(csrfToken, pantrySearchInput);
+  const pantrySearchInput = document.getElementById('pantrySearchInput')
+  const csrfToken = document.querySelector('[name=csrfmiddlewaretoken]').value;
+  const debouncedSearch = debounce(searchPantry, 200);
+  if (pantrySearchInput){
+    pantrySearchInput.addEventListener("input", (event) => {
+
+      const query = (event.target.value ?? '').trim();
+      debouncedSearch(csrfToken, query);
 
     })
   }
 
+
 });
 
 
-function searchPantry(csrfToken, pantrySearchInput){
+function searchPantry(csrfToken, query){
   fetch('/search_pantry/', {
     method: 'POST',
     headers: {
@@ -46,7 +49,7 @@ function searchPantry(csrfToken, pantrySearchInput){
       "X-CSRFToken": csrfToken,
     },
     body: JSON.stringify({
-      'query': pantrySearchInput
+      'query': query
     }),
   })
   .then(response => response.json())
@@ -121,18 +124,14 @@ function updatePantryList(items, csrfToken){
               </p>
 
               <p class="card-text text-muted mb-1 small ">
-              <strong>Product Size:</strong>${item.product_quantity ||""} ${item.product_quantity_unit || 'item'}
+              <strong>Product Size:</strong> ${item.product_quantity ||""} ${item.product_quantity_unit || 'item'}
               </p>
-              
-              <span class="text-muted small">${
-                item.product_quantity_unit || "item"
-              }</span>
 
               <div class="mt-auto d-flex align-items-center justify-content-left">
                 <input class="remove-quantity-input form-control me-2" type="number" min="1.00" step="1.00" value="1" style="max-width: 80px;">
                 <button class="btn btn-outline-danger btn-sm remove-button"
                   data-item-id="${ item.id }}"
-                  data-csrf-token="${csrfToken}"
+                  data-csrf-token="${csrfToken}">
                   Remove
                 </button>
               </div>

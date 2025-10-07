@@ -36,17 +36,16 @@
     </section>
 
     <section class="mt-5 p-3 rounded shadow-lg">
-        <div style="display: flex; flex-direction: row;">
-            <h2 class="h4 mb-4 text-info d-flex align-items-center">
+        <div style="display: flex; flex-direction: row; justify-content: space-between;">
+            <h2 style="margin-left: 1rem ;" class="h4 mb-4 text-success d-flex align-items-center">
               Your Pantry Items <span class="ms-2">🛒</span>
             </h2>
-            <form id="pantrySearchForm" style="margin-left: auto ;" action="POST">
-                {% csrf_token %}
-                <input id='pantrySearchInput' type="text" placeholder="Search Pantry">
-                <button type="submit"><i class="bi bi-search"></i></button>
-            </form>
+            <div class="mw-100" style="width: 25vw; margin-right: 1rem;">
+                    {% csrf_token %}
+                <input class="form-control ml-5" id='pantrySearchInput' type="text" placeholder="Search Pantry">
+            </div>
+            
         </div>
-       
        
         <div class="pantry-items-page row g-4">
             {% for item in pantryitems %}
@@ -75,11 +74,7 @@
                             <div class="mt-auto d-flex align-items-center justify-content-left">
                                 <input class="remove-quantity-input form-control me-2"
                                     type="number" min="1.00" step="1.00" value="1" style="max-width: 80px;">
-                                <button class="btn btn-outline-danger btn-sm remove-button"
-                                        data-item-id="{{ item.id }}"
-                                        data-csrf-token="{{ csrf_token }}">
-                                    Remove
-                                </button>
+                                <button class="btn btn-outline-danger btn-sm remove-button" data-item-id="{{ item.id }}" data-csrf-token="{{ csrf_token }}">Remove</button>
                             </div>
                              <div class="message-container mt-2">
                              </div>
