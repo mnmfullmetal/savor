@@ -16,8 +16,9 @@ class UserSettings(models.Model):
     dietary_requirements = models.ManyToManyField('DietaryRequirement', blank=True,  related_name='required_by_user')
     show_nutri_score = models.BooleanField(default=True)
     show_eco_score = models.BooleanField(default=True)
-
-    language_preference = models.CharField(max_length=10, blank=True, null=True)
+    country = models.CharField(max_length=25, blank=True, null=True)
+    scan_to_add = models.BooleanField(default=False)
+    language_preference = models.CharField(max_length=25, blank=True, null=True)
     prioritise_local_results = models.BooleanField(default=False)
 
     def __str__(self):

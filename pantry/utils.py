@@ -94,6 +94,8 @@ def search_products_by_name(request, product_name, page=1):
 
 @ratelimit(key='ip', rate='30/m', block=True, group='off_suggestions_api_call')
 def get_product_suggestions(request, query):
+    api_url = f"{OFF_API_BASE_URL}/api/v3/taxonomy_suggestions"
+    
     if request.user.is_authenticated:
         user_settings = UserSettings.objects.get(user=request.user)
         
@@ -101,8 +103,7 @@ def get_product_suggestions(request, query):
             user_lang_name = user_settings.language_preference
             language_code = LANGUAGE_CODE_MAP.get(user_lang_name, 'world')
             api_url = f"https://{language_code}.openfoodfacts.net/api/v3/taxonomy_suggestions"
-    else:
-        api_url = f"{OFF_API_BASE_URL}/api/v3/taxonomy_suggestions"
+        
     
     params = {
         'tagtype': 'ingredients',

@@ -81,7 +81,6 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // activate scanner button
   document.getElementById("scan-button").addEventListener("click", () => {
         
     if (!html5QrCode) {

@@ -14,6 +14,7 @@ class UserCreationForm(UserCreationForm):
 
 class UserSettingsForm(forms.ModelForm):
     language_preference = forms.ChoiceField(required=False)
+    country = forms.ChoiceField(required=False)
 
     allergens = ModelMultipleChoiceField(
         queryset=Allergen.objects.all(),
@@ -31,7 +32,7 @@ class UserSettingsForm(forms.ModelForm):
 
     class Meta:
         model = UserSettings
-        fields = ['allergens', 'dietary_requirements', 'language_preference', 'show_nutri_score', 'show_eco_score', 'prioritise_local_results']
+        fields = ['allergens', 'dietary_requirements', 'language_preference', 'country', 'scan_to_add', 'show_nutri_score', 'show_eco_score', 'prioritise_local_results']
         
 
     def __init__(self, *args, **kwargs):
