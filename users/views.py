@@ -44,7 +44,7 @@ def account_settings(request):
         key=lambda x: x[1]
     )
 
-    default_countries_data = get_cached_json(language_code='wn', data_type='countries') or {}
+    default_countries_data = get_cached_json(language_code='en', data_type='countries') or {}
     countries_choices = sorted(
         [(tag['id'], tag['name']) for tag in default_countries_data.get('tags') if tag.get('name')] ,
             key=lambda x: x[1] 
