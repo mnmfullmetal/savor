@@ -40,6 +40,99 @@ LANGUAGE_CODE_MAP = {
     'en:vietnamese': 'vi',
 }
 
+COUNTRY_CODE_MAP = {
+    'en:algeria': 'dz',
+    'en:argentina': 'ar',
+    'en:australia': 'au',
+    'en:austria': 'at',
+    'en:belgium': 'be',
+    'en:bolivia': 'bo',
+    'en:brazil': 'br',
+    'en:bulgaria': 'bg',
+    'en:canada': 'ca',
+    'en:chile': 'cl',
+    'en:china': 'cn',
+    'en:colombia': 'co',
+    'en:costa-rica': 'cr',
+    'en:cote-d-ivoire': 'ci',
+    'en:croatia': 'hr',
+    'en:cuba': 'cu',
+    'en:cyprus': 'cy',
+    'en:czech-republic': 'cz',
+    'en:denmark': 'dk',
+    'en:deutschland': 'de',
+    'en:dominican-republic': 'do',
+    'en:ecuador': 'ec',
+    'en:egypt': 'eg',
+    'en:english': 'en',
+    'en:estonia': 'ee',
+    'en:finland': 'fi',
+    'en:france': 'fr',
+    'en:french-polynesia': 'pf',
+    'en:georgia': 'ge',
+    'en:germany': 'de',
+    'en:greece': 'gr',
+    'en:guadeloupe': 'gp',
+    'en:hong-kong': 'hk',
+    'en:hungary': 'hu',
+    'en:iceland': 'is',
+    'en:india': 'in',
+    'en:indonesia': 'id',
+    'en:iraq': 'iq',
+    'en:ireland': 'ie',
+    'en:israel': 'il',
+    'en:italy': 'it',
+    'en:japan': 'jp',
+    'en:kuwait': 'kw',
+    'en:latvia': 'lv',
+    'en:lebanon': 'lb',
+    'en:lithuania': 'lt',
+    'en:luxembourg': 'lu',
+    'en:malaysia': 'my',
+    'en:malta': 'mt',
+    'en:martinique': 'mq',
+    'en:mauritius': 'mu',
+    'en:mexico': 'mx',
+    'en:moldova': 'md',
+    'en:morocco': 'ma',
+    'en:netherlands': 'nl',
+    'en:new-caledonia': 'nc',
+    'en:new-zealand': 'nz',
+    'en:norway': 'no',
+    'en:pakistan': 'pk',
+    'en:panama': 'pa',
+    'en:peru': 'pe',
+    'en:philippines': 'ph',
+    'en:poland': 'pl',
+    'en:portugal': 'pt',
+    'en:puerto-rico': 'pr',
+    'en:qatar': 'qa',
+    'en:reunion': 're',
+    'en:romania': 'ro',
+    'en:russia': 'ru',
+    'en:saudi-arabia': 'sa',
+    'en:senegal': 'sn',
+    'en:serbia': 'rs',
+    'en:singapore': 'sg',
+    'en:slovakia': 'sk',
+    'en:slovenia': 'si',
+    'en:south-africa': 'za',
+    'en:south-korea': 'kr',
+    'en:spain': 'es',
+    'en:sweden': 'sv',
+    'en:switzerland': 'ch',
+    'en:thailand': 'th',
+    'en:tunisia': 'tn',
+    'en:turkey': 'tr',
+    'en:ukraine': 'ua',
+    'en:united-arab-emirates': 'ae',
+    'en:united-kingdom': 'gb',
+    'en:united-states': 'us',
+    'en:uruguay': 'uy',
+    'en:venezuela': 've',
+    'en:vietnam': 'vn',
+}
+
 OFF_API_BASE_URL = settings.OPENFOODFACTS_API['BASE_URL']
 OFF_USER_AGENT = settings.OPENFOODFACTS_API['USER_AGENT']
 USE_STAGING_AUTH = settings.OPENFOODFACTS_API['USE_STAGING_AUTH']
@@ -82,9 +175,9 @@ def fetch_single_facet_json_data( facet_name):
     return response_data
 
 
-def fetch_single_localised_facet_json_data(language, facet):
+def fetch_single_localised_facet_json_data(language_code, facet):
 
-    api_url = f"https://{language}.openfoodfacts.net/facets/{facet}.json"
+    api_url = f"https://world-{language_code}.openfoodfacts.net/facets/{facet}.json"
     headers= get_headers()
     response_data = {}
     
@@ -100,9 +193,12 @@ def fetch_single_localised_facet_json_data(language, facet):
     return response_data
 
 
-def get_cached_json(language, data_type):
-    return cache.get(f"off_{data_type}_cache_{language}")
+def get_cached_json(language_code , data_type):
+    return cache.get(f"off_{data_type}_cache_{language_code }")
 
 
 def get_supported_language_codes():
     return list(LANGUAGE_CODE_MAP.values())
+
+def get_supported_country_codes():
+    return list(COUNTRY_CODE_MAP.values())

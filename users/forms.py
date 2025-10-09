@@ -41,6 +41,7 @@ class UserSettingsForm(forms.ModelForm):
         allergens_labels = kwargs.pop('allergens_labels', None) 
         requirements_labels = kwargs.pop('requirements_labels', None) 
         languages_choices = kwargs.pop('languages_choices', [])
+        countries_choices = kwargs.pop('countries_choices', [])
         
         super().__init__(*args, **kwargs)
         
@@ -55,3 +56,6 @@ class UserSettingsForm(forms.ModelForm):
 
         if languages_choices:
              self.fields['language_preference'].choices = languages_choices
+        
+        if countries_choices:
+            self.fields['country'].choices = countries_choices

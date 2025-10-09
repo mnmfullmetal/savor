@@ -1,14 +1,12 @@
 from django.shortcuts import render, redirect
 from .forms import UserCreationForm, UserSettingsForm
-from datetime import timedelta
 from django.contrib.auth import login
-from django.core.cache import cache
 from pantry.models import Pantry
 from .models import UserSettings, Allergen, DietaryRequirement
 from django.http import JsonResponse, HttpResponseRedirect
 from django.urls import reverse
 from django.contrib.auth.decorators import login_required
-from savor.utils import get_cached_json, LANGUAGE_CODE_MAP
+from savor.utils import get_cached_json, LANGUAGE_CODE_MAP, COUNTRY_CODE_MAP, get_supported_language_codes
 from django.contrib.auth import get_user_model
 
 User = get_user_model()
@@ -40,14 +38,20 @@ def account_settings(request):
     db_allergen_tags = set(default_allergens.values_list('api_tag', flat=True))
     db_requirement_tags = set(default_requirements.values_list('api_tag', flat=True))
 
-    default_languages_data = get_cached_json(language='world', data_type='languages') or {}
+    default_languages_data = get_cached_json(language_code='en', data_type='languages') or {}
     default_languages_choices = sorted(
-        [(tag['id'], tag['name']) for tag in default_languages_data.get('tags', [])], 
+        [(tag['id'], tag['name']) for tag in default_languages_data.get('tags', []) if tag['id'] in LANGUAGE_CODE_MAP.keys()] , 
         key=lambda x: x[1]
     )
 
-    user_lang_name = user_settings.language_preference
-    language_code = LANGUAGE_CODE_MAP.get(user_lang_name, 'world')
+    default_countries_data = get_cached_json(language_code='wn', data_type='countries') or {}
+    countries_choices = sorted(
+        [(tag['id'], tag['name']) for tag in default_countries_data.get('tags') if tag.get('name')] ,
+            key=lambda x: x[1] 
+    )
+
+    user_language = user_settings.language_preference
+    language_code = LANGUAGE_CODE_MAP.get(user_language, 'en')
 
     allergens_queryset = default_allergens
     requirements_queryset = default_requirements
@@ -56,9 +60,9 @@ def account_settings(request):
     requirements_labels = list(default_requirements.values_list('api_tag', 'requirement_name'))
     languages_choices = default_languages_choices
     
-    if language_code and language_code != 'en':
+    if language_code and language_code != 'world':
         
-        localised_allergens_data = get_cached_json(language=language_code, data_type='allergens')
+        localised_allergens_data = get_cached_json(language_code=language_code, data_type='allergens')
         if localised_allergens_data and localised_allergens_data.get('tags'):
              allergens_labels = sorted(
                  [(tag['id'], tag['name']) 
@@ -67,7 +71,7 @@ def account_settings(request):
                  key=lambda x: x[1]
              )
              
-        localised_requirements_data = get_cached_json(language=language_code, data_type='labels') 
+        localised_requirements_data = get_cached_json(language_code=language_code, data_type='labels') 
         if localised_requirements_data and localised_requirements_data.get('tags'):
              requirements_labels = sorted(
                  [(tag['id'], tag['name']) 
@@ -76,14 +80,23 @@ def account_settings(request):
                  key=lambda x: x[1] 
              )
              
-        localised_languages_data = get_cached_json(language=language_code, data_type='languages')
+        localised_languages_data = get_cached_json(language_code=language_code, data_type='languages')
         if localised_languages_data and localised_languages_data.get('tags'):
              languages_choices = sorted(
                  [(tag['id'], tag['name']) 
                   for tag in localised_languages_data['tags'] 
-                  if tag.get('name')],
+                  if tag.get('name') and tag['id'] in LANGUAGE_CODE_MAP.keys()],
                  key=lambda x: x[1] 
              )
+
+        localised_countries_data = get_cached_json(language_code=language_code, data_type='countries')
+        if localised_countries_data and localised_countries_data.get('tags'):
+            countries_choices = sorted(
+                 [(tag['id'], tag['name']) 
+                  for tag in localised_countries_data.get('tags') 
+                  if tag.get('name')],
+                 key=lambda x: x[1] 
+            )
         
     form_kwargs = {
         'instance': user_settings,
@@ -91,7 +104,8 @@ def account_settings(request):
         'requirements_choices': requirements_queryset,  
         'allergens_labels': allergens_labels,            
         'requirements_labels': requirements_labels,      
-        'languages_choices': languages_choices
+        'languages_choices': languages_choices,
+        'countries_choices': countries_choices
     }
 
     if request.method == "POST":
@@ -109,7 +123,8 @@ def account_settings(request):
         'form': form,
         'allergens': allergens_queryset ,
         'dietary_requirements': requirements_queryset,
-        'languages': languages_choices
+        'languages': languages_choices,
+        'countries_choices': countries_choices
     })
 
 

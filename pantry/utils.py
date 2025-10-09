@@ -4,7 +4,7 @@ from django.conf import settings
 from django_ratelimit.decorators import ratelimit
 from django.utils import timezone 
 from pantry.models import Product
-from savor.utils import get_headers, rate_limit_error_response, LANGUAGE_CODE_MAP, get_cached_json
+from savor.utils import get_headers, rate_limit_error_response, LANGUAGE_CODE_MAP, COUNTRY_CODE_MAP, get_cached_json
 from users.models import UserSettings, Allergen
 
 OFF_API_BASE_URL = settings.OPENFOODFACTS_API['BASE_URL']
@@ -22,11 +22,19 @@ def adv_search_product(request, search_params, page=1):
     user = request.user
     if user.is_authenticated:
         user_settings = UserSettings.objects.get(user=user)
-        if user_settings.get_only_localised_results:
-         user_lang_name = user_settings.language_preference
-         language_code = LANGUAGE_CODE_MAP.get(user_lang_name, 'world')
-         api_url = f"https://{language_code}.openfoodfacts.net/cgi/search.pl"
+
+        if user_settings.prioritise_local_results:
+         user_country_name = user_settings.country
+         country_code = COUNTRY_CODE_MAP.get(user_country_name, 'world')
+         api_url = f"https://{country_code}.openfoodfacts.net/cgi/search.pl"
+
+         if user_settings.language_preference != 'en':
+             user_lang_name = user_settings.language_preference
+             language_code = LANGUAGE_CODE_MAP.get(user_lang_name, 'en')
+             api_url = f"https://{country_code}-{language_code}.openfoodfacts.net/cgi/search.pl"
+
          
+
         
     headers = get_headers()
 
@@ -66,17 +74,24 @@ def fetch_product_by_barcode(request, barcode):
 @ratelimit(key='ip', rate='10/m', block=True, group='off_name_api_call')
 def search_products_by_name(request, product_name, page=1):
 
-    user = request.user
     api_url = f"{OFF_API_BASE_URL}/cgi/search.pl"
 
+    user = request.user
     if user.is_authenticated:
         user_settings = UserSettings.objects.get(user=user)
-        if user_settings.prioritise_local_results:
-         user_lang_name = user_settings.language_preference
-         language_code = LANGUAGE_CODE_MAP.get(user_lang_name, 'world')
-         api_url = f"https://{language_code}.openfoodfacts.net/cgi/search.pl"
-   
 
+        if user_settings.prioritise_local_results:
+         user_country_name = user_settings.country
+         country_code = COUNTRY_CODE_MAP.get(user_country_name, 'world')
+         api_url = f"https://{country_code}.openfoodfacts.net/cgi/search.pl"
+
+         if user_settings.language_preference != 'en':
+             user_lang_name = user_settings.language_preference
+             language_code = LANGUAGE_CODE_MAP.get(user_lang_name, 'en')
+             api_url = f"https://{country_code}-{language_code}.openfoodfacts.net/cgi/search.pl"
+
+         
+   
     headers = get_headers()
     params = {
         'search_terms': product_name,
@@ -100,11 +115,15 @@ def get_product_suggestions(request, query):
         user_settings = UserSettings.objects.get(user=request.user)
         
         if user_settings.prioritise_local_results:
-            user_lang_name = user_settings.language_preference
-            language_code = LANGUAGE_CODE_MAP.get(user_lang_name, 'world')
-            api_url = f"https://{language_code}.openfoodfacts.net/api/v3/taxonomy_suggestions"
+            user_country_name = user_settings.country
+            country_code = COUNTRY_CODE_MAP.get(user_country_name, 'world')
+            api_url = f"https://{country_code}.openfoodfacts.net/api/v3/taxonomy_suggestions"
+            if user_settings.language_preference != 'en':
+                user_lang_name = user_settings.language_preference
+                language_code = LANGUAGE_CODE_MAP.get(user_lang_name, 'en')
+                api_url = f"https://{country_code}-{language_code}.openfoodfacts.net/api/v3/taxonomy_suggestions"
+           
         
-    
     params = {
         'tagtype': 'ingredients',
         'string': query,
@@ -241,12 +260,12 @@ def get_localised_names( product_tags, cached_data_type, language_code ):
     if not product_tags:
         return []
     
-    full_cached_data = get_cached_json(language=language_code, data_type=cached_data_type)
+    full_cached_data = get_cached_json(language_code =language_code , data_type=cached_data_type)
     
-    raw_tag_list = full_cached_data.get('tags', [])
+    tag_list = full_cached_data.get('tags', [])
     
     localised_name_map = {}
-    for item in raw_tag_list:
+    for item in tag_list:
         if 'id' in item and 'name' in item:
             localised_name_map[item['id']] = item['name'] 
     

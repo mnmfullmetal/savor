@@ -11,7 +11,7 @@ from django.shortcuts import render
 from pantry.forms import ProductSearchForm 
 from pantry.models import Pantry, Product, PantryItem
 from users.models import UserSettings
-from savor.utils import LANGUAGE_CODE_MAP
+from savor.utils import LANGUAGE_CODE_MAP, COUNTRY_CODE_MAP
 from savor.utils import get_cached_json, rate_limit_error_response
 from .utils import (
     check_db_for_product,
@@ -152,10 +152,8 @@ def search_product(request):
     user_required_tags = set()
     user_settings = None
     user = request.user
-    authenticated = False
 
     if user.is_authenticated:
-        authenticated = True
         favourite_products = set(user.favourited_products.all())
         user_settings = UserSettings.objects.get(user=user)
         user_lang_name = user_settings.language_preference
@@ -250,14 +248,11 @@ def search_product(request):
                     if missing_dietary_tags_set:
                         has_dietary_mismatch = True
                         missing_dietary_tags = get_localised_names(language_code=language_code,cached_data_type='labels', product_tags = missing_dietary_tags_set)
-
-                    product_name = saved_product.product_name
-                    print(f'local db name: {product_name}')
                     
                     api_products.append({
                         'id': saved_product.id,
                         'code': saved_product.code,
-                        'product_name': product_name,
+                        'product_name': saved_product.product_name,
                         'brands': saved_product.brands,
                         'image_url': saved_product.image_url,
                         'product_quantity': saved_product.product_quantity,
@@ -284,7 +279,6 @@ def search_product(request):
 
                     if saved_product:
                         is_favourited = saved_product in favourite_products
-
                         conflicting_allergens = []
                         missing_dietary_tags = [] 
                         product_label_tags = set() 
@@ -306,18 +300,10 @@ def search_product(request):
                             has_dietary_mismatch = True
                             missing_dietary_tags = get_localised_names(language_code=language_code, cached_data_type='labels', product_tags=missing_dietary_tags_set )
 
-                        localised_key = f'product_name_{language_code}'
-                        if authenticated and user_settings.prioritise_local_results:
-                            product_name = off_prod.get(localised_key, saved_product.product_name)
-                            print(f'localised name: {product_name}')
-                        else:
-                            product_name = saved_product.product_name
-                            print(f'local db name: {product_name}')
-
                         products_found.append({
                             'id': saved_product.id,
                             'code': saved_product.code,
-                            'product_name': product_name,
+                            'product_name': saved_product.product_name,
                             'brands': saved_product.brands,
                             'image_url': saved_product.image_url,
                             'product_quantity': saved_product.product_quantity,
@@ -415,12 +401,8 @@ def advanced_product_search(request):
         return JsonResponse({'error': 'Invalid request data'}, status=400)
     
     favourite_products = set()
-    language_code = 'en'
     if user.is_authenticated:
         favourite_products = set(user.favourited_products.all())
-        user_settings = UserSettings.objects.get(user=user)
-        user_lang_name = user_settings.language_preference
-        language_code = LANGUAGE_CODE_MAP.get(user_lang_name, 'en')
 
     try:
         api_search_params = build_api_search_params(search_params)
@@ -434,17 +416,11 @@ def advanced_product_search(request):
             if saved_product:
                 is_favourited = saved_product in favourite_products
 
-                localised_key = f'product_name_{language_code}'
-                if user_settings.prioritise_local_results:
-                    product_name = product.get(localised_key, saved_product.product_name)
-                    print(f'localised name: {product_name}')
-                else:
-                    product_name = saved_product.product_name
                 
                 products_found.append({
                    'id': saved_product.id,
                     'code': saved_product.code,
-                    'product_name': product_name,
+                    'product_name': saved_product.product_name,
                     'brands': saved_product.brands,
                     'image_url': saved_product.image_url,
                     'product_quantity': saved_product.product_quantity,
@@ -485,11 +461,11 @@ def advanced_product_search(request):
 
 def populate_adv_search_criteria(request):
     user_settings = UserSettings.objects.get(user=request.user)
-    user_lang_name = user_settings.language_preference
-    language_code = LANGUAGE_CODE_MAP.get(user_lang_name, 'world')
-    categories_data = get_cached_json(language=language_code, data_type="categories")
-    brands_data = get_cached_json(language=language_code, data_type="brands")
-    countries_data = get_cached_json(language=language_code, data_type="countries")
+    language_name = user_settings.language_preference
+    language_code = COUNTRY_CODE_MAP.get(language_name, 'en')
+    categories_data = get_cached_json(language_code = language_code , data_type="categories")
+    brands_data = get_cached_json(language_code = language_code, data_type="brands")
+    countries_data = get_cached_json(language_code = language_code, data_type="countries")
 
     categories = []
     for tag in categories_data.get('tags', []):
@@ -652,7 +628,7 @@ def toggle_favourite_product(request, id):
         has_allergen_conflict = True
         product_allergen_tags = set(product.allergens.values_list('api_tag', flat=True)) 
         conflicting_allergens_set = user_allergens_tags.intersection(product_allergen_tags)
-        conflicting_allergens = get_localised_names(language_code=language_code, cached_data_type='allergens', product_tags=conflicting_allergens_set) # Assuming get_localised_names exists
+        conflicting_allergens = get_localised_names(language_code=language_code, cached_data_type='allergens', product_tags=conflicting_allergens_set) 
 
     product_label_tags = set(product.labels_tags or [])
     missing_dietary_tags_set = user_required_tags.difference(product_label_tags)

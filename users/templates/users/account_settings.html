@@ -58,6 +58,11 @@
       {% csrf_token %}
 
       <div class="mb-3">
+        <label for="{{ form.country.id_for_label }}" class="form-label">Country</label>
+        {{ form.country }}
+      </div>
+
+      <div class="mb-3">
         <label for="{{ form.language_preference.id_for_label }}" class="form-label">Language Preference</label>
         {{ form.language_preference }}
       </div>
@@ -98,6 +103,11 @@
       <div class="form-check form-switch mb-3">
         {{ form.show_eco_score }}
         <label class="form-check-label" for="{{ form.show_eco_score.id_for_label }}">{{ form.show_eco_score.label }}</label>
+      </div>
+      
+       <div class="form-check form-switch mb-3">
+        {{ form.scan_to_add }}
+        <label class="form-check-label" for="{{ form.scan_to_add.id_for_label }}">{{ form.scan_to_add.label }}</label>
       </div>
       
       <button type="submit" class="btn btn-primary w-100">Save Settings</button>

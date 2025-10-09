@@ -14,6 +14,7 @@ from pathlib import Path
 import environ
 import os
 from datetime import timedelta
+from django.utils.translation import gettext_lazy as _
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -23,6 +24,9 @@ environ.Env.read_env(os.path.join(BASE_DIR, '.env'))
 
 
 GOOGLE_API_KEY = env('GOOGLE_API_KEY', default=None)
+
+DEEPL_API_KEY = env('DEEPL_API_KEY', default=None)
+DEEPL_SOURCE_LANGUAGE = 'EN'
 
 
 # Quick-start development settings - unsuitable for production
@@ -35,7 +39,6 @@ SECRET_KEY = env('SECRET_KEY')
 DEBUG = True
 
 ALLOWED_HOSTS = []
-
 
 # Application definition
 
@@ -52,6 +55,7 @@ INSTALLED_APPS = [
     'savor',
     'widget_tweaks',
     'django_ratelimit',
+    'django_deep_translator',
 ]
 
 MIDDLEWARE = [
@@ -130,6 +134,46 @@ USE_I18N = True
 
 USE_TZ = True
 
+LANGUAGES = [
+    ('en', _('English')),  
+    ('ar', _('Arabic')),
+    ('bg', _('Bulgarian')),
+    ('zh', _('Chinese')),
+    ('cs', _('Czech')),
+    ('da', _('Danish')),
+    ('nl', _('Dutch')),
+    ('et', _('Estonian')),
+    ('fi', _('Finnish')),
+    ('fr', _('French')),
+    ('de', _('German')),
+    ('el', _('Greek')),
+    ('he', _('Hebrew')),
+    ('hu', _('Hungarian')),
+    ('id', _('Indonesian')),
+    ('it', _('Italian')),
+    ('ja', _('Japanese')),
+    ('ko', _('Korean')),
+    ('lv', _('Latvian')),
+    ('lt', _('Lithuanian')),
+    ('nb', _('Norwegian Bokmål')), 
+    ('pl', _('Polish')),
+    ('pt', _('Portuguese')),
+    ('ro', _('Romanian')),
+    ('ru', _('Russian')),
+    ('sk', _('Slovak')),
+    ('sl', _('Slovenian')),
+    ('es', _('Spanish')),
+    ('sv', _('Swedish')),
+    ('th', _('Thai')),
+    ('tr', _('Turkish')),
+    ('uk', _('Ukrainian')),
+    ('vi', _('Vietnamese')),
+]
+
+LOCALE_PATHS = [
+    BASE_DIR / 'locale',
+]
+
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.2/howto/static-files/
@@ -171,7 +215,6 @@ CACHES = {
 }
 
 RATELIMIT_ERROR_HANDLER = 'savor.utils.rate_limit_error_response'
-
 
 CELERY_BROKER_URL = 'redis://127.0.0.1:6379/0'
 CELERY_RESULT_BACKEND = 'redis://127.0.0.1:6379/0'
