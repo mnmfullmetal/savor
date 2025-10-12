@@ -130,8 +130,8 @@ function updatePantryList(items, csrfToken){
               <div class="mt-auto d-flex align-items-center justify-content-left">
                 <input class="remove-quantity-input form-control me-2" type="number" min="1.00" step="1.00" value="1" style="max-width: 80px;">
                 <button class="btn btn-outline-danger btn-sm remove-button"
-                  data-item-id="${ item.id }}"
-                  data-csrf-token="${csrfToken}">
+                  data-item-id=${ item.id }
+                  data-csrf-token=${csrfToken}>
                   Remove
                 </button>
               </div>
@@ -151,7 +151,7 @@ function updatePantryList(items, csrfToken){
     const itemCardCol = clickedButton.closest(".col-12");
 
     const removeRequestData = {
-          itemId: itemId,
+          itemId: item.id,
           quantityToRemove: quantityToRemove,
           csrfToken: csrfToken,
           itemCardDiv: itemCardDiv,

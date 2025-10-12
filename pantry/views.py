@@ -509,6 +509,7 @@ def pantry_view(request):
     language_code = LANGUAGE_CODE_MAP.get(user_lang_name, 'en')
     
     initial_pantry_items = PantryItem.objects.filter(pantry=pantry).select_related('product')
+    placeholder_image_url = static('media/placeholder-img.jpeg')
     
     pantryitems = []
     for item in initial_pantry_items:
@@ -544,6 +545,7 @@ def pantry_view(request):
         "pantryitems": pantryitems,
         "pantry_nutri_grade": pantry.aggregate_nutri_grade if show_nutriscore else None,
         "pantry_eco_grade": pantry.aggregate_eco_grade if show_ecoscore else None,
+        'placeholder_image_url': placeholder_image_url,
     })
 
 
