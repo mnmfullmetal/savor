@@ -1,0 +1,646 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-10-12 14:39+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#: pantry/templates/pantry/index.html:17
+msgid "Advanced Search"
+msgstr "고급 검색"
+
+#: pantry/templates/pantry/index.html:25
+msgid "Product Name"
+msgstr "제품 이름"
+
+#: pantry/templates/pantry/index.html:29
+msgid "Country of Origin"
+msgstr "원산지 국가"
+
+#: pantry/templates/pantry/index.html:31
+msgid "Select a country..."
+msgstr "국가 선택..."
+
+#: pantry/templates/pantry/index.html:35
+msgid "Category"
+msgstr "카테고리"
+
+#: pantry/templates/pantry/index.html:37
+msgid "Select a category..."
+msgstr "카테고리 선택..."
+
+#: pantry/templates/pantry/index.html:41
+msgid "Brand"
+msgstr "브랜드"
+
+#: pantry/templates/pantry/index.html:43
+msgid "Select a brand..."
+msgstr "브랜드 선택..."
+
+#: pantry/templates/pantry/index.html:48
+msgid "Clear Filters"
+msgstr "필터 지우기"
+
+#: pantry/templates/pantry/index.html:51 templates/base.html:34
+msgid "Search"
+msgstr "검색"
+
+#: pantry/templates/pantry/index.html:66
+msgid "Product Search Results"
+msgstr "제품 검색 결과"
+
+#: pantry/templates/pantry/index.html:70
+msgid "Enter a search query to find products."
+msgstr "검색어를 입력하여 제품을 찾습니다."
+
+#: pantry/templates/pantry/index.html:73
+msgid ""
+"Can't find what you're looking for? Try <a href=\"#\" data-bs-"
+"toggle=\"modal\" data-bs-target=\"#exampleModal\">Advanced Search</a>."
+msgstr ""
+"원하는 정보를 찾을 수 없나요? <a href=\"#\" data-bs-toggle=\"modal\" data-bs-"
+"target=\"#exampleModal\">고급 검색</a>를 사용해 보세요."
+
+#: pantry/templates/pantry/index.html:82
+msgid "Favourites"
+msgstr "즐겨 찾기"
+
+#: pantry/templates/pantry/index.html:101
+#: pantry/templates/pantry/pantry.html:71
+msgid "WARNING"
+msgstr "경고"
+
+#: pantry/templates/pantry/index.html:101
+#: pantry/templates/pantry/pantry.html:71
+msgid "Contains user-specified allergens:"
+msgstr "사용자가 지정한 알레르기 유발 물질이 포함되어 있습니다:"
+
+#: pantry/templates/pantry/index.html:110
+#: pantry/templates/pantry/pantry.html:80
+msgid "POSSIBLE MISMATCH"
+msgstr "불일치 가능성"
+
+#: pantry/templates/pantry/index.html:110
+#: pantry/templates/pantry/pantry.html:80
+msgid "Missing dietary requirements:"
+msgstr "식단 요건이 누락되었습니다:"
+
+#: pantry/templates/pantry/index.html:121
+msgid "Brands"
+msgstr "브랜드"
+
+#: pantry/templates/pantry/index.html:122
+msgid "Code"
+msgstr "코드"
+
+#: pantry/templates/pantry/index.html:129
+msgid "item"
+msgstr "항목"
+
+#: pantry/templates/pantry/index.html:136
+msgid "Add to Pantry"
+msgstr "식료품 저장소에 추가"
+
+#: pantry/templates/pantry/index.html:140
+msgid "Remove Favourite"
+msgstr "즐겨 찾기 제거"
+
+#: pantry/templates/pantry/index.html:148
+msgid "You haven't favourited any products yet. Start exploring today!"
+msgstr "아직 마음에 들어하는 제품이 없습니다. 지금 바로 탐색을 시작하세요!"
+
+#: pantry/templates/pantry/pantry.html:5 templates/base.html:63
+msgid "Pantry"
+msgstr "식료품 저장실"
+
+#: pantry/templates/pantry/pantry.html:13
+msgid "Pantry Health & Eco Summary"
+msgstr "식료품 저장실 건강 및 환경 요약"
+
+#: pantry/templates/pantry/pantry.html:20
+msgid "Nutri-Grade:"
+msgstr "영양 등급:"
+
+#: pantry/templates/pantry/pantry.html:27
+msgid "Eco-Grade:"
+msgstr "에코 등급:"
+
+#: pantry/templates/pantry/pantry.html:34
+msgid "Scores are hidden or unavailable. Check your user settings."
+msgstr "점수가 숨겨져 있거나 사용할 수 없습니다. 사용자 설정을 확인합니다."
+
+#: pantry/templates/pantry/pantry.html:44
+msgid "Your Pantry Items"
+msgstr "식료품 보관함 항목"
+
+#: pantry/templates/pantry/pantry.html:62
+#: pantry/templates/pantry/pantry.html:64
+msgid "Product Image"
+msgstr "제품 이미지"
+
+#: pantry/templates/pantry/pantry.html:67
+msgid "No Name"
+msgstr "이름 없음"
+
+#: pantry/templates/pantry/pantry.html:91
+msgid "Quantity:"
+msgstr "수량:"
+
+#: pantry/templates/pantry/pantry.html:94
+msgid "Product Size:"
+msgstr "제품 크기:"
+
+#: pantry/templates/pantry/pantry.html:100
+msgid "Expires:"
+msgstr "만료됩니다:"
+
+#: pantry/templates/pantry/pantry.html:116
+msgid "Your pantry is empty! Add some products to get started."
+msgstr "식료품 저장실이 비어 있습니다! 시작하려면 몇 가지 제품을 추가하세요."
+
+#: recipes/templates/recipes/recipes.html:6 templates/base.html:70
+msgid "Recipes"
+msgstr "레시피"
+
+#: recipes/templates/recipes/recipes.html:13
+msgid "New Recipe Suggestions"
+msgstr "새로운 레시피 제안"
+
+#: recipes/templates/recipes/recipes.html:40
+#: recipes/templates/recipes/recipes.html:101
+#: recipes/templates/recipes/recipes.html:163
+msgid "Ingredients"
+msgstr "재료"
+
+#: recipes/templates/recipes/recipes.html:48
+#: recipes/templates/recipes/recipes.html:109
+#: recipes/templates/recipes/recipes.html:181
+msgid "Instructions"
+msgstr "지침"
+
+#: recipes/templates/recipes/recipes.html:59
+#: recipes/templates/recipes/recipes.html:120
+msgid "Save Recipe"
+msgstr "레시피 저장"
+
+#: recipes/templates/recipes/recipes.html:68
+msgid "No new suggestions"
+msgstr "새로운 제안 없음"
+
+#: recipes/templates/recipes/recipes.html:70
+msgid "Recipes still being generated"
+msgstr "아직 생성 중인 레시피"
+
+#: recipes/templates/recipes/recipes.html:75
+msgid "Recently Suggested Recipes"
+msgstr "최근 추천 레시피"
+
+#: recipes/templates/recipes/recipes.html:129
+msgid "No recently suggested"
+msgstr "최근 제안된 항목 없음"
+
+#: recipes/templates/recipes/recipes.html:135
+msgid "Saved Recipes"
+msgstr "저장된 레시피"
+
+#: recipes/templates/recipes/recipes.html:152
+msgid "Missing Items"
+msgstr "누락된 항목"
+
+#: recipes/templates/recipes/recipes.html:192
+msgid "Delete Recipe"
+msgstr "레시피 삭제"
+
+#: recipes/templates/recipes/recipes.html:204
+msgid "No Saved Recipes"
+msgstr "저장된 레시피 없음"
+
+#: savor/settings.py:138
+msgid "Arabic"
+msgstr "아랍어"
+
+#: savor/settings.py:139
+msgid "Bulgarian"
+msgstr "불가리아어"
+
+#: savor/settings.py:140
+msgid "Chinese"
+msgstr "중국어"
+
+#: savor/settings.py:141
+msgid "Czech"
+msgstr "체코어"
+
+#: savor/settings.py:142
+msgid "Danish"
+msgstr "덴마크어"
+
+#: savor/settings.py:143
+msgid "Dutch"
+msgstr "네덜란드어"
+
+#: savor/settings.py:144
+msgid "Estonian"
+msgstr "에스토니아어"
+
+#: savor/settings.py:145
+msgid "Finnish"
+msgstr "핀란드어"
+
+#: savor/settings.py:146
+msgid "French"
+msgstr "프랑스어"
+
+#: savor/settings.py:147
+msgid "German"
+msgstr "독일어"
+
+#: savor/settings.py:148
+msgid "Greek"
+msgstr "그리스어"
+
+#: savor/settings.py:149
+msgid "Hebrew"
+msgstr "히브리어"
+
+#: savor/settings.py:150
+msgid "Hungarian"
+msgstr "헝가리어"
+
+#: savor/settings.py:151
+msgid "Indonesian"
+msgstr "인도네시아어"
+
+#: savor/settings.py:152
+msgid "Italian"
+msgstr "이탈리아어"
+
+#: savor/settings.py:153
+msgid "Japanese"
+msgstr "일본어"
+
+#: savor/settings.py:154
+msgid "Korean"
+msgstr "한국어"
+
+#: savor/settings.py:155
+msgid "Latvian"
+msgstr "라트비아어"
+
+#: savor/settings.py:156
+msgid "Lithuanian"
+msgstr "리투아니아어"
+
+#: savor/settings.py:157
+msgid "Norwegian Bokmål"
+msgstr "노르웨이 복말"
+
+#: savor/settings.py:158
+msgid "Polish"
+msgstr "폴란드어"
+
+#: savor/settings.py:159
+msgid "Portuguese"
+msgstr "포르투갈어"
+
+#: savor/settings.py:160
+msgid "Romanian"
+msgstr "루마니아어"
+
+#: savor/settings.py:161
+msgid "Russian"
+msgstr "러시아어"
+
+#: savor/settings.py:162
+msgid "Slovak"
+msgstr "슬로바키아어"
+
+#: savor/settings.py:163
+msgid "Slovenian"
+msgstr "슬로베니아어"
+
+#: savor/settings.py:164
+msgid "Spanish"
+msgstr "스페인어"
+
+#: savor/settings.py:165
+msgid "Swedish"
+msgstr "스웨덴어"
+
+#: savor/settings.py:166
+msgid "Thai"
+msgstr "Thai"
+
+#: savor/settings.py:167
+msgid "Turkish"
+msgstr "터키어"
+
+#: savor/settings.py:168
+msgid "Ukrainian"
+msgstr "우크라이나어"
+
+#: savor/settings.py:169
+msgid "Vietnamese"
+msgstr "베트남어"
+
+#: templates/base.html:22
+msgid "Welcome"
+msgstr "환영"
+
+#: templates/base.html:29
+msgid "Search Product by ingredient"
+msgstr "성분으로 제품 검색"
+
+#: templates/base.html:32
+msgid "Search Product by Barcode"
+msgstr "바코드로 제품 검색"
+
+#: templates/base.html:37
+msgid "Scan"
+msgstr "스캔"
+
+#: templates/base.html:56
+msgid "Home"
+msgstr "홈"
+
+#: templates/base.html:79
+msgid "Settings"
+msgstr "설정"
+
+#: templates/base.html:85
+msgid "Account"
+msgstr "계정"
+
+#: templates/base.html:94
+msgid "Log Out"
+msgstr "로그아웃"
+
+#: templates/base.html:107
+msgid "Log On"
+msgstr "로그온"
+
+#: templates/base.html:113 users/templates/users/register.html:57
+msgid "Register"
+msgstr "등록하기"
+
+#: templates/base.html:123
+msgid "Stop Scanning"
+msgstr "스캔 중지"
+
+#: templates/registration/login.html:5 templates/registration/login.html:9
+#: templates/registration/login.html:37
+msgid "Log In"
+msgstr "로그인"
+
+#: templates/registration/login.html:40
+#, python-format
+msgid "Don't have an account? <a href=\"%('register_url')s\">Register here</a>."
+msgstr "계정이 없으신가요? <a href=\"%('register_url')s\">여기에서 등록하세요</a>."
+
+#: templates/registration/login.html:41
+msgid "Forgot password?"
+msgstr "비밀번호를 잊으셨나요?"
+
+#: templates/registration/logout.html:4 templates/registration/logout.html:7
+msgid "Logged Out"
+msgstr "로그아웃"
+
+#: templates/registration/logout.html:8
+msgid "You have been successfully logged out."
+msgstr "로그아웃에 성공했습니다."
+
+#: templates/registration/logout.html:9
+msgid "Log in again"
+msgstr "다시 로그인"
+
+#: templates/registration/password_change_done.html:6
+msgid "Password Changed Successfully"
+msgstr "비밀번호가 성공적으로 변경되었습니다."
+
+#: templates/registration/password_change_done.html:12
+#: templates/registration/password_reset_complete.html:11
+msgid "Password Changed Successfully!"
+msgstr "비밀번호가 성공적으로 변경되었습니다!"
+
+#: templates/registration/password_change_done.html:14
+msgid "Your password has been changed."
+msgstr "비밀번호가 변경되었습니다."
+
+#: templates/registration/password_change_done.html:16
+msgid "Back to Settings"
+msgstr "설정으로 돌아가기"
+
+#: templates/registration/password_change_form.html:5
+#: templates/registration/password_change_form.html:38
+#: templates/registration/password_reset_confirm.html:28
+#: users/templates/users/account_settings.html:51
+msgid "Change Password"
+msgstr "비밀번호 변경"
+
+#: templates/registration/password_change_form.html:11
+msgid "Change Your Password"
+msgstr "비밀번호 변경"
+
+#: templates/registration/password_change_form.html:23
+msgid "Old Password"
+msgstr "이전 비밀번호"
+
+#: templates/registration/password_change_form.html:28
+#: templates/registration/password_reset_confirm.html:20
+msgid "New Password"
+msgstr "새 비밀번호"
+
+#: templates/registration/password_change_form.html:33
+#: templates/registration/password_reset_confirm.html:24
+msgid "Confirm New Password"
+msgstr "새 비밀번호 확인"
+
+#: templates/registration/password_reset_complete.html:5
+msgid "Password Changed"
+msgstr "비밀번호 변경"
+
+#: templates/registration/password_reset_complete.html:13
+msgid ""
+"Your password has been set. You can now go ahead and log in with your new "
+"password."
+msgstr "비밀번호가 설정되었습니다. 이제 새 비밀번호로 로그인할 수 있습니다."
+
+#: templates/registration/password_reset_confirm.html:12
+msgid "Set a New Password"
+msgstr "새 비밀번호 설정"
+
+#: templates/registration/password_reset_confirm.html:32
+msgid "Invalid Link"
+msgstr "잘못된 링크"
+
+#: templates/registration/password_reset_confirm.html:34
+msgid ""
+"The password reset link was invalid, possibly because it has already been "
+"used. Please request a new password reset."
+msgstr "비밀번호 재설정 링크가 이미 사용되었기 때문에 유효하지 않습니다. 새 비밀번호 재설정을 요청하세요."
+
+#: templates/registration/password_reset_done.html:4
+msgid "Password Reset Sent"
+msgstr "비밀번호 재설정 전송"
+
+#: templates/registration/password_reset_done.html:10
+msgid "Check Your Inbox"
+msgstr "받은 편지함 확인"
+
+#: templates/registration/password_reset_done.html:12
+msgid ""
+"We've emailed you instructions for setting your password. If an account "
+"exists with the email you entered, you should receive them shortly."
+msgstr "비밀번호 설정에 대한 안내를 이메일로 보내드렸습니다. 입력한 이메일 주소로 계정이 존재하는 경우 곧 받을 수 있습니다."
+
+#: templates/registration/password_reset_done.html:13
+msgid ""
+"If you don't receive an email, please make sure you've entered the email "
+"address you registered with, and check your spam folder."
+msgstr "이메일을 받지 못한 경우 등록한 이메일 주소가 맞는지 확인하고 스팸 폴더를 확인하세요."
+
+#: templates/registration/password_reset_form.html:8
+msgid "Forgot Your Password?"
+msgstr "비밀번호를 잊으셨나요?"
+
+#: templates/registration/password_reset_form.html:9
+msgid "Enter your email address below to receive a password reset link."
+msgstr "비밀번호 재설정 링크를 받으려면 아래에 이메일 주소를 입력하세요."
+
+#: templates/registration/password_reset_form.html:17
+msgid "Reset Password"
+msgstr "비밀번호 재설정"
+
+#: users/forms.py:12
+msgid "Password"
+msgstr "비밀번호"
+
+#: users/forms.py:16
+msgid ""
+"Your password can't be too similar to your other personal information. It "
+"must contain at least 8 characters. It can't be a commonly used password. It"
+" can't be entirely numeric."
+msgstr ""
+"비밀번호는 다른 개인정보와 너무 비슷해서는 안 됩니다. 비밀번호는 8자 이상이어야 합니다. 일반적으로 사용되는 비밀번호가 아니어야 "
+"합니다. 완전히 숫자로만 이루어져서는 안 됩니다."
+
+#: users/forms.py:23
+msgid "Password confirmation"
+msgstr "비밀번호 확인"
+
+#: users/forms.py:26
+msgid "Enter the same password as before, for verification."
+msgstr "확인을 위해 이전과 동일한 비밀번호를 입력합니다."
+
+#: users/forms.py:34 users/templates/users/account_settings.html:44
+msgid "Username"
+msgstr "사용자 이름"
+
+#: users/forms.py:35 users/templates/users/account_settings.html:45
+msgid "Email"
+msgstr "이메일"
+
+#: users/forms.py:39
+msgid "Required. 150 characters or fewer. Letters, digits and @/./+/-/_ only."
+msgstr "필수 입력 사항입니다. 150자 이하. 문자, 숫자 및 @/./+/-/_만 가능합니다."
+
+#: users/forms.py:65 users/templates/users/account_settings.html:68
+msgid "Language Preference"
+msgstr "언어 기본 설정"
+
+#: users/forms.py:66 users/templates/users/account_settings.html:63
+msgid "Country"
+msgstr "국가"
+
+#: users/forms.py:67 users/templates/users/account_settings.html:90
+msgid "Allergens"
+msgstr "알레르겐"
+
+#: users/forms.py:68 users/templates/users/account_settings.html:78
+msgid "Dietary Requirements"
+msgstr "식단 요구 사항"
+
+#: users/forms.py:69
+msgid "Enable scan-to-add in pantry"
+msgstr "스캔하여 팬트리에 추가 사용"
+
+#: users/forms.py:70
+msgid "Display Nutri-Score on products"
+msgstr "제품에 영양 점수 표시"
+
+#: users/forms.py:71
+msgid "Display Eco-Score on products"
+msgstr "제품에 에코 점수 표시"
+
+#: users/forms.py:72
+msgid "Prioritise local results in search"
+msgstr "검색에서 지역 검색 결과 우선순위 지정"
+
+#: users/templates/users/account_settings.html:6
+msgid "Account Settings"
+msgstr "계정 설정"
+
+#: users/templates/users/account_settings.html:19
+msgid "Warning!"
+msgstr "경고!"
+
+#: users/templates/users/account_settings.html:19
+msgid "You are about to delete your account permanently."
+msgstr "계정을 영구 삭제하려고 합니다."
+
+#: users/templates/users/account_settings.html:22
+msgid ""
+"\n"
+"          Doing this will permanently remove all account data including your\n"
+"          pantry, saved recipes, and favourites. Are you sure you want to\n"
+"          continue?\n"
+"          "
+msgstr ""
+"\n"
+"          이렇게 하면 모든 계정 데이터가 영구적으로 삭제됩니다.\n"
+"          저장소, 저장된 레시피, 즐겨찾기를 포함한 계정 데이터가 영구적으로 삭제됩니다. 계속하시겠습니까?\n"
+"          계속하시겠습니까?\n"
+"          "
+
+#: users/templates/users/account_settings.html:29
+msgid "I'm sure,"
+msgstr "확실합니다,"
+
+#: users/templates/users/account_settings.html:30
+#: users/templates/users/account_settings.html:52
+msgid "Delete Account"
+msgstr "계정 삭제"
+
+#: users/templates/users/account_settings.html:40
+msgid "Account management"
+msgstr "계정 관리"
+
+#: users/templates/users/account_settings.html:46
+msgid "Date Joined"
+msgstr "가입 날짜"
+
+#: users/templates/users/account_settings.html:57
+msgid "User preferences"
+msgstr "사용자 기본 설정"
+
+#: users/templates/users/account_settings.html:115
+msgid "Save Settings"
+msgstr "설정 저장"
+
+#: users/templates/users/register.html:60
+#, python-format
+msgid "Already have an account? <a href=\"%(login_url)s\">Log in here</a>."
+msgstr "이미 계정이 있으신가요? <a href=\"%(login_url)s\">여기에 로그인하세요</a>."

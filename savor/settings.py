@@ -25,8 +25,10 @@ environ.Env.read_env(os.path.join(BASE_DIR, '.env'))
 
 GOOGLE_API_KEY = env('GOOGLE_API_KEY', default=None)
 
+
 DEEPL_API_KEY = env('DEEPL_API_KEY', default=None)
-DEEPL_SOURCE_LANGUAGE = 'EN'
+DEEPL_TARGET_LANGUAGES = ['AR', 'BG', 'ZH', 'CS', 'DA', 'NL', 'ET', 'FI', 'FR', 'DE', 'EL', 'HE', 'HU', 'ID', 'IT', 'JA', 'KO', 'LV', 'LT', 'NB', 'PL', 'PT', 'RO', 'RU', 'SK', 'SL', 'ES', 'SV', 'TH', 'TR', 'UK', 'VI']
+DEEPL_SOURCE_LANG = "EN"
 
 
 # Quick-start development settings - unsuitable for production
@@ -55,7 +57,6 @@ INSTALLED_APPS = [
     'savor',
     'widget_tweaks',
     'django_ratelimit',
-    'django_deep_translator',
 ]
 
 MIDDLEWARE = [
@@ -126,7 +127,7 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/5.2/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'en'
 
 TIME_ZONE = 'UTC'
 
@@ -134,8 +135,8 @@ USE_I18N = True
 
 USE_TZ = True
 
-LANGUAGES = [
-    ('en', _('English')),  
+LANGUAGES = [  
+    ('en', _('English')),
     ('ar', _('Arabic')),
     ('bg', _('Bulgarian')),
     ('zh', _('Chinese')),

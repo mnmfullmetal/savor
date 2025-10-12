@@ -1,0 +1,662 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-10-12 14:39+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: pantry/templates/pantry/index.html:17
+msgid "Advanced Search"
+msgstr "Geavanceerd zoeken"
+
+#: pantry/templates/pantry/index.html:25
+msgid "Product Name"
+msgstr "Productnaam"
+
+#: pantry/templates/pantry/index.html:29
+msgid "Country of Origin"
+msgstr "Land van herkomst"
+
+#: pantry/templates/pantry/index.html:31
+msgid "Select a country..."
+msgstr "Selecteer een land..."
+
+#: pantry/templates/pantry/index.html:35
+msgid "Category"
+msgstr "Categorie"
+
+#: pantry/templates/pantry/index.html:37
+msgid "Select a category..."
+msgstr "Selecteer een categorie..."
+
+#: pantry/templates/pantry/index.html:41
+msgid "Brand"
+msgstr "Merk"
+
+#: pantry/templates/pantry/index.html:43
+msgid "Select a brand..."
+msgstr "Selecteer een merk..."
+
+#: pantry/templates/pantry/index.html:48
+msgid "Clear Filters"
+msgstr "Filters wissen"
+
+#: pantry/templates/pantry/index.html:51 templates/base.html:34
+msgid "Search"
+msgstr "Zoek op"
+
+#: pantry/templates/pantry/index.html:66
+msgid "Product Search Results"
+msgstr "Zoekresultaten"
+
+#: pantry/templates/pantry/index.html:70
+msgid "Enter a search query to find products."
+msgstr "Voer een zoekopdracht in om producten te vinden."
+
+#: pantry/templates/pantry/index.html:73
+msgid ""
+"Can't find what you're looking for? Try <a href=\"#\" data-bs-"
+"toggle=\"modal\" data-bs-target=\"#exampleModal\">Advanced Search</a>."
+msgstr ""
+"Kun je niet vinden wat je zoekt? Probeer <a href=\"#\" data-bs-"
+"toggle=\"modal\" data-bs-target=\"#voorbeeldModal\">Geavanceerd zoeken</a>."
+
+#: pantry/templates/pantry/index.html:82
+msgid "Favourites"
+msgstr "Favorieten"
+
+#: pantry/templates/pantry/index.html:101
+#: pantry/templates/pantry/pantry.html:71
+msgid "WARNING"
+msgstr "WAARSCHUWING"
+
+#: pantry/templates/pantry/index.html:101
+#: pantry/templates/pantry/pantry.html:71
+msgid "Contains user-specified allergens:"
+msgstr "Bevat door de gebruiker gespecificeerde allergenen:"
+
+#: pantry/templates/pantry/index.html:110
+#: pantry/templates/pantry/pantry.html:80
+msgid "POSSIBLE MISMATCH"
+msgstr "MOGELIJKE WANVERHOUDING"
+
+#: pantry/templates/pantry/index.html:110
+#: pantry/templates/pantry/pantry.html:80
+msgid "Missing dietary requirements:"
+msgstr "Ontbrekende dieetvereisten:"
+
+#: pantry/templates/pantry/index.html:121
+msgid "Brands"
+msgstr "Merken"
+
+#: pantry/templates/pantry/index.html:122
+msgid "Code"
+msgstr "Code"
+
+#: pantry/templates/pantry/index.html:129
+msgid "item"
+msgstr "item"
+
+#: pantry/templates/pantry/index.html:136
+msgid "Add to Pantry"
+msgstr "Toevoegen aan voorraadkast"
+
+#: pantry/templates/pantry/index.html:140
+msgid "Remove Favourite"
+msgstr "Favoriet verwijderen"
+
+#: pantry/templates/pantry/index.html:148
+msgid "You haven't favourited any products yet. Start exploring today!"
+msgstr ""
+"Je hebt nog geen producten favoriet gemaakt. Begin vandaag nog met "
+"verkennen!"
+
+#: pantry/templates/pantry/pantry.html:5 templates/base.html:63
+msgid "Pantry"
+msgstr "Pantry"
+
+#: pantry/templates/pantry/pantry.html:13
+msgid "Pantry Health & Eco Summary"
+msgstr "Samenvatting Pantry Gezondheid & Eco"
+
+#: pantry/templates/pantry/pantry.html:20
+msgid "Nutri-Grade:"
+msgstr "Voedingswaarde:"
+
+#: pantry/templates/pantry/pantry.html:27
+msgid "Eco-Grade:"
+msgstr "Eco-kwaliteit:"
+
+#: pantry/templates/pantry/pantry.html:34
+msgid "Scores are hidden or unavailable. Check your user settings."
+msgstr ""
+"Scores zijn verborgen of niet beschikbaar. Controleer je "
+"gebruikersinstellingen."
+
+#: pantry/templates/pantry/pantry.html:44
+msgid "Your Pantry Items"
+msgstr "Je voorraadkast"
+
+#: pantry/templates/pantry/pantry.html:62
+#: pantry/templates/pantry/pantry.html:64
+msgid "Product Image"
+msgstr "Product afbeelding"
+
+#: pantry/templates/pantry/pantry.html:67
+msgid "No Name"
+msgstr "Geen naam"
+
+#: pantry/templates/pantry/pantry.html:91
+msgid "Quantity:"
+msgstr "Hoeveelheid:"
+
+#: pantry/templates/pantry/pantry.html:94
+msgid "Product Size:"
+msgstr "Productgrootte:"
+
+#: pantry/templates/pantry/pantry.html:100
+msgid "Expires:"
+msgstr "Verloopt:"
+
+#: pantry/templates/pantry/pantry.html:116
+msgid "Your pantry is empty! Add some products to get started."
+msgstr "Je voorraadkast is leeg! Voeg wat producten toe om te beginnen."
+
+#: recipes/templates/recipes/recipes.html:6 templates/base.html:70
+msgid "Recipes"
+msgstr "Recepten"
+
+#: recipes/templates/recipes/recipes.html:13
+msgid "New Recipe Suggestions"
+msgstr "Suggesties voor nieuwe recepten"
+
+#: recipes/templates/recipes/recipes.html:40
+#: recipes/templates/recipes/recipes.html:101
+#: recipes/templates/recipes/recipes.html:163
+msgid "Ingredients"
+msgstr "Ingrediënten"
+
+#: recipes/templates/recipes/recipes.html:48
+#: recipes/templates/recipes/recipes.html:109
+#: recipes/templates/recipes/recipes.html:181
+msgid "Instructions"
+msgstr "Instructies"
+
+#: recipes/templates/recipes/recipes.html:59
+#: recipes/templates/recipes/recipes.html:120
+msgid "Save Recipe"
+msgstr "Recept opslaan"
+
+#: recipes/templates/recipes/recipes.html:68
+msgid "No new suggestions"
+msgstr "Geen nieuwe suggesties"
+
+#: recipes/templates/recipes/recipes.html:70
+msgid "Recipes still being generated"
+msgstr "Recepten worden nog steeds gegenereerd"
+
+#: recipes/templates/recipes/recipes.html:75
+msgid "Recently Suggested Recipes"
+msgstr "Onlangs voorgestelde recepten"
+
+#: recipes/templates/recipes/recipes.html:129
+msgid "No recently suggested"
+msgstr "Niet onlangs voorgesteld"
+
+#: recipes/templates/recipes/recipes.html:135
+msgid "Saved Recipes"
+msgstr "Opgeslagen recepten"
+
+#: recipes/templates/recipes/recipes.html:152
+msgid "Missing Items"
+msgstr "Ontbrekende items"
+
+#: recipes/templates/recipes/recipes.html:192
+msgid "Delete Recipe"
+msgstr "Recept verwijderen"
+
+#: recipes/templates/recipes/recipes.html:204
+msgid "No Saved Recipes"
+msgstr "Geen opgeslagen recepten"
+
+#: savor/settings.py:138
+msgid "Arabic"
+msgstr "Arabisch"
+
+#: savor/settings.py:139
+msgid "Bulgarian"
+msgstr "Bulgaars"
+
+#: savor/settings.py:140
+msgid "Chinese"
+msgstr "Chinees"
+
+#: savor/settings.py:141
+msgid "Czech"
+msgstr "Tsjechisch"
+
+#: savor/settings.py:142
+msgid "Danish"
+msgstr "Deens"
+
+#: savor/settings.py:143
+msgid "Dutch"
+msgstr "Nederlands"
+
+#: savor/settings.py:144
+msgid "Estonian"
+msgstr "Ests"
+
+#: savor/settings.py:145
+msgid "Finnish"
+msgstr "Fins"
+
+#: savor/settings.py:146
+msgid "French"
+msgstr "Frans"
+
+#: savor/settings.py:147
+msgid "German"
+msgstr "Duits"
+
+#: savor/settings.py:148
+msgid "Greek"
+msgstr "Grieks"
+
+#: savor/settings.py:149
+msgid "Hebrew"
+msgstr "Hebreeuws"
+
+#: savor/settings.py:150
+msgid "Hungarian"
+msgstr "Hongaars"
+
+#: savor/settings.py:151
+msgid "Indonesian"
+msgstr "Indonesisch"
+
+#: savor/settings.py:152
+msgid "Italian"
+msgstr "Italiaans"
+
+#: savor/settings.py:153
+msgid "Japanese"
+msgstr "Japans"
+
+#: savor/settings.py:154
+msgid "Korean"
+msgstr "Koreaans"
+
+#: savor/settings.py:155
+msgid "Latvian"
+msgstr "Lets"
+
+#: savor/settings.py:156
+msgid "Lithuanian"
+msgstr "Litouws"
+
+#: savor/settings.py:157
+msgid "Norwegian Bokmål"
+msgstr "Noors Bokmål"
+
+#: savor/settings.py:158
+msgid "Polish"
+msgstr "Pools"
+
+#: savor/settings.py:159
+msgid "Portuguese"
+msgstr "Portugees"
+
+#: savor/settings.py:160
+msgid "Romanian"
+msgstr "Roemeens"
+
+#: savor/settings.py:161
+msgid "Russian"
+msgstr "Russisch"
+
+#: savor/settings.py:162
+msgid "Slovak"
+msgstr "Slowaaks"
+
+#: savor/settings.py:163
+msgid "Slovenian"
+msgstr "Sloveens"
+
+#: savor/settings.py:164
+msgid "Spanish"
+msgstr "Spaans"
+
+#: savor/settings.py:165
+msgid "Swedish"
+msgstr "Zweeds"
+
+#: savor/settings.py:166
+msgid "Thai"
+msgstr "Thai"
+
+#: savor/settings.py:167
+msgid "Turkish"
+msgstr "Turks"
+
+#: savor/settings.py:168
+msgid "Ukrainian"
+msgstr "Oekraïens"
+
+#: savor/settings.py:169
+msgid "Vietnamese"
+msgstr "Vietnamees"
+
+#: templates/base.html:22
+msgid "Welcome"
+msgstr "Welkom"
+
+#: templates/base.html:29
+msgid "Search Product by ingredient"
+msgstr "Zoek product op ingrediënt"
+
+#: templates/base.html:32
+msgid "Search Product by Barcode"
+msgstr "Product zoeken op barcode"
+
+#: templates/base.html:37
+msgid "Scan"
+msgstr "Scan"
+
+#: templates/base.html:56
+msgid "Home"
+msgstr "Home"
+
+#: templates/base.html:79
+msgid "Settings"
+msgstr "Instellingen"
+
+#: templates/base.html:85
+msgid "Account"
+msgstr "Account"
+
+#: templates/base.html:94
+msgid "Log Out"
+msgstr "Afmelden"
+
+#: templates/base.html:107
+msgid "Log On"
+msgstr "Aanmelden"
+
+#: templates/base.html:113 users/templates/users/register.html:57
+msgid "Register"
+msgstr "Registreer"
+
+#: templates/base.html:123
+msgid "Stop Scanning"
+msgstr "Stoppen met scannen"
+
+#: templates/registration/login.html:5 templates/registration/login.html:9
+#: templates/registration/login.html:37
+msgid "Log In"
+msgstr "Aanmelden"
+
+#: templates/registration/login.html:40
+#, python-format
+msgid "Don't have an account? <a href=\"%('register_url')s\">Register here</a>."
+msgstr ""
+"Heb je geen account? <a href=\"%('register_url')s\">registreer u hier</a>."
+
+#: templates/registration/login.html:41
+msgid "Forgot password?"
+msgstr "Wachtwoord vergeten?"
+
+#: templates/registration/logout.html:4 templates/registration/logout.html:7
+msgid "Logged Out"
+msgstr "Uitgelogd"
+
+#: templates/registration/logout.html:8
+msgid "You have been successfully logged out."
+msgstr "Je bent succesvol uitgelogd."
+
+#: templates/registration/logout.html:9
+msgid "Log in again"
+msgstr "Opnieuw inloggen"
+
+#: templates/registration/password_change_done.html:6
+msgid "Password Changed Successfully"
+msgstr "Wachtwoord succesvol gewijzigd"
+
+#: templates/registration/password_change_done.html:12
+#: templates/registration/password_reset_complete.html:11
+msgid "Password Changed Successfully!"
+msgstr "Wachtwoord succesvol gewijzigd!"
+
+#: templates/registration/password_change_done.html:14
+msgid "Your password has been changed."
+msgstr "Je wachtwoord is gewijzigd."
+
+#: templates/registration/password_change_done.html:16
+msgid "Back to Settings"
+msgstr "Terug naar instellingen"
+
+#: templates/registration/password_change_form.html:5
+#: templates/registration/password_change_form.html:38
+#: templates/registration/password_reset_confirm.html:28
+#: users/templates/users/account_settings.html:51
+msgid "Change Password"
+msgstr "Wachtwoord wijzigen"
+
+#: templates/registration/password_change_form.html:11
+msgid "Change Your Password"
+msgstr "Uw wachtwoord wijzigen"
+
+#: templates/registration/password_change_form.html:23
+msgid "Old Password"
+msgstr "Oud wachtwoord"
+
+#: templates/registration/password_change_form.html:28
+#: templates/registration/password_reset_confirm.html:20
+msgid "New Password"
+msgstr "Nieuw wachtwoord"
+
+#: templates/registration/password_change_form.html:33
+#: templates/registration/password_reset_confirm.html:24
+msgid "Confirm New Password"
+msgstr "Nieuw wachtwoord bevestigen"
+
+#: templates/registration/password_reset_complete.html:5
+msgid "Password Changed"
+msgstr "Wachtwoord gewijzigd"
+
+#: templates/registration/password_reset_complete.html:13
+msgid ""
+"Your password has been set. You can now go ahead and log in with your new "
+"password."
+msgstr ""
+"Je wachtwoord is ingesteld. Je kunt nu inloggen met je nieuwe wachtwoord."
+
+#: templates/registration/password_reset_confirm.html:12
+msgid "Set a New Password"
+msgstr "Een nieuw wachtwoord instellen"
+
+#: templates/registration/password_reset_confirm.html:32
+msgid "Invalid Link"
+msgstr "Ongeldige link"
+
+#: templates/registration/password_reset_confirm.html:34
+msgid ""
+"The password reset link was invalid, possibly because it has already been "
+"used. Please request a new password reset."
+msgstr ""
+"De link om het wachtwoord te resetten was ongeldig, mogelijk omdat deze al "
+"is gebruikt. Vraag een nieuw wachtwoord aan."
+
+#: templates/registration/password_reset_done.html:4
+msgid "Password Reset Sent"
+msgstr "Wachtwoord reset verzonden"
+
+#: templates/registration/password_reset_done.html:10
+msgid "Check Your Inbox"
+msgstr "Controleer uw inbox"
+
+#: templates/registration/password_reset_done.html:12
+msgid ""
+"We've emailed you instructions for setting your password. If an account "
+"exists with the email you entered, you should receive them shortly."
+msgstr ""
+"We hebben je instructies voor het instellen van je wachtwoord gemaild. Als "
+"er een account bestaat met het e-mailadres dat je hebt opgegeven, zou je "
+"deze binnenkort moeten ontvangen."
+
+#: templates/registration/password_reset_done.html:13
+msgid ""
+"If you don't receive an email, please make sure you've entered the email "
+"address you registered with, and check your spam folder."
+msgstr ""
+"Als je geen e-mail ontvangt, controleer dan of je het e-mailadres hebt "
+"ingevoerd waarmee je je hebt geregistreerd en controleer je spamfolder."
+
+#: templates/registration/password_reset_form.html:8
+msgid "Forgot Your Password?"
+msgstr "Wachtwoord vergeten?"
+
+#: templates/registration/password_reset_form.html:9
+msgid "Enter your email address below to receive a password reset link."
+msgstr ""
+"Voer hieronder je e-mailadres in om een link te ontvangen waarmee je je "
+"wachtwoord opnieuw kunt instellen."
+
+#: templates/registration/password_reset_form.html:17
+msgid "Reset Password"
+msgstr "Wachtwoord opnieuw instellen"
+
+#: users/forms.py:12
+msgid "Password"
+msgstr "Wachtwoord"
+
+#: users/forms.py:16
+msgid ""
+"Your password can't be too similar to your other personal information. It "
+"must contain at least 8 characters. It can't be a commonly used password. It"
+" can't be entirely numeric."
+msgstr ""
+"Je wachtwoord mag niet te veel lijken op je andere persoonlijke gegevens. "
+"Het moet minstens 8 tekens bevatten. Het mag geen veelgebruikt wachtwoord "
+"zijn. Het mag niet volledig numeriek zijn."
+
+#: users/forms.py:23
+msgid "Password confirmation"
+msgstr "Wachtwoord bevestigen"
+
+#: users/forms.py:26
+msgid "Enter the same password as before, for verification."
+msgstr "Voer ter verificatie hetzelfde wachtwoord in als voorheen."
+
+#: users/forms.py:34 users/templates/users/account_settings.html:44
+msgid "Username"
+msgstr "Gebruikersnaam"
+
+#: users/forms.py:35 users/templates/users/account_settings.html:45
+msgid "Email"
+msgstr "E-mail"
+
+#: users/forms.py:39
+msgid "Required. 150 characters or fewer. Letters, digits and @/./+/-/_ only."
+msgstr "Vereist. 150 tekens of minder. Alleen letters, cijfers en @/./+/-/_."
+
+#: users/forms.py:65 users/templates/users/account_settings.html:68
+msgid "Language Preference"
+msgstr "Taal voorkeur"
+
+#: users/forms.py:66 users/templates/users/account_settings.html:63
+msgid "Country"
+msgstr "Land"
+
+#: users/forms.py:67 users/templates/users/account_settings.html:90
+msgid "Allergens"
+msgstr "Allergenen"
+
+#: users/forms.py:68 users/templates/users/account_settings.html:78
+msgid "Dietary Requirements"
+msgstr "Dieetvereisten"
+
+#: users/forms.py:69
+msgid "Enable scan-to-add in pantry"
+msgstr "Scannen-naar-toevoegen in voorraadkast inschakelen"
+
+#: users/forms.py:70
+msgid "Display Nutri-Score on products"
+msgstr "Nutri-Score weergeven op producten"
+
+#: users/forms.py:71
+msgid "Display Eco-Score on products"
+msgstr "Eco-Score weergeven op producten"
+
+#: users/forms.py:72
+msgid "Prioritise local results in search"
+msgstr "Geef prioriteit aan lokale resultaten in zoekopdrachten"
+
+#: users/templates/users/account_settings.html:6
+msgid "Account Settings"
+msgstr "Accountinstellingen"
+
+#: users/templates/users/account_settings.html:19
+msgid "Warning!"
+msgstr "Waarschuwing!"
+
+#: users/templates/users/account_settings.html:19
+msgid "You are about to delete your account permanently."
+msgstr "Je staat op het punt om je account permanent te verwijderen."
+
+#: users/templates/users/account_settings.html:22
+msgid ""
+"\n"
+"          Doing this will permanently remove all account data including your\n"
+"          pantry, saved recipes, and favourites. Are you sure you want to\n"
+"          continue?\n"
+"          "
+msgstr ""
+"\n"
+"          Als je dit doet, worden alle accountgegevens permanent verwijderd, inclusief je\n"
+"          voorraadkast, opgeslagen recepten en favorieten. Weet je zeker dat je wilt\n"
+"          verder wilt gaan?\n"
+"          "
+
+#: users/templates/users/account_settings.html:29
+msgid "I'm sure,"
+msgstr "Ik weet het zeker,"
+
+#: users/templates/users/account_settings.html:30
+#: users/templates/users/account_settings.html:52
+msgid "Delete Account"
+msgstr "Account verwijderen"
+
+#: users/templates/users/account_settings.html:40
+msgid "Account management"
+msgstr "Accountbeheer"
+
+#: users/templates/users/account_settings.html:46
+msgid "Date Joined"
+msgstr "Datum in dienst"
+
+#: users/templates/users/account_settings.html:57
+msgid "User preferences"
+msgstr "Gebruikersvoorkeuren"
+
+#: users/templates/users/account_settings.html:115
+msgid "Save Settings"
+msgstr "Instellingen opslaan"
+
+#: users/templates/users/register.html:60
+#, python-format
+msgid "Already have an account? <a href=\"%(login_url)s\">Log in here</a>."
+msgstr "Hebt u al een account? <a href=\"%(login_url)s\">Log hier in</a>."

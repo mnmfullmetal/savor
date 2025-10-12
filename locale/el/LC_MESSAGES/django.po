@@ -1,0 +1,663 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-10-12 14:39+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: pantry/templates/pantry/index.html:17
+msgid "Advanced Search"
+msgstr "Σύνθετη αναζήτηση"
+
+#: pantry/templates/pantry/index.html:25
+msgid "Product Name"
+msgstr "Όνομα προϊόντος"
+
+#: pantry/templates/pantry/index.html:29
+msgid "Country of Origin"
+msgstr "Χώρα προέλευσης"
+
+#: pantry/templates/pantry/index.html:31
+msgid "Select a country..."
+msgstr "Επιλέξτε μια χώρα..."
+
+#: pantry/templates/pantry/index.html:35
+msgid "Category"
+msgstr "Κατηγορία"
+
+#: pantry/templates/pantry/index.html:37
+msgid "Select a category..."
+msgstr "Επιλέξτε μια κατηγορία..."
+
+#: pantry/templates/pantry/index.html:41
+msgid "Brand"
+msgstr "Μάρκα"
+
+#: pantry/templates/pantry/index.html:43
+msgid "Select a brand..."
+msgstr "Επιλέξτε μια μάρκα..."
+
+#: pantry/templates/pantry/index.html:48
+msgid "Clear Filters"
+msgstr "Εκκαθάριση φίλτρων"
+
+#: pantry/templates/pantry/index.html:51 templates/base.html:34
+msgid "Search"
+msgstr "Αναζήτηση"
+
+#: pantry/templates/pantry/index.html:66
+msgid "Product Search Results"
+msgstr "Αποτελέσματα αναζήτησης προϊόντων"
+
+#: pantry/templates/pantry/index.html:70
+msgid "Enter a search query to find products."
+msgstr "Εισάγετε ένα ερώτημα αναζήτησης για να βρείτε προϊόντα."
+
+#: pantry/templates/pantry/index.html:73
+msgid ""
+"Can't find what you're looking for? Try <a href=\"#\" data-bs-"
+"toggle=\"modal\" data-bs-target=\"#exampleModal\">Advanced Search</a>."
+msgstr ""
+"Δεν μπορείτε να βρείτε αυτό που ψάχνετε; Δοκιμάστε <a href=\"#\" data-bs-"
+"toggle=\"modal\" data-bs-target=\"#exampleModal\">Προηγμένη αναζήτηση</a>."
+
+#: pantry/templates/pantry/index.html:82
+msgid "Favourites"
+msgstr "Αγαπημένα"
+
+#: pantry/templates/pantry/index.html:101
+#: pantry/templates/pantry/pantry.html:71
+msgid "WARNING"
+msgstr "ΠΡΟΕΙΔΟΠΟΙΗΣΗ"
+
+#: pantry/templates/pantry/index.html:101
+#: pantry/templates/pantry/pantry.html:71
+msgid "Contains user-specified allergens:"
+msgstr "Περιέχει αλλεργιογόνα που καθορίζονται από τον χρήστη:"
+
+#: pantry/templates/pantry/index.html:110
+#: pantry/templates/pantry/pantry.html:80
+msgid "POSSIBLE MISMATCH"
+msgstr "ΠΙΘΑΝΉ ΑΝΑΝΤΙΣΤΟΙΧΊΑ"
+
+#: pantry/templates/pantry/index.html:110
+#: pantry/templates/pantry/pantry.html:80
+msgid "Missing dietary requirements:"
+msgstr "Λείπουν διατροφικές απαιτήσεις:"
+
+#: pantry/templates/pantry/index.html:121
+msgid "Brands"
+msgstr "Μάρκες"
+
+#: pantry/templates/pantry/index.html:122
+msgid "Code"
+msgstr "Κωδικός"
+
+#: pantry/templates/pantry/index.html:129
+msgid "item"
+msgstr "στοιχείο"
+
+#: pantry/templates/pantry/index.html:136
+msgid "Add to Pantry"
+msgstr "Προσθήκη στο ντουλάπι"
+
+#: pantry/templates/pantry/index.html:140
+msgid "Remove Favourite"
+msgstr "Αφαίρεση αγαπημένου"
+
+#: pantry/templates/pantry/index.html:148
+msgid "You haven't favourited any products yet. Start exploring today!"
+msgstr ""
+"Δεν έχετε προτιμήσει κανένα προϊόν ακόμα. Ξεκινήστε την εξερεύνηση σήμερα!"
+
+#: pantry/templates/pantry/pantry.html:5 templates/base.html:63
+msgid "Pantry"
+msgstr "Παντοπωλείο"
+
+#: pantry/templates/pantry/pantry.html:13
+msgid "Pantry Health & Eco Summary"
+msgstr "Περίληψη Pantry Health & Eco"
+
+#: pantry/templates/pantry/pantry.html:20
+msgid "Nutri-Grade:"
+msgstr "Nutri-Grade:"
+
+#: pantry/templates/pantry/pantry.html:27
+msgid "Eco-Grade:"
+msgstr "Eco-Grade:"
+
+#: pantry/templates/pantry/pantry.html:34
+msgid "Scores are hidden or unavailable. Check your user settings."
+msgstr ""
+"Οι βαθμολογίες είναι κρυφές ή μη διαθέσιμες. Ελέγξτε τις ρυθμίσεις του "
+"χρήστη σας."
+
+#: pantry/templates/pantry/pantry.html:44
+msgid "Your Pantry Items"
+msgstr "Τα είδη του ντουλαπιού σας"
+
+#: pantry/templates/pantry/pantry.html:62
+#: pantry/templates/pantry/pantry.html:64
+msgid "Product Image"
+msgstr "Εικόνα προϊόντος"
+
+#: pantry/templates/pantry/pantry.html:67
+msgid "No Name"
+msgstr "Χωρίς όνομα"
+
+#: pantry/templates/pantry/pantry.html:91
+msgid "Quantity:"
+msgstr "Ποσότητα:"
+
+#: pantry/templates/pantry/pantry.html:94
+msgid "Product Size:"
+msgstr "Μέγεθος προϊόντος:"
+
+#: pantry/templates/pantry/pantry.html:100
+msgid "Expires:"
+msgstr "Λήγει:"
+
+#: pantry/templates/pantry/pantry.html:116
+msgid "Your pantry is empty! Add some products to get started."
+msgstr ""
+"Το ντουλάπι σας είναι άδειο! Προσθέστε μερικά προϊόντα για να ξεκινήσετε."
+
+#: recipes/templates/recipes/recipes.html:6 templates/base.html:70
+msgid "Recipes"
+msgstr "Συνταγές"
+
+#: recipes/templates/recipes/recipes.html:13
+msgid "New Recipe Suggestions"
+msgstr "Νέες προτάσεις συνταγών"
+
+#: recipes/templates/recipes/recipes.html:40
+#: recipes/templates/recipes/recipes.html:101
+#: recipes/templates/recipes/recipes.html:163
+msgid "Ingredients"
+msgstr "Συστατικά"
+
+#: recipes/templates/recipes/recipes.html:48
+#: recipes/templates/recipes/recipes.html:109
+#: recipes/templates/recipes/recipes.html:181
+msgid "Instructions"
+msgstr "Οδηγίες"
+
+#: recipes/templates/recipes/recipes.html:59
+#: recipes/templates/recipes/recipes.html:120
+msgid "Save Recipe"
+msgstr "Αποθήκευση συνταγής"
+
+#: recipes/templates/recipes/recipes.html:68
+msgid "No new suggestions"
+msgstr "Δεν υπάρχουν νέες προτάσεις"
+
+#: recipes/templates/recipes/recipes.html:70
+msgid "Recipes still being generated"
+msgstr "Οι συνταγές εξακολουθούν να παράγονται"
+
+#: recipes/templates/recipes/recipes.html:75
+msgid "Recently Suggested Recipes"
+msgstr "Πρόσφατα προτεινόμενες συνταγές"
+
+#: recipes/templates/recipes/recipes.html:129
+msgid "No recently suggested"
+msgstr "Δεν προτάθηκε πρόσφατα"
+
+#: recipes/templates/recipes/recipes.html:135
+msgid "Saved Recipes"
+msgstr "Αποθηκευμένες συνταγές"
+
+#: recipes/templates/recipes/recipes.html:152
+msgid "Missing Items"
+msgstr "Έλλειψη αντικειμένων"
+
+#: recipes/templates/recipes/recipes.html:192
+msgid "Delete Recipe"
+msgstr "Διαγραφή Συνταγής"
+
+#: recipes/templates/recipes/recipes.html:204
+msgid "No Saved Recipes"
+msgstr "Δεν υπάρχουν αποθηκευμένες συνταγές"
+
+#: savor/settings.py:138
+msgid "Arabic"
+msgstr "Αραβικά"
+
+#: savor/settings.py:139
+msgid "Bulgarian"
+msgstr "Βουλγαρική"
+
+#: savor/settings.py:140
+msgid "Chinese"
+msgstr "Κινέζικα"
+
+#: savor/settings.py:141
+msgid "Czech"
+msgstr "Τσεχική"
+
+#: savor/settings.py:142
+msgid "Danish"
+msgstr "Δανικά"
+
+#: savor/settings.py:143
+msgid "Dutch"
+msgstr "Ολλανδικά"
+
+#: savor/settings.py:144
+msgid "Estonian"
+msgstr "Εσθονικά"
+
+#: savor/settings.py:145
+msgid "Finnish"
+msgstr "Φινλανδική"
+
+#: savor/settings.py:146
+msgid "French"
+msgstr "Γαλλικά"
+
+#: savor/settings.py:147
+msgid "German"
+msgstr "Γερμανικά"
+
+#: savor/settings.py:148
+msgid "Greek"
+msgstr "Ελληνική"
+
+#: savor/settings.py:149
+msgid "Hebrew"
+msgstr "Εβραϊκά"
+
+#: savor/settings.py:150
+msgid "Hungarian"
+msgstr "Ουγγρικό"
+
+#: savor/settings.py:151
+msgid "Indonesian"
+msgstr "Ινδονησιακή"
+
+#: savor/settings.py:152
+msgid "Italian"
+msgstr "Ιταλικά"
+
+#: savor/settings.py:153
+msgid "Japanese"
+msgstr "Ιαπωνικά"
+
+#: savor/settings.py:154
+msgid "Korean"
+msgstr "Κορεάτικα"
+
+#: savor/settings.py:155
+msgid "Latvian"
+msgstr "Λετονία"
+
+#: savor/settings.py:156
+msgid "Lithuanian"
+msgstr "Λιθουανικά"
+
+#: savor/settings.py:157
+msgid "Norwegian Bokmål"
+msgstr "Νορβηγικό Bokmål"
+
+#: savor/settings.py:158
+msgid "Polish"
+msgstr "Πολωνικά"
+
+#: savor/settings.py:159
+msgid "Portuguese"
+msgstr "Πορτογαλικά"
+
+#: savor/settings.py:160
+msgid "Romanian"
+msgstr "Ρουμανικά"
+
+#: savor/settings.py:161
+msgid "Russian"
+msgstr "Ρωσική"
+
+#: savor/settings.py:162
+msgid "Slovak"
+msgstr "Σλοβακική"
+
+#: savor/settings.py:163
+msgid "Slovenian"
+msgstr "Σλοβενική"
+
+#: savor/settings.py:164
+msgid "Spanish"
+msgstr "Ισπανικά"
+
+#: savor/settings.py:165
+msgid "Swedish"
+msgstr "Σουηδικά"
+
+#: savor/settings.py:166
+msgid "Thai"
+msgstr "Ταϊλάνδης"
+
+#: savor/settings.py:167
+msgid "Turkish"
+msgstr "Τουρκικά"
+
+#: savor/settings.py:168
+msgid "Ukrainian"
+msgstr "Ουκρανικό"
+
+#: savor/settings.py:169
+msgid "Vietnamese"
+msgstr "Βιετναμέζικα"
+
+#: templates/base.html:22
+msgid "Welcome"
+msgstr "Καλώς ήρθατε"
+
+#: templates/base.html:29
+msgid "Search Product by ingredient"
+msgstr "Αναζήτηση προϊόντος ανά συστατικό"
+
+#: templates/base.html:32
+msgid "Search Product by Barcode"
+msgstr "Αναζήτηση προϊόντος με Barcode"
+
+#: templates/base.html:37
+msgid "Scan"
+msgstr "Σάρωση"
+
+#: templates/base.html:56
+msgid "Home"
+msgstr "Αρχική σελίδα"
+
+#: templates/base.html:79
+msgid "Settings"
+msgstr "Ρυθμίσεις"
+
+#: templates/base.html:85
+msgid "Account"
+msgstr "Λογαριασμός"
+
+#: templates/base.html:94
+msgid "Log Out"
+msgstr "Αποσύνδεση"
+
+#: templates/base.html:107
+msgid "Log On"
+msgstr "Σύνδεση"
+
+#: templates/base.html:113 users/templates/users/register.html:57
+msgid "Register"
+msgstr "Εγγραφή"
+
+#: templates/base.html:123
+msgid "Stop Scanning"
+msgstr "Διακοπή σάρωσης"
+
+#: templates/registration/login.html:5 templates/registration/login.html:9
+#: templates/registration/login.html:37
+msgid "Log In"
+msgstr "Σύνδεση"
+
+#: templates/registration/login.html:40
+#, python-format
+msgid "Don't have an account? <a href=\"%('register_url')s\">Register here</a>."
+msgstr "Δεν έχετε λογαριασμό; <a href=\"%('register_url')s\">Εγγραφείτε εδώ</a>."
+
+#: templates/registration/login.html:41
+msgid "Forgot password?"
+msgstr "Ξεχάσατε τον κωδικό πρόσβασης;"
+
+#: templates/registration/logout.html:4 templates/registration/logout.html:7
+msgid "Logged Out"
+msgstr "Αποσυνδεδεμένος"
+
+#: templates/registration/logout.html:8
+msgid "You have been successfully logged out."
+msgstr "Έχετε αποσυνδεθεί επιτυχώς."
+
+#: templates/registration/logout.html:9
+msgid "Log in again"
+msgstr "Συνδεθείτε ξανά"
+
+#: templates/registration/password_change_done.html:6
+msgid "Password Changed Successfully"
+msgstr "Αλλαγή κωδικού πρόσβασης με επιτυχία"
+
+#: templates/registration/password_change_done.html:12
+#: templates/registration/password_reset_complete.html:11
+msgid "Password Changed Successfully!"
+msgstr "Ο κωδικός πρόσβασης άλλαξε επιτυχώς!"
+
+#: templates/registration/password_change_done.html:14
+msgid "Your password has been changed."
+msgstr "Ο κωδικός πρόσβασής σας έχει αλλάξει."
+
+#: templates/registration/password_change_done.html:16
+msgid "Back to Settings"
+msgstr "Πίσω στις Ρυθμίσεις"
+
+#: templates/registration/password_change_form.html:5
+#: templates/registration/password_change_form.html:38
+#: templates/registration/password_reset_confirm.html:28
+#: users/templates/users/account_settings.html:51
+msgid "Change Password"
+msgstr "Αλλαγή κωδικού πρόσβασης"
+
+#: templates/registration/password_change_form.html:11
+msgid "Change Your Password"
+msgstr "Αλλάξτε τον κωδικό πρόσβασής σας"
+
+#: templates/registration/password_change_form.html:23
+msgid "Old Password"
+msgstr "Παλιός κωδικός πρόσβασης"
+
+#: templates/registration/password_change_form.html:28
+#: templates/registration/password_reset_confirm.html:20
+msgid "New Password"
+msgstr "Νέος κωδικός πρόσβασης"
+
+#: templates/registration/password_change_form.html:33
+#: templates/registration/password_reset_confirm.html:24
+msgid "Confirm New Password"
+msgstr "Επιβεβαίωση νέου κωδικού πρόσβασης"
+
+#: templates/registration/password_reset_complete.html:5
+msgid "Password Changed"
+msgstr "Αλλαγή κωδικού πρόσβασης"
+
+#: templates/registration/password_reset_complete.html:13
+msgid ""
+"Your password has been set. You can now go ahead and log in with your new "
+"password."
+msgstr ""
+"Ο κωδικός πρόσβασής σας έχει οριστεί. Μπορείτε τώρα να προχωρήσετε και να "
+"συνδεθείτε με τον νέο σας κωδικό πρόσβασης."
+
+#: templates/registration/password_reset_confirm.html:12
+msgid "Set a New Password"
+msgstr "Ορισμός νέου κωδικού πρόσβασης"
+
+#: templates/registration/password_reset_confirm.html:32
+msgid "Invalid Link"
+msgstr "Μη έγκυρος σύνδεσμος"
+
+#: templates/registration/password_reset_confirm.html:34
+msgid ""
+"The password reset link was invalid, possibly because it has already been "
+"used. Please request a new password reset."
+msgstr ""
+"Ο σύνδεσμος επαναφοράς κωδικού πρόσβασης ήταν άκυρος, πιθανώς επειδή έχει "
+"ήδη χρησιμοποιηθεί. Παρακαλούμε ζητήστε μια νέα επαναφορά κωδικού πρόσβασης."
+
+#: templates/registration/password_reset_done.html:4
+msgid "Password Reset Sent"
+msgstr "Αποστολή επαναφοράς κωδικού πρόσβασης"
+
+#: templates/registration/password_reset_done.html:10
+msgid "Check Your Inbox"
+msgstr "Ελέγξτε τα εισερχόμενά σας"
+
+#: templates/registration/password_reset_done.html:12
+msgid ""
+"We've emailed you instructions for setting your password. If an account "
+"exists with the email you entered, you should receive them shortly."
+msgstr ""
+"Σας στείλαμε με email οδηγίες για τον καθορισμό του κωδικού πρόσβασής σας. "
+"Εάν υπάρχει λογαριασμός με το email που καταχωρήσατε, θα τις λάβετε σύντομα."
+
+#: templates/registration/password_reset_done.html:13
+msgid ""
+"If you don't receive an email, please make sure you've entered the email "
+"address you registered with, and check your spam folder."
+msgstr ""
+"Αν δεν λάβετε email, βεβαιωθείτε ότι έχετε εισάγει τη διεύθυνση email με την"
+" οποία έχετε εγγραφεί και ελέγξτε το φάκελο ανεπιθύμητης αλληλογραφίας σας."
+
+#: templates/registration/password_reset_form.html:8
+msgid "Forgot Your Password?"
+msgstr "Ξεχάσατε τον κωδικό πρόσβασής σας;"
+
+#: templates/registration/password_reset_form.html:9
+msgid "Enter your email address below to receive a password reset link."
+msgstr ""
+"Εισάγετε τη διεύθυνση email σας παρακάτω για να λάβετε έναν σύνδεσμο "
+"επαναφοράς κωδικού πρόσβασης."
+
+#: templates/registration/password_reset_form.html:17
+msgid "Reset Password"
+msgstr "Επαναφορά κωδικού πρόσβασης"
+
+#: users/forms.py:12
+msgid "Password"
+msgstr "Κωδικός πρόσβασης"
+
+#: users/forms.py:16
+msgid ""
+"Your password can't be too similar to your other personal information. It "
+"must contain at least 8 characters. It can't be a commonly used password. It"
+" can't be entirely numeric."
+msgstr ""
+"Ο κωδικός πρόσβασής σας δεν μπορεί να μοιάζει πολύ με τα άλλα προσωπικά σας "
+"στοιχεία. Πρέπει να περιέχει τουλάχιστον 8 χαρακτήρες. Δεν μπορεί να είναι "
+"ένας κοινώς χρησιμοποιούμενος κωδικός πρόσβασης. Δεν μπορεί να είναι εξ "
+"ολοκλήρου αριθμητικός."
+
+#: users/forms.py:23
+msgid "Password confirmation"
+msgstr "Επιβεβαίωση κωδικού πρόσβασης"
+
+#: users/forms.py:26
+msgid "Enter the same password as before, for verification."
+msgstr "Πληκτρολογήστε τον ίδιο κωδικό πρόσβασης με πριν, για επαλήθευση."
+
+#: users/forms.py:34 users/templates/users/account_settings.html:44
+msgid "Username"
+msgstr "Όνομα χρήστη"
+
+#: users/forms.py:35 users/templates/users/account_settings.html:45
+msgid "Email"
+msgstr "Ηλεκτρονικό ταχυδρομείο"
+
+#: users/forms.py:39
+msgid "Required. 150 characters or fewer. Letters, digits and @/./+/-/_ only."
+msgstr ""
+"Απαιτείται. 150 χαρακτήρες ή λιγότεροι. Μόνο γράμματα, ψηφία και @/./+/-/_."
+
+#: users/forms.py:65 users/templates/users/account_settings.html:68
+msgid "Language Preference"
+msgstr "Προτίμηση γλώσσας"
+
+#: users/forms.py:66 users/templates/users/account_settings.html:63
+msgid "Country"
+msgstr "Χώρα"
+
+#: users/forms.py:67 users/templates/users/account_settings.html:90
+msgid "Allergens"
+msgstr "Αλλεργιογόνα"
+
+#: users/forms.py:68 users/templates/users/account_settings.html:78
+msgid "Dietary Requirements"
+msgstr "Διατροφικές απαιτήσεις"
+
+#: users/forms.py:69
+msgid "Enable scan-to-add in pantry"
+msgstr "Ενεργοποίηση σάρωσης προς προσθήκη στο ντουλάπι"
+
+#: users/forms.py:70
+msgid "Display Nutri-Score on products"
+msgstr "Εμφάνιση του Nutri-Score στα προϊόντα"
+
+#: users/forms.py:71
+msgid "Display Eco-Score on products"
+msgstr "Εμφάνιση του Eco-Score στα προϊόντα"
+
+#: users/forms.py:72
+msgid "Prioritise local results in search"
+msgstr "Προτεραιότητα στα τοπικά αποτελέσματα στην αναζήτηση"
+
+#: users/templates/users/account_settings.html:6
+msgid "Account Settings"
+msgstr "Ρυθμίσεις λογαριασμού"
+
+#: users/templates/users/account_settings.html:19
+msgid "Warning!"
+msgstr "Προειδοποίηση!"
+
+#: users/templates/users/account_settings.html:19
+msgid "You are about to delete your account permanently."
+msgstr "Πρόκειται να διαγράψετε οριστικά το λογαριασμό σας."
+
+#: users/templates/users/account_settings.html:22
+msgid ""
+"\n"
+"          Doing this will permanently remove all account data including your\n"
+"          pantry, saved recipes, and favourites. Are you sure you want to\n"
+"          continue?\n"
+"          "
+msgstr ""
+"\n"
+"          Με αυτόν τον τρόπο θα διαγράψετε μόνιμα όλα τα δεδομένα του λογαριασμού σας, συμπεριλαμβανομένων των\n"
+"          ντουλάπι, τις αποθηκευμένες συνταγές και τα αγαπημένα σας. Είστε σίγουροι ότι θέλετε να\n"
+"          συνεχίσετε;\n"
+"          "
+
+#: users/templates/users/account_settings.html:29
+msgid "I'm sure,"
+msgstr "Είμαι σίγουρος,"
+
+#: users/templates/users/account_settings.html:30
+#: users/templates/users/account_settings.html:52
+msgid "Delete Account"
+msgstr "Διαγραφή λογαριασμού"
+
+#: users/templates/users/account_settings.html:40
+msgid "Account management"
+msgstr "Διαχείριση λογαριασμού"
+
+#: users/templates/users/account_settings.html:46
+msgid "Date Joined"
+msgstr "Ημερομηνία ένταξης"
+
+#: users/templates/users/account_settings.html:57
+msgid "User preferences"
+msgstr "Προτιμήσεις χρήστη"
+
+#: users/templates/users/account_settings.html:115
+msgid "Save Settings"
+msgstr "Αποθήκευση ρυθμίσεων"
+
+#: users/templates/users/register.html:60
+#, python-format
+msgid "Already have an account? <a href=\"%(login_url)s\">Log in here</a>."
+msgstr "Έχετε ήδη λογαριασμό; <a href=\"%(login_url)s\">Συνδεθείτε εδώ</a>."

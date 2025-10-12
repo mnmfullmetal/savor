@@ -1,0 +1,662 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-10-12 14:39+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=4; plural=(n % 10 == 1 && (n % 100 > 19 || n % 100 < 11) ? 0 : (n % 10 >= 2 && n % 10 <=9) && (n % 100 > 19 || n % 100 < 11) ? 1 : n % 1 != 0 ? 2: 3);\n"
+
+#: pantry/templates/pantry/index.html:17
+msgid "Advanced Search"
+msgstr "Išplėstinė paieška"
+
+#: pantry/templates/pantry/index.html:25
+msgid "Product Name"
+msgstr "Produkto pavadinimas"
+
+#: pantry/templates/pantry/index.html:29
+msgid "Country of Origin"
+msgstr "Kilmės šalis"
+
+#: pantry/templates/pantry/index.html:31
+msgid "Select a country..."
+msgstr "Pasirinkite šalį..."
+
+#: pantry/templates/pantry/index.html:35
+msgid "Category"
+msgstr "Kategorija"
+
+#: pantry/templates/pantry/index.html:37
+msgid "Select a category..."
+msgstr "Pasirinkite kategoriją..."
+
+#: pantry/templates/pantry/index.html:41
+msgid "Brand"
+msgstr "Prekės ženklas"
+
+#: pantry/templates/pantry/index.html:43
+msgid "Select a brand..."
+msgstr "Pasirinkite prekės ženklą..."
+
+#: pantry/templates/pantry/index.html:48
+msgid "Clear Filters"
+msgstr "Išvalyti filtrus"
+
+#: pantry/templates/pantry/index.html:51 templates/base.html:34
+msgid "Search"
+msgstr "Paieška"
+
+#: pantry/templates/pantry/index.html:66
+msgid "Product Search Results"
+msgstr "Produktų paieškos rezultatai"
+
+#: pantry/templates/pantry/index.html:70
+msgid "Enter a search query to find products."
+msgstr "Įveskite paieškos užklausą, kad surastumėte produktus."
+
+#: pantry/templates/pantry/index.html:73
+msgid ""
+"Can't find what you're looking for? Try <a href=\"#\" data-bs-"
+"toggle=\"modal\" data-bs-target=\"#exampleModal\">Advanced Search</a>."
+msgstr ""
+"Nerandate, ko ieškote? Išbandykite <a href=\"#\" data-bs-toggle=\"modal\" "
+"data-bs-target=\"#exampleModal\">Išplėstinė paieška</a>."
+
+#: pantry/templates/pantry/index.html:82
+msgid "Favourites"
+msgstr "Mėgstamiausi"
+
+#: pantry/templates/pantry/index.html:101
+#: pantry/templates/pantry/pantry.html:71
+msgid "WARNING"
+msgstr "ĮSPĖJIMAS"
+
+#: pantry/templates/pantry/index.html:101
+#: pantry/templates/pantry/pantry.html:71
+msgid "Contains user-specified allergens:"
+msgstr "Sudėtyje yra naudotojo nurodytų alergenų:"
+
+#: pantry/templates/pantry/index.html:110
+#: pantry/templates/pantry/pantry.html:80
+msgid "POSSIBLE MISMATCH"
+msgstr "GALIMAS NEATITIKIMAS"
+
+#: pantry/templates/pantry/index.html:110
+#: pantry/templates/pantry/pantry.html:80
+msgid "Missing dietary requirements:"
+msgstr "Trūkstami mitybos reikalavimai:"
+
+#: pantry/templates/pantry/index.html:121
+msgid "Brands"
+msgstr "Prekės ženklai"
+
+#: pantry/templates/pantry/index.html:122
+msgid "Code"
+msgstr "Kodas"
+
+#: pantry/templates/pantry/index.html:129
+msgid "item"
+msgstr "elementas"
+
+#: pantry/templates/pantry/index.html:136
+msgid "Add to Pantry"
+msgstr "Pridėti į sandėliuką"
+
+#: pantry/templates/pantry/index.html:140
+msgid "Remove Favourite"
+msgstr "Pašalinti mėgstamiausią"
+
+#: pantry/templates/pantry/index.html:148
+msgid "You haven't favourited any products yet. Start exploring today!"
+msgstr ""
+"Dar nesate pirmenybę suteikę jokiems produktams. Pradėkite tyrinėti "
+"šiandien!"
+
+#: pantry/templates/pantry/pantry.html:5 templates/base.html:63
+msgid "Pantry"
+msgstr "Sandėliukas"
+
+#: pantry/templates/pantry/pantry.html:13
+msgid "Pantry Health & Eco Summary"
+msgstr "Kepyklų sveikata ir ekologija Santrauka"
+
+#: pantry/templates/pantry/pantry.html:20
+msgid "Nutri-Grade:"
+msgstr "\"Nutri-Grade\":"
+
+#: pantry/templates/pantry/pantry.html:27
+msgid "Eco-Grade:"
+msgstr "Ekologiška klasė:"
+
+#: pantry/templates/pantry/pantry.html:34
+msgid "Scores are hidden or unavailable. Check your user settings."
+msgstr ""
+"Rezultatai yra paslėpti arba neprieinami. Patikrinkite naudotojo nustatymus."
+
+#: pantry/templates/pantry/pantry.html:44
+msgid "Your Pantry Items"
+msgstr "Jūsų sandėliuko daiktai"
+
+#: pantry/templates/pantry/pantry.html:62
+#: pantry/templates/pantry/pantry.html:64
+msgid "Product Image"
+msgstr "Produkto vaizdas"
+
+#: pantry/templates/pantry/pantry.html:67
+msgid "No Name"
+msgstr "Nėra pavadinimo"
+
+#: pantry/templates/pantry/pantry.html:91
+msgid "Quantity:"
+msgstr "Kiekis:"
+
+#: pantry/templates/pantry/pantry.html:94
+msgid "Product Size:"
+msgstr "Produkto dydis:"
+
+#: pantry/templates/pantry/pantry.html:100
+msgid "Expires:"
+msgstr "Galioja:"
+
+#: pantry/templates/pantry/pantry.html:116
+msgid "Your pantry is empty! Add some products to get started."
+msgstr "Jūsų sandėliukas tuščias! Įdėkite keletą produktų ir pradėkite."
+
+#: recipes/templates/recipes/recipes.html:6 templates/base.html:70
+msgid "Recipes"
+msgstr "Receptai"
+
+#: recipes/templates/recipes/recipes.html:13
+msgid "New Recipe Suggestions"
+msgstr "Nauji receptų pasiūlymai"
+
+#: recipes/templates/recipes/recipes.html:40
+#: recipes/templates/recipes/recipes.html:101
+#: recipes/templates/recipes/recipes.html:163
+msgid "Ingredients"
+msgstr "Sudedamosios dalys"
+
+#: recipes/templates/recipes/recipes.html:48
+#: recipes/templates/recipes/recipes.html:109
+#: recipes/templates/recipes/recipes.html:181
+msgid "Instructions"
+msgstr "Instrukcijos"
+
+#: recipes/templates/recipes/recipes.html:59
+#: recipes/templates/recipes/recipes.html:120
+msgid "Save Recipe"
+msgstr "Išsaugoti receptą"
+
+#: recipes/templates/recipes/recipes.html:68
+msgid "No new suggestions"
+msgstr "Naujų pasiūlymų nėra"
+
+#: recipes/templates/recipes/recipes.html:70
+msgid "Recipes still being generated"
+msgstr "Receptai vis dar generuojami"
+
+#: recipes/templates/recipes/recipes.html:75
+msgid "Recently Suggested Recipes"
+msgstr "Neseniai pasiūlyti receptai"
+
+#: recipes/templates/recipes/recipes.html:129
+msgid "No recently suggested"
+msgstr "Neseniai pasiūlytų"
+
+#: recipes/templates/recipes/recipes.html:135
+msgid "Saved Recipes"
+msgstr "Išsaugoti receptai"
+
+#: recipes/templates/recipes/recipes.html:152
+msgid "Missing Items"
+msgstr "Trūkstami elementai"
+
+#: recipes/templates/recipes/recipes.html:192
+msgid "Delete Recipe"
+msgstr "Ištrinti receptą"
+
+#: recipes/templates/recipes/recipes.html:204
+msgid "No Saved Recipes"
+msgstr "Nėra išsaugotų receptų"
+
+#: savor/settings.py:138
+msgid "Arabic"
+msgstr "Arabų kalba"
+
+#: savor/settings.py:139
+msgid "Bulgarian"
+msgstr "Bulgarų"
+
+#: savor/settings.py:140
+msgid "Chinese"
+msgstr "Kinų"
+
+#: savor/settings.py:141
+msgid "Czech"
+msgstr "Čekijos"
+
+#: savor/settings.py:142
+msgid "Danish"
+msgstr "Danų"
+
+#: savor/settings.py:143
+msgid "Dutch"
+msgstr "Olandų kalba"
+
+#: savor/settings.py:144
+msgid "Estonian"
+msgstr "Estų kalba"
+
+#: savor/settings.py:145
+msgid "Finnish"
+msgstr "Suomijos"
+
+#: savor/settings.py:146
+msgid "French"
+msgstr "Prancūzų kalba"
+
+#: savor/settings.py:147
+msgid "German"
+msgstr "Vokiečių kalba"
+
+#: savor/settings.py:148
+msgid "Greek"
+msgstr "Graikų kalba"
+
+#: savor/settings.py:149
+msgid "Hebrew"
+msgstr "Hebrajų kalba"
+
+#: savor/settings.py:150
+msgid "Hungarian"
+msgstr "Vengrų"
+
+#: savor/settings.py:151
+msgid "Indonesian"
+msgstr "Indonezijos"
+
+#: savor/settings.py:152
+msgid "Italian"
+msgstr "Italų kalba"
+
+#: savor/settings.py:153
+msgid "Japanese"
+msgstr "Japonų"
+
+#: savor/settings.py:154
+msgid "Korean"
+msgstr "Korėjiečių kalba"
+
+#: savor/settings.py:155
+msgid "Latvian"
+msgstr "Latvijos"
+
+#: savor/settings.py:156
+msgid "Lithuanian"
+msgstr "Lietuvių kalba"
+
+#: savor/settings.py:157
+msgid "Norwegian Bokmål"
+msgstr "norvegų kalba Bokmål"
+
+#: savor/settings.py:158
+msgid "Polish"
+msgstr "Lenkų kalba"
+
+#: savor/settings.py:159
+msgid "Portuguese"
+msgstr "Portugalų kalba"
+
+#: savor/settings.py:160
+msgid "Romanian"
+msgstr "Rumunijos"
+
+#: savor/settings.py:161
+msgid "Russian"
+msgstr "Rusų kalba"
+
+#: savor/settings.py:162
+msgid "Slovak"
+msgstr "Slovakų"
+
+#: savor/settings.py:163
+msgid "Slovenian"
+msgstr "Slovėnijos"
+
+#: savor/settings.py:164
+msgid "Spanish"
+msgstr "Ispanų kalba"
+
+#: savor/settings.py:165
+msgid "Swedish"
+msgstr "Švedų kalba"
+
+#: savor/settings.py:166
+msgid "Thai"
+msgstr "Tailando"
+
+#: savor/settings.py:167
+msgid "Turkish"
+msgstr "Turkijos"
+
+#: savor/settings.py:168
+msgid "Ukrainian"
+msgstr "Ukrainiečių"
+
+#: savor/settings.py:169
+msgid "Vietnamese"
+msgstr "Vietnamiečių"
+
+#: templates/base.html:22
+msgid "Welcome"
+msgstr "Sveiki atvykę"
+
+#: templates/base.html:29
+msgid "Search Product by ingredient"
+msgstr "Ieškoti produkto pagal ingredientą"
+
+#: templates/base.html:32
+msgid "Search Product by Barcode"
+msgstr "Ieškoti produkto pagal brūkšninį kodą"
+
+#: templates/base.html:37
+msgid "Scan"
+msgstr "Skenuoti"
+
+#: templates/base.html:56
+msgid "Home"
+msgstr "Pagrindinis"
+
+#: templates/base.html:79
+msgid "Settings"
+msgstr "Nustatymai"
+
+#: templates/base.html:85
+msgid "Account"
+msgstr "Sąskaita"
+
+#: templates/base.html:94
+msgid "Log Out"
+msgstr "Atsijungti"
+
+#: templates/base.html:107
+msgid "Log On"
+msgstr "Prisijungti"
+
+#: templates/base.html:113 users/templates/users/register.html:57
+msgid "Register"
+msgstr "Registruotis"
+
+#: templates/base.html:123
+msgid "Stop Scanning"
+msgstr "Sustabdyti nuskaitymą"
+
+#: templates/registration/login.html:5 templates/registration/login.html:9
+#: templates/registration/login.html:37
+msgid "Log In"
+msgstr "Prisijungti"
+
+#: templates/registration/login.html:40
+#, python-format
+msgid "Don't have an account? <a href=\"%('register_url')s\">Register here</a>."
+msgstr "Neturite paskyros? <a href=\"%('register_url')s\">Registruokitės čia</a>."
+
+#: templates/registration/login.html:41
+msgid "Forgot password?"
+msgstr "Pamiršote slaptažodį?"
+
+#: templates/registration/logout.html:4 templates/registration/logout.html:7
+msgid "Logged Out"
+msgstr "Išregistruotas"
+
+#: templates/registration/logout.html:8
+msgid "You have been successfully logged out."
+msgstr "Sėkmingai atsijungėte."
+
+#: templates/registration/logout.html:9
+msgid "Log in again"
+msgstr "Prisijunkite dar kartą"
+
+#: templates/registration/password_change_done.html:6
+msgid "Password Changed Successfully"
+msgstr "Slaptažodis sėkmingai pakeistas"
+
+#: templates/registration/password_change_done.html:12
+#: templates/registration/password_reset_complete.html:11
+msgid "Password Changed Successfully!"
+msgstr "Slaptažodis sėkmingai pakeistas!"
+
+#: templates/registration/password_change_done.html:14
+msgid "Your password has been changed."
+msgstr "Jūsų slaptažodis buvo pakeistas."
+
+#: templates/registration/password_change_done.html:16
+msgid "Back to Settings"
+msgstr "Grįžti į nustatymus"
+
+#: templates/registration/password_change_form.html:5
+#: templates/registration/password_change_form.html:38
+#: templates/registration/password_reset_confirm.html:28
+#: users/templates/users/account_settings.html:51
+msgid "Change Password"
+msgstr "Keisti slaptažodį"
+
+#: templates/registration/password_change_form.html:11
+msgid "Change Your Password"
+msgstr "Pakeiskite slaptažodį"
+
+#: templates/registration/password_change_form.html:23
+msgid "Old Password"
+msgstr "Senasis slaptažodis"
+
+#: templates/registration/password_change_form.html:28
+#: templates/registration/password_reset_confirm.html:20
+msgid "New Password"
+msgstr "Naujas slaptažodis"
+
+#: templates/registration/password_change_form.html:33
+#: templates/registration/password_reset_confirm.html:24
+msgid "Confirm New Password"
+msgstr "Patvirtinti naują slaptažodį"
+
+#: templates/registration/password_reset_complete.html:5
+msgid "Password Changed"
+msgstr "Pakeistas slaptažodis"
+
+#: templates/registration/password_reset_complete.html:13
+msgid ""
+"Your password has been set. You can now go ahead and log in with your new "
+"password."
+msgstr ""
+"Jūsų slaptažodis nustatytas. Dabar galite prisijungti su naujuoju "
+"slaptažodžiu."
+
+#: templates/registration/password_reset_confirm.html:12
+msgid "Set a New Password"
+msgstr "Nustatykite naują slaptažodį"
+
+#: templates/registration/password_reset_confirm.html:32
+msgid "Invalid Link"
+msgstr "Negaliojanti sąsaja"
+
+#: templates/registration/password_reset_confirm.html:34
+msgid ""
+"The password reset link was invalid, possibly because it has already been "
+"used. Please request a new password reset."
+msgstr ""
+"Slaptažodžio atstatymo nuoroda buvo negaliojanti, galbūt todėl, kad ji jau "
+"buvo panaudota. Prašykite naujo slaptažodžio atstatymo."
+
+#: templates/registration/password_reset_done.html:4
+msgid "Password Reset Sent"
+msgstr "Išsiųstas slaptažodžio atkūrimas"
+
+#: templates/registration/password_reset_done.html:10
+msgid "Check Your Inbox"
+msgstr "Patikrinkite savo pašto dėžutę"
+
+#: templates/registration/password_reset_done.html:12
+msgid ""
+"We've emailed you instructions for setting your password. If an account "
+"exists with the email you entered, you should receive them shortly."
+msgstr ""
+"Elektroniniu paštu išsiuntėme slaptažodžio nustatymo instrukcijas. Jei jūsų "
+"įvestu el. pašto adresu yra sukurta paskyra, netrukus turėtumėte juos gauti."
+
+#: templates/registration/password_reset_done.html:13
+msgid ""
+"If you don't receive an email, please make sure you've entered the email "
+"address you registered with, and check your spam folder."
+msgstr ""
+"Jei negaunate el. laiško, įsitikinkite, kad įvedėte el. pašto adresą, kuriuo"
+" užsiregistravote, ir patikrinkite nepageidaujamų laiškų aplanką."
+
+#: templates/registration/password_reset_form.html:8
+msgid "Forgot Your Password?"
+msgstr "Pamiršote slaptažodį?"
+
+#: templates/registration/password_reset_form.html:9
+msgid "Enter your email address below to receive a password reset link."
+msgstr ""
+"Toliau įveskite savo el. pašto adresą, kad gautumėte slaptažodžio atstatymo "
+"nuorodą."
+
+#: templates/registration/password_reset_form.html:17
+msgid "Reset Password"
+msgstr "Iš naujo nustatyti slaptažodį"
+
+#: users/forms.py:12
+msgid "Password"
+msgstr "Slaptažodis"
+
+#: users/forms.py:16
+msgid ""
+"Your password can't be too similar to your other personal information. It "
+"must contain at least 8 characters. It can't be a commonly used password. It"
+" can't be entirely numeric."
+msgstr ""
+"Jūsų slaptažodis negali būti pernelyg panašus į kitą asmeninę informaciją. "
+"Jame turi būti ne mažiau kaip 8 simboliai. Tai negali būti dažniausiai "
+"naudojamas slaptažodis. Jis negali būti vien tik skaitmeninis."
+
+#: users/forms.py:23
+msgid "Password confirmation"
+msgstr "Slaptažodžio patvirtinimas"
+
+#: users/forms.py:26
+msgid "Enter the same password as before, for verification."
+msgstr ""
+"Įveskite tą patį slaptažodį kaip ir anksčiau, kad galėtumėte patikrinti."
+
+#: users/forms.py:34 users/templates/users/account_settings.html:44
+msgid "Username"
+msgstr "Vartotojo vardas"
+
+#: users/forms.py:35 users/templates/users/account_settings.html:45
+msgid "Email"
+msgstr "El. paštas"
+
+#: users/forms.py:39
+msgid "Required. 150 characters or fewer. Letters, digits and @/./+/-/_ only."
+msgstr ""
+"Būtina. Ne daugiau kaip 150 simbolių. Tik raidės, skaitmenys ir @/././+/-/_."
+
+#: users/forms.py:65 users/templates/users/account_settings.html:68
+msgid "Language Preference"
+msgstr "Kalbos pirmenybė"
+
+#: users/forms.py:66 users/templates/users/account_settings.html:63
+msgid "Country"
+msgstr "Šalis"
+
+#: users/forms.py:67 users/templates/users/account_settings.html:90
+msgid "Allergens"
+msgstr "Alergenai"
+
+#: users/forms.py:68 users/templates/users/account_settings.html:78
+msgid "Dietary Requirements"
+msgstr "Mitybos reikalavimai"
+
+#: users/forms.py:69
+msgid "Enable scan-to-add in pantry"
+msgstr "Įjungti skenavimo pridedant į sandėliuką funkciją"
+
+#: users/forms.py:70
+msgid "Display Nutri-Score on products"
+msgstr "\"Nutri-Score\" rodymas ant produktų"
+
+#: users/forms.py:71
+msgid "Display Eco-Score on products"
+msgstr "Ekologinio įvertinimo rodiklio rodymas ant gaminių"
+
+#: users/forms.py:72
+msgid "Prioritise local results in search"
+msgstr "Pirmenybę teikite vietos rezultatams paieškoje"
+
+#: users/templates/users/account_settings.html:6
+msgid "Account Settings"
+msgstr "Paskyros nustatymai"
+
+#: users/templates/users/account_settings.html:19
+msgid "Warning!"
+msgstr "Įspėjimas!"
+
+#: users/templates/users/account_settings.html:19
+msgid "You are about to delete your account permanently."
+msgstr "Ketinate visam laikui ištrinti savo paskyrą."
+
+#: users/templates/users/account_settings.html:22
+msgid ""
+"\n"
+"          Doing this will permanently remove all account data including your\n"
+"          pantry, saved recipes, and favourites. Are you sure you want to\n"
+"          continue?\n"
+"          "
+msgstr ""
+"\n"
+"          Tai padarę visam laikui pašalinsite visus paskyros duomenis, įskaitant\n"
+"          sandėliuką, išsaugotus receptus ir mėgstamiausius. Ar tikrai norite\n"
+"          tęsti?\n"
+"          "
+
+#: users/templates/users/account_settings.html:29
+msgid "I'm sure,"
+msgstr "Esu tikras,"
+
+#: users/templates/users/account_settings.html:30
+#: users/templates/users/account_settings.html:52
+msgid "Delete Account"
+msgstr "Ištrinti paskyrą"
+
+#: users/templates/users/account_settings.html:40
+msgid "Account management"
+msgstr "Sąskaitų valdymas"
+
+#: users/templates/users/account_settings.html:46
+msgid "Date Joined"
+msgstr "Prisijungimo data"
+
+#: users/templates/users/account_settings.html:57
+msgid "User preferences"
+msgstr "Naudotojo nuostatos"
+
+#: users/templates/users/account_settings.html:115
+msgid "Save Settings"
+msgstr "Išsaugoti nustatymus"
+
+#: users/templates/users/register.html:60
+#, python-format
+msgid "Already have an account? <a href=\"%(login_url)s\">Log in here</a>."
+msgstr "Jau turite paskyrą? <a href=\"%(login_url)s\">Prisijunkite čia</a>."

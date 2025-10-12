@@ -1,0 +1,661 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-10-12 14:39+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#: pantry/templates/pantry/index.html:17
+msgid "Advanced Search"
+msgstr "Tìm kiếm nâng cao"
+
+#: pantry/templates/pantry/index.html:25
+msgid "Product Name"
+msgstr "Tên sản phẩm"
+
+#: pantry/templates/pantry/index.html:29
+msgid "Country of Origin"
+msgstr "Nước xuất xứ"
+
+#: pantry/templates/pantry/index.html:31
+msgid "Select a country..."
+msgstr "Chọn quốc gia..."
+
+#: pantry/templates/pantry/index.html:35
+msgid "Category"
+msgstr "Thể loại"
+
+#: pantry/templates/pantry/index.html:37
+msgid "Select a category..."
+msgstr "Chọn một danh mục..."
+
+#: pantry/templates/pantry/index.html:41
+msgid "Brand"
+msgstr "Thương hiệu"
+
+#: pantry/templates/pantry/index.html:43
+msgid "Select a brand..."
+msgstr "Chọn một thương hiệu..."
+
+#: pantry/templates/pantry/index.html:48
+msgid "Clear Filters"
+msgstr "Xóa bộ lọc"
+
+#: pantry/templates/pantry/index.html:51 templates/base.html:34
+msgid "Search"
+msgstr "Tìm kiếm"
+
+#: pantry/templates/pantry/index.html:66
+msgid "Product Search Results"
+msgstr "Kết quả tìm kiếm sản phẩm"
+
+#: pantry/templates/pantry/index.html:70
+msgid "Enter a search query to find products."
+msgstr "Nhập từ khóa tìm kiếm để tìm sản phẩm."
+
+#: pantry/templates/pantry/index.html:73
+msgid ""
+"Can't find what you're looking for? Try <a href=\"#\" data-bs-"
+"toggle=\"modal\" data-bs-target=\"#exampleModal\">Advanced Search</a>."
+msgstr ""
+"Không tìm thấy điều bạn đang tìm kiếm? Hãy thử <a href=\"#\" data-bs-"
+"toggle=\"modal\" data-bs-target=\"#exampleModal\">Tìm kiếm nâng cao</a>."
+
+#: pantry/templates/pantry/index.html:82
+msgid "Favourites"
+msgstr "Yêu thích"
+
+#: pantry/templates/pantry/index.html:101
+#: pantry/templates/pantry/pantry.html:71
+msgid "WARNING"
+msgstr "CẢNH BÁO"
+
+#: pantry/templates/pantry/index.html:101
+#: pantry/templates/pantry/pantry.html:71
+msgid "Contains user-specified allergens:"
+msgstr "Chứa các chất gây dị ứng do người dùng chỉ định:"
+
+#: pantry/templates/pantry/index.html:110
+#: pantry/templates/pantry/pantry.html:80
+msgid "POSSIBLE MISMATCH"
+msgstr "SỰ KHÔNG PHÙ HỢP CÓ THỂ XẢ"
+
+#: pantry/templates/pantry/index.html:110
+#: pantry/templates/pantry/pantry.html:80
+msgid "Missing dietary requirements:"
+msgstr "Thiếu các yêu cầu dinh dưỡng:"
+
+#: pantry/templates/pantry/index.html:121
+msgid "Brands"
+msgstr "Thương hiệu"
+
+#: pantry/templates/pantry/index.html:122
+msgid "Code"
+msgstr "Mã"
+
+#: pantry/templates/pantry/index.html:129
+msgid "item"
+msgstr "mục"
+
+#: pantry/templates/pantry/index.html:136
+msgid "Add to Pantry"
+msgstr "Thêm vào Tủ đồ"
+
+#: pantry/templates/pantry/index.html:140
+msgid "Remove Favourite"
+msgstr "Xóa mục yêu thích"
+
+#: pantry/templates/pantry/index.html:148
+msgid "You haven't favourited any products yet. Start exploring today!"
+msgstr ""
+"Bạn chưa thêm sản phẩm nào vào danh sách yêu thích. Hãy bắt đầu khám phá "
+"ngay hôm nay!"
+
+#: pantry/templates/pantry/pantry.html:5 templates/base.html:63
+msgid "Pantry"
+msgstr "Tủ bếp"
+
+#: pantry/templates/pantry/pantry.html:13
+msgid "Pantry Health & Eco Summary"
+msgstr "Tổng quan về Sức khỏe và Môi trường của Tủ bếp"
+
+#: pantry/templates/pantry/pantry.html:20
+msgid "Nutri-Grade:"
+msgstr "Nutri-Grade:"
+
+#: pantry/templates/pantry/pantry.html:27
+msgid "Eco-Grade:"
+msgstr "Cấp độ thân thiện với môi trường:"
+
+#: pantry/templates/pantry/pantry.html:34
+msgid "Scores are hidden or unavailable. Check your user settings."
+msgstr ""
+"Điểm số bị ẩn hoặc không khả dụng. Vui lòng kiểm tra cài đặt người dùng của "
+"bạn."
+
+#: pantry/templates/pantry/pantry.html:44
+msgid "Your Pantry Items"
+msgstr "Các mặt hàng trong tủ bếp của bạn"
+
+#: pantry/templates/pantry/pantry.html:62
+#: pantry/templates/pantry/pantry.html:64
+msgid "Product Image"
+msgstr "Hình ảnh sản phẩm"
+
+#: pantry/templates/pantry/pantry.html:67
+msgid "No Name"
+msgstr "Không có tên"
+
+#: pantry/templates/pantry/pantry.html:91
+msgid "Quantity:"
+msgstr "Số lượng:"
+
+#: pantry/templates/pantry/pantry.html:94
+msgid "Product Size:"
+msgstr "Kích thước sản phẩm:"
+
+#: pantry/templates/pantry/pantry.html:100
+msgid "Expires:"
+msgstr "Hạn sử dụng:"
+
+#: pantry/templates/pantry/pantry.html:116
+msgid "Your pantry is empty! Add some products to get started."
+msgstr "Tủ bếp của bạn trống rỗng! Hãy thêm một số sản phẩm để bắt đầu."
+
+#: recipes/templates/recipes/recipes.html:6 templates/base.html:70
+msgid "Recipes"
+msgstr "Công thức nấu ăn"
+
+#: recipes/templates/recipes/recipes.html:13
+msgid "New Recipe Suggestions"
+msgstr "Gợi ý công thức mới"
+
+#: recipes/templates/recipes/recipes.html:40
+#: recipes/templates/recipes/recipes.html:101
+#: recipes/templates/recipes/recipes.html:163
+msgid "Ingredients"
+msgstr "Thành phần"
+
+#: recipes/templates/recipes/recipes.html:48
+#: recipes/templates/recipes/recipes.html:109
+#: recipes/templates/recipes/recipes.html:181
+msgid "Instructions"
+msgstr "Hướng dẫn"
+
+#: recipes/templates/recipes/recipes.html:59
+#: recipes/templates/recipes/recipes.html:120
+msgid "Save Recipe"
+msgstr "Lưu công thức"
+
+#: recipes/templates/recipes/recipes.html:68
+msgid "No new suggestions"
+msgstr "Không có đề xuất mới"
+
+#: recipes/templates/recipes/recipes.html:70
+msgid "Recipes still being generated"
+msgstr "Các công thức nấu ăn vẫn đang được tạo ra."
+
+#: recipes/templates/recipes/recipes.html:75
+msgid "Recently Suggested Recipes"
+msgstr "Các công thức nấu ăn được đề xuất gần đây"
+
+#: recipes/templates/recipes/recipes.html:129
+msgid "No recently suggested"
+msgstr "Không có đề xuất gần đây"
+
+#: recipes/templates/recipes/recipes.html:135
+msgid "Saved Recipes"
+msgstr "Công thức nấu ăn đã lưu"
+
+#: recipes/templates/recipes/recipes.html:152
+msgid "Missing Items"
+msgstr "Các mặt hàng bị thiếu"
+
+#: recipes/templates/recipes/recipes.html:192
+msgid "Delete Recipe"
+msgstr "Xóa công thức"
+
+#: recipes/templates/recipes/recipes.html:204
+msgid "No Saved Recipes"
+msgstr "Không có công thức nấu ăn đã lưu"
+
+#: savor/settings.py:138
+msgid "Arabic"
+msgstr "Tiếng Ả Rập"
+
+#: savor/settings.py:139
+msgid "Bulgarian"
+msgstr "Bulgaria"
+
+#: savor/settings.py:140
+msgid "Chinese"
+msgstr "Trung Quốc"
+
+#: savor/settings.py:141
+msgid "Czech"
+msgstr "Séc"
+
+#: savor/settings.py:142
+msgid "Danish"
+msgstr "Đan Mạch"
+
+#: savor/settings.py:143
+msgid "Dutch"
+msgstr "Hà Lan"
+
+#: savor/settings.py:144
+msgid "Estonian"
+msgstr "Estonia"
+
+#: savor/settings.py:145
+msgid "Finnish"
+msgstr "Phần Lan"
+
+#: savor/settings.py:146
+msgid "French"
+msgstr "Pháp"
+
+#: savor/settings.py:147
+msgid "German"
+msgstr "Đức"
+
+#: savor/settings.py:148
+msgid "Greek"
+msgstr "Hy Lạp"
+
+#: savor/settings.py:149
+msgid "Hebrew"
+msgstr "Tiếng Hebrew"
+
+#: savor/settings.py:150
+msgid "Hungarian"
+msgstr "Hungary"
+
+#: savor/settings.py:151
+msgid "Indonesian"
+msgstr "Indonesia"
+
+#: savor/settings.py:152
+msgid "Italian"
+msgstr "Ý"
+
+#: savor/settings.py:153
+msgid "Japanese"
+msgstr "Nhật Bản"
+
+#: savor/settings.py:154
+msgid "Korean"
+msgstr "Hàn Quốc"
+
+#: savor/settings.py:155
+msgid "Latvian"
+msgstr "Latvia"
+
+#: savor/settings.py:156
+msgid "Lithuanian"
+msgstr "Litva"
+
+#: savor/settings.py:157
+msgid "Norwegian Bokmål"
+msgstr "Tiếng Na Uy (Bokmål)"
+
+#: savor/settings.py:158
+msgid "Polish"
+msgstr "Ba Lan"
+
+#: savor/settings.py:159
+msgid "Portuguese"
+msgstr "Bồ Đào Nha"
+
+#: savor/settings.py:160
+msgid "Romanian"
+msgstr "Rumani"
+
+#: savor/settings.py:161
+msgid "Russian"
+msgstr "Nga"
+
+#: savor/settings.py:162
+msgid "Slovak"
+msgstr "Slovakia"
+
+#: savor/settings.py:163
+msgid "Slovenian"
+msgstr "Slovenia"
+
+#: savor/settings.py:164
+msgid "Spanish"
+msgstr "Tiếng Tây Ban Nha"
+
+#: savor/settings.py:165
+msgid "Swedish"
+msgstr "Thụy Điển"
+
+#: savor/settings.py:166
+msgid "Thai"
+msgstr "Thái"
+
+#: savor/settings.py:167
+msgid "Turkish"
+msgstr "Thổ Nhĩ Kỳ"
+
+#: savor/settings.py:168
+msgid "Ukrainian"
+msgstr "Ukraine"
+
+#: savor/settings.py:169
+msgid "Vietnamese"
+msgstr "Việt Nam"
+
+#: templates/base.html:22
+msgid "Welcome"
+msgstr "Chào mừng"
+
+#: templates/base.html:29
+msgid "Search Product by ingredient"
+msgstr "Tìm kiếm sản phẩm theo thành phần"
+
+#: templates/base.html:32
+msgid "Search Product by Barcode"
+msgstr "Tìm kiếm sản phẩm theo mã vạch"
+
+#: templates/base.html:37
+msgid "Scan"
+msgstr "Quét"
+
+#: templates/base.html:56
+msgid "Home"
+msgstr "Trang chủ"
+
+#: templates/base.html:79
+msgid "Settings"
+msgstr "Cài đặt"
+
+#: templates/base.html:85
+msgid "Account"
+msgstr "Tài khoản"
+
+#: templates/base.html:94
+msgid "Log Out"
+msgstr "Đăng xuất"
+
+#: templates/base.html:107
+msgid "Log On"
+msgstr "Đăng nhập"
+
+#: templates/base.html:113 users/templates/users/register.html:57
+msgid "Register"
+msgstr "Đăng ký"
+
+#: templates/base.html:123
+msgid "Stop Scanning"
+msgstr "Dừng quét"
+
+#: templates/registration/login.html:5 templates/registration/login.html:9
+#: templates/registration/login.html:37
+msgid "Log In"
+msgstr "Đăng nhập"
+
+#: templates/registration/login.html:40
+#, python-format
+msgid "Don't have an account? <a href=\"%('register_url')s\">Register here</a>."
+msgstr ""
+"Bạn chưa có tài khoản? <a href=\"%('register_url')s\">Đăng ký tại đây</a>."
+
+#: templates/registration/login.html:41
+msgid "Forgot password?"
+msgstr "Quên mật khẩu?"
+
+#: templates/registration/logout.html:4 templates/registration/logout.html:7
+msgid "Logged Out"
+msgstr "Đã đăng xuất"
+
+#: templates/registration/logout.html:8
+msgid "You have been successfully logged out."
+msgstr "Bạn đã đăng xuất thành công."
+
+#: templates/registration/logout.html:9
+msgid "Log in again"
+msgstr "Đăng nhập lại"
+
+#: templates/registration/password_change_done.html:6
+msgid "Password Changed Successfully"
+msgstr "Mật khẩu đã được thay đổi thành công."
+
+#: templates/registration/password_change_done.html:12
+#: templates/registration/password_reset_complete.html:11
+msgid "Password Changed Successfully!"
+msgstr "Mật khẩu đã được thay đổi thành công!"
+
+#: templates/registration/password_change_done.html:14
+msgid "Your password has been changed."
+msgstr "Mật khẩu của bạn đã được thay đổi."
+
+#: templates/registration/password_change_done.html:16
+msgid "Back to Settings"
+msgstr "Trở lại Cài đặt"
+
+#: templates/registration/password_change_form.html:5
+#: templates/registration/password_change_form.html:38
+#: templates/registration/password_reset_confirm.html:28
+#: users/templates/users/account_settings.html:51
+msgid "Change Password"
+msgstr "Thay đổi mật khẩu"
+
+#: templates/registration/password_change_form.html:11
+msgid "Change Your Password"
+msgstr "Thay đổi mật khẩu của bạn"
+
+#: templates/registration/password_change_form.html:23
+msgid "Old Password"
+msgstr "Mật khẩu cũ"
+
+#: templates/registration/password_change_form.html:28
+#: templates/registration/password_reset_confirm.html:20
+msgid "New Password"
+msgstr "Mật khẩu mới"
+
+#: templates/registration/password_change_form.html:33
+#: templates/registration/password_reset_confirm.html:24
+msgid "Confirm New Password"
+msgstr "Xác nhận mật khẩu mới"
+
+#: templates/registration/password_reset_complete.html:5
+msgid "Password Changed"
+msgstr "Mật khẩu đã được thay đổi"
+
+#: templates/registration/password_reset_complete.html:13
+msgid ""
+"Your password has been set. You can now go ahead and log in with your new "
+"password."
+msgstr ""
+"Mật khẩu của bạn đã được thiết lập. Bạn có thể đăng nhập bằng mật khẩu mới "
+"của mình."
+
+#: templates/registration/password_reset_confirm.html:12
+msgid "Set a New Password"
+msgstr "Đặt mật khẩu mới"
+
+#: templates/registration/password_reset_confirm.html:32
+msgid "Invalid Link"
+msgstr "Liên kết không hợp lệ"
+
+#: templates/registration/password_reset_confirm.html:34
+msgid ""
+"The password reset link was invalid, possibly because it has already been "
+"used. Please request a new password reset."
+msgstr ""
+"Liên kết đặt lại mật khẩu không hợp lệ, có thể vì nó đã được sử dụng trước "
+"đó. Vui lòng yêu cầu đặt lại mật khẩu mới."
+
+#: templates/registration/password_reset_done.html:4
+msgid "Password Reset Sent"
+msgstr "Đã gửi yêu cầu đặt lại mật khẩu"
+
+#: templates/registration/password_reset_done.html:10
+msgid "Check Your Inbox"
+msgstr "Kiểm tra hộp thư đến của bạn"
+
+#: templates/registration/password_reset_done.html:12
+msgid ""
+"We've emailed you instructions for setting your password. If an account "
+"exists with the email you entered, you should receive them shortly."
+msgstr ""
+"Chúng tôi đã gửi email hướng dẫn cách đặt mật khẩu cho bạn. Nếu tài khoản đã"
+" tồn tại với địa chỉ email bạn đã nhập, bạn sẽ nhận được hướng dẫn trong "
+"thời gian ngắn."
+
+#: templates/registration/password_reset_done.html:13
+msgid ""
+"If you don't receive an email, please make sure you've entered the email "
+"address you registered with, and check your spam folder."
+msgstr ""
+"Nếu bạn không nhận được email, vui lòng đảm bảo rằng bạn đã nhập đúng địa "
+"chỉ email mà bạn đã đăng ký, và kiểm tra thư mục spam."
+
+#: templates/registration/password_reset_form.html:8
+msgid "Forgot Your Password?"
+msgstr "Quên mật khẩu của bạn?"
+
+#: templates/registration/password_reset_form.html:9
+msgid "Enter your email address below to receive a password reset link."
+msgstr ""
+"Nhập địa chỉ email của bạn vào ô bên dưới để nhận liên kết đặt lại mật khẩu."
+
+#: templates/registration/password_reset_form.html:17
+msgid "Reset Password"
+msgstr "Đặt lại mật khẩu"
+
+#: users/forms.py:12
+msgid "Password"
+msgstr "Mật khẩu"
+
+#: users/forms.py:16
+msgid ""
+"Your password can't be too similar to your other personal information. It "
+"must contain at least 8 characters. It can't be a commonly used password. It"
+" can't be entirely numeric."
+msgstr ""
+"Mật khẩu của bạn không được quá giống với thông tin cá nhân khác của bạn. Nó"
+" phải chứa ít nhất 8 ký tự. Nó không được là mật khẩu thông dụng. Nó không "
+"được hoàn toàn là số."
+
+#: users/forms.py:23
+msgid "Password confirmation"
+msgstr "Xác nhận mật khẩu"
+
+#: users/forms.py:26
+msgid "Enter the same password as before, for verification."
+msgstr "Nhập lại mật khẩu như trước đây để xác minh."
+
+#: users/forms.py:34 users/templates/users/account_settings.html:44
+msgid "Username"
+msgstr "Tên đăng nhập"
+
+#: users/forms.py:35 users/templates/users/account_settings.html:45
+msgid "Email"
+msgstr "Thư điện tử"
+
+#: users/forms.py:39
+msgid "Required. 150 characters or fewer. Letters, digits and @/./+/-/_ only."
+msgstr ""
+"Yêu cầu. Không quá 150 ký tự. Chỉ chấp nhận chữ cái, số và các ký tự "
+"@/./+/-/_."
+
+#: users/forms.py:65 users/templates/users/account_settings.html:68
+msgid "Language Preference"
+msgstr "Ưu tiên ngôn ngữ"
+
+#: users/forms.py:66 users/templates/users/account_settings.html:63
+msgid "Country"
+msgstr "Quốc gia"
+
+#: users/forms.py:67 users/templates/users/account_settings.html:90
+msgid "Allergens"
+msgstr "Chất gây dị ứng"
+
+#: users/forms.py:68 users/templates/users/account_settings.html:78
+msgid "Dietary Requirements"
+msgstr "Yêu cầu về chế độ ăn uống"
+
+#: users/forms.py:69
+msgid "Enable scan-to-add in pantry"
+msgstr "Bật tính năng quét để thêm vào tủ bếp"
+
+#: users/forms.py:70
+msgid "Display Nutri-Score on products"
+msgstr "Hiển thị Nutri-Score trên sản phẩm"
+
+#: users/forms.py:71
+msgid "Display Eco-Score on products"
+msgstr "Hiển thị điểm Eco-Score trên sản phẩm"
+
+#: users/forms.py:72
+msgid "Prioritise local results in search"
+msgstr "Ưu tiên kết quả tìm kiếm địa phương"
+
+#: users/templates/users/account_settings.html:6
+msgid "Account Settings"
+msgstr "Cài đặt tài khoản"
+
+#: users/templates/users/account_settings.html:19
+msgid "Warning!"
+msgstr "Cảnh báo!"
+
+#: users/templates/users/account_settings.html:19
+msgid "You are about to delete your account permanently."
+msgstr "Bạn sắp xóa tài khoản của mình vĩnh viễn."
+
+#: users/templates/users/account_settings.html:22
+msgid ""
+"\n"
+"          Doing this will permanently remove all account data including your\n"
+"          pantry, saved recipes, and favourites. Are you sure you want to\n"
+"          continue?\n"
+"          "
+msgstr ""
+"\n"
+"          Thao tác này sẽ xóa vĩnh viễn tất cả dữ liệu tài khoản, bao gồm kho thực phẩm, công thức nấu ăn đã lưu và danh sách yêu thích của bạn. Bạn có chắc chắn muốn tiếp tục không?"
+
+#: users/templates/users/account_settings.html:29
+msgid "I'm sure,"
+msgstr "Tôi chắc chắn,"
+
+#: users/templates/users/account_settings.html:30
+#: users/templates/users/account_settings.html:52
+msgid "Delete Account"
+msgstr "Xóa tài khoản"
+
+#: users/templates/users/account_settings.html:40
+msgid "Account management"
+msgstr "Quản lý tài khoản"
+
+#: users/templates/users/account_settings.html:46
+msgid "Date Joined"
+msgstr "Ngày tham gia"
+
+#: users/templates/users/account_settings.html:57
+msgid "User preferences"
+msgstr "Tùy chọn của người dùng"
+
+#: users/templates/users/account_settings.html:115
+msgid "Save Settings"
+msgstr "Lưu cài đặt"
+
+#: users/templates/users/register.html:60
+#, python-format
+msgid "Already have an account? <a href=\"%(login_url)s\">Log in here</a>."
+msgstr "Bạn đã có tài khoản? <a href=\"%(login_url)s\">Đăng nhập tại đây</a>."

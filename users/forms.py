@@ -3,13 +3,41 @@ from .models import UserSettings, Allergen, DietaryRequirement
 from django.forms import ModelMultipleChoiceField 
 from django import forms
 from django.contrib.auth import get_user_model
+from django.utils.translation import gettext_lazy as _
 
 User = get_user_model()
 
-class UserCreationForm(UserCreationForm):
-     class Meta(UserCreationForm.Meta):
+class CustomUserCreationForm(UserCreationForm):
+    password1 = forms.CharField(
+        label=_("Password"),
+        strip=False,
+        widget=forms.PasswordInput(attrs={"autocomplete": "new-password"}),
+        help_text=_(
+            "Your password can't be too similar to your other personal information."
+            " It must contain at least 8 characters."
+            " It can't be a commonly used password."
+            " It can't be entirely numeric."
+        ),
+    )
+    password2 = forms.CharField(
+        label=_("Password confirmation"),
+        strip=False,
+        widget=forms.PasswordInput(attrs={"autocomplete": "new-password"}),
+        help_text=_("Enter the same password as before, for verification."),
+    )
+    
+    class Meta(UserCreationForm.Meta):
         model = User
         fields = UserCreationForm.Meta.fields + ('email',)
+        
+        labels = {
+            'username': _('Username'),
+            'email': _('Email'),
+        }
+
+        help_texts = {
+            'username': _('Required. 150 characters or fewer. Letters, digits and @/./+/-/_ only.'),
+        }
         
 
 class UserSettingsForm(forms.ModelForm):
@@ -33,6 +61,16 @@ class UserSettingsForm(forms.ModelForm):
     class Meta:
         model = UserSettings
         fields = ['allergens', 'dietary_requirements', 'language_preference', 'country', 'scan_to_add', 'show_nutri_score', 'show_eco_score', 'prioritise_local_results']
+        labels = {
+            'language_preference': _('Language Preference'),
+            'country': _('Country'),
+            'allergens': _('Allergens'),
+            'dietary_requirements': _('Dietary Requirements'),
+            'scan_to_add': _('Enable scan-to-add in pantry'),
+            'show_nutri_score': _('Display Nutri-Score on products'),
+            'show_eco_score': _('Display Eco-Score on products'),
+            'prioritise_local_results': _('Prioritise local results in search'),
+        }
         
 
     def __init__(self, *args, **kwargs):

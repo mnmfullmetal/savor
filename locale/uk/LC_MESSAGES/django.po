@@ -1,0 +1,660 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-10-12 14:39+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=4; plural=(n % 1 == 0 && n % 10 == 1 && n % 100 != 11 ? 0 : n % 1 == 0 && n % 10 >= 2 && n % 10 <= 4 && (n % 100 < 12 || n % 100 > 14) ? 1 : n % 1 == 0 && (n % 10 ==0 || (n % 10 >=5 && n % 10 <=9) || (n % 100 >=11 && n % 100 <=14 )) ? 2: 3);\n"
+
+#: pantry/templates/pantry/index.html:17
+msgid "Advanced Search"
+msgstr "Розширений пошук"
+
+#: pantry/templates/pantry/index.html:25
+msgid "Product Name"
+msgstr "Назва продукту"
+
+#: pantry/templates/pantry/index.html:29
+msgid "Country of Origin"
+msgstr "Країна походження"
+
+#: pantry/templates/pantry/index.html:31
+msgid "Select a country..."
+msgstr "Виберіть країну..."
+
+#: pantry/templates/pantry/index.html:35
+msgid "Category"
+msgstr "Категорія"
+
+#: pantry/templates/pantry/index.html:37
+msgid "Select a category..."
+msgstr "Виберіть категорію..."
+
+#: pantry/templates/pantry/index.html:41
+msgid "Brand"
+msgstr "Бренд"
+
+#: pantry/templates/pantry/index.html:43
+msgid "Select a brand..."
+msgstr "Виберіть бренд..."
+
+#: pantry/templates/pantry/index.html:48
+msgid "Clear Filters"
+msgstr "Очистити фільтри"
+
+#: pantry/templates/pantry/index.html:51 templates/base.html:34
+msgid "Search"
+msgstr "Пошук"
+
+#: pantry/templates/pantry/index.html:66
+msgid "Product Search Results"
+msgstr "Результати пошуку товарів"
+
+#: pantry/templates/pantry/index.html:70
+msgid "Enter a search query to find products."
+msgstr "Введіть пошуковий запит, щоб знайти товари."
+
+#: pantry/templates/pantry/index.html:73
+msgid ""
+"Can't find what you're looking for? Try <a href=\"#\" data-bs-"
+"toggle=\"modal\" data-bs-target=\"#exampleModal\">Advanced Search</a>."
+msgstr ""
+"Не можете знайти те, що шукаєте? Спробуйте <a href=\"#\" data-bs-"
+"toggle=\"modal\" data-bs-target=\"#exampleModal\">Розширений пошук</a>."
+
+#: pantry/templates/pantry/index.html:82
+msgid "Favourites"
+msgstr "Вибране"
+
+#: pantry/templates/pantry/index.html:101
+#: pantry/templates/pantry/pantry.html:71
+msgid "WARNING"
+msgstr "ПОПЕРЕДЖЕННЯ"
+
+#: pantry/templates/pantry/index.html:101
+#: pantry/templates/pantry/pantry.html:71
+msgid "Contains user-specified allergens:"
+msgstr "Містить вказані користувачем алергени:"
+
+#: pantry/templates/pantry/index.html:110
+#: pantry/templates/pantry/pantry.html:80
+msgid "POSSIBLE MISMATCH"
+msgstr "МОЖЛИВА НЕВІДПОВІДНІСТЬ"
+
+#: pantry/templates/pantry/index.html:110
+#: pantry/templates/pantry/pantry.html:80
+msgid "Missing dietary requirements:"
+msgstr "Відсутні дієтичні потреби:"
+
+#: pantry/templates/pantry/index.html:121
+msgid "Brands"
+msgstr "Бренди"
+
+#: pantry/templates/pantry/index.html:122
+msgid "Code"
+msgstr "Код"
+
+#: pantry/templates/pantry/index.html:129
+msgid "item"
+msgstr "пункт"
+
+#: pantry/templates/pantry/index.html:136
+msgid "Add to Pantry"
+msgstr "Додати до Комори"
+
+#: pantry/templates/pantry/index.html:140
+msgid "Remove Favourite"
+msgstr "Видалити обране"
+
+#: pantry/templates/pantry/index.html:148
+msgid "You haven't favourited any products yet. Start exploring today!"
+msgstr ""
+"Ви ще не вподобали жодного продукту. Почніть досліджувати вже сьогодні!"
+
+#: pantry/templates/pantry/pantry.html:5 templates/base.html:63
+msgid "Pantry"
+msgstr "Комора."
+
+#: pantry/templates/pantry/pantry.html:13
+msgid "Pantry Health & Eco Summary"
+msgstr "Підсумок про здоров'я та екологічність комори"
+
+#: pantry/templates/pantry/pantry.html:20
+msgid "Nutri-Grade:"
+msgstr "Поживний:"
+
+#: pantry/templates/pantry/pantry.html:27
+msgid "Eco-Grade:"
+msgstr "Еко-клас:"
+
+#: pantry/templates/pantry/pantry.html:34
+msgid "Scores are hidden or unavailable. Check your user settings."
+msgstr "Оцінки приховані або недоступні. Перевірте налаштування користувача."
+
+#: pantry/templates/pantry/pantry.html:44
+msgid "Your Pantry Items"
+msgstr "Ваша комора"
+
+#: pantry/templates/pantry/pantry.html:62
+#: pantry/templates/pantry/pantry.html:64
+msgid "Product Image"
+msgstr "Зображення продукту"
+
+#: pantry/templates/pantry/pantry.html:67
+msgid "No Name"
+msgstr "No Name"
+
+#: pantry/templates/pantry/pantry.html:91
+msgid "Quantity:"
+msgstr "Кількість:"
+
+#: pantry/templates/pantry/pantry.html:94
+msgid "Product Size:"
+msgstr "Розмір продукту:"
+
+#: pantry/templates/pantry/pantry.html:100
+msgid "Expires:"
+msgstr "Закінчується:"
+
+#: pantry/templates/pantry/pantry.html:116
+msgid "Your pantry is empty! Add some products to get started."
+msgstr "Ваша комора порожня! Додайте кілька продуктів, щоб почати."
+
+#: recipes/templates/recipes/recipes.html:6 templates/base.html:70
+msgid "Recipes"
+msgstr "Рецепти"
+
+#: recipes/templates/recipes/recipes.html:13
+msgid "New Recipe Suggestions"
+msgstr "Нові пропозиції рецептів"
+
+#: recipes/templates/recipes/recipes.html:40
+#: recipes/templates/recipes/recipes.html:101
+#: recipes/templates/recipes/recipes.html:163
+msgid "Ingredients"
+msgstr "Інгредієнти"
+
+#: recipes/templates/recipes/recipes.html:48
+#: recipes/templates/recipes/recipes.html:109
+#: recipes/templates/recipes/recipes.html:181
+msgid "Instructions"
+msgstr "Інструкція"
+
+#: recipes/templates/recipes/recipes.html:59
+#: recipes/templates/recipes/recipes.html:120
+msgid "Save Recipe"
+msgstr "Зберегти рецепт"
+
+#: recipes/templates/recipes/recipes.html:68
+msgid "No new suggestions"
+msgstr "Немає нових пропозицій"
+
+#: recipes/templates/recipes/recipes.html:70
+msgid "Recipes still being generated"
+msgstr "Рецепти все ще генеруються"
+
+#: recipes/templates/recipes/recipes.html:75
+msgid "Recently Suggested Recipes"
+msgstr "Нещодавно запропоновані рецепти"
+
+#: recipes/templates/recipes/recipes.html:129
+msgid "No recently suggested"
+msgstr "Нещодавно не було запропоновано"
+
+#: recipes/templates/recipes/recipes.html:135
+msgid "Saved Recipes"
+msgstr "Збережені рецепти"
+
+#: recipes/templates/recipes/recipes.html:152
+msgid "Missing Items"
+msgstr "Відсутні предмети"
+
+#: recipes/templates/recipes/recipes.html:192
+msgid "Delete Recipe"
+msgstr "Видалити рецепт"
+
+#: recipes/templates/recipes/recipes.html:204
+msgid "No Saved Recipes"
+msgstr "Немає збережених рецептів"
+
+#: savor/settings.py:138
+msgid "Arabic"
+msgstr "Арабська"
+
+#: savor/settings.py:139
+msgid "Bulgarian"
+msgstr "Болгарська"
+
+#: savor/settings.py:140
+msgid "Chinese"
+msgstr "Китайська"
+
+#: savor/settings.py:141
+msgid "Czech"
+msgstr "Чеська"
+
+#: savor/settings.py:142
+msgid "Danish"
+msgstr "Данська"
+
+#: savor/settings.py:143
+msgid "Dutch"
+msgstr "Голландська"
+
+#: savor/settings.py:144
+msgid "Estonian"
+msgstr "естонська"
+
+#: savor/settings.py:145
+msgid "Finnish"
+msgstr "Фінська"
+
+#: savor/settings.py:146
+msgid "French"
+msgstr "Французька"
+
+#: savor/settings.py:147
+msgid "German"
+msgstr "Німецька"
+
+#: savor/settings.py:148
+msgid "Greek"
+msgstr "Грецька"
+
+#: savor/settings.py:149
+msgid "Hebrew"
+msgstr "Іврит"
+
+#: savor/settings.py:150
+msgid "Hungarian"
+msgstr "угорська"
+
+#: savor/settings.py:151
+msgid "Indonesian"
+msgstr "Індонезійська"
+
+#: savor/settings.py:152
+msgid "Italian"
+msgstr "Італійська"
+
+#: savor/settings.py:153
+msgid "Japanese"
+msgstr "Японський"
+
+#: savor/settings.py:154
+msgid "Korean"
+msgstr "Корейська"
+
+#: savor/settings.py:155
+msgid "Latvian"
+msgstr "латвійська"
+
+#: savor/settings.py:156
+msgid "Lithuanian"
+msgstr "Литовська"
+
+#: savor/settings.py:157
+msgid "Norwegian Bokmål"
+msgstr "Норвезький Бокмоль"
+
+#: savor/settings.py:158
+msgid "Polish"
+msgstr "Польська"
+
+#: savor/settings.py:159
+msgid "Portuguese"
+msgstr "Португальська"
+
+#: savor/settings.py:160
+msgid "Romanian"
+msgstr "Румунська"
+
+#: savor/settings.py:161
+msgid "Russian"
+msgstr "Російська мова"
+
+#: savor/settings.py:162
+msgid "Slovak"
+msgstr "Словацька"
+
+#: savor/settings.py:163
+msgid "Slovenian"
+msgstr "Словенська"
+
+#: savor/settings.py:164
+msgid "Spanish"
+msgstr "Іспанська"
+
+#: savor/settings.py:165
+msgid "Swedish"
+msgstr "Шведська"
+
+#: savor/settings.py:166
+msgid "Thai"
+msgstr "Тайська"
+
+#: savor/settings.py:167
+msgid "Turkish"
+msgstr "Турецька"
+
+#: savor/settings.py:168
+msgid "Ukrainian"
+msgstr "Українська"
+
+#: savor/settings.py:169
+msgid "Vietnamese"
+msgstr "В'єтнамці"
+
+#: templates/base.html:22
+msgid "Welcome"
+msgstr "Ласкаво просимо."
+
+#: templates/base.html:29
+msgid "Search Product by ingredient"
+msgstr "Пошук продукту за інгредієнтом"
+
+#: templates/base.html:32
+msgid "Search Product by Barcode"
+msgstr "Пошук товару за штрих-кодом"
+
+#: templates/base.html:37
+msgid "Scan"
+msgstr "Сканування."
+
+#: templates/base.html:56
+msgid "Home"
+msgstr "Головна"
+
+#: templates/base.html:79
+msgid "Settings"
+msgstr "Налаштування"
+
+#: templates/base.html:85
+msgid "Account"
+msgstr "Обліковий запис"
+
+#: templates/base.html:94
+msgid "Log Out"
+msgstr "Вийти з системи"
+
+#: templates/base.html:107
+msgid "Log On"
+msgstr "Увійдіть"
+
+#: templates/base.html:113 users/templates/users/register.html:57
+msgid "Register"
+msgstr "Зареєструватися"
+
+#: templates/base.html:123
+msgid "Stop Scanning"
+msgstr "Зупинити сканування"
+
+#: templates/registration/login.html:5 templates/registration/login.html:9
+#: templates/registration/login.html:37
+msgid "Log In"
+msgstr "Увійдіть в систему"
+
+#: templates/registration/login.html:40
+#, python-format
+msgid "Don't have an account? <a href=\"%('register_url')s\">Register here</a>."
+msgstr ""
+"Не маєте облікового запису? <a href=\"%('register_url')s\">Реєструйтеся "
+"тут</a>."
+
+#: templates/registration/login.html:41
+msgid "Forgot password?"
+msgstr "Забули пароль?"
+
+#: templates/registration/logout.html:4 templates/registration/logout.html:7
+msgid "Logged Out"
+msgstr "Вийшов з системи"
+
+#: templates/registration/logout.html:8
+msgid "You have been successfully logged out."
+msgstr "Ви успішно увійшли в систему."
+
+#: templates/registration/logout.html:9
+msgid "Log in again"
+msgstr "Увійдіть ще раз"
+
+#: templates/registration/password_change_done.html:6
+msgid "Password Changed Successfully"
+msgstr "Пароль успішно змінено"
+
+#: templates/registration/password_change_done.html:12
+#: templates/registration/password_reset_complete.html:11
+msgid "Password Changed Successfully!"
+msgstr "Пароль успішно змінено!"
+
+#: templates/registration/password_change_done.html:14
+msgid "Your password has been changed."
+msgstr "Ваш пароль було змінено."
+
+#: templates/registration/password_change_done.html:16
+msgid "Back to Settings"
+msgstr "Повернутися до налаштувань"
+
+#: templates/registration/password_change_form.html:5
+#: templates/registration/password_change_form.html:38
+#: templates/registration/password_reset_confirm.html:28
+#: users/templates/users/account_settings.html:51
+msgid "Change Password"
+msgstr "Змінити пароль"
+
+#: templates/registration/password_change_form.html:11
+msgid "Change Your Password"
+msgstr "Змінити пароль"
+
+#: templates/registration/password_change_form.html:23
+msgid "Old Password"
+msgstr "Старий пароль"
+
+#: templates/registration/password_change_form.html:28
+#: templates/registration/password_reset_confirm.html:20
+msgid "New Password"
+msgstr "Новий пароль"
+
+#: templates/registration/password_change_form.html:33
+#: templates/registration/password_reset_confirm.html:24
+msgid "Confirm New Password"
+msgstr "Підтвердити новий пароль"
+
+#: templates/registration/password_reset_complete.html:5
+msgid "Password Changed"
+msgstr "Пароль змінено"
+
+#: templates/registration/password_reset_complete.html:13
+msgid ""
+"Your password has been set. You can now go ahead and log in with your new "
+"password."
+msgstr "Ваш пароль встановлено. Тепер ви можете увійти з новим паролем."
+
+#: templates/registration/password_reset_confirm.html:12
+msgid "Set a New Password"
+msgstr "Встановіть новий пароль"
+
+#: templates/registration/password_reset_confirm.html:32
+msgid "Invalid Link"
+msgstr "Невірне посилання"
+
+#: templates/registration/password_reset_confirm.html:34
+msgid ""
+"The password reset link was invalid, possibly because it has already been "
+"used. Please request a new password reset."
+msgstr ""
+"Посилання для скидання пароля було недійсним, можливо, тому що його вже було"
+" використано. Будь ласка, надішліть запит на зміну пароля."
+
+#: templates/registration/password_reset_done.html:4
+msgid "Password Reset Sent"
+msgstr "Скидання пароля відправлено"
+
+#: templates/registration/password_reset_done.html:10
+msgid "Check Your Inbox"
+msgstr "Перевірте свою поштову скриньку"
+
+#: templates/registration/password_reset_done.html:12
+msgid ""
+"We've emailed you instructions for setting your password. If an account "
+"exists with the email you entered, you should receive them shortly."
+msgstr ""
+"Ми надіслали вам на електронну пошту інструкції щодо встановлення пароля. "
+"Якщо обліковий запис з введеною вами електронною адресою існує, ви отримаєте"
+" їх найближчим часом."
+
+#: templates/registration/password_reset_done.html:13
+msgid ""
+"If you don't receive an email, please make sure you've entered the email "
+"address you registered with, and check your spam folder."
+msgstr ""
+"Якщо ви не отримали листа, будь ласка, переконайтеся, що ви ввели адресу "
+"електронної пошти, на яку зареєструвалися, і перевірте папку \"Спам\"."
+
+#: templates/registration/password_reset_form.html:8
+msgid "Forgot Your Password?"
+msgstr "Забули пароль?"
+
+#: templates/registration/password_reset_form.html:9
+msgid "Enter your email address below to receive a password reset link."
+msgstr ""
+"Введіть свою електронну адресу нижче, щоб отримати посилання для скидання "
+"пароля."
+
+#: templates/registration/password_reset_form.html:17
+msgid "Reset Password"
+msgstr "Скинути пароль"
+
+#: users/forms.py:12
+msgid "Password"
+msgstr "Пароль"
+
+#: users/forms.py:16
+msgid ""
+"Your password can't be too similar to your other personal information. It "
+"must contain at least 8 characters. It can't be a commonly used password. It"
+" can't be entirely numeric."
+msgstr ""
+"Ваш пароль не повинен бути занадто схожим на іншу вашу особисту інформацію. "
+"Він повинен містити щонайменше 8 символів. Це не може бути загальновживаний "
+"пароль. Він не може бути повністю цифровим."
+
+#: users/forms.py:23
+msgid "Password confirmation"
+msgstr "Підтвердження пароля"
+
+#: users/forms.py:26
+msgid "Enter the same password as before, for verification."
+msgstr "Введіть той самий пароль, що й раніше, для підтвердження."
+
+#: users/forms.py:34 users/templates/users/account_settings.html:44
+msgid "Username"
+msgstr "Ім'я користувача"
+
+#: users/forms.py:35 users/templates/users/account_settings.html:45
+msgid "Email"
+msgstr "Електронна пошта"
+
+#: users/forms.py:39
+msgid "Required. 150 characters or fewer. Letters, digits and @/./+/-/_ only."
+msgstr ""
+"Обов'язково. 150 символів або менше. Тільки літери, цифри та @/./+/-/_."
+
+#: users/forms.py:65 users/templates/users/account_settings.html:68
+msgid "Language Preference"
+msgstr "Мовні уподобання"
+
+#: users/forms.py:66 users/templates/users/account_settings.html:63
+msgid "Country"
+msgstr "Країна"
+
+#: users/forms.py:67 users/templates/users/account_settings.html:90
+msgid "Allergens"
+msgstr "Алергени"
+
+#: users/forms.py:68 users/templates/users/account_settings.html:78
+msgid "Dietary Requirements"
+msgstr "Дієтичні вимоги"
+
+#: users/forms.py:69
+msgid "Enable scan-to-add in pantry"
+msgstr "Ввімкнути сканування для додавання в комору"
+
+#: users/forms.py:70
+msgid "Display Nutri-Score on products"
+msgstr "Показати Nutri-Score на продуктах"
+
+#: users/forms.py:71
+msgid "Display Eco-Score on products"
+msgstr "Відображати екологічний бал на продуктах"
+
+#: users/forms.py:72
+msgid "Prioritise local results in search"
+msgstr "Надавайте пріоритет локальним результатам у пошуку"
+
+#: users/templates/users/account_settings.html:6
+msgid "Account Settings"
+msgstr "Налаштування облікового запису"
+
+#: users/templates/users/account_settings.html:19
+msgid "Warning!"
+msgstr "Обережно!"
+
+#: users/templates/users/account_settings.html:19
+msgid "You are about to delete your account permanently."
+msgstr "Ви збираєтеся видалити свій обліковий запис назавжди."
+
+#: users/templates/users/account_settings.html:22
+msgid ""
+"\n"
+"          Doing this will permanently remove all account data including your\n"
+"          pantry, saved recipes, and favourites. Are you sure you want to\n"
+"          continue?\n"
+"          "
+msgstr ""
+"\n"
+"          Це призведе до остаточного видалення всіх даних акаунта, включно з вашими\n"
+"          комору, збережені рецепти та улюблені страви. Ви впевнені, що хочете\n"
+"          продовжити?\n"
+"          "
+
+#: users/templates/users/account_settings.html:29
+msgid "I'm sure,"
+msgstr "Не сумніваюся,"
+
+#: users/templates/users/account_settings.html:30
+#: users/templates/users/account_settings.html:52
+msgid "Delete Account"
+msgstr "Видалити обліковий запис"
+
+#: users/templates/users/account_settings.html:40
+msgid "Account management"
+msgstr "Управління рахунками"
+
+#: users/templates/users/account_settings.html:46
+msgid "Date Joined"
+msgstr "Дата приєднання"
+
+#: users/templates/users/account_settings.html:57
+msgid "User preferences"
+msgstr "Налаштування користувача"
+
+#: users/templates/users/account_settings.html:115
+msgid "Save Settings"
+msgstr "Зберегти налаштування"
+
+#: users/templates/users/register.html:60
+#, python-format
+msgid "Already have an account? <a href=\"%(login_url)s\">Log in here</a>."
+msgstr "Вже маєте обліковий запис? <a href=\"%(login_url)s\">Увійдіть тут</a>."

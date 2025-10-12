@@ -1,0 +1,656 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-10-12 14:39+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=4; plural=(n % 1 == 0 && n == 1 ? 0 : n % 1 == 0 && n >= 2 && n <= 4 ? 1 : n % 1 != 0 ? 2: 3);\n"
+
+#: pantry/templates/pantry/index.html:17
+msgid "Advanced Search"
+msgstr "Rozšírené vyhľadávanie"
+
+#: pantry/templates/pantry/index.html:25
+msgid "Product Name"
+msgstr "Názov produktu"
+
+#: pantry/templates/pantry/index.html:29
+msgid "Country of Origin"
+msgstr "Krajina pôvodu"
+
+#: pantry/templates/pantry/index.html:31
+msgid "Select a country..."
+msgstr "Vyberte krajinu..."
+
+#: pantry/templates/pantry/index.html:35
+msgid "Category"
+msgstr "Kategória"
+
+#: pantry/templates/pantry/index.html:37
+msgid "Select a category..."
+msgstr "Vyberte kategóriu..."
+
+#: pantry/templates/pantry/index.html:41
+msgid "Brand"
+msgstr "Značka"
+
+#: pantry/templates/pantry/index.html:43
+msgid "Select a brand..."
+msgstr "Vyberte si značku..."
+
+#: pantry/templates/pantry/index.html:48
+msgid "Clear Filters"
+msgstr "Vymazať filtre"
+
+#: pantry/templates/pantry/index.html:51 templates/base.html:34
+msgid "Search"
+msgstr "Vyhľadávanie"
+
+#: pantry/templates/pantry/index.html:66
+msgid "Product Search Results"
+msgstr "Výsledky vyhľadávania produktov"
+
+#: pantry/templates/pantry/index.html:70
+msgid "Enter a search query to find products."
+msgstr "Zadajte vyhľadávaciu požiadavku a vyhľadajte produkty."
+
+#: pantry/templates/pantry/index.html:73
+msgid ""
+"Can't find what you're looking for? Try <a href=\"#\" data-bs-"
+"toggle=\"modal\" data-bs-target=\"#exampleModal\">Advanced Search</a>."
+msgstr ""
+"Nemôžete nájsť, čo hľadáte? Skúste <a href=\"#\" data-bs-toggle=\"modal\" "
+"data-bs-target=\"#exampleModal\">Rozšírené vyhľadávanie</a>."
+
+#: pantry/templates/pantry/index.html:82
+msgid "Favourites"
+msgstr "Obľúbené stránky"
+
+#: pantry/templates/pantry/index.html:101
+#: pantry/templates/pantry/pantry.html:71
+msgid "WARNING"
+msgstr "VAROVANIE"
+
+#: pantry/templates/pantry/index.html:101
+#: pantry/templates/pantry/pantry.html:71
+msgid "Contains user-specified allergens:"
+msgstr "Obsahuje alergény špecifikované používateľom:"
+
+#: pantry/templates/pantry/index.html:110
+#: pantry/templates/pantry/pantry.html:80
+msgid "POSSIBLE MISMATCH"
+msgstr "MOŽNÝ NESÚLAD"
+
+#: pantry/templates/pantry/index.html:110
+#: pantry/templates/pantry/pantry.html:80
+msgid "Missing dietary requirements:"
+msgstr "Chýbajúce požiadavky na stravu:"
+
+#: pantry/templates/pantry/index.html:121
+msgid "Brands"
+msgstr "Značky"
+
+#: pantry/templates/pantry/index.html:122
+msgid "Code"
+msgstr "Kód"
+
+#: pantry/templates/pantry/index.html:129
+msgid "item"
+msgstr "položka"
+
+#: pantry/templates/pantry/index.html:136
+msgid "Add to Pantry"
+msgstr "Pridať do špajze"
+
+#: pantry/templates/pantry/index.html:140
+msgid "Remove Favourite"
+msgstr "Odstrániť obľúbené"
+
+#: pantry/templates/pantry/index.html:148
+msgid "You haven't favourited any products yet. Start exploring today!"
+msgstr "Zatiaľ ste neobľúbili žiadne produkty. Začnite skúmať ešte dnes!"
+
+#: pantry/templates/pantry/pantry.html:5 templates/base.html:63
+msgid "Pantry"
+msgstr "Špajza"
+
+#: pantry/templates/pantry/pantry.html:13
+msgid "Pantry Health & Eco Summary"
+msgstr "Zhrnutie o zdraví a ekológii v špajze"
+
+#: pantry/templates/pantry/pantry.html:20
+msgid "Nutri-Grade:"
+msgstr "Nutri-Grade:"
+
+#: pantry/templates/pantry/pantry.html:27
+msgid "Eco-Grade:"
+msgstr "Ekologická trieda:"
+
+#: pantry/templates/pantry/pantry.html:34
+msgid "Scores are hidden or unavailable. Check your user settings."
+msgstr ""
+"Skóre je skryté alebo nedostupné. Skontrolujte nastavenia používateľa."
+
+#: pantry/templates/pantry/pantry.html:44
+msgid "Your Pantry Items"
+msgstr "Položky vašej špajze"
+
+#: pantry/templates/pantry/pantry.html:62
+#: pantry/templates/pantry/pantry.html:64
+msgid "Product Image"
+msgstr "Obrázok produktu"
+
+#: pantry/templates/pantry/pantry.html:67
+msgid "No Name"
+msgstr "Žiadne meno"
+
+#: pantry/templates/pantry/pantry.html:91
+msgid "Quantity:"
+msgstr "Množstvo:"
+
+#: pantry/templates/pantry/pantry.html:94
+msgid "Product Size:"
+msgstr "Veľkosť výrobku:"
+
+#: pantry/templates/pantry/pantry.html:100
+msgid "Expires:"
+msgstr "Platnosť končí:"
+
+#: pantry/templates/pantry/pantry.html:116
+msgid "Your pantry is empty! Add some products to get started."
+msgstr "Vaša špajza je prázdna! Pridajte niekoľko produktov a začnite."
+
+#: recipes/templates/recipes/recipes.html:6 templates/base.html:70
+msgid "Recipes"
+msgstr "Recepty"
+
+#: recipes/templates/recipes/recipes.html:13
+msgid "New Recipe Suggestions"
+msgstr "Nové návrhy receptov"
+
+#: recipes/templates/recipes/recipes.html:40
+#: recipes/templates/recipes/recipes.html:101
+#: recipes/templates/recipes/recipes.html:163
+msgid "Ingredients"
+msgstr "Zložky"
+
+#: recipes/templates/recipes/recipes.html:48
+#: recipes/templates/recipes/recipes.html:109
+#: recipes/templates/recipes/recipes.html:181
+msgid "Instructions"
+msgstr "Pokyny"
+
+#: recipes/templates/recipes/recipes.html:59
+#: recipes/templates/recipes/recipes.html:120
+msgid "Save Recipe"
+msgstr "Uložiť recept"
+
+#: recipes/templates/recipes/recipes.html:68
+msgid "No new suggestions"
+msgstr "Žiadne nové návrhy"
+
+#: recipes/templates/recipes/recipes.html:70
+msgid "Recipes still being generated"
+msgstr "Recepty sa stále generujú"
+
+#: recipes/templates/recipes/recipes.html:75
+msgid "Recently Suggested Recipes"
+msgstr "Nedávno navrhnuté recepty"
+
+#: recipes/templates/recipes/recipes.html:129
+msgid "No recently suggested"
+msgstr "Žiadne nedávno navrhnuté"
+
+#: recipes/templates/recipes/recipes.html:135
+msgid "Saved Recipes"
+msgstr "Uložené recepty"
+
+#: recipes/templates/recipes/recipes.html:152
+msgid "Missing Items"
+msgstr "Chýbajúce položky"
+
+#: recipes/templates/recipes/recipes.html:192
+msgid "Delete Recipe"
+msgstr "Odstrániť recept"
+
+#: recipes/templates/recipes/recipes.html:204
+msgid "No Saved Recipes"
+msgstr "Žiadne uložené recepty"
+
+#: savor/settings.py:138
+msgid "Arabic"
+msgstr "Arabčina"
+
+#: savor/settings.py:139
+msgid "Bulgarian"
+msgstr "Bulharský"
+
+#: savor/settings.py:140
+msgid "Chinese"
+msgstr "Čínsky"
+
+#: savor/settings.py:141
+msgid "Czech"
+msgstr "Český"
+
+#: savor/settings.py:142
+msgid "Danish"
+msgstr "Dánsky"
+
+#: savor/settings.py:143
+msgid "Dutch"
+msgstr "Holandský"
+
+#: savor/settings.py:144
+msgid "Estonian"
+msgstr "Estónčina"
+
+#: savor/settings.py:145
+msgid "Finnish"
+msgstr "Fínsky"
+
+#: savor/settings.py:146
+msgid "French"
+msgstr "Francúzsky"
+
+#: savor/settings.py:147
+msgid "German"
+msgstr "Nemčina"
+
+#: savor/settings.py:148
+msgid "Greek"
+msgstr "Grécky"
+
+#: savor/settings.py:149
+msgid "Hebrew"
+msgstr "Hebrejčina"
+
+#: savor/settings.py:150
+msgid "Hungarian"
+msgstr "Maďarský"
+
+#: savor/settings.py:151
+msgid "Indonesian"
+msgstr "Indonézsky"
+
+#: savor/settings.py:152
+msgid "Italian"
+msgstr "Taliansky"
+
+#: savor/settings.py:153
+msgid "Japanese"
+msgstr "Japonský"
+
+#: savor/settings.py:154
+msgid "Korean"
+msgstr "Kórejský"
+
+#: savor/settings.py:155
+msgid "Latvian"
+msgstr "Lotyšský"
+
+#: savor/settings.py:156
+msgid "Lithuanian"
+msgstr "Litovský"
+
+#: savor/settings.py:157
+msgid "Norwegian Bokmål"
+msgstr "Nórsky jazyk Bokmål"
+
+#: savor/settings.py:158
+msgid "Polish"
+msgstr "Poľský"
+
+#: savor/settings.py:159
+msgid "Portuguese"
+msgstr "Portugalčina"
+
+#: savor/settings.py:160
+msgid "Romanian"
+msgstr "Rumunský"
+
+#: savor/settings.py:161
+msgid "Russian"
+msgstr "Ruský"
+
+#: savor/settings.py:162
+msgid "Slovak"
+msgstr "Slovenská"
+
+#: savor/settings.py:163
+msgid "Slovenian"
+msgstr "Slovinčina"
+
+#: savor/settings.py:164
+msgid "Spanish"
+msgstr "Španielčina"
+
+#: savor/settings.py:165
+msgid "Swedish"
+msgstr "Švédsky"
+
+#: savor/settings.py:166
+msgid "Thai"
+msgstr "Thai"
+
+#: savor/settings.py:167
+msgid "Turkish"
+msgstr "Turecký"
+
+#: savor/settings.py:168
+msgid "Ukrainian"
+msgstr "Ukrajinský"
+
+#: savor/settings.py:169
+msgid "Vietnamese"
+msgstr "Vietnamci"
+
+#: templates/base.html:22
+msgid "Welcome"
+msgstr "Vitajte na"
+
+#: templates/base.html:29
+msgid "Search Product by ingredient"
+msgstr "Vyhľadávanie produktu podľa zložky"
+
+#: templates/base.html:32
+msgid "Search Product by Barcode"
+msgstr "Vyhľadávanie produktu podľa čiarového kódu"
+
+#: templates/base.html:37
+msgid "Scan"
+msgstr "Skenovanie"
+
+#: templates/base.html:56
+msgid "Home"
+msgstr "Domov"
+
+#: templates/base.html:79
+msgid "Settings"
+msgstr "Nastavenia"
+
+#: templates/base.html:85
+msgid "Account"
+msgstr "Účet"
+
+#: templates/base.html:94
+msgid "Log Out"
+msgstr "Odhlásenie"
+
+#: templates/base.html:107
+msgid "Log On"
+msgstr "Prihlásenie"
+
+#: templates/base.html:113 users/templates/users/register.html:57
+msgid "Register"
+msgstr "Registrácia"
+
+#: templates/base.html:123
+msgid "Stop Scanning"
+msgstr "Zastavenie skenovania"
+
+#: templates/registration/login.html:5 templates/registration/login.html:9
+#: templates/registration/login.html:37
+msgid "Log In"
+msgstr "Prihlásenie"
+
+#: templates/registration/login.html:40
+#, python-format
+msgid "Don't have an account? <a href=\"%('register_url')s\">Register here</a>."
+msgstr "Nemáte účet? <a href=\"%('register_url')s\">Zaregistrujte sa tu</a>."
+
+#: templates/registration/login.html:41
+msgid "Forgot password?"
+msgstr "Zabudli ste heslo?"
+
+#: templates/registration/logout.html:4 templates/registration/logout.html:7
+msgid "Logged Out"
+msgstr "Odhlásený"
+
+#: templates/registration/logout.html:8
+msgid "You have been successfully logged out."
+msgstr "Boli ste úspešne odhlásení."
+
+#: templates/registration/logout.html:9
+msgid "Log in again"
+msgstr "Opätovné prihlásenie"
+
+#: templates/registration/password_change_done.html:6
+msgid "Password Changed Successfully"
+msgstr "Heslo bolo úspešne zmenené"
+
+#: templates/registration/password_change_done.html:12
+#: templates/registration/password_reset_complete.html:11
+msgid "Password Changed Successfully!"
+msgstr "Heslo bolo úspešne zmenené!"
+
+#: templates/registration/password_change_done.html:14
+msgid "Your password has been changed."
+msgstr "Vaše heslo bolo zmenené."
+
+#: templates/registration/password_change_done.html:16
+msgid "Back to Settings"
+msgstr "Späť na nastavenia"
+
+#: templates/registration/password_change_form.html:5
+#: templates/registration/password_change_form.html:38
+#: templates/registration/password_reset_confirm.html:28
+#: users/templates/users/account_settings.html:51
+msgid "Change Password"
+msgstr "Zmena hesla"
+
+#: templates/registration/password_change_form.html:11
+msgid "Change Your Password"
+msgstr "Zmena hesla"
+
+#: templates/registration/password_change_form.html:23
+msgid "Old Password"
+msgstr "Staré heslo"
+
+#: templates/registration/password_change_form.html:28
+#: templates/registration/password_reset_confirm.html:20
+msgid "New Password"
+msgstr "Nové heslo"
+
+#: templates/registration/password_change_form.html:33
+#: templates/registration/password_reset_confirm.html:24
+msgid "Confirm New Password"
+msgstr "Potvrdenie nového hesla"
+
+#: templates/registration/password_reset_complete.html:5
+msgid "Password Changed"
+msgstr "Zmena hesla"
+
+#: templates/registration/password_reset_complete.html:13
+msgid ""
+"Your password has been set. You can now go ahead and log in with your new "
+"password."
+msgstr ""
+"Vaše heslo bolo nastavené. Teraz sa môžete prihlásiť pomocou nového hesla."
+
+#: templates/registration/password_reset_confirm.html:12
+msgid "Set a New Password"
+msgstr "Nastavenie nového hesla"
+
+#: templates/registration/password_reset_confirm.html:32
+msgid "Invalid Link"
+msgstr "Neplatné prepojenie"
+
+#: templates/registration/password_reset_confirm.html:34
+msgid ""
+"The password reset link was invalid, possibly because it has already been "
+"used. Please request a new password reset."
+msgstr ""
+"Odkaz na obnovenie hesla bol neplatný, pravdepodobne preto, že už bol "
+"použitý. Požiadajte o nové obnovenie hesla."
+
+#: templates/registration/password_reset_done.html:4
+msgid "Password Reset Sent"
+msgstr "Odoslané obnovenie hesla"
+
+#: templates/registration/password_reset_done.html:10
+msgid "Check Your Inbox"
+msgstr "Skontrolujte svoju schránku"
+
+#: templates/registration/password_reset_done.html:12
+msgid ""
+"We've emailed you instructions for setting your password. If an account "
+"exists with the email you entered, you should receive them shortly."
+msgstr ""
+"Pokyny na nastavenie hesla sme vám poslali e-mailom. Ak existuje účet s "
+"e-mailom, ktorý ste zadali, mali by ste ich čoskoro dostať."
+
+#: templates/registration/password_reset_done.html:13
+msgid ""
+"If you don't receive an email, please make sure you've entered the email "
+"address you registered with, and check your spam folder."
+msgstr ""
+"Ak nedostanete e-mail, uistite sa, že ste zadali e-mailovú adresu, na ktorú "
+"ste sa zaregistrovali, a skontrolujte priečinok so spamom."
+
+#: templates/registration/password_reset_form.html:8
+msgid "Forgot Your Password?"
+msgstr "Zabudli ste heslo?"
+
+#: templates/registration/password_reset_form.html:9
+msgid "Enter your email address below to receive a password reset link."
+msgstr ""
+"Zadajte svoju e-mailovú adresu nižšie a dostanete odkaz na obnovenie hesla."
+
+#: templates/registration/password_reset_form.html:17
+msgid "Reset Password"
+msgstr "Obnovenie hesla"
+
+#: users/forms.py:12
+msgid "Password"
+msgstr "Heslo"
+
+#: users/forms.py:16
+msgid ""
+"Your password can't be too similar to your other personal information. It "
+"must contain at least 8 characters. It can't be a commonly used password. It"
+" can't be entirely numeric."
+msgstr ""
+"Heslo sa nesmie príliš podobať vašim ostatným osobným údajom. Musí obsahovať"
+" aspoň 8 znakov. Nemôže to byť bežne používané heslo. Nemôže byť úplne "
+"číselné."
+
+#: users/forms.py:23
+msgid "Password confirmation"
+msgstr "Potvrdenie hesla"
+
+#: users/forms.py:26
+msgid "Enter the same password as before, for verification."
+msgstr "Na overenie zadajte rovnaké heslo ako predtým."
+
+#: users/forms.py:34 users/templates/users/account_settings.html:44
+msgid "Username"
+msgstr "Používateľské meno"
+
+#: users/forms.py:35 users/templates/users/account_settings.html:45
+msgid "Email"
+msgstr "E-mail"
+
+#: users/forms.py:39
+msgid "Required. 150 characters or fewer. Letters, digits and @/./+/-/_ only."
+msgstr "Požadované. 150 znakov alebo menej. Len písmená, číslice a @/./+/-/_."
+
+#: users/forms.py:65 users/templates/users/account_settings.html:68
+msgid "Language Preference"
+msgstr "Preferencia jazyka"
+
+#: users/forms.py:66 users/templates/users/account_settings.html:63
+msgid "Country"
+msgstr "Krajina"
+
+#: users/forms.py:67 users/templates/users/account_settings.html:90
+msgid "Allergens"
+msgstr "Alergény"
+
+#: users/forms.py:68 users/templates/users/account_settings.html:78
+msgid "Dietary Requirements"
+msgstr "Požiadavky na stravu"
+
+#: users/forms.py:69
+msgid "Enable scan-to-add in pantry"
+msgstr "Povolenie funkcie skenovania na pridanie v špajzi"
+
+#: users/forms.py:70
+msgid "Display Nutri-Score on products"
+msgstr "Zobrazenie Nutri-Score na výrobkoch"
+
+#: users/forms.py:71
+msgid "Display Eco-Score on products"
+msgstr "Zobrazenie ekologického skóre na produktoch"
+
+#: users/forms.py:72
+msgid "Prioritise local results in search"
+msgstr "Uprednostňovanie miestnych výsledkov vo vyhľadávaní"
+
+#: users/templates/users/account_settings.html:6
+msgid "Account Settings"
+msgstr "Nastavenia účtu"
+
+#: users/templates/users/account_settings.html:19
+msgid "Warning!"
+msgstr "Varovanie!"
+
+#: users/templates/users/account_settings.html:19
+msgid "You are about to delete your account permanently."
+msgstr "Chystáte sa natrvalo odstrániť svoje konto."
+
+#: users/templates/users/account_settings.html:22
+msgid ""
+"\n"
+"          Doing this will permanently remove all account data including your\n"
+"          pantry, saved recipes, and favourites. Are you sure you want to\n"
+"          continue?\n"
+"          "
+msgstr ""
+"\n"
+"          Týmto postupom sa natrvalo odstránia všetky údaje o účte vrátane vašich\n"
+"          špajze, uložených receptov a obľúbených položiek. Ste si istí, že chcete\n"
+"          pokračovať?\n"
+"          "
+
+#: users/templates/users/account_settings.html:29
+msgid "I'm sure,"
+msgstr "Som si istý,"
+
+#: users/templates/users/account_settings.html:30
+#: users/templates/users/account_settings.html:52
+msgid "Delete Account"
+msgstr "Odstrániť účet"
+
+#: users/templates/users/account_settings.html:40
+msgid "Account management"
+msgstr "Správa účtu"
+
+#: users/templates/users/account_settings.html:46
+msgid "Date Joined"
+msgstr "Dátum pripojenia"
+
+#: users/templates/users/account_settings.html:57
+msgid "User preferences"
+msgstr "Predvoľby používateľa"
+
+#: users/templates/users/account_settings.html:115
+msgid "Save Settings"
+msgstr "Uložiť nastavenia"
+
+#: users/templates/users/register.html:60
+#, python-format
+msgid "Already have an account? <a href=\"%(login_url)s\">Log in here</a>."
+msgstr "Už máte účet? <a href=\"%(login_url)s\">Prihláste sa tu</a>."

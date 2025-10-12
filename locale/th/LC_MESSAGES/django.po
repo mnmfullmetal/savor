@@ -1,0 +1,653 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-10-12 14:39+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#: pantry/templates/pantry/index.html:17
+msgid "Advanced Search"
+msgstr "การค้นหาขั้นสูง"
+
+#: pantry/templates/pantry/index.html:25
+msgid "Product Name"
+msgstr "ชื่อสินค้า"
+
+#: pantry/templates/pantry/index.html:29
+msgid "Country of Origin"
+msgstr "ประเทศต้นทาง"
+
+#: pantry/templates/pantry/index.html:31
+msgid "Select a country..."
+msgstr "เลือกประเทศ..."
+
+#: pantry/templates/pantry/index.html:35
+msgid "Category"
+msgstr "หมวดหมู่"
+
+#: pantry/templates/pantry/index.html:37
+msgid "Select a category..."
+msgstr "เลือกหมวดหมู่..."
+
+#: pantry/templates/pantry/index.html:41
+msgid "Brand"
+msgstr "แบรนด์"
+
+#: pantry/templates/pantry/index.html:43
+msgid "Select a brand..."
+msgstr "เลือกแบรนด์..."
+
+#: pantry/templates/pantry/index.html:48
+msgid "Clear Filters"
+msgstr "ล้างตัวกรอง"
+
+#: pantry/templates/pantry/index.html:51 templates/base.html:34
+msgid "Search"
+msgstr "ค้นหา"
+
+#: pantry/templates/pantry/index.html:66
+msgid "Product Search Results"
+msgstr "ผลการค้นหาสินค้า"
+
+#: pantry/templates/pantry/index.html:70
+msgid "Enter a search query to find products."
+msgstr "ป้อนคำค้นหาเพื่อค้นหาสินค้า"
+
+#: pantry/templates/pantry/index.html:73
+msgid ""
+"Can't find what you're looking for? Try <a href=\"#\" data-bs-"
+"toggle=\"modal\" data-bs-target=\"#exampleModal\">Advanced Search</a>."
+msgstr ""
+"ไม่พบสิ่งที่คุณกำลังมองหาใช่ไหม? ลอง <a href=\"#\" data-bs-toggle=\"modal\" "
+"data-bs-target=\"#exampleModal\">ค้นหาขั้นสูง</a>"
+
+#: pantry/templates/pantry/index.html:82
+msgid "Favourites"
+msgstr "รายการโปรด"
+
+#: pantry/templates/pantry/index.html:101
+#: pantry/templates/pantry/pantry.html:71
+msgid "WARNING"
+msgstr "คำเตือน"
+
+#: pantry/templates/pantry/index.html:101
+#: pantry/templates/pantry/pantry.html:71
+msgid "Contains user-specified allergens:"
+msgstr "มีสารก่อภูมิแพ้ที่ผู้ใช้ระบุ:"
+
+#: pantry/templates/pantry/index.html:110
+#: pantry/templates/pantry/pantry.html:80
+msgid "POSSIBLE MISMATCH"
+msgstr "อาจไม่ตรงกัน"
+
+#: pantry/templates/pantry/index.html:110
+#: pantry/templates/pantry/pantry.html:80
+msgid "Missing dietary requirements:"
+msgstr "ข้อกำหนดด้านอาหารที่ขาดหายไป:"
+
+#: pantry/templates/pantry/index.html:121
+msgid "Brands"
+msgstr "แบรนด์"
+
+#: pantry/templates/pantry/index.html:122
+msgid "Code"
+msgstr "โค้ด"
+
+#: pantry/templates/pantry/index.html:129
+msgid "item"
+msgstr "รายการ"
+
+#: pantry/templates/pantry/index.html:136
+msgid "Add to Pantry"
+msgstr "เพิ่มในตู้กับข้าว"
+
+#: pantry/templates/pantry/index.html:140
+msgid "Remove Favourite"
+msgstr "ลบรายการโปรด"
+
+#: pantry/templates/pantry/index.html:148
+msgid "You haven't favourited any products yet. Start exploring today!"
+msgstr "คุณยังไม่ได้เพิ่มสินค้าใด ๆ เป็นรายการโปรดของคุณ เริ่มสำรวจวันนี้เลย!"
+
+#: pantry/templates/pantry/pantry.html:5 templates/base.html:63
+msgid "Pantry"
+msgstr "ห้องเก็บของ"
+
+#: pantry/templates/pantry/pantry.html:13
+msgid "Pantry Health & Eco Summary"
+msgstr "สรุปสุขภาพและสิ่งแวดล้อมของห้องเก็บของ"
+
+#: pantry/templates/pantry/pantry.html:20
+msgid "Nutri-Grade:"
+msgstr "เกรดโภชนาการ:"
+
+#: pantry/templates/pantry/pantry.html:27
+msgid "Eco-Grade:"
+msgstr "เกรดรักษ์โลก:"
+
+#: pantry/templates/pantry/pantry.html:34
+msgid "Scores are hidden or unavailable. Check your user settings."
+msgstr "คะแนนถูกซ่อนหรือไม่มีให้ใช้งาน กรุณาตรวจสอบการตั้งค่าผู้ใช้ของคุณ"
+
+#: pantry/templates/pantry/pantry.html:44
+msgid "Your Pantry Items"
+msgstr "รายการของในตู้กับข้าวของคุณ"
+
+#: pantry/templates/pantry/pantry.html:62
+#: pantry/templates/pantry/pantry.html:64
+msgid "Product Image"
+msgstr "รูปภาพสินค้า"
+
+#: pantry/templates/pantry/pantry.html:67
+msgid "No Name"
+msgstr "ไม่มีชื่อ"
+
+#: pantry/templates/pantry/pantry.html:91
+msgid "Quantity:"
+msgstr "ปริมาณ:"
+
+#: pantry/templates/pantry/pantry.html:94
+msgid "Product Size:"
+msgstr "ขนาดสินค้า:"
+
+#: pantry/templates/pantry/pantry.html:100
+msgid "Expires:"
+msgstr "หมดอายุ:"
+
+#: pantry/templates/pantry/pantry.html:116
+msgid "Your pantry is empty! Add some products to get started."
+msgstr "ตู้กับข้าวของคุณว่างเปล่า! เพิ่มสินค้าบางอย่างเพื่อเริ่มต้น"
+
+#: recipes/templates/recipes/recipes.html:6 templates/base.html:70
+msgid "Recipes"
+msgstr "สูตรอาหาร"
+
+#: recipes/templates/recipes/recipes.html:13
+msgid "New Recipe Suggestions"
+msgstr "คำแนะนำสูตรอาหารใหม่"
+
+#: recipes/templates/recipes/recipes.html:40
+#: recipes/templates/recipes/recipes.html:101
+#: recipes/templates/recipes/recipes.html:163
+msgid "Ingredients"
+msgstr "ส่วนผสม"
+
+#: recipes/templates/recipes/recipes.html:48
+#: recipes/templates/recipes/recipes.html:109
+#: recipes/templates/recipes/recipes.html:181
+msgid "Instructions"
+msgstr "คำแนะนำ"
+
+#: recipes/templates/recipes/recipes.html:59
+#: recipes/templates/recipes/recipes.html:120
+msgid "Save Recipe"
+msgstr "บันทึกสูตร"
+
+#: recipes/templates/recipes/recipes.html:68
+msgid "No new suggestions"
+msgstr "ไม่มีข้อเสนอแนะใหม่"
+
+#: recipes/templates/recipes/recipes.html:70
+msgid "Recipes still being generated"
+msgstr "กำลังสร้างสูตรอาหารอยู่"
+
+#: recipes/templates/recipes/recipes.html:75
+msgid "Recently Suggested Recipes"
+msgstr "สูตรอาหารที่แนะนำล่าสุด"
+
+#: recipes/templates/recipes/recipes.html:129
+msgid "No recently suggested"
+msgstr "ไม่มีการแนะนำล่าสุด"
+
+#: recipes/templates/recipes/recipes.html:135
+msgid "Saved Recipes"
+msgstr "สูตรอาหารที่บันทึกไว้"
+
+#: recipes/templates/recipes/recipes.html:152
+msgid "Missing Items"
+msgstr "รายการที่หายไป"
+
+#: recipes/templates/recipes/recipes.html:192
+msgid "Delete Recipe"
+msgstr "ลบสูตรอาหาร"
+
+#: recipes/templates/recipes/recipes.html:204
+msgid "No Saved Recipes"
+msgstr "ไม่มีสูตรอาหารที่บันทึกไว้"
+
+#: savor/settings.py:138
+msgid "Arabic"
+msgstr "ภาษาอาหรับ"
+
+#: savor/settings.py:139
+msgid "Bulgarian"
+msgstr "บัลแกเรีย"
+
+#: savor/settings.py:140
+msgid "Chinese"
+msgstr "จีน"
+
+#: savor/settings.py:141
+msgid "Czech"
+msgstr "เช็ก"
+
+#: savor/settings.py:142
+msgid "Danish"
+msgstr "เดนิช"
+
+#: savor/settings.py:143
+msgid "Dutch"
+msgstr "ดัตช์"
+
+#: savor/settings.py:144
+msgid "Estonian"
+msgstr "เอสโตเนีย"
+
+#: savor/settings.py:145
+msgid "Finnish"
+msgstr "ฟินแลนด์"
+
+#: savor/settings.py:146
+msgid "French"
+msgstr "ฝรั่งเศส"
+
+#: savor/settings.py:147
+msgid "German"
+msgstr "เยอรมัน"
+
+#: savor/settings.py:148
+msgid "Greek"
+msgstr "กรีก"
+
+#: savor/settings.py:149
+msgid "Hebrew"
+msgstr "ฮีบรู"
+
+#: savor/settings.py:150
+msgid "Hungarian"
+msgstr "ฮังการี"
+
+#: savor/settings.py:151
+msgid "Indonesian"
+msgstr "อินโดนีเซีย"
+
+#: savor/settings.py:152
+msgid "Italian"
+msgstr "อิตาลี"
+
+#: savor/settings.py:153
+msgid "Japanese"
+msgstr "ญี่ปุ่น"
+
+#: savor/settings.py:154
+msgid "Korean"
+msgstr "เกาหลี"
+
+#: savor/settings.py:155
+msgid "Latvian"
+msgstr "ลัตเวีย"
+
+#: savor/settings.py:156
+msgid "Lithuanian"
+msgstr "ลิทัวเนีย"
+
+#: savor/settings.py:157
+msgid "Norwegian Bokmål"
+msgstr "นอร์เวย์ บ็อกมัล"
+
+#: savor/settings.py:158
+msgid "Polish"
+msgstr "การขัดเงา"
+
+#: savor/settings.py:159
+msgid "Portuguese"
+msgstr "โปรตุเกส"
+
+#: savor/settings.py:160
+msgid "Romanian"
+msgstr "โรมาเนียน"
+
+#: savor/settings.py:161
+msgid "Russian"
+msgstr "รัสเซีย"
+
+#: savor/settings.py:162
+msgid "Slovak"
+msgstr "สโลวัก"
+
+#: savor/settings.py:163
+msgid "Slovenian"
+msgstr "สโลวีเนีย"
+
+#: savor/settings.py:164
+msgid "Spanish"
+msgstr "สเปน"
+
+#: savor/settings.py:165
+msgid "Swedish"
+msgstr "สวีเดน"
+
+#: savor/settings.py:166
+msgid "Thai"
+msgstr "ไทย (Thai)"
+
+#: savor/settings.py:167
+msgid "Turkish"
+msgstr "ตุรกี"
+
+#: savor/settings.py:168
+msgid "Ukrainian"
+msgstr "ยูเครน"
+
+#: savor/settings.py:169
+msgid "Vietnamese"
+msgstr "เวียดนาม"
+
+#: templates/base.html:22
+msgid "Welcome"
+msgstr "ยินดีต้อนรับ"
+
+#: templates/base.html:29
+msgid "Search Product by ingredient"
+msgstr "ค้นหาผลิตภัณฑ์ตามส่วนผสม"
+
+#: templates/base.html:32
+msgid "Search Product by Barcode"
+msgstr "ค้นหาสินค้าด้วยบาร์โค้ด"
+
+#: templates/base.html:37
+msgid "Scan"
+msgstr "สแกน"
+
+#: templates/base.html:56
+msgid "Home"
+msgstr "หน้าแรก"
+
+#: templates/base.html:79
+msgid "Settings"
+msgstr "การตั้งค่า"
+
+#: templates/base.html:85
+msgid "Account"
+msgstr "บัญชี"
+
+#: templates/base.html:94
+msgid "Log Out"
+msgstr "ออกจากระบบ"
+
+#: templates/base.html:107
+msgid "Log On"
+msgstr "เข้าสู่ระบบ"
+
+#: templates/base.html:113 users/templates/users/register.html:57
+msgid "Register"
+msgstr "ลงทะเบียน"
+
+#: templates/base.html:123
+msgid "Stop Scanning"
+msgstr "หยุดสแกน"
+
+#: templates/registration/login.html:5 templates/registration/login.html:9
+#: templates/registration/login.html:37
+msgid "Log In"
+msgstr "เข้าสู่ระบบ"
+
+#: templates/registration/login.html:40
+#, python-format
+msgid "Don't have an account? <a href=\"%('register_url')s\">Register here</a>."
+msgstr "ยังไม่มีบัญชีใช่ไหม? <a href=\"%('register_url')s\">ลงทะเบียนที่นี่</a>"
+
+#: templates/registration/login.html:41
+msgid "Forgot password?"
+msgstr "ลืมรหัสผ่านหรือไม่?"
+
+#: templates/registration/logout.html:4 templates/registration/logout.html:7
+msgid "Logged Out"
+msgstr "ออกจากระบบ"
+
+#: templates/registration/logout.html:8
+msgid "You have been successfully logged out."
+msgstr "คุณได้ออกจากระบบเรียบร้อยแล้ว"
+
+#: templates/registration/logout.html:9
+msgid "Log in again"
+msgstr "เข้าสู่ระบบอีกครั้ง"
+
+#: templates/registration/password_change_done.html:6
+msgid "Password Changed Successfully"
+msgstr "เปลี่ยนรหัสผ่านสำเร็จ"
+
+#: templates/registration/password_change_done.html:12
+#: templates/registration/password_reset_complete.html:11
+msgid "Password Changed Successfully!"
+msgstr "เปลี่ยนรหัสผ่านสำเร็จแล้ว!"
+
+#: templates/registration/password_change_done.html:14
+msgid "Your password has been changed."
+msgstr "รหัสผ่านของคุณได้ถูกเปลี่ยนแล้ว"
+
+#: templates/registration/password_change_done.html:16
+msgid "Back to Settings"
+msgstr "กลับไปที่การตั้งค่า"
+
+#: templates/registration/password_change_form.html:5
+#: templates/registration/password_change_form.html:38
+#: templates/registration/password_reset_confirm.html:28
+#: users/templates/users/account_settings.html:51
+msgid "Change Password"
+msgstr "เปลี่ยนรหัสผ่าน"
+
+#: templates/registration/password_change_form.html:11
+msgid "Change Your Password"
+msgstr "เปลี่ยนรหัสผ่านของคุณ"
+
+#: templates/registration/password_change_form.html:23
+msgid "Old Password"
+msgstr "รหัสผ่านเก่า"
+
+#: templates/registration/password_change_form.html:28
+#: templates/registration/password_reset_confirm.html:20
+msgid "New Password"
+msgstr "รหัสผ่านใหม่"
+
+#: templates/registration/password_change_form.html:33
+#: templates/registration/password_reset_confirm.html:24
+msgid "Confirm New Password"
+msgstr "ยืนยันรหัสผ่านใหม่"
+
+#: templates/registration/password_reset_complete.html:5
+msgid "Password Changed"
+msgstr "รหัสผ่านถูกเปลี่ยน"
+
+#: templates/registration/password_reset_complete.html:13
+msgid ""
+"Your password has been set. You can now go ahead and log in with your new "
+"password."
+msgstr ""
+"คุณได้ตั้งรหัสผ่านเรียบร้อยแล้ว "
+"คุณสามารถเข้าสู่ระบบด้วยรหัสผ่านใหม่ของคุณได้ทันที"
+
+#: templates/registration/password_reset_confirm.html:12
+msgid "Set a New Password"
+msgstr "ตั้งรหัสผ่านใหม่"
+
+#: templates/registration/password_reset_confirm.html:32
+msgid "Invalid Link"
+msgstr "ลิงก์ไม่ถูกต้อง"
+
+#: templates/registration/password_reset_confirm.html:34
+msgid ""
+"The password reset link was invalid, possibly because it has already been "
+"used. Please request a new password reset."
+msgstr ""
+"ลิงก์การรีเซ็ตรหัสผ่านไม่ถูกต้อง อาจเป็นเพราะได้ถูกใช้ไปแล้ว "
+"กรุณาร้องขอการรีเซ็ตรหัสผ่านใหม่"
+
+#: templates/registration/password_reset_done.html:4
+msgid "Password Reset Sent"
+msgstr "ส่งการรีเซ็ตรหัสผ่านแล้ว"
+
+#: templates/registration/password_reset_done.html:10
+msgid "Check Your Inbox"
+msgstr "ตรวจสอบกล่องจดหมายของคุณ"
+
+#: templates/registration/password_reset_done.html:12
+msgid ""
+"We've emailed you instructions for setting your password. If an account "
+"exists with the email you entered, you should receive them shortly."
+msgstr ""
+"เราได้ส่งอีเมลคำแนะนำสำหรับการตั้งรหัสผ่านของคุณแล้ว "
+"หากมีบัญชีที่มีอีเมลที่คุณป้อนอยู่ คุณควรจะได้รับคำแนะนำในไม่ช้า"
+
+#: templates/registration/password_reset_done.html:13
+msgid ""
+"If you don't receive an email, please make sure you've entered the email "
+"address you registered with, and check your spam folder."
+msgstr ""
+"หากคุณไม่ได้รับอีเมล "
+"กรุณาตรวจสอบให้แน่ใจว่าคุณได้กรอกที่อยู่อีเมลที่คุณลงทะเบียนไว้ "
+"และตรวจสอบในโฟลเดอร์สแปมของคุณ"
+
+#: templates/registration/password_reset_form.html:8
+msgid "Forgot Your Password?"
+msgstr "ลืมรหัสผ่านของคุณหรือไม่?"
+
+#: templates/registration/password_reset_form.html:9
+msgid "Enter your email address below to receive a password reset link."
+msgstr "กรุณาป้อนที่อยู่อีเมลของคุณด้านล่างเพื่อรับลิงก์สำหรับรีเซ็ตรหัสผ่าน"
+
+#: templates/registration/password_reset_form.html:17
+msgid "Reset Password"
+msgstr "รีเซ็ตรหัสผ่าน"
+
+#: users/forms.py:12
+msgid "Password"
+msgstr "รหัสผ่าน"
+
+#: users/forms.py:16
+msgid ""
+"Your password can't be too similar to your other personal information. It "
+"must contain at least 8 characters. It can't be a commonly used password. It"
+" can't be entirely numeric."
+msgstr ""
+"รหัสผ่านของคุณไม่สามารถคล้ายกับข้อมูลส่วนตัวอื่นของคุณได้ ต้องมีอย่างน้อย 8 "
+"ตัวอักษร ไม่สามารถใช้รหัสผ่านที่พบได้บ่อย ไม่สามารถใช้ตัวเลขทั้งหมดได้"
+
+#: users/forms.py:23
+msgid "Password confirmation"
+msgstr "ยืนยันรหัสผ่าน"
+
+#: users/forms.py:26
+msgid "Enter the same password as before, for verification."
+msgstr "กรุณากรอกรหัสผ่านเดิมอีกครั้งเพื่อยืนยัน"
+
+#: users/forms.py:34 users/templates/users/account_settings.html:44
+msgid "Username"
+msgstr "ชื่อผู้ใช้"
+
+#: users/forms.py:35 users/templates/users/account_settings.html:45
+msgid "Email"
+msgstr "อีเมล"
+
+#: users/forms.py:39
+msgid "Required. 150 characters or fewer. Letters, digits and @/./+/-/_ only."
+msgstr ""
+"จำเป็น. 150 ตัวอักษรหรือน้อยกว่า. ตัวอักษร, ตัวเลข และ @/./+/-/_ เท่านั้น."
+
+#: users/forms.py:65 users/templates/users/account_settings.html:68
+msgid "Language Preference"
+msgstr "ความชอบด้านภาษา"
+
+#: users/forms.py:66 users/templates/users/account_settings.html:63
+msgid "Country"
+msgstr "ประเทศ"
+
+#: users/forms.py:67 users/templates/users/account_settings.html:90
+msgid "Allergens"
+msgstr "สารก่อภูมิแพ้"
+
+#: users/forms.py:68 users/templates/users/account_settings.html:78
+msgid "Dietary Requirements"
+msgstr "ข้อกำหนดด้านอาหาร"
+
+#: users/forms.py:69
+msgid "Enable scan-to-add in pantry"
+msgstr "เปิดใช้งานการสแกนเพื่อเพิ่มในตู้เก็บของ"
+
+#: users/forms.py:70
+msgid "Display Nutri-Score on products"
+msgstr "แสดง Nutri-Score บนผลิตภัณฑ์"
+
+#: users/forms.py:71
+msgid "Display Eco-Score on products"
+msgstr "แสดงคะแนนรักษ์สิ่งแวดล้อมบนผลิตภัณฑ์"
+
+#: users/forms.py:72
+msgid "Prioritise local results in search"
+msgstr "ให้ความสำคัญกับผลลัพธ์ในท้องถิ่นในการค้นหา"
+
+#: users/templates/users/account_settings.html:6
+msgid "Account Settings"
+msgstr "การตั้งค่าบัญชี"
+
+#: users/templates/users/account_settings.html:19
+msgid "Warning!"
+msgstr "คำเตือน!"
+
+#: users/templates/users/account_settings.html:19
+msgid "You are about to delete your account permanently."
+msgstr "คุณกำลังจะลบบัญชีของคุณอย่างถาวร"
+
+#: users/templates/users/account_settings.html:22
+msgid ""
+"\n"
+"          Doing this will permanently remove all account data including your\n"
+"          pantry, saved recipes, and favourites. Are you sure you want to\n"
+"          continue?\n"
+"          "
+msgstr ""
+"\n"
+"          การทำเช่นนี้จะลบข้อมูลบัญชีทั้งหมดอย่างถาวร รวมถึงของในตู้กับข้าว สูตรอาหารที่บันทึกไว้ และรายการโปรดของคุณ คุณแน่ใจหรือไม่ว่าต้องการดำเนินการต่อ?"
+
+#: users/templates/users/account_settings.html:29
+msgid "I'm sure,"
+msgstr "ฉันมั่นใจ"
+
+#: users/templates/users/account_settings.html:30
+#: users/templates/users/account_settings.html:52
+msgid "Delete Account"
+msgstr "ลบบัญชี"
+
+#: users/templates/users/account_settings.html:40
+msgid "Account management"
+msgstr "การจัดการบัญชี"
+
+#: users/templates/users/account_settings.html:46
+msgid "Date Joined"
+msgstr "วันที่เข้าร่วม"
+
+#: users/templates/users/account_settings.html:57
+msgid "User preferences"
+msgstr "ความชอบของผู้ใช้"
+
+#: users/templates/users/account_settings.html:115
+msgid "Save Settings"
+msgstr "บันทึกการตั้งค่า"
+
+#: users/templates/users/register.html:60
+#, python-format
+msgid "Already have an account? <a href=\"%(login_url)s\">Log in here</a>."
+msgstr "มีบัญชีอยู่แล้วหรือ? <a href=\"%(login_url)s\">เข้าสู่ระบบที่นี่</a>"

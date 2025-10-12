@@ -1,0 +1,659 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-10-12 14:39+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n != 0 ? 1 : 2);\n"
+
+#: pantry/templates/pantry/index.html:17
+msgid "Advanced Search"
+msgstr "Izvērstā meklēšana"
+
+#: pantry/templates/pantry/index.html:25
+msgid "Product Name"
+msgstr "Produkta nosaukums"
+
+#: pantry/templates/pantry/index.html:29
+msgid "Country of Origin"
+msgstr "Izcelsmes valsts"
+
+#: pantry/templates/pantry/index.html:31
+msgid "Select a country..."
+msgstr "Izvēlieties valsti..."
+
+#: pantry/templates/pantry/index.html:35
+msgid "Category"
+msgstr "Kategorija"
+
+#: pantry/templates/pantry/index.html:37
+msgid "Select a category..."
+msgstr "Izvēlieties kategoriju..."
+
+#: pantry/templates/pantry/index.html:41
+msgid "Brand"
+msgstr "Zīmols"
+
+#: pantry/templates/pantry/index.html:43
+msgid "Select a brand..."
+msgstr "Izvēlieties zīmolu..."
+
+#: pantry/templates/pantry/index.html:48
+msgid "Clear Filters"
+msgstr "Notīrīt filtrus"
+
+#: pantry/templates/pantry/index.html:51 templates/base.html:34
+msgid "Search"
+msgstr "Meklēšana"
+
+#: pantry/templates/pantry/index.html:66
+msgid "Product Search Results"
+msgstr "Produktu meklēšanas rezultāti"
+
+#: pantry/templates/pantry/index.html:70
+msgid "Enter a search query to find products."
+msgstr "Ievadiet meklēšanas vaicājumu, lai atrastu produktus."
+
+#: pantry/templates/pantry/index.html:73
+msgid ""
+"Can't find what you're looking for? Try <a href=\"#\" data-bs-"
+"toggle=\"modal\" data-bs-target=\"#exampleModal\">Advanced Search</a>."
+msgstr ""
+"Nevarat atrast meklēto? Izmēģiniet <a href=\"#\" data-bs-toggle=\"modal\" "
+"data-bs-target=\"#exampleModal\">Paplašinātā meklēšana</a>."
+
+#: pantry/templates/pantry/index.html:82
+msgid "Favourites"
+msgstr "Izlase"
+
+#: pantry/templates/pantry/index.html:101
+#: pantry/templates/pantry/pantry.html:71
+msgid "WARNING"
+msgstr "BRĪDINĀJUMS"
+
+#: pantry/templates/pantry/index.html:101
+#: pantry/templates/pantry/pantry.html:71
+msgid "Contains user-specified allergens:"
+msgstr "Satur lietotāja norādītos alergēnus:"
+
+#: pantry/templates/pantry/index.html:110
+#: pantry/templates/pantry/pantry.html:80
+msgid "POSSIBLE MISMATCH"
+msgstr "IESPĒJAMA NEATBILSTĪBA"
+
+#: pantry/templates/pantry/index.html:110
+#: pantry/templates/pantry/pantry.html:80
+msgid "Missing dietary requirements:"
+msgstr "Trūkstošas diētas prasības:"
+
+#: pantry/templates/pantry/index.html:121
+msgid "Brands"
+msgstr "Zīmoli"
+
+#: pantry/templates/pantry/index.html:122
+msgid "Code"
+msgstr "Kods"
+
+#: pantry/templates/pantry/index.html:129
+msgid "item"
+msgstr "prece"
+
+#: pantry/templates/pantry/index.html:136
+msgid "Add to Pantry"
+msgstr "Pievienot pieliekamajam"
+
+#: pantry/templates/pantry/index.html:140
+msgid "Remove Favourite"
+msgstr "Noņemt iecienītāko"
+
+#: pantry/templates/pantry/index.html:148
+msgid "You haven't favourited any products yet. Start exploring today!"
+msgstr "Jūs vēl neesat iecienījis nevienu produktu. Sāciet pētīt jau šodien!"
+
+#: pantry/templates/pantry/pantry.html:5 templates/base.html:63
+msgid "Pantry"
+msgstr "Krātuve"
+
+#: pantry/templates/pantry/pantry.html:13
+msgid "Pantry Health & Eco Summary"
+msgstr "Uzkrātuve Veselība un eko kopsavilkums"
+
+#: pantry/templates/pantry/pantry.html:20
+msgid "Nutri-Grade:"
+msgstr "Nutri-Grade:"
+
+#: pantry/templates/pantry/pantry.html:27
+msgid "Eco-Grade:"
+msgstr "Ekoloģiskā klase:"
+
+#: pantry/templates/pantry/pantry.html:34
+msgid "Scores are hidden or unavailable. Check your user settings."
+msgstr ""
+"Rezultāti ir slēpti vai nav pieejami. Pārbaudiet lietotāja iestatījumus."
+
+#: pantry/templates/pantry/pantry.html:44
+msgid "Your Pantry Items"
+msgstr "Jūsu pieliekamais"
+
+#: pantry/templates/pantry/pantry.html:62
+#: pantry/templates/pantry/pantry.html:64
+msgid "Product Image"
+msgstr "Produkta attēls"
+
+#: pantry/templates/pantry/pantry.html:67
+msgid "No Name"
+msgstr "Nav nosaukuma"
+
+#: pantry/templates/pantry/pantry.html:91
+msgid "Quantity:"
+msgstr "Daudzums:"
+
+#: pantry/templates/pantry/pantry.html:94
+msgid "Product Size:"
+msgstr "Produkta izmērs:"
+
+#: pantry/templates/pantry/pantry.html:100
+msgid "Expires:"
+msgstr "Derīguma termiņš beidzas:"
+
+#: pantry/templates/pantry/pantry.html:116
+msgid "Your pantry is empty! Add some products to get started."
+msgstr ""
+"Jūsu pieliekamais ir tukšs! Pievienojiet dažus produktus, lai sāktu darbu."
+
+#: recipes/templates/recipes/recipes.html:6 templates/base.html:70
+msgid "Recipes"
+msgstr "Receptes"
+
+#: recipes/templates/recipes/recipes.html:13
+msgid "New Recipe Suggestions"
+msgstr "Jauni recepšu ieteikumi"
+
+#: recipes/templates/recipes/recipes.html:40
+#: recipes/templates/recipes/recipes.html:101
+#: recipes/templates/recipes/recipes.html:163
+msgid "Ingredients"
+msgstr "Sastāvdaļas"
+
+#: recipes/templates/recipes/recipes.html:48
+#: recipes/templates/recipes/recipes.html:109
+#: recipes/templates/recipes/recipes.html:181
+msgid "Instructions"
+msgstr "Instrukcijas"
+
+#: recipes/templates/recipes/recipes.html:59
+#: recipes/templates/recipes/recipes.html:120
+msgid "Save Recipe"
+msgstr "Saglabājiet recepti"
+
+#: recipes/templates/recipes/recipes.html:68
+msgid "No new suggestions"
+msgstr "Jaunu ieteikumu nav"
+
+#: recipes/templates/recipes/recipes.html:70
+msgid "Recipes still being generated"
+msgstr "Receptes joprojām tiek ģenerētas"
+
+#: recipes/templates/recipes/recipes.html:75
+msgid "Recently Suggested Recipes"
+msgstr "Nesen ieteiktie receptes"
+
+#: recipes/templates/recipes/recipes.html:129
+msgid "No recently suggested"
+msgstr "Nesen nav ierosināts"
+
+#: recipes/templates/recipes/recipes.html:135
+msgid "Saved Recipes"
+msgstr "Saglabātie receptes"
+
+#: recipes/templates/recipes/recipes.html:152
+msgid "Missing Items"
+msgstr "Trūkstošie priekšmeti"
+
+#: recipes/templates/recipes/recipes.html:192
+msgid "Delete Recipe"
+msgstr "Dzēst recepti"
+
+#: recipes/templates/recipes/recipes.html:204
+msgid "No Saved Recipes"
+msgstr "Nav saglabātu recepšu"
+
+#: savor/settings.py:138
+msgid "Arabic"
+msgstr "Arābu valodā"
+
+#: savor/settings.py:139
+msgid "Bulgarian"
+msgstr "Bulgāru"
+
+#: savor/settings.py:140
+msgid "Chinese"
+msgstr "Ķīniešu"
+
+#: savor/settings.py:141
+msgid "Czech"
+msgstr "Čehu"
+
+#: savor/settings.py:142
+msgid "Danish"
+msgstr "Dānijas"
+
+#: savor/settings.py:143
+msgid "Dutch"
+msgstr "Holandiešu"
+
+#: savor/settings.py:144
+msgid "Estonian"
+msgstr "Igauņu"
+
+#: savor/settings.py:145
+msgid "Finnish"
+msgstr "Somu"
+
+#: savor/settings.py:146
+msgid "French"
+msgstr "Franču"
+
+#: savor/settings.py:147
+msgid "German"
+msgstr "Vācu"
+
+#: savor/settings.py:148
+msgid "Greek"
+msgstr "Grieķu"
+
+#: savor/settings.py:149
+msgid "Hebrew"
+msgstr "Ebreju valodā"
+
+#: savor/settings.py:150
+msgid "Hungarian"
+msgstr "Ungāru"
+
+#: savor/settings.py:151
+msgid "Indonesian"
+msgstr "Indonēzijas"
+
+#: savor/settings.py:152
+msgid "Italian"
+msgstr "Itāļu"
+
+#: savor/settings.py:153
+msgid "Japanese"
+msgstr "Japāņu"
+
+#: savor/settings.py:154
+msgid "Korean"
+msgstr "Korejas"
+
+#: savor/settings.py:155
+msgid "Latvian"
+msgstr "Latviešu"
+
+#: savor/settings.py:156
+msgid "Lithuanian"
+msgstr "Lietuviešu"
+
+#: savor/settings.py:157
+msgid "Norwegian Bokmål"
+msgstr "Norvēģu bokmål"
+
+#: savor/settings.py:158
+msgid "Polish"
+msgstr "Polijas"
+
+#: savor/settings.py:159
+msgid "Portuguese"
+msgstr "Portugāļu"
+
+#: savor/settings.py:160
+msgid "Romanian"
+msgstr "Rumāņu"
+
+#: savor/settings.py:161
+msgid "Russian"
+msgstr "Krievu"
+
+#: savor/settings.py:162
+msgid "Slovak"
+msgstr "Slovākijas"
+
+#: savor/settings.py:163
+msgid "Slovenian"
+msgstr "Slovēņu"
+
+#: savor/settings.py:164
+msgid "Spanish"
+msgstr "Spāņu"
+
+#: savor/settings.py:165
+msgid "Swedish"
+msgstr "Zviedru"
+
+#: savor/settings.py:166
+msgid "Thai"
+msgstr "Taizemes"
+
+#: savor/settings.py:167
+msgid "Turkish"
+msgstr "Turcijas"
+
+#: savor/settings.py:168
+msgid "Ukrainian"
+msgstr "Ukraiņu"
+
+#: savor/settings.py:169
+msgid "Vietnamese"
+msgstr "Vjetnamiešu"
+
+#: templates/base.html:22
+msgid "Welcome"
+msgstr "Laipni lūdzam"
+
+#: templates/base.html:29
+msgid "Search Product by ingredient"
+msgstr "Meklēt produktu pēc sastāvdaļas"
+
+#: templates/base.html:32
+msgid "Search Product by Barcode"
+msgstr "Meklēt produktu pēc svītrkoda"
+
+#: templates/base.html:37
+msgid "Scan"
+msgstr "Skenēt"
+
+#: templates/base.html:56
+msgid "Home"
+msgstr "Sākums"
+
+#: templates/base.html:79
+msgid "Settings"
+msgstr "Iestatījumi"
+
+#: templates/base.html:85
+msgid "Account"
+msgstr "Konts"
+
+#: templates/base.html:94
+msgid "Log Out"
+msgstr "Iziet no sistēmas"
+
+#: templates/base.html:107
+msgid "Log On"
+msgstr "Pieteikšanās"
+
+#: templates/base.html:113 users/templates/users/register.html:57
+msgid "Register"
+msgstr "Reģistrēties"
+
+#: templates/base.html:123
+msgid "Stop Scanning"
+msgstr "Pārtraukt skenēšanu"
+
+#: templates/registration/login.html:5 templates/registration/login.html:9
+#: templates/registration/login.html:37
+msgid "Log In"
+msgstr "Pieteikties"
+
+#: templates/registration/login.html:40
+#, python-format
+msgid "Don't have an account? <a href=\"%('register_url')s\">Register here</a>."
+msgstr "Jums nav konta? <a href=\"%('register_url')s\">Reģistrējieties šeit</a>."
+
+#: templates/registration/login.html:41
+msgid "Forgot password?"
+msgstr "Aizmirsāt paroli?"
+
+#: templates/registration/logout.html:4 templates/registration/logout.html:7
+msgid "Logged Out"
+msgstr "Izslēgts"
+
+#: templates/registration/logout.html:8
+msgid "You have been successfully logged out."
+msgstr "Jūs esat veiksmīgi atteicies."
+
+#: templates/registration/logout.html:9
+msgid "Log in again"
+msgstr "Atkārtoti piesakieties"
+
+#: templates/registration/password_change_done.html:6
+msgid "Password Changed Successfully"
+msgstr "Parole veiksmīgi mainīta"
+
+#: templates/registration/password_change_done.html:12
+#: templates/registration/password_reset_complete.html:11
+msgid "Password Changed Successfully!"
+msgstr "Parole veiksmīgi mainīta!"
+
+#: templates/registration/password_change_done.html:14
+msgid "Your password has been changed."
+msgstr "Jūsu parole ir mainīta."
+
+#: templates/registration/password_change_done.html:16
+msgid "Back to Settings"
+msgstr "Atgriezties pie iestatījumiem"
+
+#: templates/registration/password_change_form.html:5
+#: templates/registration/password_change_form.html:38
+#: templates/registration/password_reset_confirm.html:28
+#: users/templates/users/account_settings.html:51
+msgid "Change Password"
+msgstr "Mainīt paroli"
+
+#: templates/registration/password_change_form.html:11
+msgid "Change Your Password"
+msgstr "Paroles maiņa"
+
+#: templates/registration/password_change_form.html:23
+msgid "Old Password"
+msgstr "Vecā parole"
+
+#: templates/registration/password_change_form.html:28
+#: templates/registration/password_reset_confirm.html:20
+msgid "New Password"
+msgstr "Jauna parole"
+
+#: templates/registration/password_change_form.html:33
+#: templates/registration/password_reset_confirm.html:24
+msgid "Confirm New Password"
+msgstr "Jaunās paroles apstiprināšana"
+
+#: templates/registration/password_reset_complete.html:5
+msgid "Password Changed"
+msgstr "Mainīta parole"
+
+#: templates/registration/password_reset_complete.html:13
+msgid ""
+"Your password has been set. You can now go ahead and log in with your new "
+"password."
+msgstr ""
+"Jūsu parole ir iestatīta. Tagad varat pieteikties, izmantojot jauno paroli."
+
+#: templates/registration/password_reset_confirm.html:12
+msgid "Set a New Password"
+msgstr "Jaunas paroles iestatīšana"
+
+#: templates/registration/password_reset_confirm.html:32
+msgid "Invalid Link"
+msgstr "Nederīga saite"
+
+#: templates/registration/password_reset_confirm.html:34
+msgid ""
+"The password reset link was invalid, possibly because it has already been "
+"used. Please request a new password reset."
+msgstr ""
+"Paroles atiestatīšanas saite bija nederīga, iespējams, tāpēc, ka tā jau ir "
+"izmantota. Lūdzu, pieprasiet jaunu paroles atiestatīšanu."
+
+#: templates/registration/password_reset_done.html:4
+msgid "Password Reset Sent"
+msgstr "Nosūtīta paroles atiestatīšana"
+
+#: templates/registration/password_reset_done.html:10
+msgid "Check Your Inbox"
+msgstr "Pārbaudiet savu iesūtni"
+
+#: templates/registration/password_reset_done.html:12
+msgid ""
+"We've emailed you instructions for setting your password. If an account "
+"exists with the email you entered, you should receive them shortly."
+msgstr ""
+"Mēs esam jums pa e-pastu nosūtījuši paroles iestatīšanas norādījumus. Ja ir "
+"izveidots konts ar jūsu ievadīto e-pasta adresi, jums drīzumā tās vajadzētu "
+"saņemt."
+
+#: templates/registration/password_reset_done.html:13
+msgid ""
+"If you don't receive an email, please make sure you've entered the email "
+"address you registered with, and check your spam folder."
+msgstr ""
+"Ja e-pasta vēstuli nesaņemat, pārliecinieties, vai esat ievadījis e-pasta "
+"adresi, ar kuru reģistrējāties, un pārbaudiet surogātpasta mapi."
+
+#: templates/registration/password_reset_form.html:8
+msgid "Forgot Your Password?"
+msgstr "Aizmirsāt paroli?"
+
+#: templates/registration/password_reset_form.html:9
+msgid "Enter your email address below to receive a password reset link."
+msgstr ""
+"Ievadiet savu e-pasta adresi, lai saņemtu paroles atiestatīšanas saiti."
+
+#: templates/registration/password_reset_form.html:17
+msgid "Reset Password"
+msgstr "Paroles atiestatīšana"
+
+#: users/forms.py:12
+msgid "Password"
+msgstr "Parole"
+
+#: users/forms.py:16
+msgid ""
+"Your password can't be too similar to your other personal information. It "
+"must contain at least 8 characters. It can't be a commonly used password. It"
+" can't be entirely numeric."
+msgstr ""
+"Jūsu parole nedrīkst būt pārāk līdzīga citai jūsu personiskajai "
+"informācijai. Tajā jābūt vismaz 8 rakstzīmēm. Tā nedrīkst būt bieži lietota "
+"parole. Tā nedrīkst būt tikai ciparu kods."
+
+#: users/forms.py:23
+msgid "Password confirmation"
+msgstr "Paroles apstiprināšana"
+
+#: users/forms.py:26
+msgid "Enter the same password as before, for verification."
+msgstr "Verifikācijai ievadiet to pašu paroli kā iepriekš."
+
+#: users/forms.py:34 users/templates/users/account_settings.html:44
+msgid "Username"
+msgstr "Lietotājvārds"
+
+#: users/forms.py:35 users/templates/users/account_settings.html:45
+msgid "Email"
+msgstr "E-pasts"
+
+#: users/forms.py:39
+msgid "Required. 150 characters or fewer. Letters, digits and @/./+/-/_ only."
+msgstr ""
+"Nepieciešams. 150 vai mazāk rakstzīmju. Tikai burti, cipari un @/././+/-/_."
+
+#: users/forms.py:65 users/templates/users/account_settings.html:68
+msgid "Language Preference"
+msgstr "Valodas izvēle"
+
+#: users/forms.py:66 users/templates/users/account_settings.html:63
+msgid "Country"
+msgstr "Valsts"
+
+#: users/forms.py:67 users/templates/users/account_settings.html:90
+msgid "Allergens"
+msgstr "Alergēni"
+
+#: users/forms.py:68 users/templates/users/account_settings.html:78
+msgid "Dietary Requirements"
+msgstr "Uztura prasības"
+
+#: users/forms.py:69
+msgid "Enable scan-to-add in pantry"
+msgstr "Skenēšanas pievienošanas iespējošana pieliekamajā"
+
+#: users/forms.py:70
+msgid "Display Nutri-Score on products"
+msgstr "Nutri-Score rādīšana uz produktiem"
+
+#: users/forms.py:71
+msgid "Display Eco-Score on products"
+msgstr "Ekoloģiskā vērtējuma rādīšana uz produktiem"
+
+#: users/forms.py:72
+msgid "Prioritise local results in search"
+msgstr "Vietējo rezultātu prioritātes noteikšana meklēšanā"
+
+#: users/templates/users/account_settings.html:6
+msgid "Account Settings"
+msgstr "Konta iestatījumi"
+
+#: users/templates/users/account_settings.html:19
+msgid "Warning!"
+msgstr "Brīdinājums!"
+
+#: users/templates/users/account_settings.html:19
+msgid "You are about to delete your account permanently."
+msgstr "Jūs gatavojaties neatgriezeniski dzēst savu kontu."
+
+#: users/templates/users/account_settings.html:22
+msgid ""
+"\n"
+"          Doing this will permanently remove all account data including your\n"
+"          pantry, saved recipes, and favourites. Are you sure you want to\n"
+"          continue?\n"
+"          "
+msgstr ""
+"\n"
+"          Veicot šo darbību, tiks neatgriezeniski noņemti visi konta dati, tostarp jūsu\n"
+"          pieliekamo, saglabātās receptes un izlasi. Vai esat pārliecināts, ka vēlaties\n"
+"          turpināt?\n"
+"          "
+
+#: users/templates/users/account_settings.html:29
+msgid "I'm sure,"
+msgstr "Es esmu pārliecināts,"
+
+#: users/templates/users/account_settings.html:30
+#: users/templates/users/account_settings.html:52
+msgid "Delete Account"
+msgstr "Konta dzēšana"
+
+#: users/templates/users/account_settings.html:40
+msgid "Account management"
+msgstr "Kontu pārvaldība"
+
+#: users/templates/users/account_settings.html:46
+msgid "Date Joined"
+msgstr "Pievienošanās datums"
+
+#: users/templates/users/account_settings.html:57
+msgid "User preferences"
+msgstr "Lietotāja preferences"
+
+#: users/templates/users/account_settings.html:115
+msgid "Save Settings"
+msgstr "Saglabāt iestatījumus"
+
+#: users/templates/users/register.html:60
+#, python-format
+msgid "Already have an account? <a href=\"%(login_url)s\">Log in here</a>."
+msgstr "Jums jau ir konts? <a href=\"%(login_url)s\">Login in here</a>."

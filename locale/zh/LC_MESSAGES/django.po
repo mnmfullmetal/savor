@@ -1,0 +1,643 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-10-12 14:39+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: pantry/templates/pantry/index.html:17
+msgid "Advanced Search"
+msgstr "高级搜索"
+
+#: pantry/templates/pantry/index.html:25
+msgid "Product Name"
+msgstr "产品名称"
+
+#: pantry/templates/pantry/index.html:29
+msgid "Country of Origin"
+msgstr "原产国"
+
+#: pantry/templates/pantry/index.html:31
+msgid "Select a country..."
+msgstr "选择国家..."
+
+#: pantry/templates/pantry/index.html:35
+msgid "Category"
+msgstr "类别"
+
+#: pantry/templates/pantry/index.html:37
+msgid "Select a category..."
+msgstr "选择类别..."
+
+#: pantry/templates/pantry/index.html:41
+msgid "Brand"
+msgstr "品牌"
+
+#: pantry/templates/pantry/index.html:43
+msgid "Select a brand..."
+msgstr "选择品牌..."
+
+#: pantry/templates/pantry/index.html:48
+msgid "Clear Filters"
+msgstr "清除过滤器"
+
+#: pantry/templates/pantry/index.html:51 templates/base.html:34
+msgid "Search"
+msgstr "搜索"
+
+#: pantry/templates/pantry/index.html:66
+msgid "Product Search Results"
+msgstr "产品搜索结果"
+
+#: pantry/templates/pantry/index.html:70
+msgid "Enter a search query to find products."
+msgstr "输入搜索查询查找产品。"
+
+#: pantry/templates/pantry/index.html:73
+msgid ""
+"Can't find what you're looking for? Try <a href=\"#\" data-bs-"
+"toggle=\"modal\" data-bs-target=\"#exampleModal\">Advanced Search</a>."
+msgstr ""
+"找不到要找的内容？请尝试<a href=\"#\" data-bs-toggle=\"modal\" data-bs-"
+"target=\"#exampleModal\">高级搜索</a>。"
+
+#: pantry/templates/pantry/index.html:82
+msgid "Favourites"
+msgstr "最爱"
+
+#: pantry/templates/pantry/index.html:101
+#: pantry/templates/pantry/pantry.html:71
+msgid "WARNING"
+msgstr "警告"
+
+#: pantry/templates/pantry/index.html:101
+#: pantry/templates/pantry/pantry.html:71
+msgid "Contains user-specified allergens:"
+msgstr "含有用户指定的过敏原："
+
+#: pantry/templates/pantry/index.html:110
+#: pantry/templates/pantry/pantry.html:80
+msgid "POSSIBLE MISMATCH"
+msgstr "可能不匹配"
+
+#: pantry/templates/pantry/index.html:110
+#: pantry/templates/pantry/pantry.html:80
+msgid "Missing dietary requirements:"
+msgstr "缺少饮食要求："
+
+#: pantry/templates/pantry/index.html:121
+msgid "Brands"
+msgstr "品牌"
+
+#: pantry/templates/pantry/index.html:122
+msgid "Code"
+msgstr "代码"
+
+#: pantry/templates/pantry/index.html:129
+msgid "item"
+msgstr "项目"
+
+#: pantry/templates/pantry/index.html:136
+msgid "Add to Pantry"
+msgstr "添加到储藏室"
+
+#: pantry/templates/pantry/index.html:140
+msgid "Remove Favourite"
+msgstr "删除收藏"
+
+#: pantry/templates/pantry/index.html:148
+msgid "You haven't favourited any products yet. Start exploring today!"
+msgstr "您尚未收藏任何产品。今天就开始探索吧"
+
+#: pantry/templates/pantry/pantry.html:5 templates/base.html:63
+msgid "Pantry"
+msgstr "储藏室"
+
+#: pantry/templates/pantry/pantry.html:13
+msgid "Pantry Health & Eco Summary"
+msgstr "食谱健康与生态摘要"
+
+#: pantry/templates/pantry/pantry.html:20
+msgid "Nutri-Grade:"
+msgstr "营养级："
+
+#: pantry/templates/pantry/pantry.html:27
+msgid "Eco-Grade:"
+msgstr "生态等级："
+
+#: pantry/templates/pantry/pantry.html:34
+msgid "Scores are hidden or unavailable. Check your user settings."
+msgstr "分数被隐藏或不可用。请检查您的用户设置。"
+
+#: pantry/templates/pantry/pantry.html:44
+msgid "Your Pantry Items"
+msgstr "您的食品储藏室物品"
+
+#: pantry/templates/pantry/pantry.html:62
+#: pantry/templates/pantry/pantry.html:64
+msgid "Product Image"
+msgstr "产品图像"
+
+#: pantry/templates/pantry/pantry.html:67
+msgid "No Name"
+msgstr "无名"
+
+#: pantry/templates/pantry/pantry.html:91
+msgid "Quantity:"
+msgstr "数量"
+
+#: pantry/templates/pantry/pantry.html:94
+msgid "Product Size:"
+msgstr "产品尺寸："
+
+#: pantry/templates/pantry/pantry.html:100
+msgid "Expires:"
+msgstr "过期失效："
+
+#: pantry/templates/pantry/pantry.html:116
+msgid "Your pantry is empty! Add some products to get started."
+msgstr "您的储藏室是空的！添加一些产品开始吧。"
+
+#: recipes/templates/recipes/recipes.html:6 templates/base.html:70
+msgid "Recipes"
+msgstr "食谱"
+
+#: recipes/templates/recipes/recipes.html:13
+msgid "New Recipe Suggestions"
+msgstr "新食谱建议"
+
+#: recipes/templates/recipes/recipes.html:40
+#: recipes/templates/recipes/recipes.html:101
+#: recipes/templates/recipes/recipes.html:163
+msgid "Ingredients"
+msgstr "配料"
+
+#: recipes/templates/recipes/recipes.html:48
+#: recipes/templates/recipes/recipes.html:109
+#: recipes/templates/recipes/recipes.html:181
+msgid "Instructions"
+msgstr "说明"
+
+#: recipes/templates/recipes/recipes.html:59
+#: recipes/templates/recipes/recipes.html:120
+msgid "Save Recipe"
+msgstr "保存食谱"
+
+#: recipes/templates/recipes/recipes.html:68
+msgid "No new suggestions"
+msgstr "没有新建议"
+
+#: recipes/templates/recipes/recipes.html:70
+msgid "Recipes still being generated"
+msgstr "食谱仍在生成中"
+
+#: recipes/templates/recipes/recipes.html:75
+msgid "Recently Suggested Recipes"
+msgstr "最近推荐的食谱"
+
+#: recipes/templates/recipes/recipes.html:129
+msgid "No recently suggested"
+msgstr "最近没有建议"
+
+#: recipes/templates/recipes/recipes.html:135
+msgid "Saved Recipes"
+msgstr "保存的食谱"
+
+#: recipes/templates/recipes/recipes.html:152
+msgid "Missing Items"
+msgstr "遗失物品"
+
+#: recipes/templates/recipes/recipes.html:192
+msgid "Delete Recipe"
+msgstr "删除食谱"
+
+#: recipes/templates/recipes/recipes.html:204
+msgid "No Saved Recipes"
+msgstr "没有保存的食谱"
+
+#: savor/settings.py:138
+msgid "Arabic"
+msgstr "阿拉伯语"
+
+#: savor/settings.py:139
+msgid "Bulgarian"
+msgstr "保加利亚语"
+
+#: savor/settings.py:140
+msgid "Chinese"
+msgstr "中文"
+
+#: savor/settings.py:141
+msgid "Czech"
+msgstr "捷克语"
+
+#: savor/settings.py:142
+msgid "Danish"
+msgstr "丹麦语"
+
+#: savor/settings.py:143
+msgid "Dutch"
+msgstr "荷兰语"
+
+#: savor/settings.py:144
+msgid "Estonian"
+msgstr "爱沙尼亚语"
+
+#: savor/settings.py:145
+msgid "Finnish"
+msgstr "芬兰语"
+
+#: savor/settings.py:146
+msgid "French"
+msgstr "法语"
+
+#: savor/settings.py:147
+msgid "German"
+msgstr "德国"
+
+#: savor/settings.py:148
+msgid "Greek"
+msgstr "希腊文"
+
+#: savor/settings.py:149
+msgid "Hebrew"
+msgstr "希伯来文"
+
+#: savor/settings.py:150
+msgid "Hungarian"
+msgstr "匈牙利语"
+
+#: savor/settings.py:151
+msgid "Indonesian"
+msgstr "印尼语"
+
+#: savor/settings.py:152
+msgid "Italian"
+msgstr "意大利语"
+
+#: savor/settings.py:153
+msgid "Japanese"
+msgstr "日语"
+
+#: savor/settings.py:154
+msgid "Korean"
+msgstr "韩语"
+
+#: savor/settings.py:155
+msgid "Latvian"
+msgstr "拉脱维亚语"
+
+#: savor/settings.py:156
+msgid "Lithuanian"
+msgstr "立陶宛语"
+
+#: savor/settings.py:157
+msgid "Norwegian Bokmål"
+msgstr "挪威语"
+
+#: savor/settings.py:158
+msgid "Polish"
+msgstr "波兰语"
+
+#: savor/settings.py:159
+msgid "Portuguese"
+msgstr "葡萄牙语"
+
+#: savor/settings.py:160
+msgid "Romanian"
+msgstr "罗马尼亚语"
+
+#: savor/settings.py:161
+msgid "Russian"
+msgstr "俄罗斯"
+
+#: savor/settings.py:162
+msgid "Slovak"
+msgstr "斯"
+
+#: savor/settings.py:163
+msgid "Slovenian"
+msgstr "斯洛文尼亚语"
+
+#: savor/settings.py:164
+msgid "Spanish"
+msgstr "西班牙语"
+
+#: savor/settings.py:165
+msgid "Swedish"
+msgstr "瑞典语"
+
+#: savor/settings.py:166
+msgid "Thai"
+msgstr "泰语"
+
+#: savor/settings.py:167
+msgid "Turkish"
+msgstr "土耳其语"
+
+#: savor/settings.py:168
+msgid "Ukrainian"
+msgstr "乌克兰"
+
+#: savor/settings.py:169
+msgid "Vietnamese"
+msgstr "越南语"
+
+#: templates/base.html:22
+msgid "Welcome"
+msgstr "欢迎"
+
+#: templates/base.html:29
+msgid "Search Product by ingredient"
+msgstr "按成分搜索产品"
+
+#: templates/base.html:32
+msgid "Search Product by Barcode"
+msgstr "按条形码搜索产品"
+
+#: templates/base.html:37
+msgid "Scan"
+msgstr "扫描"
+
+#: templates/base.html:56
+msgid "Home"
+msgstr "首页"
+
+#: templates/base.html:79
+msgid "Settings"
+msgstr "设置"
+
+#: templates/base.html:85
+msgid "Account"
+msgstr "账户"
+
+#: templates/base.html:94
+msgid "Log Out"
+msgstr "退出登录"
+
+#: templates/base.html:107
+msgid "Log On"
+msgstr "登录"
+
+#: templates/base.html:113 users/templates/users/register.html:57
+msgid "Register"
+msgstr "注册"
+
+#: templates/base.html:123
+msgid "Stop Scanning"
+msgstr "停止扫描"
+
+#: templates/registration/login.html:5 templates/registration/login.html:9
+#: templates/registration/login.html:37
+msgid "Log In"
+msgstr "登录"
+
+#: templates/registration/login.html:40
+#, python-format
+msgid "Don't have an account? <a href=\"%('register_url')s\">Register here</a>."
+msgstr "没有账户？<a href=\"%('register_url')s\">在此注册</a>。"
+
+#: templates/registration/login.html:41
+msgid "Forgot password?"
+msgstr "忘记密码？"
+
+#: templates/registration/logout.html:4 templates/registration/logout.html:7
+msgid "Logged Out"
+msgstr "注销"
+
+#: templates/registration/logout.html:8
+msgid "You have been successfully logged out."
+msgstr "您已成功注销。"
+
+#: templates/registration/logout.html:9
+msgid "Log in again"
+msgstr "再次登录"
+
+#: templates/registration/password_change_done.html:6
+msgid "Password Changed Successfully"
+msgstr "密码更改成功"
+
+#: templates/registration/password_change_done.html:12
+#: templates/registration/password_reset_complete.html:11
+msgid "Password Changed Successfully!"
+msgstr "密码更改成功！"
+
+#: templates/registration/password_change_done.html:14
+msgid "Your password has been changed."
+msgstr "您的密码已更改。"
+
+#: templates/registration/password_change_done.html:16
+msgid "Back to Settings"
+msgstr "返回设置"
+
+#: templates/registration/password_change_form.html:5
+#: templates/registration/password_change_form.html:38
+#: templates/registration/password_reset_confirm.html:28
+#: users/templates/users/account_settings.html:51
+msgid "Change Password"
+msgstr "更改密码"
+
+#: templates/registration/password_change_form.html:11
+msgid "Change Your Password"
+msgstr "更改密码"
+
+#: templates/registration/password_change_form.html:23
+msgid "Old Password"
+msgstr "旧密码"
+
+#: templates/registration/password_change_form.html:28
+#: templates/registration/password_reset_confirm.html:20
+msgid "New Password"
+msgstr "新密码"
+
+#: templates/registration/password_change_form.html:33
+#: templates/registration/password_reset_confirm.html:24
+msgid "Confirm New Password"
+msgstr "确认新密码"
+
+#: templates/registration/password_reset_complete.html:5
+msgid "Password Changed"
+msgstr "密码已更改"
+
+#: templates/registration/password_reset_complete.html:13
+msgid ""
+"Your password has been set. You can now go ahead and log in with your new "
+"password."
+msgstr "您的密码已设置。现在您可以使用新密码登录。"
+
+#: templates/registration/password_reset_confirm.html:12
+msgid "Set a New Password"
+msgstr "设置新密码"
+
+#: templates/registration/password_reset_confirm.html:32
+msgid "Invalid Link"
+msgstr "无效链接"
+
+#: templates/registration/password_reset_confirm.html:34
+msgid ""
+"The password reset link was invalid, possibly because it has already been "
+"used. Please request a new password reset."
+msgstr "密码重置链接无效，可能是因为该链接已被使用。请申请重置新密码。"
+
+#: templates/registration/password_reset_done.html:4
+msgid "Password Reset Sent"
+msgstr "密码重置已发送"
+
+#: templates/registration/password_reset_done.html:10
+msgid "Check Your Inbox"
+msgstr "检查收件箱"
+
+#: templates/registration/password_reset_done.html:12
+msgid ""
+"We've emailed you instructions for setting your password. If an account "
+"exists with the email you entered, you should receive them shortly."
+msgstr "我们已通过电子邮件向您发送了密码设置说明。如果您输入的电子邮件中存在账户，您将很快收到。"
+
+#: templates/registration/password_reset_done.html:13
+msgid ""
+"If you don't receive an email, please make sure you've entered the email "
+"address you registered with, and check your spam folder."
+msgstr "如果您没有收到电子邮件，请确保您输入了注册时使用的电子邮件地址，并检查您的垃圾邮件文件夹。"
+
+#: templates/registration/password_reset_form.html:8
+msgid "Forgot Your Password?"
+msgstr "忘记密码？"
+
+#: templates/registration/password_reset_form.html:9
+msgid "Enter your email address below to receive a password reset link."
+msgstr "请在下方输入您的电子邮件地址，以接收密码重置链接。"
+
+#: templates/registration/password_reset_form.html:17
+msgid "Reset Password"
+msgstr "重置密码"
+
+#: users/forms.py:12
+msgid "Password"
+msgstr "密码"
+
+#: users/forms.py:16
+msgid ""
+"Your password can't be too similar to your other personal information. It "
+"must contain at least 8 characters. It can't be a commonly used password. It"
+" can't be entirely numeric."
+msgstr "您的密码不能与您的其他个人信息过于相似。必须至少包含 8 个字符。不能是常用密码。不能完全是数字。"
+
+#: users/forms.py:23
+msgid "Password confirmation"
+msgstr "确认密码"
+
+#: users/forms.py:26
+msgid "Enter the same password as before, for verification."
+msgstr "输入与之前相同的密码进行验证。"
+
+#: users/forms.py:34 users/templates/users/account_settings.html:44
+msgid "Username"
+msgstr "用户名"
+
+#: users/forms.py:35 users/templates/users/account_settings.html:45
+msgid "Email"
+msgstr "电子邮件"
+
+#: users/forms.py:39
+msgid "Required. 150 characters or fewer. Letters, digits and @/./+/-/_ only."
+msgstr "必须填写。150 个字符或更少。仅限字母、数字和 @/./+/-/_。"
+
+#: users/forms.py:65 users/templates/users/account_settings.html:68
+msgid "Language Preference"
+msgstr "语言偏好"
+
+#: users/forms.py:66 users/templates/users/account_settings.html:63
+msgid "Country"
+msgstr "国家"
+
+#: users/forms.py:67 users/templates/users/account_settings.html:90
+msgid "Allergens"
+msgstr "过敏原"
+
+#: users/forms.py:68 users/templates/users/account_settings.html:78
+msgid "Dietary Requirements"
+msgstr "饮食要求"
+
+#: users/forms.py:69
+msgid "Enable scan-to-add in pantry"
+msgstr "在茶水间启用扫描添加功能"
+
+#: users/forms.py:70
+msgid "Display Nutri-Score on products"
+msgstr "在产品上显示 Nutri-Score"
+
+#: users/forms.py:71
+msgid "Display Eco-Score on products"
+msgstr "在产品上显示生态分数"
+
+#: users/forms.py:72
+msgid "Prioritise local results in search"
+msgstr "在搜索中优先考虑本地结果"
+
+#: users/templates/users/account_settings.html:6
+msgid "Account Settings"
+msgstr "账户设置"
+
+#: users/templates/users/account_settings.html:19
+msgid "Warning!"
+msgstr "警告"
+
+#: users/templates/users/account_settings.html:19
+msgid "You are about to delete your account permanently."
+msgstr "您将永久删除您的账户。"
+
+#: users/templates/users/account_settings.html:22
+msgid ""
+"\n"
+"          Doing this will permanently remove all account data including your\n"
+"          pantry, saved recipes, and favourites. Are you sure you want to\n"
+"          continue?\n"
+"          "
+msgstr ""
+"\n"
+"          此操作将永久删除所有账户数据，包括您的\n"
+"          储藏室、保存的食谱和收藏夹。您确定要\n"
+"          继续？\n"
+"          "
+
+#: users/templates/users/account_settings.html:29
+msgid "I'm sure,"
+msgstr "我确定"
+
+#: users/templates/users/account_settings.html:30
+#: users/templates/users/account_settings.html:52
+msgid "Delete Account"
+msgstr "删除账户"
+
+#: users/templates/users/account_settings.html:40
+msgid "Account management"
+msgstr "账户管理"
+
+#: users/templates/users/account_settings.html:46
+msgid "Date Joined"
+msgstr "加入日期"
+
+#: users/templates/users/account_settings.html:57
+msgid "User preferences"
+msgstr "用户偏好"
+
+#: users/templates/users/account_settings.html:115
+msgid "Save Settings"
+msgstr "保存设置"
+
+#: users/templates/users/register.html:60
+#, python-format
+msgid "Already have an account? <a href=\"%(login_url)s\">Log in here</a>."
+msgstr "已有帐户？<a href=\"%(login_url)s\">在此登录</a>。"

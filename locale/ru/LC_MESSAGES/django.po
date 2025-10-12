@@ -1,0 +1,660 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-10-12 14:39+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n%100>=11 && n%100<=14)? 2 : 3);\n"
+
+#: pantry/templates/pantry/index.html:17
+msgid "Advanced Search"
+msgstr "Расширенный поиск"
+
+#: pantry/templates/pantry/index.html:25
+msgid "Product Name"
+msgstr "Название продукта"
+
+#: pantry/templates/pantry/index.html:29
+msgid "Country of Origin"
+msgstr "Страна происхождения"
+
+#: pantry/templates/pantry/index.html:31
+msgid "Select a country..."
+msgstr "Выберите страну..."
+
+#: pantry/templates/pantry/index.html:35
+msgid "Category"
+msgstr "Категория"
+
+#: pantry/templates/pantry/index.html:37
+msgid "Select a category..."
+msgstr "Выберите категорию..."
+
+#: pantry/templates/pantry/index.html:41
+msgid "Brand"
+msgstr "Бренд"
+
+#: pantry/templates/pantry/index.html:43
+msgid "Select a brand..."
+msgstr "Выберите бренд..."
+
+#: pantry/templates/pantry/index.html:48
+msgid "Clear Filters"
+msgstr "Очистить фильтры"
+
+#: pantry/templates/pantry/index.html:51 templates/base.html:34
+msgid "Search"
+msgstr "Поиск"
+
+#: pantry/templates/pantry/index.html:66
+msgid "Product Search Results"
+msgstr "Результаты поиска товаров"
+
+#: pantry/templates/pantry/index.html:70
+msgid "Enter a search query to find products."
+msgstr "Введите поисковый запрос, чтобы найти товары."
+
+#: pantry/templates/pantry/index.html:73
+msgid ""
+"Can't find what you're looking for? Try <a href=\"#\" data-bs-"
+"toggle=\"modal\" data-bs-target=\"#exampleModal\">Advanced Search</a>."
+msgstr ""
+"Не можете найти то, что ищете? Попробуйте <a href=\"#\" data-bs-"
+"toggle=\"modal\" data-bs-target=\"#exampleModal\">Расширенный поиск</a>."
+
+#: pantry/templates/pantry/index.html:82
+msgid "Favourites"
+msgstr "Избранное"
+
+#: pantry/templates/pantry/index.html:101
+#: pantry/templates/pantry/pantry.html:71
+msgid "WARNING"
+msgstr "ВНИМАНИЕ"
+
+#: pantry/templates/pantry/index.html:101
+#: pantry/templates/pantry/pantry.html:71
+msgid "Contains user-specified allergens:"
+msgstr "Содержит указанные пользователем аллергены:"
+
+#: pantry/templates/pantry/index.html:110
+#: pantry/templates/pantry/pantry.html:80
+msgid "POSSIBLE MISMATCH"
+msgstr "ВОЗМОЖНОЕ НЕСООТВЕТСТВИЕ"
+
+#: pantry/templates/pantry/index.html:110
+#: pantry/templates/pantry/pantry.html:80
+msgid "Missing dietary requirements:"
+msgstr "Отсутствие диетических требований:"
+
+#: pantry/templates/pantry/index.html:121
+msgid "Brands"
+msgstr "Бренды"
+
+#: pantry/templates/pantry/index.html:122
+msgid "Code"
+msgstr "Код"
+
+#: pantry/templates/pantry/index.html:129
+msgid "item"
+msgstr "пункт"
+
+#: pantry/templates/pantry/index.html:136
+msgid "Add to Pantry"
+msgstr "Добавить в кладовую"
+
+#: pantry/templates/pantry/index.html:140
+msgid "Remove Favourite"
+msgstr "Удалить избранное"
+
+#: pantry/templates/pantry/index.html:148
+msgid "You haven't favourited any products yet. Start exploring today!"
+msgstr "Вы еще не выбрали ни одного продукта. Начните исследовать сегодня!"
+
+#: pantry/templates/pantry/pantry.html:5 templates/base.html:63
+msgid "Pantry"
+msgstr "Кладовая"
+
+#: pantry/templates/pantry/pantry.html:13
+msgid "Pantry Health & Eco Summary"
+msgstr "Кладовая здоровья и экологии"
+
+#: pantry/templates/pantry/pantry.html:20
+msgid "Nutri-Grade:"
+msgstr "Nutri-Grade:"
+
+#: pantry/templates/pantry/pantry.html:27
+msgid "Eco-Grade:"
+msgstr "Эко-класс:"
+
+#: pantry/templates/pantry/pantry.html:34
+msgid "Scores are hidden or unavailable. Check your user settings."
+msgstr "Баллы скрыты или недоступны. Проверьте настройки пользователя."
+
+#: pantry/templates/pantry/pantry.html:44
+msgid "Your Pantry Items"
+msgstr "Предметы вашей кладовой"
+
+#: pantry/templates/pantry/pantry.html:62
+#: pantry/templates/pantry/pantry.html:64
+msgid "Product Image"
+msgstr "Изображение продукта"
+
+#: pantry/templates/pantry/pantry.html:67
+msgid "No Name"
+msgstr "Без имени"
+
+#: pantry/templates/pantry/pantry.html:91
+msgid "Quantity:"
+msgstr "Количество:"
+
+#: pantry/templates/pantry/pantry.html:94
+msgid "Product Size:"
+msgstr "Размер изделия:"
+
+#: pantry/templates/pantry/pantry.html:100
+msgid "Expires:"
+msgstr "Истекает:"
+
+#: pantry/templates/pantry/pantry.html:116
+msgid "Your pantry is empty! Add some products to get started."
+msgstr ""
+"Ваша кладовая пуста! Добавьте несколько продуктов, чтобы начать работу."
+
+#: recipes/templates/recipes/recipes.html:6 templates/base.html:70
+msgid "Recipes"
+msgstr "Рецепты"
+
+#: recipes/templates/recipes/recipes.html:13
+msgid "New Recipe Suggestions"
+msgstr "Предложения новых рецептов"
+
+#: recipes/templates/recipes/recipes.html:40
+#: recipes/templates/recipes/recipes.html:101
+#: recipes/templates/recipes/recipes.html:163
+msgid "Ingredients"
+msgstr "Ингредиенты"
+
+#: recipes/templates/recipes/recipes.html:48
+#: recipes/templates/recipes/recipes.html:109
+#: recipes/templates/recipes/recipes.html:181
+msgid "Instructions"
+msgstr "Инструкции"
+
+#: recipes/templates/recipes/recipes.html:59
+#: recipes/templates/recipes/recipes.html:120
+msgid "Save Recipe"
+msgstr "Сохранить рецепт"
+
+#: recipes/templates/recipes/recipes.html:68
+msgid "No new suggestions"
+msgstr "Никаких новых предложений"
+
+#: recipes/templates/recipes/recipes.html:70
+msgid "Recipes still being generated"
+msgstr "Рецепты все еще создаются"
+
+#: recipes/templates/recipes/recipes.html:75
+msgid "Recently Suggested Recipes"
+msgstr "Недавно предложенные рецепты"
+
+#: recipes/templates/recipes/recipes.html:129
+msgid "No recently suggested"
+msgstr "Недавно не предлагалось"
+
+#: recipes/templates/recipes/recipes.html:135
+msgid "Saved Recipes"
+msgstr "Сохраненные рецепты"
+
+#: recipes/templates/recipes/recipes.html:152
+msgid "Missing Items"
+msgstr "Недостающие предметы"
+
+#: recipes/templates/recipes/recipes.html:192
+msgid "Delete Recipe"
+msgstr "Удалить рецепт"
+
+#: recipes/templates/recipes/recipes.html:204
+msgid "No Saved Recipes"
+msgstr "Нет сохраненных рецептов"
+
+#: savor/settings.py:138
+msgid "Arabic"
+msgstr "Арабский язык"
+
+#: savor/settings.py:139
+msgid "Bulgarian"
+msgstr "Болгария"
+
+#: savor/settings.py:140
+msgid "Chinese"
+msgstr "Китайский"
+
+#: savor/settings.py:141
+msgid "Czech"
+msgstr "Чехия"
+
+#: savor/settings.py:142
+msgid "Danish"
+msgstr "Датский"
+
+#: savor/settings.py:143
+msgid "Dutch"
+msgstr "Голландия"
+
+#: savor/settings.py:144
+msgid "Estonian"
+msgstr "Эстония"
+
+#: savor/settings.py:145
+msgid "Finnish"
+msgstr "Финский"
+
+#: savor/settings.py:146
+msgid "French"
+msgstr "Французский"
+
+#: savor/settings.py:147
+msgid "German"
+msgstr "Немецкий"
+
+#: savor/settings.py:148
+msgid "Greek"
+msgstr "Греция"
+
+#: savor/settings.py:149
+msgid "Hebrew"
+msgstr "Иврит"
+
+#: savor/settings.py:150
+msgid "Hungarian"
+msgstr "Венгерский"
+
+#: savor/settings.py:151
+msgid "Indonesian"
+msgstr "Индонезия"
+
+#: savor/settings.py:152
+msgid "Italian"
+msgstr "Итальянский"
+
+#: savor/settings.py:153
+msgid "Japanese"
+msgstr "Японский"
+
+#: savor/settings.py:154
+msgid "Korean"
+msgstr "Корейский"
+
+#: savor/settings.py:155
+msgid "Latvian"
+msgstr "Латвия"
+
+#: savor/settings.py:156
+msgid "Lithuanian"
+msgstr "Литва"
+
+#: savor/settings.py:157
+msgid "Norwegian Bokmål"
+msgstr "Норвежский Bokmål"
+
+#: savor/settings.py:158
+msgid "Polish"
+msgstr "Польша"
+
+#: savor/settings.py:159
+msgid "Portuguese"
+msgstr "Португальский"
+
+#: savor/settings.py:160
+msgid "Romanian"
+msgstr "Румыния"
+
+#: savor/settings.py:161
+msgid "Russian"
+msgstr "Русский"
+
+#: savor/settings.py:162
+msgid "Slovak"
+msgstr "Словакия"
+
+#: savor/settings.py:163
+msgid "Slovenian"
+msgstr "Словения"
+
+#: savor/settings.py:164
+msgid "Spanish"
+msgstr "Испанский"
+
+#: savor/settings.py:165
+msgid "Swedish"
+msgstr "Шведский"
+
+#: savor/settings.py:166
+msgid "Thai"
+msgstr "Тайский"
+
+#: savor/settings.py:167
+msgid "Turkish"
+msgstr "Турецкая"
+
+#: savor/settings.py:168
+msgid "Ukrainian"
+msgstr "Украина"
+
+#: savor/settings.py:169
+msgid "Vietnamese"
+msgstr "Вьетнамцы"
+
+#: templates/base.html:22
+msgid "Welcome"
+msgstr "Добро пожаловать"
+
+#: templates/base.html:29
+msgid "Search Product by ingredient"
+msgstr "Поиск продукта по ингредиентам"
+
+#: templates/base.html:32
+msgid "Search Product by Barcode"
+msgstr "Поиск продукта по штрих-коду"
+
+#: templates/base.html:37
+msgid "Scan"
+msgstr "Сканирование"
+
+#: templates/base.html:56
+msgid "Home"
+msgstr "Главная"
+
+#: templates/base.html:79
+msgid "Settings"
+msgstr "Настройки"
+
+#: templates/base.html:85
+msgid "Account"
+msgstr "Счет"
+
+#: templates/base.html:94
+msgid "Log Out"
+msgstr "Выйти из системы"
+
+#: templates/base.html:107
+msgid "Log On"
+msgstr "Войти"
+
+#: templates/base.html:113 users/templates/users/register.html:57
+msgid "Register"
+msgstr "Регистрация"
+
+#: templates/base.html:123
+msgid "Stop Scanning"
+msgstr "Остановить сканирование"
+
+#: templates/registration/login.html:5 templates/registration/login.html:9
+#: templates/registration/login.html:37
+msgid "Log In"
+msgstr "Войти"
+
+#: templates/registration/login.html:40
+#, python-format
+msgid "Don't have an account? <a href=\"%('register_url')s\">Register here</a>."
+msgstr ""
+"У вас нет аккаунта? <a href=\"%('register_url')s\">Зарегистрируйтесь "
+"здесь</a>."
+
+#: templates/registration/login.html:41
+msgid "Forgot password?"
+msgstr "Забыли пароль?"
+
+#: templates/registration/logout.html:4 templates/registration/logout.html:7
+msgid "Logged Out"
+msgstr "Вышел из системы"
+
+#: templates/registration/logout.html:8
+msgid "You have been successfully logged out."
+msgstr "Вы успешно вышли из системы."
+
+#: templates/registration/logout.html:9
+msgid "Log in again"
+msgstr "Войдите снова"
+
+#: templates/registration/password_change_done.html:6
+msgid "Password Changed Successfully"
+msgstr "Пароль успешно изменен"
+
+#: templates/registration/password_change_done.html:12
+#: templates/registration/password_reset_complete.html:11
+msgid "Password Changed Successfully!"
+msgstr "Пароль успешно изменен!"
+
+#: templates/registration/password_change_done.html:14
+msgid "Your password has been changed."
+msgstr "Ваш пароль был изменен."
+
+#: templates/registration/password_change_done.html:16
+msgid "Back to Settings"
+msgstr "Назад к настройкам"
+
+#: templates/registration/password_change_form.html:5
+#: templates/registration/password_change_form.html:38
+#: templates/registration/password_reset_confirm.html:28
+#: users/templates/users/account_settings.html:51
+msgid "Change Password"
+msgstr "Изменить пароль"
+
+#: templates/registration/password_change_form.html:11
+msgid "Change Your Password"
+msgstr "Изменить пароль"
+
+#: templates/registration/password_change_form.html:23
+msgid "Old Password"
+msgstr "Старый пароль"
+
+#: templates/registration/password_change_form.html:28
+#: templates/registration/password_reset_confirm.html:20
+msgid "New Password"
+msgstr "Новый пароль"
+
+#: templates/registration/password_change_form.html:33
+#: templates/registration/password_reset_confirm.html:24
+msgid "Confirm New Password"
+msgstr "Подтвердите новый пароль"
+
+#: templates/registration/password_reset_complete.html:5
+msgid "Password Changed"
+msgstr "Пароль изменен"
+
+#: templates/registration/password_reset_complete.html:13
+msgid ""
+"Your password has been set. You can now go ahead and log in with your new "
+"password."
+msgstr ""
+"Ваш пароль был установлен. Теперь вы можете войти в систему с новым паролем."
+
+#: templates/registration/password_reset_confirm.html:12
+msgid "Set a New Password"
+msgstr "Установите новый пароль"
+
+#: templates/registration/password_reset_confirm.html:32
+msgid "Invalid Link"
+msgstr "Неверная ссылка"
+
+#: templates/registration/password_reset_confirm.html:34
+msgid ""
+"The password reset link was invalid, possibly because it has already been "
+"used. Please request a new password reset."
+msgstr ""
+"Ссылка для сброса пароля оказалась недействительной, возможно, потому что "
+"она уже использовалась. Пожалуйста, запросите новый сброс пароля."
+
+#: templates/registration/password_reset_done.html:4
+msgid "Password Reset Sent"
+msgstr "Отправлен сброс пароля"
+
+#: templates/registration/password_reset_done.html:10
+msgid "Check Your Inbox"
+msgstr "Проверьте свой почтовый ящик"
+
+#: templates/registration/password_reset_done.html:12
+msgid ""
+"We've emailed you instructions for setting your password. If an account "
+"exists with the email you entered, you should receive them shortly."
+msgstr ""
+"Мы отправили вам по электронной почте инструкции по установке пароля. Если "
+"учетная запись с указанным вами электронным адресом существует, вы должны "
+"получить их в ближайшее время."
+
+#: templates/registration/password_reset_done.html:13
+msgid ""
+"If you don't receive an email, please make sure you've entered the email "
+"address you registered with, and check your spam folder."
+msgstr ""
+"Если вы не получили письмо, убедитесь, что вы ввели адрес электронной почты,"
+" с которым регистрировались, и проверьте папку со спамом."
+
+#: templates/registration/password_reset_form.html:8
+msgid "Forgot Your Password?"
+msgstr "Забыли пароль?"
+
+#: templates/registration/password_reset_form.html:9
+msgid "Enter your email address below to receive a password reset link."
+msgstr ""
+"Введите свой адрес электронной почты, чтобы получить ссылку для сброса "
+"пароля."
+
+#: templates/registration/password_reset_form.html:17
+msgid "Reset Password"
+msgstr "Сброс пароля"
+
+#: users/forms.py:12
+msgid "Password"
+msgstr "Пароль"
+
+#: users/forms.py:16
+msgid ""
+"Your password can't be too similar to your other personal information. It "
+"must contain at least 8 characters. It can't be a commonly used password. It"
+" can't be entirely numeric."
+msgstr ""
+"Ваш пароль не должен быть слишком похож на другие ваши личные данные. Он "
+"должен содержать не менее 8 символов. Это не может быть часто используемый "
+"пароль. Он не может быть полностью цифровым."
+
+#: users/forms.py:23
+msgid "Password confirmation"
+msgstr "Подтверждение пароля"
+
+#: users/forms.py:26
+msgid "Enter the same password as before, for verification."
+msgstr "Введите тот же пароль, что и раньше, для проверки."
+
+#: users/forms.py:34 users/templates/users/account_settings.html:44
+msgid "Username"
+msgstr "Имя пользователя"
+
+#: users/forms.py:35 users/templates/users/account_settings.html:45
+msgid "Email"
+msgstr "Электронная почта"
+
+#: users/forms.py:39
+msgid "Required. 150 characters or fewer. Letters, digits and @/./+/-/_ only."
+msgstr "Требуется. Не более 150 символов. Только буквы, цифры и @/./+/-/_."
+
+#: users/forms.py:65 users/templates/users/account_settings.html:68
+msgid "Language Preference"
+msgstr "Предпочтение языка"
+
+#: users/forms.py:66 users/templates/users/account_settings.html:63
+msgid "Country"
+msgstr "Страна"
+
+#: users/forms.py:67 users/templates/users/account_settings.html:90
+msgid "Allergens"
+msgstr "Аллергены"
+
+#: users/forms.py:68 users/templates/users/account_settings.html:78
+msgid "Dietary Requirements"
+msgstr "Диетические требования"
+
+#: users/forms.py:69
+msgid "Enable scan-to-add in pantry"
+msgstr "Включите функцию сканирования и добавления в кладовую"
+
+#: users/forms.py:70
+msgid "Display Nutri-Score on products"
+msgstr "Отображение Nutri-Score на продуктах"
+
+#: users/forms.py:71
+msgid "Display Eco-Score on products"
+msgstr "Отображение экологического рейтинга на изделиях"
+
+#: users/forms.py:72
+msgid "Prioritise local results in search"
+msgstr "Приоритет местных результатов в поиске"
+
+#: users/templates/users/account_settings.html:6
+msgid "Account Settings"
+msgstr "Настройки учетной записи"
+
+#: users/templates/users/account_settings.html:19
+msgid "Warning!"
+msgstr "Внимание!"
+
+#: users/templates/users/account_settings.html:19
+msgid "You are about to delete your account permanently."
+msgstr "Вы собираетесь удалить свою учетную запись навсегда."
+
+#: users/templates/users/account_settings.html:22
+msgid ""
+"\n"
+"          Doing this will permanently remove all account data including your\n"
+"          pantry, saved recipes, and favourites. Are you sure you want to\n"
+"          continue?\n"
+"          "
+msgstr ""
+"\n"
+"          Это приведет к окончательному удалению всех данных учетной записи, включая ваши\n"
+"          кладовую, сохраненные рецепты и избранное. Вы уверены, что хотите\n"
+"          продолжить?\n"
+"          "
+
+#: users/templates/users/account_settings.html:29
+msgid "I'm sure,"
+msgstr "Я уверен,"
+
+#: users/templates/users/account_settings.html:30
+#: users/templates/users/account_settings.html:52
+msgid "Delete Account"
+msgstr "Удалить аккаунт"
+
+#: users/templates/users/account_settings.html:40
+msgid "Account management"
+msgstr "Управление счетами"
+
+#: users/templates/users/account_settings.html:46
+msgid "Date Joined"
+msgstr "Дата вступления"
+
+#: users/templates/users/account_settings.html:57
+msgid "User preferences"
+msgstr "Предпочтения пользователей"
+
+#: users/templates/users/account_settings.html:115
+msgid "Save Settings"
+msgstr "Сохранить настройки"
+
+#: users/templates/users/register.html:60
+#, python-format
+msgid "Already have an account? <a href=\"%(login_url)s\">Log in here</a>."
+msgstr "У вас уже есть аккаунт? <a href=\"%(login_url)s\">Войдите здесь</a>."

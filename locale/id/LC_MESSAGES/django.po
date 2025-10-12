@@ -1,0 +1,661 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-10-12 14:39+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#: pantry/templates/pantry/index.html:17
+msgid "Advanced Search"
+msgstr "Pencarian Lanjutan"
+
+#: pantry/templates/pantry/index.html:25
+msgid "Product Name"
+msgstr "Nama Produk"
+
+#: pantry/templates/pantry/index.html:29
+msgid "Country of Origin"
+msgstr "Negara Asal"
+
+#: pantry/templates/pantry/index.html:31
+msgid "Select a country..."
+msgstr "Pilih negara..."
+
+#: pantry/templates/pantry/index.html:35
+msgid "Category"
+msgstr "Kategori"
+
+#: pantry/templates/pantry/index.html:37
+msgid "Select a category..."
+msgstr "Pilih kategori..."
+
+#: pantry/templates/pantry/index.html:41
+msgid "Brand"
+msgstr "Merek"
+
+#: pantry/templates/pantry/index.html:43
+msgid "Select a brand..."
+msgstr "Pilih merek..."
+
+#: pantry/templates/pantry/index.html:48
+msgid "Clear Filters"
+msgstr "Hapus Filter"
+
+#: pantry/templates/pantry/index.html:51 templates/base.html:34
+msgid "Search"
+msgstr "Pencarian"
+
+#: pantry/templates/pantry/index.html:66
+msgid "Product Search Results"
+msgstr "Hasil Pencarian Produk"
+
+#: pantry/templates/pantry/index.html:70
+msgid "Enter a search query to find products."
+msgstr "Masukkan permintaan pencarian untuk menemukan produk."
+
+#: pantry/templates/pantry/index.html:73
+msgid ""
+"Can't find what you're looking for? Try <a href=\"#\" data-bs-"
+"toggle=\"modal\" data-bs-target=\"#exampleModal\">Advanced Search</a>."
+msgstr ""
+"Tidak dapat menemukan apa yang Anda cari? Coba <a href=\"#\" data-bs-"
+"toggle=\"modal\" data-bs-target=\"#contohModal\">Pencarian Lanjutan</a>."
+
+#: pantry/templates/pantry/index.html:82
+msgid "Favourites"
+msgstr "Favorit"
+
+#: pantry/templates/pantry/index.html:101
+#: pantry/templates/pantry/pantry.html:71
+msgid "WARNING"
+msgstr "PERINGATAN"
+
+#: pantry/templates/pantry/index.html:101
+#: pantry/templates/pantry/pantry.html:71
+msgid "Contains user-specified allergens:"
+msgstr "Mengandung alergen yang ditentukan pengguna:"
+
+#: pantry/templates/pantry/index.html:110
+#: pantry/templates/pantry/pantry.html:80
+msgid "POSSIBLE MISMATCH"
+msgstr "KEMUNGKINAN KETIDAKCOCOKAN"
+
+#: pantry/templates/pantry/index.html:110
+#: pantry/templates/pantry/pantry.html:80
+msgid "Missing dietary requirements:"
+msgstr "Persyaratan diet yang hilang:"
+
+#: pantry/templates/pantry/index.html:121
+msgid "Brands"
+msgstr "Merek"
+
+#: pantry/templates/pantry/index.html:122
+msgid "Code"
+msgstr "Kode"
+
+#: pantry/templates/pantry/index.html:129
+msgid "item"
+msgstr "item"
+
+#: pantry/templates/pantry/index.html:136
+msgid "Add to Pantry"
+msgstr "Tambahkan ke Pantry"
+
+#: pantry/templates/pantry/index.html:140
+msgid "Remove Favourite"
+msgstr "Hapus Favorit"
+
+#: pantry/templates/pantry/index.html:148
+msgid "You haven't favourited any products yet. Start exploring today!"
+msgstr "Anda belum memfavoritkan produk apa pun. Mulai jelajahi hari ini!"
+
+#: pantry/templates/pantry/pantry.html:5 templates/base.html:63
+msgid "Pantry"
+msgstr "Pantry"
+
+#: pantry/templates/pantry/pantry.html:13
+msgid "Pantry Health & Eco Summary"
+msgstr "Rangkuman Kesehatan & Lingkungan Dapur"
+
+#: pantry/templates/pantry/pantry.html:20
+msgid "Nutri-Grade:"
+msgstr "Nutri-Grade:"
+
+#: pantry/templates/pantry/pantry.html:27
+msgid "Eco-Grade:"
+msgstr "Kelas Ramah Lingkungan:"
+
+#: pantry/templates/pantry/pantry.html:34
+msgid "Scores are hidden or unavailable. Check your user settings."
+msgstr ""
+"Skor disembunyikan atau tidak tersedia. Periksa pengaturan pengguna Anda."
+
+#: pantry/templates/pantry/pantry.html:44
+msgid "Your Pantry Items"
+msgstr "Barang-barang Pantry Anda"
+
+#: pantry/templates/pantry/pantry.html:62
+#: pantry/templates/pantry/pantry.html:64
+msgid "Product Image"
+msgstr "Gambar Produk"
+
+#: pantry/templates/pantry/pantry.html:67
+msgid "No Name"
+msgstr "No Nama"
+
+#: pantry/templates/pantry/pantry.html:91
+msgid "Quantity:"
+msgstr "Kuantitas:"
+
+#: pantry/templates/pantry/pantry.html:94
+msgid "Product Size:"
+msgstr "Ukuran Produk:"
+
+#: pantry/templates/pantry/pantry.html:100
+msgid "Expires:"
+msgstr "Kedaluwarsa:"
+
+#: pantry/templates/pantry/pantry.html:116
+msgid "Your pantry is empty! Add some products to get started."
+msgstr "Pantry Anda kosong! Tambahkan beberapa produk untuk memulai."
+
+#: recipes/templates/recipes/recipes.html:6 templates/base.html:70
+msgid "Recipes"
+msgstr "Resep"
+
+#: recipes/templates/recipes/recipes.html:13
+msgid "New Recipe Suggestions"
+msgstr "Saran Resep Baru"
+
+#: recipes/templates/recipes/recipes.html:40
+#: recipes/templates/recipes/recipes.html:101
+#: recipes/templates/recipes/recipes.html:163
+msgid "Ingredients"
+msgstr "Bahan-bahan"
+
+#: recipes/templates/recipes/recipes.html:48
+#: recipes/templates/recipes/recipes.html:109
+#: recipes/templates/recipes/recipes.html:181
+msgid "Instructions"
+msgstr "Petunjuk"
+
+#: recipes/templates/recipes/recipes.html:59
+#: recipes/templates/recipes/recipes.html:120
+msgid "Save Recipe"
+msgstr "Simpan Resep"
+
+#: recipes/templates/recipes/recipes.html:68
+msgid "No new suggestions"
+msgstr "Tidak ada saran baru"
+
+#: recipes/templates/recipes/recipes.html:70
+msgid "Recipes still being generated"
+msgstr "Resep masih dibuat"
+
+#: recipes/templates/recipes/recipes.html:75
+msgid "Recently Suggested Recipes"
+msgstr "Resep yang Baru Disarankan"
+
+#: recipes/templates/recipes/recipes.html:129
+msgid "No recently suggested"
+msgstr "Tidak ada yang baru-baru ini disarankan"
+
+#: recipes/templates/recipes/recipes.html:135
+msgid "Saved Recipes"
+msgstr "Resep yang Disimpan"
+
+#: recipes/templates/recipes/recipes.html:152
+msgid "Missing Items"
+msgstr "Barang Hilang"
+
+#: recipes/templates/recipes/recipes.html:192
+msgid "Delete Recipe"
+msgstr "Menghapus Resep"
+
+#: recipes/templates/recipes/recipes.html:204
+msgid "No Saved Recipes"
+msgstr "Tidak Ada Resep yang Disimpan"
+
+#: savor/settings.py:138
+msgid "Arabic"
+msgstr "Bahasa Arab"
+
+#: savor/settings.py:139
+msgid "Bulgarian"
+msgstr "Bulgaria"
+
+#: savor/settings.py:140
+msgid "Chinese"
+msgstr "Cina"
+
+#: savor/settings.py:141
+msgid "Czech"
+msgstr "Ceko"
+
+#: savor/settings.py:142
+msgid "Danish"
+msgstr "Denmark"
+
+#: savor/settings.py:143
+msgid "Dutch"
+msgstr "Belanda"
+
+#: savor/settings.py:144
+msgid "Estonian"
+msgstr "Estonia"
+
+#: savor/settings.py:145
+msgid "Finnish"
+msgstr "Finlandia"
+
+#: savor/settings.py:146
+msgid "French"
+msgstr "Bahasa Prancis"
+
+#: savor/settings.py:147
+msgid "German"
+msgstr "Bahasa Jerman"
+
+#: savor/settings.py:148
+msgid "Greek"
+msgstr "Bahasa Yunani"
+
+#: savor/settings.py:149
+msgid "Hebrew"
+msgstr "Bahasa Ibrani"
+
+#: savor/settings.py:150
+msgid "Hungarian"
+msgstr "Hongaria"
+
+#: savor/settings.py:151
+msgid "Indonesian"
+msgstr "Bahasa Indonesia"
+
+#: savor/settings.py:152
+msgid "Italian"
+msgstr "Bahasa Italia"
+
+#: savor/settings.py:153
+msgid "Japanese"
+msgstr "Bahasa Jepang"
+
+#: savor/settings.py:154
+msgid "Korean"
+msgstr "Bahasa Korea"
+
+#: savor/settings.py:155
+msgid "Latvian"
+msgstr "Latvia"
+
+#: savor/settings.py:156
+msgid "Lithuanian"
+msgstr "Lithuania"
+
+#: savor/settings.py:157
+msgid "Norwegian Bokmål"
+msgstr "Bokmål Norwegia"
+
+#: savor/settings.py:158
+msgid "Polish"
+msgstr "Polandia"
+
+#: savor/settings.py:159
+msgid "Portuguese"
+msgstr "Bahasa Portugis"
+
+#: savor/settings.py:160
+msgid "Romanian"
+msgstr "Rumania"
+
+#: savor/settings.py:161
+msgid "Russian"
+msgstr "Rusia"
+
+#: savor/settings.py:162
+msgid "Slovak"
+msgstr "Slowakia"
+
+#: savor/settings.py:163
+msgid "Slovenian"
+msgstr "Slovenia"
+
+#: savor/settings.py:164
+msgid "Spanish"
+msgstr "Bahasa Spanyol"
+
+#: savor/settings.py:165
+msgid "Swedish"
+msgstr "Swedia"
+
+#: savor/settings.py:166
+msgid "Thai"
+msgstr "Thailand"
+
+#: savor/settings.py:167
+msgid "Turkish"
+msgstr "Bahasa Turki"
+
+#: savor/settings.py:168
+msgid "Ukrainian"
+msgstr "Ukraina"
+
+#: savor/settings.py:169
+msgid "Vietnamese"
+msgstr "Vietnam"
+
+#: templates/base.html:22
+msgid "Welcome"
+msgstr "Selamat datang."
+
+#: templates/base.html:29
+msgid "Search Product by ingredient"
+msgstr "Cari Produk berdasarkan bahan"
+
+#: templates/base.html:32
+msgid "Search Product by Barcode"
+msgstr "Cari Produk dengan Barcode"
+
+#: templates/base.html:37
+msgid "Scan"
+msgstr "Memindai"
+
+#: templates/base.html:56
+msgid "Home"
+msgstr "Beranda"
+
+#: templates/base.html:79
+msgid "Settings"
+msgstr "Pengaturan"
+
+#: templates/base.html:85
+msgid "Account"
+msgstr "Akun"
+
+#: templates/base.html:94
+msgid "Log Out"
+msgstr "Log Out"
+
+#: templates/base.html:107
+msgid "Log On"
+msgstr "Masuk"
+
+#: templates/base.html:113 users/templates/users/register.html:57
+msgid "Register"
+msgstr "Daftar"
+
+#: templates/base.html:123
+msgid "Stop Scanning"
+msgstr "Berhenti Memindai"
+
+#: templates/registration/login.html:5 templates/registration/login.html:9
+#: templates/registration/login.html:37
+msgid "Log In"
+msgstr "Masuk"
+
+#: templates/registration/login.html:40
+#, python-format
+msgid "Don't have an account? <a href=\"%('register_url')s\">Register here</a>."
+msgstr "Belum memiliki akun? <a href=\"%('register_url')s\">Daftar di sini</a>."
+
+#: templates/registration/login.html:41
+msgid "Forgot password?"
+msgstr "Lupa kata sandi?"
+
+#: templates/registration/logout.html:4 templates/registration/logout.html:7
+msgid "Logged Out"
+msgstr "Keluar"
+
+#: templates/registration/logout.html:8
+msgid "You have been successfully logged out."
+msgstr "Anda telah berhasil keluar."
+
+#: templates/registration/logout.html:9
+msgid "Log in again"
+msgstr "Masuk lagi"
+
+#: templates/registration/password_change_done.html:6
+msgid "Password Changed Successfully"
+msgstr "Kata Sandi Berhasil Diubah"
+
+#: templates/registration/password_change_done.html:12
+#: templates/registration/password_reset_complete.html:11
+msgid "Password Changed Successfully!"
+msgstr "Kata Sandi Berhasil Diubah!"
+
+#: templates/registration/password_change_done.html:14
+msgid "Your password has been changed."
+msgstr "Kata sandi Anda telah diubah."
+
+#: templates/registration/password_change_done.html:16
+msgid "Back to Settings"
+msgstr "Kembali ke Pengaturan"
+
+#: templates/registration/password_change_form.html:5
+#: templates/registration/password_change_form.html:38
+#: templates/registration/password_reset_confirm.html:28
+#: users/templates/users/account_settings.html:51
+msgid "Change Password"
+msgstr "Ubah Kata Sandi"
+
+#: templates/registration/password_change_form.html:11
+msgid "Change Your Password"
+msgstr "Ubah Kata Sandi Anda"
+
+#: templates/registration/password_change_form.html:23
+msgid "Old Password"
+msgstr "Kata Sandi Lama"
+
+#: templates/registration/password_change_form.html:28
+#: templates/registration/password_reset_confirm.html:20
+msgid "New Password"
+msgstr "Kata Sandi Baru"
+
+#: templates/registration/password_change_form.html:33
+#: templates/registration/password_reset_confirm.html:24
+msgid "Confirm New Password"
+msgstr "Konfirmasi Kata Sandi Baru"
+
+#: templates/registration/password_reset_complete.html:5
+msgid "Password Changed"
+msgstr "Kata sandi diubah"
+
+#: templates/registration/password_reset_complete.html:13
+msgid ""
+"Your password has been set. You can now go ahead and log in with your new "
+"password."
+msgstr ""
+"Kata sandi Anda telah ditetapkan. Sekarang Anda dapat melanjutkan dan masuk "
+"dengan kata sandi baru Anda."
+
+#: templates/registration/password_reset_confirm.html:12
+msgid "Set a New Password"
+msgstr "Mengatur Kata Sandi Baru"
+
+#: templates/registration/password_reset_confirm.html:32
+msgid "Invalid Link"
+msgstr "Tautan Tidak Valid"
+
+#: templates/registration/password_reset_confirm.html:34
+msgid ""
+"The password reset link was invalid, possibly because it has already been "
+"used. Please request a new password reset."
+msgstr ""
+"Tautan pengaturan ulang kata sandi tidak valid, mungkin karena sudah pernah "
+"digunakan. Silakan minta pengaturan ulang kata sandi yang baru."
+
+#: templates/registration/password_reset_done.html:4
+msgid "Password Reset Sent"
+msgstr "Reset Kata Sandi Terkirim"
+
+#: templates/registration/password_reset_done.html:10
+msgid "Check Your Inbox"
+msgstr "Periksa Kotak Masuk Anda"
+
+#: templates/registration/password_reset_done.html:12
+msgid ""
+"We've emailed you instructions for setting your password. If an account "
+"exists with the email you entered, you should receive them shortly."
+msgstr ""
+"Kami telah mengirimkan instruksi melalui email untuk mengatur kata sandi "
+"Anda. Jika akun sudah ada dengan email yang Anda masukkan, Anda akan segera "
+"menerimanya."
+
+#: templates/registration/password_reset_done.html:13
+msgid ""
+"If you don't receive an email, please make sure you've entered the email "
+"address you registered with, and check your spam folder."
+msgstr ""
+"Jika Anda tidak menerima email, pastikan Anda telah memasukkan alamat email "
+"yang Anda daftarkan, dan periksa folder spam."
+
+#: templates/registration/password_reset_form.html:8
+msgid "Forgot Your Password?"
+msgstr "Lupa Kata Sandi Anda?"
+
+#: templates/registration/password_reset_form.html:9
+msgid "Enter your email address below to receive a password reset link."
+msgstr ""
+"Masukkan alamat email Anda di bawah ini untuk menerima tautan pengaturan "
+"ulang kata sandi."
+
+#: templates/registration/password_reset_form.html:17
+msgid "Reset Password"
+msgstr "Atur Ulang Kata Sandi"
+
+#: users/forms.py:12
+msgid "Password"
+msgstr "Kata sandi"
+
+#: users/forms.py:16
+msgid ""
+"Your password can't be too similar to your other personal information. It "
+"must contain at least 8 characters. It can't be a commonly used password. It"
+" can't be entirely numeric."
+msgstr ""
+"Kata sandi Anda tidak boleh terlalu mirip dengan informasi pribadi Anda yang"
+" lain. Kata sandi harus terdiri dari setidaknya 8 karakter. Kata sandi tidak"
+" boleh berupa kata sandi yang umum digunakan. Kata sandi tidak boleh "
+"seluruhnya berupa angka."
+
+#: users/forms.py:23
+msgid "Password confirmation"
+msgstr "Konfirmasi kata sandi"
+
+#: users/forms.py:26
+msgid "Enter the same password as before, for verification."
+msgstr "Masukkan kata sandi yang sama seperti sebelumnya, untuk verifikasi."
+
+#: users/forms.py:34 users/templates/users/account_settings.html:44
+msgid "Username"
+msgstr "Nama pengguna"
+
+#: users/forms.py:35 users/templates/users/account_settings.html:45
+msgid "Email"
+msgstr "Email"
+
+#: users/forms.py:39
+msgid "Required. 150 characters or fewer. Letters, digits and @/./+/-/_ only."
+msgstr ""
+"Wajib diisi. 150 karakter atau kurang. Hanya huruf, angka, dan @/./+/-/_."
+
+#: users/forms.py:65 users/templates/users/account_settings.html:68
+msgid "Language Preference"
+msgstr "Preferensi Bahasa"
+
+#: users/forms.py:66 users/templates/users/account_settings.html:63
+msgid "Country"
+msgstr "Negara"
+
+#: users/forms.py:67 users/templates/users/account_settings.html:90
+msgid "Allergens"
+msgstr "Alergen"
+
+#: users/forms.py:68 users/templates/users/account_settings.html:78
+msgid "Dietary Requirements"
+msgstr "Persyaratan Diet"
+
+#: users/forms.py:69
+msgid "Enable scan-to-add in pantry"
+msgstr "Mengaktifkan pemindaian untuk ditambahkan di pantry"
+
+#: users/forms.py:70
+msgid "Display Nutri-Score on products"
+msgstr "Menampilkan Nutri-Score pada produk"
+
+#: users/forms.py:71
+msgid "Display Eco-Score on products"
+msgstr "Menampilkan Skor Ramah Lingkungan pada produk"
+
+#: users/forms.py:72
+msgid "Prioritise local results in search"
+msgstr "Memprioritaskan hasil lokal dalam pencarian"
+
+#: users/templates/users/account_settings.html:6
+msgid "Account Settings"
+msgstr "Pengaturan Akun"
+
+#: users/templates/users/account_settings.html:19
+msgid "Warning!"
+msgstr "Peringatan!"
+
+#: users/templates/users/account_settings.html:19
+msgid "You are about to delete your account permanently."
+msgstr "Anda akan menghapus akun Anda secara permanen."
+
+#: users/templates/users/account_settings.html:22
+msgid ""
+"\n"
+"          Doing this will permanently remove all account data including your\n"
+"          pantry, saved recipes, and favourites. Are you sure you want to\n"
+"          continue?\n"
+"          "
+msgstr ""
+"\n"
+"          Melakukan hal ini akan menghapus semua data akun secara permanen termasuk\n"
+"          dapur, resep yang disimpan, dan favorit Anda. Apakah Anda yakin ingin\n"
+"          melanjutkan?\n"
+"          "
+
+#: users/templates/users/account_settings.html:29
+msgid "I'm sure,"
+msgstr "Aku yakin,"
+
+#: users/templates/users/account_settings.html:30
+#: users/templates/users/account_settings.html:52
+msgid "Delete Account"
+msgstr "Menghapus Akun"
+
+#: users/templates/users/account_settings.html:40
+msgid "Account management"
+msgstr "Manajemen akun"
+
+#: users/templates/users/account_settings.html:46
+msgid "Date Joined"
+msgstr "Tanggal Bergabung"
+
+#: users/templates/users/account_settings.html:57
+msgid "User preferences"
+msgstr "Preferensi pengguna"
+
+#: users/templates/users/account_settings.html:115
+msgid "Save Settings"
+msgstr "Menyimpan Pengaturan"
+
+#: users/templates/users/register.html:60
+#, python-format
+msgid "Already have an account? <a href=\"%(login_url)s\">Log in here</a>."
+msgstr "Sudah memiliki akun? <a href=\"%(login_url)s\">Masuk di sini</a>."

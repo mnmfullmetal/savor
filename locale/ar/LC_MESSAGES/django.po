@@ -1,0 +1,656 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-10-12 14:39+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 && n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5;\n"
+
+#: pantry/templates/pantry/index.html:17
+msgid "Advanced Search"
+msgstr "بحث متقدم"
+
+#: pantry/templates/pantry/index.html:25
+msgid "Product Name"
+msgstr "اسم المنتج"
+
+#: pantry/templates/pantry/index.html:29
+msgid "Country of Origin"
+msgstr "بلد المنشأ"
+
+#: pantry/templates/pantry/index.html:31
+msgid "Select a country..."
+msgstr "اختر بلداً..."
+
+#: pantry/templates/pantry/index.html:35
+msgid "Category"
+msgstr "الفئة"
+
+#: pantry/templates/pantry/index.html:37
+msgid "Select a category..."
+msgstr "اختر فئة..."
+
+#: pantry/templates/pantry/index.html:41
+msgid "Brand"
+msgstr "العلامة التجارية"
+
+#: pantry/templates/pantry/index.html:43
+msgid "Select a brand..."
+msgstr "اختر علامة تجارية..."
+
+#: pantry/templates/pantry/index.html:48
+msgid "Clear Filters"
+msgstr "مسح الفلاتر"
+
+#: pantry/templates/pantry/index.html:51 templates/base.html:34
+msgid "Search"
+msgstr "بحث"
+
+#: pantry/templates/pantry/index.html:66
+msgid "Product Search Results"
+msgstr "نتائج البحث عن المنتج"
+
+#: pantry/templates/pantry/index.html:70
+msgid "Enter a search query to find products."
+msgstr "أدخل استعلام بحث للعثور على المنتجات."
+
+#: pantry/templates/pantry/index.html:73
+msgid ""
+"Can't find what you're looking for? Try <a href=\"#\" data-bs-"
+"toggle=\"modal\" data-bs-target=\"#exampleModal\">Advanced Search</a>."
+msgstr ""
+"لا يمكنك العثور على ما تبحث عنه؟ جرِّب <a href=\"#\" data-bs-"
+"toggle=\"modal\" data-bs-target=\"#exampleModal\">البحث المتقدم</a>."
+
+#: pantry/templates/pantry/index.html:82
+msgid "Favourites"
+msgstr "المفضلات"
+
+#: pantry/templates/pantry/index.html:101
+#: pantry/templates/pantry/pantry.html:71
+msgid "WARNING"
+msgstr "تحذير"
+
+#: pantry/templates/pantry/index.html:101
+#: pantry/templates/pantry/pantry.html:71
+msgid "Contains user-specified allergens:"
+msgstr "يحتوي على مسببات الحساسية التي يحددها المستخدم:"
+
+#: pantry/templates/pantry/index.html:110
+#: pantry/templates/pantry/pantry.html:80
+msgid "POSSIBLE MISMATCH"
+msgstr "عدم تطابق محتمل"
+
+#: pantry/templates/pantry/index.html:110
+#: pantry/templates/pantry/pantry.html:80
+msgid "Missing dietary requirements:"
+msgstr "المتطلبات الغذائية المفقودة:"
+
+#: pantry/templates/pantry/index.html:121
+msgid "Brands"
+msgstr "العلامات التجارية"
+
+#: pantry/templates/pantry/index.html:122
+msgid "Code"
+msgstr "الكود"
+
+#: pantry/templates/pantry/index.html:129
+msgid "item"
+msgstr "الصنف"
+
+#: pantry/templates/pantry/index.html:136
+msgid "Add to Pantry"
+msgstr "إضافة إلى خزانة المؤن"
+
+#: pantry/templates/pantry/index.html:140
+msgid "Remove Favourite"
+msgstr "إزالة المفضلة"
+
+#: pantry/templates/pantry/index.html:148
+msgid "You haven't favourited any products yet. Start exploring today!"
+msgstr "لم تقم بتفضيل أي منتجات حتى الآن. ابدأ الاستكشاف اليوم!"
+
+#: pantry/templates/pantry/pantry.html:5 templates/base.html:63
+msgid "Pantry"
+msgstr "مخزن المؤن"
+
+#: pantry/templates/pantry/pantry.html:13
+msgid "Pantry Health & Eco Summary"
+msgstr "ملخص الصحة والبيئة في المخزن"
+
+#: pantry/templates/pantry/pantry.html:20
+msgid "Nutri-Grade:"
+msgstr "نوتري-غريد:"
+
+#: pantry/templates/pantry/pantry.html:27
+msgid "Eco-Grade:"
+msgstr "درجة صديقة للبيئة:"
+
+#: pantry/templates/pantry/pantry.html:34
+msgid "Scores are hidden or unavailable. Check your user settings."
+msgstr "النتائج مخفية أو غير متوفرة. تحقق من إعدادات المستخدم."
+
+#: pantry/templates/pantry/pantry.html:44
+msgid "Your Pantry Items"
+msgstr "عناصر مخزن المؤن الخاص بك"
+
+#: pantry/templates/pantry/pantry.html:62
+#: pantry/templates/pantry/pantry.html:64
+msgid "Product Image"
+msgstr "صورة المنتج"
+
+#: pantry/templates/pantry/pantry.html:67
+msgid "No Name"
+msgstr "لا يوجد اسم"
+
+#: pantry/templates/pantry/pantry.html:91
+msgid "Quantity:"
+msgstr "الكمية:"
+
+#: pantry/templates/pantry/pantry.html:94
+msgid "Product Size:"
+msgstr "حجم المنتج:"
+
+#: pantry/templates/pantry/pantry.html:100
+msgid "Expires:"
+msgstr "تنتهي صلاحيتها:"
+
+#: pantry/templates/pantry/pantry.html:116
+msgid "Your pantry is empty! Add some products to get started."
+msgstr "مخزنك فارغ! أضيفي بعض المنتجات للبدء."
+
+#: recipes/templates/recipes/recipes.html:6 templates/base.html:70
+msgid "Recipes"
+msgstr "الوصفات"
+
+#: recipes/templates/recipes/recipes.html:13
+msgid "New Recipe Suggestions"
+msgstr "اقتراحات الوصفات الجديدة"
+
+#: recipes/templates/recipes/recipes.html:40
+#: recipes/templates/recipes/recipes.html:101
+#: recipes/templates/recipes/recipes.html:163
+msgid "Ingredients"
+msgstr "المكونات"
+
+#: recipes/templates/recipes/recipes.html:48
+#: recipes/templates/recipes/recipes.html:109
+#: recipes/templates/recipes/recipes.html:181
+msgid "Instructions"
+msgstr "التعليمات"
+
+#: recipes/templates/recipes/recipes.html:59
+#: recipes/templates/recipes/recipes.html:120
+msgid "Save Recipe"
+msgstr "حفظ الوصفة"
+
+#: recipes/templates/recipes/recipes.html:68
+msgid "No new suggestions"
+msgstr "لا توجد اقتراحات جديدة"
+
+#: recipes/templates/recipes/recipes.html:70
+msgid "Recipes still being generated"
+msgstr "الوصفات التي لا تزال قيد الإنشاء"
+
+#: recipes/templates/recipes/recipes.html:75
+msgid "Recently Suggested Recipes"
+msgstr "الوصفات المقترحة مؤخراً"
+
+#: recipes/templates/recipes/recipes.html:129
+msgid "No recently suggested"
+msgstr "لم يُقترح مؤخراً"
+
+#: recipes/templates/recipes/recipes.html:135
+msgid "Saved Recipes"
+msgstr "الوصفات المحفوظة"
+
+#: recipes/templates/recipes/recipes.html:152
+msgid "Missing Items"
+msgstr "العناصر المفقودة"
+
+#: recipes/templates/recipes/recipes.html:192
+msgid "Delete Recipe"
+msgstr "حذف الوصفة"
+
+#: recipes/templates/recipes/recipes.html:204
+msgid "No Saved Recipes"
+msgstr "لا توجد وصفات محفوظة"
+
+#: savor/settings.py:138
+msgid "Arabic"
+msgstr "اللغة العربية"
+
+#: savor/settings.py:139
+msgid "Bulgarian"
+msgstr "البلغارية"
+
+#: savor/settings.py:140
+msgid "Chinese"
+msgstr "صيني"
+
+#: savor/settings.py:141
+msgid "Czech"
+msgstr "التشيكية"
+
+#: savor/settings.py:142
+msgid "Danish"
+msgstr "دنماركية"
+
+#: savor/settings.py:143
+msgid "Dutch"
+msgstr "اللغة الهولندية"
+
+#: savor/settings.py:144
+msgid "Estonian"
+msgstr "الإستونية"
+
+#: savor/settings.py:145
+msgid "Finnish"
+msgstr "الفنلندية"
+
+#: savor/settings.py:146
+msgid "French"
+msgstr "الفرنسية"
+
+#: savor/settings.py:147
+msgid "German"
+msgstr "الألمانية"
+
+#: savor/settings.py:148
+msgid "Greek"
+msgstr "اليونانية"
+
+#: savor/settings.py:149
+msgid "Hebrew"
+msgstr "العبرية"
+
+#: savor/settings.py:150
+msgid "Hungarian"
+msgstr "الهنغارية"
+
+#: savor/settings.py:151
+msgid "Indonesian"
+msgstr "الإندونيسية"
+
+#: savor/settings.py:152
+msgid "Italian"
+msgstr "إيطالي"
+
+#: savor/settings.py:153
+msgid "Japanese"
+msgstr "ياباني"
+
+#: savor/settings.py:154
+msgid "Korean"
+msgstr "كوري"
+
+#: savor/settings.py:155
+msgid "Latvian"
+msgstr "اللاتفية"
+
+#: savor/settings.py:156
+msgid "Lithuanian"
+msgstr "الليتوانية"
+
+#: savor/settings.py:157
+msgid "Norwegian Bokmål"
+msgstr "اللغة النرويجية بوكمال النرويجية"
+
+#: savor/settings.py:158
+msgid "Polish"
+msgstr "البولندية"
+
+#: savor/settings.py:159
+msgid "Portuguese"
+msgstr "البرتغالية"
+
+#: savor/settings.py:160
+msgid "Romanian"
+msgstr "الرومانية"
+
+#: savor/settings.py:161
+msgid "Russian"
+msgstr "الروسية"
+
+#: savor/settings.py:162
+msgid "Slovak"
+msgstr "السلوفاكية"
+
+#: savor/settings.py:163
+msgid "Slovenian"
+msgstr "السلوفينية"
+
+#: savor/settings.py:164
+msgid "Spanish"
+msgstr "الإسبانية"
+
+#: savor/settings.py:165
+msgid "Swedish"
+msgstr "اللغة السويدية"
+
+#: savor/settings.py:166
+msgid "Thai"
+msgstr "التايلاندية"
+
+#: savor/settings.py:167
+msgid "Turkish"
+msgstr "اللغة التركية"
+
+#: savor/settings.py:168
+msgid "Ukrainian"
+msgstr "أوكراني"
+
+#: savor/settings.py:169
+msgid "Vietnamese"
+msgstr "الفيتنامية"
+
+#: templates/base.html:22
+msgid "Welcome"
+msgstr "أهلاً وسهلاً بك"
+
+#: templates/base.html:29
+msgid "Search Product by ingredient"
+msgstr "البحث عن المنتج حسب المكوّنات"
+
+#: templates/base.html:32
+msgid "Search Product by Barcode"
+msgstr "البحث عن المنتج حسب الرمز الشريطي"
+
+#: templates/base.html:37
+msgid "Scan"
+msgstr "المسح الضوئي"
+
+#: templates/base.html:56
+msgid "Home"
+msgstr "الصفحة الرئيسية"
+
+#: templates/base.html:79
+msgid "Settings"
+msgstr "الإعدادات"
+
+#: templates/base.html:85
+msgid "Account"
+msgstr "الحساب"
+
+#: templates/base.html:94
+msgid "Log Out"
+msgstr "تسجيل الخروج"
+
+#: templates/base.html:107
+msgid "Log On"
+msgstr "تسجيل الدخول"
+
+#: templates/base.html:113 users/templates/users/register.html:57
+msgid "Register"
+msgstr "التسجيل"
+
+#: templates/base.html:123
+msgid "Stop Scanning"
+msgstr "إيقاف المسح الضوئي"
+
+#: templates/registration/login.html:5 templates/registration/login.html:9
+#: templates/registration/login.html:37
+msgid "Log In"
+msgstr "تسجيل الدخول"
+
+#: templates/registration/login.html:40
+#, python-format
+msgid "Don't have an account? <a href=\"%('register_url')s\">Register here</a>."
+msgstr "ليس لديك حساب؟ <a href=\"%('register_url')s\">سجل هنا</a>."
+
+#: templates/registration/login.html:41
+msgid "Forgot password?"
+msgstr "هل نسيت كلمة المرور؟"
+
+#: templates/registration/logout.html:4 templates/registration/logout.html:7
+msgid "Logged Out"
+msgstr "تسجيل الخروج"
+
+#: templates/registration/logout.html:8
+msgid "You have been successfully logged out."
+msgstr "لقد تم تسجيل خروجك بنجاح."
+
+#: templates/registration/logout.html:9
+msgid "Log in again"
+msgstr "تسجيل الدخول مرة أخرى"
+
+#: templates/registration/password_change_done.html:6
+msgid "Password Changed Successfully"
+msgstr "تم تغيير كلمة المرور بنجاح"
+
+#: templates/registration/password_change_done.html:12
+#: templates/registration/password_reset_complete.html:11
+msgid "Password Changed Successfully!"
+msgstr "تم تغيير كلمة المرور بنجاح!"
+
+#: templates/registration/password_change_done.html:14
+msgid "Your password has been changed."
+msgstr "تم تغيير كلمة المرور الخاصة بك."
+
+#: templates/registration/password_change_done.html:16
+msgid "Back to Settings"
+msgstr "العودة إلى الإعدادات"
+
+#: templates/registration/password_change_form.html:5
+#: templates/registration/password_change_form.html:38
+#: templates/registration/password_reset_confirm.html:28
+#: users/templates/users/account_settings.html:51
+msgid "Change Password"
+msgstr "تغيير كلمة المرور"
+
+#: templates/registration/password_change_form.html:11
+msgid "Change Your Password"
+msgstr "تغيير كلمة المرور الخاصة بك"
+
+#: templates/registration/password_change_form.html:23
+msgid "Old Password"
+msgstr "كلمة المرور القديمة"
+
+#: templates/registration/password_change_form.html:28
+#: templates/registration/password_reset_confirm.html:20
+msgid "New Password"
+msgstr "كلمة مرور جديدة"
+
+#: templates/registration/password_change_form.html:33
+#: templates/registration/password_reset_confirm.html:24
+msgid "Confirm New Password"
+msgstr "تأكيد كلمة المرور الجديدة"
+
+#: templates/registration/password_reset_complete.html:5
+msgid "Password Changed"
+msgstr "تم تغيير كلمة المرور"
+
+#: templates/registration/password_reset_complete.html:13
+msgid ""
+"Your password has been set. You can now go ahead and log in with your new "
+"password."
+msgstr ""
+"تم تعيين كلمة المرور الخاصة بك. يمكنك الآن المضي قدماً وتسجيل الدخول "
+"باستخدام كلمة المرور الجديدة."
+
+#: templates/registration/password_reset_confirm.html:12
+msgid "Set a New Password"
+msgstr "تعيين كلمة مرور جديدة"
+
+#: templates/registration/password_reset_confirm.html:32
+msgid "Invalid Link"
+msgstr "رابط غير صالح"
+
+#: templates/registration/password_reset_confirm.html:34
+msgid ""
+"The password reset link was invalid, possibly because it has already been "
+"used. Please request a new password reset."
+msgstr ""
+"كان رابط إعادة تعيين كلمة المرور غير صالح، ربما لأنه تم استخدامه بالفعل. "
+"يرجى طلب إعادة تعيين كلمة مرور جديدة."
+
+#: templates/registration/password_reset_done.html:4
+msgid "Password Reset Sent"
+msgstr "تم إرسال إعادة تعيين كلمة المرور"
+
+#: templates/registration/password_reset_done.html:10
+msgid "Check Your Inbox"
+msgstr "تحقق من صندوق الوارد"
+
+#: templates/registration/password_reset_done.html:12
+msgid ""
+"We've emailed you instructions for setting your password. If an account "
+"exists with the email you entered, you should receive them shortly."
+msgstr ""
+"لقد أرسلنا لك تعليمات عبر البريد الإلكتروني لتعيين كلمة المرور الخاصة بك. "
+"إذا كان الحساب موجودًا بالبريد الإلكتروني الذي أدخلته، فستستلمها قريبًا."
+
+#: templates/registration/password_reset_done.html:13
+msgid ""
+"If you don't receive an email, please make sure you've entered the email "
+"address you registered with, and check your spam folder."
+msgstr ""
+"إذا لم تصلك رسالة بريد إلكتروني، يُرجى التأكد من إدخال عنوان البريد "
+"الإلكتروني الذي قمت بالتسجيل به، وتحقق من مجلد الرسائل غير المرغوب فيها."
+
+#: templates/registration/password_reset_form.html:8
+msgid "Forgot Your Password?"
+msgstr "هل نسيت كلمة المرور الخاصة بك؟"
+
+#: templates/registration/password_reset_form.html:9
+msgid "Enter your email address below to receive a password reset link."
+msgstr "أدخل عنوان بريدك الإلكتروني أدناه لتلقي رابط إعادة تعيين كلمة المرور."
+
+#: templates/registration/password_reset_form.html:17
+msgid "Reset Password"
+msgstr "إعادة تعيين كلمة المرور"
+
+#: users/forms.py:12
+msgid "Password"
+msgstr "كلمة المرور"
+
+#: users/forms.py:16
+msgid ""
+"Your password can't be too similar to your other personal information. It "
+"must contain at least 8 characters. It can't be a commonly used password. It"
+" can't be entirely numeric."
+msgstr ""
+"لا يمكن أن تكون كلمة المرور الخاصة بك مشابهة جداً لمعلوماتك الشخصية الأخرى. "
+"يجب أن تحتوي على 8 أحرف على الأقل. لا يمكن أن تكون كلمة مرور شائعة "
+"الاستخدام. لا يمكن أن تكون رقمية بالكامل."
+
+#: users/forms.py:23
+msgid "Password confirmation"
+msgstr "تأكيد كلمة المرور"
+
+#: users/forms.py:26
+msgid "Enter the same password as before, for verification."
+msgstr "أدخل كلمة المرور نفسها كما في السابق، للتحقق."
+
+#: users/forms.py:34 users/templates/users/account_settings.html:44
+msgid "Username"
+msgstr "اسم المستخدم"
+
+#: users/forms.py:35 users/templates/users/account_settings.html:45
+msgid "Email"
+msgstr "البريد الإلكتروني"
+
+#: users/forms.py:39
+msgid "Required. 150 characters or fewer. Letters, digits and @/./+/-/_ only."
+msgstr "مطلوب. 150 حرفاً أو أقل. الأحرف والأرقام و @/.//+/-/-/_ فقط."
+
+#: users/forms.py:65 users/templates/users/account_settings.html:68
+msgid "Language Preference"
+msgstr "تفضيلات اللغة"
+
+#: users/forms.py:66 users/templates/users/account_settings.html:63
+msgid "Country"
+msgstr "البلد"
+
+#: users/forms.py:67 users/templates/users/account_settings.html:90
+msgid "Allergens"
+msgstr "مسببات الحساسية"
+
+#: users/forms.py:68 users/templates/users/account_settings.html:78
+msgid "Dietary Requirements"
+msgstr "المتطلبات الغذائية"
+
+#: users/forms.py:69
+msgid "Enable scan-to-add in pantry"
+msgstr "تمكين المسح الضوئي للإضافة في المخزن"
+
+#: users/forms.py:70
+msgid "Display Nutri-Score on products"
+msgstr "عرض Nutri-Score على المنتجات"
+
+#: users/forms.py:71
+msgid "Display Eco-Score on products"
+msgstr "عرض النتيجة البيئية على المنتجات"
+
+#: users/forms.py:72
+msgid "Prioritise local results in search"
+msgstr "إعطاء الأولوية للنتائج المحلية في البحث"
+
+#: users/templates/users/account_settings.html:6
+msgid "Account Settings"
+msgstr "إعدادات الحساب"
+
+#: users/templates/users/account_settings.html:19
+msgid "Warning!"
+msgstr "تحذير!"
+
+#: users/templates/users/account_settings.html:19
+msgid "You are about to delete your account permanently."
+msgstr "أنت على وشك حذف حسابك نهائيًا."
+
+#: users/templates/users/account_settings.html:22
+msgid ""
+"\n"
+"          Doing this will permanently remove all account data including your\n"
+"          pantry, saved recipes, and favourites. Are you sure you want to\n"
+"          continue?\n"
+"          "
+msgstr ""
+"\n"
+"          سيؤدي القيام بذلك إلى إزالة جميع بيانات الحساب بشكل دائم بما في ذلك\n"
+"          المخزن والوصفات المحفوظة والمفضلة لديك. هل أنت متأكد من رغبتك في\n"
+"          المتابعة؟\n"
+"          "
+
+#: users/templates/users/account_settings.html:29
+msgid "I'm sure,"
+msgstr "أنا متأكد,"
+
+#: users/templates/users/account_settings.html:30
+#: users/templates/users/account_settings.html:52
+msgid "Delete Account"
+msgstr "حذف الحساب"
+
+#: users/templates/users/account_settings.html:40
+msgid "Account management"
+msgstr "إدارة الحسابات"
+
+#: users/templates/users/account_settings.html:46
+msgid "Date Joined"
+msgstr "تاريخ الانضمام"
+
+#: users/templates/users/account_settings.html:57
+msgid "User preferences"
+msgstr "تفضيلات المستخدم"
+
+#: users/templates/users/account_settings.html:115
+msgid "Save Settings"
+msgstr "حفظ الإعدادات"
+
+#: users/templates/users/register.html:60
+#, python-format
+msgid "Already have an account? <a href=\"%(login_url)s\">Log in here</a>."
+msgstr ""
+"هل لديك حساب بالفعل؟ <a href=\"%(تسجيل الدخول_url)s\">تسجيل الدخول هنا</a>."

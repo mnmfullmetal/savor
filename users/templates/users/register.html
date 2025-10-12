@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load i18n %}
 {% load widget_tweaks %}
 {% load static %}
 
@@ -53,7 +54,8 @@
         {% endfor %}
     </div>
 
-    <button type="submit" class="btn btn-outline-primary">Register</button>
+    <button type="submit" class="btn btn-outline-primary">{% trans "Register" %}</button>
 </form>
-<p class="text-dark">Already have an account? <a href="{% url 'login' %}">Log in here</a>.</p>
+{% url 'login' as login_url %}
+<p class="text-dark">{% blocktrans %}Already have an account? <a href="{{ login_url }}">Log in here</a>.{% endblocktrans %}.</p>
 {% endblock %}

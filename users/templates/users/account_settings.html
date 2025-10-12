@@ -1,8 +1,9 @@
 {% extends "base.html" %} 
+{% load i18n %}
 {% load static %} 
 {% load widget_tweaks %} 
 
-{% block title %} Account Settings {% endblock %} 
+{% block title %} {% trans "Account Settings" %} {% endblock %} 
 
 {% block body %}
 
@@ -15,17 +16,18 @@
       </div>
       <div class="modal-body">
         <p>
-          <strong>Warning!</strong> You are about to delete your account
-          permanently.
+          <strong>{% trans "Warning!" %}</strong> {% trans "You are about to delete your account permanently." %}
         </p>
         <p>
+          {% blocktrans %}
           Doing this will permanently remove all account data including your
           pantry, saved recipes, and favourites. Are you sure you want to
           continue?
+          {% endblocktrans %}
         </p>
         <p>
-          I'm sure,
-          <a href="{% url 'users:delete_account' %}" class="btn btn-outline-danger">Delete Account</a>.
+          {% trans "I'm sure," %}
+          <a href="{% url 'users:delete_account' %}" class="btn btn-outline-danger">{% trans "Delete Account" %}</a>.
         </p>
       </div>
     </div>
@@ -35,35 +37,35 @@
 <div class="container d-flex justify-content-center">
   <div class="col-md-6 my-5">
     <div class="card p-4 rounded shadow-lg my-4">
-      <h2 class="text-center">Account management</h2>
+      <h2 class="text-center">{% trans "Account management" %}</h2>
       <hr />
       <div class="d-flex justify-content-center">
         <div class="w-50">
-          <p><strong>Username</strong>: {{user.username}}</p>
-          <p><strong>Email</strong>: {{user.email}}</p>
-          <p><strong>Date Joined</strong>: {{user.date_joined}}</p>
+          <p><strong>{% trans "Username" %}</strong>: {{user.username}}</p>
+          <p><strong>{% trans "Email" %}</strong>: {{user.email}}</p>
+          <p><strong>{% trans "Date Joined" %}</strong>: {{user.date_joined}}</p>
         </div>
       </div>
 
       <div class="text-center">
-        <a href="{% url 'password_change' %}" class="btn btn-outline-primary mt-4 w-50">Change Password</a>
-        <a href="#" data-bs-toggle="modal" data-bs-target="#exampleModal" class="btn btn-outline-danger mt-4 w-50">Delete Account</a>
+        <a href="{% url 'password_change' %}" class="btn btn-outline-primary mt-4 w-50">{% trans "Change Password" %}</a>
+        <a href="#" data-bs-toggle="modal" data-bs-target="#exampleModal" class="btn btn-outline-danger mt-4 w-50">{% trans "Delete Account" %}</a>
       </div>
     </div>
 
   <div class="card p-4 rounded shadow-lg my-4">
-            <h2 class="text-center">User settings</h2>
+            <h2 class="text-center">{% trans "User preferences" %}</h2>
             <hr />
             <form method="post">
       {% csrf_token %}
 
       <div class="mb-3">
-        <label for="{{ form.country.id_for_label }}" class="form-label">Country</label>
+        <label for="{{ form.country.id_for_label }}" class="form-label">{% trans "Country" %}</label>
         {{ form.country }}
       </div>
 
       <div class="mb-3">
-        <label for="{{ form.language_preference.id_for_label }}" class="form-label">Language Preference</label>
+        <label for="{{ form.language_preference.id_for_label }}" class="form-label">{% trans "Language Preference" %}</label>
         {{ form.language_preference }}
       </div>
 
@@ -73,7 +75,7 @@
       </div>
 
       <div class="mb-3">
-    <label class="form-label">Dietary Requirements</label>
+    <label class="form-label">{% trans "Dietary Requirements" %}</label>
     {% for checkbox in form.dietary_requirements %}
         <div class="form-check">
             {{ checkbox.tag }}
@@ -85,7 +87,7 @@
 </div>
 
 <div class="mb-3">
-    <label class="form-label">Allergens</label>
+    <label class="form-label">{% trans "Allergens" %}</label>
     {% for checkbox in form.allergens %}
         <div class="form-check">
             {{ checkbox.tag }}
@@ -110,7 +112,7 @@
         <label class="form-check-label" for="{{ form.scan_to_add.id_for_label }}">{{ form.scan_to_add.label }}</label>
       </div>
       
-      <button type="submit" class="btn btn-primary w-100">Save Settings</button>
+      <button type="submit" class="btn btn-primary w-100">{% trans "Save Settings" %}</button>
     </form>
           </div>
 </div>

@@ -1,0 +1,644 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-10-12 14:39+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#: pantry/templates/pantry/index.html:17
+msgid "Advanced Search"
+msgstr "高度な検索"
+
+#: pantry/templates/pantry/index.html:25
+msgid "Product Name"
+msgstr "製品名"
+
+#: pantry/templates/pantry/index.html:29
+msgid "Country of Origin"
+msgstr "原産国"
+
+#: pantry/templates/pantry/index.html:31
+msgid "Select a country..."
+msgstr "国を選択..."
+
+#: pantry/templates/pantry/index.html:35
+msgid "Category"
+msgstr "カテゴリー"
+
+#: pantry/templates/pantry/index.html:37
+msgid "Select a category..."
+msgstr "カテゴリーを選択..."
+
+#: pantry/templates/pantry/index.html:41
+msgid "Brand"
+msgstr "ブランド"
+
+#: pantry/templates/pantry/index.html:43
+msgid "Select a brand..."
+msgstr "ブランドを選択..."
+
+#: pantry/templates/pantry/index.html:48
+msgid "Clear Filters"
+msgstr "クリアフィルター"
+
+#: pantry/templates/pantry/index.html:51 templates/base.html:34
+msgid "Search"
+msgstr "検索"
+
+#: pantry/templates/pantry/index.html:66
+msgid "Product Search Results"
+msgstr "製品検索結果"
+
+#: pantry/templates/pantry/index.html:70
+msgid "Enter a search query to find products."
+msgstr "検索クエリを入力して製品を検索します。"
+
+#: pantry/templates/pantry/index.html:73
+msgid ""
+"Can't find what you're looking for? Try <a href=\"#\" data-bs-"
+"toggle=\"modal\" data-bs-target=\"#exampleModal\">Advanced Search</a>."
+msgstr ""
+"お探しのものが見つかりませんか？<a href=\"#\" data-bs-toggle=\"modal\" data-bs-"
+"target=\"#exampleModal\">詳細検索</a>をお試しください。"
+
+#: pantry/templates/pantry/index.html:82
+msgid "Favourites"
+msgstr "お気に入り"
+
+#: pantry/templates/pantry/index.html:101
+#: pantry/templates/pantry/pantry.html:71
+msgid "WARNING"
+msgstr "警告"
+
+#: pantry/templates/pantry/index.html:101
+#: pantry/templates/pantry/pantry.html:71
+msgid "Contains user-specified allergens:"
+msgstr "ユーザー指定のアレルゲンを含む："
+
+#: pantry/templates/pantry/index.html:110
+#: pantry/templates/pantry/pantry.html:80
+msgid "POSSIBLE MISMATCH"
+msgstr "ミスマッチの可能性"
+
+#: pantry/templates/pantry/index.html:110
+#: pantry/templates/pantry/pantry.html:80
+msgid "Missing dietary requirements:"
+msgstr "必要な食事がない："
+
+#: pantry/templates/pantry/index.html:121
+msgid "Brands"
+msgstr "ブランド"
+
+#: pantry/templates/pantry/index.html:122
+msgid "Code"
+msgstr "コード"
+
+#: pantry/templates/pantry/index.html:129
+msgid "item"
+msgstr "項目"
+
+#: pantry/templates/pantry/index.html:136
+msgid "Add to Pantry"
+msgstr "パントリーに追加"
+
+#: pantry/templates/pantry/index.html:140
+msgid "Remove Favourite"
+msgstr "お気に入りを削除"
+
+#: pantry/templates/pantry/index.html:148
+msgid "You haven't favourited any products yet. Start exploring today!"
+msgstr "まだ商品をお気に入りに入れていません。今すぐ検索"
+
+#: pantry/templates/pantry/pantry.html:5 templates/base.html:63
+msgid "Pantry"
+msgstr "パントリー"
+
+#: pantry/templates/pantry/pantry.html:13
+msgid "Pantry Health & Eco Summary"
+msgstr "パントリーの健康とエコ"
+
+#: pantry/templates/pantry/pantry.html:20
+msgid "Nutri-Grade:"
+msgstr "ニュートリグレード："
+
+#: pantry/templates/pantry/pantry.html:27
+msgid "Eco-Grade:"
+msgstr "エコグレード："
+
+#: pantry/templates/pantry/pantry.html:34
+msgid "Scores are hidden or unavailable. Check your user settings."
+msgstr "スコアが非表示または利用できません。ユーザー設定を確認してください。"
+
+#: pantry/templates/pantry/pantry.html:44
+msgid "Your Pantry Items"
+msgstr "パントリーのアイテム"
+
+#: pantry/templates/pantry/pantry.html:62
+#: pantry/templates/pantry/pantry.html:64
+msgid "Product Image"
+msgstr "商品画像"
+
+#: pantry/templates/pantry/pantry.html:67
+msgid "No Name"
+msgstr "名前なし"
+
+#: pantry/templates/pantry/pantry.html:91
+msgid "Quantity:"
+msgstr "数量："
+
+#: pantry/templates/pantry/pantry.html:94
+msgid "Product Size:"
+msgstr "製品サイズ"
+
+#: pantry/templates/pantry/pantry.html:100
+msgid "Expires:"
+msgstr "期限切れ："
+
+#: pantry/templates/pantry/pantry.html:116
+msgid "Your pantry is empty! Add some products to get started."
+msgstr "パントリーは空っぽです！商品を追加して始めましょう。"
+
+#: recipes/templates/recipes/recipes.html:6 templates/base.html:70
+msgid "Recipes"
+msgstr "レシピ"
+
+#: recipes/templates/recipes/recipes.html:13
+msgid "New Recipe Suggestions"
+msgstr "新しいレシピの提案"
+
+#: recipes/templates/recipes/recipes.html:40
+#: recipes/templates/recipes/recipes.html:101
+#: recipes/templates/recipes/recipes.html:163
+msgid "Ingredients"
+msgstr "原材料"
+
+#: recipes/templates/recipes/recipes.html:48
+#: recipes/templates/recipes/recipes.html:109
+#: recipes/templates/recipes/recipes.html:181
+msgid "Instructions"
+msgstr "使用方法"
+
+#: recipes/templates/recipes/recipes.html:59
+#: recipes/templates/recipes/recipes.html:120
+msgid "Save Recipe"
+msgstr "レシピを保存"
+
+#: recipes/templates/recipes/recipes.html:68
+msgid "No new suggestions"
+msgstr "新たな提案はない"
+
+#: recipes/templates/recipes/recipes.html:70
+msgid "Recipes still being generated"
+msgstr "レシピは現在も作成中"
+
+#: recipes/templates/recipes/recipes.html:75
+msgid "Recently Suggested Recipes"
+msgstr "最近のおすすめレシピ"
+
+#: recipes/templates/recipes/recipes.html:129
+msgid "No recently suggested"
+msgstr "最近提案されたものはない"
+
+#: recipes/templates/recipes/recipes.html:135
+msgid "Saved Recipes"
+msgstr "保存レシピ"
+
+#: recipes/templates/recipes/recipes.html:152
+msgid "Missing Items"
+msgstr "欠品アイテム"
+
+#: recipes/templates/recipes/recipes.html:192
+msgid "Delete Recipe"
+msgstr "レシピ削除"
+
+#: recipes/templates/recipes/recipes.html:204
+msgid "No Saved Recipes"
+msgstr "保存されたレシピがない"
+
+#: savor/settings.py:138
+msgid "Arabic"
+msgstr "アラビア語"
+
+#: savor/settings.py:139
+msgid "Bulgarian"
+msgstr "ブルガリア語"
+
+#: savor/settings.py:140
+msgid "Chinese"
+msgstr "中国語"
+
+#: savor/settings.py:141
+msgid "Czech"
+msgstr "チェコ"
+
+#: savor/settings.py:142
+msgid "Danish"
+msgstr "デンマーク語"
+
+#: savor/settings.py:143
+msgid "Dutch"
+msgstr "オランダ語"
+
+#: savor/settings.py:144
+msgid "Estonian"
+msgstr "エストニア語"
+
+#: savor/settings.py:145
+msgid "Finnish"
+msgstr "フィンランド語"
+
+#: savor/settings.py:146
+msgid "French"
+msgstr "フランス語"
+
+#: savor/settings.py:147
+msgid "German"
+msgstr "ドイツ語"
+
+#: savor/settings.py:148
+msgid "Greek"
+msgstr "ギリシャ語"
+
+#: savor/settings.py:149
+msgid "Hebrew"
+msgstr "ヘブライ語"
+
+#: savor/settings.py:150
+msgid "Hungarian"
+msgstr "ハンガリー語"
+
+#: savor/settings.py:151
+msgid "Indonesian"
+msgstr "インドネシア語"
+
+#: savor/settings.py:152
+msgid "Italian"
+msgstr "イタリア語"
+
+#: savor/settings.py:153
+msgid "Japanese"
+msgstr "日本語"
+
+#: savor/settings.py:154
+msgid "Korean"
+msgstr "韓国語"
+
+#: savor/settings.py:155
+msgid "Latvian"
+msgstr "ラトビア語"
+
+#: savor/settings.py:156
+msgid "Lithuanian"
+msgstr "リトアニア語"
+
+#: savor/settings.py:157
+msgid "Norwegian Bokmål"
+msgstr "ノルウェー語ブークモール"
+
+#: savor/settings.py:158
+msgid "Polish"
+msgstr "ポーランド語"
+
+#: savor/settings.py:159
+msgid "Portuguese"
+msgstr "ポルトガル語"
+
+#: savor/settings.py:160
+msgid "Romanian"
+msgstr "ルーマニア語"
+
+#: savor/settings.py:161
+msgid "Russian"
+msgstr "ロシア語"
+
+#: savor/settings.py:162
+msgid "Slovak"
+msgstr "スロバキア語"
+
+#: savor/settings.py:163
+msgid "Slovenian"
+msgstr "スロベニア語"
+
+#: savor/settings.py:164
+msgid "Spanish"
+msgstr "スペイン語"
+
+#: savor/settings.py:165
+msgid "Swedish"
+msgstr "スウェーデン"
+
+#: savor/settings.py:166
+msgid "Thai"
+msgstr "タイ"
+
+#: savor/settings.py:167
+msgid "Turkish"
+msgstr "トルコ語"
+
+#: savor/settings.py:168
+msgid "Ukrainian"
+msgstr "ウクライナ語"
+
+#: savor/settings.py:169
+msgid "Vietnamese"
+msgstr "ベトナム語"
+
+#: templates/base.html:22
+msgid "Welcome"
+msgstr "ようこそ"
+
+#: templates/base.html:29
+msgid "Search Product by ingredient"
+msgstr "成分で商品を探す"
+
+#: templates/base.html:32
+msgid "Search Product by Barcode"
+msgstr "バーコードで製品を検索"
+
+#: templates/base.html:37
+msgid "Scan"
+msgstr "スキャン"
+
+#: templates/base.html:56
+msgid "Home"
+msgstr "ホーム"
+
+#: templates/base.html:79
+msgid "Settings"
+msgstr "設定"
+
+#: templates/base.html:85
+msgid "Account"
+msgstr "アカウント"
+
+#: templates/base.html:94
+msgid "Log Out"
+msgstr "ログアウト"
+
+#: templates/base.html:107
+msgid "Log On"
+msgstr "ログイン"
+
+#: templates/base.html:113 users/templates/users/register.html:57
+msgid "Register"
+msgstr "登録"
+
+#: templates/base.html:123
+msgid "Stop Scanning"
+msgstr "スキャン停止"
+
+#: templates/registration/login.html:5 templates/registration/login.html:9
+#: templates/registration/login.html:37
+msgid "Log In"
+msgstr "ログイン"
+
+#: templates/registration/login.html:40
+#, python-format
+msgid "Don't have an account? <a href=\"%('register_url')s\">Register here</a>."
+msgstr "アカウントをお持ちでないですか？<a href=\"%('register_url')s\">登録はこちら</a>."
+
+#: templates/registration/login.html:41
+msgid "Forgot password?"
+msgstr "パスワードをお忘れですか？"
+
+#: templates/registration/logout.html:4 templates/registration/logout.html:7
+msgid "Logged Out"
+msgstr "ログアウト"
+
+#: templates/registration/logout.html:8
+msgid "You have been successfully logged out."
+msgstr "ログアウトに成功しました。"
+
+#: templates/registration/logout.html:9
+msgid "Log in again"
+msgstr "再ログイン"
+
+#: templates/registration/password_change_done.html:6
+msgid "Password Changed Successfully"
+msgstr "パスワード変更成功"
+
+#: templates/registration/password_change_done.html:12
+#: templates/registration/password_reset_complete.html:11
+msgid "Password Changed Successfully!"
+msgstr "パスワードの変更に成功しました！"
+
+#: templates/registration/password_change_done.html:14
+msgid "Your password has been changed."
+msgstr "パスワードが変更されました。"
+
+#: templates/registration/password_change_done.html:16
+msgid "Back to Settings"
+msgstr "設定に戻る"
+
+#: templates/registration/password_change_form.html:5
+#: templates/registration/password_change_form.html:38
+#: templates/registration/password_reset_confirm.html:28
+#: users/templates/users/account_settings.html:51
+msgid "Change Password"
+msgstr "パスワードの変更"
+
+#: templates/registration/password_change_form.html:11
+msgid "Change Your Password"
+msgstr "パスワードの変更"
+
+#: templates/registration/password_change_form.html:23
+msgid "Old Password"
+msgstr "旧パスワード"
+
+#: templates/registration/password_change_form.html:28
+#: templates/registration/password_reset_confirm.html:20
+msgid "New Password"
+msgstr "新しいパスワード"
+
+#: templates/registration/password_change_form.html:33
+#: templates/registration/password_reset_confirm.html:24
+msgid "Confirm New Password"
+msgstr "新しいパスワードの確認"
+
+#: templates/registration/password_reset_complete.html:5
+msgid "Password Changed"
+msgstr "パスワード変更"
+
+#: templates/registration/password_reset_complete.html:13
+msgid ""
+"Your password has been set. You can now go ahead and log in with your new "
+"password."
+msgstr "パスワードが設定されました。新しいパスワードでログインしてください。"
+
+#: templates/registration/password_reset_confirm.html:12
+msgid "Set a New Password"
+msgstr "新しいパスワードの設定"
+
+#: templates/registration/password_reset_confirm.html:32
+msgid "Invalid Link"
+msgstr "無効なリンク"
+
+#: templates/registration/password_reset_confirm.html:34
+msgid ""
+"The password reset link was invalid, possibly because it has already been "
+"used. Please request a new password reset."
+msgstr "パスワードリセットリンクが無効でした。新しいパスワードのリセットをリクエストしてください。"
+
+#: templates/registration/password_reset_done.html:4
+msgid "Password Reset Sent"
+msgstr "パスワードリセットの送信"
+
+#: templates/registration/password_reset_done.html:10
+msgid "Check Your Inbox"
+msgstr "受信トレイのチェック"
+
+#: templates/registration/password_reset_done.html:12
+msgid ""
+"We've emailed you instructions for setting your password. If an account "
+"exists with the email you entered, you should receive them shortly."
+msgstr "パスワードの設定方法をEメールでお送りしました。入力されたEメールアドレスにアカウントが存在する場合は、まもなく受信できるはずです。"
+
+#: templates/registration/password_reset_done.html:13
+msgid ""
+"If you don't receive an email, please make sure you've entered the email "
+"address you registered with, and check your spam folder."
+msgstr "メールが届かない場合は、登録したメールアドレスが入力されているか、迷惑メールフォルダをご確認ください。"
+
+#: templates/registration/password_reset_form.html:8
+msgid "Forgot Your Password?"
+msgstr "パスワードをお忘れですか？"
+
+#: templates/registration/password_reset_form.html:9
+msgid "Enter your email address below to receive a password reset link."
+msgstr "以下にEメールアドレスを入力すると、パスワードリセットリンクが送信されます。"
+
+#: templates/registration/password_reset_form.html:17
+msgid "Reset Password"
+msgstr "パスワードのリセット"
+
+#: users/forms.py:12
+msgid "Password"
+msgstr "パスワード"
+
+#: users/forms.py:16
+msgid ""
+"Your password can't be too similar to your other personal information. It "
+"must contain at least 8 characters. It can't be a commonly used password. It"
+" can't be entirely numeric."
+msgstr "パスワードは他の個人情報と似ていてはいけません。8文字以上であること。よく使われるパスワードであってはならない。全て数字であること"
+
+#: users/forms.py:23
+msgid "Password confirmation"
+msgstr "パスワード確認"
+
+#: users/forms.py:26
+msgid "Enter the same password as before, for verification."
+msgstr "確認のため、先ほどと同じパスワードを入力する。"
+
+#: users/forms.py:34 users/templates/users/account_settings.html:44
+msgid "Username"
+msgstr "ユーザー名"
+
+#: users/forms.py:35 users/templates/users/account_settings.html:45
+msgid "Email"
+msgstr "電子メール"
+
+#: users/forms.py:39
+msgid "Required. 150 characters or fewer. Letters, digits and @/./+/-/_ only."
+msgstr "必須150文字以内。アルファベット、数字、@/./+/-/_のみ。"
+
+#: users/forms.py:65 users/templates/users/account_settings.html:68
+msgid "Language Preference"
+msgstr "言語の好み"
+
+#: users/forms.py:66 users/templates/users/account_settings.html:63
+msgid "Country"
+msgstr "国名"
+
+#: users/forms.py:67 users/templates/users/account_settings.html:90
+msgid "Allergens"
+msgstr "アレルゲン"
+
+#: users/forms.py:68 users/templates/users/account_settings.html:78
+msgid "Dietary Requirements"
+msgstr "必要な食事"
+
+#: users/forms.py:69
+msgid "Enable scan-to-add in pantry"
+msgstr "パントリーでスキャンして追加できるようにする"
+
+#: users/forms.py:70
+msgid "Display Nutri-Score on products"
+msgstr "製品にニュートリスコアを表示する"
+
+#: users/forms.py:71
+msgid "Display Eco-Score on products"
+msgstr "製品にエコスコアを表示"
+
+#: users/forms.py:72
+msgid "Prioritise local results in search"
+msgstr "ローカル検索結果を優先する"
+
+#: users/templates/users/account_settings.html:6
+msgid "Account Settings"
+msgstr "アカウント設定"
+
+#: users/templates/users/account_settings.html:19
+msgid "Warning!"
+msgstr "警告だ！"
+
+#: users/templates/users/account_settings.html:19
+msgid "You are about to delete your account permanently."
+msgstr "アカウントを永久に削除しようとしています。"
+
+#: users/templates/users/account_settings.html:22
+msgid ""
+"\n"
+"          Doing this will permanently remove all account data including your\n"
+"          pantry, saved recipes, and favourites. Are you sure you want to\n"
+"          continue?\n"
+"          "
+msgstr ""
+"\n"
+"          これを行うと、以下のデータを含むすべてのアカウントデータが永久に削除されます。\n"
+"          パントリー、保存されたレシピ、お気に入りを含むすべてのアカウントデータが永久に削除されます。本当に\n"
+"          続けますか？\n"
+"          "
+
+#: users/templates/users/account_settings.html:29
+msgid "I'm sure,"
+msgstr "そうだろうね、"
+
+#: users/templates/users/account_settings.html:30
+#: users/templates/users/account_settings.html:52
+msgid "Delete Account"
+msgstr "アカウント削除"
+
+#: users/templates/users/account_settings.html:40
+msgid "Account management"
+msgstr "アカウント管理"
+
+#: users/templates/users/account_settings.html:46
+msgid "Date Joined"
+msgstr "入社年月日"
+
+#: users/templates/users/account_settings.html:57
+msgid "User preferences"
+msgstr "ユーザー設定"
+
+#: users/templates/users/account_settings.html:115
+msgid "Save Settings"
+msgstr "設定の保存"
+
+#: users/templates/users/register.html:60
+#, python-format
+msgid "Already have an account? <a href=\"%(login_url)s\">Log in here</a>."
+msgstr "すでにアカウントをお持ちですか？<a href=\"%(login_url)s\">ログインはこちら</a>."

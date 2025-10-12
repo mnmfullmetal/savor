@@ -1,0 +1,650 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-10-12 14:39+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=4; plural=(n == 1 && n % 1 == 0) ? 0 : (n == 2 && n % 1 == 0) ? 1: (n % 10 == 0 && n % 1 == 0 && n > 10) ? 2 : 3;\n"
+
+#: pantry/templates/pantry/index.html:17
+msgid "Advanced Search"
+msgstr "חיפוש מתקדם"
+
+#: pantry/templates/pantry/index.html:25
+msgid "Product Name"
+msgstr "שם המוצר"
+
+#: pantry/templates/pantry/index.html:29
+msgid "Country of Origin"
+msgstr "ארץ המוצא"
+
+#: pantry/templates/pantry/index.html:31
+msgid "Select a country..."
+msgstr "בחר מדינה..."
+
+#: pantry/templates/pantry/index.html:35
+msgid "Category"
+msgstr "קטגוריה"
+
+#: pantry/templates/pantry/index.html:37
+msgid "Select a category..."
+msgstr "בחר קטגוריה..."
+
+#: pantry/templates/pantry/index.html:41
+msgid "Brand"
+msgstr "מותג"
+
+#: pantry/templates/pantry/index.html:43
+msgid "Select a brand..."
+msgstr "בחר מותג..."
+
+#: pantry/templates/pantry/index.html:48
+msgid "Clear Filters"
+msgstr "נקה מסננים"
+
+#: pantry/templates/pantry/index.html:51 templates/base.html:34
+msgid "Search"
+msgstr "חיפוש"
+
+#: pantry/templates/pantry/index.html:66
+msgid "Product Search Results"
+msgstr "תוצאות חיפוש מוצרים"
+
+#: pantry/templates/pantry/index.html:70
+msgid "Enter a search query to find products."
+msgstr "הזן שאילתת חיפוש כדי למצוא מוצרים."
+
+#: pantry/templates/pantry/index.html:73
+msgid ""
+"Can't find what you're looking for? Try <a href=\"#\" data-bs-"
+"toggle=\"modal\" data-bs-target=\"#exampleModal\">Advanced Search</a>."
+msgstr ""
+"לא מצאת את מה שחיפשת? נסה <a href=\"#\" data-bs-toggle=\"modal\" data-bs-"
+"target=\"#exampleModal\">חיפוש מתקדם</a>."
+
+#: pantry/templates/pantry/index.html:82
+msgid "Favourites"
+msgstr "מועדפים"
+
+#: pantry/templates/pantry/index.html:101
+#: pantry/templates/pantry/pantry.html:71
+msgid "WARNING"
+msgstr "אזהרה"
+
+#: pantry/templates/pantry/index.html:101
+#: pantry/templates/pantry/pantry.html:71
+msgid "Contains user-specified allergens:"
+msgstr "מכיל אלרגנים שצוינו על ידי המשתמש:"
+
+#: pantry/templates/pantry/index.html:110
+#: pantry/templates/pantry/pantry.html:80
+msgid "POSSIBLE MISMATCH"
+msgstr "אי התאמה אפשרית"
+
+#: pantry/templates/pantry/index.html:110
+#: pantry/templates/pantry/pantry.html:80
+msgid "Missing dietary requirements:"
+msgstr "דרישות תזונתיות חסרות:"
+
+#: pantry/templates/pantry/index.html:121
+msgid "Brands"
+msgstr "מותגים"
+
+#: pantry/templates/pantry/index.html:122
+msgid "Code"
+msgstr "קוד"
+
+#: pantry/templates/pantry/index.html:129
+msgid "item"
+msgstr "פריט"
+
+#: pantry/templates/pantry/index.html:136
+msgid "Add to Pantry"
+msgstr "הוסף למזווה"
+
+#: pantry/templates/pantry/index.html:140
+msgid "Remove Favourite"
+msgstr "הסר מועדף"
+
+#: pantry/templates/pantry/index.html:148
+msgid "You haven't favourited any products yet. Start exploring today!"
+msgstr "עדיין לא הוספת מוצרים למועדפים. התחל לגלות עוד היום!"
+
+#: pantry/templates/pantry/pantry.html:5 templates/base.html:63
+msgid "Pantry"
+msgstr "מזווה"
+
+#: pantry/templates/pantry/pantry.html:13
+msgid "Pantry Health & Eco Summary"
+msgstr "סיכום בריאות ואקולוגיה במזווה"
+
+#: pantry/templates/pantry/pantry.html:20
+msgid "Nutri-Grade:"
+msgstr "ציון תזונתי:"
+
+#: pantry/templates/pantry/pantry.html:27
+msgid "Eco-Grade:"
+msgstr "ציון אקולוגי:"
+
+#: pantry/templates/pantry/pantry.html:34
+msgid "Scores are hidden or unavailable. Check your user settings."
+msgstr "הציונים מוסתרים או אינם זמינים. בדוק את הגדרות המשתמש שלך."
+
+#: pantry/templates/pantry/pantry.html:44
+msgid "Your Pantry Items"
+msgstr "המוצרים במזווה שלך"
+
+#: pantry/templates/pantry/pantry.html:62
+#: pantry/templates/pantry/pantry.html:64
+msgid "Product Image"
+msgstr "תמונת מוצר"
+
+#: pantry/templates/pantry/pantry.html:67
+msgid "No Name"
+msgstr "ללא שם"
+
+#: pantry/templates/pantry/pantry.html:91
+msgid "Quantity:"
+msgstr "כמות:"
+
+#: pantry/templates/pantry/pantry.html:94
+msgid "Product Size:"
+msgstr "גודל המוצר:"
+
+#: pantry/templates/pantry/pantry.html:100
+msgid "Expires:"
+msgstr "תוקף:"
+
+#: pantry/templates/pantry/pantry.html:116
+msgid "Your pantry is empty! Add some products to get started."
+msgstr "המזווה שלך ריק! הוסף כמה מוצרים כדי להתחיל."
+
+#: recipes/templates/recipes/recipes.html:6 templates/base.html:70
+msgid "Recipes"
+msgstr "מתכונים"
+
+#: recipes/templates/recipes/recipes.html:13
+msgid "New Recipe Suggestions"
+msgstr "הצעות למתכונים חדשים"
+
+#: recipes/templates/recipes/recipes.html:40
+#: recipes/templates/recipes/recipes.html:101
+#: recipes/templates/recipes/recipes.html:163
+msgid "Ingredients"
+msgstr "מרכיבים"
+
+#: recipes/templates/recipes/recipes.html:48
+#: recipes/templates/recipes/recipes.html:109
+#: recipes/templates/recipes/recipes.html:181
+msgid "Instructions"
+msgstr "הוראות"
+
+#: recipes/templates/recipes/recipes.html:59
+#: recipes/templates/recipes/recipes.html:120
+msgid "Save Recipe"
+msgstr "שמור מתכון"
+
+#: recipes/templates/recipes/recipes.html:68
+msgid "No new suggestions"
+msgstr "אין הצעות חדשות"
+
+#: recipes/templates/recipes/recipes.html:70
+msgid "Recipes still being generated"
+msgstr "מתכונים עדיין נוצרים"
+
+#: recipes/templates/recipes/recipes.html:75
+msgid "Recently Suggested Recipes"
+msgstr "מתכונים שהוצעו לאחרונה"
+
+#: recipes/templates/recipes/recipes.html:129
+msgid "No recently suggested"
+msgstr "אין הצעות אחרונות"
+
+#: recipes/templates/recipes/recipes.html:135
+msgid "Saved Recipes"
+msgstr "מתכונים שמורים"
+
+#: recipes/templates/recipes/recipes.html:152
+msgid "Missing Items"
+msgstr "פריטים חסרים"
+
+#: recipes/templates/recipes/recipes.html:192
+msgid "Delete Recipe"
+msgstr "מחק מתכון"
+
+#: recipes/templates/recipes/recipes.html:204
+msgid "No Saved Recipes"
+msgstr "אין מתכונים שמורים"
+
+#: savor/settings.py:138
+msgid "Arabic"
+msgstr "ערבית"
+
+#: savor/settings.py:139
+msgid "Bulgarian"
+msgstr "בולגרי"
+
+#: savor/settings.py:140
+msgid "Chinese"
+msgstr "סינית"
+
+#: savor/settings.py:141
+msgid "Czech"
+msgstr "צ'כי"
+
+#: savor/settings.py:142
+msgid "Danish"
+msgstr "דני"
+
+#: savor/settings.py:143
+msgid "Dutch"
+msgstr "הולנדית"
+
+#: savor/settings.py:144
+msgid "Estonian"
+msgstr "אסטונית"
+
+#: savor/settings.py:145
+msgid "Finnish"
+msgstr "פינית"
+
+#: savor/settings.py:146
+msgid "French"
+msgstr "צרפתית"
+
+#: savor/settings.py:147
+msgid "German"
+msgstr "גרמני"
+
+#: savor/settings.py:148
+msgid "Greek"
+msgstr "יווני"
+
+#: savor/settings.py:149
+msgid "Hebrew"
+msgstr "עברית"
+
+#: savor/settings.py:150
+msgid "Hungarian"
+msgstr "הונגרי"
+
+#: savor/settings.py:151
+msgid "Indonesian"
+msgstr "אינדונזי"
+
+#: savor/settings.py:152
+msgid "Italian"
+msgstr "איטלקי"
+
+#: savor/settings.py:153
+msgid "Japanese"
+msgstr "יפני"
+
+#: savor/settings.py:154
+msgid "Korean"
+msgstr "קוריאני"
+
+#: savor/settings.py:155
+msgid "Latvian"
+msgstr "לטבית"
+
+#: savor/settings.py:156
+msgid "Lithuanian"
+msgstr "ליטאי"
+
+#: savor/settings.py:157
+msgid "Norwegian Bokmål"
+msgstr "נורווגית בוקמאל"
+
+#: savor/settings.py:158
+msgid "Polish"
+msgstr "פולני"
+
+#: savor/settings.py:159
+msgid "Portuguese"
+msgstr "פורטוגזית"
+
+#: savor/settings.py:160
+msgid "Romanian"
+msgstr "רומנית"
+
+#: savor/settings.py:161
+msgid "Russian"
+msgstr "רוסית"
+
+#: savor/settings.py:162
+msgid "Slovak"
+msgstr "סלובקי"
+
+#: savor/settings.py:163
+msgid "Slovenian"
+msgstr "סלובנית"
+
+#: savor/settings.py:164
+msgid "Spanish"
+msgstr "ספרדית"
+
+#: savor/settings.py:165
+msgid "Swedish"
+msgstr "שוודית"
+
+#: savor/settings.py:166
+msgid "Thai"
+msgstr "תאילנדי"
+
+#: savor/settings.py:167
+msgid "Turkish"
+msgstr "טורקי"
+
+#: savor/settings.py:168
+msgid "Ukrainian"
+msgstr "אוקראיני"
+
+#: savor/settings.py:169
+msgid "Vietnamese"
+msgstr "וייטנאמי"
+
+#: templates/base.html:22
+msgid "Welcome"
+msgstr "ברוכים הבאים"
+
+#: templates/base.html:29
+msgid "Search Product by ingredient"
+msgstr "חיפוש מוצר לפי מרכיב"
+
+#: templates/base.html:32
+msgid "Search Product by Barcode"
+msgstr "חיפוש מוצר לפי ברקוד"
+
+#: templates/base.html:37
+msgid "Scan"
+msgstr "סריקה"
+
+#: templates/base.html:56
+msgid "Home"
+msgstr "בית"
+
+#: templates/base.html:79
+msgid "Settings"
+msgstr "הגדרות"
+
+#: templates/base.html:85
+msgid "Account"
+msgstr "חשבון"
+
+#: templates/base.html:94
+msgid "Log Out"
+msgstr "התנתק"
+
+#: templates/base.html:107
+msgid "Log On"
+msgstr "התחבר"
+
+#: templates/base.html:113 users/templates/users/register.html:57
+msgid "Register"
+msgstr "הרשמה"
+
+#: templates/base.html:123
+msgid "Stop Scanning"
+msgstr "הפסק סריקה"
+
+#: templates/registration/login.html:5 templates/registration/login.html:9
+#: templates/registration/login.html:37
+msgid "Log In"
+msgstr "התחבר"
+
+#: templates/registration/login.html:40
+#, python-format
+msgid "Don't have an account? <a href=\"%('register_url')s\">Register here</a>."
+msgstr "אין לך חשבון? <a href=\"%('register_url')s\">הירשם כאן</a>."
+
+#: templates/registration/login.html:41
+msgid "Forgot password?"
+msgstr "שכחת את הסיסמה?"
+
+#: templates/registration/logout.html:4 templates/registration/logout.html:7
+msgid "Logged Out"
+msgstr "התנתק"
+
+#: templates/registration/logout.html:8
+msgid "You have been successfully logged out."
+msgstr "התנתקת בהצלחה."
+
+#: templates/registration/logout.html:9
+msgid "Log in again"
+msgstr "התחבר שוב"
+
+#: templates/registration/password_change_done.html:6
+msgid "Password Changed Successfully"
+msgstr "הסיסמה שונתה בהצלחה"
+
+#: templates/registration/password_change_done.html:12
+#: templates/registration/password_reset_complete.html:11
+msgid "Password Changed Successfully!"
+msgstr "הסיסמה שונתה בהצלחה!"
+
+#: templates/registration/password_change_done.html:14
+msgid "Your password has been changed."
+msgstr "הסיסמה שלך שונתה."
+
+#: templates/registration/password_change_done.html:16
+msgid "Back to Settings"
+msgstr "חזרה להגדרות"
+
+#: templates/registration/password_change_form.html:5
+#: templates/registration/password_change_form.html:38
+#: templates/registration/password_reset_confirm.html:28
+#: users/templates/users/account_settings.html:51
+msgid "Change Password"
+msgstr "שינוי סיסמה"
+
+#: templates/registration/password_change_form.html:11
+msgid "Change Your Password"
+msgstr "שנה את הסיסמה שלך"
+
+#: templates/registration/password_change_form.html:23
+msgid "Old Password"
+msgstr "סיסמה ישנה"
+
+#: templates/registration/password_change_form.html:28
+#: templates/registration/password_reset_confirm.html:20
+msgid "New Password"
+msgstr "סיסמה חדשה"
+
+#: templates/registration/password_change_form.html:33
+#: templates/registration/password_reset_confirm.html:24
+msgid "Confirm New Password"
+msgstr "אשר סיסמה חדשה"
+
+#: templates/registration/password_reset_complete.html:5
+msgid "Password Changed"
+msgstr "הסיסמה שונתה"
+
+#: templates/registration/password_reset_complete.html:13
+msgid ""
+"Your password has been set. You can now go ahead and log in with your new "
+"password."
+msgstr "הסיסמה שלך הוגדרה. כעת תוכל להמשיך ולהיכנס עם הסיסמה החדשה שלך."
+
+#: templates/registration/password_reset_confirm.html:12
+msgid "Set a New Password"
+msgstr "הגדר סיסמה חדשה"
+
+#: templates/registration/password_reset_confirm.html:32
+msgid "Invalid Link"
+msgstr "קישור לא חוקי"
+
+#: templates/registration/password_reset_confirm.html:34
+msgid ""
+"The password reset link was invalid, possibly because it has already been "
+"used. Please request a new password reset."
+msgstr ""
+"קישור איפוס הסיסמה אינו תקף, ככל הנראה מכיוון שהוא כבר שימש. אנא בקש איפוס "
+"סיסמה חדש."
+
+#: templates/registration/password_reset_done.html:4
+msgid "Password Reset Sent"
+msgstr "איפוס סיסמה נשלח"
+
+#: templates/registration/password_reset_done.html:10
+msgid "Check Your Inbox"
+msgstr "בדוק את תיבת הדואר הנכנס שלך"
+
+#: templates/registration/password_reset_done.html:12
+msgid ""
+"We've emailed you instructions for setting your password. If an account "
+"exists with the email you entered, you should receive them shortly."
+msgstr ""
+"שלחנו לך בדוא\"ל הוראות להגדרת הסיסמה שלך. אם קיים חשבון עם כתובת הדוא\"ל "
+"שהזנת, אתה אמור לקבל אותן בקרוב."
+
+#: templates/registration/password_reset_done.html:13
+msgid ""
+"If you don't receive an email, please make sure you've entered the email "
+"address you registered with, and check your spam folder."
+msgstr ""
+"אם לא קיבלת דוא\"ל, ודא שהזנת את כתובת הדוא\"ל שאיתה נרשמת ובדוק את תיקיית "
+"דואר הזבל שלך."
+
+#: templates/registration/password_reset_form.html:8
+msgid "Forgot Your Password?"
+msgstr "שכחת את הסיסמה שלך?"
+
+#: templates/registration/password_reset_form.html:9
+msgid "Enter your email address below to receive a password reset link."
+msgstr "הזן את כתובת הדוא\"ל שלך למטה כדי לקבל קישור לאיפוס סיסמה."
+
+#: templates/registration/password_reset_form.html:17
+msgid "Reset Password"
+msgstr "איפוס סיסמה"
+
+#: users/forms.py:12
+msgid "Password"
+msgstr "סיסמה"
+
+#: users/forms.py:16
+msgid ""
+"Your password can't be too similar to your other personal information. It "
+"must contain at least 8 characters. It can't be a commonly used password. It"
+" can't be entirely numeric."
+msgstr ""
+"הסיסמה שלך לא יכולה להיות דומה מדי למידע אישי אחר שלך. היא חייבת להכיל לפחות"
+" 8 תווים. היא לא יכולה להיות סיסמה נפוצה. היא לא יכולה להיות מורכבת רק "
+"ממספרים."
+
+#: users/forms.py:23
+msgid "Password confirmation"
+msgstr "אישור סיסמה"
+
+#: users/forms.py:26
+msgid "Enter the same password as before, for verification."
+msgstr "הזן את אותה הסיסמה כמו קודם, לצורך אימות."
+
+#: users/forms.py:34 users/templates/users/account_settings.html:44
+msgid "Username"
+msgstr "שם משתמש"
+
+#: users/forms.py:35 users/templates/users/account_settings.html:45
+msgid "Email"
+msgstr "דוא\"ל"
+
+#: users/forms.py:39
+msgid "Required. 150 characters or fewer. Letters, digits and @/./+/-/_ only."
+msgstr "חובה. 150 תווים לכל היותר. אותיות, ספרות ו-@/./+/-/_ בלבד."
+
+#: users/forms.py:65 users/templates/users/account_settings.html:68
+msgid "Language Preference"
+msgstr "העדפת שפה"
+
+#: users/forms.py:66 users/templates/users/account_settings.html:63
+msgid "Country"
+msgstr "מדינה"
+
+#: users/forms.py:67 users/templates/users/account_settings.html:90
+msgid "Allergens"
+msgstr "אלרגנים"
+
+#: users/forms.py:68 users/templates/users/account_settings.html:78
+msgid "Dietary Requirements"
+msgstr "דרישות תזונתיות"
+
+#: users/forms.py:69
+msgid "Enable scan-to-add in pantry"
+msgstr "אפשר סריקה להוספה במזווה"
+
+#: users/forms.py:70
+msgid "Display Nutri-Score on products"
+msgstr "הצגת Nutri-Score על מוצרים"
+
+#: users/forms.py:71
+msgid "Display Eco-Score on products"
+msgstr "הצגת ציון אקולוגי על מוצרים"
+
+#: users/forms.py:72
+msgid "Prioritise local results in search"
+msgstr "תן עדיפות לתוצאות מקומיות בחיפוש"
+
+#: users/templates/users/account_settings.html:6
+msgid "Account Settings"
+msgstr "הגדרות חשבון"
+
+#: users/templates/users/account_settings.html:19
+msgid "Warning!"
+msgstr "אזהרה!"
+
+#: users/templates/users/account_settings.html:19
+msgid "You are about to delete your account permanently."
+msgstr "אתה עומד למחוק את חשבונך לצמיתות."
+
+#: users/templates/users/account_settings.html:22
+msgid ""
+"\n"
+"          Doing this will permanently remove all account data including your\n"
+"          pantry, saved recipes, and favourites. Are you sure you want to\n"
+"          continue?\n"
+"          "
+msgstr ""
+"\n"
+"          פעולה זו תסיר לצמיתות את כל נתוני החשבון, כולל המזווה, המתכונים השמורים והמועדפים שלך. האם אתה בטוח שברצונך להמשיך?"
+
+#: users/templates/users/account_settings.html:29
+msgid "I'm sure,"
+msgstr "אני בטוח,"
+
+#: users/templates/users/account_settings.html:30
+#: users/templates/users/account_settings.html:52
+msgid "Delete Account"
+msgstr "מחק חשבון"
+
+#: users/templates/users/account_settings.html:40
+msgid "Account management"
+msgstr "ניהול חשבונות"
+
+#: users/templates/users/account_settings.html:46
+msgid "Date Joined"
+msgstr "תאריך הצטרפות"
+
+#: users/templates/users/account_settings.html:57
+msgid "User preferences"
+msgstr "העדפות המשתמש"
+
+#: users/templates/users/account_settings.html:115
+msgid "Save Settings"
+msgstr "שמור הגדרות"
+
+#: users/templates/users/register.html:60
+#, python-format
+msgid "Already have an account? <a href=\"%(login_url)s\">Log in here</a>."
+msgstr "כבר יש לך חשבון? <a href=\"%(login_url)s\">התחבר כאן</a>."

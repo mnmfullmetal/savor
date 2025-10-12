@@ -1,4 +1,5 @@
 {% load widget_tweaks %}
+{% load i18n %}
 {% load static %}
 
 <!DOCTYPE html>
@@ -18,22 +19,22 @@
 <nav class="top-search-bar">
    {% if user.is_authenticated %}
     <div class="nav-greeting">
-        <span >Welcome, {{user.username}}</span>
+        <span >{% trans "Welcome" %}, {{user.username}}</span>
     </div>
     {% endif %}
 
     <form class="search-form" role="search" id="search-form">
         {% csrf_token %}
         <div class="autocomplete-wrapper position-relative">
-        <input type="text" id="product_name_input" name="product_name" class="form-control" placeholder="Search by Name" aria-label="Search Product by Name">
+        <input type="text" id="product_name_input" name="product_name" class="form-control" placeholder="Search by Name" aria-label="{% trans 'Search Product by ingredient' %}">
         <div id="autocomplete-suggestions" class="list-group position-absolute w-100" style="z-index: 1000;"></div>
         </div>
-        <input type="text" id="barcode_input" name="barcode" class="form-control" placeholder="Search by Barcode" aria-label="Search Product by Barcode">
+        <input type="text" id="barcode_input" name="barcode" class="form-control" placeholder="Search by Barcode" aria-label="{% trans 'Search Product by Barcode' %}">
         <button class="btn btn-outline-success" type="submit">
-          <span class="btn-text">Search</span>  <i class="bi bi-search"></i>
+          <span class="btn-text">{% trans "Search" %}</span>  <i class="bi bi-search"></i>
         </button>
         <button class="btn btn-outline-primary" type="button" id="scan-button">
-            <span class="btn-text">Scan</span> <i class="bi bi-upc-scan"></i> 
+            <span class="btn-text">{% trans "Scan" %}</span> <i class="bi bi-upc-scan"></i> 
         </button>
     </form>  
 </nav>
@@ -52,21 +53,21 @@
             <li class="nav-item">
     <a class="nav-link {% if request.path == '/' %}active{% endif %}" href="{% url 'pantry:index' %}">
         <i class="bi bi-house-door"></i>
-        <span>Home</span>
+        <span>{% trans "Home" %}</span>
     </a>
 </li>
 
 <li class="nav-item">
     <a class="nav-link {% if request.path == '/pantry/' %}active{% endif %}" href="{% url 'pantry:pantry_view' %}">
         <i class="bi bi-fork-knife"></i>
-        <span>Pantry</span>
+        <span>{% trans "Pantry" %}</span>
     </a>
 </li>
 
 <li class="nav-item">
     <a class="nav-link {% if request.path == '/recipes/' %}active{% endif %}" href="{% url 'recipes:recipes' %}">
         <i class="bi bi-journal-text"></i>
-        <span>Recipes</span>
+        <span>{% trans "Recipes" %}</span>
     </a>
 </li>
 
@@ -75,13 +76,13 @@
         <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                 <i class="bi bi-gear-fill"></i>
-                <span>Settings</span>
+                <span>{% trans "Settings" %}</span>
             </a>
             <ul class="dropdown-menu">
                 <li>
                 <div class="dropdown-item p-0">
                     <a href="{% url 'users:account_settings' %}" class="btn nav-link">
-                    <i class="bi bi-person-circle"></i><span>Account</span>
+                    <i class="bi bi-person-circle"></i><span>{% trans "Account" %}</span>
                     </a>
                  </div>
                     
@@ -90,7 +91,7 @@
                     <form action="{% url 'logout' %}" method="post" class="dropdown-item p-0">
                         {% csrf_token %}
                         <button type="submit" class="btn nav-link">
-                            <i class="bi bi-arrow-right-circle"></i> <span>Log Out</span> 
+                            <i class="bi bi-arrow-right-circle"></i> <span>{% trans "Log Out" %}</span> 
                         </button>
                     </form>
                 </li>
@@ -103,13 +104,13 @@
             <li class="nav-item">
                 <a class="nav-link" href="{% url 'login' %}">
                     <i class="bi bi-arrow-right-circle"></i>
-                    <span>Log On</span>
+                    <span>{% trans "Log On" %}</span>
                 </a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="{% url 'users:register' %}">
                     <i class="bi bi-person-plus-fill"></i>
-                    <span>Register</span>
+                    <span>{% trans "Register" %}</span>
                 </a>
             </li>
             {% endif %}
@@ -119,7 +120,7 @@
 
 <div id="scanner-container" style="display: none; flex-direction: column;  align-items: center;">
     <div id="reader" class="viewport" width="700px" height="700px"></div>
-    <button id="stop-scanner-btn" class="btn btn-danger mt-2">Stop Scanning</button>
+    <button id="stop-scanner-btn" class="btn btn-danger mt-2">{% trans "Stop Scanning" %}</button>
  </div>
 
 <div class="main-content">

@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from .forms import UserCreationForm, UserSettingsForm
+from .forms import CustomUserCreationForm, UserSettingsForm
 from django.contrib.auth import login
 from pantry.models import Pantry
 from .models import UserSettings, Allergen, DietaryRequirement
@@ -16,14 +16,14 @@ User = get_user_model()
 
 def register(request):
     if request.method =="POST":
-        form = UserCreationForm(request.POST)
+        form = CustomUserCreationForm(request.POST)
         if form.is_valid():
             user = form.save()
             Pantry.objects.create(user = user )
             login(request, user)
             return redirect('pantry:index')
     else:
-        form = UserCreationForm()
+        form = CustomUserCreationForm()
     return render(request, 'users/register.html', {'form': form})
 
     

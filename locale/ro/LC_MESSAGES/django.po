@@ -1,0 +1,661 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-10-12 14:39+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n==1?0:(((n%100>19)||((n%100==0)&&(n!=0)))?2:1));\n"
+
+#: pantry/templates/pantry/index.html:17
+msgid "Advanced Search"
+msgstr "Căutare avansată"
+
+#: pantry/templates/pantry/index.html:25
+msgid "Product Name"
+msgstr "Numele produsului"
+
+#: pantry/templates/pantry/index.html:29
+msgid "Country of Origin"
+msgstr "Țara de origine"
+
+#: pantry/templates/pantry/index.html:31
+msgid "Select a country..."
+msgstr "Selectați o țară..."
+
+#: pantry/templates/pantry/index.html:35
+msgid "Category"
+msgstr "Categorie"
+
+#: pantry/templates/pantry/index.html:37
+msgid "Select a category..."
+msgstr "Selectați o categorie..."
+
+#: pantry/templates/pantry/index.html:41
+msgid "Brand"
+msgstr "Marca"
+
+#: pantry/templates/pantry/index.html:43
+msgid "Select a brand..."
+msgstr "Selectați o marcă..."
+
+#: pantry/templates/pantry/index.html:48
+msgid "Clear Filters"
+msgstr "Ștergeți filtrele"
+
+#: pantry/templates/pantry/index.html:51 templates/base.html:34
+msgid "Search"
+msgstr "Căutare"
+
+#: pantry/templates/pantry/index.html:66
+msgid "Product Search Results"
+msgstr "Rezultate căutare produse"
+
+#: pantry/templates/pantry/index.html:70
+msgid "Enter a search query to find products."
+msgstr "Introduceți o interogare de căutare pentru a găsi produse."
+
+#: pantry/templates/pantry/index.html:73
+msgid ""
+"Can't find what you're looking for? Try <a href=\"#\" data-bs-"
+"toggle=\"modal\" data-bs-target=\"#exampleModal\">Advanced Search</a>."
+msgstr ""
+"Nu găsiți ceea ce căutați? Încercați <a href=\"#\" data-bs-toggle=\"modal\" "
+"data-bs-target=\"#exampleModal\">Căutare avansată</a>."
+
+#: pantry/templates/pantry/index.html:82
+msgid "Favourites"
+msgstr "Favoriți"
+
+#: pantry/templates/pantry/index.html:101
+#: pantry/templates/pantry/pantry.html:71
+msgid "WARNING"
+msgstr "AVERTISMENT"
+
+#: pantry/templates/pantry/index.html:101
+#: pantry/templates/pantry/pantry.html:71
+msgid "Contains user-specified allergens:"
+msgstr "Conține alergeni specificați de utilizator:"
+
+#: pantry/templates/pantry/index.html:110
+#: pantry/templates/pantry/pantry.html:80
+msgid "POSSIBLE MISMATCH"
+msgstr "POSIBILĂ NECONCORDANȚĂ"
+
+#: pantry/templates/pantry/index.html:110
+#: pantry/templates/pantry/pantry.html:80
+msgid "Missing dietary requirements:"
+msgstr "Lipsește cerințele dietetice:"
+
+#: pantry/templates/pantry/index.html:121
+msgid "Brands"
+msgstr "Mărci"
+
+#: pantry/templates/pantry/index.html:122
+msgid "Code"
+msgstr "Cod"
+
+#: pantry/templates/pantry/index.html:129
+msgid "item"
+msgstr "element"
+
+#: pantry/templates/pantry/index.html:136
+msgid "Add to Pantry"
+msgstr "Adaugă la cămară"
+
+#: pantry/templates/pantry/index.html:140
+msgid "Remove Favourite"
+msgstr "Elimină favoritele"
+
+#: pantry/templates/pantry/index.html:148
+msgid "You haven't favourited any products yet. Start exploring today!"
+msgstr "Nu ați favorizat încă niciun produs. Începeți să explorați astăzi!"
+
+#: pantry/templates/pantry/pantry.html:5 templates/base.html:63
+msgid "Pantry"
+msgstr "Cămară"
+
+#: pantry/templates/pantry/pantry.html:13
+msgid "Pantry Health & Eco Summary"
+msgstr "Sănătate în cămară & Rezumat ecologic"
+
+#: pantry/templates/pantry/pantry.html:20
+msgid "Nutri-Grade:"
+msgstr "Nutri-Grade:"
+
+#: pantry/templates/pantry/pantry.html:27
+msgid "Eco-Grade:"
+msgstr "Eco-Grade:"
+
+#: pantry/templates/pantry/pantry.html:34
+msgid "Scores are hidden or unavailable. Check your user settings."
+msgstr ""
+"Scorurile sunt ascunse sau nu sunt disponibile. Verificați setările de "
+"utilizator."
+
+#: pantry/templates/pantry/pantry.html:44
+msgid "Your Pantry Items"
+msgstr "Articolele din cămară"
+
+#: pantry/templates/pantry/pantry.html:62
+#: pantry/templates/pantry/pantry.html:64
+msgid "Product Image"
+msgstr "Imaginea produsului"
+
+#: pantry/templates/pantry/pantry.html:67
+msgid "No Name"
+msgstr "Fără nume"
+
+#: pantry/templates/pantry/pantry.html:91
+msgid "Quantity:"
+msgstr "Cantitate:"
+
+#: pantry/templates/pantry/pantry.html:94
+msgid "Product Size:"
+msgstr "Dimensiunea produsului:"
+
+#: pantry/templates/pantry/pantry.html:100
+msgid "Expires:"
+msgstr "Expiră:"
+
+#: pantry/templates/pantry/pantry.html:116
+msgid "Your pantry is empty! Add some products to get started."
+msgstr "Cămara ta este goală! Adăugați câteva produse pentru a începe."
+
+#: recipes/templates/recipes/recipes.html:6 templates/base.html:70
+msgid "Recipes"
+msgstr "Rețete"
+
+#: recipes/templates/recipes/recipes.html:13
+msgid "New Recipe Suggestions"
+msgstr "Sugestii de rețete noi"
+
+#: recipes/templates/recipes/recipes.html:40
+#: recipes/templates/recipes/recipes.html:101
+#: recipes/templates/recipes/recipes.html:163
+msgid "Ingredients"
+msgstr "Ingrediente"
+
+#: recipes/templates/recipes/recipes.html:48
+#: recipes/templates/recipes/recipes.html:109
+#: recipes/templates/recipes/recipes.html:181
+msgid "Instructions"
+msgstr "Instrucțiuni"
+
+#: recipes/templates/recipes/recipes.html:59
+#: recipes/templates/recipes/recipes.html:120
+msgid "Save Recipe"
+msgstr "Salvați rețeta"
+
+#: recipes/templates/recipes/recipes.html:68
+msgid "No new suggestions"
+msgstr "Nu există sugestii noi"
+
+#: recipes/templates/recipes/recipes.html:70
+msgid "Recipes still being generated"
+msgstr "Rețetele sunt încă generate"
+
+#: recipes/templates/recipes/recipes.html:75
+msgid "Recently Suggested Recipes"
+msgstr "Rețete sugerate recent"
+
+#: recipes/templates/recipes/recipes.html:129
+msgid "No recently suggested"
+msgstr "Nu s-a sugerat recent"
+
+#: recipes/templates/recipes/recipes.html:135
+msgid "Saved Recipes"
+msgstr "Rețete salvate"
+
+#: recipes/templates/recipes/recipes.html:152
+msgid "Missing Items"
+msgstr "Articole lipsă"
+
+#: recipes/templates/recipes/recipes.html:192
+msgid "Delete Recipe"
+msgstr "Ștergeți rețeta"
+
+#: recipes/templates/recipes/recipes.html:204
+msgid "No Saved Recipes"
+msgstr "Nu există rețete salvate"
+
+#: savor/settings.py:138
+msgid "Arabic"
+msgstr "arabă"
+
+#: savor/settings.py:139
+msgid "Bulgarian"
+msgstr "bulgară"
+
+#: savor/settings.py:140
+msgid "Chinese"
+msgstr "Chineză"
+
+#: savor/settings.py:141
+msgid "Czech"
+msgstr "Cehă"
+
+#: savor/settings.py:142
+msgid "Danish"
+msgstr "daneză"
+
+#: savor/settings.py:143
+msgid "Dutch"
+msgstr "olandeză"
+
+#: savor/settings.py:144
+msgid "Estonian"
+msgstr "Estonă"
+
+#: savor/settings.py:145
+msgid "Finnish"
+msgstr "finlandeză"
+
+#: savor/settings.py:146
+msgid "French"
+msgstr "franceză"
+
+#: savor/settings.py:147
+msgid "German"
+msgstr "germană"
+
+#: savor/settings.py:148
+msgid "Greek"
+msgstr "Greacă"
+
+#: savor/settings.py:149
+msgid "Hebrew"
+msgstr "ebraică"
+
+#: savor/settings.py:150
+msgid "Hungarian"
+msgstr "maghiară"
+
+#: savor/settings.py:151
+msgid "Indonesian"
+msgstr "Indoneziană"
+
+#: savor/settings.py:152
+msgid "Italian"
+msgstr "Italiană"
+
+#: savor/settings.py:153
+msgid "Japanese"
+msgstr "Japoneză"
+
+#: savor/settings.py:154
+msgid "Korean"
+msgstr "Coreeană"
+
+#: savor/settings.py:155
+msgid "Latvian"
+msgstr "Letonă"
+
+#: savor/settings.py:156
+msgid "Lithuanian"
+msgstr "lituaniană"
+
+#: savor/settings.py:157
+msgid "Norwegian Bokmål"
+msgstr "Norvegiană Bokmål"
+
+#: savor/settings.py:158
+msgid "Polish"
+msgstr "poloneză"
+
+#: savor/settings.py:159
+msgid "Portuguese"
+msgstr "portugheză"
+
+#: savor/settings.py:160
+msgid "Romanian"
+msgstr "română"
+
+#: savor/settings.py:161
+msgid "Russian"
+msgstr "Rusă"
+
+#: savor/settings.py:162
+msgid "Slovak"
+msgstr "Slovacă"
+
+#: savor/settings.py:163
+msgid "Slovenian"
+msgstr "Slovenă"
+
+#: savor/settings.py:164
+msgid "Spanish"
+msgstr "spaniolă"
+
+#: savor/settings.py:165
+msgid "Swedish"
+msgstr "suedeză"
+
+#: savor/settings.py:166
+msgid "Thai"
+msgstr "Thailandeză"
+
+#: savor/settings.py:167
+msgid "Turkish"
+msgstr "Turcă"
+
+#: savor/settings.py:168
+msgid "Ukrainian"
+msgstr "Ucraineană"
+
+#: savor/settings.py:169
+msgid "Vietnamese"
+msgstr "vietnameză"
+
+#: templates/base.html:22
+msgid "Welcome"
+msgstr "Bine ați venit"
+
+#: templates/base.html:29
+msgid "Search Product by ingredient"
+msgstr "Căutare produs după ingredient"
+
+#: templates/base.html:32
+msgid "Search Product by Barcode"
+msgstr "Căutare produs după codul de bare"
+
+#: templates/base.html:37
+msgid "Scan"
+msgstr "Scanare"
+
+#: templates/base.html:56
+msgid "Home"
+msgstr "Acasă"
+
+#: templates/base.html:79
+msgid "Settings"
+msgstr "Setări"
+
+#: templates/base.html:85
+msgid "Account"
+msgstr "Cont"
+
+#: templates/base.html:94
+msgid "Log Out"
+msgstr "Deconectare"
+
+#: templates/base.html:107
+msgid "Log On"
+msgstr "Conectați-vă"
+
+#: templates/base.html:113 users/templates/users/register.html:57
+msgid "Register"
+msgstr "Înregistrare"
+
+#: templates/base.html:123
+msgid "Stop Scanning"
+msgstr "Opriți scanarea"
+
+#: templates/registration/login.html:5 templates/registration/login.html:9
+#: templates/registration/login.html:37
+msgid "Log In"
+msgstr "Conectați-vă"
+
+#: templates/registration/login.html:40
+#, python-format
+msgid "Don't have an account? <a href=\"%('register_url')s\">Register here</a>."
+msgstr ""
+"Nu aveți un cont? <a href=\"%('register_url')s\">Înregistrează-te aici</a>."
+
+#: templates/registration/login.html:41
+msgid "Forgot password?"
+msgstr "Ați uitat parola?"
+
+#: templates/registration/logout.html:4 templates/registration/logout.html:7
+msgid "Logged Out"
+msgstr "Deconectat"
+
+#: templates/registration/logout.html:8
+msgid "You have been successfully logged out."
+msgstr "Ați fost deconectat cu succes."
+
+#: templates/registration/logout.html:9
+msgid "Log in again"
+msgstr "Conectați-vă din nou"
+
+#: templates/registration/password_change_done.html:6
+msgid "Password Changed Successfully"
+msgstr "Parolă schimbată cu succes"
+
+#: templates/registration/password_change_done.html:12
+#: templates/registration/password_reset_complete.html:11
+msgid "Password Changed Successfully!"
+msgstr "Parolă schimbată cu succes!"
+
+#: templates/registration/password_change_done.html:14
+msgid "Your password has been changed."
+msgstr "Parola dvs. a fost schimbată."
+
+#: templates/registration/password_change_done.html:16
+msgid "Back to Settings"
+msgstr "Înapoi la Setări"
+
+#: templates/registration/password_change_form.html:5
+#: templates/registration/password_change_form.html:38
+#: templates/registration/password_reset_confirm.html:28
+#: users/templates/users/account_settings.html:51
+msgid "Change Password"
+msgstr "Schimbare parolă"
+
+#: templates/registration/password_change_form.html:11
+msgid "Change Your Password"
+msgstr "Schimbați-vă parola"
+
+#: templates/registration/password_change_form.html:23
+msgid "Old Password"
+msgstr "Parolă veche"
+
+#: templates/registration/password_change_form.html:28
+#: templates/registration/password_reset_confirm.html:20
+msgid "New Password"
+msgstr "Parolă nouă"
+
+#: templates/registration/password_change_form.html:33
+#: templates/registration/password_reset_confirm.html:24
+msgid "Confirm New Password"
+msgstr "Confirmați parola nouă"
+
+#: templates/registration/password_reset_complete.html:5
+msgid "Password Changed"
+msgstr "Parolă schimbată"
+
+#: templates/registration/password_reset_complete.html:13
+msgid ""
+"Your password has been set. You can now go ahead and log in with your new "
+"password."
+msgstr ""
+"Parola dvs. a fost setată. Acum vă puteți conecta cu noua dvs. parolă."
+
+#: templates/registration/password_reset_confirm.html:12
+msgid "Set a New Password"
+msgstr "Setați o parolă nouă"
+
+#: templates/registration/password_reset_confirm.html:32
+msgid "Invalid Link"
+msgstr "Link invalid"
+
+#: templates/registration/password_reset_confirm.html:34
+msgid ""
+"The password reset link was invalid, possibly because it has already been "
+"used. Please request a new password reset."
+msgstr ""
+"Linkul de resetare a parolei a fost invalid, posibil pentru că a fost deja "
+"utilizat. Vă rugăm să solicitați o nouă resetare a parolei."
+
+#: templates/registration/password_reset_done.html:4
+msgid "Password Reset Sent"
+msgstr "Se trimite resetarea parolei"
+
+#: templates/registration/password_reset_done.html:10
+msgid "Check Your Inbox"
+msgstr "Verifică-ți cutia poștală primită"
+
+#: templates/registration/password_reset_done.html:12
+msgid ""
+"We've emailed you instructions for setting your password. If an account "
+"exists with the email you entered, you should receive them shortly."
+msgstr ""
+"Ți-am trimis prin e-mail instrucțiuni pentru setarea parolei tale. Dacă "
+"există un cont cu adresa de e-mail pe care ați introdus-o, ar trebui să le "
+"primiți în scurt timp."
+
+#: templates/registration/password_reset_done.html:13
+msgid ""
+"If you don't receive an email, please make sure you've entered the email "
+"address you registered with, and check your spam folder."
+msgstr ""
+"Dacă nu primiți un e-mail, asigurați-vă că ați introdus adresa de e-mail cu "
+"care v-ați înregistrat și verificați dosarul de spam."
+
+#: templates/registration/password_reset_form.html:8
+msgid "Forgot Your Password?"
+msgstr "Ați uitat parola?"
+
+#: templates/registration/password_reset_form.html:9
+msgid "Enter your email address below to receive a password reset link."
+msgstr ""
+"Introduceți adresa dvs. de e-mail mai jos pentru a primi un link de resetare"
+" a parolei."
+
+#: templates/registration/password_reset_form.html:17
+msgid "Reset Password"
+msgstr "Resetați parola"
+
+#: users/forms.py:12
+msgid "Password"
+msgstr "Parolă"
+
+#: users/forms.py:16
+msgid ""
+"Your password can't be too similar to your other personal information. It "
+"must contain at least 8 characters. It can't be a commonly used password. It"
+" can't be entirely numeric."
+msgstr ""
+"Parola dvs. nu poate fi prea asemănătoare cu alte informații personale. "
+"Trebuie să conțină cel puțin 8 caractere. Nu poate fi o parolă utilizată "
+"frecvent. Nu poate fi în întregime numerică."
+
+#: users/forms.py:23
+msgid "Password confirmation"
+msgstr "Confirmarea parolei"
+
+#: users/forms.py:26
+msgid "Enter the same password as before, for verification."
+msgstr "Introduceți aceeași parolă ca înainte, pentru verificare."
+
+#: users/forms.py:34 users/templates/users/account_settings.html:44
+msgid "Username"
+msgstr "Nume utilizator"
+
+#: users/forms.py:35 users/templates/users/account_settings.html:45
+msgid "Email"
+msgstr "E-mail"
+
+#: users/forms.py:39
+msgid "Required. 150 characters or fewer. Letters, digits and @/./+/-/_ only."
+msgstr ""
+"Necesar. 150 de caractere sau mai puțin. Numai litere, cifre și @/./+/-/_."
+
+#: users/forms.py:65 users/templates/users/account_settings.html:68
+msgid "Language Preference"
+msgstr "Preferința lingvistică"
+
+#: users/forms.py:66 users/templates/users/account_settings.html:63
+msgid "Country"
+msgstr "Țara"
+
+#: users/forms.py:67 users/templates/users/account_settings.html:90
+msgid "Allergens"
+msgstr "Alergeni"
+
+#: users/forms.py:68 users/templates/users/account_settings.html:78
+msgid "Dietary Requirements"
+msgstr "Cerințe dietetice"
+
+#: users/forms.py:69
+msgid "Enable scan-to-add in pantry"
+msgstr "Activați scanarea pentru adăugare în cămară"
+
+#: users/forms.py:70
+msgid "Display Nutri-Score on products"
+msgstr "Afișați Nutri-Score pe produse"
+
+#: users/forms.py:71
+msgid "Display Eco-Score on products"
+msgstr "Afișarea Eco-Score-ului pe produse"
+
+#: users/forms.py:72
+msgid "Prioritise local results in search"
+msgstr "Prioritizarea rezultatelor locale în căutare"
+
+#: users/templates/users/account_settings.html:6
+msgid "Account Settings"
+msgstr "Setări cont"
+
+#: users/templates/users/account_settings.html:19
+msgid "Warning!"
+msgstr "Atenție!"
+
+#: users/templates/users/account_settings.html:19
+msgid "You are about to delete your account permanently."
+msgstr "Sunteți pe cale să vă ștergeți contul definitiv."
+
+#: users/templates/users/account_settings.html:22
+msgid ""
+"\n"
+"          Doing this will permanently remove all account data including your\n"
+"          pantry, saved recipes, and favourites. Are you sure you want to\n"
+"          continue?\n"
+"          "
+msgstr ""
+"\n"
+"          Acest lucru va elimina definitiv toate datele contului, inclusiv\n"
+"          cămară, rețetele salvate și favoritele. Sunteți sigur că doriți să\n"
+"          să continuați?\n"
+"          "
+
+#: users/templates/users/account_settings.html:29
+msgid "I'm sure,"
+msgstr "Sunt sigur,"
+
+#: users/templates/users/account_settings.html:30
+#: users/templates/users/account_settings.html:52
+msgid "Delete Account"
+msgstr "Ștergeți contul"
+
+#: users/templates/users/account_settings.html:40
+msgid "Account management"
+msgstr "Gestionarea conturilor"
+
+#: users/templates/users/account_settings.html:46
+msgid "Date Joined"
+msgstr "Data aderării"
+
+#: users/templates/users/account_settings.html:57
+msgid "User preferences"
+msgstr "Preferințele utilizatorului"
+
+#: users/templates/users/account_settings.html:115
+msgid "Save Settings"
+msgstr "Salvare setări"
+
+#: users/templates/users/register.html:60
+#, python-format
+msgid "Already have an account? <a href=\"%(login_url)s\">Log in here</a>."
+msgstr "Aveți deja un cont? <a href=\"%(login_url)s\">Conectați-vă aici</a>."

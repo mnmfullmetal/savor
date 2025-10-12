@@ -1,0 +1,660 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-10-12 14:39+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: pantry/templates/pantry/index.html:17
+msgid "Advanced Search"
+msgstr "Avanceret søgning"
+
+#: pantry/templates/pantry/index.html:25
+msgid "Product Name"
+msgstr "Produktets navn"
+
+#: pantry/templates/pantry/index.html:29
+msgid "Country of Origin"
+msgstr "Oprindelsesland"
+
+#: pantry/templates/pantry/index.html:31
+msgid "Select a country..."
+msgstr "Vælg et land..."
+
+#: pantry/templates/pantry/index.html:35
+msgid "Category"
+msgstr "Kategori"
+
+#: pantry/templates/pantry/index.html:37
+msgid "Select a category..."
+msgstr "Vælg en kategori..."
+
+#: pantry/templates/pantry/index.html:41
+msgid "Brand"
+msgstr "Brand"
+
+#: pantry/templates/pantry/index.html:43
+msgid "Select a brand..."
+msgstr "Vælg et mærke..."
+
+#: pantry/templates/pantry/index.html:48
+msgid "Clear Filters"
+msgstr "Ryd filtre"
+
+#: pantry/templates/pantry/index.html:51 templates/base.html:34
+msgid "Search"
+msgstr "Søg efter"
+
+#: pantry/templates/pantry/index.html:66
+msgid "Product Search Results"
+msgstr "Resultater af produktsøgning"
+
+#: pantry/templates/pantry/index.html:70
+msgid "Enter a search query to find products."
+msgstr "Indtast en søgeforespørgsel for at finde produkter."
+
+#: pantry/templates/pantry/index.html:73
+msgid ""
+"Can't find what you're looking for? Try <a href=\"#\" data-bs-"
+"toggle=\"modal\" data-bs-target=\"#exampleModal\">Advanced Search</a>."
+msgstr ""
+"Kan du ikke finde det, du leder efter? Prøv <a href=\"#\" data-bs-"
+"toggle=\"modal\" data-bs-target=\"#exampleModal\">Avanceret søgning</a>."
+
+#: pantry/templates/pantry/index.html:82
+msgid "Favourites"
+msgstr "Favoritter"
+
+#: pantry/templates/pantry/index.html:101
+#: pantry/templates/pantry/pantry.html:71
+msgid "WARNING"
+msgstr "ADVARSEL"
+
+#: pantry/templates/pantry/index.html:101
+#: pantry/templates/pantry/pantry.html:71
+msgid "Contains user-specified allergens:"
+msgstr "Indeholder brugerspecificerede allergener:"
+
+#: pantry/templates/pantry/index.html:110
+#: pantry/templates/pantry/pantry.html:80
+msgid "POSSIBLE MISMATCH"
+msgstr "MULIG UOVERENSSTEMMELSE"
+
+#: pantry/templates/pantry/index.html:110
+#: pantry/templates/pantry/pantry.html:80
+msgid "Missing dietary requirements:"
+msgstr "Manglende kostbehov:"
+
+#: pantry/templates/pantry/index.html:121
+msgid "Brands"
+msgstr "Mærker"
+
+#: pantry/templates/pantry/index.html:122
+msgid "Code"
+msgstr "Kode"
+
+#: pantry/templates/pantry/index.html:129
+msgid "item"
+msgstr "genstand"
+
+#: pantry/templates/pantry/index.html:136
+msgid "Add to Pantry"
+msgstr "Tilføj til spisekammer"
+
+#: pantry/templates/pantry/index.html:140
+msgid "Remove Favourite"
+msgstr "Fjern favorit"
+
+#: pantry/templates/pantry/index.html:148
+msgid "You haven't favourited any products yet. Start exploring today!"
+msgstr ""
+"Du har ikke favoriseret nogen produkter endnu. Begynd at udforske i dag!"
+
+#: pantry/templates/pantry/pantry.html:5 templates/base.html:63
+msgid "Pantry"
+msgstr "Spisekammer"
+
+#: pantry/templates/pantry/pantry.html:13
+msgid "Pantry Health & Eco Summary"
+msgstr "Pantry Health & Eco Summary"
+
+#: pantry/templates/pantry/pantry.html:20
+msgid "Nutri-Grade:"
+msgstr "Nutri-Grade:"
+
+#: pantry/templates/pantry/pantry.html:27
+msgid "Eco-Grade:"
+msgstr "Øko-klasse:"
+
+#: pantry/templates/pantry/pantry.html:34
+msgid "Scores are hidden or unavailable. Check your user settings."
+msgstr "Scores er skjulte eller utilgængelige. Tjek dine brugerindstillinger."
+
+#: pantry/templates/pantry/pantry.html:44
+msgid "Your Pantry Items"
+msgstr "Dine varer i spisekammeret"
+
+#: pantry/templates/pantry/pantry.html:62
+#: pantry/templates/pantry/pantry.html:64
+msgid "Product Image"
+msgstr "Produktbillede"
+
+#: pantry/templates/pantry/pantry.html:67
+msgid "No Name"
+msgstr "Intet navn"
+
+#: pantry/templates/pantry/pantry.html:91
+msgid "Quantity:"
+msgstr "Mængde:"
+
+#: pantry/templates/pantry/pantry.html:94
+msgid "Product Size:"
+msgstr "Produktstørrelse:"
+
+#: pantry/templates/pantry/pantry.html:100
+msgid "Expires:"
+msgstr "Udløber:"
+
+#: pantry/templates/pantry/pantry.html:116
+msgid "Your pantry is empty! Add some products to get started."
+msgstr "Dit spisekammer er tomt! Tilføj nogle produkter for at komme i gang."
+
+#: recipes/templates/recipes/recipes.html:6 templates/base.html:70
+msgid "Recipes"
+msgstr "Opskrifter"
+
+#: recipes/templates/recipes/recipes.html:13
+msgid "New Recipe Suggestions"
+msgstr "Nye forslag til opskrifter"
+
+#: recipes/templates/recipes/recipes.html:40
+#: recipes/templates/recipes/recipes.html:101
+#: recipes/templates/recipes/recipes.html:163
+msgid "Ingredients"
+msgstr "Ingredienser"
+
+#: recipes/templates/recipes/recipes.html:48
+#: recipes/templates/recipes/recipes.html:109
+#: recipes/templates/recipes/recipes.html:181
+msgid "Instructions"
+msgstr "Instruktioner"
+
+#: recipes/templates/recipes/recipes.html:59
+#: recipes/templates/recipes/recipes.html:120
+msgid "Save Recipe"
+msgstr "Gem opskrift"
+
+#: recipes/templates/recipes/recipes.html:68
+msgid "No new suggestions"
+msgstr "Ingen nye forslag"
+
+#: recipes/templates/recipes/recipes.html:70
+msgid "Recipes still being generated"
+msgstr "Opskrifter genereres stadig"
+
+#: recipes/templates/recipes/recipes.html:75
+msgid "Recently Suggested Recipes"
+msgstr "Nyligt foreslåede opskrifter"
+
+#: recipes/templates/recipes/recipes.html:129
+msgid "No recently suggested"
+msgstr "Ikke foreslået for nylig"
+
+#: recipes/templates/recipes/recipes.html:135
+msgid "Saved Recipes"
+msgstr "Gemte opskrifter"
+
+#: recipes/templates/recipes/recipes.html:152
+msgid "Missing Items"
+msgstr "Manglende genstande"
+
+#: recipes/templates/recipes/recipes.html:192
+msgid "Delete Recipe"
+msgstr "Slet opskrift"
+
+#: recipes/templates/recipes/recipes.html:204
+msgid "No Saved Recipes"
+msgstr "Ingen gemte opskrifter"
+
+#: savor/settings.py:138
+msgid "Arabic"
+msgstr "Arabisk"
+
+#: savor/settings.py:139
+msgid "Bulgarian"
+msgstr "Bulgarsk"
+
+#: savor/settings.py:140
+msgid "Chinese"
+msgstr "Kinesisk"
+
+#: savor/settings.py:141
+msgid "Czech"
+msgstr "Tjekkisk"
+
+#: savor/settings.py:142
+msgid "Danish"
+msgstr "Dansk"
+
+#: savor/settings.py:143
+msgid "Dutch"
+msgstr "Hollandsk"
+
+#: savor/settings.py:144
+msgid "Estonian"
+msgstr "Estisk"
+
+#: savor/settings.py:145
+msgid "Finnish"
+msgstr "Finsk"
+
+#: savor/settings.py:146
+msgid "French"
+msgstr "Fransk"
+
+#: savor/settings.py:147
+msgid "German"
+msgstr "Tysk"
+
+#: savor/settings.py:148
+msgid "Greek"
+msgstr "Græsk"
+
+#: savor/settings.py:149
+msgid "Hebrew"
+msgstr "Hebraisk"
+
+#: savor/settings.py:150
+msgid "Hungarian"
+msgstr "Ungarsk"
+
+#: savor/settings.py:151
+msgid "Indonesian"
+msgstr "Indonesisk"
+
+#: savor/settings.py:152
+msgid "Italian"
+msgstr "Italiensk"
+
+#: savor/settings.py:153
+msgid "Japanese"
+msgstr "Japansk"
+
+#: savor/settings.py:154
+msgid "Korean"
+msgstr "Koreansk"
+
+#: savor/settings.py:155
+msgid "Latvian"
+msgstr "Lettisk"
+
+#: savor/settings.py:156
+msgid "Lithuanian"
+msgstr "Litauisk"
+
+#: savor/settings.py:157
+msgid "Norwegian Bokmål"
+msgstr "Norsk bokmål"
+
+#: savor/settings.py:158
+msgid "Polish"
+msgstr "Polsk"
+
+#: savor/settings.py:159
+msgid "Portuguese"
+msgstr "Portugisisk"
+
+#: savor/settings.py:160
+msgid "Romanian"
+msgstr "Rumænsk"
+
+#: savor/settings.py:161
+msgid "Russian"
+msgstr "Russer"
+
+#: savor/settings.py:162
+msgid "Slovak"
+msgstr "Slovakisk"
+
+#: savor/settings.py:163
+msgid "Slovenian"
+msgstr "Slovensk"
+
+#: savor/settings.py:164
+msgid "Spanish"
+msgstr "Spansk"
+
+#: savor/settings.py:165
+msgid "Swedish"
+msgstr "Svensk"
+
+#: savor/settings.py:166
+msgid "Thai"
+msgstr "Thai"
+
+#: savor/settings.py:167
+msgid "Turkish"
+msgstr "Tyrkisk"
+
+#: savor/settings.py:168
+msgid "Ukrainian"
+msgstr "Ukrainsk"
+
+#: savor/settings.py:169
+msgid "Vietnamese"
+msgstr "Vietnamesisk"
+
+#: templates/base.html:22
+msgid "Welcome"
+msgstr "Velkommen"
+
+#: templates/base.html:29
+msgid "Search Product by ingredient"
+msgstr "Søg produkt efter ingrediens"
+
+#: templates/base.html:32
+msgid "Search Product by Barcode"
+msgstr "Søg produkt efter stregkode"
+
+#: templates/base.html:37
+msgid "Scan"
+msgstr "Scanning"
+
+#: templates/base.html:56
+msgid "Home"
+msgstr "Hjem"
+
+#: templates/base.html:79
+msgid "Settings"
+msgstr "Indstillinger"
+
+#: templates/base.html:85
+msgid "Account"
+msgstr "Konto"
+
+#: templates/base.html:94
+msgid "Log Out"
+msgstr "Log ud"
+
+#: templates/base.html:107
+msgid "Log On"
+msgstr "Log på"
+
+#: templates/base.html:113 users/templates/users/register.html:57
+msgid "Register"
+msgstr "Registrer dig"
+
+#: templates/base.html:123
+msgid "Stop Scanning"
+msgstr "Stop med at scanne"
+
+#: templates/registration/login.html:5 templates/registration/login.html:9
+#: templates/registration/login.html:37
+msgid "Log In"
+msgstr "Log ind"
+
+#: templates/registration/login.html:40
+#, python-format
+msgid "Don't have an account? <a href=\"%('register_url')s\">Register here</a>."
+msgstr ""
+"Har du ikke en konto? <a href=\"%('register_url')s\">Registrer dig her</a>."
+
+#: templates/registration/login.html:41
+msgid "Forgot password?"
+msgstr "Har du glemt din adgangskode?"
+
+#: templates/registration/logout.html:4 templates/registration/logout.html:7
+msgid "Logged Out"
+msgstr "Logget ud"
+
+#: templates/registration/logout.html:8
+msgid "You have been successfully logged out."
+msgstr "Du er blevet logget ud."
+
+#: templates/registration/logout.html:9
+msgid "Log in again"
+msgstr "Log ind igen"
+
+#: templates/registration/password_change_done.html:6
+msgid "Password Changed Successfully"
+msgstr "Adgangskode ændret med succes"
+
+#: templates/registration/password_change_done.html:12
+#: templates/registration/password_reset_complete.html:11
+msgid "Password Changed Successfully!"
+msgstr "Adgangskode ændret med succes!"
+
+#: templates/registration/password_change_done.html:14
+msgid "Your password has been changed."
+msgstr "Din adgangskode er blevet ændret."
+
+#: templates/registration/password_change_done.html:16
+msgid "Back to Settings"
+msgstr "Tilbage til indstillinger"
+
+#: templates/registration/password_change_form.html:5
+#: templates/registration/password_change_form.html:38
+#: templates/registration/password_reset_confirm.html:28
+#: users/templates/users/account_settings.html:51
+msgid "Change Password"
+msgstr "Skift adgangskode"
+
+#: templates/registration/password_change_form.html:11
+msgid "Change Your Password"
+msgstr "Skift din adgangskode"
+
+#: templates/registration/password_change_form.html:23
+msgid "Old Password"
+msgstr "Gammel adgangskode"
+
+#: templates/registration/password_change_form.html:28
+#: templates/registration/password_reset_confirm.html:20
+msgid "New Password"
+msgstr "Ny adgangskode"
+
+#: templates/registration/password_change_form.html:33
+#: templates/registration/password_reset_confirm.html:24
+msgid "Confirm New Password"
+msgstr "Bekræft ny adgangskode"
+
+#: templates/registration/password_reset_complete.html:5
+msgid "Password Changed"
+msgstr "Ændret adgangskode"
+
+#: templates/registration/password_reset_complete.html:13
+msgid ""
+"Your password has been set. You can now go ahead and log in with your new "
+"password."
+msgstr ""
+"Din adgangskode er blevet indstillet. Du kan nu gå videre og logge ind med "
+"din nye adgangskode."
+
+#: templates/registration/password_reset_confirm.html:12
+msgid "Set a New Password"
+msgstr "Indstil en ny adgangskode"
+
+#: templates/registration/password_reset_confirm.html:32
+msgid "Invalid Link"
+msgstr "Ugyldigt link"
+
+#: templates/registration/password_reset_confirm.html:34
+msgid ""
+"The password reset link was invalid, possibly because it has already been "
+"used. Please request a new password reset."
+msgstr ""
+"Linket til nulstilling af adgangskode var ugyldigt, muligvis fordi det "
+"allerede er blevet brugt. Anmod venligst om en ny adgangskode."
+
+#: templates/registration/password_reset_done.html:4
+msgid "Password Reset Sent"
+msgstr "Nulstilling af adgangskode sendt"
+
+#: templates/registration/password_reset_done.html:10
+msgid "Check Your Inbox"
+msgstr "Tjek din indbakke"
+
+#: templates/registration/password_reset_done.html:12
+msgid ""
+"We've emailed you instructions for setting your password. If an account "
+"exists with the email you entered, you should receive them shortly."
+msgstr ""
+"Vi har sendt dig en e-mail med instruktioner til, hvordan du indstiller din "
+"adgangskode. Hvis der findes en konto med den e-mail, du har indtastet, vil "
+"du modtage dem inden for kort tid."
+
+#: templates/registration/password_reset_done.html:13
+msgid ""
+"If you don't receive an email, please make sure you've entered the email "
+"address you registered with, and check your spam folder."
+msgstr ""
+"Hvis du ikke modtager en e-mail, skal du sikre dig, at du har indtastet den "
+"e-mailadresse, du har registreret dig med, og tjekke din spam-mappe."
+
+#: templates/registration/password_reset_form.html:8
+msgid "Forgot Your Password?"
+msgstr "Har du glemt din adgangskode?"
+
+#: templates/registration/password_reset_form.html:9
+msgid "Enter your email address below to receive a password reset link."
+msgstr ""
+"Indtast din e-mailadresse nedenfor for at modtage et link til nulstilling af"
+" adgangskode."
+
+#: templates/registration/password_reset_form.html:17
+msgid "Reset Password"
+msgstr "Nulstil adgangskode"
+
+#: users/forms.py:12
+msgid "Password"
+msgstr "Adgangskode"
+
+#: users/forms.py:16
+msgid ""
+"Your password can't be too similar to your other personal information. It "
+"must contain at least 8 characters. It can't be a commonly used password. It"
+" can't be entirely numeric."
+msgstr ""
+"Din adgangskode må ikke ligne dine andre personlige oplysninger for meget. "
+"Den skal indeholde mindst 8 tegn. Det må ikke være et almindeligt brugt "
+"password. Det må ikke være helt numerisk."
+
+#: users/forms.py:23
+msgid "Password confirmation"
+msgstr "Bekræftelse af adgangskode"
+
+#: users/forms.py:26
+msgid "Enter the same password as before, for verification."
+msgstr "Indtast den samme adgangskode som før til bekræftelse."
+
+#: users/forms.py:34 users/templates/users/account_settings.html:44
+msgid "Username"
+msgstr "Brugernavn"
+
+#: users/forms.py:35 users/templates/users/account_settings.html:45
+msgid "Email"
+msgstr "E-mail"
+
+#: users/forms.py:39
+msgid "Required. 150 characters or fewer. Letters, digits and @/./+/-/_ only."
+msgstr "Påkrævet. 150 tegn eller færre. Kun bogstaver, cifre og @/./+/-/_."
+
+#: users/forms.py:65 users/templates/users/account_settings.html:68
+msgid "Language Preference"
+msgstr "Præference for sprog"
+
+#: users/forms.py:66 users/templates/users/account_settings.html:63
+msgid "Country"
+msgstr "Land"
+
+#: users/forms.py:67 users/templates/users/account_settings.html:90
+msgid "Allergens"
+msgstr "Allergener"
+
+#: users/forms.py:68 users/templates/users/account_settings.html:78
+msgid "Dietary Requirements"
+msgstr "Krav til kosten"
+
+#: users/forms.py:69
+msgid "Enable scan-to-add in pantry"
+msgstr "Gør det muligt at scanne for at tilføje i spisekammeret"
+
+#: users/forms.py:70
+msgid "Display Nutri-Score on products"
+msgstr "Vis Nutri-Score på produkter"
+
+#: users/forms.py:71
+msgid "Display Eco-Score on products"
+msgstr "Vis Eco-Score på produkter"
+
+#: users/forms.py:72
+msgid "Prioritise local results in search"
+msgstr "Prioriter lokale resultater i søgningen"
+
+#: users/templates/users/account_settings.html:6
+msgid "Account Settings"
+msgstr "Kontoindstillinger"
+
+#: users/templates/users/account_settings.html:19
+msgid "Warning!"
+msgstr "Advarsel!"
+
+#: users/templates/users/account_settings.html:19
+msgid "You are about to delete your account permanently."
+msgstr "Du er ved at slette din konto permanent."
+
+#: users/templates/users/account_settings.html:22
+msgid ""
+"\n"
+"          Doing this will permanently remove all account data including your\n"
+"          pantry, saved recipes, and favourites. Are you sure you want to\n"
+"          continue?\n"
+"          "
+msgstr ""
+"\n"
+"          Hvis du gør dette, fjernes alle kontodata permanent, herunder dit\n"
+"          spisekammer, gemte opskrifter og favoritter. Er du sikker på, at du vil\n"
+"          fortsætte?\n"
+"          "
+
+#: users/templates/users/account_settings.html:29
+msgid "I'm sure,"
+msgstr "Det er jeg sikker på,"
+
+#: users/templates/users/account_settings.html:30
+#: users/templates/users/account_settings.html:52
+msgid "Delete Account"
+msgstr "Slet konto"
+
+#: users/templates/users/account_settings.html:40
+msgid "Account management"
+msgstr "Kontoadministration"
+
+#: users/templates/users/account_settings.html:46
+msgid "Date Joined"
+msgstr "Dato for tiltrædelse"
+
+#: users/templates/users/account_settings.html:57
+msgid "User preferences"
+msgstr "Brugerens præferencer"
+
+#: users/templates/users/account_settings.html:115
+msgid "Save Settings"
+msgstr "Gem indstillinger"
+
+#: users/templates/users/register.html:60
+#, python-format
+msgid "Already have an account? <a href=\"%(login_url)s\">Log in here</a>."
+msgstr "Har du allerede en konto? <a href=\"%(login_url)s\">Log ind her</a>."

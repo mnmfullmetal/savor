@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% load i18n %}
 {% load static %}
 {% load widget_tweaks %}
 
@@ -13,46 +14,45 @@ Savor
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h1 class="modal-title fs-5" id="exampleModalLabel">Advanced Search <span class="ms-2">🔎</span></h1>
+        <h1 class="modal-title fs-5" id="exampleModalLabel">{% trans "Advanced Search" %}<span class="ms-2">🔎</span></h1>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
+
       <form id="advSearchForm" class="adv-search-form">
         {% csrf_token %}
-
-                        <div class="mb-3">
-                            <label for="productNameInput" class="form-label">Product Name</label>
-                            <input type="text" id="productNameInput" name="product_name" class="form-control" placeholder="e.g., chocolate, cookies" aria-label="Search Product by Name">
-                        </div>
-                        <div class="mb-3">
-                            <label for="countrySelect" class="form-label">Country of Origin</label>
-                            <select id="countrySelect" class="form-select" name="countries_tags">
-                                <option value="" selected>Select a country...</option>
-                                
-                            </select>
-                        </div>
-                        <div class="mb-3">
-                            <label for="categorySelect" class="form-label">Category</label>
-                            <select id="categorySelect" class="form-select" name="categories_tags">
-                                <option value="" selected>Select a category...</option>
-                            </select>
-                        </div>
-                        <div class="mb-3">
-                            <label for="brandSelect" class="form-label">Brand</label>
-                            <select id="brandSelect" class="form-select" name="brands_tags">
-                                <option value="" selected>Select a brand...</option>
-                            </select>
-                        </div>
-                        <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-                            <button class="btn btn-outline-secondary" type="reset" id="clearFiltersBtn">
-                                <i class="bi bi-x-circle"></i> Clear Filters
-                            </button>
-                            <button class="btn btn-primary" type="submit">
-                                <i class="bi bi-search"></i> Search
-                            </button>
-                        </div>
-                        
+         <div class="mb-3">
+            <label for="productNameInput" class="form-label">{% trans "Product Name" %}</label>
+            <input type="text" id="productNameInput" name="product_name" class="form-control" placeholder="e.g., chocolate, cookies" aria-label="Search Product by Name">
+        </div>
+        <div class="mb-3">
+            <label for="countrySelect" class="form-label">{% trans "Country of Origin" %}</label>
+            <select id="countrySelect" class="form-select" name="countries_tags">
+                <option value="" selected>{% trans "Select a country..." %}</option>
+            </select>
+        </div>
+        <div class="mb-3">
+            <label for="categorySelect" class="form-label">{% trans "Category" %}</label>
+            <select id="categorySelect" class="form-select" name="categories_tags">
+                <option value="" selected>{% trans "Select a category..." %}</option>
+            </select>
+        </div>
+        <div class="mb-3">
+            <label for="brandSelect" class="form-label">{% trans "Brand" %}</label>
+            <select id="brandSelect" class="form-select" name="brands_tags">
+                <option value="" selected>{% trans "Select a brand..." %}</option>
+            </select>
+        </div>
+        <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+            <button class="btn btn-outline-secondary" type="reset" id="clearFiltersBtn">
+                <i class="bi bi-x-circle"></i>  {% trans "Clear Filters" %}
+            </button>
+            <button class="btn btn-primary" type="submit">
+                <i class="bi bi-search"></i> {% trans "Search" %}
+            </button>
+        </div>      
         </form>
+
        </div>
     </div>
   </div>
@@ -63,14 +63,14 @@ Savor
         
      <section class="mt-5 p-3 rounded shadow-lg">
         <h2 class="h4 mb-4 text-success d-flex align-items-center">
-            Product Search Results <span class="ms-2">🔎</span>
+             {% trans "Product Search Results" %} <span class="ms-2">🔎</span>
         </h2>
         
         <div id="searched-product-section" class="row g-4">
-            <p class="col-12 text-center text-muted">Enter a search query to find products.</p>
+            <p class="col-12 text-center text-muted">{% trans "Enter a search query to find products." %}</p>
         </div>
 
-        <span class="text-dark">Can't find what you're looking for? Try <a href="#" data-bs-toggle="modal" data-bs-target="#exampleModal">Advanced Search</a>.</span>
+        <span class="text-dark">{% blocktrans %}Can't find what you're looking for? Try <a href="#" data-bs-toggle="modal" data-bs-target="#exampleModal">Advanced Search</a>.{% endblocktrans %}.</span>
     </section>
 
       <hr class="my-5 border-light-subtle">
@@ -79,7 +79,7 @@ Savor
 {% if user.is_authenticated %}
     <section class="mb-5 p-3  rounded shadow-lg">
         <h2 class="h4 mb-4 text-success d-flex align-items-center">
-             Favourites <span class="ms-2">✨</span>
+             {% trans "Favourites" %} <span class="ms-2">✨</span>
         </h2>
         <div class="horizontal-scroll-container">
     <div class="product-cards-wrapper">
@@ -98,7 +98,7 @@ Savor
                     {% if product.has_allergen_conflict %}
 
                     <div class="alert alert-danger p-1 mb-2 small" role="alert">
-                      <strong> <i class="bi bi-exclamation-circle"></i>  WARNING  : </strong>  Contains user-specified allergens: 
+                      <strong> <i class="bi bi-exclamation-circle"></i> {% trans "WARNING" %}: </strong> {% trans "Contains user-specified allergens:" %}
                        {% for tag in product.conflicting_allergens %}
                            <code>{{ tag|upper}}</code>{% if not forloop.last %}, {% endif %}
                        {% endfor %}
@@ -107,7 +107,7 @@ Savor
 
                       {% if product.has_dietary_mismatch %}
                        <div class="alert alert-warning p-1 mb-2 small" role="alert">
-                        <strong> <i class="bi bi-question-circle"></i>  POSSIBLE MISMATCH : </strong> Missing dietary requirements: 
+                        <strong> <i class="bi bi-question-circle"></i> {% trans "POSSIBLE MISMATCH" %}: </strong> {% trans "Missing dietary requirements:" %}
                         {% for tag in product.missing_dietary_tags %}
                             <code>{{ tag|upper}}</code>{% if not forloop.last %}, {% endif %}
                         {% endfor %}.
@@ -118,26 +118,26 @@ Savor
                     </div>
                         
                     <div>
-                        <p class="card-text text-muted mb-1 small"><strong>Brands:</strong> {{ product.brands|default:"N/A" }}</p>
-                        <p class="card-text text-muted mb-3 small"><strong>Code:</strong> {{ product.code|default:"N/A" }}</p>
+                        <p class="card-text text-muted mb-1 small"><strong>{% trans "Brands" %}:</strong> {{ product.brands|default:"N/A" }}</p></p>
+                        <p class="card-text text-muted mb-3 small"><strong>{% trans "Code" %}:</strong> {{ product.code|default:"N/A" }}</p>
                     </div>
                         
 
                         <div class="d-flex align-items-center mb-3">
                             <input class="product-quantity-input form-control me-2" type="number" min="0.01" step="0.01" value="1">
                             <span class="text-secondary me-1">{{ product.product_quantity|default:"" }}</span>
-                            <span class="text-muted small">{{ product.product_quantity_unit|default:"item" }}</span>
+                            <span class="text-muted small">{% if product.product_quantity_unit %}{{ product.product_quantity_unit }}{% else %}{% trans "item" %}{% endif %}</span>
                         </div>
 
                         <div class="mt-auto d-flex flex-column">
                             <button class="btn btn-outline-primary btn-sm mb-2 add-btn" 
                                     data-product-name="{{ product.product_name }}" 
                                     data-product-id="{{ product.id }}">
-                                Add to Pantry
+                                {% trans "Add to Pantry" %}
                             </button>
                             <button class="btn btn-outline-danger btn-sm favourite-btn" 
                                     data-product-id="{{ product.id }}">
-                                Remove Favourite
+                                {% trans "Remove Favourite" %}
                             </button>
                         </div>
                     </div>
@@ -145,7 +145,7 @@ Savor
             </div>
         {% empty %}
             <div class="product-card-wrapper text-center py-5">
-                <p class="text-muted">You haven't favourited any products yet. Start exploring today!</p>
+                <p class="text-muted">{% trans "You haven't favourited any products yet. Start exploring today!" %}</p>
             </div>
         {% endfor %}
     </div>
@@ -153,9 +153,5 @@ Savor
     </section>   
 </div>
 {% endif %}
-
-
-
-
 
 {% endblock %}

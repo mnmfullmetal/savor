@@ -1,0 +1,662 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-10-12 14:39+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: pantry/templates/pantry/index.html:17
+msgid "Advanced Search"
+msgstr "Speciális keresés"
+
+#: pantry/templates/pantry/index.html:25
+msgid "Product Name"
+msgstr "Termék neve"
+
+#: pantry/templates/pantry/index.html:29
+msgid "Country of Origin"
+msgstr "Származási ország"
+
+#: pantry/templates/pantry/index.html:31
+msgid "Select a country..."
+msgstr "Válasszon egy országot..."
+
+#: pantry/templates/pantry/index.html:35
+msgid "Category"
+msgstr "Kategória"
+
+#: pantry/templates/pantry/index.html:37
+msgid "Select a category..."
+msgstr "Válasszon ki egy kategóriát..."
+
+#: pantry/templates/pantry/index.html:41
+msgid "Brand"
+msgstr "Márka"
+
+#: pantry/templates/pantry/index.html:43
+msgid "Select a brand..."
+msgstr "Válasszon egy márkát..."
+
+#: pantry/templates/pantry/index.html:48
+msgid "Clear Filters"
+msgstr "Szűrők törlése"
+
+#: pantry/templates/pantry/index.html:51 templates/base.html:34
+msgid "Search"
+msgstr "Keresés"
+
+#: pantry/templates/pantry/index.html:66
+msgid "Product Search Results"
+msgstr "Termék keresési eredmények"
+
+#: pantry/templates/pantry/index.html:70
+msgid "Enter a search query to find products."
+msgstr "Adjon meg egy keresési lekérdezést a termékek megtalálásához."
+
+#: pantry/templates/pantry/index.html:73
+msgid ""
+"Can't find what you're looking for? Try <a href=\"#\" data-bs-"
+"toggle=\"modal\" data-bs-target=\"#exampleModal\">Advanced Search</a>."
+msgstr ""
+"Nem találja, amit keres? Próbálja ki a <a href=\"#\" data-bs-"
+"toggle=\"modal\" data-bs-target=\"#exampleModal\">Előrészletes keresés</a> "
+"lehetőséget."
+
+#: pantry/templates/pantry/index.html:82
+msgid "Favourites"
+msgstr "Kedvencek"
+
+#: pantry/templates/pantry/index.html:101
+#: pantry/templates/pantry/pantry.html:71
+msgid "WARNING"
+msgstr "FIGYELMEZTETÉS"
+
+#: pantry/templates/pantry/index.html:101
+#: pantry/templates/pantry/pantry.html:71
+msgid "Contains user-specified allergens:"
+msgstr "A felhasználó által megadott allergéneket tartalmaz:"
+
+#: pantry/templates/pantry/index.html:110
+#: pantry/templates/pantry/pantry.html:80
+msgid "POSSIBLE MISMATCH"
+msgstr "ESETLEGES ELTÉRÉS"
+
+#: pantry/templates/pantry/index.html:110
+#: pantry/templates/pantry/pantry.html:80
+msgid "Missing dietary requirements:"
+msgstr "Hiányzó étrendi követelmények:"
+
+#: pantry/templates/pantry/index.html:121
+msgid "Brands"
+msgstr "Márkák"
+
+#: pantry/templates/pantry/index.html:122
+msgid "Code"
+msgstr "Kód:"
+
+#: pantry/templates/pantry/index.html:129
+msgid "item"
+msgstr "tétel"
+
+#: pantry/templates/pantry/index.html:136
+msgid "Add to Pantry"
+msgstr "Hozzáadás a kamrához"
+
+#: pantry/templates/pantry/index.html:140
+msgid "Remove Favourite"
+msgstr "Kedvenc eltávolítása"
+
+#: pantry/templates/pantry/index.html:148
+msgid "You haven't favourited any products yet. Start exploring today!"
+msgstr ""
+"Ön még nem részesített előnyben egyetlen terméket sem. Kezdje el felfedezni "
+"még ma!"
+
+#: pantry/templates/pantry/pantry.html:5 templates/base.html:63
+msgid "Pantry"
+msgstr "Kamra"
+
+#: pantry/templates/pantry/pantry.html:13
+msgid "Pantry Health & Eco Summary"
+msgstr "Éléskamra Health & Eco Összefoglaló"
+
+#: pantry/templates/pantry/pantry.html:20
+msgid "Nutri-Grade:"
+msgstr "Nutri-Grade:"
+
+#: pantry/templates/pantry/pantry.html:27
+msgid "Eco-Grade:"
+msgstr "Öko-minősítés:"
+
+#: pantry/templates/pantry/pantry.html:34
+msgid "Scores are hidden or unavailable. Check your user settings."
+msgstr ""
+"A pontszámok rejtve vannak vagy nem elérhetők. Ellenőrizze a felhasználói "
+"beállításokat."
+
+#: pantry/templates/pantry/pantry.html:44
+msgid "Your Pantry Items"
+msgstr "Az Ön éléskamra elemei"
+
+#: pantry/templates/pantry/pantry.html:62
+#: pantry/templates/pantry/pantry.html:64
+msgid "Product Image"
+msgstr "Termékkép"
+
+#: pantry/templates/pantry/pantry.html:67
+msgid "No Name"
+msgstr "Név nélkül"
+
+#: pantry/templates/pantry/pantry.html:91
+msgid "Quantity:"
+msgstr "Mennyiség:"
+
+#: pantry/templates/pantry/pantry.html:94
+msgid "Product Size:"
+msgstr "Termék mérete:"
+
+#: pantry/templates/pantry/pantry.html:100
+msgid "Expires:"
+msgstr "Lejár:"
+
+#: pantry/templates/pantry/pantry.html:116
+msgid "Your pantry is empty! Add some products to get started."
+msgstr "A kamra üres! Adjon hozzá néhány terméket, hogy elkezdhesse."
+
+#: recipes/templates/recipes/recipes.html:6 templates/base.html:70
+msgid "Recipes"
+msgstr "Receptek"
+
+#: recipes/templates/recipes/recipes.html:13
+msgid "New Recipe Suggestions"
+msgstr "Új recept javaslatok"
+
+#: recipes/templates/recipes/recipes.html:40
+#: recipes/templates/recipes/recipes.html:101
+#: recipes/templates/recipes/recipes.html:163
+msgid "Ingredients"
+msgstr "Összetevők"
+
+#: recipes/templates/recipes/recipes.html:48
+#: recipes/templates/recipes/recipes.html:109
+#: recipes/templates/recipes/recipes.html:181
+msgid "Instructions"
+msgstr "Utasítások"
+
+#: recipes/templates/recipes/recipes.html:59
+#: recipes/templates/recipes/recipes.html:120
+msgid "Save Recipe"
+msgstr "Recept mentése"
+
+#: recipes/templates/recipes/recipes.html:68
+msgid "No new suggestions"
+msgstr "Nincsenek új javaslatok"
+
+#: recipes/templates/recipes/recipes.html:70
+msgid "Recipes still being generated"
+msgstr "Receptek még mindig generálódnak"
+
+#: recipes/templates/recipes/recipes.html:75
+msgid "Recently Suggested Recipes"
+msgstr "Nemrégiben javasolt receptek"
+
+#: recipes/templates/recipes/recipes.html:129
+msgid "No recently suggested"
+msgstr "Nemrégiben javasolt"
+
+#: recipes/templates/recipes/recipes.html:135
+msgid "Saved Recipes"
+msgstr "Mentett receptek"
+
+#: recipes/templates/recipes/recipes.html:152
+msgid "Missing Items"
+msgstr "Hiányzó tételek"
+
+#: recipes/templates/recipes/recipes.html:192
+msgid "Delete Recipe"
+msgstr "Recept törlése"
+
+#: recipes/templates/recipes/recipes.html:204
+msgid "No Saved Recipes"
+msgstr "Nincsenek elmentett receptek"
+
+#: savor/settings.py:138
+msgid "Arabic"
+msgstr "Arabic"
+
+#: savor/settings.py:139
+msgid "Bulgarian"
+msgstr "Bolgár"
+
+#: savor/settings.py:140
+msgid "Chinese"
+msgstr "Kínai"
+
+#: savor/settings.py:141
+msgid "Czech"
+msgstr "Cseh"
+
+#: savor/settings.py:142
+msgid "Danish"
+msgstr "Dán"
+
+#: savor/settings.py:143
+msgid "Dutch"
+msgstr "Holland"
+
+#: savor/settings.py:144
+msgid "Estonian"
+msgstr "Észt"
+
+#: savor/settings.py:145
+msgid "Finnish"
+msgstr "Finn"
+
+#: savor/settings.py:146
+msgid "French"
+msgstr "Francia"
+
+#: savor/settings.py:147
+msgid "German"
+msgstr "Német"
+
+#: savor/settings.py:148
+msgid "Greek"
+msgstr "Görög"
+
+#: savor/settings.py:149
+msgid "Hebrew"
+msgstr "Héber"
+
+#: savor/settings.py:150
+msgid "Hungarian"
+msgstr "Magyar"
+
+#: savor/settings.py:151
+msgid "Indonesian"
+msgstr "Indonéz"
+
+#: savor/settings.py:152
+msgid "Italian"
+msgstr "Olasz"
+
+#: savor/settings.py:153
+msgid "Japanese"
+msgstr "Japán"
+
+#: savor/settings.py:154
+msgid "Korean"
+msgstr "Koreai"
+
+#: savor/settings.py:155
+msgid "Latvian"
+msgstr "Lett"
+
+#: savor/settings.py:156
+msgid "Lithuanian"
+msgstr "Litvánia"
+
+#: savor/settings.py:157
+msgid "Norwegian Bokmål"
+msgstr "Norvég Bokmål"
+
+#: savor/settings.py:158
+msgid "Polish"
+msgstr "Lengyel"
+
+#: savor/settings.py:159
+msgid "Portuguese"
+msgstr "Portugál"
+
+#: savor/settings.py:160
+msgid "Romanian"
+msgstr "Román"
+
+#: savor/settings.py:161
+msgid "Russian"
+msgstr "Orosz"
+
+#: savor/settings.py:162
+msgid "Slovak"
+msgstr "Szlovák"
+
+#: savor/settings.py:163
+msgid "Slovenian"
+msgstr "Szlovén"
+
+#: savor/settings.py:164
+msgid "Spanish"
+msgstr "Spanyol"
+
+#: savor/settings.py:165
+msgid "Swedish"
+msgstr "Svéd"
+
+#: savor/settings.py:166
+msgid "Thai"
+msgstr "Thai"
+
+#: savor/settings.py:167
+msgid "Turkish"
+msgstr "Török"
+
+#: savor/settings.py:168
+msgid "Ukrainian"
+msgstr "Ukrán"
+
+#: savor/settings.py:169
+msgid "Vietnamese"
+msgstr "Vietnámi"
+
+#: templates/base.html:22
+msgid "Welcome"
+msgstr "Üdvözöljük"
+
+#: templates/base.html:29
+msgid "Search Product by ingredient"
+msgstr "Termék keresése összetevő szerint"
+
+#: templates/base.html:32
+msgid "Search Product by Barcode"
+msgstr "Termék keresése vonalkód alapján"
+
+#: templates/base.html:37
+msgid "Scan"
+msgstr "Szkennelés"
+
+#: templates/base.html:56
+msgid "Home"
+msgstr "Home"
+
+#: templates/base.html:79
+msgid "Settings"
+msgstr "Beállítások"
+
+#: templates/base.html:85
+msgid "Account"
+msgstr "Számla"
+
+#: templates/base.html:94
+msgid "Log Out"
+msgstr "Kijelentkezés"
+
+#: templates/base.html:107
+msgid "Log On"
+msgstr "Bejelentkezés"
+
+#: templates/base.html:113 users/templates/users/register.html:57
+msgid "Register"
+msgstr "Regisztráció"
+
+#: templates/base.html:123
+msgid "Stop Scanning"
+msgstr "A szkennelés leállítása"
+
+#: templates/registration/login.html:5 templates/registration/login.html:9
+#: templates/registration/login.html:37
+msgid "Log In"
+msgstr "Bejelentkezés"
+
+#: templates/registration/login.html:40
+#, python-format
+msgid "Don't have an account? <a href=\"%('register_url')s\">Register here</a>."
+msgstr "Nincs fiókja? <a href=\"%('register_url')s\">Regisztráljon itt</a>."
+
+#: templates/registration/login.html:41
+msgid "Forgot password?"
+msgstr "Elfelejtette jelszavát?"
+
+#: templates/registration/logout.html:4 templates/registration/logout.html:7
+msgid "Logged Out"
+msgstr "Kijelentkezett"
+
+#: templates/registration/logout.html:8
+msgid "You have been successfully logged out."
+msgstr "Sikeresen kijelentkeztél."
+
+#: templates/registration/logout.html:9
+msgid "Log in again"
+msgstr "Jelentkezzen be újra"
+
+#: templates/registration/password_change_done.html:6
+msgid "Password Changed Successfully"
+msgstr "Sikeresen megváltoztatott jelszó"
+
+#: templates/registration/password_change_done.html:12
+#: templates/registration/password_reset_complete.html:11
+msgid "Password Changed Successfully!"
+msgstr "A jelszó sikeresen megváltozott!"
+
+#: templates/registration/password_change_done.html:14
+msgid "Your password has been changed."
+msgstr "A jelszavadat megváltoztattuk."
+
+#: templates/registration/password_change_done.html:16
+msgid "Back to Settings"
+msgstr "Vissza a Beállításokhoz"
+
+#: templates/registration/password_change_form.html:5
+#: templates/registration/password_change_form.html:38
+#: templates/registration/password_reset_confirm.html:28
+#: users/templates/users/account_settings.html:51
+msgid "Change Password"
+msgstr "Jelszó módosítása"
+
+#: templates/registration/password_change_form.html:11
+msgid "Change Your Password"
+msgstr "Jelszó módosítása"
+
+#: templates/registration/password_change_form.html:23
+msgid "Old Password"
+msgstr "Régi jelszó"
+
+#: templates/registration/password_change_form.html:28
+#: templates/registration/password_reset_confirm.html:20
+msgid "New Password"
+msgstr "Új jelszó"
+
+#: templates/registration/password_change_form.html:33
+#: templates/registration/password_reset_confirm.html:24
+msgid "Confirm New Password"
+msgstr "Új jelszó megerősítése"
+
+#: templates/registration/password_reset_complete.html:5
+msgid "Password Changed"
+msgstr "Megváltozott jelszó"
+
+#: templates/registration/password_reset_complete.html:13
+msgid ""
+"Your password has been set. You can now go ahead and log in with your new "
+"password."
+msgstr ""
+"A jelszavát beállítottuk. Most már mehet és bejelentkezhet az új jelszóval."
+
+#: templates/registration/password_reset_confirm.html:12
+msgid "Set a New Password"
+msgstr "Új jelszó beállítása"
+
+#: templates/registration/password_reset_confirm.html:32
+msgid "Invalid Link"
+msgstr "Érvénytelen link"
+
+#: templates/registration/password_reset_confirm.html:34
+msgid ""
+"The password reset link was invalid, possibly because it has already been "
+"used. Please request a new password reset."
+msgstr ""
+"A jelszó-visszaállítási link érvénytelen volt, valószínűleg azért, mert már "
+"használták. Kérjük, kérjen új jelszó visszaállítását."
+
+#: templates/registration/password_reset_done.html:4
+msgid "Password Reset Sent"
+msgstr "Jelszó visszaállítása elküldve"
+
+#: templates/registration/password_reset_done.html:10
+msgid "Check Your Inbox"
+msgstr "Ellenőrizze a beérkezett üzeneteket"
+
+#: templates/registration/password_reset_done.html:12
+msgid ""
+"We've emailed you instructions for setting your password. If an account "
+"exists with the email you entered, you should receive them shortly."
+msgstr ""
+"E-mailben küldtünk utasításokat a jelszó beállításához. Ha létezik fiók az "
+"Ön által megadott e-mail címmel, akkor hamarosan megkapja azokat."
+
+#: templates/registration/password_reset_done.html:13
+msgid ""
+"If you don't receive an email, please make sure you've entered the email "
+"address you registered with, and check your spam folder."
+msgstr ""
+"Ha nem kap e-mailt, győződjön meg róla, hogy a regisztrált e-mail címét adta"
+" meg, és ellenőrizze a spam mappáját."
+
+#: templates/registration/password_reset_form.html:8
+msgid "Forgot Your Password?"
+msgstr "Elfelejtette jelszavát?"
+
+#: templates/registration/password_reset_form.html:9
+msgid "Enter your email address below to receive a password reset link."
+msgstr ""
+"Adja meg az alábbi e-mail címét, hogy megkapja a jelszó-visszaállítási "
+"linket."
+
+#: templates/registration/password_reset_form.html:17
+msgid "Reset Password"
+msgstr "Jelszó visszaállítása"
+
+#: users/forms.py:12
+msgid "Password"
+msgstr "Jelszó"
+
+#: users/forms.py:16
+msgid ""
+"Your password can't be too similar to your other personal information. It "
+"must contain at least 8 characters. It can't be a commonly used password. It"
+" can't be entirely numeric."
+msgstr ""
+"A jelszava nem lehet túlságosan hasonló más személyes adataihoz. Legalább 8 "
+"karaktert kell tartalmaznia. Nem lehet általánosan használt jelszó. Nem "
+"lehet teljesen numerikus."
+
+#: users/forms.py:23
+msgid "Password confirmation"
+msgstr "Jelszó megerősítése"
+
+#: users/forms.py:26
+msgid "Enter the same password as before, for verification."
+msgstr "Adja meg ugyanazt a jelszót, mint korábban, az ellenőrzéshez."
+
+#: users/forms.py:34 users/templates/users/account_settings.html:44
+msgid "Username"
+msgstr "Felhasználónév"
+
+#: users/forms.py:35 users/templates/users/account_settings.html:45
+msgid "Email"
+msgstr "E-mail"
+
+#: users/forms.py:39
+msgid "Required. 150 characters or fewer. Letters, digits and @/./+/-/_ only."
+msgstr ""
+"Szükséges. Legfeljebb 150 karakter. Csak betűk, számjegyek és @/./+/-/_."
+
+#: users/forms.py:65 users/templates/users/account_settings.html:68
+msgid "Language Preference"
+msgstr "Nyelvi preferencia"
+
+#: users/forms.py:66 users/templates/users/account_settings.html:63
+msgid "Country"
+msgstr "Ország"
+
+#: users/forms.py:67 users/templates/users/account_settings.html:90
+msgid "Allergens"
+msgstr "Allergének"
+
+#: users/forms.py:68 users/templates/users/account_settings.html:78
+msgid "Dietary Requirements"
+msgstr "Étrendi követelmények"
+
+#: users/forms.py:69
+msgid "Enable scan-to-add in pantry"
+msgstr "A scan-to-add engedélyezése a spájzban"
+
+#: users/forms.py:70
+msgid "Display Nutri-Score on products"
+msgstr "Nutri-Score megjelenítése a termékeken"
+
+#: users/forms.py:71
+msgid "Display Eco-Score on products"
+msgstr "Eco-Score megjelenítése a termékeken"
+
+#: users/forms.py:72
+msgid "Prioritise local results in search"
+msgstr "Helyi találatok előnyben részesítése a keresésben"
+
+#: users/templates/users/account_settings.html:6
+msgid "Account Settings"
+msgstr "Fiókbeállítások"
+
+#: users/templates/users/account_settings.html:19
+msgid "Warning!"
+msgstr "Figyelem!"
+
+#: users/templates/users/account_settings.html:19
+msgid "You are about to delete your account permanently."
+msgstr "A fiókját véglegesen törölni fogja."
+
+#: users/templates/users/account_settings.html:22
+msgid ""
+"\n"
+"          Doing this will permanently remove all account data including your\n"
+"          pantry, saved recipes, and favourites. Are you sure you want to\n"
+"          continue?\n"
+"          "
+msgstr ""
+"\n"
+"          Ezzel véglegesen eltávolít minden fiókadatot, beleértve az Ön\n"
+"          éléskamrát, a mentett recepteket és a kedvenceket. Biztos, hogy a\n"
+"          folytatni?\n"
+"          "
+
+#: users/templates/users/account_settings.html:29
+msgid "I'm sure,"
+msgstr "Biztos vagyok benne,"
+
+#: users/templates/users/account_settings.html:30
+#: users/templates/users/account_settings.html:52
+msgid "Delete Account"
+msgstr "Fiók törlése"
+
+#: users/templates/users/account_settings.html:40
+msgid "Account management"
+msgstr "Számlavezetés"
+
+#: users/templates/users/account_settings.html:46
+msgid "Date Joined"
+msgstr "Csatlakozás dátuma"
+
+#: users/templates/users/account_settings.html:57
+msgid "User preferences"
+msgstr "Felhasználói beállítások"
+
+#: users/templates/users/account_settings.html:115
+msgid "Save Settings"
+msgstr "Beállítások mentése"
+
+#: users/templates/users/register.html:60
+#, python-format
+msgid "Already have an account? <a href=\"%(login_url)s\">Log in here</a>."
+msgstr "Már van fiókja? <a href=\"%(login_url)s\">Itt jelentkezzen be</a>."

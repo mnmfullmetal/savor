@@ -1,5 +1,8 @@
-{% extends "base.html" %} {% load static %} {% load widget_tweaks %} 
-{% block title %} Pantry - {{user}} {% endblock %} 
+{% extends "base.html" %} 
+{% load i18n %}
+{% load static %} 
+{% load widget_tweaks %} 
+{% block title %} {% trans "Pantry" %} - {{user}} {% endblock %} 
 
 {% block body %}
 
@@ -7,28 +10,28 @@
 
     <section class="mb-5 p-3 rounded shadow-lg bg-light">
         <h2 class="h5 mb-3 text-primary d-flex align-items-center">
-            Pantry Health & Eco Summary
+             {% trans "Pantry Health & Eco Summary" %}
         </h2>
         
         <div class="d-flex flex-wrap gap-4">
             
             {% if pantry_nutri_grade %}
                 <div class="d-flex align-items-center score-summary-item">
-                    <span class="fw-bold me-2">Nutri-Grade:</span>
+                    <span class="fw-bold me-2">{% trans "Nutri-Grade:" %}</span>
                     <span class="fs-4 fw-bolder text-success">{{ pantry_nutri_grade }}</span> 
                 </div>
             {% endif %}
 
             {% if pantry_eco_grade %}
                 <div class="d-flex align-items-center score-summary-item">
-                    <span class="fw-bold me-2">Eco-Grade:</span>
+                    <span class="fw-bold me-2">{% trans "Eco-Grade:" %}</span>
                     <span class="fs-4 fw-bolder text-info">{{ pantry_eco_grade }}</span>
                 </div>
             {% endif %}
 
             {% if not pantry_nutri_grade and not pantry_eco_grade %}
                 <p class="text-muted small m-0">
-                    Scores are hidden or unavailable. Check your user settings.
+                    {% trans "Scores are hidden or unavailable. Check your user settings." %}
                 </p>
             {% endif %}
 
@@ -38,7 +41,7 @@
     <section class="mt-5 p-3 rounded shadow-lg">
         <div style="display: flex; flex-direction: row; justify-content: space-between;">
             <h2 style="margin-left: 1rem ;" class="h4 mb-4 text-success d-flex align-items-center">
-              Your Pantry Items <span class="ms-2">🛒</span>
+              {% trans "Your Pantry Items" %} <span class="ms-2">🛒</span>
             </h2>
             <div class="mw-100" style="width: 25vw; margin-right: 1rem;">
                     {% csrf_token %}
@@ -56,16 +59,16 @@
                          <div class="pantry-item card h-100 shadow-sm border-0">
                     {% endif %}
                     {% if item.product.image_url %}
-                         <img src="{{ item.product.image_url }}" alt="{{ item.product.product_name|default:"Product Image" }}" class="card-img-top img-fluid rounded-top" style="max-height: 150px; object-fit: cover;" onerror="this.onerror=null; this.src='{{ placeholder_image_url }}';" >
+                         <img src="{{ item.product.image_url }}" alt="{% if item.product.product_name %}{{ item.product.product_name }}{% else %}{% trans 'Product Image' %}{% endif %}" class="card-img-top img-fluid rounded-top" style="max-height: 150px; object-fit: cover;" onerror="this.onerror=null; this.src='{{ placeholder_image_url }}';" >
                     {% else %}
-                         <img src="{% static 'media/placeholder-img.jpeg' %}" alt="{{ product.product_name|default:"Product Image" }}" class="card-img-top img-fluid rounded-top" style="max-height: 150px; object-fit: cover;">
+                         <img src="{% static 'media/placeholder-img.jpeg' %}" alt="{% if item.product.product_name %}{{ item.product.product_name }}{% else %}{% trans 'Product Image' %}{% endif %}" class="card-img-top img-fluid rounded-top" style="max-height: 150px; object-fit: cover;">
                     {% endif %}
                          <div class="card-body d-flex flex-column justify-content-between">
-                            <h3 class="card-title h5 mb-2 text-dark">{{ item.product.product_name|default:"No Name" }}</h3>
+                            <h3 class="card-title h5 mb-2 text-dark">{% if item.product.product_name %}{{ item.product.product_name }}{% else %}{% trans "No Name" %}{% endif %}</h3>
                     <div>
                          {% if item.has_allergen_conflict %}
                         <div class="alert alert-danger p-1 mb-2 small" role="alert">
-                            <strong><i class="bi bi-exclamation-circle"></i>  WARNING : </strong> Contains user-specified allergens: 
+                            <strong><i class="bi bi-exclamation-circle"></i>  {% trans "WARNING" %}:</strong> {% trans "Contains user-specified allergens:" %}
                             {% for tag in item.conflicting_allergens %}
                              <code>{{ tag|upper }}</code>{% if not forloop.last %}, {% endif %}
                             {% endfor %}
@@ -74,7 +77,7 @@
 
                 {% if item.has_dietary_mismatch %}
                     <div class="alert alert-warning p-1 mb-2 small" role="alert">
-                        <strong><i class="bi bi-question-circle"></i>  POSSIBLE MISMATCH : </strong> Missing dietary requirements: 
+                        <strong><i class="bi bi-question-circle"></i>  {% trans "POSSIBLE MISMATCH" %}: </strong> {% trans "Missing dietary requirements:" %} 
                         {% for tag in item.missing_dietary_tags %}
                             <code>{{ tag|upper }}</code>{% if not forloop.last %}, {% endif %}
                         {% endfor %}.
@@ -85,16 +88,16 @@
                            
                 <div>
                     <p class="card-text text-muted mb-1 small ">
-                        <strong>Quantity:</strong> <span class="pantry-quantity-count">{{ item.quantity }} </span>
+                        <strong>{% trans "Quantity:" %}</strong> <span class="pantry-quantity-count">{{ item.quantity }} </span>
                     </p>
                     <p class="card-text text-muted mb-1 small">
-                        <strong>Product Size:</strong> {{ item.product.product_quantity|default:"" }} {{ item.product.product_quantity_unit|default:"item" }}
+                        <strong>{% trans "Product Size:" %}</strong> {{ item.product.product_quantity|default:"" }} {{ item.product.product_quantity_unit|default:"item" }}
                     </p>
                 </div>
                             
                             {% if item.expiration_date %}
                                 <p class="card-text text-danger mb-3 small">
-                                    <strong>Expires:</strong> {{ item.expiration_date|date:"M d, Y" }}
+                                    <strong>{% trans "Expires:" %}</strong> {{ item.expiration_date|date:"M d, Y" }}
                                 </p>
                             {% endif %}
 
@@ -110,7 +113,7 @@
                 </div>
             {% empty %}
                 <div class="col-12 text-center py-5">
-                    <p class="text-muted">Your pantry is empty! Add some products to get started.</p>
+                    <p class="text-muted">{% trans "Your pantry is empty! Add some products to get started." %}</p>
                 </div>
             {% endfor %}
         </div>

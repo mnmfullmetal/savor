@@ -1,15 +1,16 @@
 {% extends "base.html" %} 
+{% load i18n %}
 {% load static %}
- {% load widget_tweaks %}
+{% load widget_tweaks %}
 
-  {% block title %} Recipes {% endblock %} 
+{% block title %} {% trans "Recipes" %} {% endblock %} 
   
-  {% block body %}
+{% block body %}
 
 <div class="container mt-4">
   <section class="mt-5 p-3 rounded shadow-lg recipe-section">
 
-    <h2  class="h4 mb-4 d-flex align-items-center">New Recipe Suggestions</h2>
+    <h2  class="h4 mb-4 d-flex align-items-center">{% trans "New Recipe Suggestions" %}</h2>
   {% if not recipe_gen_in_progress %}
    {% if latest_suggestions %}
   <div class="accordion" id="latestSuggestionsAccordion">
@@ -36,7 +37,7 @@
           data-bs-parent="#latestSuggestionsAccordion"
         >
           <div class="accordion-body">
-            <h5>Ingredients</h5>
+            <h5>{% trans "Ingredients" %}</h5>
             <ul>
               {% for ingredient in recipe.recipe_data.ingredients %}
               <li>
@@ -44,7 +45,7 @@
               </li>
               {% endfor %}
             </ul>
-            <h5>Instructions</h5>
+            <h5>{% trans "Instructions" %}</h5>
             <ol>
               {% for instruction in recipe.recipe_data.instructions %}
               <li>{{ instruction }}</li>
@@ -55,7 +56,7 @@
               data-recipe-id="{{recipe.id}}"
               data-csrf-token="{{csrf_token}}"
             >
-              Save Recipe
+              {% trans "Save Recipe" %}
             </button>
           </div>
         </div>
@@ -64,14 +65,14 @@
     {% endfor %}
   </div>
   {% else %}
-  <div class="alert alert-info" role="alert">No new suggestions</div>
+  <div class="alert alert-info" role="alert">{% trans "No new suggestions" %}</div>
   {% endif %} {% else %}
-  <div class="alert alert-info" role="alert">Recipes still being generated</div>
+  <div class="alert alert-info" role="alert">{% trans "Recipes still being generated" %}</div>
   {% endif %}
   </section>
   
   <section class="mt-5 p-3 rounded shadow-lg recipe-section">
-    <h2 class="h4 mb-4 d-flex align-items-center">Recently Suggested Recipes</h2>
+    <h2 class="h4 mb-4 d-flex align-items-center">{% trans "Recently Suggested Recipes" %}</h2>
   {% if recently_suggested %}
   <div class="accordion" id="recentlySuggestedAccordion">
     {% for recipe in recently_suggested %}
@@ -97,7 +98,7 @@
           data-bs-parent="#recentlySuggestedAccordion"
         >
           <div class="accordion-body">
-            <h5>Ingredients</h5>
+            <h5>{% trans "Ingredients" %}</h5>
             <ul>
               {% for ingredient in recipe.recipe_data.ingredients %}
               <li>
@@ -105,7 +106,7 @@
               </li>
               {% endfor %}
             </ul>
-            <h5>Instructions</h5>
+            <h5>{% trans "Instructions" %}</h5>
             <ol>
               {% for instruction in recipe.recipe_data.instructions %}
               <li>{{ instruction }}</li>
@@ -116,7 +117,7 @@
               data-recipe-id="{{recipe.id}}"
               data-csrf-token="{{csrf_token}}"
             >
-              Save Recipe
+              {% trans "Save Recipe" %}
             </button>
           </div>
         </div>
@@ -125,13 +126,13 @@
     {% endfor %}
   </div>
   {% else %}
-  <div class="alert alert-info" role="alert">No recently suggested</div>
+  <div class="alert alert-info" role="alert">{% trans "No recently suggested" %}</div>
   {% endif %}
   </section>
   
 
   <section class="mt-5 p-3 rounded shadow-lg recipe-section">
-    <h2 class="h4 mb-4 d-flex align-items-center">Saved Recipes</h2>
+    <h2 class="h4 mb-4 d-flex align-items-center">{% trans "Saved Recipes" %}</h2>
     <div class="accordion" id="saved-recipes-accordion">
       {% if saved_recipes_data %} 
         {% for recipe_data in saved_recipes_data %}
@@ -148,7 +149,7 @@
               >
                 {{ recipe_data.recipe.title }}
                 {% if not recipe_data.has_all_ingredients %}
-                <span class="badge bg-danger ms-2">Missing Items</span>
+                <span class="badge bg-danger ms-2">{% trans "Missing Items" %}</span>
                 {% endif %}
               </button>
             </h4>
@@ -159,7 +160,7 @@
               data-bs-parent="#saved-recipes-accordion"
             >
               <div class="accordion-body">
-                <h5>Ingredients</h5>
+                <h5>{% trans "Ingredients" %}</h5>
                 <ul>
                   {% for ingredient_instance in recipe_data.recipe.savedrecipeingredient_set.all %}
                   <li>
@@ -177,7 +178,7 @@
                   </li>
                   {% endfor %}
                 </ul>
-                <h5>Instructions</h5>
+                <h5>{% trans "Instructions" %}</h5>
                 <ol>
                   {% for instruction in recipe_data.recipe.instructions %}
                   <li>{{ instruction }}</li>
@@ -188,7 +189,7 @@
                   data-recipe-id="{{recipe_data.recipe.id}}"
                   data-csrf-token="{{csrf_token}}"
                 >
-                  Delete Recipe
+                  {% trans "Delete Recipe" %}
                 </button>
               </div>
             </div>
@@ -200,7 +201,7 @@
 
     {% if not saved_recipes_data %}
     <div id="no-saved-recipes-alert" class="alert alert-info" role="alert">
-      No saved recipes
+      {% trans "No Saved Recipes" %}
     </div>
     {% endif %}
   </section>
@@ -208,4 +209,5 @@
   
 {% block extra_js %}
 <script src="{% static 'recipes/recipes.js' %}"></script>
-{% endblock extra_js %} {% endblock %}
+{% endblock extra_js %} 
+{% endblock %}

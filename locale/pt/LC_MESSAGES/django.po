@@ -1,0 +1,662 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-10-12 14:39+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: pantry/templates/pantry/index.html:17
+msgid "Advanced Search"
+msgstr "Pesquisa avançada"
+
+#: pantry/templates/pantry/index.html:25
+msgid "Product Name"
+msgstr "Nome do produto"
+
+#: pantry/templates/pantry/index.html:29
+msgid "Country of Origin"
+msgstr "País de origem"
+
+#: pantry/templates/pantry/index.html:31
+msgid "Select a country..."
+msgstr "Selecionar um país..."
+
+#: pantry/templates/pantry/index.html:35
+msgid "Category"
+msgstr "Categoria"
+
+#: pantry/templates/pantry/index.html:37
+msgid "Select a category..."
+msgstr "Selecionar uma categoria..."
+
+#: pantry/templates/pantry/index.html:41
+msgid "Brand"
+msgstr "Marca"
+
+#: pantry/templates/pantry/index.html:43
+msgid "Select a brand..."
+msgstr "Selecionar uma marca..."
+
+#: pantry/templates/pantry/index.html:48
+msgid "Clear Filters"
+msgstr "Limpar filtros"
+
+#: pantry/templates/pantry/index.html:51 templates/base.html:34
+msgid "Search"
+msgstr "Pesquisar"
+
+#: pantry/templates/pantry/index.html:66
+msgid "Product Search Results"
+msgstr "Resultados da pesquisa de produtos"
+
+#: pantry/templates/pantry/index.html:70
+msgid "Enter a search query to find products."
+msgstr "Introduza uma consulta de pesquisa para encontrar produtos."
+
+#: pantry/templates/pantry/index.html:73
+msgid ""
+"Can't find what you're looking for? Try <a href=\"#\" data-bs-"
+"toggle=\"modal\" data-bs-target=\"#exampleModal\">Advanced Search</a>."
+msgstr ""
+"Não consegue encontrar o que está a procurar? Experimente <a href=\"#\" "
+"data-bs-toggle=\"modal\" data-bs-target=\"#exampleModal\">Pesquisa "
+"Avançada</a>."
+
+#: pantry/templates/pantry/index.html:82
+msgid "Favourites"
+msgstr "Favoritos"
+
+#: pantry/templates/pantry/index.html:101
+#: pantry/templates/pantry/pantry.html:71
+msgid "WARNING"
+msgstr "AVISO"
+
+#: pantry/templates/pantry/index.html:101
+#: pantry/templates/pantry/pantry.html:71
+msgid "Contains user-specified allergens:"
+msgstr "Contém alergénios especificados pelo utilizador:"
+
+#: pantry/templates/pantry/index.html:110
+#: pantry/templates/pantry/pantry.html:80
+msgid "POSSIBLE MISMATCH"
+msgstr "POSSÍVEL INCOMPATIBILIDADE"
+
+#: pantry/templates/pantry/index.html:110
+#: pantry/templates/pantry/pantry.html:80
+msgid "Missing dietary requirements:"
+msgstr "Necessidades dietéticas em falta:"
+
+#: pantry/templates/pantry/index.html:121
+msgid "Brands"
+msgstr "Marcas"
+
+#: pantry/templates/pantry/index.html:122
+msgid "Code"
+msgstr "Código"
+
+#: pantry/templates/pantry/index.html:129
+msgid "item"
+msgstr "item"
+
+#: pantry/templates/pantry/index.html:136
+msgid "Add to Pantry"
+msgstr "Adicionar à despensa"
+
+#: pantry/templates/pantry/index.html:140
+msgid "Remove Favourite"
+msgstr "Remover favoritos"
+
+#: pantry/templates/pantry/index.html:148
+msgid "You haven't favourited any products yet. Start exploring today!"
+msgstr "Ainda não favoritou nenhum produto. Comece a explorar hoje mesmo!"
+
+#: pantry/templates/pantry/pantry.html:5 templates/base.html:63
+msgid "Pantry"
+msgstr "Despensa"
+
+#: pantry/templates/pantry/pantry.html:13
+msgid "Pantry Health & Eco Summary"
+msgstr "Resumo ecológico e de saúde da despensa"
+
+#: pantry/templates/pantry/pantry.html:20
+msgid "Nutri-Grade:"
+msgstr "Grau de nutrição:"
+
+#: pantry/templates/pantry/pantry.html:27
+msgid "Eco-Grade:"
+msgstr "Grau ecológico:"
+
+#: pantry/templates/pantry/pantry.html:34
+msgid "Scores are hidden or unavailable. Check your user settings."
+msgstr ""
+"As pontuações estão ocultas ou indisponíveis. Verifique as definições do "
+"utilizador."
+
+#: pantry/templates/pantry/pantry.html:44
+msgid "Your Pantry Items"
+msgstr "Os seus artigos de despensa"
+
+#: pantry/templates/pantry/pantry.html:62
+#: pantry/templates/pantry/pantry.html:64
+msgid "Product Image"
+msgstr "Imagem do produto"
+
+#: pantry/templates/pantry/pantry.html:67
+msgid "No Name"
+msgstr "Sem nome"
+
+#: pantry/templates/pantry/pantry.html:91
+msgid "Quantity:"
+msgstr "Quantidade:"
+
+#: pantry/templates/pantry/pantry.html:94
+msgid "Product Size:"
+msgstr "Tamanho do produto:"
+
+#: pantry/templates/pantry/pantry.html:100
+msgid "Expires:"
+msgstr "Expira:"
+
+#: pantry/templates/pantry/pantry.html:116
+msgid "Your pantry is empty! Add some products to get started."
+msgstr "A sua despensa está vazia! Adicione alguns produtos para começar."
+
+#: recipes/templates/recipes/recipes.html:6 templates/base.html:70
+msgid "Recipes"
+msgstr "Receitas"
+
+#: recipes/templates/recipes/recipes.html:13
+msgid "New Recipe Suggestions"
+msgstr "Sugestões de novas receitas"
+
+#: recipes/templates/recipes/recipes.html:40
+#: recipes/templates/recipes/recipes.html:101
+#: recipes/templates/recipes/recipes.html:163
+msgid "Ingredients"
+msgstr "Ingredientes"
+
+#: recipes/templates/recipes/recipes.html:48
+#: recipes/templates/recipes/recipes.html:109
+#: recipes/templates/recipes/recipes.html:181
+msgid "Instructions"
+msgstr "Instruções"
+
+#: recipes/templates/recipes/recipes.html:59
+#: recipes/templates/recipes/recipes.html:120
+msgid "Save Recipe"
+msgstr "Guardar receita"
+
+#: recipes/templates/recipes/recipes.html:68
+msgid "No new suggestions"
+msgstr "Nenhuma sugestão nova"
+
+#: recipes/templates/recipes/recipes.html:70
+msgid "Recipes still being generated"
+msgstr "As receitas ainda estão a ser geradas"
+
+#: recipes/templates/recipes/recipes.html:75
+msgid "Recently Suggested Recipes"
+msgstr "Receitas sugeridas recentemente"
+
+#: recipes/templates/recipes/recipes.html:129
+msgid "No recently suggested"
+msgstr "Não foi sugerido recentemente"
+
+#: recipes/templates/recipes/recipes.html:135
+msgid "Saved Recipes"
+msgstr "Receitas guardadas"
+
+#: recipes/templates/recipes/recipes.html:152
+msgid "Missing Items"
+msgstr "Itens em falta"
+
+#: recipes/templates/recipes/recipes.html:192
+msgid "Delete Recipe"
+msgstr "Eliminar receita"
+
+#: recipes/templates/recipes/recipes.html:204
+msgid "No Saved Recipes"
+msgstr "Sem receitas guardadas"
+
+#: savor/settings.py:138
+msgid "Arabic"
+msgstr "Árabe"
+
+#: savor/settings.py:139
+msgid "Bulgarian"
+msgstr "búlgaro"
+
+#: savor/settings.py:140
+msgid "Chinese"
+msgstr "Chinês"
+
+#: savor/settings.py:141
+msgid "Czech"
+msgstr "Checo"
+
+#: savor/settings.py:142
+msgid "Danish"
+msgstr "Dinamarquesa"
+
+#: savor/settings.py:143
+msgid "Dutch"
+msgstr "holandês"
+
+#: savor/settings.py:144
+msgid "Estonian"
+msgstr "estónio"
+
+#: savor/settings.py:145
+msgid "Finnish"
+msgstr "finlandês"
+
+#: savor/settings.py:146
+msgid "French"
+msgstr "francês"
+
+#: savor/settings.py:147
+msgid "German"
+msgstr "alemão"
+
+#: savor/settings.py:148
+msgid "Greek"
+msgstr "grego"
+
+#: savor/settings.py:149
+msgid "Hebrew"
+msgstr "hebraico"
+
+#: savor/settings.py:150
+msgid "Hungarian"
+msgstr "húngaro"
+
+#: savor/settings.py:151
+msgid "Indonesian"
+msgstr "indonésio"
+
+#: savor/settings.py:152
+msgid "Italian"
+msgstr "italiano"
+
+#: savor/settings.py:153
+msgid "Japanese"
+msgstr "Japonês"
+
+#: savor/settings.py:154
+msgid "Korean"
+msgstr "coreano"
+
+#: savor/settings.py:155
+msgid "Latvian"
+msgstr "letão"
+
+#: savor/settings.py:156
+msgid "Lithuanian"
+msgstr "lituano"
+
+#: savor/settings.py:157
+msgid "Norwegian Bokmål"
+msgstr "Norueguês Bokmål"
+
+#: savor/settings.py:158
+msgid "Polish"
+msgstr "Polaco"
+
+#: savor/settings.py:159
+msgid "Portuguese"
+msgstr "Português"
+
+#: savor/settings.py:160
+msgid "Romanian"
+msgstr "romeno"
+
+#: savor/settings.py:161
+msgid "Russian"
+msgstr "Russo"
+
+#: savor/settings.py:162
+msgid "Slovak"
+msgstr "Eslovaco"
+
+#: savor/settings.py:163
+msgid "Slovenian"
+msgstr "esloveno"
+
+#: savor/settings.py:164
+msgid "Spanish"
+msgstr "espanhol"
+
+#: savor/settings.py:165
+msgid "Swedish"
+msgstr "Sueco"
+
+#: savor/settings.py:166
+msgid "Thai"
+msgstr "Tailandês"
+
+#: savor/settings.py:167
+msgid "Turkish"
+msgstr "Turco"
+
+#: savor/settings.py:168
+msgid "Ukrainian"
+msgstr "ucraniano"
+
+#: savor/settings.py:169
+msgid "Vietnamese"
+msgstr "vietnamita"
+
+#: templates/base.html:22
+msgid "Welcome"
+msgstr "Bem-vindo"
+
+#: templates/base.html:29
+msgid "Search Product by ingredient"
+msgstr "Procurar produto por ingrediente"
+
+#: templates/base.html:32
+msgid "Search Product by Barcode"
+msgstr "Procurar produto por código de barras"
+
+#: templates/base.html:37
+msgid "Scan"
+msgstr "Digitalização"
+
+#: templates/base.html:56
+msgid "Home"
+msgstr "Início"
+
+#: templates/base.html:79
+msgid "Settings"
+msgstr "Definições"
+
+#: templates/base.html:85
+msgid "Account"
+msgstr "Conta"
+
+#: templates/base.html:94
+msgid "Log Out"
+msgstr "Terminar sessão"
+
+#: templates/base.html:107
+msgid "Log On"
+msgstr "Iniciar sessão"
+
+#: templates/base.html:113 users/templates/users/register.html:57
+msgid "Register"
+msgstr "Registar"
+
+#: templates/base.html:123
+msgid "Stop Scanning"
+msgstr "Parar a digitalização"
+
+#: templates/registration/login.html:5 templates/registration/login.html:9
+#: templates/registration/login.html:37
+msgid "Log In"
+msgstr "Iniciar sessão"
+
+#: templates/registration/login.html:40
+#, python-format
+msgid "Don't have an account? <a href=\"%('register_url')s\">Register here</a>."
+msgstr "Não tem uma conta? <a href=\"%('register_url')s\">Registre-se aqui</a>."
+
+#: templates/registration/login.html:41
+msgid "Forgot password?"
+msgstr "Esqueceu-se da palavra-passe?"
+
+#: templates/registration/logout.html:4 templates/registration/logout.html:7
+msgid "Logged Out"
+msgstr "Desconectado"
+
+#: templates/registration/logout.html:8
+msgid "You have been successfully logged out."
+msgstr "A sua sessão foi terminada com sucesso."
+
+#: templates/registration/logout.html:9
+msgid "Log in again"
+msgstr "Iniciar sessão novamente"
+
+#: templates/registration/password_change_done.html:6
+msgid "Password Changed Successfully"
+msgstr "Palavra-passe alterada com sucesso"
+
+#: templates/registration/password_change_done.html:12
+#: templates/registration/password_reset_complete.html:11
+msgid "Password Changed Successfully!"
+msgstr "Palavra-passe alterada com êxito!"
+
+#: templates/registration/password_change_done.html:14
+msgid "Your password has been changed."
+msgstr "A sua palavra-passe foi alterada."
+
+#: templates/registration/password_change_done.html:16
+msgid "Back to Settings"
+msgstr "Voltar às definições"
+
+#: templates/registration/password_change_form.html:5
+#: templates/registration/password_change_form.html:38
+#: templates/registration/password_reset_confirm.html:28
+#: users/templates/users/account_settings.html:51
+msgid "Change Password"
+msgstr "Alterar a palavra-passe"
+
+#: templates/registration/password_change_form.html:11
+msgid "Change Your Password"
+msgstr "Alterar a sua palavra-passe"
+
+#: templates/registration/password_change_form.html:23
+msgid "Old Password"
+msgstr "Palavra-passe antiga"
+
+#: templates/registration/password_change_form.html:28
+#: templates/registration/password_reset_confirm.html:20
+msgid "New Password"
+msgstr "Nova palavra-passe"
+
+#: templates/registration/password_change_form.html:33
+#: templates/registration/password_reset_confirm.html:24
+msgid "Confirm New Password"
+msgstr "Confirmar a nova palavra-passe"
+
+#: templates/registration/password_reset_complete.html:5
+msgid "Password Changed"
+msgstr "Palavra-passe alterada"
+
+#: templates/registration/password_reset_complete.html:13
+msgid ""
+"Your password has been set. You can now go ahead and log in with your new "
+"password."
+msgstr ""
+"A sua palavra-passe foi definida. Pode agora iniciar sessão com a sua nova "
+"palavra-passe."
+
+#: templates/registration/password_reset_confirm.html:12
+msgid "Set a New Password"
+msgstr "Definir uma nova palavra-passe"
+
+#: templates/registration/password_reset_confirm.html:32
+msgid "Invalid Link"
+msgstr "Ligação inválida"
+
+#: templates/registration/password_reset_confirm.html:34
+msgid ""
+"The password reset link was invalid, possibly because it has already been "
+"used. Please request a new password reset."
+msgstr ""
+"A ligação de redefinição da palavra-passe era inválida, possivelmente por já"
+" ter sido utilizada. Solicite uma nova reposição da palavra-passe."
+
+#: templates/registration/password_reset_done.html:4
+msgid "Password Reset Sent"
+msgstr "Redefinição de senha enviada"
+
+#: templates/registration/password_reset_done.html:10
+msgid "Check Your Inbox"
+msgstr "Verificar a sua caixa de entrada"
+
+#: templates/registration/password_reset_done.html:12
+msgid ""
+"We've emailed you instructions for setting your password. If an account "
+"exists with the email you entered, you should receive them shortly."
+msgstr ""
+"Enviámos-lhe um e-mail com instruções para definir a sua palavra-passe. Se "
+"existir uma conta com o e-mail que introduziu, deverá recebê-las em breve."
+
+#: templates/registration/password_reset_done.html:13
+msgid ""
+"If you don't receive an email, please make sure you've entered the email "
+"address you registered with, and check your spam folder."
+msgstr ""
+"Se não receber uma mensagem de correio eletrónico, certifique-se de que "
+"introduziu o endereço de correio eletrónico com que se registou e verifique "
+"a sua pasta de spam."
+
+#: templates/registration/password_reset_form.html:8
+msgid "Forgot Your Password?"
+msgstr "Esqueceu-se da sua palavra-passe?"
+
+#: templates/registration/password_reset_form.html:9
+msgid "Enter your email address below to receive a password reset link."
+msgstr ""
+"Introduza o seu endereço de correio eletrónico abaixo para receber uma "
+"ligação de redefinição da palavra-passe."
+
+#: templates/registration/password_reset_form.html:17
+msgid "Reset Password"
+msgstr "Redefinir a palavra-passe"
+
+#: users/forms.py:12
+msgid "Password"
+msgstr "Palavra-passe"
+
+#: users/forms.py:16
+msgid ""
+"Your password can't be too similar to your other personal information. It "
+"must contain at least 8 characters. It can't be a commonly used password. It"
+" can't be entirely numeric."
+msgstr ""
+"A sua palavra-passe não pode ser demasiado semelhante às suas outras "
+"informações pessoais. Deve conter pelo menos 8 caracteres. Não pode ser uma "
+"palavra-passe utilizada habitualmente. Não pode ser totalmente numérica."
+
+#: users/forms.py:23
+msgid "Password confirmation"
+msgstr "Confirmação da palavra-passe"
+
+#: users/forms.py:26
+msgid "Enter the same password as before, for verification."
+msgstr "Introduza a mesma palavra-passe que anteriormente, para verificação."
+
+#: users/forms.py:34 users/templates/users/account_settings.html:44
+msgid "Username"
+msgstr "Nome de utilizador"
+
+#: users/forms.py:35 users/templates/users/account_settings.html:45
+msgid "Email"
+msgstr "Correio eletrónico"
+
+#: users/forms.py:39
+msgid "Required. 150 characters or fewer. Letters, digits and @/./+/-/_ only."
+msgstr ""
+"Obrigatório. 150 caracteres ou menos. Apenas letras, algarismos e @/./+/-/_."
+
+#: users/forms.py:65 users/templates/users/account_settings.html:68
+msgid "Language Preference"
+msgstr "Preferência linguística"
+
+#: users/forms.py:66 users/templates/users/account_settings.html:63
+msgid "Country"
+msgstr "País"
+
+#: users/forms.py:67 users/templates/users/account_settings.html:90
+msgid "Allergens"
+msgstr "Alergénios"
+
+#: users/forms.py:68 users/templates/users/account_settings.html:78
+msgid "Dietary Requirements"
+msgstr "Requisitos dietéticos"
+
+#: users/forms.py:69
+msgid "Enable scan-to-add in pantry"
+msgstr "Ativar a digitalização para adicionar na despensa"
+
+#: users/forms.py:70
+msgid "Display Nutri-Score on products"
+msgstr "Mostrar Nutri-Score nos produtos"
+
+#: users/forms.py:71
+msgid "Display Eco-Score on products"
+msgstr "Apresentar o Eco-Score nos produtos"
+
+#: users/forms.py:72
+msgid "Prioritise local results in search"
+msgstr "Dar prioridade aos resultados locais na pesquisa"
+
+#: users/templates/users/account_settings.html:6
+msgid "Account Settings"
+msgstr "Definições da conta"
+
+#: users/templates/users/account_settings.html:19
+msgid "Warning!"
+msgstr "Aviso!"
+
+#: users/templates/users/account_settings.html:19
+msgid "You are about to delete your account permanently."
+msgstr "Está prestes a eliminar a sua conta permanentemente."
+
+#: users/templates/users/account_settings.html:22
+msgid ""
+"\n"
+"          Doing this will permanently remove all account data including your\n"
+"          pantry, saved recipes, and favourites. Are you sure you want to\n"
+"          continue?\n"
+"          "
+msgstr ""
+"\n"
+"          Esta ação irá remover permanentemente todos os dados da conta, incluindo a sua\n"
+"          despensa, as receitas guardadas e os favoritos. Tem a certeza de que pretende\n"
+"          continuar?\n"
+"          "
+
+#: users/templates/users/account_settings.html:29
+msgid "I'm sure,"
+msgstr "Tenho a certeza,"
+
+#: users/templates/users/account_settings.html:30
+#: users/templates/users/account_settings.html:52
+msgid "Delete Account"
+msgstr "Eliminar conta"
+
+#: users/templates/users/account_settings.html:40
+msgid "Account management"
+msgstr "Gestão de contas"
+
+#: users/templates/users/account_settings.html:46
+msgid "Date Joined"
+msgstr "Data de adesão"
+
+#: users/templates/users/account_settings.html:57
+msgid "User preferences"
+msgstr "Preferências do utilizador"
+
+#: users/templates/users/account_settings.html:115
+msgid "Save Settings"
+msgstr "Guardar definições"
+
+#: users/templates/users/register.html:60
+#, python-format
+msgid "Already have an account? <a href=\"%(login_url)s\">Log in here</a>."
+msgstr "Já tem uma conta? <a href=\"%(login_url)s\">Entrar aqui</a>."

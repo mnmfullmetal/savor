@@ -581,7 +581,7 @@ function addProduct(productIdToAdd, quantityInput, csrfToken, productCard) {
   })
     .then((response) => {
       if (response.status === 401) {
-        window.location.href = "/accounts/login";
+        window.location.href = "/users/login";
         throw new Error("Redirecting to login page...");
       }
       return response.json();
@@ -625,7 +625,12 @@ function favouriteProduct(productIdToFav, csrfToken, clickedButton) {
       "X-CSRFToken": csrfToken,
     },
   })
-    .then((response) => response.json())
+    .then((response) => {
+      if (response.status === 401) {
+          window.location.href = "/users/login/"; 
+        }
+      return response.json();
+    })
     .then((data) => {
       clickedButton.textContent = data.is_favourited
         ? "Remove Favourite"

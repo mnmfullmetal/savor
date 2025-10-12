@@ -1,0 +1,661 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-10-12 14:39+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: pantry/templates/pantry/index.html:17
+msgid "Advanced Search"
+msgstr "Tarkennettu haku"
+
+#: pantry/templates/pantry/index.html:25
+msgid "Product Name"
+msgstr "Tuotteen nimi"
+
+#: pantry/templates/pantry/index.html:29
+msgid "Country of Origin"
+msgstr "Alkuperämaa"
+
+#: pantry/templates/pantry/index.html:31
+msgid "Select a country..."
+msgstr "Valitse maa..."
+
+#: pantry/templates/pantry/index.html:35
+msgid "Category"
+msgstr "Luokka"
+
+#: pantry/templates/pantry/index.html:37
+msgid "Select a category..."
+msgstr "Valitse luokka..."
+
+#: pantry/templates/pantry/index.html:41
+msgid "Brand"
+msgstr "Merkki"
+
+#: pantry/templates/pantry/index.html:43
+msgid "Select a brand..."
+msgstr "Valitse merkki..."
+
+#: pantry/templates/pantry/index.html:48
+msgid "Clear Filters"
+msgstr "Tyhjennä suodattimet"
+
+#: pantry/templates/pantry/index.html:51 templates/base.html:34
+msgid "Search"
+msgstr "Etsi"
+
+#: pantry/templates/pantry/index.html:66
+msgid "Product Search Results"
+msgstr "Tuotehakutulokset"
+
+#: pantry/templates/pantry/index.html:70
+msgid "Enter a search query to find products."
+msgstr "Anna hakukysely löytääksesi tuotteita."
+
+#: pantry/templates/pantry/index.html:73
+msgid ""
+"Can't find what you're looking for? Try <a href=\"#\" data-bs-"
+"toggle=\"modal\" data-bs-target=\"#exampleModal\">Advanced Search</a>."
+msgstr ""
+"Etkö löydä etsimääsi? Kokeile <a href=\"#\" data-bs-toggle=\"modal\" data-"
+"bs-target=\"#exampleModal\">Lisähaku</a>."
+
+#: pantry/templates/pantry/index.html:82
+msgid "Favourites"
+msgstr "Suosikit"
+
+#: pantry/templates/pantry/index.html:101
+#: pantry/templates/pantry/pantry.html:71
+msgid "WARNING"
+msgstr "VAROITUS"
+
+#: pantry/templates/pantry/index.html:101
+#: pantry/templates/pantry/pantry.html:71
+msgid "Contains user-specified allergens:"
+msgstr "Sisältää käyttäjän ilmoittamia allergeeneja:"
+
+#: pantry/templates/pantry/index.html:110
+#: pantry/templates/pantry/pantry.html:80
+msgid "POSSIBLE MISMATCH"
+msgstr "MAHDOLLINEN EPÄSUHTA"
+
+#: pantry/templates/pantry/index.html:110
+#: pantry/templates/pantry/pantry.html:80
+msgid "Missing dietary requirements:"
+msgstr "Puuttuvat ruokavaliovaatimukset:"
+
+#: pantry/templates/pantry/index.html:121
+msgid "Brands"
+msgstr "Tuotemerkit"
+
+#: pantry/templates/pantry/index.html:122
+msgid "Code"
+msgstr "Koodi"
+
+#: pantry/templates/pantry/index.html:129
+msgid "item"
+msgstr "kohde"
+
+#: pantry/templates/pantry/index.html:136
+msgid "Add to Pantry"
+msgstr "Lisää ruokakomeroon"
+
+#: pantry/templates/pantry/index.html:140
+msgid "Remove Favourite"
+msgstr "Poista suosikki"
+
+#: pantry/templates/pantry/index.html:148
+msgid "You haven't favourited any products yet. Start exploring today!"
+msgstr "Et ole vielä suosinut yhtään tuotetta. Aloita tutkiminen jo tänään!"
+
+#: pantry/templates/pantry/pantry.html:5 templates/base.html:63
+msgid "Pantry"
+msgstr "Ruokakomero"
+
+#: pantry/templates/pantry/pantry.html:13
+msgid "Pantry Health & Eco Summary"
+msgstr "Ruokakomero Health & Eco Summary"
+
+#: pantry/templates/pantry/pantry.html:20
+msgid "Nutri-Grade:"
+msgstr "Nutri-luokka:"
+
+#: pantry/templates/pantry/pantry.html:27
+msgid "Eco-Grade:"
+msgstr "Ekologinen luokka:"
+
+#: pantry/templates/pantry/pantry.html:34
+msgid "Scores are hidden or unavailable. Check your user settings."
+msgstr ""
+"Pisteet ovat piilossa tai niitä ei ole saatavilla. Tarkista "
+"käyttäjäasetukset."
+
+#: pantry/templates/pantry/pantry.html:44
+msgid "Your Pantry Items"
+msgstr "Ruokakomerosi tuotteet"
+
+#: pantry/templates/pantry/pantry.html:62
+#: pantry/templates/pantry/pantry.html:64
+msgid "Product Image"
+msgstr "Tuotteen kuva"
+
+#: pantry/templates/pantry/pantry.html:67
+msgid "No Name"
+msgstr "Ei nimeä"
+
+#: pantry/templates/pantry/pantry.html:91
+msgid "Quantity:"
+msgstr "Määrä:"
+
+#: pantry/templates/pantry/pantry.html:94
+msgid "Product Size:"
+msgstr "Tuotteen koko:"
+
+#: pantry/templates/pantry/pantry.html:100
+msgid "Expires:"
+msgstr "Vanhentuu:"
+
+#: pantry/templates/pantry/pantry.html:116
+msgid "Your pantry is empty! Add some products to get started."
+msgstr "Ruokakomerosi on tyhjä! Lisää joitakin tuotteita aloittaaksesi."
+
+#: recipes/templates/recipes/recipes.html:6 templates/base.html:70
+msgid "Recipes"
+msgstr "Reseptit"
+
+#: recipes/templates/recipes/recipes.html:13
+msgid "New Recipe Suggestions"
+msgstr "Uudet resepti ehdotukset"
+
+#: recipes/templates/recipes/recipes.html:40
+#: recipes/templates/recipes/recipes.html:101
+#: recipes/templates/recipes/recipes.html:163
+msgid "Ingredients"
+msgstr "Ainesosat"
+
+#: recipes/templates/recipes/recipes.html:48
+#: recipes/templates/recipes/recipes.html:109
+#: recipes/templates/recipes/recipes.html:181
+msgid "Instructions"
+msgstr "Ohjeet"
+
+#: recipes/templates/recipes/recipes.html:59
+#: recipes/templates/recipes/recipes.html:120
+msgid "Save Recipe"
+msgstr "Tallenna resepti"
+
+#: recipes/templates/recipes/recipes.html:68
+msgid "No new suggestions"
+msgstr "Ei uusia ehdotuksia"
+
+#: recipes/templates/recipes/recipes.html:70
+msgid "Recipes still being generated"
+msgstr "Reseptejä luodaan edelleen"
+
+#: recipes/templates/recipes/recipes.html:75
+msgid "Recently Suggested Recipes"
+msgstr "Äskettäin ehdotetut reseptit"
+
+#: recipes/templates/recipes/recipes.html:129
+msgid "No recently suggested"
+msgstr "Ei äskettäin ehdotettu"
+
+#: recipes/templates/recipes/recipes.html:135
+msgid "Saved Recipes"
+msgstr "Tallennetut reseptit"
+
+#: recipes/templates/recipes/recipes.html:152
+msgid "Missing Items"
+msgstr "Puuttuvat kohteet"
+
+#: recipes/templates/recipes/recipes.html:192
+msgid "Delete Recipe"
+msgstr "Poista resepti"
+
+#: recipes/templates/recipes/recipes.html:204
+msgid "No Saved Recipes"
+msgstr "Ei tallennettuja reseptejä"
+
+#: savor/settings.py:138
+msgid "Arabic"
+msgstr "Arabia"
+
+#: savor/settings.py:139
+msgid "Bulgarian"
+msgstr "Bulgarian"
+
+#: savor/settings.py:140
+msgid "Chinese"
+msgstr "Kiinalainen"
+
+#: savor/settings.py:141
+msgid "Czech"
+msgstr "Tšekki"
+
+#: savor/settings.py:142
+msgid "Danish"
+msgstr "Tanskalainen"
+
+#: savor/settings.py:143
+msgid "Dutch"
+msgstr "Hollantilainen"
+
+#: savor/settings.py:144
+msgid "Estonian"
+msgstr "Viron"
+
+#: savor/settings.py:145
+msgid "Finnish"
+msgstr "Suomalainen"
+
+#: savor/settings.py:146
+msgid "French"
+msgstr "Ranskan"
+
+#: savor/settings.py:147
+msgid "German"
+msgstr "Saksan"
+
+#: savor/settings.py:148
+msgid "Greek"
+msgstr "Kreikkalainen"
+
+#: savor/settings.py:149
+msgid "Hebrew"
+msgstr "Heprea"
+
+#: savor/settings.py:150
+msgid "Hungarian"
+msgstr "Unkarilainen"
+
+#: savor/settings.py:151
+msgid "Indonesian"
+msgstr "Indonesialainen"
+
+#: savor/settings.py:152
+msgid "Italian"
+msgstr "Italian"
+
+#: savor/settings.py:153
+msgid "Japanese"
+msgstr "Japanilainen"
+
+#: savor/settings.py:154
+msgid "Korean"
+msgstr "Korean"
+
+#: savor/settings.py:155
+msgid "Latvian"
+msgstr "Latvian"
+
+#: savor/settings.py:156
+msgid "Lithuanian"
+msgstr "Liettuan"
+
+#: savor/settings.py:157
+msgid "Norwegian Bokmål"
+msgstr "Norjalainen Bokmål"
+
+#: savor/settings.py:158
+msgid "Polish"
+msgstr "Puolan"
+
+#: savor/settings.py:159
+msgid "Portuguese"
+msgstr "Portugalin"
+
+#: savor/settings.py:160
+msgid "Romanian"
+msgstr "Romanian"
+
+#: savor/settings.py:161
+msgid "Russian"
+msgstr "Venäläinen"
+
+#: savor/settings.py:162
+msgid "Slovak"
+msgstr "Slovakian"
+
+#: savor/settings.py:163
+msgid "Slovenian"
+msgstr "Slovenian"
+
+#: savor/settings.py:164
+msgid "Spanish"
+msgstr "Espanjan"
+
+#: savor/settings.py:165
+msgid "Swedish"
+msgstr "Ruotsalainen"
+
+#: savor/settings.py:166
+msgid "Thai"
+msgstr "Thai"
+
+#: savor/settings.py:167
+msgid "Turkish"
+msgstr "Turkkilainen"
+
+#: savor/settings.py:168
+msgid "Ukrainian"
+msgstr "Ukrainan"
+
+#: savor/settings.py:169
+msgid "Vietnamese"
+msgstr "Vietnamilainen"
+
+#: templates/base.html:22
+msgid "Welcome"
+msgstr "Tervetuloa"
+
+#: templates/base.html:29
+msgid "Search Product by ingredient"
+msgstr "Etsi tuote ainesosan mukaan"
+
+#: templates/base.html:32
+msgid "Search Product by Barcode"
+msgstr "Etsi tuotetta viivakoodin mukaan"
+
+#: templates/base.html:37
+msgid "Scan"
+msgstr "Skannaa"
+
+#: templates/base.html:56
+msgid "Home"
+msgstr "Etusivu"
+
+#: templates/base.html:79
+msgid "Settings"
+msgstr "Asetukset"
+
+#: templates/base.html:85
+msgid "Account"
+msgstr "Tili"
+
+#: templates/base.html:94
+msgid "Log Out"
+msgstr "Kirjaudu ulos"
+
+#: templates/base.html:107
+msgid "Log On"
+msgstr "Kirjaudu sisään"
+
+#: templates/base.html:113 users/templates/users/register.html:57
+msgid "Register"
+msgstr "Rekisteröi"
+
+#: templates/base.html:123
+msgid "Stop Scanning"
+msgstr "Lopeta skannaus"
+
+#: templates/registration/login.html:5 templates/registration/login.html:9
+#: templates/registration/login.html:37
+msgid "Log In"
+msgstr "Kirjaudu sisään"
+
+#: templates/registration/login.html:40
+#, python-format
+msgid "Don't have an account? <a href=\"%('register_url')s\">Register here</a>."
+msgstr ""
+"Eikö sinulla ole tiliä? <a href=\"%('register_url')s\">Rekisteröidy "
+"täällä</a>."
+
+#: templates/registration/login.html:41
+msgid "Forgot password?"
+msgstr "Unohditko salasanan?"
+
+#: templates/registration/logout.html:4 templates/registration/logout.html:7
+msgid "Logged Out"
+msgstr "Kirjautunut ulos"
+
+#: templates/registration/logout.html:8
+msgid "You have been successfully logged out."
+msgstr "Olet onnistuneesti kirjautunut ulos."
+
+#: templates/registration/logout.html:9
+msgid "Log in again"
+msgstr "Kirjaudu sisään uudelleen"
+
+#: templates/registration/password_change_done.html:6
+msgid "Password Changed Successfully"
+msgstr "Salasana vaihdettu onnistuneesti"
+
+#: templates/registration/password_change_done.html:12
+#: templates/registration/password_reset_complete.html:11
+msgid "Password Changed Successfully!"
+msgstr "Salasana vaihdettu onnistuneesti!"
+
+#: templates/registration/password_change_done.html:14
+msgid "Your password has been changed."
+msgstr "Salasanasi on vaihdettu."
+
+#: templates/registration/password_change_done.html:16
+msgid "Back to Settings"
+msgstr "Takaisin Asetuksiin"
+
+#: templates/registration/password_change_form.html:5
+#: templates/registration/password_change_form.html:38
+#: templates/registration/password_reset_confirm.html:28
+#: users/templates/users/account_settings.html:51
+msgid "Change Password"
+msgstr "Vaihda salasana"
+
+#: templates/registration/password_change_form.html:11
+msgid "Change Your Password"
+msgstr "Vaihda salasanasi"
+
+#: templates/registration/password_change_form.html:23
+msgid "Old Password"
+msgstr "Vanha salasana"
+
+#: templates/registration/password_change_form.html:28
+#: templates/registration/password_reset_confirm.html:20
+msgid "New Password"
+msgstr "Uusi salasana"
+
+#: templates/registration/password_change_form.html:33
+#: templates/registration/password_reset_confirm.html:24
+msgid "Confirm New Password"
+msgstr "Vahvista uusi salasana"
+
+#: templates/registration/password_reset_complete.html:5
+msgid "Password Changed"
+msgstr "Salasana muutettu"
+
+#: templates/registration/password_reset_complete.html:13
+msgid ""
+"Your password has been set. You can now go ahead and log in with your new "
+"password."
+msgstr ""
+"Salasanasi on asetettu. Voit nyt kirjautua sisään uudella salasanallasi."
+
+#: templates/registration/password_reset_confirm.html:12
+msgid "Set a New Password"
+msgstr "Aseta uusi salasana"
+
+#: templates/registration/password_reset_confirm.html:32
+msgid "Invalid Link"
+msgstr "Virheellinen linkki"
+
+#: templates/registration/password_reset_confirm.html:34
+msgid ""
+"The password reset link was invalid, possibly because it has already been "
+"used. Please request a new password reset."
+msgstr ""
+"Salasanan palautuslinkki oli virheellinen, mahdollisesti siksi, että sitä on"
+" jo käytetty. Pyydä uutta salasanan palautusta."
+
+#: templates/registration/password_reset_done.html:4
+msgid "Password Reset Sent"
+msgstr "Salasanan palautus lähetetty"
+
+#: templates/registration/password_reset_done.html:10
+msgid "Check Your Inbox"
+msgstr "Tarkista postilaatikkosi"
+
+#: templates/registration/password_reset_done.html:12
+msgid ""
+"We've emailed you instructions for setting your password. If an account "
+"exists with the email you entered, you should receive them shortly."
+msgstr ""
+"Olemme lähettäneet sinulle sähköpostitse ohjeet salasanasi asettamista "
+"varten. Jos tili on olemassa antamallasi sähköpostiosoitteella, saat ne "
+"pian."
+
+#: templates/registration/password_reset_done.html:13
+msgid ""
+"If you don't receive an email, please make sure you've entered the email "
+"address you registered with, and check your spam folder."
+msgstr ""
+"Jos et saa sähköpostia, varmista, että olet syöttänyt sähköpostiosoitteesi, "
+"jolla rekisteröidyit, ja tarkista roskapostikansiosi."
+
+#: templates/registration/password_reset_form.html:8
+msgid "Forgot Your Password?"
+msgstr "Unohditko salasanasi?"
+
+#: templates/registration/password_reset_form.html:9
+msgid "Enter your email address below to receive a password reset link."
+msgstr ""
+"Kirjoita sähköpostiosoitteesi alla saadaksesi salasanan palautuslinkin."
+
+#: templates/registration/password_reset_form.html:17
+msgid "Reset Password"
+msgstr "Nollaa salasana"
+
+#: users/forms.py:12
+msgid "Password"
+msgstr "Salasana"
+
+#: users/forms.py:16
+msgid ""
+"Your password can't be too similar to your other personal information. It "
+"must contain at least 8 characters. It can't be a commonly used password. It"
+" can't be entirely numeric."
+msgstr ""
+"Salasanasi ei saa olla liian samanlainen kuin muut henkilökohtaiset tietosi."
+" Sen on sisällettävä vähintään 8 merkkiä. Se ei voi olla yleisesti käytetty "
+"salasana. Se ei voi olla täysin numeerinen."
+
+#: users/forms.py:23
+msgid "Password confirmation"
+msgstr "Salasanan vahvistus"
+
+#: users/forms.py:26
+msgid "Enter the same password as before, for verification."
+msgstr "Kirjoita sama salasana kuin aiemmin vahvistusta varten."
+
+#: users/forms.py:34 users/templates/users/account_settings.html:44
+msgid "Username"
+msgstr "Käyttäjätunnus"
+
+#: users/forms.py:35 users/templates/users/account_settings.html:45
+msgid "Email"
+msgstr "Sähköposti"
+
+#: users/forms.py:39
+msgid "Required. 150 characters or fewer. Letters, digits and @/./+/-/_ only."
+msgstr ""
+"Tarvitaan. Enintään 150 merkkiä. Vain kirjaimet, numerot ja @/./+/-/_."
+
+#: users/forms.py:65 users/templates/users/account_settings.html:68
+msgid "Language Preference"
+msgstr "Kielimieltymys"
+
+#: users/forms.py:66 users/templates/users/account_settings.html:63
+msgid "Country"
+msgstr "Maa"
+
+#: users/forms.py:67 users/templates/users/account_settings.html:90
+msgid "Allergens"
+msgstr "Allergeenit"
+
+#: users/forms.py:68 users/templates/users/account_settings.html:78
+msgid "Dietary Requirements"
+msgstr "Ruokavalion vaatimukset"
+
+#: users/forms.py:69
+msgid "Enable scan-to-add in pantry"
+msgstr "Ota skannaus-lisäys käyttöön ruokakomerossa"
+
+#: users/forms.py:70
+msgid "Display Nutri-Score on products"
+msgstr "Näytä Nutri-Score tuotteissa"
+
+#: users/forms.py:71
+msgid "Display Eco-Score on products"
+msgstr "Näytä tuotteissa Eco-Score"
+
+#: users/forms.py:72
+msgid "Prioritise local results in search"
+msgstr "Paikallisten hakutulosten priorisointi"
+
+#: users/templates/users/account_settings.html:6
+msgid "Account Settings"
+msgstr "Tilin asetukset"
+
+#: users/templates/users/account_settings.html:19
+msgid "Warning!"
+msgstr "Varoitus!"
+
+#: users/templates/users/account_settings.html:19
+msgid "You are about to delete your account permanently."
+msgstr "Olet poistamassa tilisi pysyvästi."
+
+#: users/templates/users/account_settings.html:22
+msgid ""
+"\n"
+"          Doing this will permanently remove all account data including your\n"
+"          pantry, saved recipes, and favourites. Are you sure you want to\n"
+"          continue?\n"
+"          "
+msgstr ""
+"\n"
+"          Tämä poistaa pysyvästi kaikki tilitiedot, mukaan lukien sinun\n"
+"          ruokakomero, tallennetut reseptit ja suosikit. Oletko varma, että haluat\n"
+"          jatkaa?\n"
+"          "
+
+#: users/templates/users/account_settings.html:29
+msgid "I'm sure,"
+msgstr "Olen varma,"
+
+#: users/templates/users/account_settings.html:30
+#: users/templates/users/account_settings.html:52
+msgid "Delete Account"
+msgstr "Poista tili"
+
+#: users/templates/users/account_settings.html:40
+msgid "Account management"
+msgstr "Tilinhallinta"
+
+#: users/templates/users/account_settings.html:46
+msgid "Date Joined"
+msgstr "Liittymispäivä"
+
+#: users/templates/users/account_settings.html:57
+msgid "User preferences"
+msgstr "Käyttäjän asetukset"
+
+#: users/templates/users/account_settings.html:115
+msgid "Save Settings"
+msgstr "Tallenna asetukset"
+
+#: users/templates/users/register.html:60
+#, python-format
+msgid "Already have an account? <a href=\"%(login_url)s\">Log in here</a>."
+msgstr "Onko sinulla jo tili? <a href=\"%(login_url)s\">Loggaa sisään täältä</a>."

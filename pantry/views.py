@@ -30,6 +30,7 @@ from .utils import (
 def index(request):
     user = request.user
     placeholder_image_url = static('media/placeholder-img.jpeg')
+    processed_favourites = []
 
     if user.is_authenticated:
         
@@ -41,8 +42,6 @@ def index(request):
         user_lang_name = user_settings.language_preference
         language_code = LANGUAGE_CODE_MAP.get(user_lang_name, 'en') 
                     
-        processed_favourites = []
-        
         for product in user.favourited_products.all():
             
             has_allergen_conflict = False
@@ -145,8 +144,8 @@ def pantry_search(request):
 def search_product(request): 
 
     favourite_products = set()
-    user_dietary_requirements = QuerySet()
-    user_allergens = QuerySet()
+    user_dietary_requirements = []
+    user_allergens = []
     language_code = 'en'
     user_allergens_tags = set()
     user_required_tags = set()
@@ -460,9 +459,16 @@ def advanced_product_search(request):
 
 
 def populate_adv_search_criteria(request):
-    user_settings = UserSettings.objects.get(user=request.user)
-    language_name = user_settings.language_preference
-    language_code = COUNTRY_CODE_MAP.get(language_name, 'en')
+    language_code = 'en' 
+
+    if request.user.is_authenticated:
+        try:
+            user_settings = UserSettings.objects.get(user=request.user)
+            language_name = user_settings.language_preference
+            language_code = COUNTRY_CODE_MAP.get(language_name, 'en')
+        except UserSettings.DoesNotExist:
+            pass
+
     categories_data = get_cached_json(language_code = language_code , data_type="categories")
     brands_data = get_cached_json(language_code = language_code, data_type="brands")
     countries_data = get_cached_json(language_code = language_code, data_type="countries")
@@ -612,6 +618,10 @@ def remove_pantryitem(request):
 
 def toggle_favourite_product(request, id):
     user = request.user
+    
+    if not user.is_authenticated:
+        return JsonResponse({'error': 'Authentication required.'}, status=401)
+    
     product = Product.objects.get(id=id)
     user_settings = UserSettings.objects.get(user=user)
     user_allergens = user_settings.allergens.all()

@@ -1,10 +1,11 @@
 {% extends "base.html" %}
+{% load i18n %}
 
-{% block title %} Logged Out {% endblock %}
+{% block title %} {% trans "Logged Out" %} {% endblock %}
 
 {% block body %}
-<h2>Logged Out</h2>
-<p>You have been successfully logged out.</p>
-<p><a href="{% url 'login' %}">Log in again</a></p>
+<h2>{% trans "Logged Out" %}</h2>
+<p>{% trans "You have been successfully logged out." %}</p>
+<p><a href="{% url 'login' %}">{% trans "Log in again" %}</a></p>
 
 {% endblock %}
