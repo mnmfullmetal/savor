@@ -11,9 +11,8 @@ function onScanSuccess(decodedText, decodedResult) {
   const productSearchForm = document.querySelector("#search-form");
   const csrfToken = productSearchForm.elements.csrfmiddlewaretoken.value;
   productSearchForm.elements.barcode.value = decodedText;
-
-    
-  handleProductSearch(productSearchForm, csrfToken); 
+  const wasScanned = true
+  handleProductSearch(productSearchForm, csrfToken, wasScanned); 
 
   stopScanningAndHide(); 
 
@@ -135,18 +134,22 @@ document.addEventListener("DOMContentLoaded", () => {
   }, debounceSpeed));
 
 
+
   productSearchForm.addEventListener("submit", (event) => {
     event.preventDefault();
-    handleProductSearch(productSearchForm, csrfToken);
+    const wasScanned = false
+    handleProductSearch(productSearchForm, csrfToken, wasScanned);
   });
 
   const savedBarcode = sessionStorage.getItem("searchBarcode");
   const savedProductName = sessionStorage.getItem("searchProductName");
-
+  const wasScannedString = sessionStorage.getItem("wasScanned");
+  
   if (savedBarcode || savedProductName) {
     sessionStorage.removeItem("searchBarcode");
     sessionStorage.removeItem("searchProductName");
     sessionStorage.removeItem("searchCsrfToken");
+    sessionStorage.removeItem("wasScanned");
 
     const barcodeInput = document.querySelector("#search-form").elements.barcode;
     const productNameInput = document.querySelector("#search-form").elements.product_name;
@@ -154,7 +157,9 @@ document.addEventListener("DOMContentLoaded", () => {
     if (barcodeInput) barcodeInput.value = savedBarcode;
     if (productNameInput) productNameInput.value = savedProductName;
 
-    searchProduct(savedBarcode, savedProductName, csrfToken, page=1);
+    const wasScanned = wasScannedString === 'true';
+
+    searchProduct(savedBarcode, savedProductName, csrfToken, wasScanned, page=1);
     productNameInput.value = '';
   }
 
@@ -258,7 +263,7 @@ function fetchAndPopulateDropdowns(categorySelect, brandSelect, countrySelect) {
 }
 
 
-function handleProductSearch(form, csrfToken) {
+function handleProductSearch(form, csrfToken, wasScanned) {
     const barcode = form.elements.barcode.value.trim();
     const productName = form.elements.product_name.value.trim();
     const currentPath = window.location.pathname;
@@ -271,23 +276,23 @@ function handleProductSearch(form, csrfToken) {
 
         sessionStorage.setItem("searchBarcode", barcode);
         sessionStorage.setItem("searchProductName", productName);
+        sessionStorage.setItem("wasScanned", wasScanned)
         sessionStorage.setItem("searchCsrfToken", csrfToken);
         
         window.location.href = "/";
         form.elements.barcode.value = ''; 
         form.elements.product_name.value = '';
     } else {
-        searchProduct(barcode, productName, csrfToken, page = 1);
+        searchProduct(barcode, productName, csrfToken, wasScanned, page = 1);
         form.elements.barcode.value = ''; 
         form.elements.product_name.value = '';
     }
 }
 
 
-function searchProduct(barcode = "None", productName = "None", csrfToken, page = 1) {
+function searchProduct(barcode = "None", productName = "None", csrfToken, wasScanned, page = 1) {
   const searchedProductsDiv = document.querySelector("#searched-product-section");
   searchedProductsDiv.innerHTML = "<p class='text-muted'>Searching...</p>";
-
   if (!barcode && !productName) {
     searchedProductsDiv.innerHTML = `
     <div class="alert alert-warning text-center mt-3" role="alert">
@@ -299,7 +304,8 @@ function searchProduct(barcode = "None", productName = "None", csrfToken, page =
   const requestData = {
     barcode: barcode,
     product_name: productName,
-    page: page
+    page: page,
+    wasScanned: wasScanned
   };
 
   fetch("/product/search/", {
@@ -321,7 +327,14 @@ function searchProduct(barcode = "None", productName = "None", csrfToken, page =
        Error: ${data.error || "Invalid input."}
        </div>`;
     } else  {
-       displaySearchResults(searchedProductsDiv, data, csrfToken, {barcode, productName}, (params, token) => searchProduct(params.barcode, params.productName, token, params.page));
+       displaySearchResults(searchedProductsDiv, data, csrfToken, {barcode, productName}, (params, token) => searchProduct(params.barcode, params.productName, token, wasScanned, params.page));
+        console.log(`scan to add: ${data.scan_to_add}`)
+       if(data.scan_to_add === true && data.products.length > 0 && wasScanned === true){
+        data.products.forEach(product => {
+        console.log(`adding product: ${product.id}`)
+        addProduct(product.id, quantityInput=1, csrfToken=csrfToken )
+        });
+       }
     } 
   })
   .catch((error) => {
@@ -550,22 +563,26 @@ function displaySearchResults(container, data, csrfToken, searchParams, searchFu
 }
 
 
-function addProduct(productIdToAdd, quantityInput, csrfToken, productCard) {
+function addProduct(productIdToAdd, quantityInput, csrfToken, productCard=null) {
   if (isNaN(quantityInput) || parseFloat(quantityInput) <= 0) {
-    const cardBody = productCard.querySelector(".card-body");
-    let messageElement = cardBody.querySelector(".alert");
-    if (!messageElement) {
+    if (productCard){
+      const cardBody = productCard.querySelector(".card-body");
+      let messageElement = cardBody.querySelector(".alert");
+      if (!messageElement) {
       messageElement = document.createElement("div");
       cardBody.appendChild(messageElement);
     }
-    messageElement.className = "alert alert-success mt-2 py-1";
-    messageElement.textContent = "Please enter a valid quantity (> 0).";
-    setTimeout(() => {
+      messageElement.className = "alert alert-success mt-2 py-1";
+      messageElement.textContent = errorMessage;
+      setTimeout(() => {
       messageElement.remove();
-    }, 3000);
+      }, 3000);
+    } else {
+      showToast(errorMessage, false);
+    } 
     return;
   }
-
+  
   const addProductRequestData = {
     product_id: productIdToAdd,
     quantityToAdd: quantityInput,
@@ -587,19 +604,25 @@ function addProduct(productIdToAdd, quantityInput, csrfToken, productCard) {
       return response.json();
     })
     .then((data) => {
-      const cardBody = productCard.querySelector(".card-body");
-      let messageElement = cardBody.querySelector(".alert");
-      if (!messageElement) {
+      if(productCard){
+        const cardBody = productCard.querySelector(".card-body");
+        let messageElement = cardBody.querySelector(".alert");
+        if (!messageElement) {
         messageElement = document.createElement("div");
         cardBody.appendChild(messageElement);
       }
-      messageElement.className = `alert mt-2 py-1 ${
+        messageElement.className = `alert mt-2 py-1 ${
         data.success ? "alert-success" : "alert-danger"
       }`;
-      messageElement.innerHTML = `${data.message}`;
-      setTimeout(() => {
+        messageElement.innerHTML = `${data.message}`;
+        setTimeout(() => {
         messageElement.remove();
       }, 3000);
+      } else {
+      showToast(data.message, data.success);
+
+      }
+     
     })
     .catch((error) => {
       console.error("Fetch network error:", error);
@@ -814,4 +837,38 @@ function debounce(func, delay) {
   };
 }
 
+
+function showToast(message, isSuccess = true) {
+    const toastContainer = document.getElementById('toast-container');
+    if (!toastContainer) return;
+
+    const toastId = 'toast-' + Date.now();
+    const toastBgClass = isSuccess ? 'bg-success' : 'bg-danger';
+    const toastIcon = isSuccess 
+        ? '<i class="bi bi-check-circle-fill me-2"></i>' 
+        : '<i class="bi bi-exclamation-triangle-fill me-2"></i>';
+
+    const toastHtml = `
+        <div id="${toastId}" class="toast align-items-center text-white ${toastBgClass} border-0" role="alert" aria-live="assertive" aria-atomic="true">
+            <div class="d-flex">
+                <div class="toast-body">
+                    ${toastIcon}
+                    ${message}
+                </div>
+                <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+            </div>
+        </div>
+    `;
+
+    toastContainer.insertAdjacentHTML('beforeend', toastHtml);
+
+    const toastElement = document.getElementById(toastId);
+    const toast = new bootstrap.Toast(toastElement, { delay: 3000 });
+    
+    toast.show();
+    
+    toastElement.addEventListener('hidden.bs.toast', () => {
+        toastElement.remove();
+    });
+}
 

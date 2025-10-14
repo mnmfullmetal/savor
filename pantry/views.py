@@ -151,6 +151,7 @@ def search_product(request):
     user_required_tags = set()
     user_settings = None
     user = request.user
+    scan_to_add = False
 
     if user.is_authenticated:
         favourite_products = set(user.favourited_products.all())
@@ -161,6 +162,7 @@ def search_product(request):
         user_dietary_requirements = user_settings.dietary_requirements.all()
         user_allergens_tags = set(user_allergens.values_list('api_tag', flat=True))
         user_required_tags = set(user_dietary_requirements.values_list('api_tag', flat=True))
+        scan_to_add = user_settings.scan_to_add
        
     try:
         data = json.loads(request.body)
@@ -212,7 +214,8 @@ def search_product(request):
                             
                         results.append(result)
 
-                return JsonResponse({'products': results})
+
+                return JsonResponse({'products': results, "scan_to_add": scan_to_add})
             
             ## if no db object found via barcode, fetches api results and saves the results to the db
             print(f"Calling OFF API for barcode {barcode}.")
@@ -263,7 +266,7 @@ def search_product(request):
                         'conflicting_allergens': conflicting_allergens,
                     })
 
-            return JsonResponse({'products': api_products})
+            return JsonResponse({'products': api_products, "scan_to_add": scan_to_add})
         
         # if no barcode supplied, fetches api results via product name and saves results to the db
         elif product_name:
