@@ -16,39 +16,40 @@
     <title>{% block title %} Savor {% endblock %}</title>
 </head>
 <body>
-<nav class="top-search-bar">
-   {% if user.is_authenticated %}
-    <div class="nav-greeting">
-        <span >{% trans "Welcome" %}, {{user.username}}</span>
-    </div>
-    {% endif %}
-
-    <form class="search-form" role="search" id="search-form">
-        {% csrf_token %}
-        <div class="autocomplete-wrapper position-relative">
-        <input type="text" id="product_name_input" name="product_name" class="form-control" placeholder="Search by Name" aria-label="{% trans 'Search Product by ingredient' %}">
-        <div id="autocomplete-suggestions" class="list-group position-absolute w-100" style="z-index: 1000;"></div>
-        </div>
-        <input type="text" id="barcode_input" name="barcode" class="form-control" placeholder="Search by Barcode" aria-label="{% trans 'Search Product by Barcode' %}">
-        <button class="btn btn-outline-success" type="submit">
-          <span class="btn-text">{% trans "Search" %}</span>  <i class="bi bi-search"></i>
-        </button>
-        <button class="btn btn-outline-primary" type="button" id="scan-button">
-            <span class="btn-text">{% trans "Scan" %}</span> <i class="bi bi-upc-scan"></i> 
-        </button>
-    </form>  
-</nav>
 
 <aside id="sidebar" class="sidebar">
-    <div class="d-flex justify-content-between align-items-center sidebar-toggle-div ">
+    <div class="d-flex justify-content-between align-items-center sidebar-toggle-div d-none d-lg-flex">
         <a class="navbar-brand m-0" href="{% url 'pantry:index' %}">Savor</a>
-        <button id="sidebarToggle" class="sidebar-toggle-btn">
+        <button id="desktopSidebarToggle" class="sidebar-toggle-btn">
             <i class="bi bi-box-arrow-in-left"></i>
         </button>
     </div>
 
     <div class="offcanvas-body">
-        <ul class="navbar-nav mb-2 mb-lg-0">
+        <div class="sidebar-heading d-lg-none text-center mb-3">
+            <a class="navbar-brand" href="{% url 'pantry:index' %}">Savor</a>
+            <hr class="sidebar-divider">
+        </div>
+
+        <ul class="navbar-nav">
+            <li class="nav-item d-lg-none">
+                <form class="search-form" role="search" id="search-form">
+                    {% csrf_token %}
+                    <div class="autocomplete-wrapper position-relative">
+                        <input type="text" id="product_name_input" name="product_name" class="form-control" placeholder="Search by Name" aria-label="{% trans 'Search Product by ingredient' %}">
+                        <div id="autocomplete-suggestions" class="list-group position-absolute w-100" style="z-index: 1000;"></div>
+                    </div>
+                    <input type="text" id="barcode_input" name="barcode" class="form-control" placeholder="Search by Barcode" aria-label="{% trans 'Search Product by Barcode' %}">
+                    <button class="btn btn-outline-success" type="submit">
+                      <span class="btn-text">{% trans "Search" %}</span>  <i class="bi bi-search"></i>
+                    </button>
+                    <button class="btn btn-outline-primary" type="button" id="scan-button">
+                        <span class="btn-text">{% trans "Scan" %}</span> <i class="bi bi-upc-scan"></i> 
+                    </button>
+                </form>
+                <hr class="sidebar-divider">
+            </li>
+
             {% if user.is_authenticated %}
             <li class="nav-item">
     <a class="nav-link {% if request.path == '/' %}active{% endif %}" href="{% url 'pantry:index' %}">
@@ -123,10 +124,41 @@
     <button id="stop-scanner-btn" class="btn btn-danger mt-2">{% trans "Stop Scanning" %}</button>
  </div>
 
-<div class="main-content">
-  {% block body %}
-  
-  {% endblock %}
+<div class="page-container">
+    <button id="mobileSidebarToggle" class="sidebar-toggle-btn mobile-toggle-button d-lg-none">
+        <i class="bi bi-list"></i>
+    </button>
+
+    <div class="page-wrapper">
+        <nav class="top-search-bar d-none d-lg-flex">
+           {% if user.is_authenticated %}
+            <div class="nav-greeting">
+                <span >{% trans "Welcome" %}, {{user.username}}</span>
+            </div>
+            {% endif %}
+
+            <form class="search-form" role="search" id="search-form-desktop">
+                {% csrf_token %}
+                <div class="autocomplete-wrapper position-relative">
+                <input type="text" id="product_name_input_desktop" name="product_name" class="form-control" placeholder="Search by Name" aria-label="{% trans 'Search Product by ingredient' %}">
+                <div id="autocomplete-suggestions-desktop" class="list-group position-absolute w-100" style="z-index: 1000;"></div>
+                </div>
+                <input type="text" id="barcode_input_desktop" name="barcode" class="form-control" placeholder="Search by Barcode" aria-label="{% trans 'Search Product by Barcode' %}">
+                <button class="btn btn-outline-success" type="submit">
+                  <span class="btn-text">{% trans "Search" %}</span>  <i class="bi bi-search"></i>
+                </button>
+                <button class="btn btn-outline-primary" type="button" id="scan-button-desktop">
+                    <span class="btn-text">{% trans "Scan" %}</span> <i class="bi bi-upc-scan"></i> 
+                </button>
+            </form>  
+        </nav>
+
+        <div class="main-content">
+          {% block body %}
+          
+          {% endblock %}
+        </div>
+    </div>
 </div>
 
 </body>

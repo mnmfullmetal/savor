@@ -88,8 +88,6 @@
 
         body.sidebar-minimized {
             margin-left: var(--sidebar-minimized-width);
-            
-
         }
 
         .sidebar {
@@ -118,7 +116,7 @@
             height: var(--top-search-bar-height);
             z-index: 1000;
              background-color: var(--tertiary-green);
-              border-bottom: 1.5px solid var(--tertiary-green);
+            border-bottom: 1.5px solid var(--tertiary-green);
             padding: 0 1.5rem;
             display: flex;
             align-items: center;
@@ -436,4 +434,68 @@ padding: 0.6rem 1.5rem 0.6rem 1rem;
     background-color: #f8f9fa; 
 }
 
+@media (max-width: 768px) {
+    :root {
+        --sidebar-width: 250px; 
+    }
 
+    body {
+        margin-left: 0;
+        padding-top: 0; 
+    }
+
+    .page-wrapper {
+        transform: translateX(0);
+    }
+
+    body.sidebar-mobile-show .page-wrapper {
+        transform: translateX(var(--sidebar-width));
+    }
+
+    .sidebar {
+        width: var(--sidebar-width);
+        transform: translateX(0);
+        transform: translateX(calc(-1 * var(--sidebar-width)));
+        transition: transform var(--transition-speed) ease-in-out;
+    }
+
+    .sidebar-mobile-show .sidebar {
+        transform: translateX(0);
+    }
+
+    .mobile-toggle-button {
+        position: fixed;
+        top: 10px;
+        left: 10px;
+        z-index: 1060; 
+        color: var(--dark-text);
+        transition: transform var(--transition-speed) ease-in-out;
+    }
+
+    body.sidebar-mobile-show .mobile-toggle-button {
+        transform: translateX(var(--sidebar-width));
+    }
+    body.sidebar-minimized .sidebar {
+        transform: translateX(calc(-1 * var(--sidebar-width)));
+    }
+
+    body.sidebar-minimized {
+        margin-left: 0;
+    }
+
+    .sidebar .search-form {
+        display: flex;
+        flex-direction: column;
+        gap: 0.75rem;
+    }
+
+    .sidebar .search-form .form-control,
+    .sidebar .search-form .btn {
+        max-width: 100%;
+        width: 100%;
+    }
+
+    .sidebar .navbar-brand {
+        font-size: 1.25rem; 
+}
+}

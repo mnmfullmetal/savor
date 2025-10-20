@@ -46,7 +46,7 @@ def account_settings(request):
 
     default_countries_data = get_cached_json(language_code='en', data_type='countries') or {}
     countries_choices = sorted(
-        [(tag['id'], tag['name']) for tag in default_countries_data.get('tags') if tag.get('name')] ,
+        [(tag['id'], tag['name']) for tag in default_countries_data.get('tags', []) if tag.get('name')] ,
             key=lambda x: x[1] 
     )
 
@@ -140,4 +140,3 @@ def delete_user(request):
             return JsonResponse({'error: could not delete user account'}, status=500)
         
      
-

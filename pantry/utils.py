@@ -261,6 +261,9 @@ def get_localised_names( product_tags, cached_data_type, language_code ):
         return []
     
     full_cached_data = get_cached_json(language_code =language_code , data_type=cached_data_type)
+
+    if not full_cached_data:
+        return []
     
     tag_list = full_cached_data.get('tags', [])
     

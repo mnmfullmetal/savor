@@ -43,31 +43,44 @@ function stopScanningAndHide() {
 
 document.addEventListener("DOMContentLoaded", () => {
 
-  const savedState = localStorage.getItem("sidebarState");
   const body = document.body;
-  const toggleIcon = document.getElementById("sidebarToggle").querySelector("i");
-  if (savedState === "minimized") {
-    body.classList.add("sidebar-minimized");
-    toggleIcon.classList.remove("bi-box-arrow-in-left");
-    toggleIcon.classList.add("bi-box-arrow-right");
-  }
+  const desktopSidebarToggle = document.getElementById("desktopSidebarToggle");
+  const mobileSidebarToggle = document.getElementById("mobileSidebarToggle");
 
-  const sidebarToggle = document.getElementById("sidebarToggle");
-  sidebarToggle.addEventListener("click", () => {
-    const body = document.body;
-    const toggleIcon = sidebarToggle.querySelector("i");
-    body.classList.toggle("sidebar-minimized");
+  if (desktopSidebarToggle) {
+    const toggleIcon = desktopSidebarToggle.querySelector("i");
 
-    if (body.classList.contains("sidebar-minimized")) {
-      localStorage.setItem("sidebarState", "minimized");
+    const savedState = localStorage.getItem("sidebarState");
+    if (savedState === "minimized") {
+      body.classList.add("sidebar-minimized");
       toggleIcon.classList.remove("bi-box-arrow-in-left");
       toggleIcon.classList.add("bi-box-arrow-right");
-    } else {
-      localStorage.setItem("sidebarState", "expanded");
-      toggleIcon.classList.remove("bi-box-arrow-right");
-      toggleIcon.classList.add("bi-box-arrow-in-left");
     }
-  });
+
+    desktopSidebarToggle.addEventListener("click", () => {
+      body.classList.toggle("sidebar-minimized");
+      if (body.classList.contains("sidebar-minimized")) {
+        localStorage.setItem("sidebarState", "minimized");
+        toggleIcon.classList.remove("bi-box-arrow-in-left");
+        toggleIcon.classList.add("bi-box-arrow-right");
+      } else {
+        localStorage.setItem("sidebarState", "expanded");
+        toggleIcon.classList.remove("bi-box-arrow-right");
+        toggleIcon.classList.add("bi-box-arrow-in-left");
+      }
+    });
+  }
+
+  if (mobileSidebarToggle) {
+    const toggleIcon = mobileSidebarToggle.querySelector("i");
+
+    mobileSidebarToggle.addEventListener("click", () => {
+        body.classList.toggle('sidebar-mobile-show');
+
+        toggleIcon.classList.toggle('bi-list');
+        toggleIcon.classList.toggle('bi-x');
+    });
+  }
 
   const accountDropdown = document.getElementById("account-dropdown-item");
   if (accountDropdown) {
@@ -80,7 +93,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  document.getElementById("scan-button").addEventListener("click", () => {
+  function startScanner() {
         
     if (!html5QrCode) {
        html5QrCode = new Html5Qrcode(readerId);
@@ -100,52 +113,61 @@ document.addEventListener("DOMContentLoaded", () => {
           html5QrCode = null;
         });
     }
-});
+  }
+
+  document.getElementById("scan-button").addEventListener("click", startScanner);
+  document.getElementById("scan-button-desktop").addEventListener("click", startScanner);
 
   document.getElementById("stop-scanner-btn").addEventListener("click", () => {
         stopScanningAndHide();
     });
 
-  const productSearchForm = document.querySelector("#search-form");
-  const csrfToken = productSearchForm.elements.csrfmiddlewaretoken.value;
-  const productNameInput = document.getElementById("product_name_input");
-  const autocompleteSuggestionsDiv = document.getElementById("autocomplete-suggestions");
-  const debounceSpeed = 300; 
+  const searchForms = document.querySelectorAll("#search-form, #search-form-desktop");
+  searchForms.forEach(form => {
+      const csrfToken = form.elements.csrfmiddlewaretoken.value;
+      const productNameInput = form.querySelector("input[name='product_name']");
+      const autocompleteSuggestionsDiv = form.querySelector(".list-group");
+      const debounceSpeed = 300;
 
-  productNameInput.addEventListener("input",debounce(async (event) => {
-    const query = event.target.value.trim();
+      if (productNameInput && autocompleteSuggestionsDiv) {
+          productNameInput.addEventListener("input", debounce(async (event) => {
+              const query = event.target.value.trim();
 
-    if (query.length === 0) {
-      autocompleteSuggestionsDiv.innerHTML = "";
-      return;
-    }
+              if (query.length === 0) {
+                  autocompleteSuggestionsDiv.innerHTML = "";
+                  return;
+              }
 
-    fetch(`/suggestions/?query=${encodeURIComponent(query)}`)
-    .then((response) => response.json())
-    .then((data) => {
-      const suggestionsArray = data.suggestions;
-      displaySuggestions(suggestionsArray);
-    })
-    .catch((error) => {
-      console.error("Error fetching suggestions:", error);
-      autocompleteSuggestionsDiv.innerHTML =
-            '<div class="list-group-item text-danger">Failed to load suggestions.</div>';
-    });
-  }, debounceSpeed));
+              fetch(`/suggestions/?query=${encodeURIComponent(query)}`)
+                  .then((response) => response.json())
+                  .then((data) => {
+                      const suggestionsArray = data.suggestions;
+                      displaySuggestions(suggestionsArray, autocompleteSuggestionsDiv, productNameInput);
+                  })
+                  .catch((error) => {
+                      console.error("Error fetching suggestions:", error);
+                      autocompleteSuggestionsDiv.innerHTML =
+                          '<div class="list-group-item text-danger">Failed to load suggestions.</div>';
+                  });
+          }, debounceSpeed));
+      }
 
-
-
-  productSearchForm.addEventListener("submit", (event) => {
-    event.preventDefault();
-    const wasScanned = false
-    handleProductSearch(productSearchForm, csrfToken, wasScanned);
+      form.addEventListener("submit", (event) => {
+          event.preventDefault();
+          const wasScanned = false;
+          handleProductSearch(form, csrfToken, wasScanned);
+      });
   });
+
+  const csrfToken = document.querySelector("#search-form, #search-form-desktop").elements.csrfmiddlewaretoken.value;
 
   const savedBarcode = sessionStorage.getItem("searchBarcode");
   const savedProductName = sessionStorage.getItem("searchProductName");
   const wasScannedString = sessionStorage.getItem("wasScanned");
   
   if (savedBarcode || savedProductName) {
+    const csrfToken = document.querySelector("#search-form, #search-form-desktop").elements.csrfmiddlewaretoken.value;
+
     sessionStorage.removeItem("searchBarcode");
     sessionStorage.removeItem("searchProductName");
     sessionStorage.removeItem("searchCsrfToken");
@@ -158,9 +180,10 @@ document.addEventListener("DOMContentLoaded", () => {
     if (productNameInput) productNameInput.value = savedProductName;
 
     const wasScanned = wasScannedString === 'true';
-
+    
     searchProduct(savedBarcode, savedProductName, csrfToken, wasScanned, page=1);
-    productNameInput.value = '';
+    if (barcodeInput) barcodeInput.value = '';
+    if (productNameInput) productNameInput.value = '';
   }
 
   const initialFavoriteButtons = document.querySelectorAll(".favourite-btn");
@@ -284,8 +307,7 @@ function handleProductSearch(form, csrfToken, wasScanned) {
         form.elements.product_name.value = '';
     } else {
         searchProduct(barcode, productName, csrfToken, wasScanned, page = 1);
-        form.elements.barcode.value = ''; 
-        form.elements.product_name.value = '';
+        form.reset();
     }
 }
 
@@ -799,10 +821,7 @@ function updateFavouriteSection(product, is_favourited, csrfToken) {
 }
 
 
-function displaySuggestions(suggestions) {
-  const autocompleteSuggestionsDiv = document.getElementById("autocomplete-suggestions");
-  const productNameInput = document.getElementById("product_name_input");
-
+function displaySuggestions(suggestions, autocompleteSuggestionsDiv, productNameInput) {
   autocompleteSuggestionsDiv.innerHTML = "";
 
   if (!suggestions || suggestions.length === 0) {
@@ -871,4 +890,3 @@ function showToast(message, isSuccess = true) {
         toastElement.remove();
     });
 }
-
