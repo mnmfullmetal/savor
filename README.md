@@ -16,7 +16,7 @@ Savor is a web application designed to revolutionise your kitchen experience by 
 
 ## Distinctiveness and Complexity
 
-Savor satisfies the distinctiveness and complexity requirements by significantly exceeding the scope of any of the previous assignments, with its own unique design and challenges that came with it. Attempting to emulate Icarus, I nearly destroyed myself just the same through my hubris. To my dismay, what was meant to be a cute, 6 week solo project morphed into a 12 week nightmare that had me questioning my sanity and will to live at times. I wish I could say that I have learned my lesson, time will tell. 
+Savor satisfies the distinctiveness and complexity requirements by significantly exceeding the scope of any of the previous assignments, with its own unique design and challenges that came with it. Attempting to emulate Icarus, I nearly destroyed myself through my hubris. To my dismay, what was meant to be a cute, 6 week solo project morphed into a 12 week nightmare that had me questioning my sanity and will to live at times. I wish I could say that I have learned my lesson, time will tell. 
 
 * **Distinctiveness:** Unlike "Commerce" (an e-commerce site) or "Network" (a social media site), Savor is a **data-driven utility application**. Its purpose is not to facilitate transactions between users or to host content like posts. Instead, it acts as a sophisticated personal tool that integrates multiple third-party services (Open Food Facts, Google Gemini) to provide a unique service: intelligent pantry management. While other CS50W projects focus on self-contained systems, Savor is an application focused on external data retrieval, processing, and presentation through intergrated systems..
 
