@@ -272,7 +272,6 @@ To run this application locally, you will need to have Python, Redis, and `pip` 
 
 ## Additional Information
 
-* **Mobile Responsiveness:** Savor was built with mobile design in mind and is fully responsive. All features, including the complex search forms and barcode scanner, are designed to be usable on a mobile device.
 * **Python Dependencies:** All required Python packages are listed in the `requirements.txt` file, as per the project instructions.
 
 
