@@ -2,7 +2,7 @@
 
 Savor is a web application designed to revolutionise your kitchen experience by offering intelligent pantry management, detailed product insights, and personalised recipe suggestions. It connects to the Open Food Facts API for comprehensive product data and uses AI for dynamic recipe generation, all wrapped in a secure, multi-lingual user experience.
 
-
+Video Demo: 
 
 ## Table of Contents
 
@@ -74,7 +74,7 @@ It felt less like software engineering and more like digital archaeology, dustin
 * **Google Gemini AI:** For recipe generation.
 * **DeepL API:** Used during development (via a custom command) to generate `.po` translation files.
 
-### Python ToolingS:
+### Python Tools:
 * **`django-environ`**: For managing environment variables.
 * **`django-ratelmit`**: For server-side request rate limiting.
 * **`django-widget-tweaks`**: For easier template form rendering.
@@ -160,6 +160,9 @@ Savor is designed to be an intuitive and powerful kitchen assistant. Heres a typ
 
 1.  **Account Management:**
     *   **Registration & Login:** New users can register for an account, which automatically creates a personal pantry. The application includes standard login, password change, and password reset functionalities.
+    
+        **Note on Password Reset:** In this local development setup, password reset emails are not sent to an actual inbox. Instead, the reset link is printed to the terminal where the Django development server is running (`Terminal 4` in the setup instructions). This is because `settings.py` uses Django's console email backend via the setting: `EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'`. For a production deployment, this would need to be changed to a real email service (like SendGrid or Mailgun).
+
     *   **Account Deletion:** Users have the option to permanently delete their account and all associated data through the account settings page.
 
 2.  **Personalisation (User Settings):**
@@ -227,7 +230,7 @@ To run this application locally, you will need to have Python, Redis, and `pip` 
     * **Terminal 2: Start Celery Worker**
         ```bash
         celery -A savor worker -l info
-        ```
+        ``` 
     * **Terminal 3: Start Celery Beat Scheduler**
         ```bash
         celery -A savor beat -l info --scheduler redbeat.RedBeatScheduler
@@ -269,5 +272,8 @@ To run this application locally, you will need to have Python, Redis, and `pip` 
 
 ## Additional Information
 
-* **Mobile Responsiveness:** The application was built with mobile design in mind and is fully responsive. All features, including the complex search forms and barcode scanner, are designed to be usable on a mobile device.
+* **Mobile Responsiveness:** Savor was built with mobile design in mind and is fully responsive. All features, including the complex search forms and barcode scanner, are designed to be usable on a mobile device.
 * **Python Dependencies:** All required Python packages are listed in the `requirements.txt` file, as per the project instructions.
+
+
+For a more detailed and complete, step-by-step representation of this application's development lifecycle, please refer to my public GitHub repository here: https://github.com/mnmfullmetal/savor
