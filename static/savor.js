@@ -8,7 +8,7 @@ const config = {
 
 function onScanSuccess(decodedText, decodedResult) {
   console.log(`Code matched = ${decodedText}`, decodedResult);
-  const productSearchForm = document.querySelector("#search-form");
+  const productSearchForm = document.querySelector("#searchForm");
   const csrfToken = productSearchForm.elements.csrfmiddlewaretoken.value;
   productSearchForm.elements.barcode.value = decodedText;
   const wasScanned = true
@@ -44,8 +44,7 @@ function stopScanningAndHide() {
 document.addEventListener("DOMContentLoaded", () => {
 
   const body = document.body;
-  const desktopSidebarToggle = document.getElementById("desktopSidebarToggle");
-  const mobileSidebarToggle = document.getElementById("mobileSidebarToggle");
+  const desktopSidebarToggle = document.getElementById("sidebarToggle");
 
   if (desktopSidebarToggle) {
     const toggleIcon = desktopSidebarToggle.querySelector("i");
@@ -69,18 +68,6 @@ document.addEventListener("DOMContentLoaded", () => {
         toggleIcon.classList.add("bi-box-arrow-in-left");
       }
     });
-  }
-
-  if (mobileSidebarToggle) {
-    const toggleIcon = mobileSidebarToggle.querySelector("i");
-
-    mobileSidebarToggle.addEventListener("click", () => {
-        body.classList.toggle('sidebar-mobile-show');
-
-        toggleIcon.classList.toggle('bi-list');
-        toggleIcon.classList.toggle('bi-x');
-    });
-  }
 
   const accountDropdown = document.getElementById("account-dropdown-item");
   if (accountDropdown) {
@@ -92,37 +79,25 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     });
   }
+}
 
-  function startScanner() {
-        
-    if (!html5QrCode) {
-       html5QrCode = new Html5Qrcode(readerId);
-            
-       document.getElementById("scanner-container").style.display = "flex";
+  const scanButtons = document.querySelectorAll(".scan-button")
+  scanButtons.forEach(button => {
+    button.addEventListener("click", () => {
+     body.classList.add("sidebar-minimized");
+      document.getElementById("sidebarToggle").querySelector("i").classList.remove("bi-box-arrow-in-left");
+      document.getElementById("sidebarToggle").querySelector("i").classList.add("bi-box-arrow-right");
+      startScanner();
+    });
 
-       html5QrCode.start(
-        { facingMode: "environment" },
-        config,
-        onScanSuccess,
-        onScanFailure
-        )
-        .catch((err) => {
-          console.error("Camera failed to start:", err);
-          alert("Camera start failed.");
-          document.getElementById("scanner-container").style.display = "none";
-          html5QrCode = null;
-        });
-    }
-  }
-
-  document.getElementById("scan-button").addEventListener("click", startScanner);
-  document.getElementById("scan-button-desktop").addEventListener("click", startScanner);
+    
+  })
 
   document.getElementById("stop-scanner-btn").addEventListener("click", () => {
         stopScanningAndHide();
     });
 
-  const searchForms = document.querySelectorAll("#search-form, #search-form-desktop");
+  const searchForms = document.querySelectorAll("#searchForm, #searchFormMobile");
   searchForms.forEach(form => {
       const csrfToken = form.elements.csrfmiddlewaretoken.value;
       const productNameInput = form.querySelector("input[name='product_name']");
@@ -159,22 +134,22 @@ document.addEventListener("DOMContentLoaded", () => {
       });
   });
 
-  const csrfToken = document.querySelector("#search-form, #search-form-desktop").elements.csrfmiddlewaretoken.value;
+  const csrfToken = document.querySelector("#searchFormMobile, #searchForm").elements.csrfmiddlewaretoken.value;
 
   const savedBarcode = sessionStorage.getItem("searchBarcode");
   const savedProductName = sessionStorage.getItem("searchProductName");
   const wasScannedString = sessionStorage.getItem("wasScanned");
   
   if (savedBarcode || savedProductName) {
-    const csrfToken = document.querySelector("#search-form, #search-form-desktop").elements.csrfmiddlewaretoken.value;
+    const csrfToken = document.querySelector("#searchForm, #searchFormMobile").elements.csrfmiddlewaretoken.value;
 
     sessionStorage.removeItem("searchBarcode");
     sessionStorage.removeItem("searchProductName");
     sessionStorage.removeItem("searchCsrfToken");
     sessionStorage.removeItem("wasScanned");
 
-    const barcodeInput = document.querySelector("#search-form").elements.barcode;
-    const productNameInput = document.querySelector("#search-form").elements.product_name;
+    const barcodeInput = document.querySelector("#searchForm").elements.barcode;
+    const productNameInput = document.querySelector("#searchForm").elements.product_name;
 
     if (barcodeInput) barcodeInput.value = savedBarcode;
     if (productNameInput) productNameInput.value = savedProductName;
@@ -890,3 +865,25 @@ function showToast(message, isSuccess = true) {
         toastElement.remove();
     });
 }
+
+ function startScanner() {
+        
+    if (!html5QrCode) {
+       html5QrCode = new Html5Qrcode(readerId);
+            
+       document.getElementById("scanner-container").style.display = "flex";
+
+       html5QrCode.start(
+        { facingMode: "environment" },
+        config,
+        onScanSuccess,
+        onScanFailure
+        )
+        .catch((err) => {
+          console.error("Camera failed to start:", err);
+          alert("Camera start failed.");
+          document.getElementById("scanner-container").style.display = "none";
+          html5QrCode = null;
+        });
+    }
+  }

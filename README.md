@@ -173,7 +173,9 @@ Savor is designed to be an intuitive and powerful kitchen assistant. Heres a typ
 
 3.  **Finding & Managing Products:**
     *   **Search:** Users can find products using a simple text search, an advanced search with filters (category, brand, country), or by scanning a product's barcode with their device's camera.
-    *   **Conflict Highlighting:** When viewing search results or favourited products, the application will automatically display prominent warnings if a product conflicts with the user's specified allergies or does not meet their dietary requirements.
+        
+        **Note on Unauthenticated Access:** Basic search functionality is available to all visitors. However, features like adding products to a pantry, favouriting items, viewing the pantry, and receiving AI-generated recipes require user authentication.
+    *   **Conflict Highlighting:** When viewing search results or favourited products as a logged-in user, the application will automatically display prominent warnings if a product conflicts with the user's specified allergies or does not meet their dietary requirements.
     *   **Favourites:** Products can be "favourited" for quick access from the homepage.
 
 4.  **Pantry Management:**

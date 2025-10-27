@@ -21,7 +21,7 @@
 }
 
 .pantry-item{
-    margin: 1rem;
+    margin-top: 1rem;
 }
 
 .horizontal-scroll-container {
@@ -61,7 +61,7 @@
 
    :root {
     --sidebar-margin: 1rem;
-    --sidebar-width: 12vw;
+    --sidebar-width: 15vw;
     --sidebar-minimized-width: 5vw;
     --transition-speed: 0.4s;
     --top-search-bar-height: 70px; 
@@ -92,7 +92,8 @@
 
         .sidebar {
             width: var(--sidebar-width);
-            height: 100vh;
+            height: 100%;
+            min-width: 230px;
             position: fixed;
             top: 0;
             left: 0;
@@ -101,10 +102,13 @@
             transition: width var(--transition-speed) ease-in-out;
             display: flex;
             flex-direction: column;
+            overflow: hidden;
         }
         
         body.sidebar-minimized .sidebar {
             width: var(--sidebar-minimized-width);
+            transition: width var(--transition-speed) ease-in-out;
+            min-width: 70px;
             overflow-x: hidden;
         }
 
@@ -115,7 +119,7 @@
             right: 0;
             height: var(--top-search-bar-height);
             z-index: 1000;
-             background-color: var(--tertiary-green);
+            background-color: var(--tertiary-green);
             border-bottom: 1.5px solid var(--tertiary-green);
             padding: 0 1.5rem;
             display: flex;
@@ -136,6 +140,9 @@
              background-color: var(--neutral-cream);
              color: var(--dark-text);
             min-height: 100vh;
+            min-width: 90%;
+            margin-left: var(--sidebar-minimized-width);
+
 
         }
 
@@ -213,6 +220,10 @@
             cursor: pointer;
         }
 
+        #searchFormMobile{
+            display: none;
+        }
+
         .top-search-bar .search-form {
             flex-grow: 1;
             display: flex;
@@ -240,7 +251,6 @@
   box-shadow: none;
   padding: 0;
   background-color: var(--primary-green);
-  margin-left: 1.2rem;
   width: 100%;
 }
 
@@ -277,7 +287,7 @@
 }
 
 .sidebar-divider{
-    margin: 2rem 0 2rem 1rem;
+    margin: 0.5rem 0 0.5rem 1rem;
     border-width: 1.5px;
     border-color: var(--tertiary-green);
     opacity:0.75;
@@ -434,68 +444,64 @@ padding: 0.6rem 1.5rem 0.6rem 1rem;
     background-color: #f8f9fa; 
 }
 
-@media (max-width: 768px) {
+
+@media (max-width: 1025px){
+
+    .nav-greeting {
+        display: none;
+    }
+}
+
+@media (max-width: 769px){
+
     :root {
-        --sidebar-width: 250px; 
+        --sidebar-width: 200px; 
     }
 
-    body {
-        margin-left: 0;
-        padding-top: 0; 
+    body{
+        padding-top: 0;
+    }
+   
+
+    .top-search-bar{
+        display: none;
     }
 
-    .page-wrapper {
-        transform: translateX(0);
-    }
-
-    body.sidebar-mobile-show .page-wrapper {
-        transform: translateX(var(--sidebar-width));
-    }
-
-    .sidebar {
+    .sidebar{
         width: var(--sidebar-width);
-        transform: translateX(0);
-        transform: translateX(calc(-1 * var(--sidebar-width)));
-        transition: transform var(--transition-speed) ease-in-out;
+        min-width: var(--sidebar-width);
     }
 
-    .sidebar-mobile-show .sidebar {
-        transform: translateX(0);
+    #searchFormMobile{
+       display: block;
+       margin: 10px;
     }
 
-    .mobile-toggle-button {
-        position: fixed;
-        top: 10px;
-        left: 10px;
-        z-index: 1060; 
-        color: var(--dark-text);
-        transition: transform var(--transition-speed) ease-in-out;
+    body.sidebar-minimized #searchFormMobile{
+        display: none;
+
     }
 
-    body.sidebar-mobile-show .mobile-toggle-button {
-        transform: translateX(var(--sidebar-width));
-    }
-    body.sidebar-minimized .sidebar {
-        transform: translateX(calc(-1 * var(--sidebar-width)));
+    #productNameInputMobile{
+        margin-bottom: 0.5rem;
     }
 
-    body.sidebar-minimized {
-        margin-left: 0;
+
+    
+    body.sidebar-minimized .sidebar{
+        background: transparent;
     }
 
-    .sidebar .search-form {
-        display: flex;
-        flex-direction: column;
-        gap: 0.75rem;
+    body.sidebar-minimized .navbar-nav{
+        display: none;
     }
 
-    .sidebar .search-form .form-control,
-    .sidebar .search-form .btn {
-        max-width: 100%;
-        width: 100%;
+    .sidebar .nav-item .dropdown-item{
+        margin-top: 0.4rem;
     }
-
-    .sidebar .navbar-brand {
-        font-size: 1.25rem; 
+    
 }
-}
+
+
+
+
