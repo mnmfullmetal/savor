@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-10-28 07:32+0000\n"
+"POT-Creation-Date: 2025-10-28 11:37+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -595,22 +595,16 @@ msgid "Dietary Requirements"
 msgstr "المتطلبات الغذائية"
 
 #: users/forms.py:69
-#, fuzzy
-#| msgid "Enable scan-to-add in pantry"
 msgid "Enable scan-to-add"
-msgstr "تمكين المسح الضوئي للإضافة في المخزن"
+msgstr "تمكين المسح الضوئي للإضافة"
 
 #: users/forms.py:70
-#, fuzzy
-#| msgid "Display Nutri-Score on products"
 msgid "Display Nutri-Score"
-msgstr "عرض Nutri-Score على المنتجات"
+msgstr "عرض نيوتري سكور"
 
 #: users/forms.py:71
-#, fuzzy
-#| msgid "Display Eco-Score on products"
 msgid "Display Eco-Score"
-msgstr "عرض النتيجة البيئية على المنتجات"
+msgstr "عرض النتيجة البيئية"
 
 #: users/forms.py:72
 msgid "Enable country-localised results"
@@ -674,8 +668,7 @@ msgstr "حفظ الإعدادات"
 #: users/templates/users/register.html:60
 #, python-format
 msgid "Already have an account? <a href=\"%(login_url)s\">Log in here</a>."
-msgstr ""
-"هل لديك حساب بالفعل؟ <a href=\"%(login_url)s\">تسجيل الدخول هنا</a>."
+msgstr "هل لديك حساب بالفعل؟ <a href=\"%(login_url)s\">تسجيل الدخول هنا</a>."
 
 #~ msgid "Prioritise local results in search"
 #~ msgstr "إعطاء الأولوية للنتائج المحلية في البحث"

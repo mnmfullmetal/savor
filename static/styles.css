@@ -71,7 +71,7 @@
     --primary-blue: #2ab0f8;
     --primary-orange: #F4A261;
     --primary-burgundy: #A25E5C;
-    --neutral-cream: #f3f1e7;
+    --neutral-cream: #d6d1b7;
     --dark-text: #2c2c2c;
     --light-text: #fdfdfd;
     
@@ -438,6 +438,10 @@ padding: 0.6rem 1.5rem 0.6rem 1rem;
 
 #autocomplete-suggestions .list-group-item:hover {
     background-color: #f8f9fa; 
+}
+
+.form-switch{
+    padding-left: 1.5rem;
 }
 
 

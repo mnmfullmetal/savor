@@ -6,7 +6,7 @@ from .models import UserSettings, Allergen, DietaryRequirement
 from django.http import JsonResponse, HttpResponseRedirect
 from django.urls import reverse
 from django.contrib.auth.decorators import login_required
-from savor.utils import get_cached_json, LANGUAGE_CODE_MAP, COUNTRY_CODE_MAP, get_supported_language_codes
+from savor.utils import get_cached_json, LANGUAGE_CODE_MAP
 from django.contrib.auth import get_user_model
 
 User = get_user_model()

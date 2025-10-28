@@ -24,7 +24,7 @@ class UserSettingsInline(admin.StackedInline):
     fieldsets = (
         (None, {
             'fields': (
-                ('language_preference', 'get_only_localised_results'),
+                ('language_preference', 'prioritise_local_results'),
                 ('show_nutri_score', 'show_eco_score'),
             )
         }),

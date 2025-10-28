@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-10-28 07:32+0000\n"
+"POT-Creation-Date: 2025-10-28 11:37+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -584,22 +584,16 @@ msgid "Dietary Requirements"
 msgstr "必要な食事"
 
 #: users/forms.py:69
-#, fuzzy
-#| msgid "Enable scan-to-add in pantry"
 msgid "Enable scan-to-add"
-msgstr "パントリーでスキャンして追加できるようにする"
+msgstr "スキャン・トゥ・アッドを有効にする"
 
 #: users/forms.py:70
-#, fuzzy
-#| msgid "Display Nutri-Score on products"
 msgid "Display Nutri-Score"
-msgstr "製品にニュートリスコアを表示する"
+msgstr "ニュートリスコアの表示"
 
 #: users/forms.py:71
-#, fuzzy
-#| msgid "Display Eco-Score on products"
 msgid "Display Eco-Score"
-msgstr "製品にエコスコアを表示"
+msgstr "エコスコア表示"
 
 #: users/forms.py:72
 msgid "Enable country-localised results"

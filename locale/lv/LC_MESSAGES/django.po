@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-10-28 07:32+0000\n"
+"POT-Creation-Date: 2025-10-28 11:37+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -599,22 +599,16 @@ msgid "Dietary Requirements"
 msgstr "Uztura prasības"
 
 #: users/forms.py:69
-#, fuzzy
-#| msgid "Enable scan-to-add in pantry"
 msgid "Enable scan-to-add"
-msgstr "Skenēšanas pievienošanas iespējošana pieliekamajā"
+msgstr "Skenēšanas pievienošanas iespējošana"
 
 #: users/forms.py:70
-#, fuzzy
-#| msgid "Display Nutri-Score on products"
 msgid "Display Nutri-Score"
-msgstr "Nutri-Score rādīšana uz produktiem"
+msgstr "Displejs Nutri-Score"
 
 #: users/forms.py:71
-#, fuzzy
-#| msgid "Display Eco-Score on products"
 msgid "Display Eco-Score"
-msgstr "Ekoloģiskā vērtējuma rādīšana uz produktiem"
+msgstr "Ekoloģiskā rezultāta rādīšana"
 
 #: users/forms.py:72
 msgid "Enable country-localised results"

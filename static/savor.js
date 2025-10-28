@@ -561,28 +561,15 @@ function displaySearchResults(container, data, csrfToken, searchParams, searchFu
 
 
 function addProduct(productIdToAdd, quantityInput, csrfToken, productCard=null) {
-  if (isNaN(quantityInput) || parseFloat(quantityInput) <= 0) {
-    if (productCard){
-      const cardBody = productCard.querySelector(".card-body");
-      let messageElement = cardBody.querySelector(".alert");
-      if (!messageElement) {
-      messageElement = document.createElement("div");
-      cardBody.appendChild(messageElement);
-    }
-      messageElement.className = "alert alert-success mt-2 py-1";
-      messageElement.textContent = errorMessage;
-      setTimeout(() => {
-      messageElement.remove();
-      }, 3000);
-    } else {
-      showToast(errorMessage, false);
-    } 
+  const quantity = parseFloat(quantityInput); 
+  if (isNaN(quantity) || quantity <= 0) {
+    showToast("Invalid quantity. Please enter a number greater than 0.", false);
     return;
   }
   
   const addProductRequestData = {
     product_id: productIdToAdd,
-    quantityToAdd: quantityInput,
+    quantityToAdd: quantity,
   };
 
   fetch(`/pantry/add_product`, {
@@ -601,39 +588,13 @@ function addProduct(productIdToAdd, quantityInput, csrfToken, productCard=null) 
       return response.json();
     })
     .then((data) => {
-      if(productCard){
-        const cardBody = productCard.querySelector(".card-body");
-        let messageElement = cardBody.querySelector(".alert");
-        if (!messageElement) {
-        messageElement = document.createElement("div");
-        cardBody.appendChild(messageElement);
-      }
-        messageElement.className = `alert mt-2 py-1 ${
-        data.success ? "alert-success" : "alert-danger"
-      }`;
-        messageElement.innerHTML = `${data.message}`;
-        setTimeout(() => {
-        messageElement.remove();
-      }, 3000);
-      } else {
-      showToast(data.message, data.success);
-
-      }
-     
+     showToast(data.message, data.success);
     })
     .catch((error) => {
       console.error("Fetch network error:", error);
-      const cardBody = productCard.querySelector(".card-body");
-      let messageElement = cardBody.querySelector(".alert");
-      if (!messageElement) {
-        messageElement = document.createElement("div");
-        cardBody.appendChild(messageElement);
+      if (error.message !== "Redirecting to login page...") {
+        showToast("A network error occurred.", false);
       }
-      messageElement.className = "alert alert-danger mt-2 py-1";
-      messageElement.innerHTML = "A network error occurred.";
-      setTimeout(() => {
-        messageElement.remove();
-      }, 3000);
     });
 }
 
@@ -673,11 +634,11 @@ function favouriteProduct(productIdToFav, csrfToken, clickedButton) {
 function updateFavouriteSection(product, is_favourited, csrfToken) {
 
   const favouriteSection = document.querySelector(".product-cards-wrapper");
-  const emptyMessage = favouriteSection.querySelector("p.text-muted");
+  const emptyMessageContainer = favouriteSection.querySelector(".product-card-wrapper.text-center");
 
   if (is_favourited) {
-    if (emptyMessage) {
-      emptyMessage.remove();
+    if (emptyMessageContainer) {
+      emptyMessageContainer.remove();
     }
     
     const hasAllergenConflict = product.has_allergen_conflict;
@@ -692,7 +653,7 @@ function updateFavouriteSection(product, is_favourited, csrfToken) {
         cardClasses = "card h-100 shadow-lg border-danger border-3"; 
         safetyAlertsHtml += `
             <div class="alert alert-danger p-1 mb-2 small" role="alert">
-            <strong><i class="bi bi-exclamation-circle"></i>  WARNING : </strong> Contains user-specified allergens: ${conflictingTagsList}
+            <strong><i class="bi bi-exclamation-circle"></i>  WARNING: </strong> Contains user-specified allergens: ${conflictingTagsList}
             </div>`;
     }
             
@@ -700,7 +661,7 @@ function updateFavouriteSection(product, is_favourited, csrfToken) {
         const missingTagsList = missingTags.map(tag => `<code>${tag.replace(/_/g, ' ').toUpperCase()}</code>`).join(', ');
         safetyAlertsHtml += `
           <div class="alert alert-warning p-1 mb-2 small" role="alert">
-          <strong><i class="bi bi-question-circle"></i>  POSSIBLE MISMATCH : </strong> Missing dietary requirements: ${missingTagsList}.
+          <strong><i class="bi bi-question-circle"></i>  POSSIBLE MISMATCH: </strong> Missing dietary requirements: ${missingTagsList}.
           </div>`;
     }
 
