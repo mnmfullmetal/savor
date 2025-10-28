@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-10-12 14:39+0000\n"
+"POT-Creation-Date: 2025-10-28 07:32+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -54,7 +54,8 @@ msgstr "Seleccione una marca..."
 msgid "Clear Filters"
 msgstr "Limpiar filtros"
 
-#: pantry/templates/pantry/index.html:51 templates/base.html:34
+#: pantry/templates/pantry/index.html:51 templates/base.html:37
+#: templates/base.html:138
 msgid "Search"
 msgstr "Buscar en"
 
@@ -79,22 +80,21 @@ msgid "Favourites"
 msgstr "Favoritos"
 
 #: pantry/templates/pantry/index.html:101
-#: pantry/templates/pantry/pantry.html:71
+#: pantry/templates/pantry/pantry.html:72
 msgid "WARNING"
 msgstr "ADVERTENCIA"
 
 #: pantry/templates/pantry/index.html:101
-#: pantry/templates/pantry/pantry.html:71
 msgid "Contains user-specified allergens:"
 msgstr "Contiene alérgenos especificados por el usuario:"
 
 #: pantry/templates/pantry/index.html:110
-#: pantry/templates/pantry/pantry.html:80
+#: pantry/templates/pantry/pantry.html:81
 msgid "POSSIBLE MISMATCH"
 msgstr "POSIBLE DESAJUSTE"
 
 #: pantry/templates/pantry/index.html:110
-#: pantry/templates/pantry/pantry.html:80
+#: pantry/templates/pantry/pantry.html:81
 msgid "Missing dietary requirements:"
 msgstr "Faltan requisitos dietéticos:"
 
@@ -124,7 +124,7 @@ msgstr ""
 "Aún no has marcado ningún producto como favorito. ¡Empieza a explorar hoy "
 "mismo!"
 
-#: pantry/templates/pantry/pantry.html:5 templates/base.html:63
+#: pantry/templates/pantry/pantry.html:5 templates/base.html:61
 msgid "Pantry"
 msgstr "Despensa"
 
@@ -155,9 +155,15 @@ msgstr "Artículos de despensa"
 msgid "Product Image"
 msgstr "Imagen del producto"
 
-#: pantry/templates/pantry/pantry.html:67
+#: pantry/templates/pantry/pantry.html:68
 msgid "No Name"
 msgstr "Sin nombre"
+
+#: pantry/templates/pantry/pantry.html:72
+#, fuzzy
+#| msgid "Contains user-specified allergens:"
+msgid "Contains allergens:"
+msgstr "Contiene alérgenos especificados por el usuario:"
 
 #: pantry/templates/pantry/pantry.html:91
 msgid "Quantity:"
@@ -171,11 +177,11 @@ msgstr "Tamaño del producto:"
 msgid "Expires:"
 msgstr "Caduca:"
 
-#: pantry/templates/pantry/pantry.html:116
+#: pantry/templates/pantry/pantry.html:117
 msgid "Your pantry is empty! Add some products to get started."
 msgstr "¡Tu despensa está vacía! Añade algunos productos para empezar."
 
-#: recipes/templates/recipes/recipes.html:6 templates/base.html:70
+#: recipes/templates/recipes/recipes.html:6 templates/base.html:68
 msgid "Recipes"
 msgstr "Recetas"
 
@@ -232,190 +238,196 @@ msgstr "Borrar receta"
 msgid "No Saved Recipes"
 msgstr "No hay recetas guardadas"
 
-#: savor/settings.py:138
+#: savor/settings.py:141
+#, fuzzy
+#| msgid "Polish"
+msgid "English"
+msgstr "Polaco"
+
+#: savor/settings.py:142
 msgid "Arabic"
 msgstr "Árabe"
 
-#: savor/settings.py:139
+#: savor/settings.py:143
 msgid "Bulgarian"
 msgstr "Búlgaro"
 
-#: savor/settings.py:140
+#: savor/settings.py:144
 msgid "Chinese"
 msgstr "Chino"
 
-#: savor/settings.py:141
+#: savor/settings.py:145
 msgid "Czech"
 msgstr "Checa"
 
-#: savor/settings.py:142
+#: savor/settings.py:146
 msgid "Danish"
 msgstr "Danés"
 
-#: savor/settings.py:143
+#: savor/settings.py:147
 msgid "Dutch"
 msgstr "Holandés"
 
-#: savor/settings.py:144
+#: savor/settings.py:148
 msgid "Estonian"
 msgstr "Estonia"
 
-#: savor/settings.py:145
+#: savor/settings.py:149
 msgid "Finnish"
 msgstr "En finés"
 
-#: savor/settings.py:146
+#: savor/settings.py:150
 msgid "French"
 msgstr "Francés"
 
-#: savor/settings.py:147
+#: savor/settings.py:151
 msgid "German"
 msgstr "Alemán"
 
-#: savor/settings.py:148
+#: savor/settings.py:152
 msgid "Greek"
 msgstr "Griego"
 
-#: savor/settings.py:149
+#: savor/settings.py:153
 msgid "Hebrew"
 msgstr "Hebreo"
 
-#: savor/settings.py:150
+#: savor/settings.py:154
 msgid "Hungarian"
 msgstr "Húngaro"
 
-#: savor/settings.py:151
+#: savor/settings.py:155
 msgid "Indonesian"
 msgstr "Indonesia"
 
-#: savor/settings.py:152
+#: savor/settings.py:156
 msgid "Italian"
 msgstr "Italiano"
 
-#: savor/settings.py:153
+#: savor/settings.py:157
 msgid "Japanese"
 msgstr "Japonés"
 
-#: savor/settings.py:154
+#: savor/settings.py:158
 msgid "Korean"
 msgstr "Coreano"
 
-#: savor/settings.py:155
+#: savor/settings.py:159
 msgid "Latvian"
 msgstr "Letón"
 
-#: savor/settings.py:156
+#: savor/settings.py:160
 msgid "Lithuanian"
 msgstr "Lituania"
 
-#: savor/settings.py:157
+#: savor/settings.py:161
 msgid "Norwegian Bokmål"
 msgstr "Noruego Bokmål"
 
-#: savor/settings.py:158
+#: savor/settings.py:162
 msgid "Polish"
 msgstr "Polaco"
 
-#: savor/settings.py:159
+#: savor/settings.py:163
 msgid "Portuguese"
 msgstr "Portugués"
 
-#: savor/settings.py:160
+#: savor/settings.py:164
 msgid "Romanian"
 msgstr "Rumano"
 
-#: savor/settings.py:161
+#: savor/settings.py:165
 msgid "Russian"
 msgstr "Ruso"
 
-#: savor/settings.py:162
+#: savor/settings.py:166
 msgid "Slovak"
 msgstr "Eslovaquia"
 
-#: savor/settings.py:163
+#: savor/settings.py:167
 msgid "Slovenian"
 msgstr "Eslovenia"
 
-#: savor/settings.py:164
+#: savor/settings.py:168
 msgid "Spanish"
 msgstr "Español"
 
-#: savor/settings.py:165
+#: savor/settings.py:169
 msgid "Swedish"
 msgstr "Sueco"
 
-#: savor/settings.py:166
+#: savor/settings.py:170
 msgid "Thai"
 msgstr "Tailandés"
 
-#: savor/settings.py:167
+#: savor/settings.py:171
 msgid "Turkish"
 msgstr "Turco"
 
-#: savor/settings.py:168
+#: savor/settings.py:172
 msgid "Ukrainian"
 msgstr "Ucraniano"
 
-#: savor/settings.py:169
+#: savor/settings.py:173
 msgid "Vietnamese"
 msgstr "Vietnamita"
 
-#: templates/base.html:22
-msgid "Welcome"
-msgstr "Bienvenido"
-
-#: templates/base.html:29
+#: templates/base.html:31 templates/base.html:133
 msgid "Search Product by ingredient"
 msgstr "Buscar producto por ingrediente"
 
-#: templates/base.html:32
+#: templates/base.html:34 templates/base.html:136
 msgid "Search Product by Barcode"
 msgstr "Buscar producto por código de barras"
 
-#: templates/base.html:37
+#: templates/base.html:41 templates/base.html:141
 msgid "Scan"
 msgstr "Escanear"
 
-#: templates/base.html:56
+#: templates/base.html:54
 msgid "Home"
 msgstr "Inicio"
 
-#: templates/base.html:79
+#: templates/base.html:77
 msgid "Settings"
 msgstr "Ajustes"
 
-#: templates/base.html:85
+#: templates/base.html:83
 msgid "Account"
 msgstr "Cuenta"
 
-#: templates/base.html:94
+#: templates/base.html:92
 msgid "Log Out"
 msgstr "Cerrar sesión"
 
-#: templates/base.html:107
+#: templates/base.html:104
 msgid "Log On"
 msgstr "Iniciar sesión"
 
-#: templates/base.html:113 users/templates/users/register.html:57
+#: templates/base.html:110 users/templates/users/register.html:57
 msgid "Register"
 msgstr "Regístrese en"
 
-#: templates/base.html:123
+#: templates/base.html:118
 msgid "Stop Scanning"
 msgstr "Detener la exploración"
 
-#: templates/registration/login.html:5 templates/registration/login.html:9
-#: templates/registration/login.html:37
+#: templates/base.html:126
+msgid "Welcome"
+msgstr "Bienvenido"
+
+#: templates/registration/login.html:5 templates/registration/login.html:10
+#: templates/registration/login.html:38
 msgid "Log In"
 msgstr "Iniciar sesión"
 
-#: templates/registration/login.html:40
+#: templates/registration/login.html:41
 #, python-format
 msgid "Don't have an account? <a href=\"%('register_url')s\">Register here</a>."
 msgstr ""
 "¿No tienes una cuenta? <a href=\"%('register_url')s\">Regístrese aquí</a>."
 
-#: templates/registration/login.html:41
+#: templates/registration/login.html:42
 msgid "Forgot password?"
 msgstr "¿Ha olvidado su contraseña?"
 
@@ -576,7 +588,7 @@ msgid "Required. 150 characters or fewer. Letters, digits and @/./+/-/_ only."
 msgstr ""
 "Obligatorio. 150 caracteres o menos. Sólo letras, dígitos y @/./+/-/_."
 
-#: users/forms.py:65 users/templates/users/account_settings.html:68
+#: users/forms.py:65
 msgid "Language Preference"
 msgstr "Preferencia lingüística"
 
@@ -584,29 +596,35 @@ msgstr "Preferencia lingüística"
 msgid "Country"
 msgstr "País"
 
-#: users/forms.py:67 users/templates/users/account_settings.html:90
+#: users/forms.py:67 users/templates/users/account_settings.html:85
 msgid "Allergens"
 msgstr "Alérgenos"
 
-#: users/forms.py:68 users/templates/users/account_settings.html:78
+#: users/forms.py:68 users/templates/users/account_settings.html:73
 msgid "Dietary Requirements"
 msgstr "Necesidades dietéticas"
 
 #: users/forms.py:69
-msgid "Enable scan-to-add in pantry"
+#, fuzzy
+#| msgid "Enable scan-to-add in pantry"
+msgid "Enable scan-to-add"
 msgstr "Activar el escaneado para añadir en la despensa"
 
 #: users/forms.py:70
-msgid "Display Nutri-Score on products"
+#, fuzzy
+#| msgid "Display Nutri-Score on products"
+msgid "Display Nutri-Score"
 msgstr "Mostrar Nutri-Score en los productos"
 
 #: users/forms.py:71
-msgid "Display Eco-Score on products"
+#, fuzzy
+#| msgid "Display Eco-Score on products"
+msgid "Display Eco-Score"
 msgstr "Mostrar la puntuación ecológica en los productos"
 
 #: users/forms.py:72
-msgid "Prioritise local results in search"
-msgstr "Dar prioridad a los resultados locales en las búsquedas"
+msgid "Enable country-localised results"
+msgstr "Resultados localizados por países"
 
 #: users/templates/users/account_settings.html:6
 msgid "Account Settings"
@@ -655,7 +673,11 @@ msgstr "Fecha de incorporación"
 msgid "User preferences"
 msgstr "Preferencias del usuario"
 
-#: users/templates/users/account_settings.html:115
+#: users/templates/users/account_settings.html:68
+msgid "Language"
+msgstr "Idioma"
+
+#: users/templates/users/account_settings.html:116
 msgid "Save Settings"
 msgstr "Guardar ajustes"
 
@@ -663,3 +685,6 @@ msgstr "Guardar ajustes"
 #, python-format
 msgid "Already have an account? <a href=\"%(login_url)s\">Log in here</a>."
 msgstr "¿Ya tienes una cuenta? <a href=\"%(login_url)s\">Entra aquí</a>."
+
+#~ msgid "Prioritise local results in search"
+#~ msgstr "Dar prioridad a los resultados locales en las búsquedas"

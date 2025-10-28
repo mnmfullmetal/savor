@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-10-12 14:39+0000\n"
+"POT-Creation-Date: 2025-10-28 07:32+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -54,7 +54,8 @@ msgstr "ブランドを選択..."
 msgid "Clear Filters"
 msgstr "クリアフィルター"
 
-#: pantry/templates/pantry/index.html:51 templates/base.html:34
+#: pantry/templates/pantry/index.html:51 templates/base.html:37
+#: templates/base.html:138
 msgid "Search"
 msgstr "検索"
 
@@ -79,22 +80,21 @@ msgid "Favourites"
 msgstr "お気に入り"
 
 #: pantry/templates/pantry/index.html:101
-#: pantry/templates/pantry/pantry.html:71
+#: pantry/templates/pantry/pantry.html:72
 msgid "WARNING"
 msgstr "警告"
 
 #: pantry/templates/pantry/index.html:101
-#: pantry/templates/pantry/pantry.html:71
 msgid "Contains user-specified allergens:"
 msgstr "ユーザー指定のアレルゲンを含む："
 
 #: pantry/templates/pantry/index.html:110
-#: pantry/templates/pantry/pantry.html:80
+#: pantry/templates/pantry/pantry.html:81
 msgid "POSSIBLE MISMATCH"
 msgstr "ミスマッチの可能性"
 
 #: pantry/templates/pantry/index.html:110
-#: pantry/templates/pantry/pantry.html:80
+#: pantry/templates/pantry/pantry.html:81
 msgid "Missing dietary requirements:"
 msgstr "必要な食事がない："
 
@@ -122,7 +122,7 @@ msgstr "お気に入りを削除"
 msgid "You haven't favourited any products yet. Start exploring today!"
 msgstr "まだ商品をお気に入りに入れていません。今すぐ検索"
 
-#: pantry/templates/pantry/pantry.html:5 templates/base.html:63
+#: pantry/templates/pantry/pantry.html:5 templates/base.html:61
 msgid "Pantry"
 msgstr "パントリー"
 
@@ -151,9 +151,15 @@ msgstr "パントリーのアイテム"
 msgid "Product Image"
 msgstr "商品画像"
 
-#: pantry/templates/pantry/pantry.html:67
+#: pantry/templates/pantry/pantry.html:68
 msgid "No Name"
 msgstr "名前なし"
+
+#: pantry/templates/pantry/pantry.html:72
+#, fuzzy
+#| msgid "Contains user-specified allergens:"
+msgid "Contains allergens:"
+msgstr "ユーザー指定のアレルゲンを含む："
 
 #: pantry/templates/pantry/pantry.html:91
 msgid "Quantity:"
@@ -167,11 +173,11 @@ msgstr "製品サイズ"
 msgid "Expires:"
 msgstr "期限切れ："
 
-#: pantry/templates/pantry/pantry.html:116
+#: pantry/templates/pantry/pantry.html:117
 msgid "Your pantry is empty! Add some products to get started."
 msgstr "パントリーは空っぽです！商品を追加して始めましょう。"
 
-#: recipes/templates/recipes/recipes.html:6 templates/base.html:70
+#: recipes/templates/recipes/recipes.html:6 templates/base.html:68
 msgid "Recipes"
 msgstr "レシピ"
 
@@ -228,189 +234,195 @@ msgstr "レシピ削除"
 msgid "No Saved Recipes"
 msgstr "保存されたレシピがない"
 
-#: savor/settings.py:138
+#: savor/settings.py:141
+#, fuzzy
+#| msgid "Polish"
+msgid "English"
+msgstr "ポーランド語"
+
+#: savor/settings.py:142
 msgid "Arabic"
 msgstr "アラビア語"
 
-#: savor/settings.py:139
+#: savor/settings.py:143
 msgid "Bulgarian"
 msgstr "ブルガリア語"
 
-#: savor/settings.py:140
+#: savor/settings.py:144
 msgid "Chinese"
 msgstr "中国語"
 
-#: savor/settings.py:141
+#: savor/settings.py:145
 msgid "Czech"
 msgstr "チェコ"
 
-#: savor/settings.py:142
+#: savor/settings.py:146
 msgid "Danish"
 msgstr "デンマーク語"
 
-#: savor/settings.py:143
+#: savor/settings.py:147
 msgid "Dutch"
 msgstr "オランダ語"
 
-#: savor/settings.py:144
+#: savor/settings.py:148
 msgid "Estonian"
 msgstr "エストニア語"
 
-#: savor/settings.py:145
+#: savor/settings.py:149
 msgid "Finnish"
 msgstr "フィンランド語"
 
-#: savor/settings.py:146
+#: savor/settings.py:150
 msgid "French"
 msgstr "フランス語"
 
-#: savor/settings.py:147
+#: savor/settings.py:151
 msgid "German"
 msgstr "ドイツ語"
 
-#: savor/settings.py:148
+#: savor/settings.py:152
 msgid "Greek"
 msgstr "ギリシャ語"
 
-#: savor/settings.py:149
+#: savor/settings.py:153
 msgid "Hebrew"
 msgstr "ヘブライ語"
 
-#: savor/settings.py:150
+#: savor/settings.py:154
 msgid "Hungarian"
 msgstr "ハンガリー語"
 
-#: savor/settings.py:151
+#: savor/settings.py:155
 msgid "Indonesian"
 msgstr "インドネシア語"
 
-#: savor/settings.py:152
+#: savor/settings.py:156
 msgid "Italian"
 msgstr "イタリア語"
 
-#: savor/settings.py:153
+#: savor/settings.py:157
 msgid "Japanese"
 msgstr "日本語"
 
-#: savor/settings.py:154
+#: savor/settings.py:158
 msgid "Korean"
 msgstr "韓国語"
 
-#: savor/settings.py:155
+#: savor/settings.py:159
 msgid "Latvian"
 msgstr "ラトビア語"
 
-#: savor/settings.py:156
+#: savor/settings.py:160
 msgid "Lithuanian"
 msgstr "リトアニア語"
 
-#: savor/settings.py:157
+#: savor/settings.py:161
 msgid "Norwegian Bokmål"
 msgstr "ノルウェー語ブークモール"
 
-#: savor/settings.py:158
+#: savor/settings.py:162
 msgid "Polish"
 msgstr "ポーランド語"
 
-#: savor/settings.py:159
+#: savor/settings.py:163
 msgid "Portuguese"
 msgstr "ポルトガル語"
 
-#: savor/settings.py:160
+#: savor/settings.py:164
 msgid "Romanian"
 msgstr "ルーマニア語"
 
-#: savor/settings.py:161
+#: savor/settings.py:165
 msgid "Russian"
 msgstr "ロシア語"
 
-#: savor/settings.py:162
+#: savor/settings.py:166
 msgid "Slovak"
 msgstr "スロバキア語"
 
-#: savor/settings.py:163
+#: savor/settings.py:167
 msgid "Slovenian"
 msgstr "スロベニア語"
 
-#: savor/settings.py:164
+#: savor/settings.py:168
 msgid "Spanish"
 msgstr "スペイン語"
 
-#: savor/settings.py:165
+#: savor/settings.py:169
 msgid "Swedish"
 msgstr "スウェーデン"
 
-#: savor/settings.py:166
+#: savor/settings.py:170
 msgid "Thai"
 msgstr "タイ"
 
-#: savor/settings.py:167
+#: savor/settings.py:171
 msgid "Turkish"
 msgstr "トルコ語"
 
-#: savor/settings.py:168
+#: savor/settings.py:172
 msgid "Ukrainian"
 msgstr "ウクライナ語"
 
-#: savor/settings.py:169
+#: savor/settings.py:173
 msgid "Vietnamese"
 msgstr "ベトナム語"
 
-#: templates/base.html:22
-msgid "Welcome"
-msgstr "ようこそ"
-
-#: templates/base.html:29
+#: templates/base.html:31 templates/base.html:133
 msgid "Search Product by ingredient"
 msgstr "成分で商品を探す"
 
-#: templates/base.html:32
+#: templates/base.html:34 templates/base.html:136
 msgid "Search Product by Barcode"
 msgstr "バーコードで製品を検索"
 
-#: templates/base.html:37
+#: templates/base.html:41 templates/base.html:141
 msgid "Scan"
 msgstr "スキャン"
 
-#: templates/base.html:56
+#: templates/base.html:54
 msgid "Home"
 msgstr "ホーム"
 
-#: templates/base.html:79
+#: templates/base.html:77
 msgid "Settings"
 msgstr "設定"
 
-#: templates/base.html:85
+#: templates/base.html:83
 msgid "Account"
 msgstr "アカウント"
 
-#: templates/base.html:94
+#: templates/base.html:92
 msgid "Log Out"
 msgstr "ログアウト"
 
-#: templates/base.html:107
+#: templates/base.html:104
 msgid "Log On"
 msgstr "ログイン"
 
-#: templates/base.html:113 users/templates/users/register.html:57
+#: templates/base.html:110 users/templates/users/register.html:57
 msgid "Register"
 msgstr "登録"
 
-#: templates/base.html:123
+#: templates/base.html:118
 msgid "Stop Scanning"
 msgstr "スキャン停止"
 
-#: templates/registration/login.html:5 templates/registration/login.html:9
-#: templates/registration/login.html:37
+#: templates/base.html:126
+msgid "Welcome"
+msgstr "ようこそ"
+
+#: templates/registration/login.html:5 templates/registration/login.html:10
+#: templates/registration/login.html:38
 msgid "Log In"
 msgstr "ログイン"
 
-#: templates/registration/login.html:40
+#: templates/registration/login.html:41
 #, python-format
 msgid "Don't have an account? <a href=\"%('register_url')s\">Register here</a>."
 msgstr "アカウントをお持ちでないですか？<a href=\"%('register_url')s\">登録はこちら</a>."
 
-#: templates/registration/login.html:41
+#: templates/registration/login.html:42
 msgid "Forgot password?"
 msgstr "パスワードをお忘れですか？"
 
@@ -555,7 +567,7 @@ msgstr "電子メール"
 msgid "Required. 150 characters or fewer. Letters, digits and @/./+/-/_ only."
 msgstr "必須150文字以内。アルファベット、数字、@/./+/-/_のみ。"
 
-#: users/forms.py:65 users/templates/users/account_settings.html:68
+#: users/forms.py:65
 msgid "Language Preference"
 msgstr "言語の好み"
 
@@ -563,29 +575,35 @@ msgstr "言語の好み"
 msgid "Country"
 msgstr "国名"
 
-#: users/forms.py:67 users/templates/users/account_settings.html:90
+#: users/forms.py:67 users/templates/users/account_settings.html:85
 msgid "Allergens"
 msgstr "アレルゲン"
 
-#: users/forms.py:68 users/templates/users/account_settings.html:78
+#: users/forms.py:68 users/templates/users/account_settings.html:73
 msgid "Dietary Requirements"
 msgstr "必要な食事"
 
 #: users/forms.py:69
-msgid "Enable scan-to-add in pantry"
+#, fuzzy
+#| msgid "Enable scan-to-add in pantry"
+msgid "Enable scan-to-add"
 msgstr "パントリーでスキャンして追加できるようにする"
 
 #: users/forms.py:70
-msgid "Display Nutri-Score on products"
+#, fuzzy
+#| msgid "Display Nutri-Score on products"
+msgid "Display Nutri-Score"
 msgstr "製品にニュートリスコアを表示する"
 
 #: users/forms.py:71
-msgid "Display Eco-Score on products"
+#, fuzzy
+#| msgid "Display Eco-Score on products"
+msgid "Display Eco-Score"
 msgstr "製品にエコスコアを表示"
 
 #: users/forms.py:72
-msgid "Prioritise local results in search"
-msgstr "ローカル検索結果を優先する"
+msgid "Enable country-localised results"
+msgstr "国別の結果を可能にする"
 
 #: users/templates/users/account_settings.html:6
 msgid "Account Settings"
@@ -634,7 +652,11 @@ msgstr "入社年月日"
 msgid "User preferences"
 msgstr "ユーザー設定"
 
-#: users/templates/users/account_settings.html:115
+#: users/templates/users/account_settings.html:68
+msgid "Language"
+msgstr "言語"
+
+#: users/templates/users/account_settings.html:116
 msgid "Save Settings"
 msgstr "設定の保存"
 
@@ -642,3 +664,6 @@ msgstr "設定の保存"
 #, python-format
 msgid "Already have an account? <a href=\"%(login_url)s\">Log in here</a>."
 msgstr "すでにアカウントをお持ちですか？<a href=\"%(login_url)s\">ログインはこちら</a>."
+
+#~ msgid "Prioritise local results in search"
+#~ msgstr "ローカル検索結果を優先する"

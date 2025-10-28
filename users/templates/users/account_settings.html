@@ -34,7 +34,7 @@
   </div>
 </div>
 
-<div class="container d-flex justify-content-center">
+<div class="container d-flex justify-content-center" >
   <div class="col-md-6 my-5">
     <div class="card p-4 rounded shadow-lg my-4">
       <h2 class="text-center">{% trans "Account management" %}</h2>
@@ -65,13 +65,8 @@
       </div>
 
       <div class="mb-3">
-        <label for="{{ form.language_preference.id_for_label }}" class="form-label">{% trans "Language Preference" %}</label>
+        <label for="{{ form.language_preference.id_for_label }}" class="form-label">{% trans "Language" %}</label>
         {{ form.language_preference }}
-      </div>
-
-       <div class="form-check form-switch mb-3">
-        {{ form.prioritise_local_results }}
-        <label class="form-check-label" for="{{ form.prioritise_local_results.id_for_label }}">{{ form.prioritise_local_results.label }}</label>
       </div>
 
       <div class="mb-3">
@@ -111,6 +106,12 @@
         {{ form.scan_to_add }}
         <label class="form-check-label" for="{{ form.scan_to_add.id_for_label }}">{{ form.scan_to_add.label }}</label>
       </div>
+
+         <div class="form-check form-switch mb-3">
+        {{ form.prioritise_local_results }}
+        <label class="form-check-label" for="{{ form.prioritise_local_results.id_for_label }}">{{ form.prioritise_local_results.label }}</label>
+      </div>
+
       
       <button type="submit" class="btn btn-primary w-100">{% trans "Save Settings" %}</button>
     </form>

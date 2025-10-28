@@ -83,7 +83,7 @@ function updatePantryList(items, csrfToken){
     let cardClasses = "card h-100 border-0 shadow-sm pantry-item";
 
     const pantryItemWrapper = document.createElement('div');
-    pantryItemWrapper.classList.add('col-12', 'col-sm-6', 'col-md-4', 'col-lg-4', 'mb-4', 'pantry-item-col');
+    pantryItemWrapper.classList.add('col-12', 'col-md-6', 'col-lg-6', 'col-xl-4', 'mb-4', 'pantry-item-col');
 
     if (hasAllergenConflict) {
         const conflictingTagsList = conflictingTags.map(tag => `<code>${tag.replace(/_/g, ' ').toUpperCase()}</code>`).join(', ');

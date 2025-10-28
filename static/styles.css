@@ -62,8 +62,8 @@
    :root {
     --sidebar-margin: 1rem;
     --sidebar-width: 15vw;
-    --sidebar-minimized-width: 5vw;
-    --transition-speed: 0.4s;
+    --sidebar-minimized-width: 6vw;
+    --transition-speed: 0.6s;
     --top-search-bar-height: 70px; 
     --primary-green: #729f75;
     --secondary-green: #67eb72;
@@ -84,6 +84,7 @@
             margin-left: var(--sidebar-width);
             padding-top: var(--top-search-bar-height);
             background-color: var(--neutral-cream);
+            min-width: 90%;
         }
 
         body.sidebar-minimized {
@@ -93,7 +94,6 @@
         .sidebar {
             width: var(--sidebar-width);
             height: 100%;
-            min-width: 230px;
             position: fixed;
             top: 0;
             left: 0;
@@ -108,7 +108,6 @@
         body.sidebar-minimized .sidebar {
             width: var(--sidebar-minimized-width);
             transition: width var(--transition-speed) ease-in-out;
-            min-width: 70px;
             overflow-x: hidden;
         }
 
@@ -140,10 +139,11 @@
              background-color: var(--neutral-cream);
              color: var(--dark-text);
             min-height: 100vh;
-            min-width: 90%;
-            margin-left: var(--sidebar-minimized-width);
+            min-width: 100%;
+        }
 
-
+        body.sidebar-minimized .main-content{ 
+            margin-left: 0;
         }
 
         .sidebar .navbar-brand {
@@ -391,10 +391,6 @@ section{
     color:var(--primary-burgundy);
 }
 
-.offcanvas-body{
-    padding-top: 3rem;
-
-}
 
 .sidebar-toggle-div{
 padding: 0.6rem 1.5rem 0.6rem 1rem;
@@ -456,6 +452,7 @@ padding: 0.6rem 1.5rem 0.6rem 1rem;
 
     :root {
         --sidebar-width: 200px; 
+        --sidebar-minimized-width: 70px
     }
 
     body{
@@ -469,7 +466,6 @@ padding: 0.6rem 1.5rem 0.6rem 1rem;
 
     .sidebar{
         width: var(--sidebar-width);
-        min-width: var(--sidebar-width);
     }
 
     #searchFormMobile{
@@ -485,12 +481,17 @@ padding: 0.6rem 1.5rem 0.6rem 1rem;
     #productNameInputMobile{
         margin-bottom: 0.5rem;
     }
-
-
     
     body.sidebar-minimized .sidebar{
         background: transparent;
+        min-width: var(--sidebar-minimized-width);
     }
+
+     
+    body.sidebar-minimized{
+        margin-left: 0;
+    }
+
 
     body.sidebar-minimized .navbar-nav{
         display: none;

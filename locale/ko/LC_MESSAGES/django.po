@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-10-12 14:39+0000\n"
+"POT-Creation-Date: 2025-10-28 07:32+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -54,7 +54,8 @@ msgstr "브랜드 선택..."
 msgid "Clear Filters"
 msgstr "필터 지우기"
 
-#: pantry/templates/pantry/index.html:51 templates/base.html:34
+#: pantry/templates/pantry/index.html:51 templates/base.html:37
+#: templates/base.html:138
 msgid "Search"
 msgstr "검색"
 
@@ -79,22 +80,21 @@ msgid "Favourites"
 msgstr "즐겨 찾기"
 
 #: pantry/templates/pantry/index.html:101
-#: pantry/templates/pantry/pantry.html:71
+#: pantry/templates/pantry/pantry.html:72
 msgid "WARNING"
 msgstr "경고"
 
 #: pantry/templates/pantry/index.html:101
-#: pantry/templates/pantry/pantry.html:71
 msgid "Contains user-specified allergens:"
 msgstr "사용자가 지정한 알레르기 유발 물질이 포함되어 있습니다:"
 
 #: pantry/templates/pantry/index.html:110
-#: pantry/templates/pantry/pantry.html:80
+#: pantry/templates/pantry/pantry.html:81
 msgid "POSSIBLE MISMATCH"
 msgstr "불일치 가능성"
 
 #: pantry/templates/pantry/index.html:110
-#: pantry/templates/pantry/pantry.html:80
+#: pantry/templates/pantry/pantry.html:81
 msgid "Missing dietary requirements:"
 msgstr "식단 요건이 누락되었습니다:"
 
@@ -122,7 +122,7 @@ msgstr "즐겨 찾기 제거"
 msgid "You haven't favourited any products yet. Start exploring today!"
 msgstr "아직 마음에 들어하는 제품이 없습니다. 지금 바로 탐색을 시작하세요!"
 
-#: pantry/templates/pantry/pantry.html:5 templates/base.html:63
+#: pantry/templates/pantry/pantry.html:5 templates/base.html:61
 msgid "Pantry"
 msgstr "식료품 저장실"
 
@@ -151,9 +151,15 @@ msgstr "식료품 보관함 항목"
 msgid "Product Image"
 msgstr "제품 이미지"
 
-#: pantry/templates/pantry/pantry.html:67
+#: pantry/templates/pantry/pantry.html:68
 msgid "No Name"
 msgstr "이름 없음"
+
+#: pantry/templates/pantry/pantry.html:72
+#, fuzzy
+#| msgid "Contains user-specified allergens:"
+msgid "Contains allergens:"
+msgstr "사용자가 지정한 알레르기 유발 물질이 포함되어 있습니다:"
 
 #: pantry/templates/pantry/pantry.html:91
 msgid "Quantity:"
@@ -167,11 +173,11 @@ msgstr "제품 크기:"
 msgid "Expires:"
 msgstr "만료됩니다:"
 
-#: pantry/templates/pantry/pantry.html:116
+#: pantry/templates/pantry/pantry.html:117
 msgid "Your pantry is empty! Add some products to get started."
 msgstr "식료품 저장실이 비어 있습니다! 시작하려면 몇 가지 제품을 추가하세요."
 
-#: recipes/templates/recipes/recipes.html:6 templates/base.html:70
+#: recipes/templates/recipes/recipes.html:6 templates/base.html:68
 msgid "Recipes"
 msgstr "레시피"
 
@@ -228,189 +234,195 @@ msgstr "레시피 삭제"
 msgid "No Saved Recipes"
 msgstr "저장된 레시피 없음"
 
-#: savor/settings.py:138
+#: savor/settings.py:141
+#, fuzzy
+#| msgid "Polish"
+msgid "English"
+msgstr "폴란드어"
+
+#: savor/settings.py:142
 msgid "Arabic"
 msgstr "아랍어"
 
-#: savor/settings.py:139
+#: savor/settings.py:143
 msgid "Bulgarian"
 msgstr "불가리아어"
 
-#: savor/settings.py:140
+#: savor/settings.py:144
 msgid "Chinese"
 msgstr "중국어"
 
-#: savor/settings.py:141
+#: savor/settings.py:145
 msgid "Czech"
 msgstr "체코어"
 
-#: savor/settings.py:142
+#: savor/settings.py:146
 msgid "Danish"
 msgstr "덴마크어"
 
-#: savor/settings.py:143
+#: savor/settings.py:147
 msgid "Dutch"
 msgstr "네덜란드어"
 
-#: savor/settings.py:144
+#: savor/settings.py:148
 msgid "Estonian"
 msgstr "에스토니아어"
 
-#: savor/settings.py:145
+#: savor/settings.py:149
 msgid "Finnish"
 msgstr "핀란드어"
 
-#: savor/settings.py:146
+#: savor/settings.py:150
 msgid "French"
 msgstr "프랑스어"
 
-#: savor/settings.py:147
+#: savor/settings.py:151
 msgid "German"
 msgstr "독일어"
 
-#: savor/settings.py:148
+#: savor/settings.py:152
 msgid "Greek"
 msgstr "그리스어"
 
-#: savor/settings.py:149
+#: savor/settings.py:153
 msgid "Hebrew"
 msgstr "히브리어"
 
-#: savor/settings.py:150
+#: savor/settings.py:154
 msgid "Hungarian"
 msgstr "헝가리어"
 
-#: savor/settings.py:151
+#: savor/settings.py:155
 msgid "Indonesian"
 msgstr "인도네시아어"
 
-#: savor/settings.py:152
+#: savor/settings.py:156
 msgid "Italian"
 msgstr "이탈리아어"
 
-#: savor/settings.py:153
+#: savor/settings.py:157
 msgid "Japanese"
 msgstr "일본어"
 
-#: savor/settings.py:154
+#: savor/settings.py:158
 msgid "Korean"
 msgstr "한국어"
 
-#: savor/settings.py:155
+#: savor/settings.py:159
 msgid "Latvian"
 msgstr "라트비아어"
 
-#: savor/settings.py:156
+#: savor/settings.py:160
 msgid "Lithuanian"
 msgstr "리투아니아어"
 
-#: savor/settings.py:157
+#: savor/settings.py:161
 msgid "Norwegian Bokmål"
 msgstr "노르웨이 복말"
 
-#: savor/settings.py:158
+#: savor/settings.py:162
 msgid "Polish"
 msgstr "폴란드어"
 
-#: savor/settings.py:159
+#: savor/settings.py:163
 msgid "Portuguese"
 msgstr "포르투갈어"
 
-#: savor/settings.py:160
+#: savor/settings.py:164
 msgid "Romanian"
 msgstr "루마니아어"
 
-#: savor/settings.py:161
+#: savor/settings.py:165
 msgid "Russian"
 msgstr "러시아어"
 
-#: savor/settings.py:162
+#: savor/settings.py:166
 msgid "Slovak"
 msgstr "슬로바키아어"
 
-#: savor/settings.py:163
+#: savor/settings.py:167
 msgid "Slovenian"
 msgstr "슬로베니아어"
 
-#: savor/settings.py:164
+#: savor/settings.py:168
 msgid "Spanish"
 msgstr "스페인어"
 
-#: savor/settings.py:165
+#: savor/settings.py:169
 msgid "Swedish"
 msgstr "스웨덴어"
 
-#: savor/settings.py:166
+#: savor/settings.py:170
 msgid "Thai"
 msgstr "Thai"
 
-#: savor/settings.py:167
+#: savor/settings.py:171
 msgid "Turkish"
 msgstr "터키어"
 
-#: savor/settings.py:168
+#: savor/settings.py:172
 msgid "Ukrainian"
 msgstr "우크라이나어"
 
-#: savor/settings.py:169
+#: savor/settings.py:173
 msgid "Vietnamese"
 msgstr "베트남어"
 
-#: templates/base.html:22
-msgid "Welcome"
-msgstr "환영"
-
-#: templates/base.html:29
+#: templates/base.html:31 templates/base.html:133
 msgid "Search Product by ingredient"
 msgstr "성분으로 제품 검색"
 
-#: templates/base.html:32
+#: templates/base.html:34 templates/base.html:136
 msgid "Search Product by Barcode"
 msgstr "바코드로 제품 검색"
 
-#: templates/base.html:37
+#: templates/base.html:41 templates/base.html:141
 msgid "Scan"
 msgstr "스캔"
 
-#: templates/base.html:56
+#: templates/base.html:54
 msgid "Home"
 msgstr "홈"
 
-#: templates/base.html:79
+#: templates/base.html:77
 msgid "Settings"
 msgstr "설정"
 
-#: templates/base.html:85
+#: templates/base.html:83
 msgid "Account"
 msgstr "계정"
 
-#: templates/base.html:94
+#: templates/base.html:92
 msgid "Log Out"
 msgstr "로그아웃"
 
-#: templates/base.html:107
+#: templates/base.html:104
 msgid "Log On"
 msgstr "로그온"
 
-#: templates/base.html:113 users/templates/users/register.html:57
+#: templates/base.html:110 users/templates/users/register.html:57
 msgid "Register"
 msgstr "등록하기"
 
-#: templates/base.html:123
+#: templates/base.html:118
 msgid "Stop Scanning"
 msgstr "스캔 중지"
 
-#: templates/registration/login.html:5 templates/registration/login.html:9
-#: templates/registration/login.html:37
+#: templates/base.html:126
+msgid "Welcome"
+msgstr "환영"
+
+#: templates/registration/login.html:5 templates/registration/login.html:10
+#: templates/registration/login.html:38
 msgid "Log In"
 msgstr "로그인"
 
-#: templates/registration/login.html:40
+#: templates/registration/login.html:41
 #, python-format
 msgid "Don't have an account? <a href=\"%('register_url')s\">Register here</a>."
 msgstr "계정이 없으신가요? <a href=\"%('register_url')s\">여기에서 등록하세요</a>."
 
-#: templates/registration/login.html:41
+#: templates/registration/login.html:42
 msgid "Forgot password?"
 msgstr "비밀번호를 잊으셨나요?"
 
@@ -557,7 +569,7 @@ msgstr "이메일"
 msgid "Required. 150 characters or fewer. Letters, digits and @/./+/-/_ only."
 msgstr "필수 입력 사항입니다. 150자 이하. 문자, 숫자 및 @/./+/-/_만 가능합니다."
 
-#: users/forms.py:65 users/templates/users/account_settings.html:68
+#: users/forms.py:65
 msgid "Language Preference"
 msgstr "언어 기본 설정"
 
@@ -565,29 +577,35 @@ msgstr "언어 기본 설정"
 msgid "Country"
 msgstr "국가"
 
-#: users/forms.py:67 users/templates/users/account_settings.html:90
+#: users/forms.py:67 users/templates/users/account_settings.html:85
 msgid "Allergens"
 msgstr "알레르겐"
 
-#: users/forms.py:68 users/templates/users/account_settings.html:78
+#: users/forms.py:68 users/templates/users/account_settings.html:73
 msgid "Dietary Requirements"
 msgstr "식단 요구 사항"
 
 #: users/forms.py:69
-msgid "Enable scan-to-add in pantry"
+#, fuzzy
+#| msgid "Enable scan-to-add in pantry"
+msgid "Enable scan-to-add"
 msgstr "스캔하여 팬트리에 추가 사용"
 
 #: users/forms.py:70
-msgid "Display Nutri-Score on products"
+#, fuzzy
+#| msgid "Display Nutri-Score on products"
+msgid "Display Nutri-Score"
 msgstr "제품에 영양 점수 표시"
 
 #: users/forms.py:71
-msgid "Display Eco-Score on products"
+#, fuzzy
+#| msgid "Display Eco-Score on products"
+msgid "Display Eco-Score"
 msgstr "제품에 에코 점수 표시"
 
 #: users/forms.py:72
-msgid "Prioritise local results in search"
-msgstr "검색에서 지역 검색 결과 우선순위 지정"
+msgid "Enable country-localised results"
+msgstr "국가별 현지화된 결과 사용"
 
 #: users/templates/users/account_settings.html:6
 msgid "Account Settings"
@@ -636,7 +654,11 @@ msgstr "가입 날짜"
 msgid "User preferences"
 msgstr "사용자 기본 설정"
 
-#: users/templates/users/account_settings.html:115
+#: users/templates/users/account_settings.html:68
+msgid "Language"
+msgstr "언어"
+
+#: users/templates/users/account_settings.html:116
 msgid "Save Settings"
 msgstr "설정 저장"
 
@@ -644,3 +666,6 @@ msgstr "설정 저장"
 #, python-format
 msgid "Already have an account? <a href=\"%(login_url)s\">Log in here</a>."
 msgstr "이미 계정이 있으신가요? <a href=\"%(login_url)s\">여기에 로그인하세요</a>."
+
+#~ msgid "Prioritise local results in search"
+#~ msgstr "검색에서 지역 검색 결과 우선순위 지정"

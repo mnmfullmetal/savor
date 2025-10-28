@@ -66,10 +66,10 @@ class UserSettingsForm(forms.ModelForm):
             'country': _('Country'),
             'allergens': _('Allergens'),
             'dietary_requirements': _('Dietary Requirements'),
-            'scan_to_add': _('Enable scan-to-add in pantry'),
-            'show_nutri_score': _('Display Nutri-Score on products'),
-            'show_eco_score': _('Display Eco-Score on products'),
-            'prioritise_local_results': _('Prioritise local results in search'),
+            'scan_to_add': _('Enable scan-to-add'),
+            'show_nutri_score': _('Display Nutri-Score'),
+            'show_eco_score': _('Display Eco-Score'),
+            'prioritise_local_results': _('Enable country-localised results'),
         }
         
 

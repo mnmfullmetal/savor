@@ -43,6 +43,7 @@ def account_settings(request):
         [(tag['id'], tag['name']) for tag in default_languages_data.get('tags', []) if tag['id'] in LANGUAGE_CODE_MAP.keys()] , 
         key=lambda x: x[1]
     )
+    default_languages_choices.insert(0, ('en', 'Default (English)'))
 
     default_countries_data = get_cached_json(language_code='en', data_type='countries') or {}
     countries_choices = sorted(
@@ -88,6 +89,7 @@ def account_settings(request):
                   if tag.get('name') and tag['id'] in LANGUAGE_CODE_MAP.keys()],
                  key=lambda x: x[1] 
              )
+             languages_choices.insert(0, ('en', 'Default (English)'))
 
         localised_countries_data = get_cached_json(language_code=language_code, data_type='countries')
         if localised_countries_data and localised_countries_data.get('tags'):

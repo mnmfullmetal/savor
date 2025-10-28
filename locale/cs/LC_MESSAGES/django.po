@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-10-12 14:39+0000\n"
+"POT-Creation-Date: 2025-10-28 07:32+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -54,7 +54,8 @@ msgstr "Vyberte si značku..."
 msgid "Clear Filters"
 msgstr "Vymazat filtry"
 
-#: pantry/templates/pantry/index.html:51 templates/base.html:34
+#: pantry/templates/pantry/index.html:51 templates/base.html:37
+#: templates/base.html:138
 msgid "Search"
 msgstr "Vyhledávání"
 
@@ -79,22 +80,21 @@ msgid "Favourites"
 msgstr "Oblíbené stránky"
 
 #: pantry/templates/pantry/index.html:101
-#: pantry/templates/pantry/pantry.html:71
+#: pantry/templates/pantry/pantry.html:72
 msgid "WARNING"
 msgstr "VAROVÁNÍ"
 
 #: pantry/templates/pantry/index.html:101
-#: pantry/templates/pantry/pantry.html:71
 msgid "Contains user-specified allergens:"
 msgstr "Obsahuje alergeny specifikované uživatelem:"
 
 #: pantry/templates/pantry/index.html:110
-#: pantry/templates/pantry/pantry.html:80
+#: pantry/templates/pantry/pantry.html:81
 msgid "POSSIBLE MISMATCH"
 msgstr "MOŽNÝ NESOULAD"
 
 #: pantry/templates/pantry/index.html:110
-#: pantry/templates/pantry/pantry.html:80
+#: pantry/templates/pantry/pantry.html:81
 msgid "Missing dietary requirements:"
 msgstr "Chybějící požadavky na stravu:"
 
@@ -122,7 +122,7 @@ msgstr "Odebrat oblíbené"
 msgid "You haven't favourited any products yet. Start exploring today!"
 msgstr "Zatím jste neoblíbili žádné produkty. Začněte zkoumat ještě dnes!"
 
-#: pantry/templates/pantry/pantry.html:5 templates/base.html:63
+#: pantry/templates/pantry/pantry.html:5 templates/base.html:61
 msgid "Pantry"
 msgstr "Spíž"
 
@@ -152,9 +152,15 @@ msgstr "Položky vaší spíže"
 msgid "Product Image"
 msgstr "Obrázek produktu"
 
-#: pantry/templates/pantry/pantry.html:67
+#: pantry/templates/pantry/pantry.html:68
 msgid "No Name"
 msgstr "Žádné jméno"
+
+#: pantry/templates/pantry/pantry.html:72
+#, fuzzy
+#| msgid "Contains user-specified allergens:"
+msgid "Contains allergens:"
+msgstr "Obsahuje alergeny specifikované uživatelem:"
 
 #: pantry/templates/pantry/pantry.html:91
 msgid "Quantity:"
@@ -168,11 +174,11 @@ msgstr "Velikost produktu:"
 msgid "Expires:"
 msgstr "Platnost končí:"
 
-#: pantry/templates/pantry/pantry.html:116
+#: pantry/templates/pantry/pantry.html:117
 msgid "Your pantry is empty! Add some products to get started."
 msgstr "Vaše spíž je prázdná! Přidejte několik produktů a začněte."
 
-#: recipes/templates/recipes/recipes.html:6 templates/base.html:70
+#: recipes/templates/recipes/recipes.html:6 templates/base.html:68
 msgid "Recipes"
 msgstr "Recepty"
 
@@ -229,189 +235,195 @@ msgstr "Smazat recept"
 msgid "No Saved Recipes"
 msgstr "Žádné uložené recepty"
 
-#: savor/settings.py:138
+#: savor/settings.py:141
+#, fuzzy
+#| msgid "Polish"
+msgid "English"
+msgstr "Polský"
+
+#: savor/settings.py:142
 msgid "Arabic"
 msgstr "Arabština"
 
-#: savor/settings.py:139
+#: savor/settings.py:143
 msgid "Bulgarian"
 msgstr "Bulharský"
 
-#: savor/settings.py:140
+#: savor/settings.py:144
 msgid "Chinese"
 msgstr "Čínština"
 
-#: savor/settings.py:141
+#: savor/settings.py:145
 msgid "Czech"
 msgstr "Česky"
 
-#: savor/settings.py:142
+#: savor/settings.py:146
 msgid "Danish"
 msgstr "Dánský"
 
-#: savor/settings.py:143
+#: savor/settings.py:147
 msgid "Dutch"
 msgstr "Holandský"
 
-#: savor/settings.py:144
+#: savor/settings.py:148
 msgid "Estonian"
 msgstr "Estonština"
 
-#: savor/settings.py:145
+#: savor/settings.py:149
 msgid "Finnish"
 msgstr "Finsko"
 
-#: savor/settings.py:146
+#: savor/settings.py:150
 msgid "French"
 msgstr "Francouzština"
 
-#: savor/settings.py:147
+#: savor/settings.py:151
 msgid "German"
 msgstr "Němčina"
 
-#: savor/settings.py:148
+#: savor/settings.py:152
 msgid "Greek"
 msgstr "Řecký"
 
-#: savor/settings.py:149
+#: savor/settings.py:153
 msgid "Hebrew"
 msgstr "Hebrejština"
 
-#: savor/settings.py:150
+#: savor/settings.py:154
 msgid "Hungarian"
 msgstr "Maďarština"
 
-#: savor/settings.py:151
+#: savor/settings.py:155
 msgid "Indonesian"
 msgstr "Indonéský"
 
-#: savor/settings.py:152
+#: savor/settings.py:156
 msgid "Italian"
 msgstr "Italský"
 
-#: savor/settings.py:153
+#: savor/settings.py:157
 msgid "Japanese"
 msgstr "Japonský"
 
-#: savor/settings.py:154
+#: savor/settings.py:158
 msgid "Korean"
 msgstr "Korejský"
 
-#: savor/settings.py:155
+#: savor/settings.py:159
 msgid "Latvian"
 msgstr "Lotyšský"
 
-#: savor/settings.py:156
+#: savor/settings.py:160
 msgid "Lithuanian"
 msgstr "Litevština"
 
-#: savor/settings.py:157
+#: savor/settings.py:161
 msgid "Norwegian Bokmål"
 msgstr "Norský jazyk Bokmål"
 
-#: savor/settings.py:158
+#: savor/settings.py:162
 msgid "Polish"
 msgstr "Polský"
 
-#: savor/settings.py:159
+#: savor/settings.py:163
 msgid "Portuguese"
 msgstr "Portugalština"
 
-#: savor/settings.py:160
+#: savor/settings.py:164
 msgid "Romanian"
 msgstr "Rumunština"
 
-#: savor/settings.py:161
+#: savor/settings.py:165
 msgid "Russian"
 msgstr "Ruský"
 
-#: savor/settings.py:162
+#: savor/settings.py:166
 msgid "Slovak"
 msgstr "Slovenská"
 
-#: savor/settings.py:163
+#: savor/settings.py:167
 msgid "Slovenian"
 msgstr "Slovinština"
 
-#: savor/settings.py:164
+#: savor/settings.py:168
 msgid "Spanish"
 msgstr "Španělština"
 
-#: savor/settings.py:165
+#: savor/settings.py:169
 msgid "Swedish"
 msgstr "Švédský"
 
-#: savor/settings.py:166
+#: savor/settings.py:170
 msgid "Thai"
 msgstr "Thai"
 
-#: savor/settings.py:167
+#: savor/settings.py:171
 msgid "Turkish"
 msgstr "Turecký"
 
-#: savor/settings.py:168
+#: savor/settings.py:172
 msgid "Ukrainian"
 msgstr "Ukrajinský"
 
-#: savor/settings.py:169
+#: savor/settings.py:173
 msgid "Vietnamese"
 msgstr "Vietnamci"
 
-#: templates/base.html:22
-msgid "Welcome"
-msgstr "Vítejte na"
-
-#: templates/base.html:29
+#: templates/base.html:31 templates/base.html:133
 msgid "Search Product by ingredient"
 msgstr "Vyhledávání produktu podle složky"
 
-#: templates/base.html:32
+#: templates/base.html:34 templates/base.html:136
 msgid "Search Product by Barcode"
 msgstr "Vyhledávání produktu podle čárového kódu"
 
-#: templates/base.html:37
+#: templates/base.html:41 templates/base.html:141
 msgid "Scan"
 msgstr "Skenování"
 
-#: templates/base.html:56
+#: templates/base.html:54
 msgid "Home"
 msgstr "Home"
 
-#: templates/base.html:79
+#: templates/base.html:77
 msgid "Settings"
 msgstr "Nastavení"
 
-#: templates/base.html:85
+#: templates/base.html:83
 msgid "Account"
 msgstr "Účet"
 
-#: templates/base.html:94
+#: templates/base.html:92
 msgid "Log Out"
 msgstr "Odhlášení"
 
-#: templates/base.html:107
+#: templates/base.html:104
 msgid "Log On"
 msgstr "Přihlášení"
 
-#: templates/base.html:113 users/templates/users/register.html:57
+#: templates/base.html:110 users/templates/users/register.html:57
 msgid "Register"
 msgstr "Registrace"
 
-#: templates/base.html:123
+#: templates/base.html:118
 msgid "Stop Scanning"
 msgstr "Zastavení skenování"
 
-#: templates/registration/login.html:5 templates/registration/login.html:9
-#: templates/registration/login.html:37
+#: templates/base.html:126
+msgid "Welcome"
+msgstr "Vítejte na"
+
+#: templates/registration/login.html:5 templates/registration/login.html:10
+#: templates/registration/login.html:38
 msgid "Log In"
 msgstr "Přihlášení"
 
-#: templates/registration/login.html:40
+#: templates/registration/login.html:41
 #, python-format
 msgid "Don't have an account? <a href=\"%('register_url')s\">Register here</a>."
 msgstr "Nemáte účet? <a href=\"%('register_url')s\">Zaregistrujte se zde</a>."
 
-#: templates/registration/login.html:41
+#: templates/registration/login.html:42
 msgid "Forgot password?"
 msgstr "Zapomněli jste heslo?"
 
@@ -567,7 +579,7 @@ msgstr "E-mail"
 msgid "Required. 150 characters or fewer. Letters, digits and @/./+/-/_ only."
 msgstr "Požadováno. Nejvýše 150 znaků. Pouze písmena, číslice a @/./+/-/_."
 
-#: users/forms.py:65 users/templates/users/account_settings.html:68
+#: users/forms.py:65
 msgid "Language Preference"
 msgstr "Preference jazyka"
 
@@ -575,29 +587,35 @@ msgstr "Preference jazyka"
 msgid "Country"
 msgstr "Země"
 
-#: users/forms.py:67 users/templates/users/account_settings.html:90
+#: users/forms.py:67 users/templates/users/account_settings.html:85
 msgid "Allergens"
 msgstr "Alergeny"
 
-#: users/forms.py:68 users/templates/users/account_settings.html:78
+#: users/forms.py:68 users/templates/users/account_settings.html:73
 msgid "Dietary Requirements"
 msgstr "Požadavky na stravu"
 
 #: users/forms.py:69
-msgid "Enable scan-to-add in pantry"
+#, fuzzy
+#| msgid "Enable scan-to-add in pantry"
+msgid "Enable scan-to-add"
 msgstr "Povolení funkce skenování k přidání ve spíži"
 
 #: users/forms.py:70
-msgid "Display Nutri-Score on products"
+#, fuzzy
+#| msgid "Display Nutri-Score on products"
+msgid "Display Nutri-Score"
 msgstr "Zobrazení Nutri-Score na produktech"
 
 #: users/forms.py:71
-msgid "Display Eco-Score on products"
+#, fuzzy
+#| msgid "Display Eco-Score on products"
+msgid "Display Eco-Score"
 msgstr "Zobrazení ekologického skóre na produktech"
 
 #: users/forms.py:72
-msgid "Prioritise local results in search"
-msgstr "Upřednostňování místních výsledků ve vyhledávání"
+msgid "Enable country-localised results"
+msgstr "Povolení výsledků lokalizovaných podle země"
 
 #: users/templates/users/account_settings.html:6
 msgid "Account Settings"
@@ -646,7 +664,11 @@ msgstr "Datum připojení"
 msgid "User preferences"
 msgstr "Uživatelské preference"
 
-#: users/templates/users/account_settings.html:115
+#: users/templates/users/account_settings.html:68
+msgid "Language"
+msgstr "Jazyk"
+
+#: users/templates/users/account_settings.html:116
 msgid "Save Settings"
 msgstr "Uložit nastavení"
 
@@ -654,3 +676,6 @@ msgstr "Uložit nastavení"
 #, python-format
 msgid "Already have an account? <a href=\"%(login_url)s\">Log in here</a>."
 msgstr "Už máte účet? <a href=\"%(login_url)s\">Přihlaste se zde</a>."
+
+#~ msgid "Prioritise local results in search"
+#~ msgstr "Upřednostňování místních výsledků ve vyhledávání"
