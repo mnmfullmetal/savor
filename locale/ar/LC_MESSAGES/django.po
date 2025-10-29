@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-10-28 11:37+0000\n"
+"POT-Creation-Date: 2025-10-29 06:54+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,7 +16,8 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 && n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5;\n"
+"Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 "
+"&& n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5;\n"
 
 #: pantry/templates/pantry/index.html:17
 msgid "Advanced Search"
@@ -54,8 +55,8 @@ msgstr "اختر علامة تجارية..."
 msgid "Clear Filters"
 msgstr "مسح الفلاتر"
 
-#: pantry/templates/pantry/index.html:51 templates/base.html:37
-#: templates/base.html:138
+#: pantry/templates/pantry/index.html:51 templates/base.html:38
+#: templates/base.html:139
 msgid "Search"
 msgstr "بحث"
 
@@ -72,8 +73,8 @@ msgid ""
 "Can't find what you're looking for? Try <a href=\"#\" data-bs-"
 "toggle=\"modal\" data-bs-target=\"#exampleModal\">Advanced Search</a>."
 msgstr ""
-"لا يمكنك العثور على ما تبحث عنه؟ جرِّب <a href=\"#\" data-bs-"
-"toggle=\"modal\" data-bs-target=\"#exampleModal\">البحث المتقدم</a>."
+"لا يمكنك العثور على ما تبحث عنه؟ جرِّب <a href=\"#\" data-bs-toggle=\"modal\" "
+"data-bs-target=\"#exampleModal\">البحث المتقدم</a>."
 
 #: pantry/templates/pantry/index.html:82
 msgid "Favourites"
@@ -118,11 +119,11 @@ msgstr "إضافة إلى خزانة المؤن"
 msgid "Remove Favourite"
 msgstr "إزالة المفضلة"
 
-#: pantry/templates/pantry/index.html:148
+#: pantry/templates/pantry/index.html:149
 msgid "You haven't favourited any products yet. Start exploring today!"
 msgstr "لم تقم بتفضيل أي منتجات حتى الآن. ابدأ الاستكشاف اليوم!"
 
-#: pantry/templates/pantry/pantry.html:5 templates/base.html:61
+#: pantry/templates/pantry/pantry.html:5 templates/base.html:62
 msgid "Pantry"
 msgstr "مخزن المؤن"
 
@@ -156,10 +157,8 @@ msgid "No Name"
 msgstr "لا يوجد اسم"
 
 #: pantry/templates/pantry/pantry.html:72
-#, fuzzy
-#| msgid "Contains user-specified allergens:"
 msgid "Contains allergens:"
-msgstr "يحتوي على مسببات الحساسية التي يحددها المستخدم:"
+msgstr "يحتوي على مسببات الحساسية:"
 
 #: pantry/templates/pantry/pantry.html:91
 msgid "Quantity:"
@@ -173,11 +172,15 @@ msgstr "حجم المنتج:"
 msgid "Expires:"
 msgstr "تنتهي صلاحيتها:"
 
+#: pantry/templates/pantry/pantry.html:107
+msgid "Remove"
+msgstr "إزالة"
+
 #: pantry/templates/pantry/pantry.html:117
 msgid "Your pantry is empty! Add some products to get started."
 msgstr "مخزنك فارغ! أضيفي بعض المنتجات للبدء."
 
-#: recipes/templates/recipes/recipes.html:6 templates/base.html:68
+#: recipes/templates/recipes/recipes.html:6 templates/base.html:69
 msgid "Recipes"
 msgstr "الوصفات"
 
@@ -235,10 +238,8 @@ msgid "No Saved Recipes"
 msgstr "لا توجد وصفات محفوظة"
 
 #: savor/settings.py:141
-#, fuzzy
-#| msgid "Polish"
 msgid "English"
-msgstr "البولندية"
+msgstr "اللغة الإنجليزية"
 
 #: savor/settings.py:142
 msgid "Arabic"
@@ -368,61 +369,80 @@ msgstr "أوكراني"
 msgid "Vietnamese"
 msgstr "الفيتنامية"
 
-#: templates/base.html:31 templates/base.html:133
+#: templates/base.html:32
 msgid "Search Product by ingredient"
 msgstr "البحث عن المنتج حسب المكوّنات"
 
-#: templates/base.html:34 templates/base.html:136
+#: templates/base.html:35
 msgid "Search Product by Barcode"
 msgstr "البحث عن المنتج حسب الرمز الشريطي"
 
-#: templates/base.html:41 templates/base.html:141
+#: templates/base.html:42 templates/base.html:142
 msgid "Scan"
 msgstr "المسح الضوئي"
 
-#: templates/base.html:54
+#: templates/base.html:55
 msgid "Home"
 msgstr "الصفحة الرئيسية"
 
-#: templates/base.html:77
+#: templates/base.html:78
 msgid "Settings"
 msgstr "الإعدادات"
 
-#: templates/base.html:83
+#: templates/base.html:84
 msgid "Account"
 msgstr "الحساب"
 
-#: templates/base.html:92
+#: templates/base.html:93
 msgid "Log Out"
 msgstr "تسجيل الخروج"
 
-#: templates/base.html:104
+#: templates/base.html:105
 msgid "Log On"
 msgstr "تسجيل الدخول"
 
-#: templates/base.html:110 users/templates/users/register.html:57
+#: templates/base.html:111 users/templates/users/register.html:57
 msgid "Register"
 msgstr "التسجيل"
 
-#: templates/base.html:118
+#: templates/base.html:119
 msgid "Stop Scanning"
 msgstr "إيقاف المسح الضوئي"
 
-#: templates/base.html:126
+#: templates/base.html:127
 msgid "Welcome"
 msgstr "أهلاً وسهلاً بك"
+
+#: templates/base.html:134
+msgid "Search by name"
+msgstr "البحث بالاسم"
+
+#: templates/base.html:134
+msgid "Search product by name"
+msgstr "البحث عن المنتج بالاسم"
+
+#: templates/base.html:137
+msgid "Search by barcode"
+msgstr "البحث عن طريق الرمز الشريطي"
+
+#: templates/base.html:137
+msgid "Search product by barcode"
+msgstr "البحث عن المنتج حسب الرمز الشريطي"
 
 #: templates/registration/login.html:5 templates/registration/login.html:10
 #: templates/registration/login.html:38
 msgid "Log In"
 msgstr "تسجيل الدخول"
 
-#: templates/registration/login.html:41
-#, python-format
-msgid "Don't have an account? <a href=\"%('register_url')s\">Register here</a>."
-msgstr "ليس لديك حساب؟ <a href=\"%('register_url')s\">سجل هنا</a>."
-
 #: templates/registration/login.html:42
+msgid "Don't have an account?"
+msgstr "ليس لديك حساب؟"
+
+#: templates/registration/login.html:43
+msgid "Register here"
+msgstr "سجل هنا"
+
+#: templates/registration/login.html:45
 msgid "Forgot password?"
 msgstr "هل نسيت كلمة المرور؟"
 
@@ -489,8 +509,8 @@ msgid ""
 "Your password has been set. You can now go ahead and log in with your new "
 "password."
 msgstr ""
-"تم تعيين كلمة المرور الخاصة بك. يمكنك الآن المضي قدماً وتسجيل الدخول "
-"باستخدام كلمة المرور الجديدة."
+"تم تعيين كلمة المرور الخاصة بك. يمكنك الآن المضي قدماً وتسجيل الدخول باستخدام "
+"كلمة المرور الجديدة."
 
 #: templates/registration/password_reset_confirm.html:12
 msgid "Set a New Password"
@@ -551,8 +571,8 @@ msgstr "كلمة المرور"
 #: users/forms.py:16
 msgid ""
 "Your password can't be too similar to your other personal information. It "
-"must contain at least 8 characters. It can't be a commonly used password. It"
-" can't be entirely numeric."
+"must contain at least 8 characters. It can't be a commonly used password. It "
+"can't be entirely numeric."
 msgstr ""
 "لا يمكن أن تكون كلمة المرور الخاصة بك مشابهة جداً لمعلوماتك الشخصية الأخرى. "
 "يجب أن تحتوي على 8 أحرف على الأقل. لا يمكن أن تكون كلمة مرور شائعة "
@@ -625,13 +645,15 @@ msgstr "أنت على وشك حذف حسابك نهائيًا."
 #: users/templates/users/account_settings.html:22
 msgid ""
 "\n"
-"          Doing this will permanently remove all account data including your\n"
+"          Doing this will permanently remove all account data including "
+"your\n"
 "          pantry, saved recipes, and favourites. Are you sure you want to\n"
 "          continue?\n"
 "          "
 msgstr ""
 "\n"
-"          سيؤدي القيام بذلك إلى إزالة جميع بيانات الحساب بشكل دائم بما في ذلك\n"
+"          سيؤدي القيام بذلك إلى إزالة جميع بيانات الحساب بشكل دائم بما في "
+"ذلك\n"
 "          المخزن والوصفات المحفوظة والمفضلة لديك. هل أنت متأكد من رغبتك في\n"
 "          المتابعة؟\n"
 "          "
@@ -669,6 +691,11 @@ msgstr "حفظ الإعدادات"
 #, python-format
 msgid "Already have an account? <a href=\"%(login_url)s\">Log in here</a>."
 msgstr "هل لديك حساب بالفعل؟ <a href=\"%(login_url)s\">تسجيل الدخول هنا</a>."
+
+#, python-format
+#~ msgid ""
+#~ "Don't have an account? <a href=\"%('register_url')s\">Register here</a>."
+#~ msgstr "ليس لديك حساب؟ <a href=\"%('register_url')s\">سجل هنا</a>."
 
 #~ msgid "Prioritise local results in search"
 #~ msgstr "إعطاء الأولوية للنتائج المحلية في البحث"

@@ -132,13 +132,13 @@ function createSavedRecipeHtml(recipe, csrfToken) {
             </h4>
             <div id="collapseSaved${recipe.id}" class="accordion-collapse collapse" aria-labelledby="headingSaved${recipe.id}" data-bs-parent="#saved-recipes-accordion">
                 <div class="accordion-body">
-                    <h5>Ingredients</h5>
+                    <h5>${gettext('Ingredients')}</h5>
                     <ul>
                         ${recipe.ingredients.map(ingredient => 
                             `<li>${ingredient.quantity} ${ingredient.unit} of ${ingredient.name}</li>`
                         ).join('')}
                     </ul>
-                    <h5>Instructions</h5>
+                    <h5>${gettext('Instructions')}</h5>
                     <ol>
                         ${recipe.instructions.map(instruction => 
                             `<li>${instruction}</li>`
@@ -162,6 +162,3 @@ function createSavedRecipeHtml(recipe, csrfToken) {
 
     return accordionItem;
 }
-
-
-

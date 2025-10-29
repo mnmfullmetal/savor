@@ -58,7 +58,7 @@ class Command(BaseCommand):
                 target_language_code = 'PT-PT'
 
 
-            untranslated_entries = [e for e in po if not e.msgstr and e.msgid]
+            untranslated_entries = [e for e in po if (not e.msgstr or 'fuzzy' in e.flags) and e.msgid]
 
             if not untranslated_entries:
                 self.stdout.write(f' -> No untranslated entries found. Skipping.')
@@ -74,6 +74,10 @@ class Command(BaseCommand):
                         target_lang=target_language_code
                     )
                     entry.msgstr = result.text
+
+                    if 'fuzzy' in entry.flags:
+                        entry.flags.remove('fuzzy')
+                        
                 except deepl.DeepLException as e:
                     self.stderr.write(self.style.ERROR(f' -> Error translating "{entry.msgid}": {e}'))
                 except Exception as e:

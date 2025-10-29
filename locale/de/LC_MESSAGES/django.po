@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-10-28 11:37+0000\n"
+"POT-Creation-Date: 2025-10-29 06:54+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -54,8 +54,8 @@ msgstr "Wählen Sie eine Marke..."
 msgid "Clear Filters"
 msgstr "Filter löschen"
 
-#: pantry/templates/pantry/index.html:51 templates/base.html:37
-#: templates/base.html:138
+#: pantry/templates/pantry/index.html:51 templates/base.html:38
+#: templates/base.html:139
 msgid "Search"
 msgstr "Suche"
 
@@ -73,8 +73,8 @@ msgid ""
 "toggle=\"modal\" data-bs-target=\"#exampleModal\">Advanced Search</a>."
 msgstr ""
 "Sie können nicht finden, was Sie suchen? Versuchen Sie die <a href=\"#\" "
-"data-bs-toggle=\"modal\" data-bs-target=\"#exampleModal\">Erweiterte "
-"Suche</a>."
+"data-bs-toggle=\"modal\" data-bs-target=\"#exampleModal\">Erweiterte Suche</"
+"a>."
 
 #: pantry/templates/pantry/index.html:82
 msgid "Favourites"
@@ -119,13 +119,13 @@ msgstr "Zur Speisekammer hinzufügen"
 msgid "Remove Favourite"
 msgstr "Favorit entfernen"
 
-#: pantry/templates/pantry/index.html:148
+#: pantry/templates/pantry/index.html:149
 msgid "You haven't favourited any products yet. Start exploring today!"
 msgstr ""
 "Sie haben noch keine Produkte favorisiert. Beginnen Sie noch heute mit der "
 "Erkundung!"
 
-#: pantry/templates/pantry/pantry.html:5 templates/base.html:61
+#: pantry/templates/pantry/pantry.html:5 templates/base.html:62
 msgid "Pantry"
 msgstr "Speisekammer"
 
@@ -161,10 +161,8 @@ msgid "No Name"
 msgstr "Kein Name"
 
 #: pantry/templates/pantry/pantry.html:72
-#, fuzzy
-#| msgid "Contains user-specified allergens:"
 msgid "Contains allergens:"
-msgstr "Enthält vom Benutzer angegebene Allergene:"
+msgstr "Enthält Allergene:"
 
 #: pantry/templates/pantry/pantry.html:91
 msgid "Quantity:"
@@ -178,12 +176,16 @@ msgstr "Produktgröße:"
 msgid "Expires:"
 msgstr "Läuft ab:"
 
+#: pantry/templates/pantry/pantry.html:107
+msgid "Remove"
+msgstr "entfernen"
+
 #: pantry/templates/pantry/pantry.html:117
 msgid "Your pantry is empty! Add some products to get started."
 msgstr ""
 "Ihre Vorratskammer ist leer! Fügen Sie einige Produkte hinzu, um loszulegen."
 
-#: recipes/templates/recipes/recipes.html:6 templates/base.html:68
+#: recipes/templates/recipes/recipes.html:6 templates/base.html:69
 msgid "Recipes"
 msgstr "Rezepte"
 
@@ -241,10 +243,8 @@ msgid "No Saved Recipes"
 msgstr "Keine gespeicherten Rezepte"
 
 #: savor/settings.py:141
-#, fuzzy
-#| msgid "Polish"
 msgid "English"
-msgstr "Polnisch"
+msgstr "Englisch"
 
 #: savor/settings.py:142
 msgid "Arabic"
@@ -374,63 +374,80 @@ msgstr "Ukrainisch"
 msgid "Vietnamese"
 msgstr "Vietnamesisch"
 
-#: templates/base.html:31 templates/base.html:133
+#: templates/base.html:32
 msgid "Search Product by ingredient"
 msgstr "Produkt nach Inhaltsstoffen suchen"
 
-#: templates/base.html:34 templates/base.html:136
+#: templates/base.html:35
 msgid "Search Product by Barcode"
 msgstr "Produkt nach Barcode suchen"
 
-#: templates/base.html:41 templates/base.html:141
+#: templates/base.html:42 templates/base.html:142
 msgid "Scan"
 msgstr "Scannen"
 
-#: templates/base.html:54
+#: templates/base.html:55
 msgid "Home"
 msgstr "Startseite"
 
-#: templates/base.html:77
+#: templates/base.html:78
 msgid "Settings"
 msgstr "Einstellungen"
 
-#: templates/base.html:83
+#: templates/base.html:84
 msgid "Account"
 msgstr "Konto"
 
-#: templates/base.html:92
+#: templates/base.html:93
 msgid "Log Out"
 msgstr "Abmelden"
 
-#: templates/base.html:104
+#: templates/base.html:105
 msgid "Log On"
 msgstr "Einloggen"
 
-#: templates/base.html:110 users/templates/users/register.html:57
+#: templates/base.html:111 users/templates/users/register.html:57
 msgid "Register"
 msgstr "Register"
 
-#: templates/base.html:118
+#: templates/base.html:119
 msgid "Stop Scanning"
 msgstr "Scannen beenden"
 
-#: templates/base.html:126
+#: templates/base.html:127
 msgid "Welcome"
 msgstr "Willkommen"
+
+#: templates/base.html:134
+msgid "Search by name"
+msgstr "Suche nach Namen"
+
+#: templates/base.html:134
+msgid "Search product by name"
+msgstr "Produkt nach Name suchen"
+
+#: templates/base.html:137
+msgid "Search by barcode"
+msgstr "Suche nach Barcode"
+
+#: templates/base.html:137
+msgid "Search product by barcode"
+msgstr "Produkt über Barcode suchen"
 
 #: templates/registration/login.html:5 templates/registration/login.html:10
 #: templates/registration/login.html:38
 msgid "Log In"
 msgstr "Einloggen"
 
-#: templates/registration/login.html:41
-#, python-format
-msgid "Don't have an account? <a href=\"%('register_url')s\">Register here</a>."
-msgstr ""
-"Sie haben noch kein Konto? <a href=\"%('register_url')s\">Registrieren Sie "
-"sich hier</a>."
-
 #: templates/registration/login.html:42
+msgid "Don't have an account?"
+msgstr "Sie haben noch kein Konto?"
+
+#: templates/registration/login.html:43
+msgid "Register here"
+msgstr "Hier anmelden"
+
+#: templates/registration/login.html:45
 msgid "Forgot password?"
 msgstr "Passwort vergessen?"
 
@@ -513,8 +530,8 @@ msgid ""
 "The password reset link was invalid, possibly because it has already been "
 "used. Please request a new password reset."
 msgstr ""
-"Der Link zum Zurücksetzen des Passworts war ungültig, möglicherweise weil er"
-" bereits verwendet wurde. Bitte fordern Sie ein neues Passwort an."
+"Der Link zum Zurücksetzen des Passworts war ungültig, möglicherweise weil er "
+"bereits verwendet wurde. Bitte fordern Sie ein neues Passwort an."
 
 #: templates/registration/password_reset_done.html:4
 msgid "Password Reset Sent"
@@ -538,8 +555,8 @@ msgid ""
 "If you don't receive an email, please make sure you've entered the email "
 "address you registered with, and check your spam folder."
 msgstr ""
-"Wenn Sie keine E-Mail erhalten, vergewissern Sie sich bitte, dass Sie die "
-"E-Mail-Adresse eingegeben haben, mit der Sie sich registriert haben, und "
+"Wenn Sie keine E-Mail erhalten, vergewissern Sie sich bitte, dass Sie die E-"
+"Mail-Adresse eingegeben haben, mit der Sie sich registriert haben, und "
 "überprüfen Sie Ihren Spam-Ordner."
 
 #: templates/registration/password_reset_form.html:8
@@ -563,11 +580,11 @@ msgstr "Passwort"
 #: users/forms.py:16
 msgid ""
 "Your password can't be too similar to your other personal information. It "
-"must contain at least 8 characters. It can't be a commonly used password. It"
-" can't be entirely numeric."
+"must contain at least 8 characters. It can't be a commonly used password. It "
+"can't be entirely numeric."
 msgstr ""
-"Ihr Passwort darf Ihren anderen persönlichen Daten nicht zu ähnlich sein. Es"
-" muss mindestens 8 Zeichen enthalten. Es darf kein häufig verwendetes "
+"Ihr Passwort darf Ihren anderen persönlichen Daten nicht zu ähnlich sein. Es "
+"muss mindestens 8 Zeichen enthalten. Es darf kein häufig verwendetes "
 "Passwort sein. Es darf nicht ausschließlich aus Zahlen bestehen."
 
 #: users/forms.py:23
@@ -589,8 +606,8 @@ msgstr "E-Mail"
 #: users/forms.py:39
 msgid "Required. 150 characters or fewer. Letters, digits and @/./+/-/_ only."
 msgstr ""
-"Erforderlich. 150 Zeichen oder weniger. Nur Buchstaben, Ziffern und "
-"@/./+/-/_."
+"Erforderlich. 150 Zeichen oder weniger. Nur Buchstaben, Ziffern und @/./+/-/"
+"_."
 
 #: users/forms.py:65
 msgid "Language Preference"
@@ -639,14 +656,16 @@ msgstr "Sie sind dabei, Ihr Konto endgültig zu löschen."
 #: users/templates/users/account_settings.html:22
 msgid ""
 "\n"
-"          Doing this will permanently remove all account data including your\n"
+"          Doing this will permanently remove all account data including "
+"your\n"
 "          pantry, saved recipes, and favourites. Are you sure you want to\n"
 "          continue?\n"
 "          "
 msgstr ""
 "\n"
 "          Dadurch werden alle Kontodaten, einschließlich Ihrer Speisekammer\n"
-"          Speisekammer, gespeicherte Rezepte und Favoriten. Sind Sie sicher, dass Sie\n"
+"          Speisekammer, gespeicherte Rezepte und Favoriten. Sind Sie sicher, "
+"dass Sie\n"
 "          fortfahren möchten?\n"
 "          "
 
@@ -685,6 +704,13 @@ msgid "Already have an account? <a href=\"%(login_url)s\">Log in here</a>."
 msgstr ""
 "Sie haben bereits ein Konto? <a href=\"%(login_url)s\">Melden Sie sich hier "
 "an</a>."
+
+#, python-format
+#~ msgid ""
+#~ "Don't have an account? <a href=\"%('register_url')s\">Register here</a>."
+#~ msgstr ""
+#~ "Sie haben noch kein Konto? <a href=\"%('register_url')s\">Registrieren "
+#~ "Sie sich hier</a>."
 
 #~ msgid "Prioritise local results in search"
 #~ msgstr "Vorrang für lokale Ergebnisse in der Suche"

@@ -10,6 +10,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js" integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q" crossorigin="anonymous"></script>
     <script src="https://unpkg.com/html5-qrcode" type="text/javascript"></script>
+    <script src="{% url 'javascript-catalog' %}"></script>
     <script src="{% static 'savor.js' %}"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
     <link rel="stylesheet" href="{% static 'styles.css' %}">
@@ -130,10 +131,10 @@
             <form class="search-form" role="search" id="searchForm">
                 {% csrf_token %}
                 <div class="autocomplete-wrapper position-relative">
-                <input type="text" id="product_name_input" name="product_name" class="form-control" placeholder="Search by Ingredient" aria-label="{% trans 'Search Product by ingredient' %}">
+                <input type="text" id="product_name_input" name="product_name" class="form-control" placeholder="{% trans 'Search by name' %}" aria-label="{% trans 'Search product by name' %}">
                 <div id="autocomplete-suggestions-desktop" class="list-group position-absolute w-100" style="z-index: 1000;"></div>
                 </div>
-                <input type="text" id="barcode_input_desktop" name="barcode" class="form-control" placeholder="Search by Barcode" aria-label="{% trans 'Search Product by Barcode' %}">
+                <input type="text" id="barcode_input_desktop" name="barcode" class="form-control" placeholder="{% trans 'Search by barcode' %}" aria-label="{% trans 'Search product by barcode' %}">
                 <button class="btn btn-outline-success" type="submit">
                   <span class="btn-text">{% trans "Search" %}</span>  <i class="bi bi-search"></i>
                 </button>

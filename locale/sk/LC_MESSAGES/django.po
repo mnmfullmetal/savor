@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-10-28 11:37+0000\n"
+"POT-Creation-Date: 2025-10-29 06:54+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,7 +16,8 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=4; plural=(n % 1 == 0 && n == 1 ? 0 : n % 1 == 0 && n >= 2 && n <= 4 ? 1 : n % 1 != 0 ? 2: 3);\n"
+"Plural-Forms: nplurals=4; plural=(n % 1 == 0 && n == 1 ? 0 : n % 1 == 0 && n "
+">= 2 && n <= 4 ? 1 : n % 1 != 0 ? 2: 3);\n"
 
 #: pantry/templates/pantry/index.html:17
 msgid "Advanced Search"
@@ -54,8 +55,8 @@ msgstr "Vyberte si značku..."
 msgid "Clear Filters"
 msgstr "Vymazať filtre"
 
-#: pantry/templates/pantry/index.html:51 templates/base.html:37
-#: templates/base.html:138
+#: pantry/templates/pantry/index.html:51 templates/base.html:38
+#: templates/base.html:139
 msgid "Search"
 msgstr "Vyhľadávanie"
 
@@ -118,11 +119,11 @@ msgstr "Pridať do špajze"
 msgid "Remove Favourite"
 msgstr "Odstrániť obľúbené"
 
-#: pantry/templates/pantry/index.html:148
+#: pantry/templates/pantry/index.html:149
 msgid "You haven't favourited any products yet. Start exploring today!"
 msgstr "Zatiaľ ste neobľúbili žiadne produkty. Začnite skúmať ešte dnes!"
 
-#: pantry/templates/pantry/pantry.html:5 templates/base.html:61
+#: pantry/templates/pantry/pantry.html:5 templates/base.html:62
 msgid "Pantry"
 msgstr "Špajza"
 
@@ -140,8 +141,7 @@ msgstr "Ekologická trieda:"
 
 #: pantry/templates/pantry/pantry.html:34
 msgid "Scores are hidden or unavailable. Check your user settings."
-msgstr ""
-"Skóre je skryté alebo nedostupné. Skontrolujte nastavenia používateľa."
+msgstr "Skóre je skryté alebo nedostupné. Skontrolujte nastavenia používateľa."
 
 #: pantry/templates/pantry/pantry.html:44
 msgid "Your Pantry Items"
@@ -157,10 +157,8 @@ msgid "No Name"
 msgstr "Žiadne meno"
 
 #: pantry/templates/pantry/pantry.html:72
-#, fuzzy
-#| msgid "Contains user-specified allergens:"
 msgid "Contains allergens:"
-msgstr "Obsahuje alergény špecifikované používateľom:"
+msgstr "Obsahuje alergény:"
 
 #: pantry/templates/pantry/pantry.html:91
 msgid "Quantity:"
@@ -174,11 +172,15 @@ msgstr "Veľkosť výrobku:"
 msgid "Expires:"
 msgstr "Platnosť končí:"
 
+#: pantry/templates/pantry/pantry.html:107
+msgid "Remove"
+msgstr "Odstránenie stránky"
+
 #: pantry/templates/pantry/pantry.html:117
 msgid "Your pantry is empty! Add some products to get started."
 msgstr "Vaša špajza je prázdna! Pridajte niekoľko produktov a začnite."
 
-#: recipes/templates/recipes/recipes.html:6 templates/base.html:68
+#: recipes/templates/recipes/recipes.html:6 templates/base.html:69
 msgid "Recipes"
 msgstr "Recepty"
 
@@ -236,10 +238,8 @@ msgid "No Saved Recipes"
 msgstr "Žiadne uložené recepty"
 
 #: savor/settings.py:141
-#, fuzzy
-#| msgid "Polish"
 msgid "English"
-msgstr "Poľský"
+msgstr "Angličtina"
 
 #: savor/settings.py:142
 msgid "Arabic"
@@ -369,61 +369,80 @@ msgstr "Ukrajinský"
 msgid "Vietnamese"
 msgstr "Vietnamci"
 
-#: templates/base.html:31 templates/base.html:133
+#: templates/base.html:32
 msgid "Search Product by ingredient"
 msgstr "Vyhľadávanie produktu podľa zložky"
 
-#: templates/base.html:34 templates/base.html:136
+#: templates/base.html:35
 msgid "Search Product by Barcode"
 msgstr "Vyhľadávanie produktu podľa čiarového kódu"
 
-#: templates/base.html:41 templates/base.html:141
+#: templates/base.html:42 templates/base.html:142
 msgid "Scan"
 msgstr "Skenovanie"
 
-#: templates/base.html:54
+#: templates/base.html:55
 msgid "Home"
 msgstr "Domov"
 
-#: templates/base.html:77
+#: templates/base.html:78
 msgid "Settings"
 msgstr "Nastavenia"
 
-#: templates/base.html:83
+#: templates/base.html:84
 msgid "Account"
 msgstr "Účet"
 
-#: templates/base.html:92
+#: templates/base.html:93
 msgid "Log Out"
 msgstr "Odhlásenie"
 
-#: templates/base.html:104
+#: templates/base.html:105
 msgid "Log On"
 msgstr "Prihlásenie"
 
-#: templates/base.html:110 users/templates/users/register.html:57
+#: templates/base.html:111 users/templates/users/register.html:57
 msgid "Register"
 msgstr "Registrácia"
 
-#: templates/base.html:118
+#: templates/base.html:119
 msgid "Stop Scanning"
 msgstr "Zastavenie skenovania"
 
-#: templates/base.html:126
+#: templates/base.html:127
 msgid "Welcome"
 msgstr "Vitajte na"
+
+#: templates/base.html:134
+msgid "Search by name"
+msgstr "Vyhľadávanie podľa mena"
+
+#: templates/base.html:134
+msgid "Search product by name"
+msgstr "Vyhľadávanie produktu podľa názvu"
+
+#: templates/base.html:137
+msgid "Search by barcode"
+msgstr "Vyhľadávanie podľa čiarového kódu"
+
+#: templates/base.html:137
+msgid "Search product by barcode"
+msgstr "Vyhľadávanie produktu podľa čiarového kódu"
 
 #: templates/registration/login.html:5 templates/registration/login.html:10
 #: templates/registration/login.html:38
 msgid "Log In"
 msgstr "Prihlásenie"
 
-#: templates/registration/login.html:41
-#, python-format
-msgid "Don't have an account? <a href=\"%('register_url')s\">Register here</a>."
-msgstr "Nemáte účet? <a href=\"%('register_url')s\">Zaregistrujte sa tu</a>."
-
 #: templates/registration/login.html:42
+msgid "Don't have an account?"
+msgstr "Nemáte účet?"
+
+#: templates/registration/login.html:43
+msgid "Register here"
+msgstr "Zaregistrujte sa tu"
+
+#: templates/registration/login.html:45
 msgid "Forgot password?"
 msgstr "Zabudli ste heslo?"
 
@@ -521,8 +540,8 @@ msgid ""
 "We've emailed you instructions for setting your password. If an account "
 "exists with the email you entered, you should receive them shortly."
 msgstr ""
-"Pokyny na nastavenie hesla sme vám poslali e-mailom. Ak existuje účet s "
-"e-mailom, ktorý ste zadali, mali by ste ich čoskoro dostať."
+"Pokyny na nastavenie hesla sme vám poslali e-mailom. Ak existuje účet s e-"
+"mailom, ktorý ste zadali, mali by ste ich čoskoro dostať."
 
 #: templates/registration/password_reset_done.html:13
 msgid ""
@@ -552,11 +571,11 @@ msgstr "Heslo"
 #: users/forms.py:16
 msgid ""
 "Your password can't be too similar to your other personal information. It "
-"must contain at least 8 characters. It can't be a commonly used password. It"
-" can't be entirely numeric."
+"must contain at least 8 characters. It can't be a commonly used password. It "
+"can't be entirely numeric."
 msgstr ""
-"Heslo sa nesmie príliš podobať vašim ostatným osobným údajom. Musí obsahovať"
-" aspoň 8 znakov. Nemôže to byť bežne používané heslo. Nemôže byť úplne "
+"Heslo sa nesmie príliš podobať vašim ostatným osobným údajom. Musí obsahovať "
+"aspoň 8 znakov. Nemôže to byť bežne používané heslo. Nemôže byť úplne "
 "číselné."
 
 #: users/forms.py:23
@@ -626,14 +645,17 @@ msgstr "Chystáte sa natrvalo odstrániť svoje konto."
 #: users/templates/users/account_settings.html:22
 msgid ""
 "\n"
-"          Doing this will permanently remove all account data including your\n"
+"          Doing this will permanently remove all account data including "
+"your\n"
 "          pantry, saved recipes, and favourites. Are you sure you want to\n"
 "          continue?\n"
 "          "
 msgstr ""
 "\n"
-"          Týmto postupom sa natrvalo odstránia všetky údaje o účte vrátane vašich\n"
-"          špajze, uložených receptov a obľúbených položiek. Ste si istí, že chcete\n"
+"          Týmto postupom sa natrvalo odstránia všetky údaje o účte vrátane "
+"vašich\n"
+"          špajze, uložených receptov a obľúbených položiek. Ste si istí, že "
+"chcete\n"
 "          pokračovať?\n"
 "          "
 
@@ -670,6 +692,12 @@ msgstr "Uložiť nastavenia"
 #, python-format
 msgid "Already have an account? <a href=\"%(login_url)s\">Log in here</a>."
 msgstr "Už máte účet? <a href=\"%(login_url)s\">Prihláste sa tu</a>."
+
+#, python-format
+#~ msgid ""
+#~ "Don't have an account? <a href=\"%('register_url')s\">Register here</a>."
+#~ msgstr ""
+#~ "Nemáte účet? <a href=\"%('register_url')s\">Zaregistrujte sa tu</a>."
 
 #~ msgid "Prioritise local results in search"
 #~ msgstr "Uprednostňovanie miestnych výsledkov vo vyhľadávaní"

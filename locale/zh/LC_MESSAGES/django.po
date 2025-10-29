@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-10-28 11:37+0000\n"
+"POT-Creation-Date: 2025-10-29 06:54+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -53,8 +53,8 @@ msgstr "选择品牌..."
 msgid "Clear Filters"
 msgstr "清除过滤器"
 
-#: pantry/templates/pantry/index.html:51 templates/base.html:37
-#: templates/base.html:138
+#: pantry/templates/pantry/index.html:51 templates/base.html:38
+#: templates/base.html:139
 msgid "Search"
 msgstr "搜索"
 
@@ -117,11 +117,11 @@ msgstr "添加到储藏室"
 msgid "Remove Favourite"
 msgstr "删除收藏"
 
-#: pantry/templates/pantry/index.html:148
+#: pantry/templates/pantry/index.html:149
 msgid "You haven't favourited any products yet. Start exploring today!"
 msgstr "您尚未收藏任何产品。今天就开始探索吧"
 
-#: pantry/templates/pantry/pantry.html:5 templates/base.html:61
+#: pantry/templates/pantry/pantry.html:5 templates/base.html:62
 msgid "Pantry"
 msgstr "储藏室"
 
@@ -155,10 +155,8 @@ msgid "No Name"
 msgstr "无名"
 
 #: pantry/templates/pantry/pantry.html:72
-#, fuzzy
-#| msgid "Contains user-specified allergens:"
 msgid "Contains allergens:"
-msgstr "含有用户指定的过敏原："
+msgstr "含有过敏原："
 
 #: pantry/templates/pantry/pantry.html:91
 msgid "Quantity:"
@@ -172,11 +170,15 @@ msgstr "产品尺寸："
 msgid "Expires:"
 msgstr "过期失效："
 
+#: pantry/templates/pantry/pantry.html:107
+msgid "Remove"
+msgstr "移除"
+
 #: pantry/templates/pantry/pantry.html:117
 msgid "Your pantry is empty! Add some products to get started."
 msgstr "您的储藏室是空的！添加一些产品开始吧。"
 
-#: recipes/templates/recipes/recipes.html:6 templates/base.html:68
+#: recipes/templates/recipes/recipes.html:6 templates/base.html:69
 msgid "Recipes"
 msgstr "食谱"
 
@@ -234,10 +236,8 @@ msgid "No Saved Recipes"
 msgstr "没有保存的食谱"
 
 #: savor/settings.py:141
-#, fuzzy
-#| msgid "Polish"
 msgid "English"
-msgstr "波兰语"
+msgstr "英语"
 
 #: savor/settings.py:142
 msgid "Arabic"
@@ -367,61 +367,80 @@ msgstr "乌克兰"
 msgid "Vietnamese"
 msgstr "越南语"
 
-#: templates/base.html:31 templates/base.html:133
+#: templates/base.html:32
 msgid "Search Product by ingredient"
 msgstr "按成分搜索产品"
 
-#: templates/base.html:34 templates/base.html:136
+#: templates/base.html:35
 msgid "Search Product by Barcode"
 msgstr "按条形码搜索产品"
 
-#: templates/base.html:41 templates/base.html:141
+#: templates/base.html:42 templates/base.html:142
 msgid "Scan"
 msgstr "扫描"
 
-#: templates/base.html:54
+#: templates/base.html:55
 msgid "Home"
 msgstr "首页"
 
-#: templates/base.html:77
+#: templates/base.html:78
 msgid "Settings"
 msgstr "设置"
 
-#: templates/base.html:83
+#: templates/base.html:84
 msgid "Account"
 msgstr "账户"
 
-#: templates/base.html:92
+#: templates/base.html:93
 msgid "Log Out"
 msgstr "退出登录"
 
-#: templates/base.html:104
+#: templates/base.html:105
 msgid "Log On"
 msgstr "登录"
 
-#: templates/base.html:110 users/templates/users/register.html:57
+#: templates/base.html:111 users/templates/users/register.html:57
 msgid "Register"
 msgstr "注册"
 
-#: templates/base.html:118
+#: templates/base.html:119
 msgid "Stop Scanning"
 msgstr "停止扫描"
 
-#: templates/base.html:126
+#: templates/base.html:127
 msgid "Welcome"
 msgstr "欢迎"
+
+#: templates/base.html:134
+msgid "Search by name"
+msgstr "按名称搜索"
+
+#: templates/base.html:134
+msgid "Search product by name"
+msgstr "按名称搜索产品"
+
+#: templates/base.html:137
+msgid "Search by barcode"
+msgstr "按条形码搜索"
+
+#: templates/base.html:137
+msgid "Search product by barcode"
+msgstr "按条形码搜索产品"
 
 #: templates/registration/login.html:5 templates/registration/login.html:10
 #: templates/registration/login.html:38
 msgid "Log In"
 msgstr "登录"
 
-#: templates/registration/login.html:41
-#, python-format
-msgid "Don't have an account? <a href=\"%('register_url')s\">Register here</a>."
-msgstr "没有账户？<a href=\"%('register_url')s\">在此注册</a>。"
-
 #: templates/registration/login.html:42
+msgid "Don't have an account?"
+msgstr "没有账户？"
+
+#: templates/registration/login.html:43
+msgid "Register here"
+msgstr "在此注册"
+
+#: templates/registration/login.html:45
 msgid "Forgot password?"
 msgstr "忘记密码？"
 
@@ -515,13 +534,17 @@ msgstr "检查收件箱"
 msgid ""
 "We've emailed you instructions for setting your password. If an account "
 "exists with the email you entered, you should receive them shortly."
-msgstr "我们已通过电子邮件向您发送了密码设置说明。如果您输入的电子邮件中存在账户，您将很快收到。"
+msgstr ""
+"我们已通过电子邮件向您发送了密码设置说明。如果您输入的电子邮件中存在账户，您"
+"将很快收到。"
 
 #: templates/registration/password_reset_done.html:13
 msgid ""
 "If you don't receive an email, please make sure you've entered the email "
 "address you registered with, and check your spam folder."
-msgstr "如果您没有收到电子邮件，请确保您输入了注册时使用的电子邮件地址，并检查您的垃圾邮件文件夹。"
+msgstr ""
+"如果您没有收到电子邮件，请确保您输入了注册时使用的电子邮件地址，并检查您的垃"
+"圾邮件文件夹。"
 
 #: templates/registration/password_reset_form.html:8
 msgid "Forgot Your Password?"
@@ -542,9 +565,11 @@ msgstr "密码"
 #: users/forms.py:16
 msgid ""
 "Your password can't be too similar to your other personal information. It "
-"must contain at least 8 characters. It can't be a commonly used password. It"
-" can't be entirely numeric."
-msgstr "您的密码不能与您的其他个人信息过于相似。必须至少包含 8 个字符。不能是常用密码。不能完全是数字。"
+"must contain at least 8 characters. It can't be a commonly used password. It "
+"can't be entirely numeric."
+msgstr ""
+"您的密码不能与您的其他个人信息过于相似。必须至少包含 8 个字符。不能是常用密"
+"码。不能完全是数字。"
 
 #: users/forms.py:23
 msgid "Password confirmation"
@@ -613,7 +638,8 @@ msgstr "您将永久删除您的账户。"
 #: users/templates/users/account_settings.html:22
 msgid ""
 "\n"
-"          Doing this will permanently remove all account data including your\n"
+"          Doing this will permanently remove all account data including "
+"your\n"
 "          pantry, saved recipes, and favourites. Are you sure you want to\n"
 "          continue?\n"
 "          "
@@ -657,6 +683,11 @@ msgstr "保存设置"
 #, python-format
 msgid "Already have an account? <a href=\"%(login_url)s\">Log in here</a>."
 msgstr "已有帐户？<a href=\"%(login_url)s\">在此登录</a>。"
+
+#, python-format
+#~ msgid ""
+#~ "Don't have an account? <a href=\"%('register_url')s\">Register here</a>."
+#~ msgstr "没有账户？<a href=\"%('register_url')s\">在此注册</a>。"
 
 #~ msgid "Prioritise local results in search"
 #~ msgstr "在搜索中优先考虑本地结果"

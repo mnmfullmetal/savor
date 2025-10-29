@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-10-28 11:37+0000\n"
+"POT-Creation-Date: 2025-10-29 06:54+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -54,8 +54,8 @@ msgstr "Изберете марка..."
 msgid "Clear Filters"
 msgstr "Изчистване на филтрите"
 
-#: pantry/templates/pantry/index.html:51 templates/base.html:37
-#: templates/base.html:138
+#: pantry/templates/pantry/index.html:51 templates/base.html:38
+#: templates/base.html:139
 msgid "Search"
 msgstr "Търсене"
 
@@ -118,12 +118,12 @@ msgstr "Добавяне в килера"
 msgid "Remove Favourite"
 msgstr "Премахване на любими"
 
-#: pantry/templates/pantry/index.html:148
+#: pantry/templates/pantry/index.html:149
 msgid "You haven't favourited any products yet. Start exploring today!"
 msgstr ""
 "Все още не сте харесали никакви продукти. Започнете да проучвате още днес!"
 
-#: pantry/templates/pantry/pantry.html:5 templates/base.html:61
+#: pantry/templates/pantry/pantry.html:5 templates/base.html:62
 msgid "Pantry"
 msgstr "Хранилище"
 
@@ -159,10 +159,8 @@ msgid "No Name"
 msgstr "Без име"
 
 #: pantry/templates/pantry/pantry.html:72
-#, fuzzy
-#| msgid "Contains user-specified allergens:"
 msgid "Contains allergens:"
-msgstr "Съдържа алергени, посочени от потребителя:"
+msgstr "Съдържа алергени:"
 
 #: pantry/templates/pantry/pantry.html:91
 msgid "Quantity:"
@@ -176,11 +174,15 @@ msgstr "Размер на продукта:"
 msgid "Expires:"
 msgstr "Срокът на валидност изтича:"
 
+#: pantry/templates/pantry/pantry.html:107
+msgid "Remove"
+msgstr "Премахване на"
+
 #: pantry/templates/pantry/pantry.html:117
 msgid "Your pantry is empty! Add some products to get started."
 msgstr "Килерът ви е празен! Добавете няколко продукта, за да започнете."
 
-#: recipes/templates/recipes/recipes.html:6 templates/base.html:68
+#: recipes/templates/recipes/recipes.html:6 templates/base.html:69
 msgid "Recipes"
 msgstr "Рецепти"
 
@@ -238,10 +240,8 @@ msgid "No Saved Recipes"
 msgstr "Няма запазени рецепти"
 
 #: savor/settings.py:141
-#, fuzzy
-#| msgid "Polish"
 msgid "English"
-msgstr "Полски"
+msgstr "Английски език"
 
 #: savor/settings.py:142
 msgid "Arabic"
@@ -371,61 +371,80 @@ msgstr "Украински"
 msgid "Vietnamese"
 msgstr "Виетнамски"
 
-#: templates/base.html:31 templates/base.html:133
+#: templates/base.html:32
 msgid "Search Product by ingredient"
 msgstr "Търсене на продукт по съставка"
 
-#: templates/base.html:34 templates/base.html:136
+#: templates/base.html:35
 msgid "Search Product by Barcode"
 msgstr "Търсене на продукт по баркод"
 
-#: templates/base.html:41 templates/base.html:141
+#: templates/base.html:42 templates/base.html:142
 msgid "Scan"
 msgstr "Сканиране"
 
-#: templates/base.html:54
+#: templates/base.html:55
 msgid "Home"
 msgstr "Начало"
 
-#: templates/base.html:77
+#: templates/base.html:78
 msgid "Settings"
 msgstr "Настройки"
 
-#: templates/base.html:83
+#: templates/base.html:84
 msgid "Account"
 msgstr "Сметка"
 
-#: templates/base.html:92
+#: templates/base.html:93
 msgid "Log Out"
 msgstr "Излизане от системата"
 
-#: templates/base.html:104
+#: templates/base.html:105
 msgid "Log On"
 msgstr "Влезте в системата"
 
-#: templates/base.html:110 users/templates/users/register.html:57
+#: templates/base.html:111 users/templates/users/register.html:57
 msgid "Register"
 msgstr "Регистрация"
 
-#: templates/base.html:118
+#: templates/base.html:119
 msgid "Stop Scanning"
 msgstr "Спиране на сканирането"
 
-#: templates/base.html:126
+#: templates/base.html:127
 msgid "Welcome"
 msgstr "Добре дошли"
+
+#: templates/base.html:134
+msgid "Search by name"
+msgstr "Търсене по име"
+
+#: templates/base.html:134
+msgid "Search product by name"
+msgstr "Търсене на продукт по име"
+
+#: templates/base.html:137
+msgid "Search by barcode"
+msgstr "Търсене по баркод"
+
+#: templates/base.html:137
+msgid "Search product by barcode"
+msgstr "Търсене на продукт по баркод"
 
 #: templates/registration/login.html:5 templates/registration/login.html:10
 #: templates/registration/login.html:38
 msgid "Log In"
 msgstr "Влезте в системата"
 
-#: templates/registration/login.html:41
-#, python-format
-msgid "Don't have an account? <a href=\"%('register_url')s\">Register here</a>."
-msgstr "Нямате акаунт? <a href=\"%('register_url')s\">Регистрирайте се тук</a>."
-
 #: templates/registration/login.html:42
+msgid "Don't have an account?"
+msgstr "Нямате акаунт?"
+
+#: templates/registration/login.html:43
+msgid "Register here"
+msgstr "Регистрирайте се тук"
+
+#: templates/registration/login.html:45
 msgid "Forgot password?"
 msgstr "Забравена парола?"
 
@@ -532,8 +551,8 @@ msgid ""
 "If you don't receive an email, please make sure you've entered the email "
 "address you registered with, and check your spam folder."
 msgstr ""
-"Ако не получите имейл, моля, уверете се, че сте въвели имейл адреса, с който"
-" сте се регистрирали, и проверете папката за спам."
+"Ако не получите имейл, моля, уверете се, че сте въвели имейл адреса, с който "
+"сте се регистрирали, и проверете папката за спам."
 
 #: templates/registration/password_reset_form.html:8
 msgid "Forgot Your Password?"
@@ -542,8 +561,8 @@ msgstr "Забравили сте паролата си?"
 #: templates/registration/password_reset_form.html:9
 msgid "Enter your email address below to receive a password reset link."
 msgstr ""
-"Въведете имейл адреса си по-долу, за да получите връзка за възстановяване на"
-" паролата."
+"Въведете имейл адреса си по-долу, за да получите връзка за възстановяване на "
+"паролата."
 
 #: templates/registration/password_reset_form.html:17
 msgid "Reset Password"
@@ -556,8 +575,8 @@ msgstr "Парола"
 #: users/forms.py:16
 msgid ""
 "Your password can't be too similar to your other personal information. It "
-"must contain at least 8 characters. It can't be a commonly used password. It"
-" can't be entirely numeric."
+"must contain at least 8 characters. It can't be a commonly used password. It "
+"can't be entirely numeric."
 msgstr ""
 "Паролата ви не може да бъде твърде сходна с друга ваша лична информация. Тя "
 "трябва да съдържа най-малко 8 символа. Тя не може да бъде често използвана "
@@ -630,14 +649,17 @@ msgstr "Предстои да изтриете профила си за пост
 #: users/templates/users/account_settings.html:22
 msgid ""
 "\n"
-"          Doing this will permanently remove all account data including your\n"
+"          Doing this will permanently remove all account data including "
+"your\n"
 "          pantry, saved recipes, and favourites. Are you sure you want to\n"
 "          continue?\n"
 "          "
 msgstr ""
 "\n"
-"          Това ще премахне за постоянно всички данни от акаунта, включително вашите\n"
-"          килера, запазените рецепти и любимите. Сигурни ли сте, че искате да\n"
+"          Това ще премахне за постоянно всички данни от акаунта, включително "
+"вашите\n"
+"          килера, запазените рецепти и любимите. Сигурни ли сте, че искате "
+"да\n"
 "          искате да продължите?\n"
 "          "
 
@@ -674,6 +696,12 @@ msgstr "Запазване на настройките"
 #, python-format
 msgid "Already have an account? <a href=\"%(login_url)s\">Log in here</a>."
 msgstr "Вече имате акаунт? <a href=\"%(login_url)s\">Влезте тук</a>."
+
+#, python-format
+#~ msgid ""
+#~ "Don't have an account? <a href=\"%('register_url')s\">Register here</a>."
+#~ msgstr ""
+#~ "Нямате акаунт? <a href=\"%('register_url')s\">Регистрирайте се тук</a>."
 
 #~ msgid "Prioritise local results in search"
 #~ msgstr "Даване на приоритет на местните резултати при търсене"

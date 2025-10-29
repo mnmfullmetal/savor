@@ -1,0 +1,145 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-10-29 08:33+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: pantry/static/pantry/pantry.js:70
+msgid "No items found matching your search."
+msgstr "Teie otsingule vastavaid tooteid ei leitud."
+
+#: pantry/static/pantry/pantry.js:93 static/savor.js:401 static/savor.js:658
+msgid "WARNING"
+msgstr "HOIATUS"
+
+#: pantry/static/pantry/pantry.js:93 static/savor.js:401 static/savor.js:658
+msgid "Contains user-specified allergens:"
+msgstr "Sisaldab kasutaja määratud allergeene:"
+
+#: pantry/static/pantry/pantry.js:101 static/savor.js:409 static/savor.js:666
+msgid "POSSIBLE MISMATCH"
+msgstr "VÕIMALIK EBAKÕLA"
+
+#: pantry/static/pantry/pantry.js:101 static/savor.js:409 static/savor.js:666
+msgid "Missing dietary requirements:"
+msgstr "Puuduvad toitumisnõuded:"
+
+#: pantry/static/pantry/pantry.js:110 static/savor.js:420 static/savor.js:681
+msgid "Product Image"
+msgstr "Toote pilt"
+
+#: pantry/static/pantry/pantry.js:117 static/savor.js:426 static/savor.js:452
+#: static/savor.js:687 static/savor.js:715
+msgid "No Name"
+msgstr "No Name"
+
+#: pantry/static/pantry/pantry.js:123
+msgid "Quantity:"
+msgstr "Kogus:"
+
+#: pantry/static/pantry/pantry.js:127
+msgid "Product Size:"
+msgstr "Toote suurus:"
+
+#: pantry/static/pantry/pantry.js:127 static/savor.js:445 static/savor.js:709
+msgid "item"
+msgstr "toode"
+
+#: pantry/static/pantry/pantry.js:135
+msgid "Remove"
+msgstr "Eemaldage"
+
+#: recipes/static/recipes/recipes.js:135
+msgid "Ingredients"
+msgstr "Koostisosad"
+
+#: recipes/static/recipes/recipes.js:141
+msgid "Instructions"
+msgstr "Juhised"
+
+#: static/savor.js:292 static/savor.js:349
+msgid "Searching..."
+msgstr "Otsin..."
+
+#: static/savor.js:296
+msgid "Please enter a barcode or product name to search."
+msgstr "Palun sisestage otsinguks vöötkood või tootenimi."
+
+#: static/savor.js:324 static/savor.js:367
+msgid "Error"
+msgstr "Viga"
+
+#: static/savor.js:324 static/savor.js:367
+msgid "Invalid input."
+msgstr "Vale sisestus."
+
+#: static/savor.js:341 static/savor.js:377
+#| msgid "A network error occurred."
+msgid "A network error occurred. Please check your connection."
+msgstr "Tekkis võrguviga. Palun kontrollige oma ühendust."
+
+#: static/savor.js:429 static/savor.js:695
+msgid "Brands"
+msgstr "Kaubamärgid"
+
+#: static/savor.js:432 static/savor.js:698
+msgid "Code"
+msgstr "Kood"
+
+#: static/savor.js:455 static/savor.js:717
+msgid "Add to Pantry"
+msgstr "Lisa toidutuppa"
+
+#: static/savor.js:462 static/savor.js:617 static/savor.js:721
+msgid "Remove Favourite"
+msgstr "Eemalda lemmik"
+
+#: static/savor.js:462 static/savor.js:618
+msgid "Favourite"
+msgstr "Lemmik"
+
+#: static/savor.js:501
+msgid "Previous"
+msgstr "Eelmine"
+
+#: static/savor.js:536
+msgid "Next"
+msgstr "Järgmine"
+
+#: static/savor.js:557
+msgid "No products found. Try a different search term."
+msgstr "Toodet ei leitud. Proovige teistsugust otsingusõna."
+
+#: static/savor.js:566
+msgid "Invalid quantity. Please enter a number greater than 0."
+msgstr "Lubamatu kogus. Palun sisestage number, mis on suurem kui 0."
+
+#: static/savor.js:596
+msgid "A network error occurred."
+msgstr "Tekkis võrguviga."
+
+#: static/savor.js:630
+msgid "Error toggling favourite:"
+msgstr "Vea vahetamine lemmik:"
+
+#: static/savor.js:757
+msgid "You haven't favourited any products yet. Start exploring today!"
+msgstr "Sa ei ole veel ühtegi toodet eelistanud. Alusta uurimist juba täna!"
+
+#: static/savor.js:852
+msgid "Camera start failed."
+msgstr "Kaamera käivitamine ebaõnnestus."

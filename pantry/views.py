@@ -661,9 +661,16 @@ def toggle_favourite_product(request, id):
         is_favourited = True
         message = f"'{product.product_name}' favourited."
 
+    if not user.favourited_products.exists():
+        favorites_exist = False
+    else:
+        favorites_exist = True
+
+
     return JsonResponse({
         'message': message,
         'is_favourited': is_favourited,
+        'favourites_exist': favorites_exist,
         'product': {
             'id': product.id,
             'product_name': product.product_name,

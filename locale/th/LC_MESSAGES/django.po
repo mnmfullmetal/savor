@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-10-28 11:37+0000\n"
+"POT-Creation-Date: 2025-10-29 06:54+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -54,8 +54,8 @@ msgstr "เลือกแบรนด์..."
 msgid "Clear Filters"
 msgstr "ล้างตัวกรอง"
 
-#: pantry/templates/pantry/index.html:51 templates/base.html:37
-#: templates/base.html:138
+#: pantry/templates/pantry/index.html:51 templates/base.html:38
+#: templates/base.html:139
 msgid "Search"
 msgstr "ค้นหา"
 
@@ -72,8 +72,8 @@ msgid ""
 "Can't find what you're looking for? Try <a href=\"#\" data-bs-"
 "toggle=\"modal\" data-bs-target=\"#exampleModal\">Advanced Search</a>."
 msgstr ""
-"ไม่พบสิ่งที่คุณกำลังมองหาใช่ไหม? ลอง <a href=\"#\" data-bs-toggle=\"modal\" "
-"data-bs-target=\"#exampleModal\">ค้นหาขั้นสูง</a>"
+"ไม่พบสิ่งที่คุณกำลังมองหาใช่ไหม? ลอง <a href=\"#\" data-bs-toggle=\"modal\" data-bs-"
+"target=\"#exampleModal\">ค้นหาขั้นสูง</a>"
 
 #: pantry/templates/pantry/index.html:82
 msgid "Favourites"
@@ -118,11 +118,11 @@ msgstr "เพิ่มในตู้กับข้าว"
 msgid "Remove Favourite"
 msgstr "ลบรายการโปรด"
 
-#: pantry/templates/pantry/index.html:148
+#: pantry/templates/pantry/index.html:149
 msgid "You haven't favourited any products yet. Start exploring today!"
 msgstr "คุณยังไม่ได้เพิ่มสินค้าใด ๆ เป็นรายการโปรดของคุณ เริ่มสำรวจวันนี้เลย!"
 
-#: pantry/templates/pantry/pantry.html:5 templates/base.html:61
+#: pantry/templates/pantry/pantry.html:5 templates/base.html:62
 msgid "Pantry"
 msgstr "ห้องเก็บของ"
 
@@ -156,10 +156,8 @@ msgid "No Name"
 msgstr "ไม่มีชื่อ"
 
 #: pantry/templates/pantry/pantry.html:72
-#, fuzzy
-#| msgid "Contains user-specified allergens:"
 msgid "Contains allergens:"
-msgstr "มีสารก่อภูมิแพ้ที่ผู้ใช้ระบุ:"
+msgstr "มีสารก่อภูมิแพ้:"
 
 #: pantry/templates/pantry/pantry.html:91
 msgid "Quantity:"
@@ -173,11 +171,15 @@ msgstr "ขนาดสินค้า:"
 msgid "Expires:"
 msgstr "หมดอายุ:"
 
+#: pantry/templates/pantry/pantry.html:107
+msgid "Remove"
+msgstr "ลบ"
+
 #: pantry/templates/pantry/pantry.html:117
 msgid "Your pantry is empty! Add some products to get started."
 msgstr "ตู้กับข้าวของคุณว่างเปล่า! เพิ่มสินค้าบางอย่างเพื่อเริ่มต้น"
 
-#: recipes/templates/recipes/recipes.html:6 templates/base.html:68
+#: recipes/templates/recipes/recipes.html:6 templates/base.html:69
 msgid "Recipes"
 msgstr "สูตรอาหาร"
 
@@ -235,10 +237,8 @@ msgid "No Saved Recipes"
 msgstr "ไม่มีสูตรอาหารที่บันทึกไว้"
 
 #: savor/settings.py:141
-#, fuzzy
-#| msgid "Polish"
 msgid "English"
-msgstr "การขัดเงา"
+msgstr "อังกฤษ, ภาษาอังกฤษ"
 
 #: savor/settings.py:142
 msgid "Arabic"
@@ -368,61 +368,80 @@ msgstr "ยูเครน"
 msgid "Vietnamese"
 msgstr "เวียดนาม"
 
-#: templates/base.html:31 templates/base.html:133
+#: templates/base.html:32
 msgid "Search Product by ingredient"
 msgstr "ค้นหาผลิตภัณฑ์ตามส่วนผสม"
 
-#: templates/base.html:34 templates/base.html:136
+#: templates/base.html:35
 msgid "Search Product by Barcode"
 msgstr "ค้นหาสินค้าด้วยบาร์โค้ด"
 
-#: templates/base.html:41 templates/base.html:141
+#: templates/base.html:42 templates/base.html:142
 msgid "Scan"
 msgstr "สแกน"
 
-#: templates/base.html:54
+#: templates/base.html:55
 msgid "Home"
 msgstr "หน้าแรก"
 
-#: templates/base.html:77
+#: templates/base.html:78
 msgid "Settings"
 msgstr "การตั้งค่า"
 
-#: templates/base.html:83
+#: templates/base.html:84
 msgid "Account"
 msgstr "บัญชี"
 
-#: templates/base.html:92
+#: templates/base.html:93
 msgid "Log Out"
 msgstr "ออกจากระบบ"
 
-#: templates/base.html:104
+#: templates/base.html:105
 msgid "Log On"
 msgstr "เข้าสู่ระบบ"
 
-#: templates/base.html:110 users/templates/users/register.html:57
+#: templates/base.html:111 users/templates/users/register.html:57
 msgid "Register"
 msgstr "ลงทะเบียน"
 
-#: templates/base.html:118
+#: templates/base.html:119
 msgid "Stop Scanning"
 msgstr "หยุดสแกน"
 
-#: templates/base.html:126
+#: templates/base.html:127
 msgid "Welcome"
 msgstr "ยินดีต้อนรับ"
+
+#: templates/base.html:134
+msgid "Search by name"
+msgstr "ค้นหาตามชื่อ"
+
+#: templates/base.html:134
+msgid "Search product by name"
+msgstr "ค้นหาสินค้าตามชื่อ"
+
+#: templates/base.html:137
+msgid "Search by barcode"
+msgstr "ค้นหาด้วยบาร์โค้ด"
+
+#: templates/base.html:137
+msgid "Search product by barcode"
+msgstr "ค้นหาสินค้าด้วยบาร์โค้ด"
 
 #: templates/registration/login.html:5 templates/registration/login.html:10
 #: templates/registration/login.html:38
 msgid "Log In"
 msgstr "เข้าสู่ระบบ"
 
-#: templates/registration/login.html:41
-#, python-format
-msgid "Don't have an account? <a href=\"%('register_url')s\">Register here</a>."
-msgstr "ยังไม่มีบัญชีใช่ไหม? <a href=\"%('register_url')s\">ลงทะเบียนที่นี่</a>"
-
 #: templates/registration/login.html:42
+msgid "Don't have an account?"
+msgstr "ยังไม่มีบัญชีใช่ไหม?"
+
+#: templates/registration/login.html:43
+msgid "Register here"
+msgstr "ลงทะเบียนที่นี่"
+
+#: templates/registration/login.html:45
 msgid "Forgot password?"
 msgstr "ลืมรหัสผ่านหรือไม่?"
 
@@ -488,9 +507,7 @@ msgstr "รหัสผ่านถูกเปลี่ยน"
 msgid ""
 "Your password has been set. You can now go ahead and log in with your new "
 "password."
-msgstr ""
-"คุณได้ตั้งรหัสผ่านเรียบร้อยแล้ว "
-"คุณสามารถเข้าสู่ระบบด้วยรหัสผ่านใหม่ของคุณได้ทันที"
+msgstr "คุณได้ตั้งรหัสผ่านเรียบร้อยแล้ว คุณสามารถเข้าสู่ระบบด้วยรหัสผ่านใหม่ของคุณได้ทันที"
 
 #: templates/registration/password_reset_confirm.html:12
 msgid "Set a New Password"
@@ -505,8 +522,7 @@ msgid ""
 "The password reset link was invalid, possibly because it has already been "
 "used. Please request a new password reset."
 msgstr ""
-"ลิงก์การรีเซ็ตรหัสผ่านไม่ถูกต้อง อาจเป็นเพราะได้ถูกใช้ไปแล้ว "
-"กรุณาร้องขอการรีเซ็ตรหัสผ่านใหม่"
+"ลิงก์การรีเซ็ตรหัสผ่านไม่ถูกต้อง อาจเป็นเพราะได้ถูกใช้ไปแล้ว กรุณาร้องขอการรีเซ็ตรหัสผ่านใหม่"
 
 #: templates/registration/password_reset_done.html:4
 msgid "Password Reset Sent"
@@ -521,16 +537,15 @@ msgid ""
 "We've emailed you instructions for setting your password. If an account "
 "exists with the email you entered, you should receive them shortly."
 msgstr ""
-"เราได้ส่งอีเมลคำแนะนำสำหรับการตั้งรหัสผ่านของคุณแล้ว "
-"หากมีบัญชีที่มีอีเมลที่คุณป้อนอยู่ คุณควรจะได้รับคำแนะนำในไม่ช้า"
+"เราได้ส่งอีเมลคำแนะนำสำหรับการตั้งรหัสผ่านของคุณแล้ว หากมีบัญชีที่มีอีเมลที่คุณป้อนอยู่ "
+"คุณควรจะได้รับคำแนะนำในไม่ช้า"
 
 #: templates/registration/password_reset_done.html:13
 msgid ""
 "If you don't receive an email, please make sure you've entered the email "
 "address you registered with, and check your spam folder."
 msgstr ""
-"หากคุณไม่ได้รับอีเมล "
-"กรุณาตรวจสอบให้แน่ใจว่าคุณได้กรอกที่อยู่อีเมลที่คุณลงทะเบียนไว้ "
+"หากคุณไม่ได้รับอีเมล กรุณาตรวจสอบให้แน่ใจว่าคุณได้กรอกที่อยู่อีเมลที่คุณลงทะเบียนไว้ "
 "และตรวจสอบในโฟลเดอร์สแปมของคุณ"
 
 #: templates/registration/password_reset_form.html:8
@@ -552,11 +567,11 @@ msgstr "รหัสผ่าน"
 #: users/forms.py:16
 msgid ""
 "Your password can't be too similar to your other personal information. It "
-"must contain at least 8 characters. It can't be a commonly used password. It"
-" can't be entirely numeric."
+"must contain at least 8 characters. It can't be a commonly used password. It "
+"can't be entirely numeric."
 msgstr ""
-"รหัสผ่านของคุณไม่สามารถคล้ายกับข้อมูลส่วนตัวอื่นของคุณได้ ต้องมีอย่างน้อย 8 "
-"ตัวอักษร ไม่สามารถใช้รหัสผ่านที่พบได้บ่อย ไม่สามารถใช้ตัวเลขทั้งหมดได้"
+"รหัสผ่านของคุณไม่สามารถคล้ายกับข้อมูลส่วนตัวอื่นของคุณได้ ต้องมีอย่างน้อย 8 ตัวอักษร "
+"ไม่สามารถใช้รหัสผ่านที่พบได้บ่อย ไม่สามารถใช้ตัวเลขทั้งหมดได้"
 
 #: users/forms.py:23
 msgid "Password confirmation"
@@ -576,8 +591,7 @@ msgstr "อีเมล"
 
 #: users/forms.py:39
 msgid "Required. 150 characters or fewer. Letters, digits and @/./+/-/_ only."
-msgstr ""
-"จำเป็น. 150 ตัวอักษรหรือน้อยกว่า. ตัวอักษร, ตัวเลข และ @/./+/-/_ เท่านั้น."
+msgstr "จำเป็น. 150 ตัวอักษรหรือน้อยกว่า. ตัวอักษร, ตัวเลข และ @/./+/-/_ เท่านั้น."
 
 #: users/forms.py:65
 msgid "Language Preference"
@@ -626,13 +640,15 @@ msgstr "คุณกำลังจะลบบัญชีของคุณอ
 #: users/templates/users/account_settings.html:22
 msgid ""
 "\n"
-"          Doing this will permanently remove all account data including your\n"
+"          Doing this will permanently remove all account data including "
+"your\n"
 "          pantry, saved recipes, and favourites. Are you sure you want to\n"
 "          continue?\n"
 "          "
 msgstr ""
 "\n"
-"          การทำเช่นนี้จะลบข้อมูลบัญชีทั้งหมดอย่างถาวร รวมถึงของในตู้กับข้าว สูตรอาหารที่บันทึกไว้ และรายการโปรดของคุณ คุณแน่ใจหรือไม่ว่าต้องการดำเนินการต่อ?"
+"          การทำเช่นนี้จะลบข้อมูลบัญชีทั้งหมดอย่างถาวร รวมถึงของในตู้กับข้าว สูตรอาหารที่บันทึกไว้ "
+"และรายการโปรดของคุณ คุณแน่ใจหรือไม่ว่าต้องการดำเนินการต่อ?"
 
 #: users/templates/users/account_settings.html:29
 msgid "I'm sure,"
@@ -667,6 +683,11 @@ msgstr "บันทึกการตั้งค่า"
 #, python-format
 msgid "Already have an account? <a href=\"%(login_url)s\">Log in here</a>."
 msgstr "มีบัญชีอยู่แล้วหรือ? <a href=\"%(login_url)s\">เข้าสู่ระบบที่นี่</a>"
+
+#, python-format
+#~ msgid ""
+#~ "Don't have an account? <a href=\"%('register_url')s\">Register here</a>."
+#~ msgstr "ยังไม่มีบัญชีใช่ไหม? <a href=\"%('register_url')s\">ลงทะเบียนที่นี่</a>"
 
 #~ msgid "Prioritise local results in search"
 #~ msgstr "ให้ความสำคัญกับผลลัพธ์ในท้องถิ่นในการค้นหา"

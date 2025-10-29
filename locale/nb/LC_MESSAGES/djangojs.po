@@ -1,0 +1,145 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-10-29 08:33+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: pantry/static/pantry/pantry.js:70
+msgid "No items found matching your search."
+msgstr "Det ble ikke funnet noen elementer som samsvarer med søket ditt."
+
+#: pantry/static/pantry/pantry.js:93 static/savor.js:401 static/savor.js:658
+msgid "WARNING"
+msgstr "ADVARSEL"
+
+#: pantry/static/pantry/pantry.js:93 static/savor.js:401 static/savor.js:658
+msgid "Contains user-specified allergens:"
+msgstr "Inneholder brukerspesifiserte allergener:"
+
+#: pantry/static/pantry/pantry.js:101 static/savor.js:409 static/savor.js:666
+msgid "POSSIBLE MISMATCH"
+msgstr "MULIG UOVERENSSTEMMELSE"
+
+#: pantry/static/pantry/pantry.js:101 static/savor.js:409 static/savor.js:666
+msgid "Missing dietary requirements:"
+msgstr "Manglende diettkrav:"
+
+#: pantry/static/pantry/pantry.js:110 static/savor.js:420 static/savor.js:681
+msgid "Product Image"
+msgstr "Produktbilde"
+
+#: pantry/static/pantry/pantry.js:117 static/savor.js:426 static/savor.js:452
+#: static/savor.js:687 static/savor.js:715
+msgid "No Name"
+msgstr "Ingen navn"
+
+#: pantry/static/pantry/pantry.js:123
+msgid "Quantity:"
+msgstr "Antall:"
+
+#: pantry/static/pantry/pantry.js:127
+msgid "Product Size:"
+msgstr "Produktstørrelse:"
+
+#: pantry/static/pantry/pantry.js:127 static/savor.js:445 static/savor.js:709
+msgid "item"
+msgstr "element"
+
+#: pantry/static/pantry/pantry.js:135
+msgid "Remove"
+msgstr "Fjern"
+
+#: recipes/static/recipes/recipes.js:135
+msgid "Ingredients"
+msgstr "Ingredienser"
+
+#: recipes/static/recipes/recipes.js:141
+msgid "Instructions"
+msgstr "Instruksjoner"
+
+#: static/savor.js:292 static/savor.js:349
+msgid "Searching..."
+msgstr "Søker..."
+
+#: static/savor.js:296
+msgid "Please enter a barcode or product name to search."
+msgstr "Skriv inn en strekkode eller et produktnavn for å søke."
+
+#: static/savor.js:324 static/savor.js:367
+msgid "Error"
+msgstr "Feil"
+
+#: static/savor.js:324 static/savor.js:367
+msgid "Invalid input."
+msgstr "Ugyldig inntasting."
+
+#: static/savor.js:341 static/savor.js:377
+#| msgid "A network error occurred."
+msgid "A network error occurred. Please check your connection."
+msgstr "Det oppstod en nettverksfeil. Vennligst sjekk tilkoblingen din."
+
+#: static/savor.js:429 static/savor.js:695
+msgid "Brands"
+msgstr "Merkevarer"
+
+#: static/savor.js:432 static/savor.js:698
+msgid "Code"
+msgstr "Kode"
+
+#: static/savor.js:455 static/savor.js:717
+msgid "Add to Pantry"
+msgstr "Legg til i spiskammeret"
+
+#: static/savor.js:462 static/savor.js:617 static/savor.js:721
+msgid "Remove Favourite"
+msgstr "Fjern favoritt"
+
+#: static/savor.js:462 static/savor.js:618
+msgid "Favourite"
+msgstr "Favoritt"
+
+#: static/savor.js:501
+msgid "Previous"
+msgstr "Tidligere"
+
+#: static/savor.js:536
+msgid "Next"
+msgstr "Neste"
+
+#: static/savor.js:557
+msgid "No products found. Try a different search term."
+msgstr "Ingen produkter funnet. Prøv et annet søkeord."
+
+#: static/savor.js:566
+msgid "Invalid quantity. Please enter a number greater than 0."
+msgstr "Ugyldig antall. Vennligst skriv inn et tall større enn 0."
+
+#: static/savor.js:596
+msgid "A network error occurred."
+msgstr "Det oppstod en nettverksfeil."
+
+#: static/savor.js:630
+msgid "Error toggling favourite:"
+msgstr "Feil ved bytte av favoritt:"
+
+#: static/savor.js:757
+msgid "You haven't favourited any products yet. Start exploring today!"
+msgstr "Du har ikke favorisert noen produkter ennå. Begynn å utforske i dag!"
+
+#: static/savor.js:852
+msgid "Camera start failed."
+msgstr "Kamerastart mislyktes."

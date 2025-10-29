@@ -289,11 +289,11 @@ function handleProductSearch(form, csrfToken, wasScanned) {
 
 function searchProduct(barcode = "None", productName = "None", csrfToken, wasScanned, page = 1) {
   const searchedProductsDiv = document.querySelector("#searched-product-section");
-  searchedProductsDiv.innerHTML = "<p class='text-muted'>Searching...</p>";
+  searchedProductsDiv.innerHTML = `<p class='text-muted'>${gettext('Searching...')}</p>`;
   if (!barcode && !productName) {
     searchedProductsDiv.innerHTML = `
     <div class="alert alert-warning text-center mt-3" role="alert">
-    Please enter a barcode or product name to search.
+    ${gettext('Please enter a barcode or product name to search.')}
     </div>`;
     return;
   }
@@ -321,7 +321,7 @@ function searchProduct(barcode = "None", productName = "None", csrfToken, wasSca
       console.error("Error from backend:", errorMessage);
       searchedProductsDiv.innerHTML = `
       <div class="alert alert-danger text-center mt-3" role="alert">
-       Error: ${data.error || "Invalid input."}
+       ${gettext('Error')}: ${data.error || gettext("Invalid input.")}
        </div>`;
     } else  {
        displaySearchResults(searchedProductsDiv, data, csrfToken, {barcode, productName}, (params, token) => searchProduct(params.barcode, params.productName, token, wasScanned, params.page));
@@ -338,7 +338,7 @@ function searchProduct(barcode = "None", productName = "None", csrfToken, wasSca
         console.error("Fetch network error:", error);
         searchedProductsDiv.innerHTML = `
         <div class="alert alert-danger text-center mt-3" role="alert">
-            A network error occurred. Please check your connection.
+            ${gettext('A network error occurred. Please check your connection.')}
         </div>`;
   });
 }
@@ -346,7 +346,7 @@ function searchProduct(barcode = "None", productName = "None", csrfToken, wasSca
 
 function advProductSearch(searchRequestData, csrfToken){
   const searchedProductsDiv = document.querySelector("#searched-product-section");
-  searchedProductsDiv.innerHTML = "<p class='text-muted'>Searching...</p>";
+  searchedProductsDiv.innerHTML = `<p class='text-muted'>${gettext('Searching...')}</p>`;
   
   fetch("/product/adv_search", {
     method: "POST",
@@ -364,7 +364,7 @@ function advProductSearch(searchRequestData, csrfToken){
       console.error("Error from backend:", errorMessage);
       searchedProductsDiv.innerHTML = `
       <div class="alert alert-danger text-center mt-3" role="alert">
-       Error: ${data.error || "Invalid input."}
+       ${gettext('Error')}: ${data.error || gettext("Invalid input.")}
        </div>`;
     } else {
        displaySearchResults(searchedProductsDiv, data, csrfToken, searchRequestData, advProductSearch);
@@ -374,7 +374,7 @@ function advProductSearch(searchRequestData, csrfToken){
         console.error("Fetch network error:", error);
         searchedProductsDiv.innerHTML = `
             <div class="alert alert-danger text-center mt-3" role="alert">
-                A network error occurred. Please check your connection.
+               ${gettext('A network error occurred. Please check your connection.')}
             </div>`;
     });
 }
@@ -391,14 +391,14 @@ function displaySearchResults(container, data, csrfToken, searchParams, searchFu
       const missingTags = product.missing_dietary_tags || [];
       const conflictingTags = product.conflicting_allergens || []; 
       let safetyAlertsHtml = '';
-      let cardClasses = "card h-100 border-0 shadow-sm";
+      let cardClasses = "card h-100 border-0 shadow";
 
       if (hasAllergenConflict) {
         const conflictingTagsList = conflictingTags.map(tag => `<code>${tag.replace(/_/g, ' ').toUpperCase()}</code>`).join(', ');
-        cardClasses = "card h-100 shadow-lg border-danger border-3"; 
+        cardClasses = "card h-100 shadow border-danger border-3"; 
         safetyAlertsHtml += `
         <div class="alert alert-danger p-1 mb-2 small" role="alert">
-        <strong> <i class="bi bi-exclamation-circle"></i>  WARNING : </strong> Contains user-specified allergens: ${conflictingTagsList}
+        <strong> <i class="bi bi-exclamation-circle"></i>  ${gettext('WARNING')} : </strong> ${gettext('Contains user-specified allergens:')} ${conflictingTagsList}
         </div>`;
       }
             
@@ -406,7 +406,7 @@ function displaySearchResults(container, data, csrfToken, searchParams, searchFu
         const missingTagsList = missingTags.map(tag => `<code>${tag.replace(/_/g, ' ').toUpperCase()}</code>`).join(', ');
         safetyAlertsHtml += `
         <div class="alert alert-warning p-1 mb-2 small" role="alert">
-        <strong> <i class="bi bi-question-circle"></i>  POSSIBLE MISMATCH : </strong> Missing dietary requirements: ${missingTagsList}.
+        <strong> <i class="bi bi-question-circle"></i> ${gettext('POSSIBLE MISMATCH')} : </strong> ${gettext('Missing dietary requirements:')} ${missingTagsList}.
         </div>`;
       }
 
@@ -417,19 +417,19 @@ function displaySearchResults(container, data, csrfToken, searchParams, searchFu
 
       productCard.innerHTML = `
           <img src="${imageUrl}" 
-             alt="${product.product_name || "Product Image"}" 
+             alt="${product.product_name || gettext("Product Image")}" 
              class="card-img-top img-fluid rounded-top" 
              style="max-height: 150px; object-fit: cover;"
              onerror="this.onerror=null;this.src='${placeholderImageUrl}';">
           <div class="card-body d-flex flex-column justify-content-between">
             <h3 class="card-title h5 mb-2 text-dark">${
-              product.product_name || "No Name"
+              product.product_name || gettext("No Name")
             }</h3>
             <div>
-            <p class="card-text text-muted mb-1 small"><strong>Brands:</strong> ${
+            <p class="card-text text-muted mb-1 small"><strong>${gettext('Brands')}:</strong> ${
               product.brands || "N/A"
             }</p>
-            <p class="card-text text-muted mb-3 small"><strong>Code:</strong> ${
+            <p class="card-text text-muted mb-3 small"><strong>${gettext('Code')}:</strong> ${
               product.code || "N/A"
             }</p>
             </div>
@@ -442,24 +442,24 @@ function displaySearchResults(container, data, csrfToken, searchParams, searchFu
                 product.product_quantity || ""
               }</span>
               <span class="text-muted small">${
-                product.product_quantity_unit || "item"
+                product.product_quantity_unit || gettext("item")
               }</span>
             </div>
 
             <div class="mt-1 d-flex flex-column">
               <button class="btn btn-outline-primary btn-sm mb-2 add-btn" 
                       data-product-name="${
-                        product.product_name || "No Name"
+                        product.product_name || gettext("No Name")
                       }" 
                       data-product-id="${product.id}">
-                Add to Pantry
+                ${gettext('Add to Pantry')}
               </button>
               <button class="btn btn-sm favourite-btn ${
                 product.is_favourited
                   ? "btn-outline-danger"
                   : "btn-outline-primary"
               }" data-product-id="${product.id}">
-                ${product.is_favourited ? "Remove Favourite" : "Favourite"}
+                ${product.is_favourited ? gettext("Remove Favourite") : gettext("Favourite")}
               </button>
             </div>
           </div>`;
@@ -485,7 +485,7 @@ function displaySearchResults(container, data, csrfToken, searchParams, searchFu
       });
     });
 
-   const totalCount = data.count;
+  const totalCount = data.count;
   const pageSize = data.page_size;
   const currentPage = data.page_count;
   const totalPages = Math.ceil(totalCount / pageSize);
@@ -498,7 +498,7 @@ function displaySearchResults(container, data, csrfToken, searchParams, searchFu
    
    paginationHtml += `
     <li class="page-item ${currentPage === 1 ? 'disabled' : ''}">
-     <a class="page-link" href="#" data-page="${currentPage - 1}">Previous</a>
+     <a class="page-link" href="#" data-page="${currentPage - 1}">${gettext('Previous')}</a>
     </li>`;
 
     const maxLinks = 5;
@@ -533,7 +533,7 @@ function displaySearchResults(container, data, csrfToken, searchParams, searchFu
 
    paginationHtml += `
     <li class="page-item ${currentPage === totalPages ? 'disabled' : ''}">
-     <a class="page-link" href="#" data-page="${currentPage + 1}">Next</a>
+     <a class="page-link" href="#" data-page="${currentPage + 1}">${gettext('Next')}</a>
     </li>`;
    paginationHtml += `</ul>`;
    
@@ -554,7 +554,7 @@ function displaySearchResults(container, data, csrfToken, searchParams, searchFu
  } else {
   container.innerHTML = `
    <div class="alert alert-info text-center mt-3" role="alert">
-    No products found. Try a different search term.
+    ${gettext('No products found. Try a different search term.')}
    </div>`;
  }
 }
@@ -563,7 +563,7 @@ function displaySearchResults(container, data, csrfToken, searchParams, searchFu
 function addProduct(productIdToAdd, quantityInput, csrfToken, productCard=null) {
   const quantity = parseFloat(quantityInput); 
   if (isNaN(quantity) || quantity <= 0) {
-    showToast("Invalid quantity. Please enter a number greater than 0.", false);
+    showToast(gettext("Invalid quantity. Please enter a number greater than 0."), false);
     return;
   }
   
@@ -593,7 +593,7 @@ function addProduct(productIdToAdd, quantityInput, csrfToken, productCard=null) 
     .catch((error) => {
       console.error("Fetch network error:", error);
       if (error.message !== "Redirecting to login page...") {
-        showToast("A network error occurred.", false);
+        showToast(gettext("A network error occurred."), false);
       }
     });
 }
@@ -614,31 +614,33 @@ function favouriteProduct(productIdToFav, csrfToken, clickedButton) {
     })
     .then((data) => {
       clickedButton.textContent = data.is_favourited
-        ? "Remove Favourite"
-        : "Favourite";
+        ? gettext("Remove Favourite")
+        : gettext("Favourite");
 
       if (data.is_favourited) {
-        updateFavouriteSection(data.product, true, csrfToken);
+        updateFavouriteSection(data.product, true, data.favourites_exist, csrfToken);
         clickedButton.classList.remove("btn-outline-primary");
         clickedButton.classList.add("btn-outline-danger");
       } else {
-        updateFavouriteSection(data.product, false, csrfToken);
+        updateFavouriteSection(data.product, false, data.favourites_exist, csrfToken);
         clickedButton.classList.remove("btn-outline-danger");
         clickedButton.classList.add("btn-outline-primary");
       }
     })
-    .catch((error) => console.error("Error toggling favourite:", error));
+    .catch((error) => console.error(gettext("Error toggling favourite:"), error));
 }
 
 
-function updateFavouriteSection(product, is_favourited, csrfToken) {
+function updateFavouriteSection(product, is_favourited, favourites_exist, csrfToken) {
 
   const favouriteSection = document.querySelector(".product-cards-wrapper");
-  const emptyMessageContainer = favouriteSection.querySelector(".product-card-wrapper.text-center");
+  const messageContainer = favouriteSection.querySelector(".product-card-wrapper.text-center.py-5");
 
   if (is_favourited) {
-    if (emptyMessageContainer) {
-      emptyMessageContainer.remove();
+
+    if (messageContainer) {
+      favouriteSection.classList.remove('justify-content-center')
+      messageContainer.remove();
     }
     
     const hasAllergenConflict = product.has_allergen_conflict;
@@ -646,14 +648,14 @@ function updateFavouriteSection(product, is_favourited, csrfToken) {
     const conflictingTags = product.conflicting_allergens || [];
     const missingTags = product.missing_dietary_tags || [];
     let safetyAlertsHtml = '';
-    let cardClasses = "card h-100 border-0 shadow-sm"; 
+    let cardClasses = "card h-100 border-0 shadow"; 
 
     if (hasAllergenConflict) {
         const conflictingTagsList = conflictingTags.map(tag => `<code>${tag.replace(/_/g, ' ').toUpperCase()}</code>`).join(', ');
-        cardClasses = "card h-100 shadow-lg border-danger border-3"; 
+        cardClasses = "card h-100 shadow border-danger border-3"; 
         safetyAlertsHtml += `
             <div class="alert alert-danger p-1 mb-2 small" role="alert">
-            <strong><i class="bi bi-exclamation-circle"></i>  WARNING: </strong> Contains user-specified allergens: ${conflictingTagsList}
+            <strong><i class="bi bi-exclamation-circle"></i>  ${gettext('WARNING')}: </strong> ${gettext('Contains user-specified allergens:')} ${conflictingTagsList}
             </div>`;
     }
             
@@ -661,7 +663,7 @@ function updateFavouriteSection(product, is_favourited, csrfToken) {
         const missingTagsList = missingTags.map(tag => `<code>${tag.replace(/_/g, ' ').toUpperCase()}</code>`).join(', ');
         safetyAlertsHtml += `
           <div class="alert alert-warning p-1 mb-2 small" role="alert">
-          <strong><i class="bi bi-question-circle"></i>  POSSIBLE MISMATCH: </strong> Missing dietary requirements: ${missingTagsList}.
+          <strong><i class="bi bi-question-circle"></i>  ${gettext('POSSIBLE MISMATCH')}: </strong> ${gettext('Missing dietary requirements:')} ${missingTagsList}.
           </div>`;
     }
 
@@ -669,21 +671,20 @@ function updateFavouriteSection(product, is_favourited, csrfToken) {
     newFavouriteCard.className = "product-card-wrapper";
 
     const productCard = document.createElement("div");
-    productCard.classList.add("card", "h-100", "shadow-sm");
-
-      const placeholderImageUrl = "/static/media/placeholder-img.jpeg";
-      const imageUrl = product.image_url || placeholderImageUrl;
+    productCard.classList.add(...cardClasses.split(' '));
+    const placeholderImageUrl = "/static/media/placeholder-img.jpeg";
+    const imageUrl = product.image_url || placeholderImageUrl;
 
     productCard.innerHTML = `
-    <div class="card h-100 border-0 shadow-sm">
+    <div class="card h-100 border-0 shadow">
       <img src="${imageUrl}" 
-             alt="${product.product_name || "Product Image"}" 
+             alt="${product.product_name || gettext("Product Image")}" 
              class="card-img-top img-fluid rounded-top" 
              style="max-height: 150px; object-fit: cover;"
              onerror="this.onerror=null;this.src='${placeholderImageUrl}';">
       <div class="card-body d-flex flex-column justify-content-between">
         <h3 class="card-title h5 mb-2 text-dark">${
-          product.product_name || "No Name"
+          product.product_name || gettext("No Name")
         }</h3>
 
         <div>
@@ -691,10 +692,10 @@ function updateFavouriteSection(product, is_favourited, csrfToken) {
         </div>
 
         <div>
-        <p class="card-text text-muted mb-1 small"><strong>Brands:</strong> ${
+        <p class="card-text text-muted mb-1 small"><strong>${gettext('Brands')}:</strong> ${
           product.brands || "N/A"
         }</p>
-        <p class="card-text text-muted mb-3 small"><strong>Code:</strong> ${
+        <p class="card-text text-muted mb-3 small"><strong>${gettext('Code')}:</strong> ${
           product.code || "N/A"
         }</p>
         </div>
@@ -705,19 +706,19 @@ function updateFavouriteSection(product, is_favourited, csrfToken) {
             product.product_quantity || ""
           }</span>
           <span class="text-muted small">${
-            product.product_quantity_unit || "item"
+            product.product_quantity_unit || gettext("item")
           }</span>
         </div>
 
         <div class="mt-auto d-flex flex-column">
           <button class="btn btn-outline-primary btn-sm mb-2 add-btn" 
-                  data-product-name="${product.product_name || "No Name"}" 
+                  data-product-name="${product.product_name || gettext("No Name")}" 
                   data-product-id="${product.id}">
-            Add to Pantry
+            ${gettext('Add to Pantry')}
           </button>
           <button class="btn btn-outline-danger btn-sm favourite-btn" 
                   data-product-id="${product.id}">
-            Remove Favourite
+            ${gettext('Remove Favourite')}
           </button>
         </div>
       </div>
@@ -744,16 +745,22 @@ function updateFavouriteSection(product, is_favourited, csrfToken) {
       addProduct(productIdToAdd, quantityInput, csrfToken, newFavouriteCard);
     });
   } else {
-    const cardToRemove = favouriteSection
-      .querySelector(`[data-product-id="${product.id}"]`)
-      .closest(".product-card-wrapper");
-
+    const cardToRemove = favouriteSection.querySelector(`[data-product-id="${product.id}"]`).closest(".product-card-wrapper");
     cardToRemove.classList.add("fade-out");
-
     setTimeout(() => {
       cardToRemove.remove();
     }, 400);
+    if (favourites_exist === false){
+      setTimeout(() => {
+      const newMessageContainer = document.createElement('div');
+      newMessageContainer.classList.add('product-card-wrapper', 'text-center', 'py-5');
+      newMessageContainer.innerHTML = `<p>${gettext("You haven't favourited any products yet. Start exploring today!")}</p>`
+      favouriteSection.appendChild(newMessageContainer);
+      favouriteSection.classList.add('justify-content-center')
+    }, 400);
   }
+
+ }
 }
 
 
@@ -842,7 +849,7 @@ function showToast(message, isSuccess = true) {
         )
         .catch((err) => {
           console.error("Camera failed to start:", err);
-          alert("Camera start failed.");
+          alert(gettext("Camera start failed."));
           document.getElementById("scanner-container").style.display = "none";
           html5QrCode = null;
         });

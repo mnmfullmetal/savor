@@ -1,0 +1,147 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-10-29 08:33+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: pantry/static/pantry/pantry.js:70
+msgid "No items found matching your search."
+msgstr "Nem találtunk a keresésednek megfelelő elemeket."
+
+#: pantry/static/pantry/pantry.js:93 static/savor.js:401 static/savor.js:658
+msgid "WARNING"
+msgstr "FIGYELMEZTETÉS"
+
+#: pantry/static/pantry/pantry.js:93 static/savor.js:401 static/savor.js:658
+msgid "Contains user-specified allergens:"
+msgstr "A felhasználó által megadott allergéneket tartalmaz:"
+
+#: pantry/static/pantry/pantry.js:101 static/savor.js:409 static/savor.js:666
+msgid "POSSIBLE MISMATCH"
+msgstr "ESETLEGES ELTÉRÉS"
+
+#: pantry/static/pantry/pantry.js:101 static/savor.js:409 static/savor.js:666
+msgid "Missing dietary requirements:"
+msgstr "Hiányzó étrendi követelmények:"
+
+#: pantry/static/pantry/pantry.js:110 static/savor.js:420 static/savor.js:681
+msgid "Product Image"
+msgstr "Termékkép"
+
+#: pantry/static/pantry/pantry.js:117 static/savor.js:426 static/savor.js:452
+#: static/savor.js:687 static/savor.js:715
+msgid "No Name"
+msgstr "Név nélkül"
+
+#: pantry/static/pantry/pantry.js:123
+msgid "Quantity:"
+msgstr "Mennyiség:"
+
+#: pantry/static/pantry/pantry.js:127
+msgid "Product Size:"
+msgstr "Termék mérete:"
+
+#: pantry/static/pantry/pantry.js:127 static/savor.js:445 static/savor.js:709
+msgid "item"
+msgstr "tétel"
+
+#: pantry/static/pantry/pantry.js:135
+msgid "Remove"
+msgstr "Távolítsa el a"
+
+#: recipes/static/recipes/recipes.js:135
+msgid "Ingredients"
+msgstr "Összetevők"
+
+#: recipes/static/recipes/recipes.js:141
+msgid "Instructions"
+msgstr "Utasítások"
+
+#: static/savor.js:292 static/savor.js:349
+msgid "Searching..."
+msgstr "Keresem..."
+
+#: static/savor.js:296
+msgid "Please enter a barcode or product name to search."
+msgstr "Kérjük, a kereséshez adja meg a vonalkódot vagy a termék nevét."
+
+#: static/savor.js:324 static/savor.js:367
+msgid "Error"
+msgstr "Hiba"
+
+#: static/savor.js:324 static/savor.js:367
+msgid "Invalid input."
+msgstr "Érvénytelen bemenet."
+
+#: static/savor.js:341 static/savor.js:377
+#| msgid "A network error occurred."
+msgid "A network error occurred. Please check your connection."
+msgstr "Hálózati hiba történt. Kérjük, ellenőrizze a kapcsolatot."
+
+#: static/savor.js:429 static/savor.js:695
+msgid "Brands"
+msgstr "Márkák"
+
+#: static/savor.js:432 static/savor.js:698
+msgid "Code"
+msgstr "Kód:"
+
+#: static/savor.js:455 static/savor.js:717
+msgid "Add to Pantry"
+msgstr "Hozzáadás a kamrához"
+
+#: static/savor.js:462 static/savor.js:617 static/savor.js:721
+msgid "Remove Favourite"
+msgstr "Kedvenc eltávolítása"
+
+#: static/savor.js:462 static/savor.js:618
+msgid "Favourite"
+msgstr "Kedvenc"
+
+#: static/savor.js:501
+msgid "Previous"
+msgstr "Előző"
+
+#: static/savor.js:536
+msgid "Next"
+msgstr "Következő"
+
+#: static/savor.js:557
+msgid "No products found. Try a different search term."
+msgstr "Nem találtunk termékeket. Próbáljon más keresőszót használni."
+
+#: static/savor.js:566
+msgid "Invalid quantity. Please enter a number greater than 0."
+msgstr "Érvénytelen mennyiség. Kérjük, adjon meg egy 0-nál nagyobb számot."
+
+#: static/savor.js:596
+msgid "A network error occurred."
+msgstr "Hálózati hiba történt."
+
+#: static/savor.js:630
+msgid "Error toggling favourite:"
+msgstr "Hibásan kapcsolható kedvenc:"
+
+#: static/savor.js:757
+msgid "You haven't favourited any products yet. Start exploring today!"
+msgstr ""
+"Ön még nem részesített előnyben egyetlen terméket sem. Kezdje el felfedezni "
+"még ma!"
+
+#: static/savor.js:852
+msgid "Camera start failed."
+msgstr "A kamera indítása sikertelen."

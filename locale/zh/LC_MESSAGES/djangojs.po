@@ -1,0 +1,144 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-10-29 08:33+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: pantry/static/pantry/pantry.js:70
+msgid "No items found matching your search."
+msgstr "未找到与您的搜索匹配的项目。"
+
+#: pantry/static/pantry/pantry.js:93 static/savor.js:401 static/savor.js:658
+msgid "WARNING"
+msgstr "警告"
+
+#: pantry/static/pantry/pantry.js:93 static/savor.js:401 static/savor.js:658
+msgid "Contains user-specified allergens:"
+msgstr "含有用户指定的过敏原："
+
+#: pantry/static/pantry/pantry.js:101 static/savor.js:409 static/savor.js:666
+msgid "POSSIBLE MISMATCH"
+msgstr "可能不匹配"
+
+#: pantry/static/pantry/pantry.js:101 static/savor.js:409 static/savor.js:666
+msgid "Missing dietary requirements:"
+msgstr "缺少饮食要求："
+
+#: pantry/static/pantry/pantry.js:110 static/savor.js:420 static/savor.js:681
+msgid "Product Image"
+msgstr "产品图像"
+
+#: pantry/static/pantry/pantry.js:117 static/savor.js:426 static/savor.js:452
+#: static/savor.js:687 static/savor.js:715
+msgid "No Name"
+msgstr "无名"
+
+#: pantry/static/pantry/pantry.js:123
+msgid "Quantity:"
+msgstr "数量"
+
+#: pantry/static/pantry/pantry.js:127
+msgid "Product Size:"
+msgstr "产品尺寸："
+
+#: pantry/static/pantry/pantry.js:127 static/savor.js:445 static/savor.js:709
+msgid "item"
+msgstr "项目"
+
+#: pantry/static/pantry/pantry.js:135
+msgid "Remove"
+msgstr "移除"
+
+#: recipes/static/recipes/recipes.js:135
+msgid "Ingredients"
+msgstr "配料"
+
+#: recipes/static/recipes/recipes.js:141
+msgid "Instructions"
+msgstr "说明"
+
+#: static/savor.js:292 static/savor.js:349
+msgid "Searching..."
+msgstr "搜索..."
+
+#: static/savor.js:296
+msgid "Please enter a barcode or product name to search."
+msgstr "请输入条形码或产品名称进行搜索。"
+
+#: static/savor.js:324 static/savor.js:367
+msgid "Error"
+msgstr "错误"
+
+#: static/savor.js:324 static/savor.js:367
+msgid "Invalid input."
+msgstr "输入无效。"
+
+#: static/savor.js:341 static/savor.js:377
+#| msgid "A network error occurred."
+msgid "A network error occurred. Please check your connection."
+msgstr "出现网络错误。请检查您的连接。"
+
+#: static/savor.js:429 static/savor.js:695
+msgid "Brands"
+msgstr "品牌"
+
+#: static/savor.js:432 static/savor.js:698
+msgid "Code"
+msgstr "代码"
+
+#: static/savor.js:455 static/savor.js:717
+msgid "Add to Pantry"
+msgstr "添加到储藏室"
+
+#: static/savor.js:462 static/savor.js:617 static/savor.js:721
+msgid "Remove Favourite"
+msgstr "删除收藏"
+
+#: static/savor.js:462 static/savor.js:618
+msgid "Favourite"
+msgstr "最爱"
+
+#: static/savor.js:501
+msgid "Previous"
+msgstr "上一页"
+
+#: static/savor.js:536
+msgid "Next"
+msgstr "下一页"
+
+#: static/savor.js:557
+msgid "No products found. Try a different search term."
+msgstr "未找到产品。请尝试其他搜索词。"
+
+#: static/savor.js:566
+msgid "Invalid quantity. Please enter a number greater than 0."
+msgstr "数量无效。请输入大于 0 的数字。"
+
+#: static/savor.js:596
+msgid "A network error occurred."
+msgstr "发生网络错误。"
+
+#: static/savor.js:630
+msgid "Error toggling favourite:"
+msgstr "最喜欢的切换出错："
+
+#: static/savor.js:757
+msgid "You haven't favourited any products yet. Start exploring today!"
+msgstr "您尚未收藏任何产品。今天就开始探索吧"
+
+#: static/savor.js:852
+msgid "Camera start failed."
+msgstr "相机启动失败。"

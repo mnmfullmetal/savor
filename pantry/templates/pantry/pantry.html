@@ -104,7 +104,7 @@
                    <div class="mt-3 d-flex align-items-center justify-content-left">
                         <input class="remove-quantity-input form-control me-2"
                             type="number" min="1.00" step="1.00" value="1" style="max-width: 80px;">
-                        <button class="btn btn-outline-danger btn-sm remove-button" data-item-id="{{ item.id }}" data-csrf-token="{{ csrf_token }}">Remove</button>
+                        <button class="btn btn-outline-danger btn-sm remove-button" data-item-id="{{ item.id }}" data-csrf-token="{{ csrf_token }}">{% trans "Remove" %}</button>
                     </div>
                      <div class="message-container mt-2">
 

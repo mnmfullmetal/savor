@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-10-28 11:37+0000\n"
+"POT-Creation-Date: 2025-10-29 06:54+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,7 +16,8 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=4; plural=(n%100==1 ? 0 : n%100==2 ? 1 : n%100==3 || n%100==4 ? 2 : 3);\n"
+"Plural-Forms: nplurals=4; plural=(n%100==1 ? 0 : n%100==2 ? 1 : n%100==3 || "
+"n%100==4 ? 2 : 3);\n"
 
 #: pantry/templates/pantry/index.html:17
 msgid "Advanced Search"
@@ -54,8 +55,8 @@ msgstr "Izberite blagovno znamko..."
 msgid "Clear Filters"
 msgstr "Počisti filtre"
 
-#: pantry/templates/pantry/index.html:51 templates/base.html:37
-#: templates/base.html:138
+#: pantry/templates/pantry/index.html:51 templates/base.html:38
+#: templates/base.html:139
 msgid "Search"
 msgstr "Iskanje"
 
@@ -118,12 +119,12 @@ msgstr "Dodajte v shrambo"
 msgid "Remove Favourite"
 msgstr "Odstrani priljubljeno"
 
-#: pantry/templates/pantry/index.html:148
+#: pantry/templates/pantry/index.html:149
 msgid "You haven't favourited any products yet. Start exploring today!"
 msgstr ""
 "Še niste dali prednosti nobenemu izdelku. Začnite raziskovati še danes!"
 
-#: pantry/templates/pantry/pantry.html:5 templates/base.html:61
+#: pantry/templates/pantry/pantry.html:5 templates/base.html:62
 msgid "Pantry"
 msgstr "Shramba"
 
@@ -158,10 +159,8 @@ msgid "No Name"
 msgstr "Brez imena"
 
 #: pantry/templates/pantry/pantry.html:72
-#, fuzzy
-#| msgid "Contains user-specified allergens:"
 msgid "Contains allergens:"
-msgstr "Vsebuje alergene, ki jih je navedel uporabnik:"
+msgstr "Vsebuje alergene:"
 
 #: pantry/templates/pantry/pantry.html:91
 msgid "Quantity:"
@@ -175,11 +174,15 @@ msgstr "Velikost izdelka:"
 msgid "Expires:"
 msgstr "Veljavnost poteče:"
 
+#: pantry/templates/pantry/pantry.html:107
+msgid "Remove"
+msgstr "Odstranite"
+
 #: pantry/templates/pantry/pantry.html:117
 msgid "Your pantry is empty! Add some products to get started."
 msgstr "Vaša shramba je prazna! Dodajte nekaj izdelkov in začnite."
 
-#: recipes/templates/recipes/recipes.html:6 templates/base.html:68
+#: recipes/templates/recipes/recipes.html:6 templates/base.html:69
 msgid "Recipes"
 msgstr "Recepti"
 
@@ -237,10 +240,8 @@ msgid "No Saved Recipes"
 msgstr "Ni shranjenih receptov"
 
 #: savor/settings.py:141
-#, fuzzy
-#| msgid "Polish"
 msgid "English"
-msgstr "Poljski"
+msgstr "Angleščina"
 
 #: savor/settings.py:142
 msgid "Arabic"
@@ -370,61 +371,80 @@ msgstr "Ukrajinski"
 msgid "Vietnamese"
 msgstr "Vietnamski"
 
-#: templates/base.html:31 templates/base.html:133
+#: templates/base.html:32
 msgid "Search Product by ingredient"
 msgstr "Iskanje izdelka po sestavini"
 
-#: templates/base.html:34 templates/base.html:136
+#: templates/base.html:35
 msgid "Search Product by Barcode"
 msgstr "Iskanje izdelka po črtni kodi"
 
-#: templates/base.html:41 templates/base.html:141
+#: templates/base.html:42 templates/base.html:142
 msgid "Scan"
 msgstr "Skeniranje"
 
-#: templates/base.html:54
+#: templates/base.html:55
 msgid "Home"
 msgstr "Domov"
 
-#: templates/base.html:77
+#: templates/base.html:78
 msgid "Settings"
 msgstr "Nastavitve"
 
-#: templates/base.html:83
+#: templates/base.html:84
 msgid "Account"
 msgstr "Račun"
 
-#: templates/base.html:92
+#: templates/base.html:93
 msgid "Log Out"
 msgstr "Odjava"
 
-#: templates/base.html:104
+#: templates/base.html:105
 msgid "Log On"
 msgstr "Prijava"
 
-#: templates/base.html:110 users/templates/users/register.html:57
+#: templates/base.html:111 users/templates/users/register.html:57
 msgid "Register"
 msgstr "Register"
 
-#: templates/base.html:118
+#: templates/base.html:119
 msgid "Stop Scanning"
 msgstr "Prenehanje skeniranja"
 
-#: templates/base.html:126
+#: templates/base.html:127
 msgid "Welcome"
 msgstr "Dobrodošli"
+
+#: templates/base.html:134
+msgid "Search by name"
+msgstr "Iskanje po imenu"
+
+#: templates/base.html:134
+msgid "Search product by name"
+msgstr "Iskanje izdelka po imenu"
+
+#: templates/base.html:137
+msgid "Search by barcode"
+msgstr "Iskanje po črtni kodi"
+
+#: templates/base.html:137
+msgid "Search product by barcode"
+msgstr "Iskanje izdelka po črtni kodi"
 
 #: templates/registration/login.html:5 templates/registration/login.html:10
 #: templates/registration/login.html:38
 msgid "Log In"
 msgstr "Prijava"
 
-#: templates/registration/login.html:41
-#, python-format
-msgid "Don't have an account? <a href=\"%('register_url')s\">Register here</a>."
-msgstr "Nimate računa? <a href=\"%('register_url')s\">Prijavi se tukaj</a>."
-
 #: templates/registration/login.html:42
+msgid "Don't have an account?"
+msgstr "Nimate računa?"
+
+#: templates/registration/login.html:43
+msgid "Register here"
+msgstr "Prijavite se tukaj"
+
+#: templates/registration/login.html:45
 msgid "Forgot password?"
 msgstr "Ste pozabili geslo?"
 
@@ -522,8 +542,8 @@ msgid ""
 "We've emailed you instructions for setting your password. If an account "
 "exists with the email you entered, you should receive them shortly."
 msgstr ""
-"Pošiljamo vam navodila za nastavitev gesla. Če obstaja račun z vnesenim "
-"e-poštnim naslovom, jih boste prejeli v kratkem."
+"Pošiljamo vam navodila za nastavitev gesla. Če obstaja račun z vnesenim e-"
+"poštnim naslovom, jih boste prejeli v kratkem."
 
 #: templates/registration/password_reset_done.html:13
 msgid ""
@@ -540,8 +560,8 @@ msgstr "Ste pozabili geslo?"
 #: templates/registration/password_reset_form.html:9
 msgid "Enter your email address below to receive a password reset link."
 msgstr ""
-"Če želite prejeti povezavo za ponastavitev gesla, spodaj vnesite svoj "
-"e-poštni naslov."
+"Če želite prejeti povezavo za ponastavitev gesla, spodaj vnesite svoj e-"
+"poštni naslov."
 
 #: templates/registration/password_reset_form.html:17
 msgid "Reset Password"
@@ -554,8 +574,8 @@ msgstr "Geslo"
 #: users/forms.py:16
 msgid ""
 "Your password can't be too similar to your other personal information. It "
-"must contain at least 8 characters. It can't be a commonly used password. It"
-" can't be entirely numeric."
+"must contain at least 8 characters. It can't be a commonly used password. It "
+"can't be entirely numeric."
 msgstr ""
 "Geslo ne sme biti preveč podobno drugim osebnim podatkom. Vsebovati mora "
 "vsaj 8 znakov. Ne sme biti pogosto uporabljeno geslo. Ne sme biti v celoti "
@@ -628,14 +648,17 @@ msgstr "Svoj račun boste trajno izbrisali."
 #: users/templates/users/account_settings.html:22
 msgid ""
 "\n"
-"          Doing this will permanently remove all account data including your\n"
+"          Doing this will permanently remove all account data including "
+"your\n"
 "          pantry, saved recipes, and favourites. Are you sure you want to\n"
 "          continue?\n"
 "          "
 msgstr ""
 "\n"
-"          S tem boste trajno odstranili vse podatke o računu, vključno z vašimi\n"
-"          shrambo, shranjenimi recepti in priljubljenimi. Ali ste prepričani, da želite\n"
+"          S tem boste trajno odstranili vse podatke o računu, vključno z "
+"vašimi\n"
+"          shrambo, shranjenimi recepti in priljubljenimi. Ali ste "
+"prepričani, da želite\n"
 "          želite nadaljevati?\n"
 "          "
 
@@ -672,6 +695,11 @@ msgstr "Shranjevanje nastavitev"
 #, python-format
 msgid "Already have an account? <a href=\"%(login_url)s\">Log in here</a>."
 msgstr "Že imate račun? <a href=\"%(login_url)s\">Prijavi se tukaj</a>."
+
+#, python-format
+#~ msgid ""
+#~ "Don't have an account? <a href=\"%('register_url')s\">Register here</a>."
+#~ msgstr "Nimate računa? <a href=\"%('register_url')s\">Prijavi se tukaj</a>."
 
 #~ msgid "Prioritise local results in search"
 #~ msgstr "dajanje prednosti lokalnim rezultatom v iskanju"

@@ -1,0 +1,146 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-10-29 08:33+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: pantry/static/pantry/pantry.js:70
+msgid "No items found matching your search."
+msgstr "Не бяха намерени елементи, отговарящи на търсенето ви."
+
+#: pantry/static/pantry/pantry.js:93 static/savor.js:401 static/savor.js:658
+msgid "WARNING"
+msgstr "ПРЕДУПРЕЖДЕНИЕ"
+
+#: pantry/static/pantry/pantry.js:93 static/savor.js:401 static/savor.js:658
+msgid "Contains user-specified allergens:"
+msgstr "Съдържа алергени, посочени от потребителя:"
+
+#: pantry/static/pantry/pantry.js:101 static/savor.js:409 static/savor.js:666
+msgid "POSSIBLE MISMATCH"
+msgstr "ВЪЗМОЖНО НЕСЪОТВЕТСТВИЕ"
+
+#: pantry/static/pantry/pantry.js:101 static/savor.js:409 static/savor.js:666
+msgid "Missing dietary requirements:"
+msgstr "Липсващи хранителни изисквания:"
+
+#: pantry/static/pantry/pantry.js:110 static/savor.js:420 static/savor.js:681
+msgid "Product Image"
+msgstr "Изображение на продукта"
+
+#: pantry/static/pantry/pantry.js:117 static/savor.js:426 static/savor.js:452
+#: static/savor.js:687 static/savor.js:715
+msgid "No Name"
+msgstr "Без име"
+
+#: pantry/static/pantry/pantry.js:123
+msgid "Quantity:"
+msgstr "Количество:"
+
+#: pantry/static/pantry/pantry.js:127
+msgid "Product Size:"
+msgstr "Размер на продукта:"
+
+#: pantry/static/pantry/pantry.js:127 static/savor.js:445 static/savor.js:709
+msgid "item"
+msgstr "елемент"
+
+#: pantry/static/pantry/pantry.js:135
+msgid "Remove"
+msgstr "Премахване на"
+
+#: recipes/static/recipes/recipes.js:135
+msgid "Ingredients"
+msgstr "Съставки"
+
+#: recipes/static/recipes/recipes.js:141
+msgid "Instructions"
+msgstr "Инструкции"
+
+#: static/savor.js:292 static/savor.js:349
+msgid "Searching..."
+msgstr "Търсене..."
+
+#: static/savor.js:296
+msgid "Please enter a barcode or product name to search."
+msgstr "Моля, въведете баркод или име на продукт, за да търсите."
+
+#: static/savor.js:324 static/savor.js:367
+msgid "Error"
+msgstr "Грешка"
+
+#: static/savor.js:324 static/savor.js:367
+msgid "Invalid input."
+msgstr "Невалидно въвеждане."
+
+#: static/savor.js:341 static/savor.js:377
+#| msgid "A network error occurred."
+msgid "A network error occurred. Please check your connection."
+msgstr "Възникнала е мрежова грешка. Моля, проверете връзката си."
+
+#: static/savor.js:429 static/savor.js:695
+msgid "Brands"
+msgstr "Марки"
+
+#: static/savor.js:432 static/savor.js:698
+msgid "Code"
+msgstr "Код"
+
+#: static/savor.js:455 static/savor.js:717
+msgid "Add to Pantry"
+msgstr "Добавяне в килера"
+
+#: static/savor.js:462 static/savor.js:617 static/savor.js:721
+msgid "Remove Favourite"
+msgstr "Премахване на любими"
+
+#: static/savor.js:462 static/savor.js:618
+msgid "Favourite"
+msgstr "Любими"
+
+#: static/savor.js:501
+msgid "Previous"
+msgstr "Предишна"
+
+#: static/savor.js:536
+msgid "Next"
+msgstr "Следваща"
+
+#: static/savor.js:557
+msgid "No products found. Try a different search term."
+msgstr "Не са намерени продукти. Опитайте с друга дума за търсене."
+
+#: static/savor.js:566
+msgid "Invalid quantity. Please enter a number greater than 0."
+msgstr "Невалидно количество. Моля, въведете число, по-голямо от 0."
+
+#: static/savor.js:596
+msgid "A network error occurred."
+msgstr "Възникнала е мрежова грешка."
+
+#: static/savor.js:630
+msgid "Error toggling favourite:"
+msgstr "Грешка при превключването на фаворит:"
+
+#: static/savor.js:757
+msgid "You haven't favourited any products yet. Start exploring today!"
+msgstr ""
+"Все още не сте харесали никакви продукти. Започнете да проучвате още днес!"
+
+#: static/savor.js:852
+msgid "Camera start failed."
+msgstr "Стартирането на камерата е неуспешно."

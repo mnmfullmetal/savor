@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-10-28 11:37+0000\n"
+"POT-Creation-Date: 2025-10-29 06:54+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,7 +16,9 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n%100>=11 && n%100<=14)? 2 : 3);\n"
+"Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
+"n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || "
+"(n%100>=11 && n%100<=14)? 2 : 3);\n"
 
 #: pantry/templates/pantry/index.html:17
 msgid "Advanced Search"
@@ -54,8 +56,8 @@ msgstr "Выберите бренд..."
 msgid "Clear Filters"
 msgstr "Очистить фильтры"
 
-#: pantry/templates/pantry/index.html:51 templates/base.html:37
-#: templates/base.html:138
+#: pantry/templates/pantry/index.html:51 templates/base.html:38
+#: templates/base.html:139
 msgid "Search"
 msgstr "Поиск"
 
@@ -118,11 +120,11 @@ msgstr "Добавить в кладовую"
 msgid "Remove Favourite"
 msgstr "Удалить избранное"
 
-#: pantry/templates/pantry/index.html:148
+#: pantry/templates/pantry/index.html:149
 msgid "You haven't favourited any products yet. Start exploring today!"
 msgstr "Вы еще не выбрали ни одного продукта. Начните исследовать сегодня!"
 
-#: pantry/templates/pantry/pantry.html:5 templates/base.html:61
+#: pantry/templates/pantry/pantry.html:5 templates/base.html:62
 msgid "Pantry"
 msgstr "Кладовая"
 
@@ -156,10 +158,8 @@ msgid "No Name"
 msgstr "Без имени"
 
 #: pantry/templates/pantry/pantry.html:72
-#, fuzzy
-#| msgid "Contains user-specified allergens:"
 msgid "Contains allergens:"
-msgstr "Содержит указанные пользователем аллергены:"
+msgstr "Содержит аллергены:"
 
 #: pantry/templates/pantry/pantry.html:91
 msgid "Quantity:"
@@ -173,12 +173,16 @@ msgstr "Размер изделия:"
 msgid "Expires:"
 msgstr "Истекает:"
 
+#: pantry/templates/pantry/pantry.html:107
+msgid "Remove"
+msgstr "Удалить"
+
 #: pantry/templates/pantry/pantry.html:117
 msgid "Your pantry is empty! Add some products to get started."
 msgstr ""
 "Ваша кладовая пуста! Добавьте несколько продуктов, чтобы начать работу."
 
-#: recipes/templates/recipes/recipes.html:6 templates/base.html:68
+#: recipes/templates/recipes/recipes.html:6 templates/base.html:69
 msgid "Recipes"
 msgstr "Рецепты"
 
@@ -236,10 +240,8 @@ msgid "No Saved Recipes"
 msgstr "Нет сохраненных рецептов"
 
 #: savor/settings.py:141
-#, fuzzy
-#| msgid "Polish"
 msgid "English"
-msgstr "Польша"
+msgstr "Английский язык"
 
 #: savor/settings.py:142
 msgid "Arabic"
@@ -369,63 +371,80 @@ msgstr "Украина"
 msgid "Vietnamese"
 msgstr "Вьетнамцы"
 
-#: templates/base.html:31 templates/base.html:133
+#: templates/base.html:32
 msgid "Search Product by ingredient"
 msgstr "Поиск продукта по ингредиентам"
 
-#: templates/base.html:34 templates/base.html:136
+#: templates/base.html:35
 msgid "Search Product by Barcode"
 msgstr "Поиск продукта по штрих-коду"
 
-#: templates/base.html:41 templates/base.html:141
+#: templates/base.html:42 templates/base.html:142
 msgid "Scan"
 msgstr "Сканирование"
 
-#: templates/base.html:54
+#: templates/base.html:55
 msgid "Home"
 msgstr "Главная"
 
-#: templates/base.html:77
+#: templates/base.html:78
 msgid "Settings"
 msgstr "Настройки"
 
-#: templates/base.html:83
+#: templates/base.html:84
 msgid "Account"
 msgstr "Счет"
 
-#: templates/base.html:92
+#: templates/base.html:93
 msgid "Log Out"
 msgstr "Выйти из системы"
 
-#: templates/base.html:104
+#: templates/base.html:105
 msgid "Log On"
 msgstr "Войти"
 
-#: templates/base.html:110 users/templates/users/register.html:57
+#: templates/base.html:111 users/templates/users/register.html:57
 msgid "Register"
 msgstr "Регистрация"
 
-#: templates/base.html:118
+#: templates/base.html:119
 msgid "Stop Scanning"
 msgstr "Остановить сканирование"
 
-#: templates/base.html:126
+#: templates/base.html:127
 msgid "Welcome"
 msgstr "Добро пожаловать"
+
+#: templates/base.html:134
+msgid "Search by name"
+msgstr "Поиск по имени"
+
+#: templates/base.html:134
+msgid "Search product by name"
+msgstr "Поиск продукта по названию"
+
+#: templates/base.html:137
+msgid "Search by barcode"
+msgstr "Поиск по штрих-коду"
+
+#: templates/base.html:137
+msgid "Search product by barcode"
+msgstr "Поиск товара по штрих-коду"
 
 #: templates/registration/login.html:5 templates/registration/login.html:10
 #: templates/registration/login.html:38
 msgid "Log In"
 msgstr "Войти"
 
-#: templates/registration/login.html:41
-#, python-format
-msgid "Don't have an account? <a href=\"%('register_url')s\">Register here</a>."
-msgstr ""
-"У вас нет аккаунта? <a href=\"%('register_url')s\">Зарегистрируйтесь "
-"здесь</a>."
-
 #: templates/registration/login.html:42
+msgid "Don't have an account?"
+msgstr "У вас нет аккаунта?"
+
+#: templates/registration/login.html:43
+msgid "Register here"
+msgstr "Зарегистрируйтесь здесь"
+
+#: templates/registration/login.html:45
 msgid "Forgot password?"
 msgstr "Забыли пароль?"
 
@@ -532,8 +551,8 @@ msgid ""
 "If you don't receive an email, please make sure you've entered the email "
 "address you registered with, and check your spam folder."
 msgstr ""
-"Если вы не получили письмо, убедитесь, что вы ввели адрес электронной почты,"
-" с которым регистрировались, и проверьте папку со спамом."
+"Если вы не получили письмо, убедитесь, что вы ввели адрес электронной почты, "
+"с которым регистрировались, и проверьте папку со спамом."
 
 #: templates/registration/password_reset_form.html:8
 msgid "Forgot Your Password?"
@@ -556,8 +575,8 @@ msgstr "Пароль"
 #: users/forms.py:16
 msgid ""
 "Your password can't be too similar to your other personal information. It "
-"must contain at least 8 characters. It can't be a commonly used password. It"
-" can't be entirely numeric."
+"must contain at least 8 characters. It can't be a commonly used password. It "
+"can't be entirely numeric."
 msgstr ""
 "Ваш пароль не должен быть слишком похож на другие ваши личные данные. Он "
 "должен содержать не менее 8 символов. Это не может быть часто используемый "
@@ -630,13 +649,15 @@ msgstr "Вы собираетесь удалить свою учетную за�
 #: users/templates/users/account_settings.html:22
 msgid ""
 "\n"
-"          Doing this will permanently remove all account data including your\n"
+"          Doing this will permanently remove all account data including "
+"your\n"
 "          pantry, saved recipes, and favourites. Are you sure you want to\n"
 "          continue?\n"
 "          "
 msgstr ""
 "\n"
-"          Это приведет к окончательному удалению всех данных учетной записи, включая ваши\n"
+"          Это приведет к окончательному удалению всех данных учетной записи, "
+"включая ваши\n"
 "          кладовую, сохраненные рецепты и избранное. Вы уверены, что хотите\n"
 "          продолжить?\n"
 "          "
@@ -674,6 +695,13 @@ msgstr "Сохранить настройки"
 #, python-format
 msgid "Already have an account? <a href=\"%(login_url)s\">Log in here</a>."
 msgstr "У вас уже есть аккаунт? <a href=\"%(login_url)s\">Войдите здесь</a>."
+
+#, python-format
+#~ msgid ""
+#~ "Don't have an account? <a href=\"%('register_url')s\">Register here</a>."
+#~ msgstr ""
+#~ "У вас нет аккаунта? <a href=\"%('register_url')s\">Зарегистрируйтесь "
+#~ "здесь</a>."
 
 #~ msgid "Prioritise local results in search"
 #~ msgstr "Приоритет местных результатов в поиске"

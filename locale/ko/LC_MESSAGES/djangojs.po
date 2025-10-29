@@ -1,0 +1,145 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-10-29 08:33+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#: pantry/static/pantry/pantry.js:70
+msgid "No items found matching your search."
+msgstr "검색어와 일치하는 항목을 찾을 수 없습니다."
+
+#: pantry/static/pantry/pantry.js:93 static/savor.js:401 static/savor.js:658
+msgid "WARNING"
+msgstr "경고"
+
+#: pantry/static/pantry/pantry.js:93 static/savor.js:401 static/savor.js:658
+msgid "Contains user-specified allergens:"
+msgstr "사용자가 지정한 알레르기 유발 물질이 포함되어 있습니다:"
+
+#: pantry/static/pantry/pantry.js:101 static/savor.js:409 static/savor.js:666
+msgid "POSSIBLE MISMATCH"
+msgstr "불일치 가능성"
+
+#: pantry/static/pantry/pantry.js:101 static/savor.js:409 static/savor.js:666
+msgid "Missing dietary requirements:"
+msgstr "식단 요건이 누락되었습니다:"
+
+#: pantry/static/pantry/pantry.js:110 static/savor.js:420 static/savor.js:681
+msgid "Product Image"
+msgstr "제품 이미지"
+
+#: pantry/static/pantry/pantry.js:117 static/savor.js:426 static/savor.js:452
+#: static/savor.js:687 static/savor.js:715
+msgid "No Name"
+msgstr "이름 없음"
+
+#: pantry/static/pantry/pantry.js:123
+msgid "Quantity:"
+msgstr "수량:"
+
+#: pantry/static/pantry/pantry.js:127
+msgid "Product Size:"
+msgstr "제품 크기:"
+
+#: pantry/static/pantry/pantry.js:127 static/savor.js:445 static/savor.js:709
+msgid "item"
+msgstr "항목"
+
+#: pantry/static/pantry/pantry.js:135
+msgid "Remove"
+msgstr "제거"
+
+#: recipes/static/recipes/recipes.js:135
+msgid "Ingredients"
+msgstr "재료"
+
+#: recipes/static/recipes/recipes.js:141
+msgid "Instructions"
+msgstr "지침"
+
+#: static/savor.js:292 static/savor.js:349
+msgid "Searching..."
+msgstr "검색 중..."
+
+#: static/savor.js:296
+msgid "Please enter a barcode or product name to search."
+msgstr "검색하려면 바코드 또는 제품 이름을 입력하세요."
+
+#: static/savor.js:324 static/savor.js:367
+msgid "Error"
+msgstr "오류"
+
+#: static/savor.js:324 static/savor.js:367
+msgid "Invalid input."
+msgstr "잘못된 입력입니다."
+
+#: static/savor.js:341 static/savor.js:377
+#| msgid "A network error occurred."
+msgid "A network error occurred. Please check your connection."
+msgstr "네트워크 오류가 발생했습니다. 연결을 확인해 주세요."
+
+#: static/savor.js:429 static/savor.js:695
+msgid "Brands"
+msgstr "브랜드"
+
+#: static/savor.js:432 static/savor.js:698
+msgid "Code"
+msgstr "코드"
+
+#: static/savor.js:455 static/savor.js:717
+msgid "Add to Pantry"
+msgstr "식료품 저장소에 추가"
+
+#: static/savor.js:462 static/savor.js:617 static/savor.js:721
+msgid "Remove Favourite"
+msgstr "즐겨 찾기 제거"
+
+#: static/savor.js:462 static/savor.js:618
+msgid "Favourite"
+msgstr "즐겨 찾기"
+
+#: static/savor.js:501
+msgid "Previous"
+msgstr "이전 게시물"
+
+#: static/savor.js:536
+msgid "Next"
+msgstr "다음"
+
+#: static/savor.js:557
+msgid "No products found. Try a different search term."
+msgstr "제품을 찾을 수 없습니다. 다른 검색어를 사용해 보세요."
+
+#: static/savor.js:566
+msgid "Invalid quantity. Please enter a number greater than 0."
+msgstr "잘못된 수량입니다. 0보다 큰 숫자를 입력하세요."
+
+#: static/savor.js:596
+msgid "A network error occurred."
+msgstr "네트워크 오류가 발생했습니다."
+
+#: static/savor.js:630
+msgid "Error toggling favourite:"
+msgstr "즐겨찾기를 토글하는 동안 오류가 발생했습니다:"
+
+#: static/savor.js:757
+msgid "You haven't favourited any products yet. Start exploring today!"
+msgstr "아직 마음에 들어하는 제품이 없습니다. 지금 바로 탐색을 시작하세요!"
+
+#: static/savor.js:852
+msgid "Camera start failed."
+msgstr "카메라 시작에 실패했습니다."

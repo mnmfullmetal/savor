@@ -1,0 +1,149 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-10-29 08:33+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: pantry/static/pantry/pantry.js:70
+msgid "No items found matching your search."
+msgstr "Non sono stati trovati articoli corrispondenti alla tua ricerca."
+
+#: pantry/static/pantry/pantry.js:93 static/savor.js:401 static/savor.js:658
+msgid "WARNING"
+msgstr "ATTENZIONE"
+
+#: pantry/static/pantry/pantry.js:93 static/savor.js:401 static/savor.js:658
+msgid "Contains user-specified allergens:"
+msgstr "Contiene allergeni specificati dall'utente:"
+
+#: pantry/static/pantry/pantry.js:101 static/savor.js:409 static/savor.js:666
+msgid "POSSIBLE MISMATCH"
+msgstr "POSSIBILE MANCATA CORRISPONDENZA"
+
+#: pantry/static/pantry/pantry.js:101 static/savor.js:409 static/savor.js:666
+msgid "Missing dietary requirements:"
+msgstr "Mancano i requisiti dietetici:"
+
+#: pantry/static/pantry/pantry.js:110 static/savor.js:420 static/savor.js:681
+msgid "Product Image"
+msgstr "Immagine del prodotto"
+
+#: pantry/static/pantry/pantry.js:117 static/savor.js:426 static/savor.js:452
+#: static/savor.js:687 static/savor.js:715
+msgid "No Name"
+msgstr "Nessun nome"
+
+#: pantry/static/pantry/pantry.js:123
+msgid "Quantity:"
+msgstr "Quantità:"
+
+#: pantry/static/pantry/pantry.js:127
+msgid "Product Size:"
+msgstr "Dimensioni del prodotto:"
+
+#: pantry/static/pantry/pantry.js:127 static/savor.js:445 static/savor.js:709
+msgid "item"
+msgstr "articolo"
+
+#: pantry/static/pantry/pantry.js:135
+msgid "Remove"
+msgstr "Rimuovere"
+
+#: recipes/static/recipes/recipes.js:135
+msgid "Ingredients"
+msgstr "Ingredienti"
+
+#: recipes/static/recipes/recipes.js:141
+msgid "Instructions"
+msgstr "Istruzioni"
+
+#: static/savor.js:292 static/savor.js:349
+msgid "Searching..."
+msgstr "Ricerca..."
+
+#: static/savor.js:296
+msgid "Please enter a barcode or product name to search."
+msgstr ""
+"Inserire un codice a barre o il nome di un prodotto per effettuare la "
+"ricerca."
+
+#: static/savor.js:324 static/savor.js:367
+msgid "Error"
+msgstr "Errore"
+
+#: static/savor.js:324 static/savor.js:367
+msgid "Invalid input."
+msgstr "Inserimento non valido."
+
+#: static/savor.js:341 static/savor.js:377
+#| msgid "A network error occurred."
+msgid "A network error occurred. Please check your connection."
+msgstr "Si è verificato un errore di rete. Controllare la connessione."
+
+#: static/savor.js:429 static/savor.js:695
+msgid "Brands"
+msgstr "Marche"
+
+#: static/savor.js:432 static/savor.js:698
+msgid "Code"
+msgstr "Codice"
+
+#: static/savor.js:455 static/savor.js:717
+msgid "Add to Pantry"
+msgstr "Aggiungi alla dispensa"
+
+#: static/savor.js:462 static/savor.js:617 static/savor.js:721
+msgid "Remove Favourite"
+msgstr "Rimuovi i preferiti"
+
+#: static/savor.js:462 static/savor.js:618
+msgid "Favourite"
+msgstr "Il preferito"
+
+#: static/savor.js:501
+msgid "Previous"
+msgstr "Precedente"
+
+#: static/savor.js:536
+msgid "Next"
+msgstr "Avanti"
+
+#: static/savor.js:557
+msgid "No products found. Try a different search term."
+msgstr "Nessun prodotto trovato. Provare con un altro termine di ricerca."
+
+#: static/savor.js:566
+msgid "Invalid quantity. Please enter a number greater than 0."
+msgstr "Quantità non valida. Inserire un numero maggiore di 0."
+
+#: static/savor.js:596
+msgid "A network error occurred."
+msgstr "Si è verificato un errore di rete."
+
+#: static/savor.js:630
+msgid "Error toggling favourite:"
+msgstr "Errore nell'alternare i preferiti:"
+
+#: static/savor.js:757
+msgid "You haven't favourited any products yet. Start exploring today!"
+msgstr ""
+"Non hai ancora inserito nessun prodotto tra i preferiti. Inizia ad esplorare"
+" oggi!"
+
+#: static/savor.js:852
+msgid "Camera start failed."
+msgstr "Avvio della telecamera non riuscito."

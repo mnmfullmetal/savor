@@ -28,11 +28,10 @@ The key features and design choices that demonstrate this (perhaps masochistic) 
 * **Pantry & Product Management:** Users can add products (found via search or scan) to their personal pantry and receive aggregated **Nutri-Score** and **Eco-Score** calculations.
 * **Advanced Search & Scanning:** Implements basic text search (OFF API v1), barcode search (v2), advanced text search (v1 with parameters) and autocomplete search suggestions for when the user is typing in the search form (v3 taxonomies). It also integrates `html5-qrcode` for live camera-based scanning.
 * **Intelligent & Personalised Experience:** Generates AI recipes based on pantry contents and allows users to set detailed preferences for allergies, dietary needs, language, and UI behaviour via their settings.
-* **Full Internationalisation (i18n):** The application is translated into 33 languages, handling both static text (DeepL-generated `.po` files) and dynamic text (requesting **localised** data from the API to then be cached and used until periodically updated via a scheduled **Celery Beat** task).
+* **Full Internationalisation (i18n):** The application is translated into 33 languages, handling both static text (DeepL-generated `.po` files) and dynamic text (requesting **localised** data from the API to then be cached and used until periodically updated via a scheduled **Celery Beat** task). This also extends to dynamically generated HTML content inserted into the DOM via AJAX, which is handled using Django's `jsi18n` JavaScript translation catalog.
 * **Asynchronous & Scheduled Tasks:** Uses **Celery** and **Celery Beat** to run long processes (like AI generation and API data fetching) in the background, ensuring the UI remains fast.
 * **Performance & Caching:** Leverages **Redis** to cache API responses, AI recipes, and **localised** form data for near-instant access.
 * **Secure & Robust Backend:** Features full user authentication, account management, and API rate limiting (`django-ratelimit`).
- 
 ### Design Choices & Hurdles
 
 * **Celery & Celery Beat:** Chosen to handle long-running and asynchronous tasks without blocking the user interface. Heavy operations like AI recipe generation or external API calls are dispatched as background jobs, often triggered by Django signals (e.g., when a user adds a pantry item). Celery Beat (with `celery-redbeat`) was used to run scheduled, periodic tasks, such as refreshing cached API data.
@@ -41,11 +40,10 @@ The key features and design choices that demonstrate this (perhaps masochistic) 
 
 * **Handling Fragmented API Documentation:** A major hurdle was the Open Food Facts (OFF) API, which is undergoing a significant overhaul. This resulted in documentation that was often fragmented, incomplete, or outdated. Discovering the correct API endpoints and data structures required significant research, with their official Slack community channels often providing the most reliable information.
 It felt less like software engineering and more like digital archaeology, dusting off old Slack messages to find the Rosetta Stone for a v1 endpoint.
-* **Complex Localisation Strategy:** Implementing support for 33 languages was a two-part challenge, which I, in my infinite wisdom, initially estimated as a "quick weekend task". Static UI text was managed using Django's `.po`/`.mo` files, which were auto-translated via a custom shell command using the DeepL API. Dynamic content (like product names) required carefully managing API requests to Open Food Facts to fetch data in the user's selected language.
+
+* **Complex Localisation Strategy:** Implementing support for 33 languages was a ~~two-part~~ three-part challenge. I, in my infinite wisdom, had initially estimated this as a "quick weekend task". I thought I had put this task behind me only to realise, later than I care to admit, that the dynamically generated AJAX content was still in English. Lucky it was a generally simple, although tedious fix. The first two parts involved managing static UI text with Django's `.po`/`.mo` files (auto-translated via a custom DeepL API command) and handling dynamic content by fetching localised data from the Open Food Facts API. The third, unexpected layer of complexity was solved by employing Django's `jsi18n` JavaScript translation catalog to finally conquer the AJAX-generated HTML. 
 
 * **Performance & Rate Limit Balancing:** A central design challenge was ensuring the app felt fast and responsive with minimal user downtime, while simultaneously respecting the rate limits of external APIs. This required designing a careful data flow of retrieving, caching (in Redis), and serving data to the user efficiently.
-
-
 
 ## Technologies Used
 
@@ -79,7 +77,6 @@ It felt less like software engineering and more like digital archaeology, dustin
 * **`django-ratelmit`**: For server-side request rate limiting.
 * **`django-widget-tweaks`**: For easier template form rendering.
 * **`celery-redbeat`**: Database-backed periodic task scheduler for Celery.
-
 
 
 ## Core Components
@@ -158,32 +155,32 @@ This section outlines how to use Savor, both for developers looking to run the p
 
 Savor is designed to be an intuitive and powerful kitchen assistant. Heres a typical user journey:
 
-1.  **Account Management:**
+1. **Account Management:**
     *   **Registration & Login:** New users can register for an account, which automatically creates a personal pantry. The application includes standard login, password change, and password reset functionalities.
     
         **Note on Password Reset:** In this local development setup, password reset emails are not sent to an actual inbox. Instead, the reset link is printed to the terminal where the Django development server is running (`Terminal 4` in the setup instructions). This is because `settings.py` uses Django's console email backend via the setting: `EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'`. For a production deployment, this would need to be changed to a real email service (like SendGrid or Mailgun).
 
     *   **Account Deletion:** Users have the option to permanently delete their account and all associated data through the account settings page.
 
-2.  **Personalisation (User Settings):**
+2. **Personalisation (User Settings):**
     *   After logging in, users can navigate to **Account Settings** to tailor their experience.
     *   **Localisation:** Set a preferred language from 33 options. The entire UI, including product data fetched from the API, will be translated. Users can also set their country to prioritise local search results.
     *   **Dietary Preferences:** Specify any allergies (e.g., peanuts, gluten) and dietary requirements (e.g., vegan, halal). This is a critical step for the next feature.
     *   **UI Preferences:** Toggle the visibility of Nutri-Score and Eco-Score on products and enable the "scan-to-add" feature for quickly adding items to the pantry after a barcode scan.
 
-3.  **Finding & Managing Products:**
+3. **Finding & Managing Products:**
     *   **Search:** Users can find products using a simple text search, an advanced search with filters (category, brand, country), or by scanning a product's barcode with their device's camera.
         
         **Note on Unauthenticated Access:** Basic search functionality is available to all visitors. However, features like adding products to a pantry, favouriting items, viewing the pantry, and receiving AI-generated recipes require user authentication.
     *   **Conflict Highlighting:** When viewing search results or favourited products as a logged-in user, the application will automatically display prominent warnings if a product conflicts with the user's specified allergies or does not meet their dietary requirements.
     *   **Favourites:** Products can be "favourited" for quick access from the homepage.
 
-4.  **Pantry Management:**
+4. **Pantry Management:**
     *   **Adding Items:** Users can add any product to their virtual pantry, specifying the quantity.
     *   **Viewing the Pantry:** The pantry page displays all current items and includes a "search-as-you-type" filter to instantly find items in the pantry. It also shows aggregate Nutri-Score and Eco-Score grades for the pantry's entire contents.
     *   **Removing Items:** As items are used, they can be removed from the pantry by a specified quantity.
 
-5.  **AI Recipe Generation & Saving:**
+5. **AI Recipe Generation & Saving:**
     *   **Automatic Generation:** When a user logs in or modifies their pantry (by adding or removing items), a background task is automatically triggered to generate new, personalised recipes using Google's Gemini AI. The AI is prompted to create recipes using *only* the ingredients currently available in the user's pantry.
     *   **Viewing Suggestions:** On the "Recipes" page, users can view newly generated suggestions. Unseen recipes are highlighted in orange to draw attention; this highlight is removed once the recipe is expanded. A loading indicator is shown while the AI is working.
     *   **Saving Recipes:** If a user likes a suggested recipe, they can save it. This moves it to a permanent "Saved Recipes" list.

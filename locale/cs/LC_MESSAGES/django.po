@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-10-28 11:37+0000\n"
+"POT-Creation-Date: 2025-10-29 06:54+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,7 +16,8 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=4; plural=(n == 1 && n % 1 == 0) ? 0 : (n >= 2 && n <= 4 && n % 1 == 0) ? 1: (n % 1 != 0 ) ? 2 : 3;\n"
+"Plural-Forms: nplurals=4; plural=(n == 1 && n % 1 == 0) ? 0 : (n >= 2 && n "
+"<= 4 && n % 1 == 0) ? 1: (n % 1 != 0 ) ? 2 : 3;\n"
 
 #: pantry/templates/pantry/index.html:17
 msgid "Advanced Search"
@@ -54,8 +55,8 @@ msgstr "Vyberte si značku..."
 msgid "Clear Filters"
 msgstr "Vymazat filtry"
 
-#: pantry/templates/pantry/index.html:51 templates/base.html:37
-#: templates/base.html:138
+#: pantry/templates/pantry/index.html:51 templates/base.html:38
+#: templates/base.html:139
 msgid "Search"
 msgstr "Vyhledávání"
 
@@ -118,11 +119,11 @@ msgstr "Přidat do spíže"
 msgid "Remove Favourite"
 msgstr "Odebrat oblíbené"
 
-#: pantry/templates/pantry/index.html:148
+#: pantry/templates/pantry/index.html:149
 msgid "You haven't favourited any products yet. Start exploring today!"
 msgstr "Zatím jste neoblíbili žádné produkty. Začněte zkoumat ještě dnes!"
 
-#: pantry/templates/pantry/pantry.html:5 templates/base.html:61
+#: pantry/templates/pantry/pantry.html:5 templates/base.html:62
 msgid "Pantry"
 msgstr "Spíž"
 
@@ -140,8 +141,7 @@ msgstr "Ekologická třída:"
 
 #: pantry/templates/pantry/pantry.html:34
 msgid "Scores are hidden or unavailable. Check your user settings."
-msgstr ""
-"Skóre jsou skrytá nebo nedostupná. Zkontrolujte uživatelská nastavení."
+msgstr "Skóre jsou skrytá nebo nedostupná. Zkontrolujte uživatelská nastavení."
 
 #: pantry/templates/pantry/pantry.html:44
 msgid "Your Pantry Items"
@@ -157,10 +157,8 @@ msgid "No Name"
 msgstr "Žádné jméno"
 
 #: pantry/templates/pantry/pantry.html:72
-#, fuzzy
-#| msgid "Contains user-specified allergens:"
 msgid "Contains allergens:"
-msgstr "Obsahuje alergeny specifikované uživatelem:"
+msgstr "Obsahuje alergeny:"
 
 #: pantry/templates/pantry/pantry.html:91
 msgid "Quantity:"
@@ -174,11 +172,15 @@ msgstr "Velikost produktu:"
 msgid "Expires:"
 msgstr "Platnost končí:"
 
+#: pantry/templates/pantry/pantry.html:107
+msgid "Remove"
+msgstr "Odstranění stránky"
+
 #: pantry/templates/pantry/pantry.html:117
 msgid "Your pantry is empty! Add some products to get started."
 msgstr "Vaše spíž je prázdná! Přidejte několik produktů a začněte."
 
-#: recipes/templates/recipes/recipes.html:6 templates/base.html:68
+#: recipes/templates/recipes/recipes.html:6 templates/base.html:69
 msgid "Recipes"
 msgstr "Recepty"
 
@@ -236,10 +238,8 @@ msgid "No Saved Recipes"
 msgstr "Žádné uložené recepty"
 
 #: savor/settings.py:141
-#, fuzzy
-#| msgid "Polish"
 msgid "English"
-msgstr "Polský"
+msgstr "Angličtina"
 
 #: savor/settings.py:142
 msgid "Arabic"
@@ -369,61 +369,80 @@ msgstr "Ukrajinský"
 msgid "Vietnamese"
 msgstr "Vietnamci"
 
-#: templates/base.html:31 templates/base.html:133
+#: templates/base.html:32
 msgid "Search Product by ingredient"
 msgstr "Vyhledávání produktu podle složky"
 
-#: templates/base.html:34 templates/base.html:136
+#: templates/base.html:35
 msgid "Search Product by Barcode"
 msgstr "Vyhledávání produktu podle čárového kódu"
 
-#: templates/base.html:41 templates/base.html:141
+#: templates/base.html:42 templates/base.html:142
 msgid "Scan"
 msgstr "Skenování"
 
-#: templates/base.html:54
+#: templates/base.html:55
 msgid "Home"
 msgstr "Home"
 
-#: templates/base.html:77
+#: templates/base.html:78
 msgid "Settings"
 msgstr "Nastavení"
 
-#: templates/base.html:83
+#: templates/base.html:84
 msgid "Account"
 msgstr "Účet"
 
-#: templates/base.html:92
+#: templates/base.html:93
 msgid "Log Out"
 msgstr "Odhlášení"
 
-#: templates/base.html:104
+#: templates/base.html:105
 msgid "Log On"
 msgstr "Přihlášení"
 
-#: templates/base.html:110 users/templates/users/register.html:57
+#: templates/base.html:111 users/templates/users/register.html:57
 msgid "Register"
 msgstr "Registrace"
 
-#: templates/base.html:118
+#: templates/base.html:119
 msgid "Stop Scanning"
 msgstr "Zastavení skenování"
 
-#: templates/base.html:126
+#: templates/base.html:127
 msgid "Welcome"
 msgstr "Vítejte na"
+
+#: templates/base.html:134
+msgid "Search by name"
+msgstr "Vyhledávání podle jména"
+
+#: templates/base.html:134
+msgid "Search product by name"
+msgstr "Vyhledávání produktu podle názvu"
+
+#: templates/base.html:137
+msgid "Search by barcode"
+msgstr "Vyhledávání podle čárového kódu"
+
+#: templates/base.html:137
+msgid "Search product by barcode"
+msgstr "Vyhledávání produktu podle čárového kódu"
 
 #: templates/registration/login.html:5 templates/registration/login.html:10
 #: templates/registration/login.html:38
 msgid "Log In"
 msgstr "Přihlášení"
 
-#: templates/registration/login.html:41
-#, python-format
-msgid "Don't have an account? <a href=\"%('register_url')s\">Register here</a>."
-msgstr "Nemáte účet? <a href=\"%('register_url')s\">Zaregistrujte se zde</a>."
-
 #: templates/registration/login.html:42
+msgid "Don't have an account?"
+msgstr "Nemáte účet?"
+
+#: templates/registration/login.html:43
+msgid "Register here"
+msgstr "Zaregistrujte se zde"
+
+#: templates/registration/login.html:45
 msgid "Forgot password?"
 msgstr "Zapomněli jste heslo?"
 
@@ -552,12 +571,12 @@ msgstr "Heslo"
 #: users/forms.py:16
 msgid ""
 "Your password can't be too similar to your other personal information. It "
-"must contain at least 8 characters. It can't be a commonly used password. It"
-" can't be entirely numeric."
+"must contain at least 8 characters. It can't be a commonly used password. It "
+"can't be entirely numeric."
 msgstr ""
 "Heslo se nesmí příliš podobat vašim ostatním osobním údajům. Musí obsahovat "
-"alespoň 8 znaků. Nesmí se jednat o běžně používané heslo. Nesmí být výhradně"
-" číselné."
+"alespoň 8 znaků. Nesmí se jednat o běžně používané heslo. Nesmí být výhradně "
+"číselné."
 
 #: users/forms.py:23
 msgid "Password confirmation"
@@ -626,14 +645,17 @@ msgstr "Chystáte se trvale odstranit svůj účet."
 #: users/templates/users/account_settings.html:22
 msgid ""
 "\n"
-"          Doing this will permanently remove all account data including your\n"
+"          Doing this will permanently remove all account data including "
+"your\n"
 "          pantry, saved recipes, and favourites. Are you sure you want to\n"
 "          continue?\n"
 "          "
 msgstr ""
 "\n"
-"          Tímto postupem trvale odstraníte všechna data účtu, včetně vašich.\n"
-"          spíže, uložených receptů a oblíbených položek. Jste si jisti, že chcete\n"
+"          Tímto postupem trvale odstraníte všechna data účtu, včetně "
+"vašich.\n"
+"          spíže, uložených receptů a oblíbených položek. Jste si jisti, že "
+"chcete\n"
 "          pokračovat?\n"
 "          "
 
@@ -670,6 +692,12 @@ msgstr "Uložit nastavení"
 #, python-format
 msgid "Already have an account? <a href=\"%(login_url)s\">Log in here</a>."
 msgstr "Už máte účet? <a href=\"%(login_url)s\">Přihlaste se zde</a>."
+
+#, python-format
+#~ msgid ""
+#~ "Don't have an account? <a href=\"%('register_url')s\">Register here</a>."
+#~ msgstr ""
+#~ "Nemáte účet? <a href=\"%('register_url')s\">Zaregistrujte se zde</a>."
 
 #~ msgid "Prioritise local results in search"
 #~ msgstr "Upřednostňování místních výsledků ve vyhledávání"
