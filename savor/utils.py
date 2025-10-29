@@ -4,6 +4,7 @@ from django.conf import settings
 from django.core.cache import cache
 from django.http import JsonResponse
 
+# maps open food facts language tag ids to language codes, used for djangos internationalisation and for localised API requests
 LANGUAGE_CODE_MAP = {
     'en:arabic': 'ar',
     'en:bulgarian': 'bg',
@@ -40,6 +41,7 @@ LANGUAGE_CODE_MAP = {
     'en:vietnamese': 'vi',
 }
 
+# maps open food facts country tag ids to country codes, used to construct urls for localised API endpoints
 COUNTRY_CODE_MAP = {
     'en:algeria': 'dz',
     'en:argentina': 'ar',
@@ -140,6 +142,11 @@ OFF_USERNAME = settings.OPENFOODFACTS_API['USERNAME']
 OFF_PASSWORD = settings.OPENFOODFACTS_API['PASSWORD']
 
 def rate_limit_error_response(request, exception):
+    """
+    Custom error handler for the `django-ratelimit` library.
+
+    Returns a standardized JSON response when a user exceeds a rate limit.
+    """
     return JsonResponse(
         {
             'error': 'Too Many Requests',
@@ -150,6 +157,11 @@ def rate_limit_error_response(request, exception):
     )
 
 def get_headers():
+    """
+    Constructs the necessary HTTP headers for making requests to the Open Food Facts API.
+
+    Includes the User-Agent and, if configured, Basic Authentication credentials.
+    """
     headers = {"User-Agent": OFF_USER_AGENT}
     if USE_STAGING_AUTH:
         auth_string = f"{OFF_USERNAME}:{OFF_PASSWORD}".encode()
@@ -158,6 +170,10 @@ def get_headers():
 
 
 def fetch_single_facet_json_data( facet_name):
+    """
+    Fetches data for a single "facet" (e.g., categories, brands) from the
+    main Open Food Facts API endpoint. Used by Celery tasks to populate the cache.
+    """
 
     api_url = f'{OFF_API_BASE_URL}/facets/{facet_name}.json'
     headers = get_headers()
@@ -176,6 +192,10 @@ def fetch_single_facet_json_data( facet_name):
 
 
 def fetch_single_localised_facet_json_data(language_code, facet):
+    """
+    Fetches localized data for a single facet and a specific language from the
+    Open Food Facts API. Used by Celery tasks to populate the cache with translations.
+    """
 
     api_url = f"https://world-{language_code}.openfoodfacts.net/facets/{facet}.json"
     headers= get_headers()
@@ -194,11 +214,14 @@ def fetch_single_localised_facet_json_data(language_code, facet):
 
 
 def get_cached_json(language_code , data_type):
+    """A helper function to retrieve facet data from the Redis cache."""
     return cache.get(f"off_{data_type}_cache_{language_code }")
 
 
 def get_supported_language_codes():
+    """Returns a list of all supported two-letter language codes."""
     return list(LANGUAGE_CODE_MAP.values())
 
 def get_supported_country_codes():
+    """Returns a list of all supported two-letter country codes."""
     return list(COUNTRY_CODE_MAP.values())

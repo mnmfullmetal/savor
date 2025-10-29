@@ -1,54 +1,59 @@
+
 let html5QrCode = null;
 
+// configuration for the html5-qrcode (and barcode) scanner
 const readerId = "reader";
 const config = { 
     fps: 10, 
     qrbox: { width: 250, height: 250 }
 };
 
+// runs on barcode scan success
 function onScanSuccess(decodedText, decodedResult) {
   console.log(`Code matched = ${decodedText}`, decodedResult);
+
   const productSearchForm = document.querySelector("#searchForm");
   const csrfToken = productSearchForm.elements.csrfmiddlewaretoken.value;
   productSearchForm.elements.barcode.value = decodedText;
   const wasScanned = true
+
   handleProductSearch(productSearchForm, csrfToken, wasScanned); 
-
   stopScanningAndHide(); 
-
 }
 
+// will fire every frame html5-qrcode scanner is running and not registering a barcode
 function onScanFailure(error) {
-    //console.warn(`Scan error: ${error}`);
+  // console.warn(`Scan error: ${error}`);
 }
 
+// stops html5-qrcode scanner 
 function stopScanningAndHide() {
-    if (html5QrCode && html5QrCode.isScanning) {
-        html5QrCode.stop()
-            .then(() => {
-                console.log("QR Code scanning stopped.");
-                document.getElementById("scanner-container").style.display = "none";
-                document.getElementById(readerId).innerHTML = ""; 
-                html5QrCode = null; 
-            })
-            .catch((err) => {
-                console.error("Failed to stop scanning:", err);
-                document.getElementById("scanner-container").style.display = "none";
-            });
-    } else {
-        document.getElementById("scanner-container").style.display = "none";
-    }
+  if (html5QrCode && html5QrCode.isScanning) {
+    html5QrCode.stop()
+    .then(() => {
+      console.log("QR Code scanning stopped.");
+      document.getElementById("scanner-container").style.display = "none";
+      document.getElementById(readerId).innerHTML = ""; 
+      html5QrCode = null; 
+    })
+    .catch((err) => {
+      console.error("Failed to stop scanning:", err);
+      document.getElementById("scanner-container").style.display = "none";
+    });
+  } else {
+      document.getElementById("scanner-container").style.display = "none";
+  }
 }
 
-
+// DOM load event listener
 document.addEventListener("DOMContentLoaded", () => {
 
   const body = document.body;
   const desktopSidebarToggle = document.getElementById("sidebarToggle");
-
   if (desktopSidebarToggle) {
     const toggleIcon = desktopSidebarToggle.querySelector("i");
 
+    // checks side bar state in localStorage on page load to keep the sidebar in the postion when navigating the app
     const savedState = localStorage.getItem("sidebarState");
     if (savedState === "minimized") {
       body.classList.add("sidebar-minimized");
@@ -56,6 +61,7 @@ document.addEventListener("DOMContentLoaded", () => {
       toggleIcon.classList.add("bi-box-arrow-right");
     }
 
+    // toggle for side bar and where its states are set in localStorage
     desktopSidebarToggle.addEventListener("click", () => {
       body.classList.toggle("sidebar-minimized");
       if (body.classList.contains("sidebar-minimized")) {
@@ -69,18 +75,20 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     });
 
-  const accountDropdown = document.getElementById("account-dropdown-item");
-  if (accountDropdown) {
-    accountDropdown.addEventListener("show.bs.dropdown", function () {
-      if (document.body.classList.contains("sidebar-minimized")) {
-        document.body.classList.remove("sidebar-minimized");
-        document.getElementById("sidebarToggle").querySelector("i").classList.add("bi-box-arrow-in-left");
-        document.getElementById("sidebarToggle").querySelector("i").classList.remove("bi-box-arrow-right");
-      }
-    });
+    // expands side bar when settings dropdown is expanded
+    const settingsDropdown = document.getElementById("settingsDropdown");
+    if (settingsDropdown) {
+      settingsDropdown.addEventListener("show.bs.dropdown", () => {
+        if (document.body.classList.contains("sidebar-minimized")) {
+          document.body.classList.remove("sidebar-minimized");
+          document.getElementById("sidebarToggle").querySelector("i").classList.add("bi-box-arrow-in-left");
+          document.getElementById("sidebarToggle").querySelector("i").classList.remove("bi-box-arrow-right");
+        }
+      });
+    }
   }
-}
 
+  // buttons for starting barcode scanner
   const scanButtons = document.querySelectorAll(".scan-button")
   scanButtons.forEach(button => {
     button.addEventListener("click", () => {
@@ -89,60 +97,60 @@ document.addEventListener("DOMContentLoaded", () => {
       document.getElementById("sidebarToggle").querySelector("i").classList.add("bi-box-arrow-right");
       startScanner();
     });
-
-    
   })
 
+  // button for stopping barcode scanner
   document.getElementById("stop-scanner-btn").addEventListener("click", () => {
         stopScanningAndHide();
     });
 
+  // product search forms
   const searchForms = document.querySelectorAll("#searchForm, #searchFormMobile");
   searchForms.forEach(form => {
-      const csrfToken = form.elements.csrfmiddlewaretoken.value;
-      const productNameInput = form.querySelector("input[name='product_name']");
-      const autocompleteSuggestionsDiv = form.querySelector(".list-group");
-      const debounceSpeed = 300;
+    const csrfToken = form.elements.csrfmiddlewaretoken.value;
+    const productNameInput = form.querySelector("input[name='product_name']");
+    const autocompleteSuggestionsDiv = form.querySelector(".list-group");
+    const debounceSpeed = 300;
 
-      if (productNameInput && autocompleteSuggestionsDiv) {
-          productNameInput.addEventListener("input", debounce(async (event) => {
-              const query = event.target.value.trim();
-
-              if (query.length === 0) {
-                  autocompleteSuggestionsDiv.innerHTML = "";
-                  return;
-              }
-
-              fetch(`/suggestions/?query=${encodeURIComponent(query)}`)
-                  .then((response) => response.json())
-                  .then((data) => {
-                      const suggestionsArray = data.suggestions;
-                      displaySuggestions(suggestionsArray, autocompleteSuggestionsDiv, productNameInput);
-                  })
-                  .catch((error) => {
-                      console.error("Error fetching suggestions:", error);
-                      autocompleteSuggestionsDiv.innerHTML =
-                          '<div class="list-group-item text-danger">Failed to load suggestions.</div>';
-                  });
-          }, debounceSpeed));
+    if (productNameInput && autocompleteSuggestionsDiv) {
+      // debounce input to prevent sending a request on every keystroke for autocomplete suggestions on product forms
+      productNameInput.addEventListener("input", debounce(async (event) => {
+      const query = event.target.value.trim();
+      if (query.length === 0) {
+        autocompleteSuggestionsDiv.innerHTML = "";
+        return;
       }
 
-      form.addEventListener("submit", (event) => {
-          event.preventDefault();
-          const wasScanned = false;
-          handleProductSearch(form, csrfToken, wasScanned);
-      });
+      fetch(`/suggestions/?query=${encodeURIComponent(query)}`)
+        .then((response) => response.json())
+        .then((data) => {
+          const suggestionsArray = data.suggestions;
+          displaySuggestions(suggestionsArray, autocompleteSuggestionsDiv, productNameInput);
+        })
+        .catch((error) => {
+          console.error("Error fetching suggestions:", error);
+          autocompleteSuggestionsDiv.innerHTML =
+          '<div class="list-group-item text-danger">Failed to load suggestions.</div>';
+        });
+      }, debounceSpeed));
+    }
+
+    // product search form event listener 
+    form.addEventListener("submit", (event) => {
+      event.preventDefault();
+      const wasScanned = false;
+        handleProductSearch(form, csrfToken, wasScanned);
+    });
   });
 
-  const csrfToken = document.querySelector("#searchFormMobile, #searchForm").elements.csrfmiddlewaretoken.value;
-
+  // handle executing product search that was initiated on a different page, using search parameters stored in sessionStorage
   const savedBarcode = sessionStorage.getItem("searchBarcode");
   const savedProductName = sessionStorage.getItem("searchProductName");
   const wasScannedString = sessionStorage.getItem("wasScanned");
-  
+  const csrfToken = document.querySelector("#searchFormMobile, #searchForm").elements.csrfmiddlewaretoken.value;
   if (savedBarcode || savedProductName) {
-    const csrfToken = document.querySelector("#searchForm, #searchFormMobile").elements.csrfmiddlewaretoken.value;
 
+    // clear sessionStorage to prevent re-executing the search on page refresh.
     sessionStorage.removeItem("searchBarcode");
     sessionStorage.removeItem("searchProductName");
     sessionStorage.removeItem("searchCsrfToken");
@@ -156,11 +164,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const wasScanned = wasScannedString === 'true';
     
+    // search product using saved variable
     searchProduct(savedBarcode, savedProductName, csrfToken, wasScanned, page=1);
     if (barcodeInput) barcodeInput.value = '';
     if (productNameInput) productNameInput.value = '';
   }
 
+  // favourite buttons event listeners (toggle favourite from favourited products section)
   const initialFavoriteButtons = document.querySelectorAll(".favourite-btn");
   const initialAddButtons = document.querySelectorAll(".add-btn");
   initialFavoriteButtons.forEach((button) => {
@@ -171,6 +181,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
+  // add buttons event listeners (add from the favourited products section) 
   initialAddButtons.forEach((button) => {
     const productCard = button.closest(".card");
     button.addEventListener("click", (event) => {
@@ -183,35 +194,33 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
+  // advanced search form event listener
   const advSearchForm = document.getElementById("advSearchForm")
-  if (advSearchForm){
-
+  if (advSearchForm) {
     advSearchForm.addEventListener("submit", (event) => {
-    event.preventDefault();
-    const search_term = advSearchForm.elements.product_name.value.trim()
-    const country = advSearchForm.elements.countries_tags.value.trim()
-    const category = advSearchForm.elements.categories_tags.value.trim()
-    const brand = advSearchForm.elements.brands_tags.value.trim()
-    const csrfToken = advSearchForm.elements.csrfmiddlewaretoken.value;
-
-    const searchRequestData = {
-      search_term: search_term,
-      country:country,
-      category:category,
-      brand:brand,
-    }
-    
-    advProductSearch(searchRequestData, csrfToken)
-    })
+      event.preventDefault();
+      const search_term = advSearchForm.elements.product_name.value.trim();
+      const country = advSearchForm.elements.countries_tags.value.trim();
+      const category = advSearchForm.elements.categories_tags.value.trim();
+      const brand = advSearchForm.elements.brands_tags.value.trim();
+      const csrfToken = advSearchForm.elements.csrfmiddlewaretoken.value;
+      const searchRequestData = {
+        search_term: search_term,
+        country:country,
+        category:category,
+        brand:brand,
+      }
+      advProductSearch(searchRequestData, csrfToken);
+    });
   }
 
+  // populate advanced search criteria dropdowns on DOM load
   const categorySelect = document.getElementById('categorySelect');
   const brandSelect = document.getElementById('brandSelect');
   const countrySelect = document.getElementById('countrySelect');
   if (categorySelect && brandSelect && countrySelect){
-  fetchAndPopulateDropdowns(categorySelect, brandSelect, countrySelect );
+    fetchAndPopulateDropdowns(categorySelect, brandSelect, countrySelect );
   }
-
 });
 
 
@@ -270,6 +279,7 @@ function handleProductSearch(form, csrfToken, wasScanned) {
         return; 
     }
 
+    // if search is initiated from a page other than the index, store the search details in sessionStorage and redirect.
     if (currentPath !== "/" && currentPath !== "/index/") { 
 
         sessionStorage.setItem("searchBarcode", barcode);
@@ -324,14 +334,15 @@ function searchProduct(barcode = "None", productName = "None", csrfToken, wasSca
        ${gettext('Error')}: ${data.error || gettext("Invalid input.")}
        </div>`;
     } else  {
-       displaySearchResults(searchedProductsDiv, data, csrfToken, {barcode, productName}, (params, token) => searchProduct(params.barcode, params.productName, token, wasScanned, params.page));
-        console.log(`scan to add: ${data.scan_to_add}`)
-       if(data.scan_to_add === true && data.products.length > 0 && wasScanned === true){
+      displaySearchResults(searchedProductsDiv, data, csrfToken, {barcode, productName}, (params, token) => searchProduct(params.barcode, params.productName, token, wasScanned, params.page));
+
+      // if scan-to-add enabled and wasScanned true, automatically add the product to pantry.
+      if(data.scan_to_add === true && data.products.length > 0 && wasScanned === true){
         data.products.forEach(product => {
-        console.log(`adding product: ${product.id}`)
-        addProduct(product.id, quantityInput=1, csrfToken=csrfToken )
+          console.log(`adding product: ${product.id}`)
+          addProduct(product.id, quantityInput=1, csrfToken=csrfToken )
         });
-       }
+      }
     } 
   })
   .catch((error) => {
@@ -393,6 +404,7 @@ function displaySearchResults(container, data, csrfToken, searchParams, searchFu
       let safetyAlertsHtml = '';
       let cardClasses = "card h-100 border-0 shadow";
 
+      // add alerts based on user's dietary preferences and allergens.
       if (hasAllergenConflict) {
         const conflictingTagsList = conflictingTags.map(tag => `<code>${tag.replace(/_/g, ' ').toUpperCase()}</code>`).join(', ');
         cardClasses = "card h-100 shadow border-danger border-3"; 
@@ -401,7 +413,7 @@ function displaySearchResults(container, data, csrfToken, searchParams, searchFu
         <strong> <i class="bi bi-exclamation-circle"></i>  ${gettext('WARNING')} : </strong> ${gettext('Contains user-specified allergens:')} ${conflictingTagsList}
         </div>`;
       }
-            
+    
       if (hasDietaryMismatch) {
         const missingTagsList = missingTags.map(tag => `<code>${tag.replace(/_/g, ' ').toUpperCase()}</code>`).join(', ');
         safetyAlertsHtml += `
@@ -490,6 +502,7 @@ function displaySearchResults(container, data, csrfToken, searchParams, searchFu
   const currentPage = data.page_count;
   const totalPages = Math.ceil(totalCount / pageSize);
 
+  // only render pagination if there is more than one page of results.
   if (totalPages > 1) { 
    const paginationDiv = document.createElement("nav");
    paginationDiv.setAttribute("aria-label", "Page navigation");
@@ -501,6 +514,7 @@ function displaySearchResults(container, data, csrfToken, searchParams, searchFu
      <a class="page-link" href="#" data-page="${currentPage - 1}">${gettext('Previous')}</a>
     </li>`;
 
+    // create a compact pagination bar (e.g., 1 ... 4 5 6 ... 10) to ensure it doesn't take up too much space.
     const maxLinks = 5;
     let startPage = Math.max(1, currentPage - Math.floor(maxLinks / 2));
     let endPage = Math.min(totalPages, startPage + maxLinks - 1);
@@ -759,7 +773,6 @@ function updateFavouriteSection(product, is_favourited, favourites_exist, csrfTo
       favouriteSection.classList.add('justify-content-center')
     }, 400);
   }
-
  }
 }
 
@@ -781,7 +794,8 @@ function displaySuggestions(suggestions, autocompleteSuggestionsDiv, productName
       productNameInput.value = suggestion;
       autocompleteSuggestionsDiv.innerHTML = "";
     });
-
+    
+    // hide suggestions when clicking anywhere else on the document.
     document.addEventListener("click", () => { 
       autocompleteSuggestionsDiv.innerHTML = "";
     })
@@ -789,6 +803,7 @@ function displaySuggestions(suggestions, autocompleteSuggestionsDiv, productName
     autocompleteSuggestionsDiv.appendChild(suggestionItem);
   });
 }
+
 
 function debounce(func, delay) {
   let timeout;
@@ -799,59 +814,55 @@ function debounce(func, delay) {
   };
 }
 
-
+// dynamically create and display a Bootstrap toast notification.
 function showToast(message, isSuccess = true) {
-    const toastContainer = document.getElementById('toast-container');
-    if (!toastContainer) return;
+  const toastContainer = document.getElementById('toast-container');
+  if (!toastContainer) return;
 
-    const toastId = 'toast-' + Date.now();
-    const toastBgClass = isSuccess ? 'bg-success' : 'bg-danger';
-    const toastIcon = isSuccess 
-        ? '<i class="bi bi-check-circle-fill me-2"></i>' 
-        : '<i class="bi bi-exclamation-triangle-fill me-2"></i>';
+  const toastId = 'toast-' + Date.now();
+  const toastBgClass = isSuccess ? 'bg-success' : 'bg-danger';
+  const toastIcon = isSuccess 
+    ? '<i class="bi bi-check-circle-fill me-2"></i>' 
+    : '<i class="bi bi-exclamation-triangle-fill me-2"></i>';
 
-    const toastHtml = `
-        <div id="${toastId}" class="toast align-items-center text-white ${toastBgClass} border-0" role="alert" aria-live="assertive" aria-atomic="true">
-            <div class="d-flex">
-                <div class="toast-body">
-                    ${toastIcon}
-                    ${message}
-                </div>
-                <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
-            </div>
+  const toastHtml = `
+    <div id="${toastId}" class="toast align-items-center text-white ${toastBgClass} border-0" role="alert" aria-live="assertive" aria-atomic="true">
+      <div class="d-flex">
+        <div class="toast-body">
+          ${toastIcon}
+          ${message}
         </div>
-    `;
+          <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+      </div>
+    </div>`;
 
-    toastContainer.insertAdjacentHTML('beforeend', toastHtml);
+  toastContainer.insertAdjacentHTML('beforeend', toastHtml);
 
-    const toastElement = document.getElementById(toastId);
-    const toast = new bootstrap.Toast(toastElement, { delay: 3000 });
-    
-    toast.show();
-    
-    toastElement.addEventListener('hidden.bs.toast', () => {
-        toastElement.remove();
-    });
+  const toastElement = document.getElementById(toastId);
+  const toast = new bootstrap.Toast(toastElement, { delay: 3000 });  
+  toast.show();
+
+  toastElement.addEventListener('hidden.bs.toast', () => {
+    toastElement.remove();
+  });
 }
 
- function startScanner() {
-        
-    if (!html5QrCode) {
-       html5QrCode = new Html5Qrcode(readerId);
+function startScanner() {
+  if (!html5QrCode) {
+    html5QrCode = new Html5Qrcode(readerId);
             
-       document.getElementById("scanner-container").style.display = "flex";
+    document.getElementById("scanner-container").style.display = "flex";
 
-       html5QrCode.start(
-        { facingMode: "environment" },
-        config,
-        onScanSuccess,
-        onScanFailure
-        )
-        .catch((err) => {
-          console.error("Camera failed to start:", err);
-          alert(gettext("Camera start failed."));
-          document.getElementById("scanner-container").style.display = "none";
-          html5QrCode = null;
-        });
-    }
+    html5QrCode.start(
+      { facingMode: "environment" },
+      config,
+      onScanSuccess,
+      onScanFailure
+    )
+    .catch((err) => {
+      alert(gettext("Camera start failed."));
+      document.getElementById("scanner-container").style.display = "none";
+      html5QrCode = null;
+    });
   }
+}

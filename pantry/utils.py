@@ -16,6 +16,12 @@ OFF_PASSWORD = settings.OPENFOODFACTS_API['PASSWORD']
 
 @ratelimit(key='ip', rate='10/m', block=True, group='off_advsearch_api_call')
 def adv_search_product(request, search_params, page=1):
+    """
+    Performs an advanced product search against the Open Food Facts API.
+
+    Prioritizes localized API endpoints based on user settings to fetch
+    region-specific results, then applies additional search parameters.
+    """
 
     api_url = f"{OFF_API_BASE_URL}/cgi/search.pl"
 
@@ -23,6 +29,7 @@ def adv_search_product(request, search_params, page=1):
     if user.is_authenticated:
         user_settings = UserSettings.objects.get(user=user)
 
+        # adjust API endpoint to localise results if user setting is enabled
         if user_settings.prioritise_local_results:
          user_country_name = user_settings.country
          country_code = COUNTRY_CODE_MAP.get(user_country_name, 'world')
@@ -33,11 +40,7 @@ def adv_search_product(request, search_params, page=1):
              language_code = LANGUAGE_CODE_MAP.get(user_lang_name, 'en')
              api_url = f"https://{country_code}-{language_code}.openfoodfacts.net/cgi/search.pl"
 
-         
-
-        
     headers = get_headers()
-
     final_params = {
         'action': 'process',
         'json': 1,
@@ -45,6 +48,7 @@ def adv_search_product(request, search_params, page=1):
         'page': page
     }
 
+    # merge base API parameters with search criteria
     final_params.update(search_params)
 
     try:
@@ -61,6 +65,11 @@ def adv_search_product(request, search_params, page=1):
 
 @ratelimit(key='ip', rate='100/m', block=True, group='off_barcode_api_call')
 def fetch_product_by_barcode(request, barcode):
+    """
+    Fetches product data from the Open Food Facts API using a barcode.
+
+    This is a direct API call, often used as a fallback when a product isn't in the local DB.
+    """
 
     api_url = f"{OFF_API_BASE_URL}/api/v2/product/{barcode}.json"
     headers = get_headers()
@@ -73,6 +82,11 @@ def fetch_product_by_barcode(request, barcode):
 
 @ratelimit(key='ip', rate='10/m', block=True, group='off_name_api_call')
 def search_products_by_name(request, product_name, page=1):
+    """
+    Searches for products by name using the Open Food Facts API.
+
+    Adjusts API endpoint based on user's country and language preferences for localized results.
+    """
 
     api_url = f"{OFF_API_BASE_URL}/cgi/search.pl"
 
@@ -80,6 +94,7 @@ def search_products_by_name(request, product_name, page=1):
     if user.is_authenticated:
         user_settings = UserSettings.objects.get(user=user)
 
+        # adjust API endpoint to localise results if user setting is enabled
         if user_settings.prioritise_local_results:
          user_country_name = user_settings.country
          country_code = COUNTRY_CODE_MAP.get(user_country_name, 'world')
@@ -91,7 +106,6 @@ def search_products_by_name(request, product_name, page=1):
              api_url = f"https://{country_code}-{language_code}.openfoodfacts.net/cgi/search.pl"
 
          
-   
     headers = get_headers()
     params = {
         'search_terms': product_name,
@@ -109,15 +123,22 @@ def search_products_by_name(request, product_name, page=1):
 
 @ratelimit(key='ip', rate='30/m', block=True, group='off_suggestions_api_call')
 def get_product_suggestions(request, query):
+    """
+    Fetches autocomplete suggestions for product searches from the Open Food Facts API.
+
+    Localizes the API endpoint based on user settings to provide more relevant suggestions.
+    """
     api_url = f"{OFF_API_BASE_URL}/api/v3/taxonomy_suggestions"
     
     if request.user.is_authenticated:
         user_settings = UserSettings.objects.get(user=request.user)
         
+        # adjust API endpoint to localise results if user setting is enabled
         if user_settings.prioritise_local_results:
             user_country_name = user_settings.country
             country_code = COUNTRY_CODE_MAP.get(user_country_name, 'world')
             api_url = f"https://{country_code}.openfoodfacts.net/api/v3/taxonomy_suggestions"
+
             if user_settings.language_preference != 'en':
                 user_lang_name = user_settings.language_preference
                 language_code = LANGUAGE_CODE_MAP.get(user_lang_name, 'en')
@@ -142,6 +163,11 @@ def get_product_suggestions(request, query):
 
 
 def check_db_for_product(barcode = None, search_term = None, country=None, category= None, brand = None):
+    """
+    Checks the local database for products matching the given criteria.
+
+    This function implements the "DB-first" part of the search strategy to reduce external API calls.
+    """
     found_products_json = []
     query_params = {}
 
@@ -184,6 +210,11 @@ def check_db_for_product(barcode = None, search_term = None, country=None, categ
 
 
 def save_product_to_db(product_data):
+    """
+    Saves or updates product data in the local database from Open Food Facts API response.
+
+    This helps in caching product information and reducing repeated API calls.
+    """
    
     if not product_data or not product_data.get('code'):
         print("No valid product data or code to save to DB.")
@@ -232,6 +263,12 @@ def save_product_to_db(product_data):
     
 
 def build_api_search_params(params):
+    """
+    Transforms internal search parameters into the format expected by the
+    Open Food Facts API for advanced searches.
+
+    This maps user-friendly criteria to specific API tag filters.
+    """
  
     api_params = {}
     tag_index = 0
@@ -256,6 +293,12 @@ def build_api_search_params(params):
 
 
 def get_localised_names( product_tags, cached_data_type, language_code ):
+    """
+    Translates Open Food Facts API tags (e.g., 'en:milk') into human-readable,
+    localized names using cached data.
+
+    This ensures that product details are displayed in the user's preferred language.
+    """
 
     if not product_tags:
         return []

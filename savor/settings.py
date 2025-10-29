@@ -20,13 +20,13 @@ from django.utils.translation import gettext_lazy as _
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 env = environ.Env()
+# reads environment variables from the .env file
 environ.Env.read_env(os.path.join(BASE_DIR, '.env'))
 
 
 GOOGLE_API_KEY = env('GOOGLE_API_KEY', default=None)
-
-
 DEEPL_API_KEY = env('DEEPL_API_KEY', default=None)
+# languages for DeepL API translation, used by a custom management command to generate .po files for internationalization.
 DEEPL_TARGET_LANGUAGES = ['AR', 'BG', 'ZH', 'CS', 'DA', 'NL', 'ET', 'FI', 'FR', 'DE', 'EL', 'HE', 'HU', 'ID', 'IT', 'JA', 'KO', 'LV', 'LT', 'NB', 'PL', 'PT', 'RO', 'RU', 'SK', 'SL', 'ES', 'SV', 'TH', 'TR', 'UK', 'VI']
 DEEPL_SOURCE_LANG = "EN"
 
@@ -66,9 +66,12 @@ MIDDLEWARE = [
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
+    # custom middleware for app specific logic
     'savor.middleware.UserLanguageMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    # custom middleware to manage AI recipe generation based on session state.
+    # placed after AuthenticationMiddleware to ensure request.user is available.
     'savor.middleware.PantryRecipeMiddleware',
 ]
 
@@ -91,8 +94,9 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'savor.wsgi.application'
 
+# configures Django to print emails to the console during development.
+# in production, this would be replaced with a real email backend.
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
-
 
 
 # Database
@@ -129,10 +133,12 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/5.2/topics/i18n/
 
+# default language for the app
 LANGUAGE_CODE = 'en'
 
 TIME_ZONE = 'UTC'
 
+# enables Django's internationalization system
 USE_I18N = True
 
 USE_TZ = True
@@ -173,6 +179,7 @@ LANGUAGES = [
     ('vi', _('Vietnamese')),
 ]
 
+# specifies where Django should look for translation files.
 LOCALE_PATHS = [
     BASE_DIR / 'locale',
 ]
@@ -192,21 +199,25 @@ STATICFILES_DIRS = [
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
+# specifies the custom User model for authentication
 AUTH_USER_MODEL = 'users.User'
 
+# urls for authentication redirects
 LOGIN_REDIRECT_URL = 'pantry:index' 
 LOGOUT_REDIRECT_URL = 'login'       
 LOGIN_URL = 'login'
 
-
+# config for interacting with the Open Food Facts API.
 OPENFOODFACTS_API = {
-     'BASE_URL': "https://world.openfoodfacts.net", 
-     'USERNAME': "off",
-     'PASSWORD': "off",
-     'USER_AGENT': "Savor/1.0 (mnm.fullmetal@gmail.com)",
-     'USE_STAGING_AUTH': True
+    # world.openfoodfacts.net : staging environment, world.openfoodfacts.org : production enviornment
+     'BASE_URL': "https://world.openfoodfacts.net", # base URL for the OFF API 
+     'USERNAME': "off", # username for API authentication.
+     'PASSWORD': "off", # password for API authentication. 
+     'USER_AGENT': "Savor/1.0 (mnm.fullmetal@gmail.com)", # user-agent header for API requests, identifying the app
+     'USE_STAGING_AUTH': True,  # flag to use staging authentication credentials
 }
 
+# configures redis as the main caching backend for django
 CACHES = {
     'default': {
         'BACKEND': 'django_redis.cache.RedisCache',
@@ -217,24 +228,29 @@ CACHES = {
         }
 }
 
+# specifies a custom error handler for "django-ratelimit" when a rate limit is exceeded
 RATELIMIT_ERROR_HANDLER = 'savor.utils.rate_limit_error_response'
 
+# celery broker url pointing to redis, where celery tasks are queued
 CELERY_BROKER_URL = 'redis://127.0.0.1:6379/0'
+
+# celery result backend url also pointing to redis, where celery stores task results
 CELERY_RESULT_BACKEND = 'redis://127.0.0.1:6379/0'
 
+# specifies redbeat as scheduler for celery beat, allowing periodic tasks to be stored and managed in redis
 CELERY_BEAT_SCHEDULER = 'redbeat.RedBeatScheduler'
 
+# url for redbeat to connect to redis for storing periodic task schedules
 REDBEAT_REDIS_URL = 'redis://127.0.0.1:6379/2'
 
+# defines schedule for celery beat tasks
 CELERY_BEAT_SCHEDULE = {
     'update-old-recent-recipes': {
         'task': 'recipes.tasks.update_recent_recipes_status',
-        'schedule': timedelta(hours=1), 
+        'schedule': timedelta(hours=1), # Runs every hour to clean up old recipe suggestions.
     },
-
     'update-facet-data': {
         'task': 'savor.tasks.update_facet_data',
-        'schedule': timedelta(days=5),
+        'schedule': timedelta(days=5), # Runs every 5 days to refresh cached Open Food Facts facet data.
     },
-
 }

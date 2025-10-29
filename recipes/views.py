@@ -11,23 +11,32 @@ from pantry.models import PantryItem
 
 @login_required
 def recipes_view(request):
+    """
+    Renders the main recipes page, displaying new, recently suggested, and saved recipes.
+
+    It also checks a cache flag to indicate if a recipe generation task is in progress
+    and processes saved recipes to highlight missing ingredients from the user's pantry.
+    """
     user = request.user
 
     cache_key = f"recipe_gen_in_progress:{user.id}"
     latest_suggestions = []
     recently_suggested = []
     saved_recipes = []
-
     recipe_gen_in_progress = False
 
+    # check if a recipe generation task was recently scheduled
+    # flag is set by signals/middleware and read here to show a loading indicator in the UI
     if cache.get(cache_key):
         recipe_gen_in_progress = True
         cache.delete(cache_key)
 
+    # fetch different categories of recipes for display
     latest_suggestions = SuggestedRecipe.objects.filter(user=user, status="new").order_by('-created_at')
     recently_suggested = SuggestedRecipe.objects.filter(user=user, status__in=["new", "recent"]).order_by('-created_at')
     saved_recipes = SavedRecipe.objects.filter(user=user).prefetch_related('savedrecipeingredient_set__product').order_by('-title')
 
+    # prepare data structures for efficient ingredient checking against the pantry
     user_pantry_product_ids = set(PantryItem.objects.filter(pantry__user=user).values_list('product_id', flat=True))
     user_pantry_product_names_lower = {
         name.lower()
@@ -36,6 +45,7 @@ def recipes_view(request):
 
     saved_recipes_data = []
 
+    # determine which ingredients are missing from the pantry, for each saved recipe
     for recipe in saved_recipes:
         has_all_ingredients = True
         missing_ingredients = []
@@ -75,6 +85,12 @@ def recipes_view(request):
 @require_POST
 @login_required
 def save_recipe(request, id):
+    """
+    Saves a `SuggestedRecipe` to the user's `SavedRecipe` list.
+
+    This involves extracting structured data from the AI-generated suggestion,
+    creating a new `SavedRecipe` entry, and linking its ingredients to `Product` objects.
+    """
     user = request.user
 
     try:
@@ -88,17 +104,20 @@ def save_recipe(request, id):
         
         title = recipe_data.get("title")
         instructions = recipe_data.get("instructions")
-        
+
+        # create SavedRecipe entry
         recipe = SavedRecipe.objects.create(
             user=user,
             title=title,
             instructions=instructions,
         )
 
+        # create map for lookup of ingredient details from AI response
         ingredient_data_dict = {item.get('name'): item for item in recipe_data.get('ingredients', [])}
         
         for product in suggested_recipe.used_ingredients.all():
             
+            # link each used product to the SavedRecipe
             ingredient_info = ingredient_data_dict.get(product.product_name)
             
             if ingredient_info:
@@ -145,6 +164,9 @@ def save_recipe(request, id):
 @login_required
 @require_POST
 def mark_as_seen(request, id):
+    """
+    Marks a `SuggestedRecipe` as 'seen' by the user.
+    """
     user = request.user
 
     recipe = SuggestedRecipe.objects.get(user=user, id=id)
@@ -157,9 +179,11 @@ def mark_as_seen(request, id):
 
 def delete_recipe(request, id):
     user = request.user 
+    """
+    Deletes a `SavedRecipe` from the user's list.
+    """
 
     recipe_to_delete = SavedRecipe.objects.get(user=user, id=id)
     recipe_to_delete.delete()
 
     return JsonResponse({'message': "Recipe deleted"})
-

@@ -15,6 +15,12 @@ User = get_user_model()
 # Create your views here.
 
 def register(request):
+    """
+    Handles user registration.
+
+    On successful form submission, it creates a new user, an associated pantry,
+    logs the user in, and redirects to the homepage.
+    """
     if request.method =="POST":
         form = CustomUserCreationForm(request.POST)
         if form.is_valid():
@@ -29,20 +35,31 @@ def register(request):
     
 @login_required
 def account_settings(request):
+    """
+    Manages the user settings form, handling both display and updates.
+
+    This view dynamically populates form choices (allergens, languages, etc.)
+    with localized names based on the user's language preference. It fetches
+    this data from a Redis cache, which is populated by background Celery tasks,
+    to ensure a fast and internationalized user experience.
+    """
     user = request.user
     user_settings = UserSettings.objects.get(user=user)
     
+    # fetch allergens and requirements from the db to serve as a base
     default_allergens = Allergen.objects.all()
     default_requirements = DietaryRequirement.objects.all() 
     
     db_allergen_tags = set(default_allergens.values_list('api_tag', flat=True))
     db_requirement_tags = set(default_requirements.values_list('api_tag', flat=True))
 
+    # fetch default english data from cache for form choices as a fallback
     default_languages_data = get_cached_json(language_code='en', data_type='languages') or {}
     default_languages_choices = sorted(
         [(tag['id'], tag['name']) for tag in default_languages_data.get('tags', []) if tag['id'] in LANGUAGE_CODE_MAP.keys()] , 
         key=lambda x: x[1]
     )
+    # ensure english can always be navigated back to via a "deafult" option
     default_languages_choices.insert(0, ('en', 'Default (English)'))
 
     default_countries_data = get_cached_json(language_code='en', data_type='countries') or {}
@@ -54,14 +71,15 @@ def account_settings(request):
     user_language = user_settings.language_preference
     language_code = LANGUAGE_CODE_MAP.get(user_language, 'en')
 
+    # initialise choices with english names that will be overridden with localised names if a preference is set
     allergens_queryset = default_allergens
     requirements_queryset = default_requirements
-
     allergens_labels = list(default_allergens.values_list('api_tag', 'allergen_name')) 
     requirements_labels = list(default_requirements.values_list('api_tag', 'requirement_name'))
     languages_choices = default_languages_choices
     
-    if language_code and language_code != 'world':
+    # if user has a language preference other than english, fetch localised data from the cache to build the form
+    if language_code and language_code != 'en':
         
         localised_allergens_data = get_cached_json(language_code=language_code, data_type='allergens')
         if localised_allergens_data and localised_allergens_data.get('tags'):
@@ -100,6 +118,7 @@ def account_settings(request):
                  key=lambda x: x[1] 
             )
         
+    # kwargs to dynamically initialise the UserSettingsForm with correct and possibly localied choices.
     form_kwargs = {
         'instance': user_settings,
         'allergens_choices': allergens_queryset,        
@@ -132,6 +151,9 @@ def account_settings(request):
 
 @login_required
 def delete_user(request):
+        """
+        Handles the permanent deletion of the currently logged-in user's account.
+        """
         try: 
             user_to_delete = User.objects.get(id=request.user.id)
             user_to_delete.delete()

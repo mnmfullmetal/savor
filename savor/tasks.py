@@ -7,6 +7,15 @@ from .utils import fetch_single_facet_json_data, get_supported_language_codes, f
 
 @shared_task
 def update_facet_data():
+    """
+    Orchestrates the periodic fetching and caching of various facet data
+    (e.g., allergens, labels, countries) from the Open Food Facts API.
+
+    This task ensures that the application's dropdowns and search filters
+    are populated with up-to-date and localized options, reducing direct
+    API calls during user interaction. It first fetches English data and
+    populates core models, then triggers localized data updates.
+    """
     facets_to_fetch = ["allergens", "labels", "languages", "brands", "countries", "categories"]
     for facet in facets_to_fetch:
         fetch_and_process_facet_data.delay(facet)
@@ -15,7 +24,15 @@ def update_facet_data():
 
 @shared_task(rate_limit='1/m')
 def fetch_and_process_facet_data(facet_name):
+    """
+    Fetches a single facet's data (e.g., 'allergens') from the Open Food Facts API
+    in English and caches it.
 
+    For 'allergens' and 'labels' facets, it also populates or updates the
+    corresponding Django models (`Allergen`, `DietaryRequirement`) to enable
+    database-driven lookups and relationships.
+    The `rate_limit` is applied to respect API usage policies.
+    """
     facet_data = fetch_single_facet_json_data(facet_name=facet_name)
 
     if facet_name == 'languages':

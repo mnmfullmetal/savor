@@ -7,6 +7,9 @@ User = get_user_model()
 
 @receiver(post_save, sender=User)
 def create_user_settings(sender, instance, created, **kwargs):
+    """
+    Automatically creates a UserSettings instance for a new user upon registration.
+    """
     if created:
         UserSettings.objects.create(user=instance)
         print("user settings created")

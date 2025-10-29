@@ -1,6 +1,7 @@
 
 document.addEventListener("DOMContentLoaded", () => {
 
+  // event listeners for the remove pantry item buttons
   const buttons = document.querySelectorAll(".remove-button");
   if (buttons.length > 0) {
     for (const button of buttons) {
@@ -24,19 +25,17 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }  
 
-
   const pantrySearchInput = document.getElementById('pantrySearchInput')
   const csrfToken = document.querySelector('[name=csrfmiddlewaretoken]').value;
+
+  // debounce search to prevent firing a request on every keystroke
   const debouncedSearch = debounce(searchPantry, 200);
   if (pantrySearchInput){
     pantrySearchInput.addEventListener("input", (event) => {
-
       const query = (event.target.value ?? '').trim();
       debouncedSearch(csrfToken, query);
-
-    })
+    });
   }
-
 
 });
 
@@ -55,15 +54,17 @@ function searchPantry(csrfToken, query){
   .then(response => response.json())
   .then(data => {
     updatePantryList(data.found_items, csrfToken);
-
   })
   .catch(error => console.error('Error during pantry search:', error));
 }
 
 
 function updatePantryList(items, csrfToken){
+
   const pantryItemsPage = document.querySelector(".pantry-items-page")
   pantryItemsPage.innerHTML = "";
+
+  // display message if no pantry items
   if (items.length === 0){
     pantryItemsPage.innerHTML = `
   <div class="col-12 text-center py-5">
@@ -71,8 +72,8 @@ function updatePantryList(items, csrfToken){
   </div>`;
   }
 
+  // create html for updated pantry item list
   items.forEach((item) => {
-
     const placeholderImageUrl = "/static/media/placeholder-img.jpeg";
     const imageUrl = item.image_url || placeholderImageUrl;
     const hasAllergenConflict = item.has_allergen_conflict;
@@ -85,6 +86,7 @@ function updatePantryList(items, csrfToken){
     const pantryItemWrapper = document.createElement('div');
     pantryItemWrapper.classList.add('col-12', 'col-md-6', 'col-lg-6', 'col-xl-4', 'mb-4', 'pantry-item-col');
 
+    // alerts based on user's dietary preferences and allergens
     if (hasAllergenConflict) {
         const conflictingTagsList = conflictingTags.map(tag => `<code>${tag.replace(/_/g, ' ').toUpperCase()}</code>`).join(', ');
         cardClasses = "card h-100 shadow-lg border-danger border-3 pantry-item"; 
@@ -102,9 +104,9 @@ function updatePantryList(items, csrfToken){
         </div>`;
     }
 
+    // create the new pantry item card
     const pantryItemCard = document.createElement('div');
     pantryItemCard.classList.add(...cardClasses.split(' '));
-    
     pantryItemCard.innerHTML =`
              <img src="${imageUrl}" 
              alt="${item.product_name || gettext("Product Image")}" 
@@ -142,24 +144,22 @@ function updatePantryList(items, csrfToken){
     pantryItemWrapper.appendChild(pantryItemCard);
     pantryItemsPage.appendChild(pantryItemWrapper);
 
+    // event listener for newly created remove button.
     const removeButton = pantryItemCard.querySelector('.remove-button');
     removeButton.addEventListener('click', (event) => {
-    const clickedButton = event.target;
-    const csrfToken = clickedButton.dataset.csrfToken;
-    const quantityToRemove = clickedButton.closest(".pantry-item").querySelector(".remove-quantity-input").value;
-    const itemCardDiv = clickedButton.closest(".pantry-item");
-    const itemCardCol = clickedButton.closest(".col-12");
-
-    const removeRequestData = {
-          itemId: item.id,
-          quantityToRemove: quantityToRemove,
-          csrfToken: csrfToken,
-          itemCardDiv: itemCardDiv,
-          itemCardCol: itemCardCol,
-    };
-
-    removePantryItem(removeRequestData);
-
+      const clickedButton = event.target;
+      const csrfToken = clickedButton.dataset.csrfToken;
+      const quantityToRemove = clickedButton.closest(".pantry-item").querySelector(".remove-quantity-input").value;
+      const itemCardDiv = clickedButton.closest(".pantry-item");
+      const itemCardCol = clickedButton.closest(".col-12");
+      const removeRequestData = {
+        itemId: item.id,
+        quantityToRemove: quantityToRemove,
+        csrfToken: csrfToken,
+        itemCardDiv: itemCardDiv,
+        itemCardCol: itemCardCol,
+      };
+      removePantryItem(removeRequestData);
     })
   });
 }
@@ -187,7 +187,7 @@ function removePantryItem(removeRequestData) {
       pantryQtyCount.innerHTML = newQuantity;
 
       if (newQuantity <= 0) {
-
+        // fade-out animation before removing the element.
         itemCardCol.classList.add('fade-out');
                 
          setTimeout(() => {

@@ -28,6 +28,10 @@ from .utils import (
 # Create your views here.
 
 def index(request):
+    """
+    Renders the homepage, processing the user's favorited products to display
+    with relevant dietary and allergen conflict warnings.
+    """
     user = request.user
     placeholder_image_url = static('media/placeholder-img.jpeg')
     processed_favourites = []
@@ -42,6 +46,7 @@ def index(request):
         user_lang_name = user_settings.language_preference
         language_code = LANGUAGE_CODE_MAP.get(user_lang_name, 'en') 
                     
+        # flag each favorited product with conflict data before rendering.
         for product in user.favourited_products.all():
             
             has_allergen_conflict = False
@@ -67,9 +72,9 @@ def index(request):
             product.conflicting_allergens = conflicting_allergens
             product.has_dietary_mismatch = has_dietary_mismatch
             product.missing_dietary_tags = missing_dietary_tags
-            
             processed_favourites.append(product)
 
+        # forces .all() to return the pre-processed list instead of a query set, which lets the template display the new conflict data without needing any template code changes.
         user.favourited_products.all = lambda: processed_favourites 
 
     return render(request, 'pantry/index.html', {
@@ -81,6 +86,10 @@ def index(request):
 
 @require_POST
 def pantry_search(request):
+    """
+    Handles AJAX requests to search for items within the user's pantry,
+    returning a JSON list of matching items with conflict data.
+    """
     user = request.user
     user_pantry =  Pantry.objects.get(user=user)
     user_settings = UserSettings.objects.get(user=user)
@@ -142,7 +151,13 @@ def pantry_search(request):
 
 @require_POST
 def search_product(request): 
+    """
+    Handles product searches by barcode or name.
 
+    It follows a DB-first, API-fallback strategy. It first checks the local
+    database for the product. If not found, it queries the Open Food Facts API,
+    saves the new product data, and then returns the result.
+    """
     favourite_products = set()
     user_dietary_requirements = []
     user_allergens = []
@@ -387,6 +402,12 @@ def search_product(request):
 
 @require_POST
 def advanced_product_search(request):
+    """
+    Handles advanced product searches with multiple criteria (name, brand, etc.).
+
+    Similar to the basic search, it queries the external API. If the API call
+    fails, it falls back to searching the local database with the same criteria.
+    """
     user = request.user
     try:
         data = json.loads(request.body)
@@ -462,6 +483,11 @@ def advanced_product_search(request):
 
 
 def populate_adv_search_criteria(request):
+    """
+    Provides data for populating the dropdowns in the advanced search form.
+
+    This data is fetched from cached JSON files to avoid hitting the API on every page load.
+    """
     language_code = 'en' 
 
     if request.user.is_authenticated:
@@ -503,6 +529,12 @@ def populate_adv_search_criteria(request):
 
 @login_required
 def pantry_view(request):
+    """
+    Renders the user's pantry page.
+
+    It calculates aggregate scores and augments each pantry item with dietary
+    and allergen conflict information before rendering.
+    """
     pantry = Pantry.objects.get(user=request.user)
     pantry.calculate_aggregate_scores()
     pantryitems = PantryItem.objects.filter(pantry=pantry)
@@ -561,7 +593,12 @@ def pantry_view(request):
 
 @require_POST
 def add_product(request):
+    """
+    Handles AJAX requests to add a product to the user's pantry.
 
+    If the item already exists, its quantity is updated. Otherwise, a new
+    PantryItem is created.
+    """
     if not request.user.is_authenticated:
         return JsonResponse({'error': 'Authentication required.'}, status=401)
      
@@ -600,6 +637,12 @@ def add_product(request):
 @require_POST
 @login_required
 def remove_pantryitem(request):
+    """
+    Handles AJAX requests to remove a specified quantity of an item from the pantry.
+
+    If the quantity of an item drops to zero or below, the item is deleted
+    from the pantry.
+    """
     try:
         data = json.loads(request.body)
     except json.JSONDecodeError:
@@ -620,6 +663,11 @@ def remove_pantryitem(request):
    
 
 def toggle_favourite_product(request, id):
+    """
+    Adds or removes a product from a user's list of favourited products.
+
+    Returns a JSON response indicating the new status and the product data.
+    """
     user = request.user
     
     if not user.is_authenticated:
@@ -687,6 +735,11 @@ def toggle_favourite_product(request, id):
     })
 
 def product_suggestions(request):
+    """
+    Provides autocomplete suggestions for product searches.
+
+    Used by the search input fields to provide a better user experience.
+    """
     try:
         query = request.GET.get('query', '').strip()
 

@@ -8,6 +8,10 @@ from django.utils.translation import gettext_lazy as _
 User = get_user_model()
 
 class CustomUserCreationForm(UserCreationForm):
+    """
+    Extends Django's default UserCreationForm to include the 'email' field
+    during user registration.
+    """
     password1 = forms.CharField(
         label=_("Password"),
         strip=False,
@@ -41,6 +45,12 @@ class CustomUserCreationForm(UserCreationForm):
         
 
 class UserSettingsForm(forms.ModelForm):
+    """
+    Form for managing user-specific settings.
+
+    This form is designed to have its choice fields (language, country, allergens,
+    dietary requirements) dynamically populated in the view with localized data
+    fetched from the cache."""
     language_preference = forms.ChoiceField(required=False)
     country = forms.ChoiceField(required=False)
 
@@ -74,6 +84,7 @@ class UserSettingsForm(forms.ModelForm):
         
 
     def __init__(self, *args, **kwargs):
+        # pop custom arguments passed from the view for dynamic choice population
         allergens_choices = kwargs.pop('allergens_choices', Allergen.objects.all())
         requirements_choices = kwargs.pop('requirements_choices', DietaryRequirement.objects.all())
         allergens_labels = kwargs.pop('allergens_labels', None) 
@@ -83,9 +94,12 @@ class UserSettingsForm(forms.ModelForm):
         
         super().__init__(*args, **kwargs)
         
+        # set the queryset for many-to-many fields.
         self.fields['allergens'].queryset = allergens_choices
         self.fields['dietary_requirements'].queryset = requirements_choices
         
+        # if localised labels are provided, use them for the choices
+        # this allows displaying translated names while submitting API tags the backend expects
         if allergens_labels is not None:
              self.fields['allergens'].choices = allergens_labels 
 
