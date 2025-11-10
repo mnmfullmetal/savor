@@ -19,7 +19,7 @@ def adv_search_product(request, search_params, page=1):
     """
     Performs an advanced product search against the Open Food Facts API.
 
-    Prioritizes localized API endpoints based on user settings to fetch
+    Prioritises localised API endpoints based on user settings to fetch
     region-specific results, then applies additional search parameters.
     """
 
@@ -126,7 +126,7 @@ def get_product_suggestions(request, query):
     """
     Fetches autocomplete suggestions for product searches from the Open Food Facts API.
 
-    Localizes the API endpoint based on user settings to provide more relevant suggestions.
+    Localises the API endpoint based on user settings to provide more relevant suggestions.
     """
     api_url = f"{OFF_API_BASE_URL}/api/v3/taxonomy_suggestions"
     
@@ -295,7 +295,7 @@ def build_api_search_params(params):
 def get_localised_names( product_tags, cached_data_type, language_code ):
     """
     Translates Open Food Facts API tags (e.g., 'en:milk') into human-readable,
-    localized names using cached data.
+    localised names using cached data.
 
     This ensures that product details are displayed in the user's preferred language.
     """

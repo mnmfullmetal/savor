@@ -49,7 +49,7 @@ class UserSettingsForm(forms.ModelForm):
     Form for managing user-specific settings.
 
     This form is designed to have its choice fields (language, country, allergens,
-    dietary requirements) dynamically populated in the view with localized data
+    dietary requirements) dynamically populated in the view with localised data
     fetched from the cache."""
     language_preference = forms.ChoiceField(required=False)
     country = forms.ChoiceField(required=False)

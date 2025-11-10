@@ -145,7 +145,7 @@ def rate_limit_error_response(request, exception):
     """
     Custom error handler for the `django-ratelimit` library.
 
-    Returns a standardized JSON response when a user exceeds a rate limit.
+    Returns a standardised JSON response when a user exceeds a rate limit.
     """
     return JsonResponse(
         {
@@ -193,7 +193,7 @@ def fetch_single_facet_json_data( facet_name):
 
 def fetch_single_localised_facet_json_data(language_code, facet):
     """
-    Fetches localized data for a single facet and a specific language from the
+    Fetches localised data for a single facet and a specific language from the
     Open Food Facts API. Used by Celery tasks to populate the cache with translations.
     """
 

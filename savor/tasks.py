@@ -12,9 +12,9 @@ def update_facet_data():
     (e.g., allergens, labels, countries) from the Open Food Facts API.
 
     This task ensures that the application's dropdowns and search filters
-    are populated with up-to-date and localized options, reducing direct
+    are populated with up-to-date and localised options, reducing direct
     API calls during user interaction. It first fetches English data and
-    populates core models, then triggers localized data updates.
+    populates core models, then triggers localised data updates.
     """
     facets_to_fetch = ["allergens", "labels", "languages", "brands", "countries", "categories"]
     for facet in facets_to_fetch:

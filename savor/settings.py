@@ -26,7 +26,7 @@ environ.Env.read_env(os.path.join(BASE_DIR, '.env'))
 
 GOOGLE_API_KEY = env('GOOGLE_API_KEY', default=None)
 DEEPL_API_KEY = env('DEEPL_API_KEY', default=None)
-# languages for DeepL API translation, used by a custom management command to generate .po files for internationalization.
+# languages for DeepL API translation, used by a custom management command to generate .po files for internationalisation.
 DEEPL_TARGET_LANGUAGES = ['AR', 'BG', 'ZH', 'CS', 'DA', 'NL', 'ET', 'FI', 'FR', 'DE', 'EL', 'HE', 'HU', 'ID', 'IT', 'JA', 'KO', 'LV', 'LT', 'NB', 'PL', 'PT', 'RO', 'RU', 'SK', 'SL', 'ES', 'SV', 'TH', 'TR', 'UK', 'VI']
 DEEPL_SOURCE_LANG = "EN"
 
@@ -130,7 +130,7 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 
-# Internationalization
+# Internationalisation
 # https://docs.djangoproject.com/en/5.2/topics/i18n/
 
 # default language for the app
@@ -138,7 +138,7 @@ LANGUAGE_CODE = 'en'
 
 TIME_ZONE = 'UTC'
 
-# enables Django's internationalization system
+# enables Django's internationalisation system
 USE_I18N = True
 
 USE_TZ = True

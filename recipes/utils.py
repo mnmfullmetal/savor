@@ -3,7 +3,7 @@ from google import genai
 from pantry.models import PantryItem, Pantry
 
 # defines the JSON schema that the Google Gemini API must follow for its response
-# this ensures that the AI's output is structured and predictable, making it easy to parse and save to the database
+# this ensures that the AI's output is predictable, making it easy to parse and save to the database
 RECIPES_ARRAY_SCHEMA = {
     "type": "array",
     "items": {

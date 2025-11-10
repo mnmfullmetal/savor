@@ -39,9 +39,9 @@ def account_settings(request):
     Manages the user settings form, handling both display and updates.
 
     This view dynamically populates form choices (allergens, languages, etc.)
-    with localized names based on the user's language preference. It fetches
+    with localised names based on the user's language preference. It fetches
     this data from a Redis cache, which is populated by background Celery tasks,
-    to ensure a fast and internationalized user experience.
+    to ensure a fast and internationalised user experience.
     """
     user = request.user
     user_settings = UserSettings.objects.get(user=user)

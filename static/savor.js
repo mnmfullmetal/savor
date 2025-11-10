@@ -194,6 +194,12 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
+  const advModalElement = document.getElementById('exampleModal');
+  let advModalInstance;
+  if (advModalElement) {
+    advModalInstance = bootstrap.Modal.getOrCreateInstance(advModalElement);
+  }
+
   // advanced search form event listener
   const advSearchForm = document.getElementById("advSearchForm")
   if (advSearchForm) {
@@ -210,7 +216,15 @@ document.addEventListener("DOMContentLoaded", () => {
         category:category,
         brand:brand,
       }
+
       advProductSearch(searchRequestData, csrfToken);
+
+      // blur browser focus to prevent timing issues where it is still focusing the "submit" button on the hidden modal
+      if (document.activeElement) {
+        document.activeElement.blur();
+      }
+
+      advModalInstance.hide();
     });
   }
 

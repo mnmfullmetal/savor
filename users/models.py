@@ -20,8 +20,8 @@ class UserSettings(models.Model):
     """
     Stores user-specific preferences and settings.
 
-    This model centralizes all customizable aspects of the user's experience,
-    from dietary needs to UI display options and localization preferences.
+    This model centralises all customizable aspects of the user's experience,
+    from dietary needs to UI display options and localisation preferences.
     """
     user = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='settings')
     allergens = models.ManyToManyField('Allergen', blank=True,  related_name='allergic_to')

@@ -6,6 +6,7 @@
 {% block title %}Register{% endblock %}
 
 {% block body %}
+<div style="margin-top: 2rem;">
 <h2 class="text-dark">Register</h2>
 <form method="post">
     {% csrf_token %}
@@ -58,4 +59,5 @@
 </form>
 {% url 'login' as login_url %}
 <p class="text-dark">{% blocktrans %}Already have an account? <a href="{{ login_url }}">Log in here</a>.{% endblocktrans %}.</p>
+</div>
 {% endblock %}
