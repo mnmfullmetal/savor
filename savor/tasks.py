@@ -74,7 +74,8 @@ def update_localised_facet_data():
     facets_to_fetch = ["allergens", "labels", "languages", "brands", "countries", "categories"]
     for facet in facets_to_fetch: 
         for language_code in supported_languages:
-            fetch_and_cache_localised_facet_data.delay(language_code, facet)
+            if language_code != 'en':
+                fetch_and_cache_localised_facet_data.delay(language_code, facet)
 
 
 @shared_task(rate_limit='2/m')

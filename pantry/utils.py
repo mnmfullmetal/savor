@@ -31,14 +31,14 @@ def adv_search_product(request, search_params, page=1):
 
         # adjust API endpoint to localise results if user setting is enabled
         if user_settings.prioritise_local_results:
-         user_country_name = user_settings.country
-         country_code = COUNTRY_CODE_MAP.get(user_country_name, 'world')
-         api_url = f"https://{country_code}.openfoodfacts.net/cgi/search.pl"
+            user_country_name = user_settings.country
+            country_code = COUNTRY_CODE_MAP.get(user_country_name, 'world')
+            api_url = f"https://{country_code}.openfoodfacts.net/cgi/search.pl"
 
-         if user_settings.language_preference != 'en':
-             user_lang_name = user_settings.language_preference
-             language_code = LANGUAGE_CODE_MAP.get(user_lang_name, 'en')
-             api_url = f"https://{country_code}-{language_code}.openfoodfacts.net/cgi/search.pl"
+        if user_settings.language_preference != 'en':
+            user_lang_name = user_settings.language_preference
+            language_code = LANGUAGE_CODE_MAP.get(user_lang_name, 'en')
+            api_url = f"https://{country_code}-{language_code}.openfoodfacts.net/cgi/search.pl"
 
     headers = get_headers()
     final_params = {
@@ -53,6 +53,9 @@ def adv_search_product(request, search_params, page=1):
 
     try:
         response = requests.get(api_url, params=final_params, headers=headers)
+
+        print(f"Full URL requested: {response.url}")
+
         response.raise_for_status()         
         return response.json()
     
@@ -285,7 +288,7 @@ def build_api_search_params(params):
     for key, tag_type in tag_map.items():
         if params.get(key):
             api_params[f'tagtype_{tag_index}'] = tag_type
-            api_params[f'tag_contains_{tag_index}'] = 'exactly'
+            api_params[f'tag_contains_{tag_index}'] = 'contains'
             api_params[f'tag_{tag_index}'] = params[key]
             tag_index += 1
             
@@ -306,7 +309,7 @@ def get_localised_names( product_tags, cached_data_type, language_code ):
     full_cached_data = get_cached_json(language_code =language_code , data_type=cached_data_type)
 
     if not full_cached_data:
-        return []
+        return product_tags
     
     tag_list = full_cached_data.get('tags', [])
     
@@ -319,6 +322,9 @@ def get_localised_names( product_tags, cached_data_type, language_code ):
     
     for tag in product_tags:
         localised_name = localised_name_map.get(tag, tag) 
+
+        if not localised_name:
+            localised_name = tag
         
         localised_names.append(localised_name)
     

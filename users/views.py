@@ -56,17 +56,23 @@ def account_settings(request):
     # fetch default english data from cache for form choices as a fallback
     default_languages_data = get_cached_json(language_code='en', data_type='languages') or {}
     default_languages_choices = sorted(
-        [(tag['id'], tag['name']) for tag in default_languages_data.get('tags', []) if tag['id'] in LANGUAGE_CODE_MAP.keys()] , 
+        [(tag['id'], tag['name']) for tag in default_languages_data.get('tags', []) if tag['id'] in LANGUAGE_CODE_MAP.keys() and tag['id'] != 'en:english'] , 
         key=lambda x: x[1]
     )
     # ensure english can always be navigated back to via a "deafult" option
-    default_languages_choices.insert(0, ('en', 'Default (English)'))
+    default_languages_choices.insert(0, ('en:english', 'Default (English)'))
 
     default_countries_data = get_cached_json(language_code='en', data_type='countries') or {}
     countries_choices = sorted(
         [(tag['id'], tag['name']) for tag in default_countries_data.get('tags', []) if tag.get('name')] ,
             key=lambda x: x[1] 
     )
+
+     # insert "world" option as default for user country 
+    world_option = next((item for item in countries_choices if item[0] == 'en:world'), None)
+    if world_option:
+        countries_choices.remove(world_option)
+        countries_choices.insert(0, world_option)
 
     user_language = user_settings.language_preference
     language_code = LANGUAGE_CODE_MAP.get(user_language, 'en')
@@ -104,10 +110,10 @@ def account_settings(request):
              languages_choices = sorted(
                  [(tag['id'], tag['name']) 
                   for tag in localised_languages_data['tags'] 
-                  if tag.get('name') and tag['id'] in LANGUAGE_CODE_MAP.keys()],
+                  if tag.get('name') and tag['id'] in LANGUAGE_CODE_MAP.keys() and tag['id'] != 'en:english'],
                  key=lambda x: x[1] 
              )
-             languages_choices.insert(0, ('en', 'Default (English)'))
+             languages_choices.insert(0, ('en:english', 'Default (English)'))
 
         localised_countries_data = get_cached_json(language_code=language_code, data_type='countries')
         if localised_countries_data and localised_countries_data.get('tags'):
@@ -117,8 +123,15 @@ def account_settings(request):
                   if tag.get('name')],
                  key=lambda x: x[1] 
             )
+
+        # insert "world" option as default for user country when user has language set to something other than english 
+        world_tag_id = "en:world"
+        world_option = next((item for item in countries_choices if item[0] == world_tag_id), None)
+        if world_option:
+            countries_choices.remove(world_option)
+            countries_choices.insert(0, world_option)
         
-    # kwargs to dynamically initialise the UserSettingsForm with correct and possibly localied choices.
+    # kwargs to dynamically initialise the UserSettingsForm with correct and possibly localised choices.
     form_kwargs = {
         'instance': user_settings,
         'allergens_choices': allergens_queryset,        

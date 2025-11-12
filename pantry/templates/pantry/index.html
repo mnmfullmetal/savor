@@ -82,7 +82,7 @@ Savor
              {% trans "Favourites" %} <span class="ms-2">✨</span>
         </h2>
         <div class="horizontal-scroll-container">
-    <div class="product-cards-wrapper justify-content-center">
+    <div class="product-cards-wrapper {% if not favourite_products_list %}justify-content-center{% endif %}">
         {% for product in favourite_products_list %}
             <div class="product-card-wrapper">
                 <div class="card h-100 border-0 shadow-sm">

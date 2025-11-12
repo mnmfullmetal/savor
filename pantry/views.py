@@ -441,7 +441,7 @@ def advanced_product_search(request):
 
                 
                 products_found.append({
-                   'id': saved_product.id,
+                    'id': saved_product.id,
                     'code': saved_product.code,
                     'product_name': saved_product.product_name,
                     'brands': saved_product.brands,
@@ -494,7 +494,7 @@ def populate_adv_search_criteria(request):
         try:
             user_settings = UserSettings.objects.get(user=request.user)
             language_name = user_settings.language_preference
-            language_code = COUNTRY_CODE_MAP.get(language_name, 'en')
+            language_code = LANGUAGE_CODE_MAP.get(language_name, 'en')
         except UserSettings.DoesNotExist:
             pass
 
